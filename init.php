@@ -22,7 +22,7 @@ if ( !function_exists( 'add_action' ) ) {
 /*
 * Define some global constants
 */
-define( 'UFAQSW_VERSION', '1.3.5' );
+define( 'UFAQSW_VERSION', '1.3.6' );
 define( 'UFAQSW_PRFX', 'ufaqsw' );
 define('UFAQSW_BASE', plugin_basename( __FILE__ ));
 define( 'UFAQSW__PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
