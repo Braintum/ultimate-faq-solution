@@ -34,12 +34,12 @@ define( 'UFAQSW__ASSETS_URL', UFAQSW__PLUGIN_URL.'assets/' );
 */
 
 
-if ( file_exists( dirname( __FILE__ ) . '/vendor/cmb2/init.php' ) ) {
-	require_once dirname( __FILE__ ) . '/vendor/cmb2/init.php';
+if ( file_exists( dirname( __FILE__ ) . '/third-party/cmb2/init.php' ) ) {
+	require_once dirname( __FILE__ ) . '/third-party/cmb2/init.php';
 }
 
-if ( file_exists( dirname( __FILE__ ) . '/vendor/cmb2-conditionals/cmb2-conditionals.php' ) ) {
-	require_once dirname( __FILE__ ) . '/vendor/cmb2-conditionals/cmb2-conditionals.php';
+if ( file_exists( dirname( __FILE__ ) . '/third-party/cmb2-conditionals/cmb2-conditionals.php' ) ) {
+	require_once dirname( __FILE__ ) . '/third-party/cmb2-conditionals/cmb2-conditionals.php';
 }
 if (is_admin()){
 	require_once UFAQSW__PLUGIN_DIR . 'admin/class-directory-post-type.php';
