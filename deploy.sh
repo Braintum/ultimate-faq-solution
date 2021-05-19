@@ -222,6 +222,50 @@ mkdir -p $SVNPATH/assets/
 mv $SVNPATH/trunk/.wordpress-org/* $SVNPATH/assets/
 svn add --force $SVNPATH/assets/
 
+cd $SVNPATH
+status "Removing unwanted files"
+rm -Rf trunk/assets/css/*.scss
+rm -Rf trunk/assets/css/metabox/*.scss
+rm -Rf trunk/assets/*.scss
+rm -Rf trunk/bin
+rm -Rf trunk/**/.gitkeep
+rm -Rf trunk/.git
+rm -Rf trunk/.babelrc
+rm -Rf trunk/yarn.lock
+rm -Rf trunk/.github
+rm -Rf trunk/.wordpress-org
+rm -Rf trunk/.svnignore
+rm -Rf trunk/apigen
+rm -Rf trunk/tests
+rm -f trunk/.coveralls.yml
+rm -f trunk/.editorconfig
+rm -f trunk/.gitattributes
+rm -f trunk/.gitignore
+rm -f trunk/.gitmodules
+rm -f trunk/.jscrsrc
+rm -f trunk/.jshintrc
+rm -f trunk/.scrutinizer.yml
+rm -f trunk/.stylelintrc
+rm -f trunk/.travis.yml
+rm -f trunk/apigen.neon
+rm -f trunk/CHANGELOG.txt
+rm -f trunk/CODE_OF_CONDUCT.md
+rm -f trunk/composer.json
+rm -f trunk/composer.lock
+rm -f trunk/CONTRIBUTING.md
+rm -f trunk/docker-compose.yml
+rm -f trunk/Gruntfile.js
+rm -f trunk/package.json
+rm -f trunk/phpcs.xml
+rm -f trunk/phpunit.xml
+rm -f trunk/phpunit.xml.dist
+rm -f trunk/README.md
+rm -f trunk/deploy.sh
+rm -f trunk/package-lock.json
+rm -f trunk/phpcs.xml.dist
+rm -f trunk/tmp
+rm -f trunk/.phpcs.xml.dist
+
 echo
 
 echo "Changing directory to SVN and committing to trunk."
