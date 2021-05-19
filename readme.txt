@@ -102,6 +102,13 @@ Yes, HTML tags are supported.
 5. Screehshot 5
 
 == Changelog ==
+=1.3.7=
+# Shortcoder conflict editor change endless loop issue - fixed
+# Polylang conflict issue fixed.
+# WPML conflict issue fixed.
+# HTML supported in Question field.
+=1.3.6=
+# Compatible with Latest Wordpress version
 =1.3.5=
 # Directory shortcode parameter {behaviour} added.
 =1.3.4=

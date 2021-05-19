@@ -43,7 +43,7 @@ extract($designs);
 						<i class="fa <?php echo esc_attr(isset($designs['normal_icon']) && $designs['normal_icon']!=''?$designs['normal_icon']:'fa fa-plus') ?>" aria-hidden="true"></i>
 						<i class="fa <?php echo esc_attr(isset($designs['active_icon']) && $designs['active_icon']!=''?$designs['active_icon']:'fa fa-minus') ?>" id="ufaqsw_other_style" aria-hidden="true"></i>
 					</span>				
-					<span class="ufaqsw-default-title ufaqsw_faq_question_src"><?php echo esc_html($question); ?></span>
+					<span class="ufaqsw-default-title ufaqsw_faq_question_src"><?php echo wp_kses_post($question); ?></span>
 				</h3>
 			</div>
 			<div class="ufaqsw-toggle-inner-default ufaqsw-toggle-inner-default_<?php echo esc_attr(get_the_ID()); ?> ufaqsw_faq_answer_src">

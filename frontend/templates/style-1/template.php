@@ -51,7 +51,7 @@ extract($designs);
 				<i class="fa <?php echo esc_attr(isset($designs['normal_icon']) && $designs['normal_icon']!=''?$designs['normal_icon']:'fa fa-plus') ?> ufaqsw-style1-normal-icon"  aria-hidden="true"></i>
 			</span>
 			<span class="ufaqsw_faq_question_src">
-			  <?php echo esc_html($question); ?>
+			  <?php echo wp_kses_post($question); ?>
 			</span>
 		  </label>
 	  </div>

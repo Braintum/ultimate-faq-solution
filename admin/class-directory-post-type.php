@@ -218,7 +218,7 @@ function yourprefix_register_repeatable_group_field_metabox() {
 		'name'       => esc_html__( 'Question', 'cmb2' ),
 		'id'         => 'ufaqsw_faq_question',
 		'desc' => esc_html__( 'Write Your Question', 'cmb2' ),
-		'type'       => 'text',
+		'type'       => 'text_html',
 	) );
 
 	$cmb_group->add_group_field($group_field_id, array(
@@ -367,4 +367,16 @@ function ufaqsw_rd_duplicate_post_link( $actions, $post ) {
 }
  
 add_filter( 'post_row_actions', 'ufaqsw_rd_duplicate_post_link', 10, 2 );
+
+function bt_cmb2_render_callback_for_text_html( $field, $escaped_value, $object_id, $object_type, $field_type_object ) {
+	echo $field_type_object->input( array( 'type' => 'text' ) );
+}
+add_action( 'cmb2_render_text_html', 'bt_cmb2_render_callback_for_text_html', 10, 5 );
+
+function bt_cmb2_sanitize_text_html_callback( $override_value, $value ) {
+	return $value;
+}
+add_filter( 'cmb2_sanitize_text_html', 'bt_cmb2_sanitize_text_html_callback', 10, 2 );
+
+
 
