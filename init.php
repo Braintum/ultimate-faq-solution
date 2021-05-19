@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: Ultimate FAQ Solution
- * Version: 1.3.5
+ * Version: 1.3.6
  * Plugin URI: http://rsfaq.braintum.com/
  * Description: An ultimate FAQ Solution plugin for Wordpress & Woocommerce that lets you create, organize and publicize your FAQs (frequently asked questions) in no time through your WordPress admin panel. Select from multiple responsive FAQ layouts and styles. Also it’s the most comprehensive WooCommerce FAQs solution!
  * Author: Braintum
@@ -11,7 +11,7 @@
  * License: GPLv2 or later
  * License URI: https://www.gnu.org/licenses/license-list.html#GPLCompatibleLicenses
  * Requires at least: 4.6
- * Tested up to: 5.5.1
+ * Tested up to: 5.7.2
  */
 
 if ( !function_exists( 'add_action' ) ) {

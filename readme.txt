@@ -3,7 +3,7 @@ Contributors: Braintum
 Donate link: https://www.braintum.com/
 Tags: faq, faq-directory, accordion, toggle, knowledgebase, woocommerce-faq, product-faq
 Requires at least: 4.6
-Tested up to: 5.5.1
+Tested up to: 5.7.2
 Stable tag: 3.1.0
 Requires PHP: 5.6.0
 License: GPLv2 or later
