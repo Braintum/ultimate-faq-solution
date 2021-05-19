@@ -33,7 +33,6 @@ define( 'UFAQSW__ASSETS_URL', UFAQSW__PLUGIN_URL.'assets/' );
 * Define some global variables
 */
 
-
 if ( file_exists( dirname( __FILE__ ) . '/third-party/cmb2/init.php' ) ) {
 	require_once dirname( __FILE__ ) . '/third-party/cmb2/init.php';
 }
