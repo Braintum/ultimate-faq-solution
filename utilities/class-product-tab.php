@@ -49,8 +49,14 @@ class UFAQSW_product_tab
 		$is_enable = get_post_meta($post_id, '_ufaqsw_enable_faq_tab', true);
 		$title = get_post_meta($post_id, '_ufaqsw_tab_label', true);
 		$data = get_post_meta($post_id, '_ufaqsw_tab_data', true);
+
+		//New option FAQ group id
+		if( $data == '' ){
+			$data = get_post_meta($post_id, '_ufaqsw_tab_data_id', true);
+		}
+
 		$group_title = get_post_meta($post_id, '_ufaqsw_hide_group_title', true);
-		if($is_enable=='yes'){
+		if( $is_enable=='yes' && $data !== '' ){
 			echo do_shortcode( '[ufaqsw id="'.$data.'" title_hide="'.$group_title.'"]' );
 		}
 				
@@ -75,6 +81,7 @@ class UFAQSW_product_tab
 		 
 		$allfaqs = get_posts( $args );
 		$faqs = array();
+		$faqs[''] = 'None';
 		foreach($allfaqs as $faq){
 			$faqs[$faq->ID] = $faq->post_title;
 		}
@@ -100,13 +107,16 @@ class UFAQSW_product_tab
 			
 			<?php woocommerce_wp_text_input(array('id' => '_ufaqsw_tab_label', 'label' => esc_html__('FAQ Tab Label', 'ufaqsw'), 'placeholder' => __('FAQs', 'ufaqsw'), 'desc_tip' => true, 'description' => esc_html__('Enter the tab label. Default will be FAQs.', 'ufaqsw'), 'wrapper_class' => 'hide_if_variable')); ?>
 			
+			<div class="bt_ufaqsw_faq_id" style="background:#eee; padding: 3px 0px">
 			<?php 
-			
 			woocommerce_wp_select(array('id' => '_ufaqsw_tab_data', 
 						'options' => $faqs, 
 						'label' => esc_html('Select A FAQ Group'),'desc_tip' => true, 'description' => esc_html__('Please select a FAQ Group from dropdown.', 'ufaqsw'), 'value' => $faqdata));
-			
 			?>
+
+			<?php woocommerce_wp_text_input(array('id' => '_ufaqsw_tab_data_id', 'label' => esc_html__('Or Add FAQ Group ID', 'ufaqsw'), 'placeholder' => __('ex: 10', 'ufaqsw'), 'desc_tip' => true, 'description' => esc_html__('Or add a FAQ ID here. This will help for multilangual site built with WPML', 'ufaqsw'), 'wrapper_class' => 'hide_if_variable')); ?>
+			</div>
+
 			<?php woocommerce_wp_checkbox( array( 
 				'id'            => '_ufaqsw_hide_group_title', 
 				'wrapper_class' => 'show_if_simple', 
@@ -125,6 +135,7 @@ class UFAQSW_product_tab
 		$woo_data = isset( $_POST['_ufaqsw_tab_label'] ) ? sanitize_text_field($_POST['_ufaqsw_tab_label']) : sanitize_text_field('FAQs');
 		update_post_meta( $post_id, '_ufaqsw_tab_label', $woo_data );
 		update_post_meta( $post_id, '_ufaqsw_tab_data', sanitize_text_field($_POST['_ufaqsw_tab_data']) );
+		update_post_meta( $post_id, '_ufaqsw_tab_data_id', sanitize_text_field($_POST['_ufaqsw_tab_data_id']) );
 		$woo_checkbox = isset( $_POST['_ufaqsw_enable_faq_tab'] ) ? sanitize_text_field('yes') : sanitize_text_field('no');
 		update_post_meta( $post_id, '_ufaqsw_enable_faq_tab', $woo_checkbox );
 		$woo_hide_title = isset( $_POST['_ufaqsw_hide_group_title'] ) ? sanitize_text_field('yes') : sanitize_text_field('no');
