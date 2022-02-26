@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: Ultimate FAQ Solution
- * Version: 1.3.8
+ * Version: 1.3.9
  * Plugin URI: http://rsfaq.braintum.com/
  * Description: An ultimate FAQ Solution plugin for Wordpress & Woocommerce that lets you create, organize and publicize your FAQs (frequently asked questions) in no time through your WordPress admin panel. Select from multiple responsive FAQ layouts and styles. Also it’s the most comprehensive WooCommerce FAQs solution!
  * Author: Braintum
@@ -11,7 +11,7 @@
  * License: GPLv2 or later
  * License URI: https://www.gnu.org/licenses/license-list.html#GPLCompatibleLicenses
  * Requires at least: 4.6
- * Tested up to: 5.7.2
+ * Tested up to: 5.9.1
  */
 
 if ( !function_exists( 'add_action' ) ) {
@@ -22,9 +22,9 @@ if ( !function_exists( 'add_action' ) ) {
 /*
 * Define some global constants
 */
-define( 'UFAQSW_VERSION', '1.3.8' );
+define( 'UFAQSW_VERSION', '1.3.9' );
 define( 'UFAQSW_PRFX', 'ufaqsw' );
-define('UFAQSW_BASE', plugin_basename( __FILE__ ));
+define( 'UFAQSW_BASE', plugin_basename( __FILE__ ) );
 define( 'UFAQSW__PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'UFAQSW__PLUGIN_URL', plugin_dir_url(__FILE__) );
 define( 'UFAQSW__PLUGIN_TEMPLATE_URL', plugin_dir_url(__FILE__).'frontend/templates/' );
@@ -37,7 +37,7 @@ if ( file_exists( dirname( __FILE__ ) . '/third-party/cmb2/init.php' ) ) {
 	require_once dirname( __FILE__ ) . '/third-party/cmb2/init.php';
 }
 
-if (is_admin()){
+if ( is_admin() ) {
 	require_once UFAQSW__PLUGIN_DIR . 'admin/class-directory-post-type.php';
 }
 require_once UFAQSW__PLUGIN_DIR . 'utilities/class-global-resources.php';
