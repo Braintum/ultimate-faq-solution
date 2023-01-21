@@ -6,11 +6,14 @@ iframe{width:100%;}
 
 .ufaqsw_default_all_faq_header{background: #eee;padding: 6px 14px;text-align: center;margin-bottom: 25px;}
 .ufaqsw_default_all_search{position:relative}
-.ufaqsw_default_all_search_box{padding: 6px 16px !important;border-color: #e8e8e8 !important;border-radius: 14px;width: 300px;}
+.ufaqsw_default_all_search_box{padding: 6px 16px !important;border-color: #e8e8e8 !important;border-radius: 14px;width: 300px;border: 2px;text-align: center;}
 .ufaqsw_default_all_search_box:focus{
 	-webkit-box-shadow: 1px 1px 6px 0px rgba(0,0,0,0.25);
 	-moz-box-shadow: 1px 1px 6px 0px rgba(0,0,0,0.25);
 	box-shadow: 1px 1px 5px 0px rgba(0,0,0,0.25);
+}
+.ufaqsw_default_all_search_box:focus-visible{
+  outline: 0px;
 }
 .ufaqsw_default_all_search_box::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
   color: #ceced0;

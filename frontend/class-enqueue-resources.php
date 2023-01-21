@@ -1,12 +1,9 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) exit;
-/*
-* @Class UFAQSW_enqueue_resources
-* @since 1.0
-* @Author: Mahedi Hasan
-* Responsible for supply resources for specific faq item. Blueprint
-* By Braintum
-*/
+
+/**
+ * Enqueue styles and scripts
+ */
 class UFAQSW_enqueue_resources
 {
 	public $template = '';

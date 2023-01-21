@@ -47,7 +47,7 @@ extract($designs);
 				</h3>
 			</div>
 			<div class="ufaqsw-toggle-inner-default ufaqsw-toggle-inner-default_<?php echo esc_attr(get_the_ID()); ?> ufaqsw_faq_answer_src">
-				<?php echo apply_filters('the_content', $answer); ?>
+				<?php echo wp_kses_post( $answer ); ?>
 			</div>
 		</div><!-- END OF TOGGLE -->
 		

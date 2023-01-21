@@ -1,9 +1,8 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) exit;
 /*
-* @package - Settings by Braintum
 * @Author - Mahedi Hasan
-* @Description - Responsible for handling all global resoures for RS FAQ
+* @Description - Necessary setup during installation
 * @Since 1.0
 */
 class UFAQSW_installation
@@ -22,7 +21,7 @@ class UFAQSW_installation
 	}
 
 	/* This Function will run during plugin Activation */
-	public function plugin_activation() {
+	public static function plugin_activation() {
 		if(!get_option('ufaqsw_enable_search')){
 			update_option('ufaqsw_enable_search','on');
 		}
@@ -38,7 +37,7 @@ class UFAQSW_installation
 	}
 	
 	/* This Function will run during plugin Deactivation */
-	public function plugin_deactivation(){
+	public static function plugin_deactivation(){
 		
 	}
 }

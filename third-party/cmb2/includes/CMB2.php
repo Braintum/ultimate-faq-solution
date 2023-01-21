@@ -74,7 +74,7 @@ class CMB2 extends CMB2_Base {
 		 * Comments screen contexts include 'normal' and 'side'. Default is 'normal'.
 		 */
 		'context'                 => 'normal',
-		'priority'                => 'high',
+		'priority'                => 'high', // Or 10 for options pages.
 		'show_names'              => true, // Show field names on the left.
 		'show_on_cb'              => null, // Callback to determine if metabox should display.
 		'show_on'                 => array(), // Post IDs or page templates to display this metabox. overrides 'show_on_cb'.
@@ -138,7 +138,7 @@ class CMB2 extends CMB2_Base {
 		'position'                => null, // Menu position. Only applicable if 'parent_slug' is left empty.
 
 		'admin_menu_hook'         => 'admin_menu', // Alternately 'network_admin_menu' to add network-level options page.
-		'display_cb'              => false, // Override the options-page form output (CMB2_hookup::options_page_output()).
+		'display_cb'              => false, // Override the options-page form output (CMB2_Hookup::options_page_output()).
 		'save_button'             => '', // The text for the options-page save button. Defaults to 'Save'.
 		'disable_settings_errors' => false, // On settings pages (not options-general.php sub-pages), allows disabling.
 		'tab_group'               => '', // Tab-group identifier, enables options page tab navigation.
@@ -208,6 +208,15 @@ class CMB2 extends CMB2_Base {
 		$this->object_id( $object_id );
 
 		if ( $this->is_options_page_mb() ) {
+
+			// Check initial priority.
+			if ( empty( $config['priority'] ) ) {
+
+				// If not explicitly defined, Reset the priority to 10
+				// Fixes https://github.com/CMB2/CMB2/issues/1410.
+				$this->meta_box['priority'] = 10;
+			}
+
 			$this->init_options_mb();
 		}
 
@@ -229,7 +238,7 @@ class CMB2 extends CMB2_Base {
 		do_action( "cmb2_init_{$this->cmb_id}", $this );
 
 		// Hook in the hookup... how meta.
-		add_action( "cmb2_init_hookup_{$this->cmb_id}", array( 'CMB2_hookup', 'maybe_init_and_hookup' ) );
+		add_action( "cmb2_init_hookup_{$this->cmb_id}", array( 'CMB2_Hookup', 'maybe_init_and_hookup' ) );
 
 		// Hook in the rest api functionality.
 		add_action( "cmb2_init_hookup_{$this->cmb_id}", array( 'CMB2_REST', 'maybe_init_and_hookup' ) );
@@ -1383,7 +1392,7 @@ class CMB2 extends CMB2_Base {
 
 		list( $field_id, $sub_field_id ) = $ids;
 
-		$index = implode( '', $ids ) . ( $field_group ? $field_group->index : '' );
+		$index = $field_id . ( $sub_field_id ? '|' . $sub_field_id : '' ) . ( $field_group ? '|' . $field_group->index : '' );
 
 		if ( array_key_exists( $index, $this->fields ) && ! $reset_cached ) {
 			return $this->fields[ $index ];

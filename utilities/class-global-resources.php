@@ -37,6 +37,7 @@ class UFAQSW_global_resources
 	}
 	public function render_resources_backend(){
 		//jQuery for backend
+		wp_enqueue_media();
 		wp_enqueue_script( 'jquery', 'jquery');
 		wp_register_style( 'ufaqsw_backend_fa_css', UFAQSW__PLUGIN_URL . 'assets/css/font-awesome.min.css' );
 		wp_enqueue_style( 'ufaqsw_backend_fa_css' );

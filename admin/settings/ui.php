@@ -131,7 +131,7 @@ $allowed_html = ufaqsw_wses_allowed_menu_html();
 						
 						<textarea name="ufaqsw_setting_custom_style" id="ufaqsw_setting_custom_style" rows="10" cols="100"><?php echo esc_attr( get_option('ufaqsw_setting_custom_style') ); ?></textarea>
 						
-						<?php echo wp_kses('<br><i>Write your custom CSS here. Please do not use <b>style</b> tag in this textarea. Use *!important* flag if the styling does not take place as aspected.</i>', $allowed_html); ?>
+						<?php echo wp_kses('<br><i>Write your custom CSS here. Please do not use <b>style</b> tag in this textarea. Use *!important* flag if the styling does not take place as expected.</i>', $allowed_html); ?>
 						
 					</td>
 				</tr>

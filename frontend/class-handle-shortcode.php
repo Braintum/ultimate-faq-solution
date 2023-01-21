@@ -1,24 +1,20 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-/*
-* @package - Shortcode Handler by Braintum
-* @Author - Mahedi Hasan
-* @Description - Responsible for rendering all kind of shorcode for RS FAQ
-* @Since 1.0
-*/
-
+/**
+ * Shortcode handler class
+ */
 class UFAQSW_shortcode_handler
 {
 	// class instance
 	static $instance;
 
-	/*
-	* @Method - Instantiate by Braintum
-	* @Author - Mahedi Hasan
-	* @Description - Instantiating a this class
-	* @Since 1.0
-	*/
+
+	/**
+	 * Get the instance of this class
+	 *
+	 * @return object UFAQSW_shortcode_handler
+	 */
 	public static function get_instance() {
 		if ( ! isset( self::$instance ) ) {
 			self::$instance = new self();
@@ -27,24 +23,22 @@ class UFAQSW_shortcode_handler
 		return self::$instance;
 	}
 
-	/*
-	* @Method - Constructor by Braintum
-	* @Author - Mahedi Hasan
-	* @Description - Instantiating a this class
-	* @Since 1.0
-	*/
+	/**
+	 * Constructor
+	 */
 	public function __construct() {
 		add_shortcode('ufaqsw', array($this, 'render_shortcode'));
 		add_shortcode('ufaqsw-all', array($this, 'render_all'));
 	}
 	
-	/*
-	* @Method - Single Shortcode by Braintum
-	* @Author - Mahedi Hasan
-	* @Description - Responsible for rendering single group shorcode for RS FAQ
-	* @Since 1.0
-	*/
+	/**
+	 * Render shortcodes
+	 *
+	 * @param array $atts
+	 * @return string
+	 */
 	public function render_shortcode($atts = array()){
+
 		extract( shortcode_atts(
 			array(
 				'id' => 1,
@@ -52,21 +46,23 @@ class UFAQSW_shortcode_handler
 				'elements_order' => 'ASC'
 			), $atts
 		));
+
 		$faq_args = array(
 			'post_type' => 'ufaqsw',
 			'p' => $id,
 		);
 		$template = 'default';
 		$faq_query = new WP_Query($faq_args);
+
 		ob_start();
 		
-		
-		if ( $faq_query->have_posts() ) 
-		{
+		if ( $faq_query->have_posts() ) {
+
 			while ( $faq_query->have_posts() ) {
 				$faq_query->the_post();
 				
 				$faqs = get_post_meta( get_the_ID(), 'ufaqsw_faq_item01' );
+
 				$faqs = isset($faqs[0])?$faqs[0]:$faqs;
 				
 				if( $elements_order == 'DESC' ){
@@ -74,17 +70,18 @@ class UFAQSW_shortcode_handler
 				}
 
 				$designs = apply_filters('ufaqsw_simplify_configuration_variables', get_the_ID());
+
 				$template = apply_filters('ufaqsw_template_filter', $designs['template']);
+				
 				$enqueue_resource = new UFAQSW_enqueue_resources();	
 				$enqueue_resource->id = get_the_ID();				
 				$enqueue_resource->configuration = $designs;
 				$enqueue_resource->render_css($template);
-				$enqueue_resource->render_js($template);	
-
+				$enqueue_resource->render_js($template);
 				
-				if(file_exists(UFAQSW__PLUGIN_DIR.'/frontend/templates/'.$template.'/template.php')){
+				if(file_exists(UFAQSW__PLUGIN_DIR.'frontend/templates/' . $template . '/template.php')){
 
-					include UFAQSW__PLUGIN_DIR.'/frontend/templates/'.$template.'/template.php';
+					include UFAQSW__PLUGIN_DIR.'frontend/templates/' . $template . '/template.php';
 				}else{
 					echo esc_html($template.' Template Not Found');
 				}
@@ -98,7 +95,6 @@ class UFAQSW_shortcode_handler
 		return $content;
 		
 	}
-	
 	
 	/*
 	* @Method - Directory Shortcode by Braintum
