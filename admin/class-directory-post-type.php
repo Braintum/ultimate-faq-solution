@@ -57,7 +57,7 @@ function ufaqsw_register_appearance_metabox() {
 	
 	$cmb_demo = new_cmb2_box( array(
 		'id'            => 'ufaqsw_faq_conf',
-		'title'         => esc_html__( 'Appearance', 'cmb2' ),
+		'title'         => esc_html__( 'Appearance', 'ufaqsw' ),
 		'object_types'  => array( 'ufaqsw' ), // Post type
 		 'closed'     => true,
 		 'classes'    => 'extra-class',
@@ -68,106 +68,106 @@ function ufaqsw_register_appearance_metabox() {
 	
 	
 	$cmb_demo->add_field( array(
-		'name'             => esc_html__( 'Choose A Template', 'cmb2' ),
+		'name'             => esc_html__( 'Choose A Template', 'ufaqsw' ),
 		'id'               => 'ufaqsw_template',
 		'type'             => 'radio_inline',
 		'options'          => array(
-			'default' => esc_html__( 'Default', 'cmb2' ),
-			'style-1'   => esc_html__( 'Style 1', 'cmb2' ),
-			'style-2'     => esc_html__( 'Style 2', 'cmb2' ),
+			'default' => esc_html__( 'Default', 'ufaqsw' ),
+			'style-1'   => esc_html__( 'Style 1', 'ufaqsw' ),
+			'style-2'     => esc_html__( 'Style 2', 'ufaqsw' ),
 		),
 	) );
 	
 	$cmb_demo->add_field( array(
-		'name'    => esc_html__( 'Faq Group Title Color', 'cmb2' ),
+		'name'    => esc_html__( 'Faq Group Title Color', 'ufaqsw' ),
 		'id'      => 'ufaqsw_title_color',
-		'desc' => esc_html__( 'Change the Group Title color', 'cmb2' ),
+		'desc' => esc_html__( 'Change the Group Title color', 'ufaqsw' ),
 		'type'    => 'colorpicker',
 	) );
 	
 	$cmb_demo->add_field( array(
-		'name' => esc_html__( 'Faq Group Title Font Size (ex: 30px)', 'cmb2' ),
-		'desc' => esc_html__( 'Change the Group Title font size ex: 30px', 'cmb2' ),
+		'name' => esc_html__( 'Faq Group Title Font Size (ex: 30px)', 'ufaqsw' ),
+		'desc' => esc_html__( 'Change the Group Title font size ex: 30px', 'ufaqsw' ),
 		'id'   => 'ufaqsw_title_font_size',
 		'type' => 'text_small',
 
 	) );
 
 	$cmb_demo->add_field( array(
-		'name'    => esc_html__( 'Question Color', 'cmb2' ),
+		'name'    => esc_html__( 'Question Color', 'ufaqsw' ),
 		'id'      => 'ufaqsw_question_color',
-		'desc' => esc_html__( 'Change the Question color', 'cmb2' ),
+		'desc' => esc_html__( 'Change the Question color', 'ufaqsw' ),
 		'type'    => 'colorpicker',
 
 	) );
 	
 	$cmb_demo->add_field( array(
-		'name'    => esc_html__( 'Answer Color', 'cmb2' ),
+		'name'    => esc_html__( 'Answer Color', 'ufaqsw' ),
 		'id'      => 'ufaqsw_answer_color',
-		'desc' => esc_html__( 'Change the Answer color', 'cmb2' ),
+		'desc' => esc_html__( 'Change the Answer color', 'ufaqsw' ),
 		'type'    => 'colorpicker',
 
 	) );
 	
 	$cmb_demo->add_field( array(
-		'name'    => esc_html__( 'Question Background Color', 'cmb2' ),
+		'name'    => esc_html__( 'Question Background Color', 'ufaqsw' ),
 		'id'      => 'ufaqsw_question_background_color',
-		'desc' => esc_html__( 'Change the Question Background color', 'cmb2' ),
+		'desc' => esc_html__( 'Change the Question Background color', 'ufaqsw' ),
 		'type'    => 'colorpicker',
 
 	) );
 	
 	$cmb_demo->add_field( array(
-		'name'    => esc_html__( 'Answer Background Color', 'cmb2' ),
+		'name'    => esc_html__( 'Answer Background Color', 'ufaqsw' ),
 		'id'      => 'ufaqsw_answer_background_color',
-		'desc' => esc_html__( 'Change the Answer Background color', 'cmb2' ),
+		'desc' => esc_html__( 'Change the Answer Background color', 'ufaqsw' ),
 		'type'    => 'colorpicker',
 
 	) );
 	$cmb_demo->add_field( array(
-		'name' => esc_html__( 'Question Font Size (ex: 20px)', 'cmb2' ),
-		'desc' => esc_html__( 'Change the Question Font Size ex: 20px', 'cmb2' ),
+		'name' => esc_html__( 'Question Font Size (ex: 20px)', 'ufaqsw' ),
+		'desc' => esc_html__( 'Change the Question Font Size ex: 20px', 'ufaqsw' ),
 		'id'   => 'ufaqsw_question_font_size',
 		'type' => 'text_small',
 
 	) );
 	
 	$cmb_demo->add_field( array(
-		'name' => esc_html__( 'Answer Font Size (ex: 20px)', 'cmb2' ),
-		'desc' => esc_html__( 'Change the Answer Font Size ex: 20px', 'cmb2' ),
+		'name' => esc_html__( 'Answer Font Size (ex: 20px)', 'ufaqsw' ),
+		'desc' => esc_html__( 'Change the Answer Font Size ex: 20px', 'ufaqsw' ),
 		'id'   => 'ufaqsw_answer_font_size',
 		'type' => 'text_small',
 
 	) );
 	
 	$cmb_demo->add_field( array(
-		'name' => esc_html__( 'Normal Icon', 'cmb2' ),
+		'name' => esc_html__( 'Normal Icon', 'ufaqsw' ),
 		'id'   => 'ufaqsw_normal_icon',
-		'desc' => esc_html__( 'Change the default icon by clicking on the input box.', 'cmb2' ),
+		'desc' => esc_html__( 'Change the default icon by clicking on the input box.', 'ufaqsw' ),
 		'type' => 'text_medium',
 	) );
 	
 	$cmb_demo->add_field( array(
-		'name' => esc_html__( 'Active Icon', 'cmb2' ),
+		'name' => esc_html__( 'Active Icon', 'ufaqsw' ),
 		'id'   => 'ufaqsw_active_icon',
-		'desc' => esc_html__( 'Change the default icon by clicking on the input box.', 'cmb2' ),
+		'desc' => esc_html__( 'Change the default icon by clicking on the input box.', 'ufaqsw' ),
 		'type' => 'text_medium',
 	) );
 
 	$cmb_demo->add_field( array(
-        'name'          => esc_html__( 'FAQ Behaviour', 'your-text-domain' ),
-        'desc'          => esc_html__('Default behaviour is Toggle. You can change it to Accordion', 'cmb2'),
+        'name'          => esc_html__( 'FAQ Behaviour', 'ufaqsw' ),
+        'desc'          => esc_html__('Default behaviour is Toggle. You can change it to Accordion', 'ufaqsw'),
         'id'            => 'ufaqsw_faq_behaviour',
         'type'          => 'select',
         'options'       => array(
-            'toggle'    => esc_html__('Toggle', 'cmb2' ),
-            'accordion'    => esc_html__('Accordion', 'cmb2'),
+            'toggle'    => esc_html__('Toggle', 'ufaqsw' ),
+            'accordion'    => esc_html__('Accordion', 'ufaqsw'),
         ),
     ) );
 
 	$cmb_demo->add_field( array(
-		'name' => esc_html__( 'Show all Answers by Default', 'cmb2' ),
-		'desc' => esc_html__( 'Show all Answers by Default', 'cmb2' ),
+		'name' => esc_html__( 'Show all Answers by Default', 'ufaqsw' ),
+		'desc' => esc_html__( 'Show all Answers by Default', 'ufaqsw' ),
 		'id'   => 'ufaqsw_answer_showall',
 		'type' => 'checkbox',
 		'attributes'    => array(
@@ -177,8 +177,8 @@ function ufaqsw_register_appearance_metabox() {
 	) );
 	
 	$cmb_demo->add_field( array(
-		'name' => esc_html__( 'Hide Group Title', 'cmb2' ),
-		'desc' => esc_html__( 'Hide Group Title', 'cmb2' ),
+		'name' => esc_html__( 'Hide Group Title', 'ufaqsw' ),
+		'desc' => esc_html__( 'Hide Group Title', 'ufaqsw' ),
 		'id'   => 'ufaqsw_hide_title',
 		'type' => 'checkbox',
 	) );
@@ -196,34 +196,34 @@ function yourprefix_register_repeatable_group_field_metabox() {
 
 	$cmb_group = new_cmb2_box( array(
 		'id'           => 'ufaqsw_faq_items',
-		'title'        => esc_html__( 'FAQs', 'cmb2' ),
+		'title'        => esc_html__( 'FAQs', 'ufaqsw' ),
 		'object_types' => array( 'ufaqsw' ),
 	) );
 
 	$group_field_id = $cmb_group->add_field( array(
 		'id'          => 'ufaqsw_faq_item01',
 		'type'        => 'group',
-		'description' => esc_html__( 'Add FAQ to this group by click on "Add FAQ Entry" Button', 'cmb2' ),
+		'description' => esc_html__( 'Add FAQ to this group by click on "Add FAQ Entry" Button', 'ufaqsw' ),
 		'options'     => array(
-			'group_title'    => esc_html__( 'FAQ {#}', 'cmb2' ), // {#} gets replaced by row number
-			'add_button'     => esc_html__( 'Add FAQ Entry', 'cmb2' ),
-			'remove_button'  => esc_html__( 'Remove FAQ Entry', 'cmb2' ),
+			'group_title'    => esc_html__( 'FAQ {#}', 'ufaqsw' ), // {#} gets replaced by row number
+			'add_button'     => esc_html__( 'Add FAQ Entry', 'ufaqsw' ),
+			'remove_button'  => esc_html__( 'Remove FAQ Entry', 'ufaqsw' ),
 			'sortable'       => true,
 			'closed'      => false, // true to have the groups closed by default
-			'remove_confirm' => esc_html__( 'Are you sure you want to remove the FAQ entry?', 'cmb2' ), 
+			'remove_confirm' => esc_html__( 'Are you sure you want to remove the FAQ entry?', 'ufaqsw' ), 
 		),
 	) );
 
 	$cmb_group->add_group_field( $group_field_id, array(
-		'name'       => esc_html__( 'Question', 'cmb2' ),
+		'name'       => esc_html__( 'Question', 'ufaqsw' ),
 		'id'         => 'ufaqsw_faq_question',
-		'desc' => esc_html__( 'Write Your Question', 'cmb2' ),
+		'desc' => esc_html__( 'Write Your Question', 'ufaqsw' ),
 		'type'       => 'text_html',
 	) );
 
 	$cmb_group->add_group_field($group_field_id, array(
-		'name'    => esc_html__( 'Answer', 'cmb2' ),
-		'desc'    => esc_html__( 'Write Your Answer', 'cmb2' ),
+		'name'    => esc_html__( 'Answer', 'ufaqsw' ),
+		'desc'    => esc_html__( 'Write Your Answer', 'ufaqsw' ),
 		'id'      => 'ufaqsw_faq_answer',
 		'type'    => 'wysiwyg',
 		'options' => array(
@@ -237,10 +237,10 @@ function yourprefix_register_repeatable_group_field_metabox() {
 function ufaqsw_faq_columns_head($defaults) {
 
     $new_columns['cb'] = '<input type="checkbox" />';
-    $new_columns['title'] = __('Title');
+    $new_columns['title'] = __('Title', 'ufaqsw');
     $new_columns['ufaqsw_item_count'] = 'Number of Questions & Answers';
     $new_columns['shortcode_col'] = 'Shortcode';
-    $new_columns['date'] = __('Date');
+    $new_columns['date'] = __('Date', 'ufaqsw');
     return $new_columns;
 }
  

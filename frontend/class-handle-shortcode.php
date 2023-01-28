@@ -1,4 +1,7 @@
 <?php
+
+use Mahedi\UltimateFaqSolution\Custom_Resources;
+
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 /**
@@ -54,6 +57,12 @@ class UFAQSW_shortcode_handler
 		$template = 'default';
 		$faq_query = new WP_Query($faq_args);
 
+		//loading resources		
+		wp_enqueue_style('ufaqsw_styles_css');
+		wp_enqueue_script('ufaqsw-grid-js');
+		wp_enqueue_script('ufaqsw-quicksearch-front-js');
+		wp_enqueue_script('ufaqsw-script-js');
+
 		ob_start();
 		
 		if ( $faq_query->have_posts() ) {
@@ -73,11 +82,16 @@ class UFAQSW_shortcode_handler
 
 				$template = apply_filters('ufaqsw_template_filter', $designs['template']);
 				
-				$enqueue_resource = new UFAQSW_enqueue_resources();	
-				$enqueue_resource->id = get_the_ID();				
-				$enqueue_resource->configuration = $designs;
-				$enqueue_resource->render_css($template);
-				$enqueue_resource->render_js($template);
+				(new Custom_Resources( 
+					get_the_ID(), 
+					$designs, 
+					$template, 
+					'ufaqsw-script-js',
+					'ufaqsw_styles_css' 
+				))->render_css()->render_js();
+				//$enqueue_resource = new UFAQSW_enqueue_resources( get_the_ID(), $designs, $template );	
+				//$enqueue_resource->render_css();
+				//$enqueue_resource->render_js();
 				
 				if(file_exists(UFAQSW__PLUGIN_DIR.'frontend/templates/' . $template . '/template.php')){
 
@@ -165,13 +179,9 @@ class UFAQSW_shortcode_handler
 				
 				$template = apply_filters('ufaqsw_template_filter', $designs['template']);
 				
-				$enqueue_resource = new UFAQSW_enqueue_resources();	
-				
-				$enqueue_resource->id = get_the_ID();
-				
-				$enqueue_resource->configuration = $designs;
-				$enqueue_resource->render_css($template);
-				$enqueue_resource->render_js($template);
+				$enqueue_resource = new UFAQSW_enqueue_resources( get_the_ID(), $designs, $template );	
+				$enqueue_resource->render_css();
+				$enqueue_resource->render_js();
 
 				
 				ob_start();

@@ -1,5 +1,11 @@
 <?php
 /**
+ * @package   ultimate-faq-solution
+ * @link      https://github.com/Braintum/ultimate-faq-solution
+ * @author    Md. Mahedi Hasan <mahedi@braintum.com>
+ * @copyright 2020-2023 Braintum
+ * @license   GPL v2 or later
+ * 
  * Plugin Name: Ultimate FAQ Solution
  * Version: 2.0
  * Plugin URI: http://rsfaq.braintum.com/
@@ -12,12 +18,16 @@
  * License URI: https://www.gnu.org/licenses/license-list.html#GPLCompatibleLicenses
  * Requires at least: 5.1
  * Tested up to: 6.1.1
+ *
+ * Requires PHP: 7.2
  */
 
 if ( !function_exists( 'add_action' ) ) {
 	echo 'Hi there!  I\'m just a plugin, not much I can do when called directly.';
 	exit;
 }
+
+require_once dirname( __FILE__ ) . '/vendor/autoload.php';
 
 /*
 * Define some global constants
@@ -31,14 +41,13 @@ define( 'UFAQSW__PLUGIN_TEMPLATE_URL', plugin_dir_url(__FILE__) . 'frontend/temp
 define( 'UFAQSW__ASSETS_URL', UFAQSW__PLUGIN_URL . 'assets/' );
 
 
-if ( file_exists( dirname( __FILE__ ) . '/third-party/cmb2/init.php' ) ) {
-	require_once dirname( __FILE__ ) . '/third-party/cmb2/init.php';
-}
 
 if ( is_admin() ) {
 	require_once UFAQSW__PLUGIN_DIR . 'admin/class-directory-post-type.php';
 }
-require_once UFAQSW__PLUGIN_DIR . 'utilities/class-global-resources.php';
+
+Mahedi\UltimateFaqSolution\Assets::get_instance();
+
 require_once UFAQSW__PLUGIN_DIR . 'utilities/actions_and_filters.php';
 require_once UFAQSW__PLUGIN_DIR . 'utilities/class-product-tab.php';
 require_once UFAQSW__PLUGIN_DIR . 'frontend/class-enqueue-resources.php';

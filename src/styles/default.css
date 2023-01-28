@@ -1,0 +1,42 @@
+.ufaqsw_container_default {
+  width: 100%;
+}
+/* Styles for Accordion */
+.ufaqsw_active .ufaqsw-title-name-default{font-weight:500;}
+.ufaqsw_toggle_default .ufaqsw-toggle-title-area-default {
+  position: relative;
+  display: block;
+  border-top: 1px solid #dddddd;
+}
+.ufaqsw_toggle_default .ufaqsw-toggle-title-area-default h3 {
+    font-size: 15px;
+    margin: 0px;
+    line-height: normal;
+    cursor: pointer;
+    font-weight: 200;
+}
+.ufaqsw_toggle_default .ufaqsw-toggle-inner-default {
+  padding: 7px 25px 10px 25px;
+  display: none;
+  margin: -7px 0 6px;
+}
+.ufaqsw_toggle_default .ufaqsw-toggle-inner-default div {
+  max-width: 100%;
+}
+.ufaqsw_toggle_default .ufaqsw-toggle-title-area-default .ufaqsw-title-name-default {
+	display: block;
+    padding: 15px 10px;
+}
+.ufaqsw_toggle_default .ufaqsw-toggle-title-area-default a i {
+  font-size: 22px;
+  margin-right: 5px;
+}
+
+#ufaqsw_other_style{display:none;}
+.ufaqsw-default-icon {
+    float: right;
+}
+.ufaqsw-default-title{}
+.ufaqsw_faq_title {
+    margin-bottom: 20px;
+}

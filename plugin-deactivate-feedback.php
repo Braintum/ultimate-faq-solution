@@ -237,7 +237,7 @@ if( ! class_exists( 'Ufaqsw_Feedback') ) {
 				$html .= '</div><!-- .wpb-goodbye-options -->';
 			}
 			$html .= '</div><!-- .wpb-goodbye-form-body -->';
-			$html .= '<p class="deactivating-spinner"><span class="spinner"></span> ' . __( 'Submitting form', 'wpbot-plugin' ) . '</p>';
+			$html .= '<p class="deactivating-spinner"><span class="spinner"></span> ' . __( 'Submitting form', 'ufaqsw' ) . '</p>';
 			?>
 			<div class="wpb-goodbye-form-bg"></div>
 			<style type="text/css">

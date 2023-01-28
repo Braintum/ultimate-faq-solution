@@ -6,25 +6,31 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  */
 class UFAQSW_enqueue_resources
 {
-	public $template = '';
-	public $configuration = array();
-	public $id = 0;
+	private $template = '';
+	private $configuration = array();
+	private $id = 0;
 
-	
-	public function render_css($template){
+	public function __construct( $id, $configuration, $template )
+	{
 		$this->template = $template;
-		$handle = UFAQSW_PRFX.$this->template.'_style';			
-		wp_enqueue_style( $handle, UFAQSW__PLUGIN_TEMPLATE_URL.$this->template.'/style.css', array(), UFAQSW_VERSION, 'all' );		
-		$custom_css = (get_option('ufaqsw_setting_custom_style')!=''?esc_html(get_option('ufaqsw_setting_custom_style')):'');
+		$this->id = $id;
+		$this->configuration = $configuration;
+	}
+	
+	public function render_css(){
+
+		$handle = UFAQSW_PRFX . $this->template . '_style';			
+		wp_enqueue_style( $handle, UFAQSW__PLUGIN_TEMPLATE_URL . $this->template . '/style.css', array(), UFAQSW_VERSION, 'all' );		
+		$custom_css = ( get_option( 'ufaqsw_setting_custom_style' ) !='' ? get_option( 'ufaqsw_setting_custom_style' ) : '' );
         wp_add_inline_style( $handle, $custom_css );
 		
-		if(!empty($this->configuration)){
+		if ( ! empty( $this->configuration ) ) {
 			
 			/*
 			* Custom styles for default Template
 			*/
-			if($this->template == 'default'){
-				extract($this->configuration);
+			if( 'default' === $this->template ){
+				extract( $this->configuration );
 				/*
 				* Need commenting later on
 				*/
@@ -140,8 +146,7 @@ class UFAQSW_enqueue_resources
 		}
 	}
 	
-	public function render_js($template){
-		$this->template = $template;
+	public function render_js(){
 		/*
 		* Script for default Template
 		*/
