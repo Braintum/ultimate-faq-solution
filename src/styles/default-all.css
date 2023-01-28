@@ -20,7 +20,7 @@ iframe{width:100%;height:auto;}
   opacity: 1; /* Firefox */
   text-align:center;
 }
-.ufaqsw_default_all_faq_content{}
+
 .ufaqsw_default_all_search_box:-ms-input-placeholder { /* Internet Explorer 10-11 */
   color: #ceced0;
   text-align:center;
@@ -36,7 +36,7 @@ iframe{width:100%;height:auto;}
     right: 12px;
     font-size: 12px;}
 .ufaqsw_search_no_result{padding: 20px;text-align: center;background: #f1c6c6;border: 1px solid #e2aaaa;display:none;margin-bottom:20px}
-.ufaqsw_search_no_result p{color:#635353;margin-bottom: 0px;}
+.ufaqsw_search_no_result p{color:#635353;margin: 0px;}
 .ufaqsw_default_all_single_faq{-webkit-transition-timing-function: ease;}
 @media only screen and (max-width: 768px) {
   .ufaqsw_default_single_2, .ufaqsw_default_single_3{width:100%;}

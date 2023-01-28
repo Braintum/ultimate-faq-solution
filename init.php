@@ -47,11 +47,10 @@ if ( is_admin() ) {
 }
 
 Mahedi\UltimateFaqSolution\Assets::get_instance();
+Mahedi\UltimateFaqSolution\Shortcodes::get_instance();
 
 require_once UFAQSW__PLUGIN_DIR . 'utilities/actions_and_filters.php';
 require_once UFAQSW__PLUGIN_DIR . 'utilities/class-product-tab.php';
-require_once UFAQSW__PLUGIN_DIR . 'frontend/class-enqueue-resources.php';
-require_once UFAQSW__PLUGIN_DIR . 'frontend/class-handle-shortcode.php';
 require_once UFAQSW__PLUGIN_DIR . 'admin/settings/settings.php';
 require_once UFAQSW__PLUGIN_DIR . 'admin/icons/class.icons.php';
 require_once UFAQSW__PLUGIN_DIR . 'admin/installation.php';

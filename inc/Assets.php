@@ -20,13 +20,11 @@ class Assets {
 	public function render_resources_frontend(){
 		wp_register_style( 'ufaqsw_fa_css', UFAQSW__PLUGIN_URL . 'assets/css/font-awesome.min.css', array(), UFAQSW_VERSION, 'all' );
 		wp_enqueue_style( 'ufaqsw_fa_css' );
-		wp_register_style( 'ufaqsw_styles_css', UFAQSW__PLUGIN_URL . 'assets/css/styles.min.css', array(), UFAQSW_VERSION, 'all' );
 		
 		//jQuery for fronend
 		wp_enqueue_script( 'jquery', 'jquery');
 		wp_register_script( 'ufaqsw-grid-js', UFAQSW__PLUGIN_URL . 'assets/js/packery.min.js', array('jquery'), UFAQSW_VERSION, true );
 		wp_register_script( 'ufaqsw-quicksearch-front-js', UFAQSW__PLUGIN_URL . 'assets/js/jquery.quicksearch.js', array( 'jquery' ) );
-		wp_register_script( 'ufaqsw-script-js', UFAQSW__PLUGIN_URL . 'assets/js/script.min.js', array('jquery', 'ufaqsw-grid-js', 'ufaqsw-quicksearch-front-js'), UFAQSW_VERSION, true );
 		
 	}
 	public function render_resources_backend(){
