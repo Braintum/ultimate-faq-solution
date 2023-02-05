@@ -37,7 +37,6 @@ define( 'UFAQSW_PRFX', 'ufaqsw' );
 define( 'UFAQSW_BASE', plugin_basename( __FILE__ ) );
 define( 'UFAQSW__PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'UFAQSW__PLUGIN_URL', plugin_dir_url(__FILE__) );
-define( 'UFAQSW__PLUGIN_TEMPLATE_URL', plugin_dir_url(__FILE__) . 'frontend/templates/' );
 define( 'UFAQSW__ASSETS_URL', UFAQSW__PLUGIN_URL . 'assets/' );
 
 
