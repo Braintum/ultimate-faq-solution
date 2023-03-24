@@ -29,6 +29,16 @@ class UFAQSW_product_tab
 		$is_enable = get_post_meta($post_id, '_ufaqsw_enable_faq_tab', true);
 		$title = get_post_meta($post_id, '_ufaqsw_tab_label', true);
 		
+		// Global option
+		if ( get_option( 'ufaqsw_enable_global_faq' ) == 'on' ) {
+			$tabs['desc_tab'] = array(
+				'title'     => get_option( 'ufaqsw_global_faq_label' ),
+				'priority'  => 50,
+				'callback'  => array($this, 'woo_new_product_tab_content')
+			);
+		}
+
+		// Product specific
 		if($is_enable=='yes'){
 			$tabs['desc_tab'] = array(
 				'title'     => esc_html( $title != '' ? $title : __( 'FAQs', 'ufaqsw' ) ),
@@ -53,13 +63,20 @@ class UFAQSW_product_tab
 		if( $data == '' ){
 			$data = get_post_meta($post_id, '_ufaqsw_tab_data_id', true);
 		}
-
 		$group_title = get_post_meta($post_id, '_ufaqsw_hide_group_title', true);
 
-		if( 'yes' === $is_enable && '' !== $data ){
-			echo do_shortcode( '[ufaqsw id="'.$data.'" title_hide="'.$group_title.'"]' );
+		if ( get_option( 'ufaqsw_enable_global_faq' ) == 'on' && get_option( 'ufaqsw_global_faq' ) !== '' ) {
+
+			$shortcode = '[ufaqsw id="'. get_option( 'ufaqsw_global_faq' ) .'"]';
+
 		}
-				
+		if( 'yes' === $is_enable && '' !== $data ){
+
+			$shortcode = '[ufaqsw id="'.$data.'" title_hide="'.$group_title.'"]';
+
+		}
+
+		echo do_shortcode( $shortcode );
 	}
 	
 	public function render_custom_product_tabs($product_data_tabs){
