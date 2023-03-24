@@ -19,7 +19,7 @@
  * Requires at least: 5.1
  * Tested up to: 6.1.1
  *
- * Requires PHP: 7.2
+ * Requires PHP: 7.4
  */
 
 if ( !function_exists( 'add_action' ) ) {
