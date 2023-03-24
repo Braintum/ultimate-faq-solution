@@ -44,7 +44,7 @@ echo
 CURRENTDIR=$(pwd)
 default_svnpath="/tmp/$PLUGINSLUG"
 default_svnurl="https://plugins.svn.wordpress.org/$PLUGINSLUG"
-default_svnuser="GaryJ"
+default_svnuser="braintum"
 default_plugindir="$CURRENTDIR/$PLUGINSLUG"
 default_mainfile="$PLUGINSLUG.php"
 default_assetsdir=".wordpress-org"

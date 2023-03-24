@@ -102,6 +102,12 @@ Yes, HTML tags are supported.
 5. Screehshot 5
 
 == Changelog ==
+=1.4.0=
+# Global FAQ option for all Products.
+# Code re-structured for better performance.
+# Single CSS and JS file for the frontend.
+# Minified CSS & JS.
+# Some bug fixes.
 =1.3.9=
 # Compatible with Latest WordPress
 =1.3.7=
