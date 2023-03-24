@@ -174,8 +174,9 @@ $allowed_html = ufaqsw_wses_allowed_menu_html();
 					<td>
 						<select name="ufaqsw_global_faq" >
 							<?php 
+							
 							foreach( $faqs as $key => $val ) {
-								echo '<option value="'. $key .'" '. ( $key === get_option('ufaqsw_enable_global_faq') ? 'selected="selected"' : '' ) .' > '. $val .' </option>';
+								echo '<option value="'. $key .'" '. ( $key == get_option('ufaqsw_global_faq') ? 'selected="selected"' : '' ) .' > '. $val .' </option>';
 							}
 							?>
 						</select>
