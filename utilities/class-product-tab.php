@@ -31,12 +31,11 @@ class UFAQSW_product_tab
 		
 		if($is_enable=='yes'){
 			$tabs['desc_tab'] = array(
-				'title'     => esc_html($title!=''?$title:'FAQs'),
+				'title'     => esc_html( $title != '' ? $title : __( 'FAQs', 'ufaqsw' ) ),
 				'priority'  => 50,
 				'callback'  => array($this, 'woo_new_product_tab_content')
 			);
 		}
-		
 		
 		return $tabs;
 	}
@@ -56,7 +55,8 @@ class UFAQSW_product_tab
 		}
 
 		$group_title = get_post_meta($post_id, '_ufaqsw_hide_group_title', true);
-		if( $is_enable=='yes' && $data !== '' ){
+
+		if( 'yes' === $is_enable && '' !== $data ){
 			echo do_shortcode( '[ufaqsw id="'.$data.'" title_hide="'.$group_title.'"]' );
 		}
 				
@@ -94,10 +94,10 @@ class UFAQSW_product_tab
 		$faqdata = get_post_meta( $post->ID, '_ufaqsw_tab_data', true );
 		?>
 		<div id="ufaqsw_faq_product_data" class="panel woocommerce_options_panel">
-			
+			testr
 			<?php woocommerce_wp_checkbox( array( 
 				'id'            => '_ufaqsw_enable_faq_tab', 
-				'wrapper_class' => 'show_if_simple', 
+				'wrapper_class' => 'ufaqsw_enable_faq', 
 				'label'         => esc_html__( 'Enable FAQ Tab', 'ufaqsw' ),
 				'description'   => esc_html__( 'Check this field if you want to enable faq tab for this product', 'ufaqsw' ),
 				'default'       => '0',
@@ -105,7 +105,7 @@ class UFAQSW_product_tab
 			) ); 
 			?>
 			
-			<?php woocommerce_wp_text_input(array('id' => '_ufaqsw_tab_label', 'label' => esc_html__('FAQ Tab Label', 'ufaqsw'), 'placeholder' => __('FAQs', 'ufaqsw'), 'desc_tip' => true, 'description' => esc_html__('Enter the tab label. Default will be FAQs.', 'ufaqsw'), 'wrapper_class' => 'hide_if_variable')); ?>
+			<?php woocommerce_wp_text_input(array('id' => '_ufaqsw_tab_label', 'label' => esc_html__('FAQ Tab Label', 'ufaqsw'), 'placeholder' => __('FAQs', 'ufaqsw'), 'desc_tip' => true, 'description' => esc_html__('Enter the tab label. Default will be FAQs.', 'ufaqsw'))); ?>
 			
 			<div class="bt_ufaqsw_faq_id" style="background:#eee; padding: 3px 0px">
 			<?php 
@@ -114,12 +114,12 @@ class UFAQSW_product_tab
 						'label' => esc_html('Select A FAQ Group'),'desc_tip' => true, 'description' => esc_html__('Please select a FAQ Group from dropdown.', 'ufaqsw'), 'value' => $faqdata));
 			?>
 
-			<?php woocommerce_wp_text_input(array('id' => '_ufaqsw_tab_data_id', 'label' => esc_html__('Or Add FAQ Group ID', 'ufaqsw'), 'placeholder' => __('ex: 10', 'ufaqsw'), 'desc_tip' => true, 'description' => esc_html__('Or add a FAQ ID here. This will help for multilangual site built with WPML', 'ufaqsw'), 'wrapper_class' => 'hide_if_variable')); ?>
+			<?php woocommerce_wp_text_input(array('id' => '_ufaqsw_tab_data_id', 'label' => esc_html__('Or Add FAQ Group ID', 'ufaqsw'), 'placeholder' => __('ex: 10', 'ufaqsw'), 'desc_tip' => true, 'description' => esc_html__('Or add a FAQ ID here. This will help for multilangual site built with WPML', 'ufaqsw'))); ?>
 			</div>
 
 			<?php woocommerce_wp_checkbox( array( 
 				'id'            => '_ufaqsw_hide_group_title', 
-				'wrapper_class' => 'show_if_simple', 
+				'wrapper_class' => 'ufaqsw_hide_group_title', 
 				'label'         => esc_html__( 'Hide FAQ Group Title', 'ufaqsw' ),
 				'description'   => esc_html__( 'Check this field if you want to hide FAQ Group Title.', 'ufaqsw' ),
 				'default'       => '0',

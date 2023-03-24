@@ -44,6 +44,10 @@ class UFAQSW_global_settings
 		register_setting( 'ufaqsw-plugin-settings-group', 'ufaqsw_live_search_loading_text' );
 		register_setting( 'ufaqsw-plugin-settings-group', 'ufaqsw_search_result_not_found' );
 		register_setting( 'ufaqsw-plugin-settings-group', 'ufaqsw_setting_custom_style' );
+
+		register_setting( 'ufaqsw-plugin-settings-group', 'ufaqsw_enable_global_faq' );
+		register_setting( 'ufaqsw-plugin-settings-group', 'ufaqsw_global_faq_label' );
+		register_setting( 'ufaqsw-plugin-settings-group', 'ufaqsw_global_faq' );
 	}
 	
 	public function settings_page_callback_func(){

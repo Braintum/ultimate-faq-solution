@@ -6,29 +6,45 @@ $allowed_html = ufaqsw_wses_allowed_menu_html();
 	<h1 class="ufaqsw_heading_settings"><?php echo esc_html('Settings & Help - Ultimate FAQs'); ?></h1>
 
 	<h2 class="nav-tab-wrapper sld_nav_container">
-		<a class="nav-tab sld_click_handle nav-tab-active" href="#general_settings"><?php echo esc_html('General'); ?></a>
+		<a class="nav-tab sld_click_handle nav-tab-active" href="#getting_started"><?php echo esc_html('Getting Stared'); ?></a>
 		<a class="nav-tab sld_click_handle" href="#faq_directory"><?php echo esc_html('Shortcodes'); ?></a>
 		<a class="nav-tab sld_click_handle" href="#language_settings"><?php echo esc_html('Language Settings'); ?></a>
+		<a class="nav-tab sld_click_handle" href="#general_settings"><?php echo esc_html('Woocommerce'); ?></a>
 		<a class="nav-tab sld_click_handle" href="#custom_css"><?php echo esc_html('Custom Css'); ?></a>
-		<a class="nav-tab sld_click_handle" href="#getting_started"><?php echo esc_html('Getting Stared'); ?></a>
 		<a class="nav-tab sld_click_handle" href="#support"><?php echo esc_html('Support'); ?></a>
 	</h2>
 	
 	<form method="post" action="options.php">
 		<?php settings_fields( 'ufaqsw-plugin-settings-group' ); ?>
 		<?php do_settings_sections( 'ufaqsw-plugin-settings-group' ); ?>
-		<div id="general_settings">
-			<table class="form-table">
-				<tr valign="top">
-					<th scope="row"><?php echo esc_html('Enable FAQ for Woocommerce'); ?></th>
-					<td>
-						<input type="checkbox" name="ufaqsw_enable_woocommerce" value="on" <?php echo (esc_attr( get_option('ufaqsw_enable_woocommerce') )=='on'?'checked="checked"':''); ?> />
-						<i><?php echo wp_kses('Turn it on to enable faq for <b>Woocommerce</b>. It will add an extra tab called <b>FAQ</b> in every <b>Product Edit</b> page in <b>Product Data</b> Section', $allowed_html); ?></i>
-					</td>
-				</tr>
+		
+		<div id="getting_started">
+			<div class="wrap">
+	
+				<div id="poststuff">
 
-			</table>
+							<h1><?php echo wp_kses('Welcome to the Ultimate FAQ Solution! You are <strong>awesome</strong>, by the way.', $allowed_html); ?></h1>
+							<h3><?php echo esc_html('Getting Started'); ?></h3>
+															
+							<p><?php echo esc_html('Getting started with Ultimate FAQ Solution is super easy'); ?></p>
+
+							<p><?php echo esc_html('With that in mind you should start with the following simple steps.') ?></p>
+
+							<p><?php echo wp_kses('<br><b>1.</b> Go to New FAQ Group and create one by giving it a name. Then simply start adding question and answer by filling up the fields. Use the <strong>Add New</strong> button to add more questions & answers you want in your FAQ Grouop. The answer field is WP\'s default wysiwyg editor. So you can add what ever you want.', $allowed_html); ?></p>
+
+							<p>
+							<?php echo wp_kses('<br><b>2.</b> After creating a <b>FAQ Group</b> and put all questions and answers, Now its time to add the <b>FAQ Group</b> into a page. As you know <b>Ultimate FAQ Solution</b> is fully shortcode driven. So each of the <b>FAQ Group</b> has there own shortcode. You can find the shortcode for individual <b>FAQ Group</b> in <b>Manage FAQ Groups</b> page.', $allowed_html); ?>
+							</p>
+							
+							<p>
+							<?php echo wp_kses('<br><b>3.</b> Copy the shorcode and add it where ever you want. That\'s it.', $allowed_html); ?>
+							</p>
+
+				</div>
+					<!-- /poststuff -->
+			</div>
 		</div>
+
 		<div id="faq_directory" style="display:none">
 		
 			<?php echo wp_kses('<p>You can display all your <b>FAQ Groups</b> in one page as a <b>FAQs Directory</b>. A very simple <b>Shortcode</b> will does the job. Also there is a quick search feature available which will able to search & find FAQs before user\'s typing completed.</p>', $allowed_html); ?>
@@ -122,6 +138,53 @@ $allowed_html = ufaqsw_wses_allowed_menu_html();
 
 			</table>
 		</div>
+
+		<div id="general_settings" style="display:none">
+			<table class="form-table">
+				<tr valign="top">
+					<th scope="row"><?php echo esc_html('Enable FAQ for Woocommerce'); ?></th>
+					<td>
+						<input type="checkbox" name="ufaqsw_enable_woocommerce" value="on" <?php echo (esc_attr( get_option('ufaqsw_enable_woocommerce') )=='on'?'checked="checked"':''); ?> />
+						<i><?php echo wp_kses('Turn it on to enable faq for <b>Woocommerce</b>. It will add an extra tab called <b>FAQ</b> in every <b>Product Edit</b> page in <b>Product Data</b> Section', $allowed_html); ?></i>
+					</td>
+				</tr>
+
+				<tr valign="top">
+					<th scope="row"><?php echo esc_html('Enable Global FAQ for All Products'); ?></th>
+					<td>
+						<input type="checkbox" name="ufaqsw_enable_global_faq" value="on" <?php echo (esc_attr( get_option('ufaqsw_enable_global_faq') )=='on'?'checked="checked"':''); ?> />
+						<i><?php echo wp_kses('Enable this option to show a global <b>FAQ</b> to all products', $allowed_html); ?></i>
+					</td>
+				</tr>
+
+				<tr valign="top">
+					<th scope="row"><?php echo esc_html('Global FAQ Tab Label'); ?></th>
+					<td>
+						<input type="text" name="ufaqsw_global_faq_label" size="100" value="<?php echo esc_attr( get_option('ufaqsw_global_faq_label')!=''?get_option('ufaqsw_global_faq_label'): 'Faqs' ); ?>"  />
+						<i><?php echo esc_html('Please add faq tab label. e.g: Faqs'); ?></i>
+					</td>
+				</tr>
+
+				<?php 
+				$faqs = UFAQSW_product_tab()->get_all_faqs();
+				?>
+
+				<tr valign="top">
+					<th scope="row"><?php echo esc_html('Select A Global FAQ Group'); ?></th>
+					<td>
+						<select name="ufaqsw_global_faq" >
+							<?php 
+							foreach( $faqs as $key => $val ) {
+								echo '<option value="'. $key .'" '. ( $key === get_option('ufaqsw_enable_global_faq') ? 'selected="selected"' : '' ) .' > '. $val .' </option>';
+							}
+							?>
+						</select>
+					</td>
+				</tr>
+
+			</table>
+		</div>
+
 		<div id="custom_css" style="display:none">
 			<table class="form-table">
 
@@ -139,32 +202,6 @@ $allowed_html = ufaqsw_wses_allowed_menu_html();
 			</table>
 		</div>
 		
-		<div id="getting_started" style="display:none">
-			<div class="wrap">
-	
-				<div id="poststuff">
-
-							<h1><?php echo wp_kses('Welcome to the Ultimate FAQ Solution! You are <strong>awesome</strong>, by the way.', $allowed_html); ?></h1>
-							<h3><?php echo esc_html('Getting Started'); ?></h3>
-															
-							<p><?php echo esc_html('Getting started with Ultimate FAQ Solution is super easy'); ?></p>
-
-							<p><?php echo esc_html('With that in mind you should start with the following simple steps.') ?></p>
-
-							<p><?php echo wp_kses('<br><b>1.</b> Go to New FAQ Group and create one by giving it a name. Then simply start adding question and answer by filling up the fields. Use the <strong>Add New</strong> button to add more questions & answers you want in your FAQ Grouop. The answer field is WP\'s default wysiwyg editor. So you can add what ever you want.', $allowed_html); ?></p>
-
-							<p>
-							<?php echo wp_kses('<br><b>2.</b> After creating a <b>FAQ Group</b> and put all questions and answers, Now its time to add the <b>FAQ Group</b> into a page. As you know <b>Ultimate FAQ Solution</b> is fully shortcode driven. So each of the <b>FAQ Group</b> has there own shortcode. You can find the shortcode for individual <b>FAQ Group</b> in <b>Manage FAQ Groups</b> page.', $allowed_html); ?>
-							</p>
-							
-							<p>
-							<?php echo wp_kses('<br><b>3.</b> Copy the shorcode and add it where ever you want. That\'s it.', $allowed_html); ?>
-							</p>
-
-				</div>
-					<!-- /poststuff -->
-			</div>
-		</div>
 		
 		<div id="support" style="display:none">
 			<div class="wrap">

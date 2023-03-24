@@ -20,7 +20,7 @@ jQuery(document).ready(function($){
 		})
 	}
 	
-	if(ufaqsw_object_style_2.showall=='1' && ufaqsw_object_style_2.behaviour!='accordion'){
+	if( typeof( ufaqsw_object_style_2 ) !== 'undefined' && ufaqsw_object_style_2.showall=='1' && ufaqsw_object_style_2.behaviour!='accordion'){
 		$(".ufaqsw_box_style2").each(function(){
 			$(this).trigger('click');
 		})

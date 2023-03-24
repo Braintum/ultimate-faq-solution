@@ -2,10 +2,10 @@
 # This file is distributed under the GPLv2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Ultimate FAQ Solution 2.0\n"
+"Project-Id-Version: Ultimate FAQ Solution 1.4.0\n"
 "Report-Msgid-Bugs-To: "
 "https://wordpress.org/support/plugin/ultimate-faq-solution\n"
-"POT-Creation-Date: 2023-01-28 22:18:49+00:00\n"
+"POT-Creation-Date: 2023-03-24 15:29:00+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -209,7 +209,7 @@ msgstr ""
 msgid "Select Font Awesome Icon"
 msgstr ""
 
-#: admin/icons/ui.php:13 frontend/class-handle-shortcode.php:163
+#: admin/icons/ui.php:13 templates/all/template.php:7
 msgid "Loading..."
 msgstr ""
 
@@ -239,12 +239,8 @@ msgstr ""
 msgid "Never show this again"
 msgstr ""
 
-#: frontend/class-handle-shortcode.php:162
-msgid "Live Search.."
-msgstr ""
-
-#: frontend/class-handle-shortcode.php:214
-msgid "No Result Fount!"
+#: inc/Shortcodes.php:102 inc/Shortcodes.php:176 inc/Shortcodes.php:193
+msgid "%s Template Not Found"
 msgstr ""
 
 #: plugin-deactivate-feedback.php:110
@@ -285,6 +281,14 @@ msgstr ""
 
 #: plugin-deactivate-feedback.php:240
 msgid "Submitting form"
+msgstr ""
+
+#: templates/all/template.php:5
+msgid "Live Search.."
+msgstr ""
+
+#: templates/all/template.php:18
+msgid "No Result Fount!"
 msgstr ""
 
 #: utilities/class-product-tab.php:69

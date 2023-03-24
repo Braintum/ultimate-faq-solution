@@ -16,7 +16,8 @@ extract($designs);
 	<?php
 	//Main Title
 	//Check if title is enabled
-	if($hidetitle!='1' && $title_hide!='yes'): ?>
+
+	if ( $hidetitle !== '1' && $title_hide !== 'yes' ): ?>
 		<h2 class="ufaqsw_faq_title ufaqsw_faq_title_<?php echo esc_attr(get_the_ID()); ?>"><?php echo esc_attr(get_the_title()); ?></h2>
 	<?php endif; ?>
 	
