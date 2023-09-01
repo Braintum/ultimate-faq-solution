@@ -1,10 +1,10 @@
 === Ultimate FAQ Solution ===
-Contributors: Braintum
+Contributors: Md. Mahedi Hasan
 Donate link: https://www.braintum.com/
 Tags: faq, faq-directory, accordion, toggle, knowledgebase, woocommerce-faq, product-faq
-Requires at least: 4.6
-Tested up to: 6.1.1
-Stable tag: 1.4.1
+Requires at least: 5.1
+Tested up to: 6.3.1
+Stable tag: 1.4.2
 Requires PHP: 7.4.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/license-list.html#GPLCompatibleLicenses
@@ -102,6 +102,8 @@ Yes, HTML tags are supported.
 5. Screehshot 5
 
 == Changelog ==
+=1.4.2=
+# Compatible with latest WordPress 6.3.1
 =1.4.0=
 # Global FAQ option for all Products.
 # Code re-structured for better performance.
