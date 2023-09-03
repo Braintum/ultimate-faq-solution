@@ -1,12 +1,12 @@
 <div class="ufaqsw_default_all_faq_container">
 	<?php if ( get_option( 'ufaqsw_enable_search' ) == 'on' ) : ?>
 		<div class="ufaqsw_default_all_faq_header">
-			<div class="ufaqsw_default_all_search">
-				<input type="text" class="ufaqsw_default_all_search_box" placeholder="<?php echo ( '' != get_option( 'ufaqsw_live_search_text' ) ? esc_html( get_option( 'ufaqsw_live_search_text' ) ) : esc_html__( 'Live Search..', 'ufaqsw' ) ); ?>" />
-				<span class="ufaqsw_search_loading">
-					<?php echo ( '' != get_option( 'ufaqsw_live_search_loading_text' ) ? esc_html( get_option('ufaqsw_live_search_loading_text' ) ) : esc_html__( 'Loading...', 'ufaqsw' ) ) ?>
-				</span>
-			</div>
+			
+			<input type="text" class="ufaqsw_default_all_search_box" placeholder="<?php echo ( '' != get_option( 'ufaqsw_live_search_text' ) ? esc_html( get_option( 'ufaqsw_live_search_text' ) ) : esc_html__( 'Live Search..', 'ufaqsw' ) ); ?>" />
+			<span class="ufaqsw_search_loading">
+				<?php echo ( '' != get_option( 'ufaqsw_live_search_loading_text' ) ? esc_html( get_option('ufaqsw_live_search_loading_text' ) ) : esc_html__( 'Loading...', 'ufaqsw' ) ) ?>
+			</span>
+
 		</div>
 	<?php endif; ?>
 

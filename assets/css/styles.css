@@ -4,9 +4,28 @@ iframe{width:100%;height:auto;}
 .ufaqsw_default_single_2{width: -webkit-calc(50% - 25px);width: calc(50% - 25px);}
 .ufaqsw_default_single_3{width: -webkit-calc(33.33% - 33.3px);width: calc(33.33% - 33.3px);}
 
-.ufaqsw_default_all_faq_header{background: #eee;padding: 6px 14px;text-align: center;margin-bottom: 25px;}
-.ufaqsw_default_all_search{position:relative}
-.ufaqsw_default_all_search_box{padding: 6px 16px !important;border-color: #e8e8e8 !important;border-radius: 14px;width: 300px;border: 2px;text-align: center;}
+.ufaqsw_default_all_faq_header{margin-bottom: 25px;position: relative;}
+.ufaqsw_default_all_search_box{
+  padding: 15px 5px!important;
+  border-color: #e8e8e8!important;
+  width: 100%;
+  border: 2px;
+  text-align: left;
+  font-size: 25px;
+  box-sizing: border-box;
+}
+.ufaqsw_default_all_search_box::-webkit-input-placeholder {
+  color: #424242;
+  text-align: left;
+}
+.ufaqsw_default_all_search_box:-ms-input-placeholder {
+  color: #424242;
+  text-align: left;
+}
+.ufaqsw_default_all_search_box::placeholder {
+  color: #424242;
+  text-align: left;
+}
 .ufaqsw_default_all_search_box:focus{
 	box-shadow: 1px 1px 5px 0px rgba(0,0,0,0.25);
 }
@@ -45,8 +64,18 @@ iframe{width:100%;height:auto;}
             transform: translate(0, -50%);
     right: 12px;
     font-size: 12px;}
-.ufaqsw_search_no_result{padding: 20px;text-align: center;background: #f1c6c6;border: 1px solid #e2aaaa;display:none;margin-bottom:20px}
-.ufaqsw_search_no_result p{color:#635353;margin: 0px;}
+.ufaqsw_search_no_result{
+  padding: 20px;
+  text-align: center;
+  background: #2e2e2e;
+  border: 1px solid #e2aaaa;
+  display: none;
+  margin-bottom: 20px;
+}
+.ufaqsw_search_no_result p{
+  color: #ffffff;
+  margin: 0;
+}
 .ufaqsw_default_all_single_faq{-webkit-transition-timing-function: ease;}
 @media only screen and (max-width: 768px) {
   .ufaqsw_default_single_2, .ufaqsw_default_single_3{width:100%;}
