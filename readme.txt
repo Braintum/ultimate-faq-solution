@@ -1,15 +1,15 @@
 === Ultimate FAQ Solution ===
-Contributors: Md. Mahedi Hasan
+Contributors: braintum
 Donate link: https://www.braintum.com/
-Tags: faq, faq-directory, accordion, toggle, knowledgebase, woocommerce-faq, product-faq
+Tags: faq, faq-directory, accordion, knowledgebase, woocommerce-faq
 Requires at least: 5.1
 Tested up to: 6.7.1
-Stable tag: 1.4.4
+Stable tag: 1.4.5
 Requires PHP: 7.4.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/license-list.html#GPLCompatibleLicenses
 
-Ultimate FAQ Solution  is a plugin for Wordpress and Woocommerce that lets you create & organize your FAQs without spending too much time. It is the most easy way to create a whole FAQ group in a single page. With this plugin you can easily add a faqs, faq directory, knowledgebase & knowledgebase directory section with powerfull quick search on your WordPress pages, posts, Woocommerce Product or text widgets. 
+Ultimate FAQ Solution is a WordPress plugin for easily creating and managing FAQs, directories, and knowledge bases with quick search functionality.
 
 == Description ==
 = What is Ultimate FAQ Solution? =
@@ -102,7 +102,7 @@ Yes, HTML tags are supported.
 5. Screehshot 5
 
 == Changelog ==
-=1.4.4=
+=1.4.5=
 # Compatible with latest wp.
 =1.4.3=
 # Several UI updates

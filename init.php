@@ -3,14 +3,14 @@
  * @package   ultimate-faq-solution
  * @link      https://github.com/Braintum/ultimate-faq-solution
  * @author    Md. Mahedi Hasan <mahedihasannoman@gmail.com>
- * @copyright 2020-2023 SolrEngine
+ * @copyright 2020-2024 SolrEngine
  * @license   GPL v2 or later
  * 
  * Plugin Name: Ultimate FAQ Solution
- * Version: 1.4.4
+ * Version: 1.4.5
  * Plugin URI: http://www.solrengine.com
  * Description: An ultimate FAQ Solution plugin for Wordpress & Woocommerce that lets you create, organize and publicize your FAQs (frequently asked questions) in no time through your WordPress admin panel. Select from multiple responsive FAQ layouts and styles. Also it’s the most comprehensive WooCommerce FAQs solution!
- * Author: Md. Mahedi Hasan
+ * Author: braintum
  * Author URI: https://www.solrengine.com
  * Text Domain: ufaqsw
  * Domain Path: /languages/
@@ -32,7 +32,7 @@ require_once dirname( __FILE__ ) . '/vendor/autoload.php';
 /*
 * Define some global constants
 */
-define( 'UFAQSW_VERSION', '1.4.3' );
+define( 'UFAQSW_VERSION', '1.4.5' );
 define( 'UFAQSW_PRFX', 'ufaqsw' );
 define( 'UFAQSW_BASE', plugin_basename( __FILE__ ) );
 define( 'UFAQSW__PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
