@@ -1,10 +1,10 @@
 === Ultimate FAQ Solution ===
 Contributors: braintum
-Donate link: https://www.braintum.com/
+Donate link: https://www.solrengine.com/
 Tags: faq, faq-directory, accordion, knowledgebase, woocommerce-faq
 Requires at least: 5.1
 Tested up to: 6.7.1
-Stable tag: 1.4.5
+Stable tag: 1.4.6
 Requires PHP: 7.4.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/license-list.html#GPLCompatibleLicenses
@@ -24,7 +24,7 @@ Add rich content to answer field. The WYSIWYG editor helps store admins to forma
 Ultimate FAQ Solution helps your site visitors to find the answers they often have without putting any strain on your support staff.
 
 
-[Support, Bug Report, Feature Requests](https://braintum.com/support/) | [Ultimate FAQ Solution Demo](https://rsfaq.braintum.com/)
+[Support, Bug Report, Feature Requests](https://www.solrengine.com/support/) | [Ultimate FAQ Solution Demo](https://ultimate-faq-solution.solrengine.com/)
 
 
 = What Can this Ultimate FAQ Solution do? =
