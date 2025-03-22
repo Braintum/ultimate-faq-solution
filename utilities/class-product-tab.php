@@ -111,7 +111,7 @@ class UFAQSW_product_tab
 		$faqdata = get_post_meta( $post->ID, '_ufaqsw_tab_data', true );
 		?>
 		<div id="ufaqsw_faq_product_data" class="panel woocommerce_options_panel">
-			testr
+			
 			<?php woocommerce_wp_checkbox( array( 
 				'id'            => '_ufaqsw_enable_faq_tab', 
 				'wrapper_class' => 'ufaqsw_enable_faq', 

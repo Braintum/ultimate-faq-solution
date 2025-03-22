@@ -48,6 +48,9 @@ if ( is_admin() ) {
 Mahedi\UltimateFaqSolution\Assets::get_instance();
 Mahedi\UltimateFaqSolution\Shortcodes::get_instance();
 
+// Structured data support for FAQs
+new Mahedi\UltimateFaqSolution\SEO();
+
 require_once UFAQSW__PLUGIN_DIR . 'utilities/actions_and_filters.php';
 require_once UFAQSW__PLUGIN_DIR . 'utilities/class-product-tab.php';
 require_once UFAQSW__PLUGIN_DIR . 'admin/settings/settings.php';
