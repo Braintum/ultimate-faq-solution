@@ -7,7 +7,7 @@
  * @license   GPL v2 or later
  * 
  * Plugin Name: Ultimate FAQ Solution
- * Version: 1.4.6
+ * Version: 1.4.7
  * Plugin URI: http://www.solrengine.com
  * Description: An ultimate FAQ Solution plugin for Wordpress & Woocommerce that lets you create, organize and publicize your FAQs (frequently asked questions) in no time through your WordPress admin panel. Select from multiple responsive FAQ layouts and styles. Also it’s the most comprehensive WooCommerce FAQs solution!
  * Author: braintum
@@ -17,7 +17,7 @@
  * License: GPLv2 or later
  * License URI: https://www.gnu.org/licenses/license-list.html#GPLCompatibleLicenses
  * Requires at least: 5.1
- * Tested up to: 6.7.1
+ * Tested up to: 6.7.2
  *
  * Requires PHP: 7.4
  */
@@ -32,7 +32,7 @@ require_once dirname( __FILE__ ) . '/vendor/autoload.php';
 /*
 * Define some global constants
 */
-define( 'UFAQSW_VERSION', '1.4.6' );
+define( 'UFAQSW_VERSION', '1.4.7' );
 define( 'UFAQSW_PRFX', 'ufaqsw' );
 define( 'UFAQSW_BASE', plugin_basename( __FILE__ ) );
 define( 'UFAQSW__PLUGIN_DIR', plugin_dir_path( __FILE__ ) );

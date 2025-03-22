@@ -3,8 +3,8 @@ Contributors: braintum
 Donate link: https://www.solrengine.com/
 Tags: faq, faq-directory, accordion, knowledgebase, woocommerce-faq
 Requires at least: 5.1
-Tested up to: 6.7.1
-Stable tag: 1.4.6
+Tested up to: 6.7.2
+Stable tag: 1.4.7
 Requires PHP: 7.4.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/license-list.html#GPLCompatibleLicenses
@@ -102,6 +102,8 @@ Yes, HTML tags are supported.
 5. Screehshot 5
 
 == Changelog ==
+=1.4.7=
+# Structured data support for faqs.
 =1.4.5=
 # Compatible with latest wp.
 =1.4.3=
