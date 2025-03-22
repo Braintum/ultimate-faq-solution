@@ -3,7 +3,7 @@
  * @package   ultimate-faq-solution
  * @link      https://github.com/Braintum/ultimate-faq-solution
  * @author    Md. Mahedi Hasan <mahedihasannoman@gmail.com>
- * @copyright 2020-2024 SolrEngine
+ * @copyright 2020-2025 SolrEngine
  * @license   GPL v2 or later
  * 
  * Plugin Name: Ultimate FAQ Solution

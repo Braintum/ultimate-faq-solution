@@ -19,10 +19,8 @@ function ufaqsw_simplify_variables( array $data ) {
 }
 add_filter( 'ufaqsw_simplify_variables', 'ufaqsw_simplify_variables');
 
-
 // Simplify design configuration variables filter callback function
 function ufaqsw_simplify_configuration_variables( $id ) {
-	
 	
 	$title_color = get_post_meta( $id, 'ufaqsw_title_color');
 	$title_font_size = get_post_meta( $id, 'ufaqsw_title_font_size');

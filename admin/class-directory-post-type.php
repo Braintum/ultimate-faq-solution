@@ -61,12 +61,8 @@ function ufaqsw_register_appearance_metabox() {
 		'object_types'  => array( 'ufaqsw' ), // Post type
 		 'closed'     => true,
 		 'classes'    => 'extra-class',
-		 
-
 	) );
 
-	
-	
 	$cmb_demo->add_field( array(
 		'name'             => esc_html__( 'Choose A Template', 'ufaqsw' ),
 		'id'               => 'ufaqsw_template',
@@ -182,17 +178,11 @@ function ufaqsw_register_appearance_metabox() {
 		'id'   => 'ufaqsw_hide_title',
 		'type' => 'checkbox',
 	) );
-	
-	
-
-	
-
-
 }
 
 
-add_action( 'cmb2_admin_init', 'yourprefix_register_repeatable_group_field_metabox' );
-function yourprefix_register_repeatable_group_field_metabox() {
+add_action( 'cmb2_admin_init', 'ufaqsw_register_repeatable_group_field_metabox' );
+function ufaqsw_register_repeatable_group_field_metabox() {
 
 	$cmb_group = new_cmb2_box( array(
 		'id'           => 'ufaqsw_faq_items',
@@ -233,7 +223,6 @@ function yourprefix_register_repeatable_group_field_metabox() {
 
 }
 
-
 function ufaqsw_faq_columns_head($defaults) {
 
     $new_columns['cb'] = '<input type="checkbox" />';
@@ -243,7 +232,6 @@ function ufaqsw_faq_columns_head($defaults) {
     $new_columns['date'] = __('Date', 'ufaqsw');
     return $new_columns;
 }
- 
 
 function ufaqsw_faq_columns_content($column_name, $post_ID) {
     
@@ -258,8 +246,6 @@ function ufaqsw_faq_columns_content($column_name, $post_ID) {
 
 add_filter('manage_ufaqsw_posts_columns', 'ufaqsw_faq_columns_head');
 add_action('manage_ufaqsw_posts_custom_column', 'ufaqsw_faq_columns_content', 10, 2);
-
-
 
 function ufaqsw_rd_duplicate_post_as_draft(){
 	global $wpdb;

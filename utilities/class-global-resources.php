@@ -3,7 +3,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 /*
 * @package - Global Resource Handler by Braintum
 * @Author - Mahedi Hasan
-* @Description - Responsible for handling all global resoures for RS FAQ
+* @Description - Responsible for handling all global resoures for Ultimate FAQ Solution
 * @Since 1.0
 */
 class UFAQSW_global_resources
@@ -18,10 +18,12 @@ class UFAQSW_global_resources
 
 		return self::$instance;
 	}
+
 	public function __construct() {
 		add_action( 'wp_enqueue_scripts', array($this, 'render_resources_frontend')); 
 		add_action( 'admin_enqueue_scripts', array($this, 'render_resources_backend')); 
 	}
+
 	public function render_resources_frontend(){
 		wp_register_style( 'ufaqsw_fa_css', UFAQSW__PLUGIN_URL . 'assets/css/font-awesome.min.css' );
 		wp_enqueue_style( 'ufaqsw_fa_css' );
@@ -46,7 +48,6 @@ class UFAQSW_global_resources
 		wp_enqueue_script( 'ufaqsw-admin-js');
 		wp_enqueue_script( 'ufaqsw-quicksearch-js', UFAQSW__PLUGIN_URL . 'assets/js/jquery.quicksearch.js', array( 'jquery' ) );
 		
-
 	}
 }
 
