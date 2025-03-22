@@ -53,55 +53,29 @@ class SEO {
 
 		$faqs_data = [];
 
-		if ( is_page() ) {
+		if ( empty( $post ) ) return $faqs_data;
+		
+		// all faq groups.
+		if ( has_shortcode( $post->post_content, 'ufaqsw-all') ) {
 
-			// all faq groups.
-			if ( has_shortcode( $post->post_content, 'ufaqsw-all') ) {
+			// Extract shortcode parameters
+			$shortcode_pattern = get_shortcode_regex();
 
-				// Extract shortcode parameters
-				$shortcode_pattern = get_shortcode_regex();
-
-				$shortcode_atts = [];
-				if (preg_match( '/' . $shortcode_pattern . '/s', $post->post_content, $matches ) && in_array( 'ufaqsw', $matches ) ) {
-					$shortcode_atts = shortcode_parse_atts( $matches[3] ); // Extract attributes
-				}
-
-				$faq_groups = get_posts([
-					'post_type' => 'ufaqsw',
-					'posts_per_page'   => -1,
-					'fields' => 'ids',
-					'post__not_in' => isset( $shortcode_atts['exclude'] ) ? explode( ', ', $shortcode_atts['exclude'] ) : [],
-				]);
-
-				if ( ! empty( $faq_groups ) ) {
-					foreach ( $faq_groups as $faq_group ) {
-						$faqs = apply_filters('ufaqsw_simplify_faqs', get_post_meta( $faq_group, 'ufaqsw_faq_item01' ));
-
-						if( isset( $shortcode_atts['elements_order'] ) && 'DESC' === $shortcode_atts['elements_order'] ){
-							$faqs = array_values( array_reverse( $faqs, true ) );
-						}
-
-						if ( ! empty( $faqs ) ) {
-							$faqs_data = array_merge( $faqs_data, $faqs );
-						}
-					}
-				}
+			$shortcode_atts = [];
+			if (preg_match( '/' . $shortcode_pattern . '/s', $post->post_content, $matches ) && in_array( 'ufaqsw', $matches ) ) {
+				$shortcode_atts = shortcode_parse_atts( $matches[3] ); // Extract attributes
 			}
 
-			// Particular faq group.
-			if ( has_shortcode( $post->post_content, 'ufaqsw') ) {
+			$faq_groups = get_posts([
+				'post_type' => 'ufaqsw',
+				'posts_per_page'   => -1,
+				'fields' => 'ids',
+				'post__not_in' => isset( $shortcode_atts['exclude'] ) ? explode( ', ', $shortcode_atts['exclude'] ) : [],
+			]);
 
-				// Extract shortcode parameters
-				$shortcode_pattern = get_shortcode_regex();
-
-				$shortcode_atts = [];
-				if (preg_match( '/' . $shortcode_pattern . '/s', $post->post_content, $matches ) && in_array( 'ufaqsw', $matches ) ) {
-					$shortcode_atts = shortcode_parse_atts( $matches[3] ); // Extract attributes
-				}
-
-				if ( isset( $shortcode_atts['id'] ) && $shortcode_atts['id'] ) {
-
-					$faqs = apply_filters('ufaqsw_simplify_faqs', get_post_meta( get_post( $shortcode_atts['id'] )->ID, 'ufaqsw_faq_item01' ));
+			if ( ! empty( $faq_groups ) ) {
+				foreach ( $faq_groups as $faq_group ) {
+					$faqs = apply_filters('ufaqsw_simplify_faqs', get_post_meta( $faq_group, 'ufaqsw_faq_item01' ));
 
 					if( isset( $shortcode_atts['elements_order'] ) && 'DESC' === $shortcode_atts['elements_order'] ){
 						$faqs = array_values( array_reverse( $faqs, true ) );
@@ -110,12 +84,37 @@ class SEO {
 					if ( ! empty( $faqs ) ) {
 						$faqs_data = array_merge( $faqs_data, $faqs );
 					}
-					
+				}
+			}
+		}
+
+		// Particular faq group.
+		if ( has_shortcode( $post->post_content, 'ufaqsw') ) {
+
+			// Extract shortcode parameters
+			$shortcode_pattern = get_shortcode_regex();
+
+			$shortcode_atts = [];
+			if (preg_match( '/' . $shortcode_pattern . '/s', $post->post_content, $matches ) && in_array( 'ufaqsw', $matches ) ) {
+				$shortcode_atts = shortcode_parse_atts( $matches[3] ); // Extract attributes
+			}
+
+			if ( isset( $shortcode_atts['id'] ) && $shortcode_atts['id'] ) {
+
+				$faqs = apply_filters('ufaqsw_simplify_faqs', get_post_meta( get_post( $shortcode_atts['id'] )->ID, 'ufaqsw_faq_item01' ));
+
+				if( isset( $shortcode_atts['elements_order'] ) && 'DESC' === $shortcode_atts['elements_order'] ){
+					$faqs = array_values( array_reverse( $faqs, true ) );
 				}
 
+				if ( ! empty( $faqs ) ) {
+					$faqs_data = array_merge( $faqs_data, $faqs );
+				}
+				
 			}
 
 		}
+
 
 		if ( function_exists('is_product') && is_product() ) {
 
