@@ -104,7 +104,7 @@ function cmb2_get_oembed( $args = array() ) {
 
 	$error = sprintf(
 		/* translators: 1: results for. 2: link to codex.wordpress.org/Embeds */
-		esc_html__( 'No oEmbed Results Found for %1$s. View more info at %2$s.', 'ufaqsw' ),
+		esc_html__( 'No oEmbed Results Found for %1$s. View more info at %2$s.', 'cmb2' ),
 		$oembed['fallback'],
 		'<a href="https://wordpress.org/support/article/embeds/" target="_blank">codex.wordpress.org/Embeds</a>'
 	);
@@ -305,7 +305,7 @@ function cmb2_print_metabox_form( $meta_box, $object_id = 0, $args = array() ) {
 
 	$args = wp_parse_args( $args, array(
 		'form_format' => '<form class="cmb-form" method="post" id="%1$s" enctype="multipart/form-data" encoding="multipart/form-data"><input type="hidden" name="object_id" value="%2$s">%3$s<input type="submit" name="submit-cmb" value="%4$s" class="button-primary"></form>',
-		'save_button' => esc_html__( 'Save', 'ufaqsw' ),
+		'save_button' => esc_html__( 'Save', 'cmb2' ),
 		'object_type' => $cmb->mb_object_type(),
 		'cmb_styles'  => $cmb->prop( 'cmb_styles' ),
 		'enqueue_js'  => $cmb->prop( 'enqueue_js' ),
@@ -390,6 +390,7 @@ if ( ! function_exists( 'date_create_from_format' ) ) {
 		 * %Y, %m and %d correspond to date()'s Y m and d.
 		 * %I corresponds to H, %M to i and %p to a
 		 */
+		// phpcs:ignore PHPCompatibility.FunctionUse.RemovedFunctions.strptimeDeprecated
 		$parsed_time = strptime( $date_value, $schedule_format );
 
 		$ymd = sprintf(

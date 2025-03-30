@@ -26,8 +26,6 @@ class ComposerStaticInit5f86cbe3094b65deb692b3245cb11019
 
     public static $classMap = array (
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
-        'Mahedi\\UltimateFaqSolution\\Assets' => __DIR__ . '/../..' . '/inc/Assets.php',
-        'Mahedi\\UltimateFaqSolution\\Custom_Resources' => __DIR__ . '/../..' . '/inc/Custom_Resources.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

@@ -29,8 +29,6 @@ if ( ! function_exists( 'add_action' ) ) {
 	exit;
 }
 
-require_once dirname( __FILE__ ) . '/vendor/autoload.php';
-
 /*
 * Define some global constants
 */
@@ -41,7 +39,7 @@ define( 'UFAQSW__PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'UFAQSW__PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 define( 'UFAQSW_ASSETS_URL', UFAQSW__PLUGIN_URL . 'assets/' );
 
-
+require_once dirname( __FILE__ ) . '/vendor/autoload.php';
 
 if ( is_admin() ) {
 	include_once UFAQSW__PLUGIN_DIR . 'admin/class-directory-post-type.php';
