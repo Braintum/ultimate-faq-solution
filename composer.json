@@ -18,5 +18,10 @@
             "email": "mahedihasannoman@gmail.com"
         }
     ],
-    "minimum-stability": "dev"
+    "minimum-stability": "dev",
+    
+    "scripts": {
+        "phpcs": "phpcs --standard=WordPress --extensions=php inc/",
+        "phpcbf": "phpcbf --standard=WordPress --extensions=php inc/"
+    }
 }

@@ -1,15 +1,17 @@
 <?php
 /**
+ * Ultimate FAQ Solution Plugin for WordPress.
+ *
  * @package   ultimate-faq-solution
  * @link      https://github.com/Braintum/ultimate-faq-solution
  * @author    Md. Mahedi Hasan <mahedihasannoman@gmail.com>
  * @copyright 2020-2025 SolrEngine
  * @license   GPL v2 or later
- * 
+ *
  * Plugin Name: Ultimate FAQ Solution
  * Version: 1.4.7
  * Plugin URI: http://www.solrengine.com
- * Description: An ultimate FAQ Solution plugin for Wordpress & Woocommerce that lets you create, organize and publicize your FAQs (frequently asked questions) in no time through your WordPress admin panel. Select from multiple responsive FAQ layouts and styles. Also it’s the most comprehensive WooCommerce FAQs solution!
+ * Description: An ultimate FAQ Solution plugin for WordPress & WooCommerce that lets you create, organize and publicize your FAQs (frequently asked questions) in no time through your WordPress admin panel. Select from multiple responsive FAQ layouts and styles. Also it’s the most comprehensive WooCommerce FAQs solution!
  * Author: braintum
  * Author URI: https://www.solrengine.com
  * Text Domain: ufaqsw
@@ -22,7 +24,7 @@
  * Requires PHP: 7.4
  */
 
-if ( !function_exists( 'add_action' ) ) {
+if ( ! function_exists( 'add_action' ) ) {
 	echo 'Hi there!  I\'m just a plugin, not much I can do when called directly.';
 	exit;
 }
@@ -36,19 +38,19 @@ define( 'UFAQSW_VERSION', '1.4.7' );
 define( 'UFAQSW_PRFX', 'ufaqsw' );
 define( 'UFAQSW_BASE', plugin_basename( __FILE__ ) );
 define( 'UFAQSW__PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
-define( 'UFAQSW__PLUGIN_URL', plugin_dir_url(__FILE__) );
-define( 'UFAQSW__ASSETS_URL', UFAQSW__PLUGIN_URL . 'assets/' );
+define( 'UFAQSW__PLUGIN_URL', plugin_dir_url( __FILE__ ) );
+define( 'UFAQSW_ASSETS_URL', UFAQSW__PLUGIN_URL . 'assets/' );
 
 
 
 if ( is_admin() ) {
-	require_once UFAQSW__PLUGIN_DIR . 'admin/class-directory-post-type.php';
+	include_once UFAQSW__PLUGIN_DIR . 'admin/class-directory-post-type.php';
 }
 
 Mahedi\UltimateFaqSolution\Assets::get_instance();
 Mahedi\UltimateFaqSolution\Shortcodes::get_instance();
 
-// Structured data support for FAQs
+// Structured data support for FAQs.
 new Mahedi\UltimateFaqSolution\SEO();
 
 require_once UFAQSW__PLUGIN_DIR . 'utilities/actions_and_filters.php';
@@ -57,6 +59,15 @@ require_once UFAQSW__PLUGIN_DIR . 'admin/settings/settings.php';
 require_once UFAQSW__PLUGIN_DIR . 'admin/icons/class.icons.php';
 require_once UFAQSW__PLUGIN_DIR . 'admin/installation.php';
 
+/**
+ * Initializes the language settings for the Ultimate FAQ Solution plugin.
+ *
+ * This function is responsible for setting up the necessary localization
+ * and translation features for the plugin, ensuring that it supports
+ * multiple languages.
+ *
+ * @return void
+ */
 function ufaqsw_lang_init() {
 	load_plugin_textdomain( 'ufaqsw', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
 }
