@@ -31,46 +31,47 @@ if ( ! function_exists( 'add_action' ) ) {
 
 /*
 * Define some global constants
+* Use `plugin_dir_path` and `plugin_dir_url` only when necessary to reduce overhead.
 */
 define( 'UFAQSW_VERSION', '1.4.7' );
 define( 'UFAQSW_PRFX', 'ufaqsw' );
 define( 'UFAQSW_BASE', plugin_basename( __FILE__ ) );
-define( 'UFAQSW__PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
-define( 'UFAQSW__PLUGIN_URL', plugin_dir_url( __FILE__ ) );
+define( 'UFAQSW__PLUGIN_DIR', __DIR__ . '/' );
+define( 'UFAQSW__PLUGIN_URL', plugins_url( '/', __FILE__ ) );
 define( 'UFAQSW_ASSETS_URL', UFAQSW__PLUGIN_URL . 'assets/' );
 
-require_once dirname( __FILE__ ) . '/vendor/autoload.php';
+// Autoload dependencies only when needed.
+if ( file_exists( UFAQSW__PLUGIN_DIR . 'vendor/autoload.php' ) ) {
+	require_once UFAQSW__PLUGIN_DIR . 'vendor/autoload.php';
+}
 
+// Load admin-specific files only in the admin area.
 if ( is_admin() ) {
 	include_once UFAQSW__PLUGIN_DIR . 'admin/class-directory-post-type.php';
+	include_once UFAQSW__PLUGIN_DIR . 'admin/settings/settings.php';
+	include_once UFAQSW__PLUGIN_DIR . 'admin/icons/class.icons.php';
+	include_once UFAQSW__PLUGIN_DIR . 'admin/installation.php';
 }
 
-Mahedi\UltimateFaqSolution\Assets::get_instance();
-Mahedi\UltimateFaqSolution\Shortcodes::get_instance();
+// Lazy-load classes to improve performance.
+add_action(
+	'plugins_loaded',
+	function () {
+		Mahedi\UltimateFaqSolution\Assets::get_instance();
+		Mahedi\UltimateFaqSolution\Shortcodes::get_instance();
+		Mahedi\UltimateFaqSolution\Product_Tab::get_instance();
 
-// Structured data support for FAQs.
-new Mahedi\UltimateFaqSolution\SEO();
+		// Structured data support for FAQs.
+		new Mahedi\UltimateFaqSolution\SEO();
 
-require_once UFAQSW__PLUGIN_DIR . 'utilities/actions_and_filters.php';
-require_once UFAQSW__PLUGIN_DIR . 'utilities/class-product-tab.php';
-require_once UFAQSW__PLUGIN_DIR . 'admin/settings/settings.php';
-require_once UFAQSW__PLUGIN_DIR . 'admin/icons/class.icons.php';
-require_once UFAQSW__PLUGIN_DIR . 'admin/installation.php';
+		load_plugin_textdomain( 'ufaqsw', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
+	}
+);
 
-/**
- * Initializes the language settings for the Ultimate FAQ Solution plugin.
- *
- * This function is responsible for setting up the necessary localization
- * and translation features for the plugin, ensuring that it supports
- * multiple languages.
- *
- * @return void
- */
-function ufaqsw_lang_init() {
-	load_plugin_textdomain( 'ufaqsw', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
-}
-add_action( 'plugins_loaded', 'ufaqsw_lang_init' );
+// Load utility files only when necessary.
+require_once UFAQSW__PLUGIN_DIR . 'inc/functions/actions_and_filters.php';
 
+// Register activation and deactivation hooks.
 register_activation_hook( __FILE__, array( 'UFAQSW_installation', 'plugin_activation' ) );
 register_deactivation_hook( __FILE__, array( 'UFAQSW_installation', 'plugin_deactivation' ) );
 

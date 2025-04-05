@@ -37,6 +37,7 @@ class Shortcodes {
 	}
 	
 	private function enqueue_assets() {
+		wp_enqueue_style( 'ufaqsw_fa_css' );
 		wp_enqueue_style(  self::$css_handler , UFAQSW__PLUGIN_URL . 'assets/css/styles.min.css', array(), UFAQSW_VERSION, 'all' );
 		wp_enqueue_script( 'ufaqsw-grid-js' );
 		wp_enqueue_script( 'ufaqsw-quicksearch-front-js' );

@@ -1,37 +1,36 @@
 <?php
+
+namespace Mahedi\UltimateFaqSolution;
+
 /**
  * Class Product Tab for Ultimate FAQ Solution
  *
- * This file contains the UFAQSW_product_tab class, which integrates FAQ tabs into WooCommerce products.
+ * This file contains the Product_Tab class, which integrates FAQ tabs into WooCommerce products.
  *
  * @package UltimateFAQSolution
  */
 
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
-
 /**
- * Class UFAQSW_Product_Tab
+ * Class Product_Tab
  *
  * This class handles the integration of FAQ tabs into WooCommerce products.
  * It adds a new tab to the product page and allows customization of the tab's content.
  *
  * @package UltimateFAQSolution
  */
-class UFAQSW_Product_Tab {
+class Product_Tab {
 
 	/**
-	 * Instance of UFAQSW_Product_Tab
+	 * Instance of Product_Tab
 	 *
-	 * @var UFAQSW_Product_Tab
+	 * @var Product_Tab
 	 */
 	private static $instance;
 
 	/**
-	 * Get the singleton instance of the UFAQSW_Product_Tab class.
+	 * Get the singleton instance of the Product_Tab class.
 	 *
-	 * @return UFAQSW_Product_Tab The instance of the UFAQSW_Product_Tab class.
+	 * @return Product_Tab The instance of the Product_Tab class.
 	 */
 	public static function get_instance() {
 		if ( ! isset( self::$instance ) ) {
@@ -41,7 +40,7 @@ class UFAQSW_Product_Tab {
 		return self::$instance;
 	}
 	/**
-	 * Constructor for the UFAQSW_Product_Tab class.
+	 * Constructor for the Product_Tab class.
 	 *
 	 * Initializes the class and sets up WooCommerce hooks if the related option is enabled.
 	 */
@@ -272,16 +271,5 @@ class UFAQSW_Product_Tab {
 	}
 
 }
-
-/**
- * Initialize the UFAQSW_Product_Tab class instance.
- *
- * @return UFAQSW_Product_Tab The instance of the UFAQSW_Product_Tab class.
- */
-function u_f_a_q_s_w_product_tab() {
-	return UFAQSW_Product_Tab::get_instance();
-}
-
-u_f_a_q_s_w_product_tab();
 
 

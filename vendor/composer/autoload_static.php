@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit5f86cbe3094b65deb692b3245cb11019
+class ComposerStaticInit35bfc3cd1c7f61ceaf40d8bf9eb1470a
 {
     public static $files = array (
         '36cee1082cb03d70f851fddb19f95211' => __DIR__ . '/..' . '/cmb2/cmb2/init.php',
@@ -31,9 +31,9 @@ class ComposerStaticInit5f86cbe3094b65deb692b3245cb11019
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit5f86cbe3094b65deb692b3245cb11019::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit5f86cbe3094b65deb692b3245cb11019::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit5f86cbe3094b65deb692b3245cb11019::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit35bfc3cd1c7f61ceaf40d8bf9eb1470a::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit35bfc3cd1c7f61ceaf40d8bf9eb1470a::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit35bfc3cd1c7f61ceaf40d8bf9eb1470a::$classMap;
 
         }, null, ClassLoader::class);
     }
