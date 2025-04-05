@@ -59,7 +59,7 @@ Create and edit FAQ groups just like any WordPress post, using the familiar inte
 1. Go to **Ultimate FAQs** in your admin menu.
 2. Create a new **FAQ Group**.
 3. Add questions and answers using the built-in editor.
-4. Insert the FAQ on any page or post using the shortcode: `[ultimate_faq group="group-slug"]`
+4. Insert the FAQ on any page or post using the shortcode: `[ufaqsw-all]`
 
 == Frequently Asked Questions ==
 
