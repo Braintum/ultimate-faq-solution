@@ -67,7 +67,7 @@ add_action(
 		// REST API.
 		new Mahedi\UltimateFaqSolution\Rest();
 
-		load_plugin_textdomain( 'ufaqsw', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
+		load_plugin_textdomain( 'ufaqsw', false, dirname( plugin_basename( __FILE__ ) ) . '/inc/languages' );
 	}
 );
 
