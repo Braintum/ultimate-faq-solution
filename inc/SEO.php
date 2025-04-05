@@ -1,11 +1,29 @@
 <?php
+/**
+ * SEO class for generating FAQ schema.
+ *
+ * @package UltimateFaqSolution
+ * @author  Mahedi
+ * @license GPL-2.0-or-later
+ * @link    https://example.com
+ */
 
 namespace Mahedi\UltimateFaqSolution;
 
+/**
+ * Class SEO
+ *
+ * Handles the generation of FAQ schema for SEO purposes.
+ */
 class SEO {
 
+	/**
+	 * Constructor to initialize the SEO class.
+	 *
+	 * Adds the action to generate FAQ schema in the head section.
+	 */
 	public function __construct() {
-		add_action( 'wp_head', [ $this, 'generate_faq_schema' ] );
+		add_action( 'wp_head', array( $this, 'generate_faq_schema' ) );
 	}
 
 	/**
@@ -17,29 +35,29 @@ class SEO {
 
 		$faqs = $this->get_current_faqs();
 
-		if (empty($faqs)) {
+		if ( empty( $faqs ) ) {
 			return;
 		}
-	
-		$faq_data = [
-			"@context" => "https://schema.org",
-			"@type" => "FAQPage",
-			"mainEntity" => []
-		];
-	
+
+		$faq_data = array(
+			'@context'   => 'https://schema.org',
+			'@type'      => 'FAQPage',
+			'mainEntity' => array(),
+		);
+
 		foreach ( $faqs as $faq ) {
-			$faq_data["mainEntity"][] = [
-				"@type" => "Question",
-				"name" => esc_html( strip_tags( $faq["ufaqsw_faq_question"] ) ),
-				"acceptedAnswer" => [
-					"@type" => "Answer",
-					"text" => esc_html( strip_tags( $faq["ufaqsw_faq_answer"] ) )
-				]
-			];
+			$faq_data['mainEntity'][] = array(
+				'@type'          => 'Question',
+				'name'           => esc_html( wp_strip_all_tags( $faq['ufaqsw_faq_question'] ) ),
+				'acceptedAnswer' => array(
+					'@type' => 'Answer',
+					'text'  => esc_html( wp_strip_all_tags( $faq['ufaqsw_faq_answer'] ) ),
+				),
+			);
 		}
-	
+
 		echo '<!--Ultimate FAQ Solution Schema-->' . "\n";
-		echo '<script type="application/ld+json">' . json_encode( $faq_data, JSON_UNESCAPED_UNICODE ) . '</script>' . "\n";
+		echo '<script type="application/ld+json">' . wp_json_encode( $faq_data, JSON_UNESCAPED_UNICODE ) . '</script>' . "\n";
 		echo '<!--Ultimate FAQ Solution Schema-->' . "\n";
 	}
 
@@ -51,33 +69,37 @@ class SEO {
 	private function get_current_faqs() {
 		global $post;
 
-		$faqs_data = [];
+		$faqs_data = array();
 
-		if ( empty( $post ) ) return $faqs_data;
-		
+		if ( empty( $post ) ) {
+			return $faqs_data;
+		}
+
 		// all faq groups.
-		if ( has_shortcode( $post->post_content, 'ufaqsw-all') ) {
+		if ( has_shortcode( $post->post_content, 'ufaqsw-all' ) ) {
 
-			// Extract shortcode parameters
+			// Extract shortcode parameters.
 			$shortcode_pattern = get_shortcode_regex();
 
-			$shortcode_atts = [];
-			if (preg_match( '/' . $shortcode_pattern . '/s', $post->post_content, $matches ) && in_array( 'ufaqsw', $matches ) ) {
-				$shortcode_atts = shortcode_parse_atts( $matches[3] ); // Extract attributes
+			$shortcode_atts = array();
+			if ( preg_match( '/' . $shortcode_pattern . '/s', $post->post_content, $matches ) && in_array( 'ufaqsw', $matches, true ) ) {
+				$shortcode_atts = shortcode_parse_atts( $matches[3] ); // Extract attributes.
 			}
 
-			$faq_groups = get_posts([
-				'post_type' => 'ufaqsw',
-				'posts_per_page'   => -1,
-				'fields' => 'ids',
-				'post__not_in' => isset( $shortcode_atts['exclude'] ) ? explode( ', ', $shortcode_atts['exclude'] ) : [],
-			]);
+			$faq_groups = get_posts(
+				array(
+					'post_type'      => 'ufaqsw',
+					'posts_per_page' => -1,
+					'fields'         => 'ids',
+					'post__not_in'   => isset( $shortcode_atts['exclude'] ) ? explode( ', ', $shortcode_atts['exclude'] ) : array(),
+				)
+			);
 
 			if ( ! empty( $faq_groups ) ) {
 				foreach ( $faq_groups as $faq_group ) {
-					$faqs = apply_filters('ufaqsw_simplify_faqs', get_post_meta( $faq_group, 'ufaqsw_faq_item01' ));
+					$faqs = apply_filters( 'ufaqsw_simplify_faqs', get_post_meta( $faq_group, 'ufaqsw_faq_item01' ) );
 
-					if( isset( $shortcode_atts['elements_order'] ) && 'DESC' === $shortcode_atts['elements_order'] ){
+					if ( isset( $shortcode_atts['elements_order'] ) && 'DESC' === $shortcode_atts['elements_order'] ) {
 						$faqs = array_values( array_reverse( $faqs, true ) );
 					}
 
@@ -89,55 +111,52 @@ class SEO {
 		}
 
 		// Particular faq group.
-		if ( has_shortcode( $post->post_content, 'ufaqsw') ) {
+		if ( has_shortcode( $post->post_content, 'ufaqsw' ) ) {
 
-			// Extract shortcode parameters
+			// Extract shortcode parameters.
 			$shortcode_pattern = get_shortcode_regex();
 
-			$shortcode_atts = [];
-			if (preg_match( '/' . $shortcode_pattern . '/s', $post->post_content, $matches ) && in_array( 'ufaqsw', $matches ) ) {
-				$shortcode_atts = shortcode_parse_atts( $matches[3] ); // Extract attributes
+			$shortcode_atts = array();
+			if ( preg_match( '/' . $shortcode_pattern . '/s', $post->post_content, $matches ) && in_array( 'ufaqsw', $matches, true ) ) {
+				$shortcode_atts = shortcode_parse_atts( $matches[3] ); // Extract attributes.
 			}
 
 			if ( isset( $shortcode_atts['id'] ) && $shortcode_atts['id'] ) {
 
-				$faqs = apply_filters('ufaqsw_simplify_faqs', get_post_meta( get_post( $shortcode_atts['id'] )->ID, 'ufaqsw_faq_item01' ));
+				$faqs = apply_filters( 'ufaqsw_simplify_faqs', get_post_meta( get_post( $shortcode_atts['id'] )->ID, 'ufaqsw_faq_item01' ) );
 
-				if( isset( $shortcode_atts['elements_order'] ) && 'DESC' === $shortcode_atts['elements_order'] ){
+				if ( isset( $shortcode_atts['elements_order'] ) && 'DESC' === $shortcode_atts['elements_order'] ) {
 					$faqs = array_values( array_reverse( $faqs, true ) );
 				}
 
 				if ( ! empty( $faqs ) ) {
 					$faqs_data = array_merge( $faqs_data, $faqs );
 				}
-				
 			}
-
 		}
 
-
-		if ( function_exists('is_product') && is_product() ) {
+		if ( function_exists( 'is_product' ) && is_product() ) {
 
 			$is_enable = get_post_meta( $post->ID, '_ufaqsw_enable_faq_tab', true );
-			$title = get_post_meta( $post->ID, '_ufaqsw_tab_label', true );
-			$data = get_post_meta( $post->ID, '_ufaqsw_tab_data', true );
+			$title     = get_post_meta( $post->ID, '_ufaqsw_tab_label', true );
+			$data      = get_post_meta( $post->ID, '_ufaqsw_tab_data', true );
 
-			//New option FAQ group id
-			if( $data == '' ){
+			// New option FAQ group id.
+			if ( '' === $data ) {
 				$data = get_post_meta( $post->ID, '_ufaqsw_tab_data_id', true );
 			}
 
-			if ( get_option( 'ufaqsw_enable_global_faq' ) == 'on' && get_option( 'ufaqsw_global_faq' ) !== '' ) {
+			if ( get_option( 'ufaqsw_enable_global_faq' ) === 'on' && get_option( 'ufaqsw_global_faq' ) !== '' ) {
 
-				$faqs = apply_filters('ufaqsw_simplify_faqs', get_post_meta( get_post( get_option( 'ufaqsw_global_faq' ) )->ID, 'ufaqsw_faq_item01' ));
+				$faqs = apply_filters( 'ufaqsw_simplify_faqs', get_post_meta( get_post( get_option( 'ufaqsw_global_faq' ) )->ID, 'ufaqsw_faq_item01' ) );
 
 				if ( ! empty( $faqs ) ) {
 					$faqs_data = array_merge( $faqs_data, $faqs );
 				}
 			}
-			if( 'yes' === $is_enable && '' !== $data ){
+			if ( 'yes' === $is_enable && '' !== $data ) {
 
-				$faqs = apply_filters('ufaqsw_simplify_faqs', get_post_meta( get_post( $data )->ID, 'ufaqsw_faq_item01' ));
+				$faqs = apply_filters( 'ufaqsw_simplify_faqs', get_post_meta( get_post( $data )->ID, 'ufaqsw_faq_item01' ) );
 
 				if ( ! empty( $faqs ) ) {
 					$faqs_data = array_merge( $faqs_data, $faqs );

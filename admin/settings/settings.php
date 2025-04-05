@@ -1,16 +1,37 @@
 <?php
-if ( ! defined( 'ABSPATH' ) ) exit;
-/*
-* @package - Settings by Braintum
-* @Author - Mahedi Hasan
-* @Description - Responsible for handling all global resoures for RS FAQ
-* @Since 1.0
-*/
-class UFAQSW_global_settings
-{
-	// class instance
-	static $instance;
+/**
+ * Ultimate FAQ Solution - Settings
+ *
+ * This file contains the global settings for the Ultimate FAQ Solution plugin.
+ *
+ * @package UltimateFAQSolution
+ */
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
+/**
+ * Class UFAQSW_Global_Settings
+ *
+ * Handles the global settings for the Ultimate FAQ Solution plugin.
+ */
+class UFAQSW_Global_Settings {
+
+	/**
+	 * Holds the singleton instance of the class.
+	 *
+	 * @var UFAQSW_Global_Settings
+	 */
+	private static $instance;
+
+	/**
+	 * Retrieve the singleton instance of the class.
+	 *
+	 * Ensures that only one instance of the class is created and used.
+	 *
+	 * @return UFAQSW_Global_Settings The singleton instance of the class.
+	 */
 	public static function get_instance() {
 		if ( ! isset( self::$instance ) ) {
 			self::$instance = new self();
@@ -18,26 +39,43 @@ class UFAQSW_global_settings
 
 		return self::$instance;
 	}
+	/**
+	 * Constructor for the UFAQSW_Global_Settings class.
+	 *
+	 * Initializes the class by adding actions for displaying the settings page
+	 * and registering plugin settings.
+	 */
 	public function __construct() {
-		add_action( 'admin_menu', array(&$this, 'show_settings_page_callback_func') );
-		add_action( 'admin_init', array(&$this, 'register_plugin_settings') );
+		add_action( 'admin_menu', array( &$this, 'show_settings_page_callback_func' ) );
+		add_action( 'admin_init', array( &$this, 'register_plugin_settings' ) );
 	}
-	
-	public function show_settings_page_callback_func(){
-		
+
+	/**
+	 * Add a submenu page for the plugin settings.
+	 *
+	 * This function adds a submenu page under the custom post type
+	 * for managing the plugin's settings and help documentation.
+	 */
+	public function show_settings_page_callback_func() {
+
 		add_submenu_page(
 			'edit.php?post_type=ufaqsw',
 			'Settings & Help - Ultimate FAQs',
 			'Settings & Help',
 			'manage_options',
 			'ufaqsw-settings',
-			array(&$this, 'settings_page_callback_func' )
+			array( &$this, 'settings_page_callback_func' )
 		);
-		
-		
+
 	}
-	
-	public function register_plugin_settings(){
+
+	/**
+	 * Register plugin settings.
+	 *
+	 * This function registers all the settings used by the plugin
+	 * to manage its functionality and customization options.
+	 */
+	public function register_plugin_settings() {
 		register_setting( 'ufaqsw-plugin-settings-group', 'ufaqsw_enable_woocommerce' );
 		register_setting( 'ufaqsw-plugin-settings-group', 'ufaqsw_enable_search' );
 		register_setting( 'ufaqsw-plugin-settings-group', 'ufaqsw_live_search_text' );
@@ -49,15 +87,28 @@ class UFAQSW_global_settings
 		register_setting( 'ufaqsw-plugin-settings-group', 'ufaqsw_global_faq_label' );
 		register_setting( 'ufaqsw-plugin-settings-group', 'ufaqsw_global_faq' );
 	}
-	
-	public function settings_page_callback_func(){
-		if(file_exists(UFAQSW__PLUGIN_DIR.'admin/settings/ui.php')){
-			include_once UFAQSW__PLUGIN_DIR.'admin/settings/ui.php';
+
+	/**
+	 * Callback function to display the settings page.
+	 *
+	 * This function includes the UI file for the settings page if it exists.
+	 */
+	public function settings_page_callback_func() {
+		if ( file_exists( UFAQSW__PLUGIN_DIR . 'admin/settings/ui.php' ) ) {
+			include_once UFAQSW__PLUGIN_DIR . 'admin/settings/ui.php';
 		}
 	}
 }
 
-function ufaqsw_global_settings(){
-	return UFAQSW_global_settings::get_instance();
+/**
+ * Retrieve the global settings instance.
+ *
+ * This function ensures that the global settings instance is initialized
+ * and returned for use throughout the plugin.
+ *
+ * @return UFAQSW_Global_Settings The global settings instance.
+ */
+function ufaqsw_global_settings() {
+	return UFAQSW_Global_Settings::get_instance();
 }
 ufaqsw_global_settings();

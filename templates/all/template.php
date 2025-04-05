@@ -1,10 +1,19 @@
+<?php
+/**
+ * Template for displaying all FAQs.
+ *
+ * This template is used to render the FAQ section with optional search functionality.
+ *
+ * @package UltimateFAQSolution
+ */
+
+?>
 <div class="ufaqsw_default_all_faq_container">
-	<?php if ( get_option( 'ufaqsw_enable_search' ) == 'on' ) : ?>
-		<div class="ufaqsw_default_all_faq_header">
-			
-			<input type="text" class="ufaqsw_default_all_search_box" placeholder="<?php echo ( '' != get_option( 'ufaqsw_live_search_text' ) ? esc_html( get_option( 'ufaqsw_live_search_text' ) ) : esc_html__( 'Live Search..', 'ufaqsw' ) ); ?>" />
+	<?php if ( get_option( 'ufaqsw_enable_search' ) === 'on' ) : ?>
+		<div class="ufaqsw_default_all_faq_header">	
+			<input type="text" class="ufaqsw_default_all_search_box" placeholder="<?php echo ( '' !== get_option( 'ufaqsw_live_search_text' ) ? esc_html( get_option( 'ufaqsw_live_search_text' ) ) : esc_html__( 'Live Search..', 'ufaqsw' ) ); ?>" />
 			<span class="ufaqsw_search_loading">
-				<?php echo ( '' != get_option( 'ufaqsw_live_search_loading_text' ) ? esc_html( get_option('ufaqsw_live_search_loading_text' ) ) : esc_html__( 'Loading...', 'ufaqsw' ) ) ?>
+				<?php echo ( '' !== get_option( 'ufaqsw_live_search_loading_text' ) ? esc_html( get_option( 'ufaqsw_live_search_loading_text' ) ) : esc_html__( 'Loading...', 'ufaqsw' ) ); ?>
 			</span>
 
 		</div>
@@ -15,7 +24,7 @@
 	</div>
 	<div class='ufaqsw_search_no_result'>
 		<p>
-			<?php echo ( '' != get_option( 'ufaqsw_search_result_not_found' ) ? esc_html( get_option( 'ufaqsw_search_result_not_found' ) ): esc_html__( 'No Result Fount!', 'ufaqsw') ); ?>
+			<?php echo ( '' !== get_option( 'ufaqsw_search_result_not_found' ) ? esc_html( get_option( 'ufaqsw_search_result_not_found' ) ) : esc_html__( 'No Result Fount!', 'ufaqsw' ) ); ?>
 		</p>
 	</div>
 </div>

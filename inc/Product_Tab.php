@@ -1,4 +1,11 @@
 <?php
+/**
+ * Product Tab for Ultimate FAQ Solution
+ *
+ * This file contains the Product_Tab class, which integrates FAQ tabs into WooCommerce products.
+ *
+ * @package UltimateFAQSolution
+ */
 
 namespace Mahedi\UltimateFaqSolution;
 

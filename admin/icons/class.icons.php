@@ -1,16 +1,37 @@
 <?php
-if ( ! defined( 'ABSPATH' ) ) exit;
-/*
-* @package - Icons by Braintum
-* @Author - Mahedi Hasan
-* @Description - Responsible for icon Choosing modal for RS FAQ
-* @Since 1.0
-*/
-class UFAQSW_icon_settings
-{
-	// class instance
-	static $instance;
+/**
+ * Icons Settings Class
+ *
+ * @package UltimateFAQSolution
+ * @author Mahedi Hasan
+ * @description Responsible for icon choosing modal for RS FAQ
+ * @since 1.0
+ */
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
+/**
+ * Class UFAQSW_Icon_Settings
+ *
+ * @package UltimateFAQSolution
+ * @since 1.0
+ */
+class UFAQSW_Icon_Settings {
+
+	/**
+	 * Holds the single instance of the class.
+	 *
+	 * @var UFAQSW_Icon_Settings
+	 */
+	private static $instance;
+
+	/**
+	 * Retrieves the single instance of the UFAQSW_Icon_Settings class.
+	 *
+	 * @return UFAQSW_Icon_Settings The instance of the class.
+	 */
 	public static function get_instance() {
 		if ( ! isset( self::$instance ) ) {
 			self::$instance = new self();
@@ -18,35 +39,50 @@ class UFAQSW_icon_settings
 
 		return self::$instance;
 	}
+	/**
+	 * Constructor for the UFAQSW_Icon_Settings class.
+	 *
+	 * Adds the action to include the icon modal in the admin footer.
+	 */
 	public function __construct() {
-		add_action( 'admin_footer', array(&$this, 'ufaqsw_modal_fa'));
+		add_action( 'admin_footer', array( &$this, 'ufaqsw_modal_fa' ) );
 	}
-	
+
+	/**
+	 * Outputs the icon modal in the admin footer for the 'ufaqsw' post type.
+	 *
+	 * Reads icon data from a file and includes the UI for selecting icons.
+	 */
 	public function ufaqsw_modal_fa() {
-	
+
 		global $post, $typenow, $current_screen;
 
-		if( $typenow && 'ufaqsw' == $typenow){
-			$data = file( UFAQSW__PLUGIN_DIR.'assets/data/fa-data.txt' );//file in to an array
+		if ( $typenow && 'ufaqsw' === $typenow ) {
+			$data  = file( UFAQSW__PLUGIN_DIR . 'assets/data/fa-data.txt' ); // file in to an array.
 			$icons = array();
-			foreach($data as $key=>$val){
-				$val = explode('=>',$val);
+			foreach ( $data as $key => $val ) {
+				$val   = explode( '=>', $val );
 				$title = $val[0];
-				$class = explode(',',$val[1]);
-				foreach($class as $v=>$k){
-					if(strlen($k)>2){
-						$icons[$title][] = trim($k);
+				$class = explode( ',', $val[1] );
+				foreach ( $class as $v => $k ) {
+					if ( strlen( $k ) > 2 ) {
+						$icons[ $title ][] = trim( $k );
 					}
 				}
 			}
-			include_once UFAQSW__PLUGIN_DIR.'admin/icons/ui.php';
+			include_once UFAQSW__PLUGIN_DIR . 'admin/icons/ui.php';
 		}
 
 	}
-	
+
 }
 
-function ufaqsw_icons_setting(){
+/**
+ * Initialize the UFAQSW_Icon_Settings class instance.
+ *
+ * @return UFAQSW_Icon_Settings The instance of the class.
+ */
+function ufaqsw_icons_setting() {
 	return UFAQSW_icon_settings::get_instance();
 }
 ufaqsw_icons_setting();

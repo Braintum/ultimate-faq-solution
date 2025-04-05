@@ -1,9 +1,24 @@
 <?php
+/**
+ * Template class for locating and loading templates.
+ *
+ * @package UltimateFaqSolution
+ * @since 2.0.0
+ */
 
 namespace Mahedi\UltimateFaqSolution;
 
+/**
+ * Template class for locating and loading templates.
+ *
+ * This class provides methods to locate and load template files
+ * from either the theme or the plugin directory.
+ *
+ * @package UltimateFaqSolution
+ * @since 2.0.0
+ */
 class Template {
-	
+
 	/**
 	 * Locate template.
 	 *
@@ -14,9 +29,9 @@ class Template {
 	 *
 	 * @since 2.0.0
 	 *
-	 * @param   string  $template_name          Template to load.
-	 * @param   string  $string $template_path  Path to templates.
-	 * @param   string  $default_path           Default path to template files.
+	 * @param   string $template_name          Template to load.
+	 * @param   string $template_path          Path to templates. Defaults to 'ultimate-faq-solution/templates/'.
+	 * @param   string $default_path           Default path to template files.
 	 * @return  string                          Path to the template file.
 	 */
 	public static function locate( $template_name, $template_path = '', $default_path = '' ) {
@@ -28,13 +43,15 @@ class Template {
 
 		// Set default plugin templates path.
 		if ( ! $default_path ) :
-			$default_path = UFAQSW__PLUGIN_DIR . 'templates/'; // Path to the template folder
+			$default_path = UFAQSW__PLUGIN_DIR . 'templates/'; // Path to the template folder.
 		endif;
 
 		// Search template file in theme folder.
-		$template = locate_template( array(
-			$template_path . $template_name . '/template.php'
-		) );
+		$template = locate_template(
+			array(
+				$template_path . $template_name . '/template.php',
+			)
+		);
 
 		// Get plugins template file.
 		if ( ! $template ) :
