@@ -1,15 +1,15 @@
-# Copyright (C) 2023 Md. Mahedi Hasan
+# Copyright (C) 2025 braintum
 # This file is distributed under the GPLv2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Ultimate FAQ Solution 1.4.3\n"
+"Project-Id-Version: Ultimate FAQ Solution 1.4.7\n"
 "Report-Msgid-Bugs-To: "
 "https://wordpress.org/support/plugin/ultimate-faq-solution\n"
-"POT-Creation-Date: 2023-09-03 21:45:07+00:00\n"
+"POT-Creation-Date: 2025-04-05 11:30:39+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2023-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2025-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: en\n"
@@ -25,249 +25,250 @@ msgstr ""
 "X-Textdomain-Support: yes\n"
 "X-Generator: grunt-wp-i18n 1.0.3\n"
 
-#: admin/class-directory-post-type.php:60
+#: admin/class-directory-post-type.php:89
 msgid "Appearance"
 msgstr ""
 
-#: admin/class-directory-post-type.php:71
+#: admin/class-directory-post-type.php:98
 msgid "Choose A Template"
 msgstr ""
 
-#: admin/class-directory-post-type.php:75
+#: admin/class-directory-post-type.php:102
 #: vendor/cmb2/cmb2/includes/CMB2_JS.php:178
 msgid "Default"
 msgstr ""
 
-#: admin/class-directory-post-type.php:76
+#: admin/class-directory-post-type.php:103
 msgid "Style 1"
 msgstr ""
 
-#: admin/class-directory-post-type.php:77
+#: admin/class-directory-post-type.php:104
 msgid "Style 2"
 msgstr ""
 
-#: admin/class-directory-post-type.php:82
+#: admin/class-directory-post-type.php:111
 msgid "Faq Group Title Color"
 msgstr ""
 
-#: admin/class-directory-post-type.php:84
+#: admin/class-directory-post-type.php:113
 msgid "Change the Group Title color"
 msgstr ""
 
-#: admin/class-directory-post-type.php:89
+#: admin/class-directory-post-type.php:120
 msgid "Faq Group Title Font Size (ex: 30px)"
 msgstr ""
 
-#: admin/class-directory-post-type.php:90
+#: admin/class-directory-post-type.php:121
 msgid "Change the Group Title font size ex: 30px"
 msgstr ""
 
-#: admin/class-directory-post-type.php:97
+#: admin/class-directory-post-type.php:130
 msgid "Question Color"
 msgstr ""
 
-#: admin/class-directory-post-type.php:99
+#: admin/class-directory-post-type.php:132
 msgid "Change the Question color"
 msgstr ""
 
-#: admin/class-directory-post-type.php:105
+#: admin/class-directory-post-type.php:140
 msgid "Answer Color"
 msgstr ""
 
-#: admin/class-directory-post-type.php:107
+#: admin/class-directory-post-type.php:142
 msgid "Change the Answer color"
 msgstr ""
 
-#: admin/class-directory-post-type.php:113
+#: admin/class-directory-post-type.php:150
 msgid "Question Background Color"
 msgstr ""
 
-#: admin/class-directory-post-type.php:115
+#: admin/class-directory-post-type.php:152
 msgid "Change the Question Background color"
 msgstr ""
 
-#: admin/class-directory-post-type.php:121
+#: admin/class-directory-post-type.php:160
 msgid "Answer Background Color"
 msgstr ""
 
-#: admin/class-directory-post-type.php:123
+#: admin/class-directory-post-type.php:162
 msgid "Change the Answer Background color"
 msgstr ""
 
-#: admin/class-directory-post-type.php:128
+#: admin/class-directory-post-type.php:169
 msgid "Question Font Size (ex: 20px)"
 msgstr ""
 
-#: admin/class-directory-post-type.php:129
+#: admin/class-directory-post-type.php:170
 msgid "Change the Question Font Size ex: 20px"
 msgstr ""
 
-#: admin/class-directory-post-type.php:136
+#: admin/class-directory-post-type.php:179
 msgid "Answer Font Size (ex: 20px)"
 msgstr ""
 
-#: admin/class-directory-post-type.php:137
+#: admin/class-directory-post-type.php:180
 msgid "Change the Answer Font Size ex: 20px"
 msgstr ""
 
-#: admin/class-directory-post-type.php:144
+#: admin/class-directory-post-type.php:189
 msgid "Normal Icon"
 msgstr ""
 
-#: admin/class-directory-post-type.php:146
-#: admin/class-directory-post-type.php:153
+#: admin/class-directory-post-type.php:191
+#: admin/class-directory-post-type.php:200
 msgid "Change the default icon by clicking on the input box."
 msgstr ""
 
-#: admin/class-directory-post-type.php:151
+#: admin/class-directory-post-type.php:198
 msgid "Active Icon"
 msgstr ""
 
-#: admin/class-directory-post-type.php:158
+#: admin/class-directory-post-type.php:207
 msgid "FAQ Behaviour"
 msgstr ""
 
-#: admin/class-directory-post-type.php:159
+#: admin/class-directory-post-type.php:208
 msgid "Default behaviour is Toggle. You can change it to Accordion"
 msgstr ""
 
-#: admin/class-directory-post-type.php:163
+#: admin/class-directory-post-type.php:212
 msgid "Toggle"
 msgstr ""
 
-#: admin/class-directory-post-type.php:164
+#: admin/class-directory-post-type.php:213
 msgid "Accordion"
 msgstr ""
 
-#: admin/class-directory-post-type.php:169
-#: admin/class-directory-post-type.php:170
+#: admin/class-directory-post-type.php:220
+#: admin/class-directory-post-type.php:221
 msgid "Show all Answers by Default"
 msgstr ""
 
-#: admin/class-directory-post-type.php:180
-#: admin/class-directory-post-type.php:181
+#: admin/class-directory-post-type.php:233
+#: admin/class-directory-post-type.php:234
 msgid "Hide Group Title"
 msgstr ""
 
-#: admin/class-directory-post-type.php:199 utilities/class-product-tab.php:44
-#: utilities/class-product-tab.php:125
+#: admin/class-directory-post-type.php:254 inc/Product_Tab.php:89
+#: inc/Product_Tab.php:201
 msgid "FAQs"
 msgstr ""
 
-#: admin/class-directory-post-type.php:206
+#: admin/class-directory-post-type.php:263
 msgid "Add FAQ to this group by click on \"Add FAQ Entry\" Button"
 msgstr ""
 
-#: admin/class-directory-post-type.php:208
+#: admin/class-directory-post-type.php:265
 msgid "FAQ {#}"
 msgstr ""
 
-#: admin/class-directory-post-type.php:209
+#: admin/class-directory-post-type.php:266
 msgid "Add FAQ Entry"
 msgstr ""
 
-#: admin/class-directory-post-type.php:210
+#: admin/class-directory-post-type.php:267
 msgid "Remove FAQ Entry"
 msgstr ""
 
-#: admin/class-directory-post-type.php:213
+#: admin/class-directory-post-type.php:270
 msgid "Are you sure you want to remove the FAQ entry?"
 msgstr ""
 
-#: admin/class-directory-post-type.php:218
+#: admin/class-directory-post-type.php:278
 msgid "Question"
 msgstr ""
 
-#: admin/class-directory-post-type.php:220
+#: admin/class-directory-post-type.php:280
 msgid "Write Your Question"
 msgstr ""
 
-#: admin/class-directory-post-type.php:225
+#: admin/class-directory-post-type.php:288
 msgid "Answer"
 msgstr ""
 
-#: admin/class-directory-post-type.php:226
+#: admin/class-directory-post-type.php:289
 msgid "Write Your Answer"
 msgstr ""
 
-#: admin/class-directory-post-type.php:240
+#: admin/class-directory-post-type.php:309
 msgid "Title"
 msgstr ""
 
-#: admin/class-directory-post-type.php:243
+#: admin/class-directory-post-type.php:312
 msgid "Date"
 msgstr ""
 
-#: admin/class-directory-post-type.php:364
+#: admin/class-directory-post-type.php:447
 msgid "Duplicate this item"
 msgstr ""
 
-#: admin/class-directory-post-type.php:364
+#: admin/class-directory-post-type.php:447
 msgid "Duplicate"
 msgstr ""
 
-#: admin/icons/ui.php:7
+#: admin/icons/ui.php:17
 msgid "Select Font Awesome Icon"
 msgstr ""
 
-#: admin/icons/ui.php:13 templates/all/template.php:7
+#: admin/icons/ui.php:23 templates/all/template.php:16
 msgid "Loading..."
 msgstr ""
 
-#: inc/Shortcodes.php:102 inc/Shortcodes.php:176 inc/Shortcodes.php:193
-msgid "%s Template Not Found"
-msgstr ""
-
-#: templates/all/template.php:5
-msgid "Live Search.."
-msgstr ""
-
-#: templates/all/template.php:18
-msgid "No Result Fount!"
-msgstr ""
-
-#: utilities/class-product-tab.php:86
+#: inc/Product_Tab.php:141
 msgid "FAQ"
 msgstr ""
 
-#: utilities/class-product-tab.php:118
+#: inc/Product_Tab.php:188
 msgid "Enable FAQ Tab"
 msgstr ""
 
-#: utilities/class-product-tab.php:119
+#: inc/Product_Tab.php:189
 msgid "Check this field if you want to enable faq tab for this product"
 msgstr ""
 
-#: utilities/class-product-tab.php:125
+#: inc/Product_Tab.php:200
 msgid "FAQ Tab Label"
 msgstr ""
 
-#: utilities/class-product-tab.php:125
+#: inc/Product_Tab.php:203
 msgid "Enter the tab label. Default will be FAQs."
 msgstr ""
 
-#: utilities/class-product-tab.php:131
+#: inc/Product_Tab.php:219
 msgid "Please select a FAQ Group from dropdown."
 msgstr ""
 
-#: utilities/class-product-tab.php:134
+#: inc/Product_Tab.php:232
 msgid "Or Add FAQ Group ID"
 msgstr ""
 
-#: utilities/class-product-tab.php:134
+#: inc/Product_Tab.php:233
 msgid "ex: 10"
 msgstr ""
 
-#: utilities/class-product-tab.php:134
+#: inc/Product_Tab.php:235
 msgid "Or add a FAQ ID here. This will help for multilangual site built with WPML"
 msgstr ""
 
-#: utilities/class-product-tab.php:140
+#: inc/Product_Tab.php:249
 msgid "Hide FAQ Group Title"
 msgstr ""
 
-#: utilities/class-product-tab.php:141
+#: inc/Product_Tab.php:250
 msgid "Check this field if you want to hide FAQ Group Title."
+msgstr ""
+
+#: inc/Shortcodes.php:145 inc/Shortcodes.php:222 inc/Shortcodes.php:239
+#. translators: %s is the name of the template that was not found.
+msgid "%s Template Not Found"
+msgstr ""
+
+#: templates/all/template.php:14
+msgid "Live Search.."
+msgstr ""
+
+#: templates/all/template.php:27
+msgid "No Result Fount!"
 msgstr ""
 
 #: vendor/cmb2/cmb2/example-functions.php:115
@@ -608,11 +609,11 @@ msgstr ""
 msgid "Will show in REST API \"editable\" contexts only (`POST` requests)."
 msgstr ""
 
-#: vendor/cmb2/cmb2/includes/CMB2.php:199
+#: vendor/cmb2/cmb2/includes/CMB2.php:207
 msgid "Metabox configuration is required to have an ID parameter."
 msgstr ""
 
-#: vendor/cmb2/cmb2/includes/CMB2.php:618
+#: vendor/cmb2/cmb2/includes/CMB2.php:626
 msgid "Click to toggle"
 msgstr ""
 
@@ -684,23 +685,24 @@ msgstr ""
 msgid "Sorry, this field does not have a cmb_id specified."
 msgstr ""
 
-#: vendor/cmb2/cmb2/includes/CMB2_Field_Display.php:453
+#: vendor/cmb2/cmb2/includes/CMB2_Field_Display.php:454
 #: vendor/cmb2/cmb2/includes/CMB2_JS.php:242
 #: vendor/cmb2/cmb2/includes/types/CMB2_Type_File_Base.php:90
 msgid "File:"
 msgstr ""
 
-#: vendor/cmb2/cmb2/includes/CMB2_Hookup.php:188
+#: vendor/cmb2/cmb2/includes/CMB2_Hookup.php:191
 msgid ""
 "Term Metadata is a WordPress 4.4+ feature. Please upgrade your WordPress "
 "install."
 msgstr ""
 
-#: vendor/cmb2/cmb2/includes/CMB2_Hookup.php:192
+#: vendor/cmb2/cmb2/includes/CMB2_Hookup.php:195
 msgid "Term metaboxes configuration requires a \"taxonomies\" parameter."
 msgstr ""
 
-#: vendor/cmb2/cmb2/includes/CMB2_Hookup.php:560
+#: vendor/cmb2/cmb2/includes/CMB2_Hookup.php:579
+#. translators: %s: name of CMB2 box (panel)
 msgid "Toggle panel: %s"
 msgstr ""
 
@@ -994,7 +996,7 @@ msgstr ""
 
 #. Description of the plugin/theme
 msgid ""
-"An ultimate FAQ Solution plugin for Wordpress & Woocommerce that lets you "
+"An ultimate FAQ Solution plugin for WordPress & WooCommerce that lets you "
 "create, organize and publicize your FAQs (frequently asked questions) in no "
 "time through your WordPress admin panel. Select from multiple responsive "
 "FAQ layouts and styles. Also it’s the most comprehensive WooCommerce FAQs "
@@ -1002,7 +1004,7 @@ msgid ""
 msgstr ""
 
 #. Author of the plugin/theme
-msgid "Md. Mahedi Hasan"
+msgid "braintum"
 msgstr ""
 
 #. Author URI of the plugin/theme
