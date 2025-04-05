@@ -87,7 +87,7 @@ module.exports = function( grunt ) {
 		makepot: {
 			target: {
 				options: {
-					domainPath: '/languages',
+					domainPath: '/inc/languages',
 					exclude: [ '\.git/*', 'bin/*', 'node_modules/*', 'tests/*' ],
 					mainFile: 'init.php',
 					potFilename: 'ultimate-faq-solution.pot',
@@ -146,6 +146,7 @@ module.exports = function( grunt ) {
                     '!**/Gruntfile.js',
                     '!**/package.json',
 					'!**/package-lock.json',
+					'!**/src/**',
 					'!**/node_modules/**',
                     '!**/customs.json',
                     '!nbproject',

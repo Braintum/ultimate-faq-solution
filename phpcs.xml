@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<ruleset name="Ultimate FAQ Solution Coding Standards">
+    <description>WordPress Coding Standards for the Ultimate FAQ Solution plugin.</description>
+    <rule ref="WordPress">
+        <!-- Disable the filename rule globally -->
+        <exclude name="WordPress.Files.FileName" />
+    </rule>
+
+    <!-- Exclude vendor and node_modules -->
+    <exclude-pattern>*/vendor/*</exclude-pattern>
+    <exclude-pattern>*/node_modules/*</exclude-pattern>
+</ruleset>
