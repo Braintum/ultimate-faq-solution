@@ -43,7 +43,7 @@ class Template {
 
 		// Set default plugin templates path.
 		if ( ! $default_path ) :
-			$default_path = UFAQSW__PLUGIN_DIR . 'templates/'; // Path to the template folder.
+			$default_path = UFAQSW__PLUGIN_DIR . 'inc/templates/'; // Path to the template folder.
 		endif;
 
 		// Search template file in theme folder.

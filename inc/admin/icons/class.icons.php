@@ -70,7 +70,7 @@ class UFAQSW_Icon_Settings {
 					}
 				}
 			}
-			include_once UFAQSW__PLUGIN_DIR . 'admin/icons/ui.php';
+			include_once UFAQSW__PLUGIN_DIR . 'inc/admin/icons/ui.php';
 		}
 
 	}

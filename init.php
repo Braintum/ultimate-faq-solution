@@ -9,7 +9,7 @@
  * @license   GPL v2 or later
  *
  * Plugin Name: Ultimate FAQ Solution
- * Version: 1.4.7
+ * Version: 1.4.8
  * Plugin URI: http://www.solrengine.com
  * Description: An ultimate FAQ Solution plugin for WordPress & WooCommerce that lets you create, organize and publicize your FAQs (frequently asked questions) in no time through your WordPress admin panel. Select from multiple responsive FAQ layouts and styles. Also it’s the most comprehensive WooCommerce FAQs solution!
  * Author: braintum
@@ -33,7 +33,7 @@ if ( ! function_exists( 'add_action' ) ) {
 * Define some global constants
 * Use `plugin_dir_path` and `plugin_dir_url` only when necessary to reduce overhead.
 */
-define( 'UFAQSW_VERSION', '1.4.7' );
+define( 'UFAQSW_VERSION', '1.4.8' );
 define( 'UFAQSW_PRFX', 'ufaqsw' );
 define( 'UFAQSW_BASE', plugin_basename( __FILE__ ) );
 define( 'UFAQSW__PLUGIN_DIR', __DIR__ . '/' );
@@ -47,10 +47,10 @@ if ( file_exists( UFAQSW__PLUGIN_DIR . 'vendor/autoload.php' ) ) {
 
 // Load admin-specific files only in the admin area.
 if ( is_admin() ) {
-	include_once UFAQSW__PLUGIN_DIR . 'admin/class-directory-post-type.php';
-	include_once UFAQSW__PLUGIN_DIR . 'admin/settings/settings.php';
-	include_once UFAQSW__PLUGIN_DIR . 'admin/icons/class.icons.php';
-	include_once UFAQSW__PLUGIN_DIR . 'admin/installation.php';
+	include_once UFAQSW__PLUGIN_DIR . 'inc/admin/class-directory-post-type.php';
+	include_once UFAQSW__PLUGIN_DIR . 'inc/admin/settings/settings.php';
+	include_once UFAQSW__PLUGIN_DIR . 'inc/admin/icons/class.icons.php';
+	include_once UFAQSW__PLUGIN_DIR . 'inc/admin/installation.php';
 }
 
 // Lazy-load classes to improve performance.

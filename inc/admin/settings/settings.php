@@ -94,8 +94,8 @@ class UFAQSW_Global_Settings {
 	 * This function includes the UI file for the settings page if it exists.
 	 */
 	public function settings_page_callback_func() {
-		if ( file_exists( UFAQSW__PLUGIN_DIR . 'admin/settings/ui.php' ) ) {
-			include_once UFAQSW__PLUGIN_DIR . 'admin/settings/ui.php';
+		if ( file_exists( UFAQSW__PLUGIN_DIR . 'inc/admin/settings/ui.php' ) ) {
+			include_once UFAQSW__PLUGIN_DIR . 'inc/admin/settings/ui.php';
 		}
 	}
 }
