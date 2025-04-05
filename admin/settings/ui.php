@@ -19,12 +19,12 @@ $allowed_html = ufaqsw_wses_allowed_menu_html();
 	<h1 class="ufaqsw_heading_settings"><?php echo esc_html( 'Settings & Help - Ultimate FAQs' ); ?></h1>
 
 	<h2 class="nav-tab-wrapper sld_nav_container">
-		<a class="nav-tab sld_click_handle nav-tab-active" href="#getting_started"><?php echo esc_html( 'Getting Stared' ); ?></a>
-		<a class="nav-tab sld_click_handle" href="#faq_directory"><?php echo esc_html( 'Shortcodes' ); ?></a>
-		<a class="nav-tab sld_click_handle" href="#language_settings"><?php echo esc_html( 'Language Settings' ); ?></a>
-		<a class="nav-tab sld_click_handle" href="#general_settings"><?php echo esc_html( 'Woocommerce' ); ?></a>
-		<a class="nav-tab sld_click_handle" href="#custom_css"><?php echo esc_html( 'Custom Css' ); ?></a>
-		<a class="nav-tab sld_click_handle" href="#support"><?php echo esc_html( 'Support' ); ?></a>
+		<a class="nav-tab ufaqsw_click_handle nav-tab-active" href="#getting_started"><?php echo esc_html( 'Getting Stared' ); ?></a>
+		<a class="nav-tab ufaqsw_click_handle" href="#faq_directory"><?php echo esc_html( 'Shortcodes' ); ?></a>
+		<a class="nav-tab ufaqsw_click_handle" href="#language_settings"><?php echo esc_html( 'Language Settings' ); ?></a>
+		<a class="nav-tab ufaqsw_click_handle" href="#general_settings"><?php echo esc_html( 'Woocommerce' ); ?></a>
+		<a class="nav-tab ufaqsw_click_handle" href="#custom_css"><?php echo esc_html( 'Custom Css' ); ?></a>
+		<a class="nav-tab ufaqsw_click_handle" href="#support"><?php echo esc_html( 'Support' ); ?></a>
 	</h2>
 
 	<form method="post" action="options.php">
@@ -221,14 +221,14 @@ $allowed_html = ufaqsw_wses_allowed_menu_html();
 				<div id="poststuff">
 							<h1><?php echo wp_kses( 'Welcome to the Ultimate FAQ Solution Support Section.', $allowed_html ); ?></h1>
 							<h3><?php echo esc_html( 'Any Troubles?' ); ?></h3>
-							<p><?php echo wp_kses( 'you can simply shoot us an email at <b>braintum@gmail.com</b> or you can open a support ticket at <a href="https://braintum.com/support/" target="_blank">https://braintum.com/support/</a>', $allowed_html ); ?></p>
+							<p><?php echo wp_kses( 'you can simply shoot us an email at <b>braintum@gmail.com</b> or you can open a support ticket at <a href="https://solrengine.com/support/" target="_blank">https://solrengine.com/support/</a>', $allowed_html ); ?></p>
 
 							<p><?php echo esc_html( 'We recommend you to open a support ticket from our support page for awesome & nice support experience.' ); ?></p>
 
 							<p><?php echo esc_html( 'We generally reply within 1 day for all kind of support request.' ); ?></p>
 
-							<h3><?php echo esc_html( 'Online Documentation of Ultimate FAQ Solution?' ); ?></h3>
-							<p><?php echo wp_kses( 'Please click on the link for <a href="https://www.braintum.com/documentation/ultimate-faq-solution.html" target="_blank">Online Documentation</a>', $allowed_html ); ?></p>
+							<!--<h3><?php echo esc_html( 'Online Documentation of Ultimate FAQ Solution?' ); ?></h3>
+							<p><?php echo wp_kses( 'Please click on the link for <a href="https://www.braintum.com/documentation/ultimate-faq-solution.html" target="_blank">Online Documentation</a>', $allowed_html ); ?></p>-->
 
 				</div>
 					<!-- /poststuff -->
