@@ -95,7 +95,7 @@ class Shortcodes {
 				array(
 					'id'             => 1,
 					'title_hide'     => 'no',
-					'elements_order' => 'ASC',
+					'elements_order' => 'asc',
 				),
 				$atts
 			)
@@ -122,7 +122,7 @@ class Shortcodes {
 
 				$faqs = isset( $faqs[0] ) ? $faqs[0] : $faqs;
 
-				if ( 'DESC' === $elements_order ) {
+				if ( 'desc' === strtolower( $elements_order ) ) {
 					$faqs = array_values( array_reverse( $faqs, true ) );
 				}
 
@@ -167,7 +167,7 @@ class Shortcodes {
 					'exclude'        => '', // Coma seperated number string: 88, 86.
 					'column'         => 1, // column parameter.
 					'title_hide'     => 'no',
-					'elements_order' => 'ASC',
+					'elements_order' => 'asc',
 					'behaviour'      => 'toggle',
 				),
 				$atts
@@ -197,7 +197,7 @@ class Shortcodes {
 
 				$faqs = apply_filters( 'ufaqsw_simplify_faqs', get_post_meta( get_the_ID(), 'ufaqsw_faq_item01' ) );
 
-				if ( 'DESC' === $elements_order ) {
+				if ( 'desc' === strtolower( $elements_order ) ) {
 					$faqs = array_values( array_reverse( $faqs, true ) );
 				}
 

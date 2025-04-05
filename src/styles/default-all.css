@@ -6,13 +6,14 @@ iframe{width:100%;height:auto;}
 
 .ufaqsw_default_all_faq_header{margin-bottom: 25px;position: relative;}
 .ufaqsw_default_all_search_box{
-  padding: 15px 5px!important;
-  border-color: #e8e8e8!important;
+  padding: 15px 5px !important;
+  border-color: #050505 !important;
   width: 100%;
-  border: 2px;
+  border: 1px solid;
   text-align: left;
-  font-size: 25px;
+  font-size: 20px;
   box-sizing: border-box;
+  border-radius: 5px;
 }
 .ufaqsw_default_all_search_box::placeholder {
   color: #424242;

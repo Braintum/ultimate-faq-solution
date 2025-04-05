@@ -45,12 +45,13 @@ function ufaqsw_register_cpt() {
 		'supports'            => array( 'title', 'revisions' ),
 		'has_archive'         => false,
 		'menu_icon'           => '',
-		'public'              => false,  // it's not public, it shouldn't have it's own permalink, and so on.
+		'public'              => false,  // it's not public, it shouldn't have its own permalink, and so on.
 		'publicly_queryable'  => false,  // you should be able to query it.
 		'show_ui'             => true,  // you should be able to edit it in wp-admin.
 		'rewrite'             => false,  // it shouldn't have rewrite rules.
 		'menu_icon'           => 'dashicons-list-view',
-
+		'show_in_rest'        => true,  // Enable support for the REST API.
+		'rest_base'           => 'ufaqsw', // Optional custom REST API base slug.
 	);
 
 	register_post_type( 'ufaqsw', $ufaqsw_list_args );
@@ -480,6 +481,7 @@ function bt_cmb2_sanitize_text_html_callback( $override_value, $value ) {
 	return $value;
 }
 add_filter( 'cmb2_sanitize_text_html', 'bt_cmb2_sanitize_text_html_callback', 10, 2 );
+
 
 
 

@@ -29,7 +29,7 @@ extract( $designs ); // phpcs:ignore
 	// Main Title
 	// Check if title is enabled.
 
-	if ( '1' !== $hidetitle && 'yes' !== $title_hide ) :
+	if ( 'yes' !== $title_hide ) :
 		?>
 		<h2 class="ufaqsw_faq_title ufaqsw_faq_title_<?php echo esc_attr( get_the_ID() ); ?>"><?php echo esc_attr( get_the_title() ); ?></h2>
 	<?php endif; ?>

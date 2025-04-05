@@ -64,12 +64,16 @@ add_action(
 		// Structured data support for FAQs.
 		new Mahedi\UltimateFaqSolution\SEO();
 
+		// REST API.
+		new Mahedi\UltimateFaqSolution\Rest();
+
 		load_plugin_textdomain( 'ufaqsw', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
 	}
 );
 
 // Load utility files only when necessary.
 require_once UFAQSW__PLUGIN_DIR . 'inc/functions/actions_and_filters.php';
+require_once UFAQSW__PLUGIN_DIR . 'block/block.php';
 
 // Register activation and deactivation hooks.
 register_activation_hook( __FILE__, array( 'UFAQSW_installation', 'plugin_activation' ) );
