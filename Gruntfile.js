@@ -100,12 +100,124 @@ module.exports = function( grunt ) {
 				}
 			}
 		},
+
+		// Clean up build directory
+        clean: {
+            main: ['build/']
+        },
+
+        // Copy the plugin into the build directory
+        copy: {
+            main: {
+                src: [
+                    '**',
+                    '!node_modules/**',
+                    '!build/**',
+                    '!bin/**',
+                    '!.git/**',
+                    '!Gruntfile.js',
+                    '!package.json',
+                    '!package-lock.json',
+                    '!phpcs.ruleset.xml',
+					'!readme.txt',
+					'!README.md',
+                    '!phpunit.xml.dist',
+                    '!webpack.config.js',
+                    '!tmp/**',
+                    '!views/assets/src/**',
+                    '!src/**',
+                    '!debug.log',
+                    '!phpunit.xml',
+                    '!export.sh',
+                    '!.gitignore',
+                    '!.env',
+                    '!.gitmodules',
+                    '!codeception.yml',
+                    '!npm-debug.log',
+                    '!plugin-deploy.sh',
+                    '!readme.md',
+                    '!composer.json',
+                    '!composer.lock',
+                    '!prev.json',
+                    '!secret.json',
+                    '!assets/src/**',
+                    '!assets/less/**',
+                    '!tests/**',
+                    '!**/Gruntfile.js',
+                    '!**/package.json',
+					'!**/package-lock.json',
+					'!**/node_modules/**',
+                    '!**/customs.json',
+                    '!nbproject',
+                    '!phpcs.xml',
+					'!deploy.sh',
+                    '!phpcs-report.txt',
+                    '!**/*~',
+                    '!.eslintrc.js',
+                    '!.editorconfig',
+                    '!babel.config.js',
+                    '!composer.phar',
+                ],
+                dest: 'build/'
+            }
+        },
+
+		compress: {
+			main: {
+			  options: {
+				archive: 'ultimate-faq-solution.zip'
+			  },
+			  files: [{
+				expand: true,
+				cwd: 'build/',
+				src: ['**/*'],
+				dest: '/'
+			  }]
+			}
+		  },
+
+		run: {
+            options: {},
+
+            removeDev:{
+                cmd: 'composer',
+                args: ['install', '--no-dev']
+            },
+
+            dumpautoload:{
+                cmd: 'composer',
+                args: ['dumpautoload', '-o']
+            },
+
+            composerInstall:{
+                cmd: 'composer',
+                args: ['install']
+            },
+        }
 	} );
 
+	grunt.loadNpmTasks( 'grunt-contrib-compress' );
+	grunt.loadNpmTasks( 'grunt-contrib-clean' );
+    grunt.loadNpmTasks( 'grunt-contrib-copy' );
+	grunt.loadNpmTasks( 'grunt-run' );
+	grunt.loadNpmTasks( 'grunt-contrib-cssmin' );
+	grunt.loadNpmTasks( 'grunt-wp-i18n' );
 
 	grunt.registerTask( 'cssjs', ['concat', 'concat_css', 'autoprefixer', 'uglify', 'cssmin'] );
 	grunt.registerTask( 'default', [ 'i18n', 'cssjs' ] );
 	grunt.registerTask( 'i18n', ['addtextdomain', 'makepot'] );
+
+	grunt.registerTask( 'release', [
+		'default',
+        'clean',
+        'run:removeDev',
+        'run:dumpautoload',
+        'copy',
+        'compress',
+        'run:composerInstall',
+        'run:dumpautoload',
+		'clean',
+    ]);
 
 	grunt.util.linefeed = '\n';
 
