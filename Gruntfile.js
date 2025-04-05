@@ -115,6 +115,7 @@ module.exports = function( grunt ) {
                     '!build/**',
                     '!bin/**',
                     '!.git/**',
+					'!.wordpress-org/**',
                     '!Gruntfile.js',
                     '!package.json',
                     '!package-lock.json',

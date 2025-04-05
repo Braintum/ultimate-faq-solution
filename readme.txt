@@ -4,7 +4,7 @@ Donate link: https://www.solrengine.com/
 Tags: faq, faq schema, faq-directory, accordion, knowledgebase, woocommerce-faq  
 Requires at least: 5.1  
 Tested up to: 6.7.2  
-Stable tag: 1.4.8
+Stable tag: 1.4.9
 Requires PHP: 7.4.0  
 License: GPLv2 or later  
 License URI: https://www.gnu.org/licenses/license-list.html#GPLCompatibleLicenses  
@@ -90,6 +90,9 @@ Yes, you can pass parameters like `column=3`, `behavior=toggle`, or `element_ord
 5. Screehshot 5
 
 == Changelog ==
+= 1.4.9 =
+* Plugin assets updated.
+
 = 1.4.8 =
 * 🛠 Code refactored for better performance and maintainability.
 * ➕ Added support for Gutenberg block to easily insert FAQs.

@@ -234,6 +234,10 @@ rm -Rf trunk/.babelrc
 rm -Rf trunk/yarn.lock
 rm -Rf trunk/.github
 rm -Rf trunk/.wordpress-org
+rm -Rf trunk/admin
+rm -Rf trunk/languages
+rm -Rf trunk/templates
+rm -Rf trunk/utilities
 rm -Rf trunk/.svnignore
 rm -Rf trunk/apigen
 rm -Rf trunk/tests
