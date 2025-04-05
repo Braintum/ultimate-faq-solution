@@ -50,9 +50,6 @@ function ufaq_register_block_assets() {
 				'exclude'        => array(
 					'type'    => 'array',
 					'default' => array(),
-					'items'   => array(
-						'type' => 'string',
-					),
 				),
 				'column'         => array(
 					'type'    => 'string',
