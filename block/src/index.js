@@ -3,6 +3,7 @@ import { useSelect } from '@wordpress/data';
 import { useState } from 'react';  // Import useState from React
 import { PanelBody, SelectControl, CheckboxControl } from '@wordpress/components';
 import { InspectorControls } from '@wordpress/block-editor';
+import { __, _x } from '@wordpress/i18n';
 
 registerBlockType('ultimate-faq-solution/block', {
     title: 'FAQ',
@@ -57,7 +58,7 @@ registerBlockType('ultimate-faq-solution/block', {
 		const columns = useSelect((select) => {
 			return [
 				{
-					label: 'Choose a column',
+					label: __( 'Choose a column', 'ufaqsw' ),
 					value: '',
 				},
 				{
@@ -78,15 +79,15 @@ registerBlockType('ultimate-faq-solution/block', {
 		const behaviours = useSelect((select) => {
 			return [
 				{
-					label: 'Choose a behaviour',
+					label: __( 'Choose a behaviour', 'ufaqsw' ),
 					value: '',
 				},
 				{
-					label: 'Accordion',
+					label: __( 'Accordion', 'ufaqsw' ),
 					value: 'accordion',
 				},
 				{
-					label: 'Toggle',
+					label: __( 'Toggle', 'ufaqsw' ),
 					value: 'toggle',
 				},
 
@@ -96,15 +97,15 @@ registerBlockType('ultimate-faq-solution/block', {
 		const orders = useSelect((select) => {
 			return [
 				{
-					label: 'Choose an order',
+					label: __( 'Choose an order', 'ufaqsw' ),
 					value: '',
 				},
 				{
-					label: 'ASC',
+					label: __( 'ASC', 'ufaqsw' ),
 					value: 'asc',
 				},
 				{
-					label: 'DESC',
+					label: __( 'DESC', 'ufaqsw' ),
 					value: 'desc',
 				},
 
@@ -150,27 +151,27 @@ registerBlockType('ultimate-faq-solution/block', {
 		return (
 			<>
 				<InspectorControls>
-					<PanelBody title="FAQ Settings">
+					<PanelBody title={__( 'FAQ Settings', 'ufaqsw' )}>
 						<SelectControl
-							label="Select FAQ Group"
-							help="Choose a group to display FAQs from."
+							label={__( 'Select FAQ Group', 'ufaqsw' )}
+							help={__( 'Choose a group to display FAQs from.', 'ufaqsw' )}
 							value={attributes.group}
 							options={
 								faqGroups
-									? [{ label: 'Select a FAQ group', value: '' }, { label: 'All', value: 'all' }].concat(
+									? [{ label: __( 'Select a FAQ group', 'ufaqsw'), value: '' }, { label: __('All', 'ufaqsw'), value: 'all' }].concat(
 										faqGroups.map((group) => ({
 											label: group.title,
 											value: group.id
 										}))
 									  )
-									: [{ label: 'Loading...', value: '' }]
+									: [{ label: __('Loading...', 'ufaqsw'), value: '' }]
 							}
 							onChange={(value) => setAttributes({ group: value })}
 						/>
 
 						<CheckboxControl
-                            label="Hide group title"
-							help="Check to hide the group title. This will override the faq group setting."
+                            label={__( 'Hide group title', 'ufaqsw' )}
+							help={__( 'Check to hide the group title. This will override the faq group setting.', 'ufaqsw' )}
                             checked={attributes.hideTitle}
                             onChange={(value) => setAttributes({ hideTitle: value })}
                         />

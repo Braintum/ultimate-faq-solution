@@ -59,18 +59,18 @@ module.exports = function( grunt ) {
 		},
 
 		// autoprefixer
-        autoprefixer: {
-            options: {
-                browsers: [ 'last 2 versions', 'ie 9', 'ios 6', 'android 4' ],
-                map: false,
-            },
-            files: {
-                expand: true,
-                flatten: true,
-                src: 'assets/css/*.css',
-                dest: 'assets/css/'
-            }
-        },
+		autoprefixer: {
+			options: {
+				browsers: [ 'last 2 versions', 'ie 9', 'ios 6', 'android 4' ],
+				map: false,
+			},
+			files: {
+				expand: true,
+				flatten: true,
+				src: 'assets/css/*.css',
+				dest: 'assets/css/'
+			}
+		},
 
 		addtextdomain: {
 			options: {
@@ -80,7 +80,7 @@ module.exports = function( grunt ) {
 				options: {
 					updateDomains: true
 				},
-				src: [ '*.php', '**/*.php', '!\.git/**/*', '!bin/**/*', '!node_modules/**/*', '!tests/**/*', '!vendor/**/*' ]
+				src: [ '*.php', '**/*.php', 'block/src/*.js', '!\.git/**/*', '!bin/**/*', '!node_modules/**/*', '!tests/**/*', '!vendor/**/*' ]
 			}
 		},
 

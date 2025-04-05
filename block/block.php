@@ -93,7 +93,7 @@ function ufaq_render_block_callback( $attributes ) {
 	$hide_title     = $attributes['hideTitle'] ?? false;
 
 	if ( empty( $group ) ) {
-		return '<p>No FAQ group selected.</p>';
+		return __( 'No FAQ group selected.', 'ufaqsw' );
 	}
 
 	// Build shortcode.
