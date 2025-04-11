@@ -247,6 +247,7 @@ rm -Rf trunk/apigen
 rm -Rf trunk/tests
 rm -Rf trunk/src
 rm -Rf trunk/block/src
+rm -f trunk/block/src/index.js
 rm -f trunk/.coveralls.yml
 rm -f trunk/.editorconfig
 rm -f trunk/.gitattributes

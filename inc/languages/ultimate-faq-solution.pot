@@ -2,10 +2,10 @@
 # This file is distributed under the GPLv2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Ultimate FAQ Solution 1.5.0\n"
+"Project-Id-Version: Ultimate FAQ Solution 1.5.1\n"
 "Report-Msgid-Bugs-To: "
 "https://wordpress.org/support/plugin/ultimate-faq-solution\n"
-"POT-Creation-Date: 2025-04-11 22:58:12+00:00\n"
+"POT-Creation-Date: 2025-04-11 23:47:43+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -1000,11 +1000,8 @@ msgstr ""
 
 #. Description of the plugin/theme
 msgid ""
-"An ultimate FAQ Solution plugin for WordPress & WooCommerce that lets you "
-"create, organize and publicize your FAQs (frequently asked questions) in no "
-"time through your WordPress admin panel. Select from multiple responsive "
-"FAQ layouts and styles. Also it’s the most comprehensive WooCommerce FAQs "
-"solution!"
+"A WordPress plugin to create, organize, and display FAQs with responsive "
+"layouts and styles."
 msgstr ""
 
 #. Author of the plugin/theme

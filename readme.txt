@@ -4,7 +4,7 @@ Donate link: https://www.solrengine.com/
 Tags: faq, faq-directory, accordion, knowledgebase, woocommerce-faq
 Requires at least: 5.1  
 Tested up to: 6.8
-Stable tag: 1.5.0
+Stable tag: 1.5.1
 Requires PHP: 7.4.0  
 License: GPLv2 or later  
 License URI: https://www.gnu.org/licenses/license-list.html#GPLCompatibleLicenses  
@@ -90,6 +90,10 @@ Yes, you can pass parameters like `behavior=toggle`, or `element_order="DESC"` t
 5. Screehshot 5
 
 == Changelog ==
+
+= 1.5.0 =
+* Live Preview added
+
 = 1.5.0 =
 * Directory page search issue fixed.
 * Directory page column removed.
