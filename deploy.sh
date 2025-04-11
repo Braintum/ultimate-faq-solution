@@ -227,6 +227,10 @@ status "Removing unwanted files"
 rm -Rf trunk/assets/css/*.scss
 rm -Rf trunk/assets/css/metabox/*.scss
 rm -Rf trunk/assets/*.scss
+rm -Rf trunk/assets/css/default-all.css
+rm -Rf trunk/assets/css/default-all.min.css
+rm -Rf trunk/assets/js/default-all.js
+rm -Rf trunk/assets/js/packery.min.js
 rm -Rf trunk/bin
 rm -Rf trunk/**/.gitkeep
 rm -Rf trunk/.git
