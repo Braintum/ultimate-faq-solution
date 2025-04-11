@@ -246,6 +246,7 @@ rm -Rf trunk/.svnignore
 rm -Rf trunk/apigen
 rm -Rf trunk/tests
 rm -Rf trunk/src
+rm -Rf trunk/block/src
 rm -f trunk/.coveralls.yml
 rm -f trunk/.editorconfig
 rm -f trunk/.gitattributes
@@ -267,7 +268,6 @@ rm -f trunk/Gruntfile.js
 rm -f trunk/package.json
 rm -f trunk/block/package.json
 rm -f trunk/block/package-lock.json
-rm -f trunk/block/src
 rm -f trunk/phpcs.xml
 rm -f trunk/phpunit.xml
 rm -f trunk/phpunit.xml.dist
