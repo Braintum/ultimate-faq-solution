@@ -77,9 +77,8 @@ class Shortcodes {
 	private function enqueue_assets() {
 		wp_enqueue_style( 'ufaqsw_fa_css' );
 		wp_enqueue_style( self::$css_handler, UFAQSW__PLUGIN_URL . 'assets/css/styles.min.css', array(), UFAQSW_VERSION, 'all' );
-		wp_enqueue_script( 'ufaqsw-grid-js' );
 		wp_enqueue_script( 'ufaqsw-quicksearch-front-js' );
-		wp_enqueue_script( self::$js_handler, UFAQSW__PLUGIN_URL . 'assets/js/script.min.js', array( 'jquery', 'ufaqsw-grid-js', 'ufaqsw-quicksearch-front-js' ), UFAQSW_VERSION, true );
+		wp_enqueue_script( self::$js_handler, UFAQSW__PLUGIN_URL . 'assets/js/script.min.js', array( 'jquery', 'ufaqsw-quicksearch-front-js' ), UFAQSW_VERSION, true );
 	}
 
 	/**
@@ -165,7 +164,6 @@ class Shortcodes {
 			shortcode_atts(
 				array(
 					'exclude'        => '', // Coma seperated number string: 88, 86.
-					'column'         => 1, // column parameter.
 					'title_hide'     => 'no',
 					'elements_order' => 'asc',
 					'behaviour'      => 'toggle',
@@ -224,7 +222,7 @@ class Shortcodes {
 
 				$content = ob_get_clean();
 
-				$all_content .= "<div class='ufaqsw_default_all_single_faq ufaqsw_default_single_" . esc_attr( $column ) . "' id='ufaqsw_single_faq_" . esc_attr( get_the_ID() ) . "'>" . $content . '</div>';
+				$all_content .= "<div class='ufaqsw_default_all_single_faq' id='ufaqsw_single_faq_" . esc_attr( get_the_ID() ) . "'>" . $content . '</div>';
 
 			}
 		}

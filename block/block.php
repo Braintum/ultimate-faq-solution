@@ -51,10 +51,6 @@ function ufaq_register_block_assets() {
 					'type'    => 'array',
 					'default' => array(),
 				),
-				'column'         => array(
-					'type'    => 'string',
-					'default' => '',
-				),
 				'behaviour'      => array(
 					'type'    => 'string',
 					'default' => '',
@@ -84,7 +80,6 @@ function ufaq_render_block_callback( $attributes ) {
 
 	$group          = $attributes['group'] ?? '';
 	$exclude        = ! empty( $attributes['exclude'] ) ? implode( ',', $attributes['exclude'] ) : '';
-	$column         = $attributes['column'] ?? '';
 	$behaviour      = $attributes['behaviour'] ?? '';
 	$elements_order = $attributes['elements_order'] ?? '';
 	$hide_title     = $attributes['hideTitle'] ?? false;
@@ -99,9 +94,6 @@ function ufaq_render_block_callback( $attributes ) {
 
 		if ( ! empty( $exclude ) ) {
 			$shortcode .= ' exclude="' . esc_attr( $exclude ) . '"';
-		}
-		if ( ! empty( $column ) ) {
-			$shortcode .= ' column="' . esc_attr( $column ) . '"';
 		}
 		if ( ! empty( $behaviour ) ) {
 			$shortcode .= ' behaviour="' . esc_attr( $behaviour ) . '"';

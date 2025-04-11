@@ -57,7 +57,6 @@ class Assets {
 
 		// jQuery for fronend.
 		wp_enqueue_script( 'jquery', 'jquery', array(), UFAQSW_VERSION, true );
-		wp_register_script( 'ufaqsw-grid-js', UFAQSW__PLUGIN_URL . 'assets/js/packery.min.js', array( 'jquery' ), UFAQSW_VERSION, true );
 		wp_register_script( 'ufaqsw-quicksearch-front-js', UFAQSW__PLUGIN_URL . 'assets/js/jquery.quicksearch.js', array( 'jquery' ), UFAQSW_VERSION, true );
 
 	}

@@ -104,6 +104,7 @@ function ufaqsw_register_appearance_metabox() {
 				'style-1' => esc_html__( 'Style 1', 'ufaqsw' ),
 				'style-2' => esc_html__( 'Style 2', 'ufaqsw' ),
 			),
+			'default' => 'default',
 		)
 	);
 

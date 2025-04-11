@@ -18,10 +18,6 @@ registerBlockType('ultimate-faq-solution/block', {
             type: 'array',
             default: [],
         },
-		column: {
-            type: 'string',
-            default: [],
-        },
 		behaviour: {
             type: 'string',
             default: [],
@@ -53,27 +49,6 @@ registerBlockType('ultimate-faq-solution/block', {
 		
 		const faqGroups = useSelect((select) => {
 			return select('core').getEntityRecords('postType', 'ufaqsw', { per_page: -1 });
-		}, []);
-
-		const columns = useSelect((select) => {
-			return [
-				{
-					label: __( 'Choose a column', 'ufaqsw' ),
-					value: '',
-				},
-				{
-					label: '1',
-					value: '1',
-				},
-				{
-					label: '2',
-					value: '2',
-				},
-				{
-					label: '3',
-					value: '3',
-				},
-			];
 		}, []);
 
 		const behaviours = useSelect((select) => {
@@ -125,9 +100,6 @@ registerBlockType('ultimate-faq-solution/block', {
 
 				if ( attributes.exclude.length > 0 ) {
 					text += 'exclude="' + attributes.exclude.join(',') + '" ';
-				}
-				if ( attributes.column.length > 0 ) {
-					text += 'column="' + attributes.column + '" ';
 				}
 				if ( attributes.behaviour.length > 0 ) {
 					text += 'behaviour="' + attributes.behaviour + '" ';
@@ -193,15 +165,6 @@ registerBlockType('ultimate-faq-solution/block', {
 							onChange={(value) => setAttributes({ elements_order: value })}
 						/>
 
-						{attributes.group === 'all' && (
-							<SelectControl
-								label="Column"
-								help="Select Column to display FAQs from."
-								value={attributes.column}
-								options={columns}
-								onChange={(value) => setAttributes({ column: value })}
-							/>
-						)}
 						{attributes.group === 'all' && (
 							<PanelBody title="Exclude Individual FAQ Groups">
 								{faqGroups &&

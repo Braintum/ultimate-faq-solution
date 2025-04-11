@@ -81,21 +81,11 @@ $allowed_html = ufaqsw_wses_allowed_menu_html();
 				?>
 			</p>
 			<p>
-				<b><?php echo esc_html( '2. column' ); ?></b><br>
-				<?php
-				echo wp_kses(
-					'<span>This parameter only accepts a number. By this parameter you can specify the column of your <b>FAQs Directory</b>. By Default, it is a single column <b>FAQs Directory</b>. You can set up to <b>3</b> column.
-				<span><b>Ex:</b> [ufaqsw-all exclude="1, 2" column="3"] </span>',
-					$allowed_html
-				);
-				?>
-			</p>
-			<p>
-				<b><?php echo esc_html( '3. behaviour' ); ?></b><br>
+				<b><?php echo esc_html( '2. behaviour' ); ?></b><br>
 				<?php
 				echo wp_kses(
 					'<span>Supported values for this parameter are toggle, accordion.
-				<span><b>Ex:</b> [ufaqsw-all exclude="1, 2" column="3" behaviour="accordion"] </span>',
+				<span><b>Ex:</b> [ufaqsw-all exclude="1, 2" behaviour="accordion"] </span>',
 					$allowed_html
 				);
 				?>

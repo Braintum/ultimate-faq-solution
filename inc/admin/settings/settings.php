@@ -46,8 +46,8 @@ class UFAQSW_Global_Settings {
 	 * and registering plugin settings.
 	 */
 	public function __construct() {
-		add_action( 'admin_menu', array( &$this, 'show_settings_page_callback_func' ) );
-		add_action( 'admin_init', array( &$this, 'register_plugin_settings' ) );
+		add_action( 'admin_menu', array( $this, 'show_settings_page_callback_func' ) );
+		add_action( 'admin_init', array( $this, 'register_plugin_settings' ) );
 	}
 
 	/**
@@ -64,7 +64,7 @@ class UFAQSW_Global_Settings {
 			'Settings & Help',
 			'manage_options',
 			'ufaqsw-settings',
-			array( &$this, 'settings_page_callback_func' )
+			array( $this, 'settings_page_callback_func' )
 		);
 
 	}
