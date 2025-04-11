@@ -3,8 +3,8 @@ Contributors: braintum
 Donate link: https://www.solrengine.com/  
 Tags: faq, faq schema, faq-directory, accordion, knowledgebase, woocommerce-faq  
 Requires at least: 5.1  
-Tested up to: 6.7.2  
-Stable tag: 1.4.9
+Tested up to: 6.8
+Stable tag: 1.5.0
 Requires PHP: 7.4.0  
 License: GPLv2 or later  
 License URI: https://www.gnu.org/licenses/license-list.html#GPLCompatibleLicenses  
@@ -79,7 +79,7 @@ Yes. Create a one-page searchable FAQ directory with shortcode and customize the
 Yes, you can choose between accordion or toggle behavior, reorder elements, and fully customize the appearance.
 
 = Are shortcodes customizable? =  
-Yes, you can pass parameters like `column=3`, `behavior=toggle`, or `element_order="DESC"` to control the output.
+Yes, you can pass parameters like `behavior=toggle`, or `element_order="DESC"` to control the output.
 
 == Screenshots ==
 
@@ -90,6 +90,10 @@ Yes, you can pass parameters like `column=3`, `behavior=toggle`, or `element_ord
 5. Screehshot 5
 
 == Changelog ==
+= 1.5.0 =
+* Directory page search issue fixed.
+* Directory page column removed.
+
 = 1.4.9 =
 * Plugin assets updated.
 

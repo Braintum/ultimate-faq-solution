@@ -93,7 +93,7 @@ class Shortcodes {
 			shortcode_atts(
 				array(
 					'id'             => 1,
-					'title_hide'     => 'no',
+					'title_hide'     => null,
 					'elements_order' => 'asc',
 				),
 				$atts
@@ -118,8 +118,16 @@ class Shortcodes {
 				$faq_query->the_post();
 
 				$faqs = get_post_meta( get_the_ID(), 'ufaqsw_faq_item01' );
-
 				$faqs = isset( $faqs[0] ) ? $faqs[0] : $faqs;
+
+				if ( null === $title_hide ) {
+
+					$hide_title = get_post_meta( get_the_ID(), 'ufaqsw_hide_title', true );
+
+					if ( '' !== $hide_title ) {
+						$title_hide = 'yes';
+					}
+				}
 
 				if ( 'desc' === strtolower( $elements_order ) ) {
 					$faqs = array_values( array_reverse( $faqs, true ) );
