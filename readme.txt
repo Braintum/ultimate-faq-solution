@@ -1,7 +1,7 @@
 === Ultimate FAQ Solution ===
 Contributors: braintum  
 Donate link: https://www.solrengine.com/  
-Tags: faq, faq schema, faq-directory, accordion, knowledgebase, woocommerce-faq  
+Tags: faq, faq-directory, accordion, knowledgebase, woocommerce-faq
 Requires at least: 5.1  
 Tested up to: 6.8
 Stable tag: 1.5.0
