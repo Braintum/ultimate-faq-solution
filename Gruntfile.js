@@ -206,11 +206,12 @@ module.exports = function( grunt ) {
 	grunt.loadNpmTasks( 'grunt-wp-i18n' );
 
 	grunt.registerTask( 'cssjs', ['concat', 'concat_css', 'autoprefixer', 'uglify', 'cssmin'] );
-	grunt.registerTask( 'default', [ 'i18n', 'cssjs' ] );
+	grunt.registerTask( 'default', [ 'cssjs' ] );
 	grunt.registerTask( 'i18n', ['addtextdomain', 'makepot'] );
 
 	grunt.registerTask( 'release', [
 		'default',
+		'i18n',
         'clean',
         'run:removeDev',
         'run:dumpautoload',
