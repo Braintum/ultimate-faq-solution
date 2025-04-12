@@ -9,7 +9,7 @@ Requires PHP: 7.4.0
 License: GPLv2 or later  
 License URI: https://www.gnu.org/licenses/license-list.html#GPLCompatibleLicenses  
 
-Ultimate FAQ Solution is a powerful and easy-to-use WordPress plugin for creating searchable FAQ sections, directories, and knowledge bases—with full support for FAQ Schema for rich Google results.
+A WordPress plugin to create, organize, and display FAQs with responsive layouts and styles.
 
 == Description ==
 
