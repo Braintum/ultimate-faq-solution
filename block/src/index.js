@@ -1,9 +1,10 @@
 import { registerBlockType } from '@wordpress/blocks';
 import { useSelect } from '@wordpress/data';
-import { useState } from 'react';  // Import useState from React
+import { useEffect, useState } from '@wordpress/element';
 import { PanelBody, SelectControl, CheckboxControl } from '@wordpress/components';
 import { InspectorControls } from '@wordpress/block-editor';
 import { __, _x } from '@wordpress/i18n';
+import apiFetch from '@wordpress/api-fetch';
 
 registerBlockType('ultimate-faq-solution/block', {
     title: 'FAQ',
@@ -47,8 +48,12 @@ registerBlockType('ultimate-faq-solution/block', {
 	 */
     edit({ attributes, setAttributes, isSelected, context }) {
 		
-		const faqGroups = useSelect((select) => {
-			return select('core').getEntityRecords('postType', 'ufaqsw', { per_page: -1 });
+		const [faqGroups, setFaqGroups] = useState([]);
+
+		useEffect(() => {
+			apiFetch({ path: '/wp/v2/ufaqsw?per_page=100' }).then((posts) => {
+				setFaqGroups(posts);
+			});
 		}, []);
 
 		const behaviours = useSelect((select) => {
