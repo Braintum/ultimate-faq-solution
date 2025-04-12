@@ -2,22 +2,21 @@ jQuery(document).ready(function($){
 	'use strict';
 	
 	$(".ufaqsw_box_style2").on('click', function(e){
-		if(ufaqsw_object_style_2.behaviour=='accordion'){
-			closeall();
+		if(ufaqsw_object_style_2.behaviour == 'accordion'){
+			closeall($(this));
 		}
 		$(this).next().slideToggle("fast");
 		$(this).find('i').toggle();
-
 	});
 	
-	var closeall = function(){
+	var closeall = function(exceptElement){
 		$('.ufaqsw_draw_style2').each(function(){
-			var obj = $(this);			
-			if(obj.is(":visible")){
+			var obj = $(this);
+			if(obj.is(":visible") && obj.prev()[0] !== exceptElement[0]){
 				obj.slideToggle("fast");
 				obj.prev().find('i').toggle();
-			}			
-		})
+			}
+		});
 	}
 	
 	if( typeof( ufaqsw_object_style_2 ) !== 'undefined' && ufaqsw_object_style_2.showall=='1' && ufaqsw_object_style_2.behaviour!='accordion'){
