@@ -5,23 +5,34 @@
   "author": "Md. Mahedi Hasan",
   "scripts": {
     "start": "grunt default",
-    "readme": "grunt readme",
-    "i18n": "grunt i18n",
-    "release": "grunt release"
+    "release": "grunt release",
+    "build:prod": "webpack --mode production",
+    "watch": "webpack --watch"
   },
   "devDependencies": {
+    "@babel/core": "^7.26.10",
+    "@babel/preset-env": "^7.26.9",
+    "@babel/preset-react": "^7.26.3",
+    "babel-loader": "^10.0.0",
     "grunt": "~1.5.3",
     "grunt-autoprefixer": "^3.0.4",
     "grunt-concat-css": "^0.3.2",
+    "grunt-contrib-clean": "^2.0.1",
+    "grunt-contrib-compress": "^2.0.0",
     "grunt-contrib-concat": "^2.1.0",
+    "grunt-contrib-copy": "^1.0.0",
     "grunt-contrib-cssmin": "^4.0.0",
     "grunt-contrib-uglify": "^5.2.2",
+    "grunt-run": "^0.8.1",
     "grunt-wp-i18n": "~1.0.3",
     "grunt-wp-readme-to-markdown": "~2.1.0",
     "load-grunt-tasks": "~5.1.0",
-    "grunt-contrib-clean": "^2.0.1",
-    "grunt-contrib-compress": "^2.0.0",
-    "grunt-contrib-copy": "^1.0.0",
-    "grunt-run": "^0.8.1"
+    "webpack": "^5.99.5",
+    "webpack-cli": "^6.0.1",
+    "webpack-dev-server": "^5.2.1"
+  },
+  "dependencies": {
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
   }
 }

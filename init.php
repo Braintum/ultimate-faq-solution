@@ -67,6 +67,8 @@ add_action(
 		// REST API.
 		new Mahedi\UltimateFaqSolution\Rest();
 
+		new Mahedi\UltimateFaqSolution\Chatbot();
+
 		load_plugin_textdomain( 'ufaqsw', false, dirname( plugin_basename( __FILE__ ) ) . '/inc/languages' );
 	}
 );
