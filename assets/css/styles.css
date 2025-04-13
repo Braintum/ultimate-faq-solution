@@ -181,7 +181,7 @@
 .ufaqsw_faq_title {
     margin-bottom: 20px;
 }
-.ufaqsw_FaQ_Each_style2{
+.ufaqsw_faq_style2{
 	padding-bottom: 10px;
 }
 .ufaqsw_box_style2{
@@ -197,6 +197,11 @@
 	width:100%;
 	box-sizing: border-box;
 }
+
+.ufaqsw_box_style2:focus-visible {
+  outline: 1px solid #0073aa; /* WordPress blue */
+}
+
 .ufaqsw_draw_style2{
   display: none;
   background: #ffffff;

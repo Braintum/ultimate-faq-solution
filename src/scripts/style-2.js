@@ -2,14 +2,33 @@ jQuery(document).ready(function($){
 	'use strict';
 	
 	$(".ufaqsw_box_style2").on('click', function(e){
-		if(ufaqsw_object_style_2.behaviour == 'accordion'){
-			closeall($(this));
+		toggleItem($(this));
+	});
+
+	// Toggle on keyboard
+	$(".ufaqsw_box_style2").on('keydown', function(e){
+		if (e.key === 'Enter' || e.key === ' ') {
+			e.preventDefault();
+			toggleItem($(this));
 		}
-		$(this).next().slideToggle("fast");
-		$(this).find('i').toggle();
 	});
 	
-	var closeall = function(exceptElement){
+	const toggleItem = ( element ) => {
+		if(ufaqsw_object_style_2.behaviour == 'accordion'){
+			closeall(element);
+		}
+
+		const question_expanded = element.attr('aria-expanded') === 'true';
+    	element.attr('aria-expanded', String(!question_expanded));
+
+		const answer_expanded = element.next().attr('aria-hidden') === 'true';
+    	element.next().attr('aria-hidden', String(!answer_expanded));
+
+		element.next().slideToggle("fast");
+		element.find('i').toggle();
+	}
+	
+	const closeall = function(exceptElement){
 		$('.ufaqsw_draw_style2').each(function(){
 			var obj = $(this);
 			if(obj.is(":visible") && obj.prev()[0] !== exceptElement[0]){
