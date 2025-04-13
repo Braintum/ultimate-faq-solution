@@ -34,6 +34,9 @@
 }
 .ufaqsw_title_area_style1{position:relative;  background: #eac8d3;}
 
+.ufaqsw_title_area_style1:focus-visible {
+  outline: 1px solid #0073aa; /* WordPress blue */
+}
 
 .ufaqsw_plus_style1 {
   position: absolute;
