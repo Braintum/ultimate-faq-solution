@@ -75,6 +75,48 @@ class SEO {
 			return $faqs_data;
 		}
 
+		// Check if post has the FAQ block.
+		if ( has_block( 'ultimate-faq-solution/block', $post->post_content ) ) {
+			$block = parse_blocks( $post->post_content );
+
+			foreach ( $block as $key => $value ) {
+				if ( 'ultimate-faq-solution/block' === $value['blockName'] ) {
+
+					$group_id = $value['attrs']['group'];
+					if ( 'all' === $group_id ) {
+
+						$faq_groups = get_posts(
+							array(
+								'post_type'      => 'ufaqsw',
+								'posts_per_page' => -1,
+								'fields'         => 'ids',
+								'post__not_in'   => isset( $value['attrs']['exclude'] ) && is_array( $value['attrs']['exclude'] ) ? $value['attrs']['exclude'] : array(),
+							)
+						);
+
+						if ( ! empty( $faq_groups ) ) {
+							foreach ( $faq_groups as $faq_group ) {
+								$faqs = apply_filters( 'ufaqsw_simplify_faqs', get_post_meta( $faq_group, 'ufaqsw_faq_item01' ) );
+								if ( ! empty( $faqs ) ) {
+									$faqs_data = array_merge( $faqs_data, $faqs );
+								}
+							}
+						}
+					} else {
+						$faqs = apply_filters( 'ufaqsw_simplify_faqs', get_post_meta( $group_id, 'ufaqsw_faq_item01' ) );
+
+						if ( isset( $value['attrs']['elements_order'] ) && 'desc' === strtolower( $value['attrs']['elements_order'] ) ) {
+							$faqs = array_values( array_reverse( $faqs, true ) );
+						}
+
+						if ( ! empty( $faqs ) ) {
+							$faqs_data = array_merge( $faqs_data, $faqs );
+						}
+					}
+				}
+			}
+		}
+
 		// all faq groups.
 		if ( has_shortcode( $post->post_content, 'ufaqsw-all' ) ) {
 
