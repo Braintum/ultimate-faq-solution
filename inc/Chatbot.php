@@ -40,7 +40,7 @@ class Chatbot {
 
 	// Shortcode to display the chatbot.
 	public function chatbot_shortcode() {
-		return '<chatbot-component></chatbot-component>';
+		return '<div id="chatbot-root"></div>';
 	}
 }
 
