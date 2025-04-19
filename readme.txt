@@ -4,7 +4,7 @@ Donate link: https://www.solrengine.com/
 Tags: faq, faq-directory, accordion, knowledgebase, woocommerce-faq
 Requires at least: 5.1  
 Tested up to: 6.8
-Stable tag: 1.5.2
+Stable tag: 1.5.3
 Requires PHP: 7.4.0  
 License: GPLv2 or later  
 License URI: https://www.gnu.org/licenses/license-list.html#GPLCompatibleLicenses  
@@ -23,7 +23,7 @@ Create and edit FAQ groups just like any WordPress post, using the familiar inte
 
 💡 Save time, reduce customer support queries, and enhance user experience with beautifully styled, mobile-responsive FAQ sections.
 
-🔗 [Support & Feature Requests](https://www.solrengine.com/support/) | [Live Demo](https://ultimate-faq-solution.solrengine.com/)
+🔗 [Support & Feature Requests](https://www.braintum.com/contact-us/) | [Live Demo](https://www.braintum.com/ultimate-faq-solution/)
 
 = ✅ Features at a Glance =
 * ✅ **Accessibility-Ready Templates**
@@ -31,7 +31,7 @@ Create and edit FAQ groups just like any WordPress post, using the familiar inte
 * ✅ **FAQ Schema / Structured Data Support**
 * ✅ **WooCommerce Product FAQ Tabs**
 * ✅ **Live AJAX Search**
-* ✅ **FAQ Directory with Search & Columns**
+* ✅ **FAQ Directory with Search & Filter by Group**
 * ✅ **Accordion & Toggle Display Modes**
 * ✅ **Edit All FAQs in a Group from One Screen**
 * ✅ **Shortcode for Easy Placement**
@@ -95,6 +95,10 @@ Yes, you can pass parameters like `behavior=toggle`, or `element_order="DESC"` t
 5. Screehshot 5
 
 == Changelog ==
+
+= 1.5.3 =
+* FAQ design improvements.
+* Filter by FAQ Group option added for All FAQ page.
 
 = 1.5.2 =
 * ♿ Made all templates accessibility-ready for improved usability.

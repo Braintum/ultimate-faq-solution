@@ -219,7 +219,7 @@ $allowed_html = ufaqsw_wses_allowed_menu_html();
 				<div id="poststuff">
 							<h1><?php echo wp_kses( 'Welcome to the Ultimate FAQ Solution Support Section.', $allowed_html ); ?></h1>
 							<h3><?php echo esc_html( 'Any Troubles?' ); ?></h3>
-							<p><?php echo wp_kses( 'you can simply shoot us an email at <b>braintum@gmail.com</b> or you can open a support ticket at <a href="https://solrengine.com/support/" target="_blank">https://solrengine.com/support/</a>', $allowed_html ); ?></p>
+							<p><?php echo wp_kses( 'you can simply shoot us an email at <b>braintum@gmail.com</b> or you can open a support ticket at <a href="https://www.braintum.com/support/" target="_blank">https://www.braintum.com/support/</a>', $allowed_html ); ?></p>
 
 							<p><?php echo esc_html( 'We recommend you to open a support ticket from our support page for awesome & nice support experience.' ); ?></p>
 
