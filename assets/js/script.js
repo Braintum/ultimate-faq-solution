@@ -5,7 +5,18 @@ jQuery(window).load(function() {
 	const ufaqsw_element_object = {
 		faq_item: '.ufaqsw_element_src',
 		faq_item_group: '.ufaqsw_element_group_src',
+		faq_filter_item: '.filter-list__item',
 	};
+
+	jQuery(ufaqsw_element_object.faq_filter_item).on( 'click', function(e) {
+		const filter_id = jQuery(this).data('index');
+		const targetSection = jQuery(`#${filter_id}`);
+		if (targetSection.length) {
+			jQuery('html, body').animate({
+				scrollTop: targetSection.offset().top - 140
+			}, 500);
+		}
+	});
 
 	if ( jQuery('.ufaqsw_default_all_faq_content').length ) {
 	  

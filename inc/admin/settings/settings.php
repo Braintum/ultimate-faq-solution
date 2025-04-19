@@ -78,6 +78,7 @@ class UFAQSW_Global_Settings {
 	public function register_plugin_settings() {
 		register_setting( 'ufaqsw-plugin-settings-group', 'ufaqsw_enable_woocommerce' );
 		register_setting( 'ufaqsw-plugin-settings-group', 'ufaqsw_enable_search' );
+		register_setting( 'ufaqsw-plugin-settings-group', 'ufaqsw_enable_filter' );
 		register_setting( 'ufaqsw-plugin-settings-group', 'ufaqsw_live_search_text' );
 		register_setting( 'ufaqsw-plugin-settings-group', 'ufaqsw_live_search_loading_text' );
 		register_setting( 'ufaqsw-plugin-settings-group', 'ufaqsw_search_result_not_found' );

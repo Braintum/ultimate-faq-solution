@@ -67,6 +67,14 @@ $allowed_html = ufaqsw_wses_allowed_menu_html();
 					</td>
 				</tr>
 
+				<tr valign="top">
+					<th scope="row"><?php echo esc_html( 'Enable Filter by Group' ); ?></th>
+					<td>
+						<input type="checkbox" name="ufaqsw_enable_filter" value="on" <?php echo ( esc_attr( get_option( 'ufaqsw_enable_filter' ) ) === 'on' ? 'checked="checked"' : '' ); ?> />
+						<i><?php echo wp_kses( 'Display a set of filter buttons above the FAQ list, allowing users to view FAQs by specific groups.', $allowed_html ); ?></i>
+					</td>
+				</tr>
+
 			</table>
 			<p><b><u><?php echo esc_html( 'Directory Shortcode Parameters' ); ?></u></b></p>
 			<p><?php echo wp_kses( 'There are some parameters for <b>[ufaqsw-all]</b> shortcode to inhance its usability.', $allowed_html ); ?></p>
