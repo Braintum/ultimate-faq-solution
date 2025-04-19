@@ -2,10 +2,10 @@
 # This file is distributed under the GPLv2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Ultimate FAQ Solution 1.5.2\n"
+"Project-Id-Version: Ultimate FAQ Solution 1.5.3\n"
 "Report-Msgid-Bugs-To: "
 "https://wordpress.org/support/plugin/ultimate-faq-solution\n"
-"POT-Creation-Date: 2025-04-13 14:42:14+00:00\n"
+"POT-Creation-Date: 2025-04-19 19:31:52+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -78,7 +78,7 @@ msgstr ""
 msgid "Check this field if you want to hide FAQ Group Title."
 msgstr ""
 
-#: inc/Shortcodes.php:152 inc/Shortcodes.php:228 inc/Shortcodes.php:245
+#: inc/Shortcodes.php:152 inc/Shortcodes.php:230 inc/Shortcodes.php:247
 #. translators: %s is the name of the template that was not found.
 msgid "%s Template Not Found"
 msgstr ""
@@ -275,7 +275,7 @@ msgstr ""
 msgid "Live Search.."
 msgstr ""
 
-#: inc/templates/all/template.php:38
+#: inc/templates/all/template.php:49
 msgid "No Result Fount!"
 msgstr ""
 
