@@ -3,7 +3,9 @@ import { createPortal } from 'react-dom';
 import { ShadowApp } from './ShadowApp';
 import chatbotStyles from '../styles/chatbot.css?shadow';
 
-const shadowHost = document.getElementById('chatbot-root');
+// Create a new element and attach Shadow DOM
+const shadowHost = document.createElement('div');
+document.body.appendChild(shadowHost); // Append the new element to the body
 const shadowRoot = shadowHost.attachShadow({ mode: 'open' });
 
 const ShadowWrapper = ({ onClose }) => {
@@ -13,7 +15,7 @@ const ShadowWrapper = ({ onClose }) => {
   if (!mountPoint) {
     mountPoint = document.createElement('div');
     const style = document.createElement('style');
-    console.log( chatbotStyles );
+    console.log(chatbotStyles);
     style.textContent = chatbotStyles; // Inject CSS into Shadow DOM
     shadowRoot.appendChild(style);
     shadowRoot.appendChild(mountPoint);
