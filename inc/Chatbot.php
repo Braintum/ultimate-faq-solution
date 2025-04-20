@@ -31,9 +31,9 @@ class Chatbot {
 	public function enqueue_react_chatbot_script() {
 		wp_enqueue_script(
 			'react-chatbot',
-			UFAQSW_ASSETS_URL . 'dist/bundle.js',
+			UFAQSW_ASSETS_URL . 'dist/main.bundle.js',
 			array(),
-			fileatime( UFAQSW__PLUGIN_DIR . 'assets/dist/bundle.js' ),
+			fileatime( UFAQSW__PLUGIN_DIR . 'assets/dist/main.bundle.js' ),
 			true
 		);
 	}
