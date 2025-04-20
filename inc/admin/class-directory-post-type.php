@@ -292,7 +292,7 @@ function ufaqsw_register_repeatable_group_field_metabox() {
 			'id'      => 'ufaqsw_faq_answer',
 			'type'    => 'wysiwyg',
 			'options' => array(
-				'textarea_rows' => 5,
+				'textarea_rows' => 20,
 			),
 		)
 	);
