@@ -4,7 +4,10 @@ export const FaqAnswer = ({ faq, onBackClick }) => {
 	return (
 		<div className="faq-answer">
 			<h2>{faq.question}</h2>
-			<p>{faq.answer}</p>
+			<div
+				className="faq-answer-content"
+				dangerouslySetInnerHTML={{ __html: faq.answer }}
+			></div>
 		</div>
 	);
 }

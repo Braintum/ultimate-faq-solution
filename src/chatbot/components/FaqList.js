@@ -1,16 +1,11 @@
 import React from "react";
+import { ListItem } from "./ListItem";
 
-export const FaqList = ({ faqs, onListClick, onBackClick }) => {
+export const FaqList = ({ faqs, onListClick }) => {
 	return (
-		<div className="faq-list">
+		<div className="faq-list list-items">
 			{faqs.map((faq, index) => (
-				<div
-					key={index}
-					className="faq-item"
-					onClick={() => onListClick(faq)}
-				>
-					{faq.question}
-				</div>
+				<ListItem item={faq} index={index} onClick={onListClick} content={faq.question} />
 			))}
 		</div>
 	);
