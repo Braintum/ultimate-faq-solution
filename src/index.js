@@ -1,26 +1,6 @@
 import { createRoot } from 'react-dom/client';
 import React, { useEffect, useState } from 'react';
-import { createPortal } from 'react-dom';
-import { ShadowApp } from './components/ShadowApp';
-
-const shadowHost = document.getElementById('chatbot-root');
-const shadowRoot = shadowHost.attachShadow({ mode: 'open' });
-
-// Mount using React Portal
-const ShadowWrapper = ({ onClose }) => {
-  console.log('Mounting ShadowWrapper');
-
-  let mountPoint = shadowRoot.querySelector('div');
-  if (!mountPoint) {
-    mountPoint = document.createElement('div');
-    const style = document.createElement('style');
-    style.textContent = `:host { all: initial; }`; // reset styles if needed
-    shadowRoot.appendChild(style);
-    shadowRoot.appendChild(mountPoint);
-  }
-
-  return createPortal(<ShadowApp onClose={onClose} />, mountPoint);
-};
+import ShadowWrapper from './components/ShadowWrapper'; // Updated import
 
 const FloatingButton = ({ onClick }) => {
   return (
