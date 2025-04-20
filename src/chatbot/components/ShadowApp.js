@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import { ChatInput } from './ChatInput';
+import { FaqGroups } from './FaqGroups';
+import { FaqList } from './FaqList';
+import { FaqAnswer } from './FaqAnswer';
 
 const faqData = [
   {
@@ -86,50 +89,15 @@ export const ShadowApp = ({ onClose }) => {
       </button>
 
       {view === 'group' && (
-        <div className="faq-groups">
-          {faqData.map((group, index) => (
-            <div
-              key={index}
-              className="faq-group"
-              onClick={() => handleGroupClick(group)}
-            >
-              {group.group}
-            </div>
-          ))}
-        </div>
+        <FaqGroups faqData={faqData} onGroupClick={handleGroupClick} />
       )}
 
       {view === 'list' && selectedGroup && (
-        <div className="faq-list">
-          <button
-            onClick={handleBackClick}
-            className="faq-back-button"
-          >
-            Back
-          </button>
-          {selectedGroup.items.map((faq, index) => (
-            <div
-              key={index}
-              className="faq-question"
-              onClick={() => handleQuestionClick(faq)}
-            >
-              {faq.question}
-            </div>
-          ))}
-        </div>
+		<FaqList faqs={selectedGroup.items} onListClick={handleQuestionClick} onBackClick={handleBackClick} />
       )}
 
       {view === 'answer' && selectedFaq && (
-        <div className="faq-answer">
-          <button
-            onClick={handleBackClick}
-            className="faq-back-button"
-          >
-            Back
-          </button>
-          <h2>{selectedFaq.question}</h2>
-          <p>{selectedFaq.answer}</p>
-        </div>
+		<FaqAnswer faq={selectedFaq} onBackClick={handleBackClick} />
       )}
 
       <div className="chatbot-messages">
