@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { ChatInput } from './ChatInput';
 import { FaqGroups } from './FaqGroups';
 import { FaqList } from './FaqList';
 import { FaqAnswer } from './FaqAnswer';
+import { Header } from './Header';
 
 const faqData = [
   {
@@ -50,14 +50,6 @@ export const ShadowApp = ({ onClose }) => {
   const [view, setView] = useState('group'); // 'group', 'list', or 'answer'
   const [selectedGroup, setSelectedGroup] = useState(null);
   const [selectedFaq, setSelectedFaq] = useState(null);
-  const [messages, setMessages] = useState([]);
-
-  const handleSend = (text) => {
-    setMessages([...messages, { sender: 'user', text }]);
-    setTimeout(() => {
-      setMessages((prev) => [...prev, { sender: 'bot', text: "Echo: " + text }]);
-    }, 500);
-  };
 
   const handleGroupClick = (group) => {
     setSelectedGroup(group);
@@ -81,31 +73,33 @@ export const ShadowApp = ({ onClose }) => {
 
   return (
     <div className="chatbot-container">
-      <button
-        onClick={onClose}
-        className="chatbot-close-button"
-      >
-        ✖
-      </button>
+      <Header
+        onClose={onClose}
+        onBack={handleBackClick}
+        showBackButton={view !== 'group'}
+      />
 
-      {view === 'group' && (
-        <FaqGroups faqData={faqData} onGroupClick={handleGroupClick} />
-      )}
+	  <div className="chatbot-body">
+		{view === 'group' && (
+			<FaqGroups 
+			faqData={faqData} 
+			onGroupClick={handleGroupClick} 
+			/>
+		)}
 
-      {view === 'list' && selectedGroup && (
-		<FaqList faqs={selectedGroup.items} onListClick={handleQuestionClick} onBackClick={handleBackClick} />
-      )}
+		{view === 'list' && selectedGroup && (
+			<FaqList
+			faqs={selectedGroup.items}
+			onListClick={handleQuestionClick}
+			onBackClick={handleBackClick}
+			/>
+		)}
 
-      {view === 'answer' && selectedFaq && (
-		<FaqAnswer faq={selectedFaq} onBackClick={handleBackClick} />
-      )}
+		{view === 'answer' && selectedFaq && (
+			<FaqAnswer faq={selectedFaq} onBackClick={handleBackClick} />
+		)}
+	  </div>
 
-      <div className="chatbot-messages">
-        {messages.map((msg, i) => (
-          <div key={i}><strong>{msg.sender}:</strong> {msg.text}</div>
-        ))}
-      </div>
-      <ChatInput onSend={handleSend} />
     </div>
   );
 };
