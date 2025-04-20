@@ -4,7 +4,7 @@ Donate link: https://www.solrengine.com/
 Tags: faq, faq-directory, accordion, knowledgebase, woocommerce-faq
 Requires at least: 5.1  
 Tested up to: 6.8
-Stable tag: 1.5.1
+Stable tag: 1.5.3
 Requires PHP: 7.4.0  
 License: GPLv2 or later  
 License URI: https://www.gnu.org/licenses/license-list.html#GPLCompatibleLicenses  
@@ -23,18 +23,17 @@ Create and edit FAQ groups just like any WordPress post, using the familiar inte
 
 💡 Save time, reduce customer support queries, and enhance user experience with beautifully styled, mobile-responsive FAQ sections.
 
-🔗 [Support & Feature Requests](https://www.solrengine.com/support/) | [Live Demo](https://ultimate-faq-solution.solrengine.com/)
+🔗 [Support & Feature Requests](https://www.braintum.com/contact-us/) | [Live Demo](https://www.braintum.com/ultimate-faq-solution/)
 
 = ✅ Features at a Glance =
-
+* ✅ **Accessibility-Ready Templates**
 * ✅ **Gutenberg Block Support**
 * ✅ **FAQ Schema / Structured Data Support**
 * ✅ **WooCommerce Product FAQ Tabs**
 * ✅ **Live AJAX Search**
-* ✅ **FAQ Directory with Search & Columns**
+* ✅ **FAQ Directory with Search & Filter by Group**
 * ✅ **Accordion & Toggle Display Modes**
 * ✅ **Edit All FAQs in a Group from One Screen**
-* ✅ **Masonry Layout for FAQ Display**
 * ✅ **Shortcode for Easy Placement**
 * ✅ **200+ Icons Available**
 * ✅ **Customizable Layouts & Typography**
@@ -63,8 +62,14 @@ Create and edit FAQ groups just like any WordPress post, using the familiar inte
 
 == Frequently Asked Questions ==
 
+= How do I display FAQs on my site? =  
+You can display FAQs using the `[ufaqsw-all]` shortcode. Simply insert this shortcode into any page or post where you want the FAQs to appear. You can also use the FAQ Gutenberg block for a more visual approach.
+
 = Does this plugin support FAQ schema (structured data)? =  
 Yes! Your FAQs are marked up with JSON-LD to support FAQPage structured data, helping your content appear as rich snippets in Google.
+
+= Is the plugin accessibility-ready? =  
+Yes, the plugin includes accessibility-ready templates to ensure usability for all users, including those relying on assistive technologies.
 
 = Can I add FAQs to WooCommerce products? =  
 Absolutely. You can display a dedicated FAQ tab on each product page.
@@ -73,10 +78,10 @@ Absolutely. You can display a dedicated FAQ tab on each product page.
 Yes. You can embed images, videos, and even shortcodes using the WYSIWYG editor.
 
 = Can I create a searchable FAQ directory? =  
-Yes. Create a one-page searchable FAQ directory with shortcode and customize the column layout.
+Yes. You can create a one-page searchable FAQ directory using a shortcode or the FAQ Directory Gutenberg block.
 
 = Can I control how the FAQ is displayed? =  
-Yes, you can choose between accordion or toggle behavior, reorder elements, and fully customize the appearance.
+Yes, you can choose between accordion or toggle behavior, reorder elements, fully customize the appearance, and apply various styling options to match your site's design.
 
 = Are shortcodes customizable? =  
 Yes, you can pass parameters like `behavior=toggle`, or `element_order="DESC"` to control the output.
@@ -90,6 +95,20 @@ Yes, you can pass parameters like `behavior=toggle`, or `element_order="DESC"` t
 5. Screehshot 5
 
 == Changelog ==
+
+= 1.5.3 =
+* FAQ design improvements.
+* Filter by FAQ Group option added for All FAQ page.
+
+= 1.5.2 =
+* ♿ Made all templates accessibility-ready for improved usability.
+* 🎨 Enhanced default template UI for a better user experience.
+* 🔄 Improved accordion behavior for smoother interactions.
+* 🔍 Refined FAQ search UI for better clarity and functionality.
+* 🛠️ Fixed schema issues for the FAQ Gutenberg block to ensure proper structured data support.
+
+= 1.5.1 =
+* Code optimization.
 
 = 1.5.0 =
 * Live Preview added

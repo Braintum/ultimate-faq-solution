@@ -67,6 +67,14 @@ $allowed_html = ufaqsw_wses_allowed_menu_html();
 					</td>
 				</tr>
 
+				<tr valign="top">
+					<th scope="row"><?php echo esc_html( 'Enable Filter by Group' ); ?></th>
+					<td>
+						<input type="checkbox" name="ufaqsw_enable_filter" value="on" <?php echo ( esc_attr( get_option( 'ufaqsw_enable_filter' ) ) === 'on' ? 'checked="checked"' : '' ); ?> />
+						<i><?php echo wp_kses( 'Display a set of filter buttons above the FAQ list, allowing users to view FAQs by specific groups.', $allowed_html ); ?></i>
+					</td>
+				</tr>
+
 			</table>
 			<p><b><u><?php echo esc_html( 'Directory Shortcode Parameters' ); ?></u></b></p>
 			<p><?php echo wp_kses( 'There are some parameters for <b>[ufaqsw-all]</b> shortcode to inhance its usability.', $allowed_html ); ?></p>
@@ -211,7 +219,7 @@ $allowed_html = ufaqsw_wses_allowed_menu_html();
 				<div id="poststuff">
 							<h1><?php echo wp_kses( 'Welcome to the Ultimate FAQ Solution Support Section.', $allowed_html ); ?></h1>
 							<h3><?php echo esc_html( 'Any Troubles?' ); ?></h3>
-							<p><?php echo wp_kses( 'you can simply shoot us an email at <b>braintum@gmail.com</b> or you can open a support ticket at <a href="https://solrengine.com/support/" target="_blank">https://solrengine.com/support/</a>', $allowed_html ); ?></p>
+							<p><?php echo wp_kses( 'you can simply shoot us an email at <b>braintum@gmail.com</b> or you can open a support ticket at <a href="https://www.braintum.com/support/" target="_blank">https://www.braintum.com/support/</a>', $allowed_html ); ?></p>
 
 							<p><?php echo esc_html( 'We recommend you to open a support ticket from our support page for awesome & nice support experience.' ); ?></p>
 

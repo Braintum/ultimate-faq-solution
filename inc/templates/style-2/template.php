@@ -13,6 +13,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 extract( $designs ); // phpcs:ignore
+
+$is_show_all = 'accordion' !== $behaviour && '1' === $showall;
 ?>
 
 <div class="ufaqsw_container_style2 ufaqsw_faq_section_style2 ufaqsw_element_group_src">
@@ -42,15 +44,25 @@ extract( $designs ); // phpcs:ignore
 		*/
 
 		?>
-	<div class="ufaqsw_FaQ_Each_style2 ufaqsw_toggle_default_<?php echo esc_html( get_the_ID() ); ?> ufaqsw_element_src">
-		<div class="ufaqsw_box_style2 ufaqsw-title-name-default_<?php echo esc_html( get_the_ID() ); ?> ufaqsw-toggle-title-area-default_<?php echo esc_html( get_the_ID() ); ?>">
+	<div class="ufaqsw_faq_style2 ufaqsw_toggle_default_<?php echo esc_html( get_the_ID() ); ?> ufaqsw_element_src">
+		<div class="ufaqsw_box_style2 ufaqsw-title-name-default_<?php echo esc_html( get_the_ID() ); ?> ufaqsw-toggle-title-area-default_<?php echo esc_html( get_the_ID() ); ?>"
+			role="button"
+			tabindex="0"
+			aria-expanded="<?php echo $is_show_all ? 'true' : 'false'; ?>"
+			aria-controls="ufaqsw_faq_answer_<?php echo esc_html( $c ); ?>_<?php echo esc_html( get_the_ID() ); ?>"
+			aria-label="<?php echo esc_html( $question ); ?>"
+		>
 				<span>
-					<i class="fa <?php echo esc_attr( isset( $designs['normal_icon'] ) && '' !== $designs['normal_icon'] ? $designs['normal_icon'] : 'fa fa-plus' ); ?>" aria-hidden="true"></i>
-					<i class="fa <?php echo esc_attr( isset( $designs['active_icon'] ) && '' !== $designs['active_icon'] ? $designs['active_icon'] : 'fa fa-minus' ); ?>" id="ufaqsw_other_style2" aria-hidden="true"></i>
+					<i class="fa <?php echo esc_attr( isset( $designs['normal_icon'] ) && '' !== $designs['normal_icon'] ? $designs['normal_icon'] : 'fa fa-plus' ); ?>" ></i>
+					<i class="fa <?php echo esc_attr( isset( $designs['active_icon'] ) && '' !== $designs['active_icon'] ? $designs['active_icon'] : 'fa fa-minus' ); ?>" id="ufaqsw_other_style2" ></i>
 				</span>
 				&nbsp;&nbsp;<span class="ufaqsw_faq_question_src"><?php echo wp_kses_post( $question ); ?></span>
 		</div>
-		<section class="ufaqsw_draw_style2 ufaqsw-toggle-inner-default_<?php echo esc_html( get_the_ID() ); ?> ufaqsw_faq_answer_src">
+		<section class="ufaqsw_draw_style2 ufaqsw-toggle-inner-default_<?php echo esc_html( get_the_ID() ); ?> ufaqsw_faq_answer_src"
+			id="ufaqsw_faq_answer_<?php echo esc_html( $c ); ?>_<?php echo esc_html( get_the_ID() ); ?>"
+			aria-hidden="<?php echo $is_show_all ? 'false' : 'true'; ?>"
+			aria-labelledby="ufaqsw_faq_answer_<?php echo esc_html( $c ); ?>_<?php echo esc_html( get_the_ID() ); ?>"
+		>
 			<?php echo wp_kses_post( apply_filters( 'the_content', $answer ) ); ?>
 		</section>
 	</div>

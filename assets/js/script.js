@@ -5,7 +5,18 @@ jQuery(window).load(function() {
 	const ufaqsw_element_object = {
 		faq_item: '.ufaqsw_element_src',
 		faq_item_group: '.ufaqsw_element_group_src',
+		faq_filter_item: '.filter-list__item',
 	};
+
+	jQuery(ufaqsw_element_object.faq_filter_item).on( 'click', function(e) {
+		const filter_id = jQuery(this).data('index');
+		const targetSection = jQuery(`#${filter_id}`);
+		if (targetSection.length) {
+			jQuery('html, body').animate({
+				scrollTop: targetSection.offset().top - 140
+			}, 500);
+		}
+	});
 
 	if ( jQuery('.ufaqsw_default_all_faq_content').length ) {
 	  
@@ -51,75 +62,128 @@ jQuery(window).load(function() {
 });;jQuery(document).ready(function($){
 	'use strict';
 
-	if( jQuery(".ufaqsw_toggle_default .ufaqsw-toggle-title-area-default").hasClass('ufaqsw_active') ){
-		jQuery(".ufaqsw_toggle_default .ufaqsw-toggle-title-area-default.ufaqsw_active").closest('.ufaqsw_toggle_default').find('.ufaqsw-toggle-inner-default').show();
-	}
-
-	//Handle click event
-	jQuery(".ufaqsw_toggle_default .ufaqsw-toggle-title-area-default").on('click', function(){
-
-		if(ufaqsw_object_default.behaviour=='accordion'){			
-			closeall($(this));
+	const toggleItem = (element) => {
+		if (ufaqsw_object_default.behaviour == 'accordion') {			
+			closeall(element);
 		}
 
-		if( jQuery(this).hasClass('ufaqsw_active') ){
-			jQuery(this).removeClass("ufaqsw_active").closest('.ufaqsw_toggle_default').find('.ufaqsw-toggle-inner-default').slideUp(200);
+		if (element.hasClass('ufaqsw_active')) {
+			hideItem(element);
+		} else {	
+			showItem(element);
 		}
-		else{	
-			jQuery(this).addClass("ufaqsw_active").closest('.ufaqsw_toggle_default').find('.ufaqsw-toggle-inner-default').slideDown(200);
+		element.find('i').toggle();
+
+		const question_expanded = element.attr('aria-expanded') === 'true';
+    	element.attr('aria-expanded', String(!question_expanded));
+
+		const answer_expanded = element.closest('.ufaqsw_toggle_default').find('.ufaqsw-toggle-inner-default').attr('aria-hidden') === 'true';
+    	element.closest('.ufaqsw_toggle_default').find('.ufaqsw-toggle-inner-default').attr('aria-hidden', String(!answer_expanded));
+	};
+
+	const showItem = (element) => {
+		element.addClass("ufaqsw_active").closest('.ufaqsw_toggle_default').find('.ufaqsw-toggle-inner-default').slideDown(200);
+	};
+
+	const hideItem = (element) => {
+		if (element.hasClass('ufaqsw_active')) {
+			element.removeClass("ufaqsw_active");
 		}
-		$(this).find('i').toggle();
-		
+		element.closest('.ufaqsw_toggle_default').find('.ufaqsw-toggle-inner-default').slideUp(200);
+	};
+
+	$(".ufaqsw_toggle_default .ufaqsw-toggle-title-area-default").each(function() {
+		const obj = $(this);
+		if (obj.hasClass('ufaqsw_active')) {	
+			showItem(obj);
+		} else {
+			hideItem(obj);
+		}
 	});
-	
-	var closeall = function(exceptElement){
-		jQuery(".ufaqsw_toggle_default .ufaqsw-toggle-title-area-default").each(function(){
-			if( jQuery(this).hasClass('ufaqsw_active') && this !== exceptElement[0]){
-				jQuery(this).removeClass("ufaqsw_active").closest('.ufaqsw_toggle_default').find('.ufaqsw-toggle-inner-default').slideUp(200);
-				$(this).find('i').toggle();
+
+	// Handle click event
+	$(".ufaqsw_toggle_default .ufaqsw-toggle-title-area-default").on('click', function() {
+		toggleItem($(this));
+	});
+
+	// Toggle on keyboard
+	$(".ufaqsw_toggle_default .ufaqsw-toggle-title-area-default").on('keydown', function(e){
+		if (e.key === 'Enter' || e.key === ' ') {
+			e.preventDefault();
+			toggleItem($(this));
+		}
+	});
+
+	const closeall = function(exceptElement) {
+		jQuery(".ufaqsw_toggle_default .ufaqsw-toggle-title-area-default").each(function() {
+			if (jQuery(this).hasClass('ufaqsw_active') && this !== exceptElement[0]) {
+				hideItem(jQuery(this));
 			}
-		})
-	}
-	
-	//show all answers on start
+		});
+	};
+
+	// Show all answers on start
 	if (typeof ufaqsw_object_default !== 'undefined' && ufaqsw_object_default.showall == '1' && ufaqsw_object_default.behaviour != 'accordion') {
 		jQuery(".ufaqsw_toggle_default .ufaqsw-toggle-title-area-default").each(function() {
 			jQuery(this).trigger("click");
 		});
 	}
-	
-	
-});jQuery(document).ready(function($){
+});;jQuery(document).ready(function($){
 	'use strict';
 	
 	$('.ufaqsw_toggle_default > .ufaqsw_title_area_style1').on('click', function(e){
-		var obj = $(this).parent().find('[type=checkbox]');
+		toggleItem($(this));
+	});
+
+	// Toggle on keyboard
+	$('.ufaqsw_toggle_default > .ufaqsw_title_area_style1').on('keydown', function(e){
+		if (e.key === 'Enter' || e.key === ' ') {
+			e.preventDefault();
+			toggleItem($(this));
+		}
+	});
+
+	const toggleItem = ( element ) => {
+
+		var obj = element.parent().find('[type=checkbox]');
 
 		if(ufaqsw_object_style_1.behaviour == 'accordion'){
-			closeall($(this).parent());
+			closeall(element.parent());
 		}
 
 		if (obj.attr('checked')) {
 			obj.attr('checked', false);
-			obj.next().next().css({"height": "", "opacity": "", "padding": ""});	
-			obj.next().find('.ufaqsw-style1-active-icon').css({"display": "none"});			
-			obj.next().find('.ufaqsw-style1-normal-icon').css({"display": "inline-block"});
+			hideItem(obj);
 		} else {
 			obj.attr('checked', true);
-			obj.next().next().css({"height": "auto", "opacity": "1", "padding": "15px"});			
-			obj.next().find('.ufaqsw-style1-active-icon').css({"display": "inline-block"});			
-			obj.next().find('.ufaqsw-style1-normal-icon').css({"display": "none"});	
+			showItem(obj);
 		}
-	});
+
+		const question_expanded = element.attr('aria-expanded') === 'true';
+    	element.attr('aria-expanded', String(!question_expanded));
+
+		const answer_expanded = element.next().attr('aria-hidden') === 'true';
+    	element.next().attr('aria-hidden', String(!answer_expanded));
+	}
+
+	const showItem = ( element ) => {
+		element.next().next().css({"height": "auto", "opacity": "1", "padding": "15px"});			
+		element.next().find('.ufaqsw-style1-active-icon').css({"display": "inline-block"});			
+		element.next().find('.ufaqsw-style1-normal-icon').css({"display": "none"});	
+	}
+
+	const hideItem = ( element ) => {
+		element.next().next().css({"height": "", "opacity": "", "padding": ""});	
+		element.next().find('.ufaqsw-style1-active-icon').css({"display": "none"});			
+		element.next().find('.ufaqsw-style1-normal-icon').css({"display": "inline-block"});
+	}
 	
 	var closeall = function(exceptElement){
 		$('.ufaqsw_questions_style1').each(function(){
 			var obj = $(this);
 			if (obj.closest('.ufaqsw_toggle_default')[0] !== exceptElement[0]) {
 				obj.attr('checked', false);
-				obj.next().next().css({"height": "", "opacity": "", "padding": ""});	
-				obj.next().find('.ufaqsw-style1-active-icon').css({"display": "none"});			
-				obj.next().find('.ufaqsw-style1-normal-icon').css({"display": "inline-block"});
+				hideItem(obj);
 			}
 		});
 	};
@@ -128,13 +192,9 @@ jQuery(window).load(function() {
 		
 		var obj = $(this);
 		if(obj.attr('checked')){
-			obj.next().next().css({"height": "auto", "opacity": "1", "padding": "15px"});			
-			obj.next().find('.ufaqsw-style1-active-icon').css({"display": "inline-block"});			
-			obj.next().find('.ufaqsw-style1-normal-icon').css({"display": "none"});			
+			showItem(obj);
 		}else{
-			obj.next().next().css({"height": "", "opacity": "", "padding": ""});	
-			obj.next().find('.ufaqsw-style1-active-icon').css({"display": "none"});			
-			obj.next().find('.ufaqsw-style1-normal-icon').css({"display": "inline-block"});
+			hideItem(obj);
 		}
 		
 	});
@@ -143,14 +203,33 @@ jQuery(window).load(function() {
 	'use strict';
 	
 	$(".ufaqsw_box_style2").on('click', function(e){
-		if(ufaqsw_object_style_2.behaviour == 'accordion'){
-			closeall($(this));
+		toggleItem($(this));
+	});
+
+	// Toggle on keyboard
+	$(".ufaqsw_box_style2").on('keydown', function(e){
+		if (e.key === 'Enter' || e.key === ' ') {
+			e.preventDefault();
+			toggleItem($(this));
 		}
-		$(this).next().slideToggle("fast");
-		$(this).find('i').toggle();
 	});
 	
-	var closeall = function(exceptElement){
+	const toggleItem = ( element ) => {
+		if(ufaqsw_object_style_2.behaviour == 'accordion'){
+			closeall(element);
+		}
+
+		const question_expanded = element.attr('aria-expanded') === 'true';
+    	element.attr('aria-expanded', String(!question_expanded));
+
+		const answer_expanded = element.next().attr('aria-hidden') === 'true';
+    	element.next().attr('aria-hidden', String(!answer_expanded));
+
+		element.next().slideToggle("fast");
+		element.find('i').toggle();
+	}
+	
+	const closeall = function(exceptElement){
 		$('.ufaqsw_draw_style2').each(function(){
 			var obj = $(this);
 			if(obj.is(":visible") && obj.prev()[0] !== exceptElement[0]){

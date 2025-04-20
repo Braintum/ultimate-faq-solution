@@ -22,6 +22,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 * So do not forgot to reuse that in next template.
 */
 extract( $designs ); // phpcs:ignore
+
+$is_show_all = 'accordion' !== $behaviour && '1' === $showall;
 ?>
 <div class="ufaqsw_container_default ufaqsw_container_default_<?php echo esc_attr( get_the_ID() ); ?> ufaqsw_element_group_src"> 
 
@@ -35,6 +37,7 @@ extract( $designs ); // phpcs:ignore
 	<?php endif; ?>
 
 	<?php
+	$c = 1;
 	foreach ( $faqs as $faq ) :
 		/*
 		* This is where the looping begans
@@ -52,21 +55,32 @@ extract( $designs ); // phpcs:ignore
 		?>
 
 		<div class="ufaqsw_toggle_default ufaqsw_toggle_default_<?php echo esc_attr( get_the_ID() ); ?> ufaqsw_element_src">
-			<div class="ufaqsw-toggle-title-area-default ufaqsw-toggle-title-area-default_<?php echo esc_attr( get_the_ID() ); ?>">
-				<h3 class="ufaqsw-title-name-default ufaqsw-title-name-default_<?php echo esc_attr( get_the_ID() ); ?>">
+			<div class="ufaqsw-toggle-title-area-default ufaqsw-toggle-title-area-default_<?php echo esc_attr( get_the_ID() ); ?>"
+			role="button"
+			tabindex="0"
+			aria-expanded="<?php echo $is_show_all ? 'true' : 'false'; ?>"
+			aria-controls="ufaqsw_faq_answer_<?php echo esc_html( $c ); ?>_<?php echo esc_html( get_the_ID() ); ?>"
+			aria-label="<?php echo esc_html( $question ); ?>"
+			>
+				<div class="ufaqsw-title-name-default ufaqsw-title-name-default_<?php echo esc_attr( get_the_ID() ); ?>">
 					<span class="ufaqsw-default-icon">
 						<i class="fa <?php echo esc_attr( isset( $designs['normal_icon'] ) && '' !== $designs['normal_icon'] ? $designs['normal_icon'] : 'fa fa-plus' ); ?>" aria-hidden="true"></i>
 						<i class="fa <?php echo esc_attr( isset( $designs['active_icon'] ) && '' !== $designs['active_icon'] ? $designs['active_icon'] : 'fa fa-minus' ); ?>" id="ufaqsw_other_style" aria-hidden="true"></i>
 					</span>				
 					<span class="ufaqsw-default-title ufaqsw_faq_question_src"><?php echo wp_kses_post( $question ); ?></span>
-				</h3>
+				</div>
 			</div>
-			<div class="ufaqsw-toggle-inner-default ufaqsw-toggle-inner-default_<?php echo esc_attr( get_the_ID() ); ?> ufaqsw_faq_answer_src">
+			<div class="ufaqsw-toggle-inner-default ufaqsw-toggle-inner-default_<?php echo esc_attr( get_the_ID() ); ?> ufaqsw_faq_answer_src"
+			id="ufaqsw_faq_answer_<?php echo esc_html( $c ); ?>_<?php echo esc_html( get_the_ID() ); ?>"
+			aria-hidden="<?php echo $is_show_all ? 'false' : 'true'; ?>"
+			aria-labelledby="ufaqsw_faq_answer_<?php echo esc_html( $c ); ?>_<?php echo esc_html( get_the_ID() ); ?>"
+			>
 			<?php echo wp_kses_post( apply_filters( 'the_content', $answer ) ); ?>
 			</div>
 		</div><!-- END OF TOGGLE -->
 
 		<?php
+		$c++;
 		endforeach;
 	?>
 

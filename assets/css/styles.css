@@ -10,52 +10,23 @@
   width: 100%;
   border: 1px solid;
   text-align: left;
-  font-size: 20px;
   box-sizing: border-box;
   border-radius: 5px;
 }
-.ufaqsw_default_all_search_box::-webkit-input-placeholder {
-  color: #424242;
-  text-align: left;
-}
-.ufaqsw_default_all_search_box:-ms-input-placeholder {
-  color: #424242;
-  text-align: left;
-}
-.ufaqsw_default_all_search_box::placeholder {
-  color: #424242;
-  text-align: left;
-}
-.ufaqsw_default_all_search_box:focus{
-	box-shadow: 1px 1px 5px 0px rgba(0,0,0,0.25);
-}
+
 .ufaqsw_default_all_search_box:focus-visible{
   outline: 0px;
 }
 .ufaqsw_default_all_search_box::-webkit-input-placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-  color: #ceced0;
-  opacity: 1; /* Firefox */
   text-align:center;
 }
 .ufaqsw_default_all_search_box:-ms-input-placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-  color: #ceced0;
-  opacity: 1; /* Firefox */
   text-align:center;
 }
 .ufaqsw_default_all_search_box::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-  color: #ceced0;
-  opacity: 1; /* Firefox */
   text-align:center;
 }
 
-.ufaqsw_default_all_search_box:-ms-input-placeholder { /* Internet Explorer 10-11 */
-  color: #ceced0;
-  text-align:center;
-}
-.ufaqsw_default_all_search_box::-ms-input-placeholder { /* Microsoft Edge */
-  color: #ceced0;
-  text-align:center;
-}
 .ufaqsw_search_loading{display: none;
     position: absolute;
     top: 50%;
@@ -65,38 +36,89 @@
     right: 12px;
     font-size: 12px;}
 .ufaqsw_search_no_result{
-  padding: 20px;
   text-align: center;
-  background: #2e2e2e;
-  border: 1px solid #e2aaaa;
   display: none;
   margin-bottom: 20px;
 }
 .ufaqsw_search_no_result p{
-  color: #ffffff;
+  font-weight: bold;;
   margin: 0;
+}
+
+.ufaqsw_default_all_faq_container .filter-list__items{
+  -webkit-column-gap: .5rem;
+          column-gap: .5rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: relative;
+  row-gap: .5rem;
+}
+
+.ufaqsw_default_all_faq_container .filter-list__item{
+  border: 1px solid #c0c0c0;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 11px;
+  -webkit-transition: .1s ease-in-out;
+          transition: .1s ease-in-out;
+  font-size: 14px;
+}
+
+.ufaqsw_default_all_faq_container .filter-list__item:hover{
+  border: 1px solid #222;
+}
+
+
+.ufaqsw_default_all_faq_container .filter-list--sticky{
+  position: -webkit-sticky;
+  position: sticky;
+  top: 3rem;
+  z-index: 10;
+}
+
+.ufaqsw_default_all_faq_container .faq_navigation{
+  margin: 20px 0 40px 0;
+}
+
+.ufaqsw_default_all_faq_container .filter-list--sticky:before {
+  background: #fff;
+  bottom: 0;
+  content: "";
+  left: 0;
+  margin: -1rem;
+  position: absolute;
+  right: 0;
+  top: 0;
 }
 .ufaqsw_container_default {
   width: 100%;
 }
 /* Styles for Accordion */
-.ufaqsw_active .ufaqsw-title-name-default{font-weight:500;}
 .ufaqsw_toggle_default .ufaqsw-toggle-title-area-default {
   position: relative;
   display: block;
   border-top: 1px solid #dddddd;
+  margin: 0px;
+  line-height: normal;
+  cursor: pointer;
 }
-.ufaqsw_toggle_default .ufaqsw-toggle-title-area-default h3 {
-    font-size: 15px;
-    margin: 0px;
-    line-height: normal;
-    cursor: pointer;
-    font-weight: 200;
+
+.ufaqsw_toggle_default .ufaqsw-toggle-title-area-default:focus {
+  outline: none;
 }
+
+.ufaqsw_toggle_default .ufaqsw-toggle-title-area-default:focus-visible {
+  outline: 1px solid #0073aa; /* WordPress blue */
+}
+
 .ufaqsw_toggle_default .ufaqsw-toggle-inner-default {
-  padding: 7px 25px 10px 25px;
-  display: none;
-  margin: -7px 0 6px;
+  padding: 5px 20px;
 }
 .ufaqsw_toggle_default .ufaqsw-toggle-inner-default div {
   max-width: 100%;
@@ -114,7 +136,6 @@
 .ufaqsw-default-icon {
     float: right;
 }
-.ufaqsw-default-title{}
 .ufaqsw_faq_title {
     margin-bottom: 20px;
 }
@@ -152,6 +173,13 @@
 }
 .ufaqsw_title_area_style1{position:relative;  background: #eac8d3;}
 
+.ufaqsw_title_area_style1:focus {
+  outline: none;
+}
+
+.ufaqsw_title_area_style1:focus-visible {
+  outline: 1px solid #0073aa; /* WordPress blue */
+}
 
 .ufaqsw_plus_style1 {
   position: absolute;
@@ -188,7 +216,7 @@
 .ufaqsw_faq_title {
     margin-bottom: 20px;
 }
-.ufaqsw_FaQ_Each_style2{
+.ufaqsw_faq_style2{
 	padding-bottom: 10px;
 }
 .ufaqsw_box_style2{
@@ -204,6 +232,15 @@
 	width:100%;
 	box-sizing: border-box;
 }
+
+.ufaqsw_box_style2:focus {
+  outline: none;
+}
+
+.ufaqsw_box_style2:focus-visible {
+  outline: 1px solid #0073aa; /* WordPress blue */
+}
+
 .ufaqsw_draw_style2{
   display: none;
   background: #ffffff;

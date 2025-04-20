@@ -78,7 +78,7 @@ class Shortcodes {
 		wp_enqueue_style( 'ufaqsw_fa_css' );
 		wp_enqueue_style( self::$css_handler, UFAQSW__PLUGIN_URL . 'assets/css/styles.min.css', array(), UFAQSW_VERSION, 'all' );
 		wp_enqueue_script( 'ufaqsw-quicksearch-front-js' );
-		wp_enqueue_script( self::$js_handler, UFAQSW__PLUGIN_URL . 'assets/js/script.min.js', array( 'jquery', 'ufaqsw-quicksearch-front-js' ), UFAQSW_VERSION, true );
+		wp_enqueue_script( self::$js_handler, UFAQSW__PLUGIN_URL . 'assets/js/script.min.js', array( 'jquery', 'ufaqsw-quicksearch-front-js' ), UFAQSW_VERSION, false );
 	}
 
 	/**
@@ -191,6 +191,7 @@ class Shortcodes {
 		$template  = 'default';
 		$faq_query = new \WP_Query( $faq_args );
 
+		$filter_groups = array();
 		// load assets.
 		$this->enqueue_assets();
 
@@ -201,6 +202,7 @@ class Shortcodes {
 			while ( $faq_query->have_posts() ) {
 				$faq_query->the_post();
 
+				$filter_groups[ get_the_ID() ] = get_the_title();
 				$faqs = apply_filters( 'ufaqsw_simplify_faqs', get_post_meta( get_the_ID(), 'ufaqsw_faq_item01' ) );
 
 				if ( 'desc' === strtolower( $elements_order ) ) {
