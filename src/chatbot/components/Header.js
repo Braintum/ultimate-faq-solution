@@ -9,7 +9,7 @@ export const Header = ({ onClose, onBack, showBackButton, title }) => {
             onClick={onBack}
             className="faq-back-button"
           >
-            {'<'}
+            <i className="fa-solid fa-arrow-left"></i> {/* Font Awesome Back Icon */}
           </button>
         )}
         <span className="chatbot-title">{title}</span>
