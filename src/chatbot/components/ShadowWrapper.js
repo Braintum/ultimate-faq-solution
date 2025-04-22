@@ -3,11 +3,6 @@ import { createPortal } from 'react-dom';
 import { ShadowApp } from './ShadowApp';
 import chatbotStyles from '../styles/chatbot.css?shadow';
 
-// Font Awesome CSS (via CDN)
-const fontAwesomeStyles = `
-@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css');
-`;
-
 // Create a new element and attach Shadow DOM
 const shadowHost = document.createElement('div');
 document.body.appendChild(shadowHost); // Append the new element to the body
@@ -24,8 +19,6 @@ const ShadowWrapper = ({ onClose }) => {
 
     console.log(chatbotStyles);
     style.textContent = chatbotStyles; // Inject chatbot CSS into Shadow DOM
-    fontAwesomeStyle.textContent = fontAwesomeStyles; // Inject Font Awesome CSS into Shadow DOM
-
     shadowRoot.appendChild(fontAwesomeStyle);
     shadowRoot.appendChild(style);
     shadowRoot.appendChild(mountPoint);
