@@ -1,4 +1,4 @@
-jQuery(window).load(function() {
+jQuery(window).on('load', function() {
 	
 	"use strict";
 	
@@ -59,7 +59,7 @@ jQuery(window).load(function() {
 		});
 	}
 
-});;jQuery(document).ready(function($){
+});;jQuery(function($) {
 	'use strict';
 
 	const toggleItem = (element) => {
@@ -128,7 +128,7 @@ jQuery(window).load(function() {
 			jQuery(this).trigger("click");
 		});
 	}
-});;jQuery(document).ready(function($){
+});;jQuery(function($) {
 	'use strict';
 	
 	$('.ufaqsw_toggle_default > .ufaqsw_title_area_style1').on('click', function(e){
@@ -199,7 +199,7 @@ jQuery(window).load(function() {
 		
 	});
 	
-});;jQuery(document).ready(function($){
+});;jQuery(function($) {
 	'use strict';
 	
 	$(".ufaqsw_box_style2").on('click', function(e){
