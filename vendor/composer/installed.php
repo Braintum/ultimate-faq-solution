@@ -3,7 +3,7 @@
         'name' => 'mahedi/ultimate-faq-solution',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => 'b356522b35f61e758c3371113299a02993607009',
+        'reference' => '5d0f3afb0cdded5918c98315231152d3b61033a6',
         'type' => 'wordpress-plugin',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -22,7 +22,7 @@
         'mahedi/ultimate-faq-solution' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => 'b356522b35f61e758c3371113299a02993607009',
+            'reference' => '5d0f3afb0cdded5918c98315231152d3b61033a6',
             'type' => 'wordpress-plugin',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
