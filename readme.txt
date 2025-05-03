@@ -99,6 +99,7 @@ Yes, you can pass parameters like `behavior=toggle`, or `element_order="DESC"` t
 = 1.5.5 =
 * Export/Import feature added.
 * Settings save success message added.
+* Question in bold option added for faq group.
 
 = 1.5.4 =
 * Filter by FAQ Group on/off option added in settings.
