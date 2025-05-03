@@ -4,7 +4,7 @@ Donate link: https://www.solrengine.com/
 Tags: faq, faq-directory, accordion, knowledgebase, woocommerce-faq
 Requires at least: 5.1  
 Tested up to: 6.8
-Stable tag: 1.5.5
+Stable tag: 1.5.6
 Requires PHP: 7.4.0  
 License: GPLv2 or later  
 License URI: https://www.gnu.org/licenses/license-list.html#GPLCompatibleLicenses  
@@ -43,6 +43,8 @@ Create and edit FAQ groups just like any WordPress post, using the familiar inte
 * ✅ **RTL Support**
 * ✅ **Developer-Friendly Clean Code**
 * ✅ **SEO-Friendly & Lightweight**
+* ✅ **One click Export/Import**
+* ✅ **FAQ Preview Option**
 
 🎨 Match your site branding with full control over colors, typography, and layout styles. Whether you're building a customer support portal or a product help page, Ultimate FAQ Solution makes it seamless.
 
@@ -95,6 +97,9 @@ Yes, you can pass parameters like `behavior=toggle`, or `element_order="DESC"` t
 5. Screehshot 5
 
 == Changelog ==
+
+= 1.5.6 =
+* FAQ group preview feature added.
 
 = 1.5.5 =
 * Export/Import feature added.
