@@ -48,7 +48,7 @@ class UFAQSW_Global_Settings {
 	public function __construct() {
 		add_action( 'admin_menu', array( $this, 'show_settings_page_callback_func' ) );
 		add_action( 'admin_init', array( $this, 'register_plugin_settings' ) );
-		add_action( 'admin_notices', array( $this, 'display_admin_notices' ) ); // Add this line
+		add_action( 'admin_notices', array( $this, 'display_admin_notices' ) ); // Add this line.
 	}
 
 	/**
@@ -126,9 +126,11 @@ class UFAQSW_Global_Settings {
 	 */
 	public function display_admin_notices() {
 		if ( isset( $_GET['settings-updated'] ) && $_GET['settings-updated'] ) { //phpcs:ignore
-			add_settings_error( 'ufaqsw_messages', 'ufaqsw_message', __( 'Settings saved successfully.', 'ufaqsw' ), 'updated' );
+			if ( isset( $_GET['page'] ) && $_GET['page'] === 'ufaqsw-settings' ) { //phpcs:ignore
+				add_settings_error( 'ufaqsw_messages', 'ufaqsw_message', __( 'Settings saved successfully.', 'ufaqsw' ), 'updated' );
+			}
 		}
-		settings_errors( 'ufaqsw_messages' ); // Ensure this is the only place where settings_errors() is called
+		settings_errors( 'ufaqsw_messages' );
 	}
 }
 

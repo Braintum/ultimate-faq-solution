@@ -217,3 +217,52 @@ function ufaqsw_wpkses_post_tags( $tags, $context ) {
 }
 
 add_filter( 'wp_kses_allowed_html', 'ufaqsw_wpkses_post_tags', 10, 2 );
+
+add_filter(
+	'template_include',
+	function ( $template ) {
+
+		if ( isset( $_GET['ufaqsw-preview'] ) && ! empty( $_GET['ufaqsw-preview'] ) ) {
+			if ( isset( $_GET['_wpnonce'] ) && wp_verify_nonce( $_GET['_wpnonce'], 'ufaqsw_preview_nonce' ) ) { //phpcs:ignore
+				return UFAQSW__PLUGIN_DIR . '/inc/templates/single-faq-preview.php';
+			} else {
+				wp_die( esc_html__( 'Invalid nonce verification.', 'ufaqsw' ) );
+			}
+		}
+
+		return $template;
+	}
+);
+
+add_action(
+	'post_submitbox_misc_actions',
+	function () {
+		global $post;
+
+		if ( 'ufaqsw' !== $post->post_type ) {
+			return;
+		}
+		if ( ! current_user_can( 'edit_post', $post->ID ) ) {
+			return;
+		}
+
+		$preview_url = add_query_arg(
+			array(
+				'ufaqsw-preview' => $post->ID,
+				'preview'        => true,
+				'_wpnonce'       => wp_create_nonce( 'ufaqsw_preview_nonce' ),
+			),
+			home_url()
+		);
+
+		echo '<div class="misc-pub-section">
+			<a href="' . esc_url( $preview_url ) . '" class="button" target="_blank">' . esc_html__( 'Preview FAQ Group', 'ufaqsw' ) . '</a>
+			<p class="description">' . esc_html__( 'Click the button to preview the FAQ on the front end. Make sure to save/update the FAQ group first.', 'ufaqsw' ) . '</p>
+		</div>';
+
+		echo '<div class="misc-pub-section">';
+		echo '<strong>' . esc_html__( 'Note:', 'ufaqsw' ) . '</strong> ' . esc_html__( 'Creating an FAQ Group does not mean it will automatically appear on your website. ', 'ufaqsw' );
+		echo esc_html__( 'You need to display the group using the shortcode or the Gutenberg block on a page or post.', 'ufaqsw' );
+		echo '</div>';
+	}
+);

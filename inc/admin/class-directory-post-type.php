@@ -49,10 +49,10 @@ function ufaqsw_register_cpt() {
 		'publicly_queryable'  => false,  // you should be able to query it.
 		'show_ui'             => true,  // you should be able to edit it in wp-admin.
 		'can_export'          => true,  // you should be able to export it.
-		'rewrite'             => false,  // it shouldn't have rewrite rules.
-		'menu_icon'           => 'dashicons-list-view',
+		'menu_icon'           => 'dashicons-editor-help',
 		'show_in_rest'        => true,  // Enable support for the REST API.
 		'rest_base'           => 'ufaqsw', // Optional custom REST API base slug.
+		'rewrite'             => false,
 	);
 
 	register_post_type( 'ufaqsw', $ufaqsw_list_args );
