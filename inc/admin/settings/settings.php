@@ -67,6 +67,15 @@ class UFAQSW_Global_Settings {
 			array( $this, 'settings_page_callback_func' )
 		);
 
+		add_submenu_page(
+			'edit.php?post_type=ufaqsw',
+			'Export/Import FAQs',
+			'Export/Import',
+			'manage_options',
+			'faq-export-import',
+			array( $this, 'render_faq_export_import_page' )
+		);
+
 	}
 
 	/**
@@ -97,6 +106,17 @@ class UFAQSW_Global_Settings {
 	public function settings_page_callback_func() {
 		if ( file_exists( UFAQSW__PLUGIN_DIR . 'inc/admin/settings/ui.php' ) ) {
 			include_once UFAQSW__PLUGIN_DIR . 'inc/admin/settings/ui.php';
+		}
+	}
+
+	/**
+	 * Callback function to render the FAQ export/import page.
+	 *
+	 * This function includes the UI file for the FAQ export/import page if it exists.
+	 */
+	public function render_faq_export_import_page() {
+		if ( file_exists( UFAQSW__PLUGIN_DIR . 'inc/admin/settings/faq-export-import.php' ) ) {
+			include_once UFAQSW__PLUGIN_DIR . 'inc/admin/settings/faq-export-import.php';
 		}
 	}
 }
