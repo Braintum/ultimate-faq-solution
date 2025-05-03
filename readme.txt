@@ -4,7 +4,7 @@ Donate link: https://www.solrengine.com/
 Tags: faq, faq-directory, accordion, knowledgebase, woocommerce-faq
 Requires at least: 5.1  
 Tested up to: 6.8
-Stable tag: 1.5.4
+Stable tag: 1.5.5
 Requires PHP: 7.4.0  
 License: GPLv2 or later  
 License URI: https://www.gnu.org/licenses/license-list.html#GPLCompatibleLicenses  
@@ -95,6 +95,10 @@ Yes, you can pass parameters like `behavior=toggle`, or `element_order="DESC"` t
 5. Screehshot 5
 
 == Changelog ==
+
+= 1.5.5 =
+* Export/Import feature added.
+* Settings save success message added.
 
 = 1.5.4 =
 * Filter by FAQ Group on/off option added in settings.

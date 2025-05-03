@@ -126,7 +126,7 @@ class UFAQSW_Global_Settings {
 	 */
 	public function display_admin_notices() {
 		if ( isset( $_GET['settings-updated'] ) && $_GET['settings-updated'] ) { //phpcs:ignore
-			add_settings_error( 'ufaqsw_messages', 'ufaqsw_message', __( 'Settings saved successfully.', 'ultimate-faq-solution' ), 'updated' );
+			add_settings_error( 'ufaqsw_messages', 'ufaqsw_message', __( 'Settings saved successfully.', 'ufaqsw' ), 'updated' );
 		}
 		settings_errors( 'ufaqsw_messages' ); // Ensure this is the only place where settings_errors() is called
 	}
