@@ -106,14 +106,4 @@
 .ufaqsw_clear_icon_field{display: inline-block !important;float: right;}
 .ufaqsw-fa-field-modal-icons form{display:inline-block !important;}
 .ufaqsw_clear_fix{clear:both}
-.ufaqsw_setting_panel{
-box-shadow: -1px -4px 48px -15px rgba(0,0,0,0.75);background:#fff;padding:24px}
-.ufaqsw_heading_settings{background: rgb(2,0,36);
-background: -webkit-linear-gradient(0deg, rgba(2,0,36,1) 0%, rgba(120,9,121,1) 0%, rgba(0,212,255,1) 100%);
-background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(120,9,121,1) 0%, rgba(0,212,255,1) 100%);;margin-bottom: 41px !important;
-    font-size: 20px !important;
-    line-height: 34px !important;
-    padding-top: 0px !important;
-    padding-bottom: 0px !important;
-    text-align: center;color:white
-}
+

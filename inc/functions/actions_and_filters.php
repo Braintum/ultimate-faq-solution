@@ -92,6 +92,7 @@ function ufaqsw_simplify_configuration_variables( $id ) {
 	$normal_icon               = get_post_meta( $id, 'ufaqsw_normal_icon' );
 	$active_icon               = get_post_meta( $id, 'ufaqsw_active_icon' );
 	$behaviour                 = get_post_meta( $id, 'ufaqsw_faq_behaviour' );
+	$question_bold             = get_post_meta( $id, 'ufaqsw_question_bold' );
 
 	$formated_data                              = array();
 	$formated_data['title_color']               = ( isset( $title_color[0] ) ? $title_color[0] : '' );
@@ -108,6 +109,7 @@ function ufaqsw_simplify_configuration_variables( $id ) {
 	$formated_data['normal_icon']               = ( isset( $normal_icon[0] ) ? $normal_icon[0] : '' );
 	$formated_data['active_icon']               = ( isset( $active_icon[0] ) ? $active_icon[0] : '' );
 	$formated_data['behaviour']                 = ( isset( $behaviour[0] ) ? $behaviour[0] : 'toggle' );
+	$formated_data['question_bold']             = ( isset( $question_bold[0] ) && 'on' === $question_bold[0] ? 1 : 0 );
 	return $formated_data;
 }
 add_filter( 'ufaqsw_simplify_configuration_variables', 'ufaqsw_simplify_configuration_variables' );

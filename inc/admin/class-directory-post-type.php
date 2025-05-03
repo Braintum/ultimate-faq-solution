@@ -140,6 +140,15 @@ function ufaqsw_register_appearance_metabox() {
 
 	$cmb_demo->add_field(
 		array(
+			'name' => esc_html__( 'Display Question in Bold', 'ufaqsw' ),
+			'id'   => 'ufaqsw_question_bold',
+			'type' => 'checkbox',
+			'desc'    => esc_html__( 'Display Question in Bold', 'ufaqsw' ),
+		)
+	);
+
+	$cmb_demo->add_field(
+		array(
 			'name' => esc_html__( 'Answer Color', 'ufaqsw' ),
 			'id'   => 'ufaqsw_answer_color',
 			'desc' => esc_html__( 'Change the Answer color', 'ufaqsw' ),

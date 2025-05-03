@@ -100,6 +100,11 @@ class Custom_Resources {
 				if ( isset( $title_font_size ) && '' !== $title_font_size ) {
 					$custom_css .= ".ufaqsw_faq_title_{$this->id}{ font-size: {$title_font_size} !important;}";
 				}
+
+				if ( isset( $question_bold ) && $question_bold ) {
+					$custom_css .= ".ufaqsw-title-name-default_{$this->id}{ font-weight: bold !important;}";
+				}
+
 				if ( isset( $question_color ) && '' !== $question_color ) {
 					$custom_css .= ".ufaqsw-title-name-default_{$this->id}{ color: {$question_color} !important;}";
 				}
@@ -137,6 +142,11 @@ class Custom_Resources {
 				if ( isset( $title_font_size ) && '' !== $title_font_size ) {
 					$custom_css .= ".ufaqsw_faq_title_{$this->id}{ font-size: {$title_font_size} !important;}";
 				}
+
+				if ( isset( $question_bold ) && $question_bold ) {
+					$custom_css .= ".ufaqsw-title-name-default_{$this->id}{ font-weight: bold !important;}";
+				}
+
 				if ( isset( $question_color ) && '' !== $question_color ) {
 					$custom_css .= ".ufaqsw-title-name-default_{$this->id}{ color: {$question_color} !important;}";
 				}
@@ -172,9 +182,15 @@ class Custom_Resources {
 				if ( isset( $title_color ) && '' !== $title_color ) {
 					$custom_css .= ".ufaqsw_faq_title_{$this->id}{ color: {$title_color} !important;}";
 				}
+
 				if ( isset( $title_font_size ) && '' !== $title_font_size ) {
 					$custom_css .= ".ufaqsw_faq_title_{$this->id}{ font-size: {$title_font_size} !important;}";
 				}
+
+				if ( isset( $question_bold ) && $question_bold ) {
+					$custom_css .= ".ufaqsw-title-name-default_{$this->id}{ font-weight: bold !important;}";
+				}
+
 				if ( isset( $question_color ) && '' !== $question_color ) {
 					$custom_css .= ".ufaqsw-title-name-default_{$this->id}{ color: {$question_color} !important;}";
 				}

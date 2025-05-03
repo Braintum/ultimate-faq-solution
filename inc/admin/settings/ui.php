@@ -15,8 +15,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 $allowed_html = ufaqsw_wses_allowed_menu_html();
 ?>
 
-<div class="wrap swpm-admin-menu-wrap ufaqsw_setting_panel">
-	<h1 class="ufaqsw_heading_settings"><?php echo esc_html( 'Settings & Help - Ultimate FAQs' ); ?></h1>
+<div class="wrap">
+	<h1><?php echo esc_html( 'Settings & Help - Ultimate FAQs' ); ?></h1>
 
 	<h2 class="nav-tab-wrapper sld_nav_container">
 		<a class="nav-tab ufaqsw_click_handle nav-tab-active" href="#getting_started"><?php echo esc_html( 'Getting Stared' ); ?></a>
@@ -36,6 +36,7 @@ $allowed_html = ufaqsw_wses_allowed_menu_html();
 
 				<div id="poststuff">
 					<h1><?php echo wp_kses( 'Welcome to the Ultimate FAQ Solution! You are <strong>awesome</strong>, by the way.', $allowed_html ); ?></h1>
+					<hr>
 					<h3><?php echo esc_html( 'Getting Started' ); ?></h3>
 					<p><?php echo esc_html( 'Getting started with Ultimate FAQ Solution is super easy' ); ?></p>
 
@@ -76,6 +77,7 @@ $allowed_html = ufaqsw_wses_allowed_menu_html();
 				</tr>
 
 			</table>
+			<hr>
 			<p><b><u><?php echo esc_html( 'Directory Shortcode Parameters' ); ?></u></b></p>
 			<p><?php echo wp_kses( 'There are some parameters for <b>[ufaqsw-all]</b> shortcode to inhance its usability.', $allowed_html ); ?></p>
 			<p>
