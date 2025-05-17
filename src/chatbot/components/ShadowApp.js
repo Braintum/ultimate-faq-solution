@@ -7,7 +7,7 @@ import { Header } from './Header';
 // Global variable to cache FAQ data
 let cachedFaqData = null;
 
-export const ShadowApp = ({ onClose }) => {
+export const ShadowApp = ({ onClose, shadowRoot }) => {
 	const [view, setView] = useState('group'); // 'group', 'list', or 'answer'
 	const [selectedGroup, setSelectedGroup] = useState(null);
 	const [selectedFaq, setSelectedFaq] = useState(null);
@@ -64,6 +64,46 @@ export const ShadowApp = ({ onClose }) => {
 			}
 		}
 	}, [ajaxUrl, nonce]);
+
+	useEffect(() => {
+		const adjustHeight = () => {
+			if (shadowRoot && window.innerWidth > 768) { // Only apply on desktop
+				const chatbotContainer = shadowRoot.querySelector('.chatbot-container');
+				if (chatbotContainer) {
+					chatbotContainer.style.height = `${window.innerHeight * 0.8}px`; // Set height to 80% of window height
+				}
+			}
+		};
+
+		adjustHeight(); // Adjust height on initial load
+		window.addEventListener('resize', adjustHeight); // Adjust height on window resize
+
+		return () => {
+			window.removeEventListener('resize', adjustHeight); // Cleanup event listener
+		};
+	}, [shadowRoot]);
+
+	useEffect(() => {
+		const handleResize = () => {
+			if (shadowRoot) {
+				const chatbotContainer = shadowRoot.querySelector('.chatbot-container');
+				if (chatbotContainer) {
+					if (window.innerWidth <= 768) {
+						chatbotContainer.classList.add('full-screen');
+					} else {
+						chatbotContainer.classList.remove('full-screen');
+					}
+				}
+			}
+		};
+
+		handleResize(); // Apply full-screen class on initial load
+		window.addEventListener('resize', handleResize); // Adjust on window resize
+
+		return () => {
+			window.removeEventListener('resize', handleResize); // Cleanup event listener
+		};
+	}, [shadowRoot]);
 
 	const handleGroupClick = (group) => {
 		setSelectedGroup(group);
