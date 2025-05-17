@@ -20,6 +20,7 @@ const ShadowWrapper = ({ onClose }) => {
   let mountPoint = shadowRoot.querySelector('div');
   if (!mountPoint) {
     mountPoint = document.createElement('div');
+    mountPoint.classList.add('chatbot-wrapper'); // Add the class to ensure it can be selected
     const style = document.createElement('style');
     const fontAwesomeStyle = document.createElement('style');
 
@@ -30,7 +31,7 @@ const ShadowWrapper = ({ onClose }) => {
     shadowRoot.appendChild(mountPoint);
   }
 
-  return createPortal(<ShadowApp onClose={onClose} />, mountPoint);
+  return createPortal(<ShadowApp onClose={onClose} shadowRoot={shadowRoot} />, mountPoint);
 };
 
 export default ShadowWrapper;
