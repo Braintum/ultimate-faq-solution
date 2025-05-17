@@ -96,6 +96,11 @@
   right: 0;
   top: 0;
 }
+
+.container.faq_preview_container {
+  max-width: 900px;
+  margin: 50px auto;
+}
 .ufaqsw_container_default {
   width: 100%;
 }

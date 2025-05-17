@@ -1,4 +1,4 @@
-jQuery(document).ready(function($){
+jQuery(function($) {
 	'use strict';
 	
 	$(".ufaqsw_box_style2").on('click', function(e){

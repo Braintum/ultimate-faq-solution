@@ -30,7 +30,7 @@
 		</div>
 	<?php endif; ?>
 
-	<?php if ( ! empty( $filter_groups ) ) : ?>
+	<?php if ( 'on' === get_option( 'ufaqsw_enable_filter', false ) && ! empty( $filter_groups ) ) : ?>
 	<div class="faq_navigation filter-list filter-list--sticky">
 		<div class="faq__navigation__inner filter-list__items">
 			<?php foreach ( $filter_groups as $key => $value ) : ?>

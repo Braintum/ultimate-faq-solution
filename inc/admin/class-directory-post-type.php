@@ -20,13 +20,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 function ufaqsw_register_cpt() {
 
 	$ufaqsw_list_labels = array(
-		'name'               => 'Manage FAQ Groups',
-		'singular_name'      => 'Manage FAQ Group',
+		'name'               => 'FAQ Groups',
+		'singular_name'      => 'FAQ Group',
 		'add_new'            => 'New FAQ Group',
 		'add_new_item'       => 'Add New FAQ Group',
 		'edit_item'          => 'Edit FAQ Group',
 		'new_item'           => 'New FAQ Group',
-		'all_items'          => 'Manage FAQ Groups',
+		'all_items'          => 'All FAQ Groups',
 		'view_item'          => 'View FAQ Group',
 		'search_items'       => 'Search FAQ Group',
 		'not_found'          => 'No FAQ Group found',
@@ -48,10 +48,11 @@ function ufaqsw_register_cpt() {
 		'public'              => false,  // it's not public, it shouldn't have its own permalink, and so on.
 		'publicly_queryable'  => false,  // you should be able to query it.
 		'show_ui'             => true,  // you should be able to edit it in wp-admin.
-		'rewrite'             => false,  // it shouldn't have rewrite rules.
-		'menu_icon'           => 'dashicons-list-view',
+		'can_export'          => true,  // you should be able to export it.
+		'menu_icon'           => 'dashicons-editor-help',
 		'show_in_rest'        => true,  // Enable support for the REST API.
 		'rest_base'           => 'ufaqsw', // Optional custom REST API base slug.
+		'rewrite'             => false,
 	);
 
 	register_post_type( 'ufaqsw', $ufaqsw_list_args );
@@ -134,6 +135,15 @@ function ufaqsw_register_appearance_metabox() {
 			'desc' => esc_html__( 'Change the Question color', 'ufaqsw' ),
 			'type' => 'colorpicker',
 
+		)
+	);
+
+	$cmb_demo->add_field(
+		array(
+			'name' => esc_html__( 'Display Question in Bold', 'ufaqsw' ),
+			'id'   => 'ufaqsw_question_bold',
+			'type' => 'checkbox',
+			'desc'    => esc_html__( 'Display Question in Bold', 'ufaqsw' ),
 		)
 	);
 
@@ -325,7 +335,7 @@ function ufaqsw_faq_columns_content( $column_name, $post_ID ) {
 
 	if ( 'ufaqsw_item_count' === $column_name ) {
 		$faqs = get_post_meta( $post_ID, 'ufaqsw_faq_item01' );
-		echo count( isset( $faqs[0] ) ? $faqs[0] : array() );
+		echo count( isset( $faqs[0] ) && is_array( $faqs[0] ) ? $faqs[0] : array() );
 	}
 	if ( 'shortcode_col' === $column_name ) {
 		echo '<input type="text" value="[ufaqsw id=' . esc_attr( $post_ID ) . ']" class="ufaqsw_admin_faq_shorcode_copy" />';

@@ -1,4 +1,4 @@
-jQuery(document).ready(function($){
+jQuery(function($) {
 	'use strict';
 	
 	$('.ufaqsw_toggle_default > .ufaqsw_title_area_style1').on('click', function(e){
