@@ -3,9 +3,15 @@ import { createPortal } from 'react-dom';
 import { ShadowApp } from './ShadowApp';
 import chatbotStyles from '../styles/chatbot.css?shadow';
 
-// Create a new element and attach Shadow DOM
+// Locate the custom element
+const chatbotComponent = document.querySelector('chatbot-component');
+if (!chatbotComponent) {
+  throw new Error('<chatbot-component> not found in the DOM');
+}
+
+// Create a new element inside the custom element and attach Shadow DOM
 const shadowHost = document.createElement('div');
-document.body.appendChild(shadowHost); // Append the new element to the body
+chatbotComponent.appendChild(shadowHost); // Append the new element to the custom element
 const shadowRoot = shadowHost.attachShadow({ mode: 'open' });
 
 const ShadowWrapper = ({ onClose }) => {

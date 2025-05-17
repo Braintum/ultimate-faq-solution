@@ -23,12 +23,19 @@ class Chatbot {
 	 * Adds the action to generate FAQ schema in the head section.
 	 */
 	public function __construct() {
+
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_react_chatbot_script' ) );
 		add_action( 'wp_ajax_ufaqsw_get_faqs', array( $this, 'handle_get_faqs' ) );
 		add_action( 'wp_ajax_nopriv_ufaqsw_get_faqs', array( $this, 'handle_get_faqs' ) );
+
+		add_action( 'wp_footer', array( $this, 'bot_integration' ) );
 	}
 
-	// Enqueue the bundled React chatbot script.
+	/**
+	 * Enqueue the React chatbot script.
+	 *
+	 * @return void
+	 */
 	public function enqueue_react_chatbot_script() {
 		wp_enqueue_script(
 			'react-chatbot',
@@ -104,6 +111,20 @@ class Chatbot {
 		// Return the FAQ data as a JSON response.
 		wp_send_json_success( $faq_data );
 		wp_die(); // Always die in functions echoing AJAX content.
+	}
+
+	/**
+	 * Chatbot component.
+	 *
+	 * @return void
+	 */
+	public function bot_integration() {
+
+		if ( is_admin() ) {
+			return;
+		}
+
+		echo '<chatbot-component></chatbot-component>';
 	}
 
 }
