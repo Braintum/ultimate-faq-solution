@@ -5,21 +5,21 @@
  * @package   ultimate-faq-solution
  * @link      https://github.com/Braintum/ultimate-faq-solution
  * @author    Md. Mahedi Hasan <mahedihasannoman@gmail.com>
- * @copyright 2020-2025 SolrEngine
+ * @copyright 2020-2025 Braintum
  * @license   GPL v2 or later
  *
  * Plugin Name: Ultimate FAQ Solution
  * Version: 1.5.6
- * Plugin URI: http://www.solrengine.com
+ * Plugin URI: https://www.braintum.com/ultimate-faq-solution/
  * Description: A WordPress plugin to create, organize, and display FAQs with responsive layouts and styles.
  * Author: braintum
- * Author URI: https://www.solrengine.com
+ * Author URI: https://www.braintum.com
  * Text Domain: ufaqsw
  * Domain Path: /languages/
  * License: GPLv2 or later
  * License URI: https://www.gnu.org/licenses/license-list.html#GPLCompatibleLicenses
  * Requires at least: 5.1
- * Tested up to: 6.8
+ * Tested up to: 6.8.1
  *
  * Requires PHP: 7.4
  */
