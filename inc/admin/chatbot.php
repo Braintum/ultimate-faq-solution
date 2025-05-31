@@ -26,6 +26,7 @@ function ufaqsw_register_settings_page() {
 			'description' => __( '<i>Display a floating help icon on every page of your site. When clicked, it opens the interactive FAQ Assistant, allowing visitors to browse and search your FAQs in a chat-style window.</i>', 'ufaqsw' ),
 		)
 	);
+
 	$cmb->add_field(
 		array(
 			'name'        => __( 'Floating Button Icon', 'ufaqsw' ),
@@ -35,7 +36,7 @@ function ufaqsw_register_settings_page() {
 			'options'     => array(
 				'url' => false, // Hide the text input for the URL.
 			),
-			'text'    => array(
+			'text'         => array(
 				'add_upload_file_text' => __( 'Add Icon', 'ufaqsw' ),
 			),
 			'preview_size' => 'thumbnail', // Image preview size.
@@ -54,61 +55,63 @@ function ufaqsw_register_settings_page() {
 
 	$cmb->add_field(
 		array(
-			'name'    => __( 'Header Background Color', 'ufaqsw' ),
-			'id'      => 'header_background_color',
-			'type'    => 'colorpicker',
-			'default' => '#1a185e',
+			'name'        => __( 'Header Background Color', 'ufaqsw' ),
+			'id'          => 'header_background_color',
+			'type'        => 'colorpicker',
+			'default'     => '#1a185e',
 			'description' => __( '<i>Choose the background color of the FAQ Assistant header for better branding and visibility.</i>', 'ufaqsw' ),
 		)
 	);
 
 	$cmb->add_field(
 		array(
-			'name'    => __( 'Header Text Color', 'ufaqsw' ),
-			'id'      => 'header_text_color',
-			'type'    => 'colorpicker',
-			'default' => '#fff',
+			'name'        => __( 'Header Text Color', 'ufaqsw' ),
+			'id'          => 'header_text_color',
+			'type'        => 'colorpicker',
+			'default'     => '#fff',
 			'description' => __( '<i>Select the color of the text in the FAQ Assistant header to ensure readability against the background.</i>', 'ufaqsw' ),
 		)
 	);
 
 	$cmb->add_field(
 		array(
-			'name'    => __( 'Window Headline', 'ufaqsw' ),
-			'id'      => 'assistant_window_headline',
-			'type'    => 'text',
-			'default' => __( 'Welcome to our Help Center!', 'ufaqsw' ),
+			'name'        => __( 'Window Headline', 'ufaqsw' ),
+			'id'          => 'assistant_window_headline',
+			'type'        => 'text',
+			'default'     => __( 'Welcome to our Help Center!', 'ufaqsw' ),
 			'description' => __( '<i>Enter the main title displayed at the top of the FAQ Assistant window to welcome or guide users.</i>', 'ufaqsw' ),
 		)
 	);
 
 	$cmb->add_field(
 		array(
-			'name'    => __( 'Window Intro Text', 'ufaqsw' ),
-			'id'      => 'assistant_window_intro_text',
-			'type'    => 'text',
-			'default' => __( 'Explore common questions and answers.', 'ufaqsw' ),
+			'name'        => __( 'Window Intro Text', 'ufaqsw' ),
+			'id'          => 'assistant_window_intro_text',
+			'type'        => 'text',
+			'default'     => __( 'Explore common questions and answers.', 'ufaqsw' ),
 			'description' => __( '<i>Add a brief message shown below the headline to explain how visitors can use the assistant.</i>', 'ufaqsw' ),
 		)
 	);
 
 	$cmb->add_field(
 		array(
-			'name'    => __( 'Preloader Text', 'ufaqsw' ),
-			'id'      => 'preloader_text',
-			'type'    => 'text',
-			'default' => __( 'Loading...', 'ufaqsw' ),
+			'name'        => __( 'Preloader Text', 'ufaqsw' ),
+			'id'          => 'preloader_text',
+			'type'        => 'text',
+			'default'     => __( 'Loading...', 'ufaqsw' ),
 			'description' => __( '<i>Text displayed while the FAQ content is loading (e.g., “Loading…”) to inform users.</i>', 'ufaqsw' ),
 		)
 	);
 
-	$cmb->add_field( array(
-		'name' => __( 'Body Text', 'ufaqsw' ),
-		'desc' => __( '<i>Enter the text displayed above the list of FAQ categories in the assistant window. Use this to guide visitors on how to navigate and use the categories effectively.</i>', 'ufaqsw' ),
-		'default' => __( 'Browse our FAQ categories below to quickly find answers grouped by topic. Click a category to see related questions and solutions.', 'ufaqsw' ),
-		'id' => 'body_text',
-		'type' => 'textarea'
-	) );
+	$cmb->add_field(
+		array(
+			'name'    => __( 'Body Text', 'ufaqsw' ),
+			'desc'    => __( '<i>Enter the text displayed above the list of FAQ categories in the assistant window. Use this to guide visitors on how to navigate and use the categories effectively.</i>', 'ufaqsw' ),
+			'default' => __( 'Browse our FAQ categories below to quickly find answers grouped by topic. Click a category to see related questions and solutions.', 'ufaqsw' ),
+			'id'      => 'body_text',
+			'type'    => 'textarea',
+		)
+	);
 
 }
 
