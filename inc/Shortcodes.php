@@ -185,6 +185,8 @@ class Shortcodes {
 			'post_type'      => 'ufaqsw',
 			'posts_per_page' => -1,
 			'post__not_in'   => explode( ', ', $exclude ),
+			'orderby'        => 'menu_order',
+			'order'          => 'ASC',
 		);
 
 		// default template.
