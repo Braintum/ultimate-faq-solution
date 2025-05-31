@@ -1,3 +1,7 @@
+.chatbot-container {
+  -webkit-transition: height 0.3s ease;
+          transition: height 0.3s ease; /* Smooth height adjustment */
+}
 .ufaqsw_default_all_single_faq{
   width: 100%;
   margin-bottom: 20px;

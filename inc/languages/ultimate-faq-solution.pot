@@ -2,10 +2,10 @@
 # This file is distributed under the GPLv2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Ultimate FAQ Solution 1.5.6\n"
+"Project-Id-Version: Ultimate FAQ Solution 1.5.7\n"
 "Report-Msgid-Bugs-To: "
 "https://wordpress.org/support/plugin/ultimate-faq-solution\n"
-"POT-Creation-Date: 2025-05-03 23:22:17+00:00\n"
+"POT-Creation-Date: 2025-05-31 23:07:37+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -27,6 +27,10 @@ msgstr ""
 
 #: block/block.php:88
 msgid "No FAQ group selected."
+msgstr ""
+
+#: inc/Chatbot.php:106
+msgid "No FAQs found."
 msgstr ""
 
 #: inc/Product_Tab.php:89 inc/Product_Tab.php:201
@@ -78,9 +82,145 @@ msgstr ""
 msgid "Check this field if you want to hide FAQ Group Title."
 msgstr ""
 
-#: inc/Shortcodes.php:152 inc/Shortcodes.php:230 inc/Shortcodes.php:247
+#: inc/Shortcodes.php:152 inc/Shortcodes.php:232 inc/Shortcodes.php:249
 #. translators: %s is the name of the template that was not found.
 msgid "%s Template Not Found"
+msgstr ""
+
+#: inc/admin/chatbot.php:10
+msgid "FAQ Assistant Settings"
+msgstr ""
+
+#: inc/admin/chatbot.php:17
+msgid "FAQ Assistant"
+msgstr ""
+
+#: inc/admin/chatbot.php:23
+msgid "Enable FAQ Assistant"
+msgstr ""
+
+#: inc/admin/chatbot.php:26
+msgid ""
+"<i>Display a floating help icon on every page of your site. When clicked, "
+"it opens the interactive FAQ Assistant, allowing visitors to browse and "
+"search your FAQs in a chat-style window.</i>"
+msgstr ""
+
+#: inc/admin/chatbot.php:32
+msgid "Floating Button Icon"
+msgstr ""
+
+#: inc/admin/chatbot.php:35
+msgid ""
+"<i>Upload a custom icon for the floating FAQ Assistant button. The image "
+"should be 80 × 80 pixels. Any image format is allowed, but a transparent "
+"background (e.g., PNG, SVG) is recommended for the best visual appearance. "
+"If no icon is uploaded, a default icon will be used instead.</i>"
+msgstr ""
+
+#: inc/admin/chatbot.php:40
+msgid "Add Icon"
+msgstr ""
+
+#: inc/admin/chatbot.php:49
+msgid "Floating Button Title"
+msgstr ""
+
+#: inc/admin/chatbot.php:52
+msgid "<i>The text will display when you hover over the floating button.</i>"
+msgstr ""
+
+#: inc/admin/chatbot.php:58
+msgid "Header Background Color"
+msgstr ""
+
+#: inc/admin/chatbot.php:62
+msgid ""
+"<i>Choose the background color of the FAQ Assistant header for better "
+"branding and visibility.</i>"
+msgstr ""
+
+#: inc/admin/chatbot.php:68
+msgid "Header Text Color"
+msgstr ""
+
+#: inc/admin/chatbot.php:72
+msgid ""
+"<i>Select the color of the text in the FAQ Assistant header to ensure "
+"readability against the background.</i>"
+msgstr ""
+
+#: inc/admin/chatbot.php:78
+msgid "Window Headline"
+msgstr ""
+
+#: inc/admin/chatbot.php:81
+msgid "Welcome to our Help Center!"
+msgstr ""
+
+#: inc/admin/chatbot.php:82
+msgid ""
+"<i>Enter the main title displayed at the top of the FAQ Assistant window to "
+"welcome or guide users.</i>"
+msgstr ""
+
+#: inc/admin/chatbot.php:88
+msgid "Window Intro Text"
+msgstr ""
+
+#: inc/admin/chatbot.php:91
+msgid "Explore common questions and answers."
+msgstr ""
+
+#: inc/admin/chatbot.php:92
+msgid ""
+"<i>Add a brief message shown below the headline to explain how visitors can "
+"use the assistant.</i>"
+msgstr ""
+
+#: inc/admin/chatbot.php:98
+msgid "Preloader Text"
+msgstr ""
+
+#: inc/admin/chatbot.php:101 inc/admin/icons/ui.php:23
+#: inc/templates/all/template.php:27
+msgid "Loading..."
+msgstr ""
+
+#: inc/admin/chatbot.php:102
+msgid ""
+"<i>Text displayed while the FAQ content is loading (e.g., “Loading…”) to "
+"inform users.</i>"
+msgstr ""
+
+#: inc/admin/chatbot.php:108
+msgid "Body Text"
+msgstr ""
+
+#: inc/admin/chatbot.php:109
+msgid ""
+"<i>Enter the text displayed above the list of FAQ categories in the "
+"assistant window. Use this to guide visitors on how to navigate and use the "
+"categories effectively.</i>"
+msgstr ""
+
+#: inc/admin/chatbot.php:110
+msgid ""
+"Browse our FAQ categories below to quickly find answers grouped by topic. "
+"Click a category to see related questions and solutions."
+msgstr ""
+
+#: inc/admin/chatbot.php:137
+msgid ""
+"The FAQ Assistant adds an interactive, floating help icon to your website, "
+"giving visitors quick access to your FAQs in a sleek, chat-style interface. "
+"Use the settings below to enable the assistant and customize its behavior. "
+"Improve user experience by making answers more accessible—right when and "
+"where your visitors need them."
+msgstr ""
+
+#: inc/admin/chatbot.php:139
+msgid "Read the FAQ Assistant Documentation."
 msgstr ""
 
 #: inc/admin/class-directory-post-type.php:91
@@ -264,12 +404,20 @@ msgstr ""
 msgid "Duplicate"
 msgstr ""
 
-#: inc/admin/icons/ui.php:17
-msgid "Select Font Awesome Icon"
+#: inc/admin/class-faq-group-sorting.php:66
+msgid "Order"
 msgstr ""
 
-#: inc/admin/icons/ui.php:23 inc/templates/all/template.php:27
-msgid "Loading..."
+#: inc/admin/class-faq-group-sorting.php:88
+msgid "Permission denied"
+msgstr ""
+
+#: inc/admin/class-faq-group-sorting.php:102
+msgid "Invalid data"
+msgstr ""
+
+#: inc/admin/icons/ui.php:17
+msgid "Select Font Awesome Icon"
 msgstr ""
 
 #: inc/admin/settings/faq-export-import.php:12
@@ -1096,7 +1244,7 @@ msgid "Ultimate FAQ Solution"
 msgstr ""
 
 #. Plugin URI of the plugin/theme
-msgid "http://www.solrengine.com"
+msgid "https://www.braintum.com/ultimate-faq-solution/"
 msgstr ""
 
 #. Description of the plugin/theme
@@ -1110,7 +1258,7 @@ msgid "braintum"
 msgstr ""
 
 #. Author URI of the plugin/theme
-msgid "https://www.solrengine.com"
+msgid "https://www.braintum.com"
 msgstr ""
 
 #: vendor/cmb2/cmb2/includes/CMB2_JS.php:212

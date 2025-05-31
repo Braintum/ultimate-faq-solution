@@ -7,4 +7,12 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
+    'Mahedi\\UltimateFaqSolution\\Assets' => $baseDir . '/inc/Assets.php',
+    'Mahedi\\UltimateFaqSolution\\Chatbot' => $baseDir . '/inc/Chatbot.php',
+    'Mahedi\\UltimateFaqSolution\\Custom_Resources' => $baseDir . '/inc/Custom_Resources.php',
+    'Mahedi\\UltimateFaqSolution\\Product_Tab' => $baseDir . '/inc/Product_Tab.php',
+    'Mahedi\\UltimateFaqSolution\\Rest' => $baseDir . '/inc/Rest.php',
+    'Mahedi\\UltimateFaqSolution\\SEO' => $baseDir . '/inc/SEO.php',
+    'Mahedi\\UltimateFaqSolution\\Shortcodes' => $baseDir . '/inc/Shortcodes.php',
+    'Mahedi\\UltimateFaqSolution\\Template' => $baseDir . '/inc/Template.php',
 );

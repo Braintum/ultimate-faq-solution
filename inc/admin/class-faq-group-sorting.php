@@ -63,7 +63,7 @@ class FAQ_Group_Sorting {
 	 * @return array
 	 */
 	public function add_sort_column( $columns ) {
-		$columns['ufaqsw_sort'] = esc_html__( 'Order', 'ultimate-faq-solution' );
+		$columns['ufaqsw_sort'] = esc_html__( 'Order', 'ufaqsw' );
 		return $columns;
 	}
 
@@ -85,7 +85,7 @@ class FAQ_Group_Sorting {
 	public function ajax_sort() {
 		check_ajax_referer( 'ufaqsw_sort_nonce', 'nonce' );
 		if ( ! current_user_can( 'edit_posts' ) ) {
-			wp_send_json_error( esc_html__( 'Permission denied', 'ultimate-faq-solution' ) );
+			wp_send_json_error( esc_html__( 'Permission denied', 'ufaqsw' ) );
 		}
 		$order = isset( $_POST['order'] ) ? wp_unslash( $_POST['order'] ) : array(); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 		if ( is_array( $order ) ) {
@@ -99,7 +99,7 @@ class FAQ_Group_Sorting {
 			}
 			wp_send_json_success();
 		}
-		wp_send_json_error( esc_html__( 'Invalid data', 'ultimate-faq-solution' ) );
+		wp_send_json_error( esc_html__( 'Invalid data', 'ufaqsw' ) );
 	}
 
 	/**
