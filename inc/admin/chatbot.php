@@ -135,6 +135,8 @@ function ufaqsw_add_html_before_cmb2_output( $cmb_id, $object_id, $object_type, 
 	echo '<div class="faq-assistant-wrapper">';
 	echo '<div style="margin-bottom: 20px;">';
 	echo esc_html__( 'The FAQ Assistant adds an interactive, floating help icon to your website, giving visitors quick access to your FAQs in a sleek, chat-style interface. Use the settings below to enable the assistant and customize its behavior. Improve user experience by making answers more accessible—right when and where your visitors need them.', 'ufaqsw' );
+
+	echo '<br><a href="https://www.braintum.com/docs/ultimate-faq-solution/faq-assistant/" target="_blank" style="display:inline-block;margin-top:10px;">' . esc_html__( 'Read the FAQ Assistant Documentation.', 'ufaqsw' ) . '</a>';
 	echo '</div>';
 
 	add_action( 'cmb2_after_form', 'ufaqsw_add_html_after_cmb2_output', 10, 4 );
