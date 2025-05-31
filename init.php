@@ -48,7 +48,9 @@ if ( file_exists( UFAQSW__PLUGIN_DIR . 'vendor/autoload.php' ) ) {
 // Load admin-specific files only in the admin area.
 if ( is_admin() ) {
 	include_once UFAQSW__PLUGIN_DIR . 'inc/admin/class-directory-post-type.php';
+	include_once UFAQSW__PLUGIN_DIR . 'inc/admin/class-faq-group-sorting.php';
 	include_once UFAQSW__PLUGIN_DIR . 'inc/admin/settings/settings.php';
+	include_once UFAQSW__PLUGIN_DIR . 'inc/admin/chatbot.php';
 	include_once UFAQSW__PLUGIN_DIR . 'inc/admin/icons/class.icons.php';
 	include_once UFAQSW__PLUGIN_DIR . 'inc/admin/installation.php';
 }

@@ -1,0 +1,10 @@
+.ufaqsw-sort-handle {
+    cursor: move;
+    font-size: 18px;
+    color: #888;
+    padding: 0 8px;
+}
+.ufaqsw-row-dragging {
+    background: #f1f1f1 !important;
+    opacity: 0.7;
+}
