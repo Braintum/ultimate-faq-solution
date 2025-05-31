@@ -14,14 +14,24 @@ export const ShadowApp = ({ onClose, shadowRoot }) => {
 
 	const [faqData, setFaqData] = useState([]); // Store fetched FAQ data
 	const [ajaxUrl, setAjaxUrl] = useState('');
+	const [assistantWindowHeadline, setAssistantWindowHeadline] = useState('');
+	const [assistantWindowIntroText, setAssistantWindowIntroText] = useState('');
+	const [headerBackgroundColor, setHeaderBackgroundColor] = useState('');
+	const [headerTextColor, setHeaderTextColor] = useState('');
+
 	const [nonce, setNonce] = useState('');
 	const [loading, setLoading] = useState(false); // Track loading state
 
 	useEffect(() => {
 		// Access the global chatbotData object
 		if (window.chatbotData) {
+			console.log('chatbotData:', window.chatbotData);
 			setAjaxUrl(window.chatbotData.ajaxUrl);
 			setNonce(window.chatbotData.nonce);
+			setAssistantWindowHeadline(window.chatbotData.assistant_window_headline);
+			setAssistantWindowIntroText(window.chatbotData.assistant_window_intro_text);
+			setHeaderBackgroundColor(window.chatbotData.header_background_color)
+			setHeaderTextColor(window.chatbotData.header_text_color)
 		}
 	}, []);
 
@@ -132,7 +142,7 @@ export const ShadowApp = ({ onClose, shadowRoot }) => {
 		if (view === 'answer' && selectedFaq) {
 			return selectedGroup.group;
 		}
-		return "Frequently Asked Questions";
+		return assistantWindowHeadline || 'Frequently Asked Questions'; // Default title if no specific group or FAQ is selected
 	};
 
 	return (
@@ -142,6 +152,9 @@ export const ShadowApp = ({ onClose, shadowRoot }) => {
 				onBack={handleBackClick}
 				showBackButton={view !== 'group'}
 				title={getTitle()}
+				intro={view == 'group' ? assistantWindowIntroText : ""}
+				headerColor={headerBackgroundColor}
+				textColor={headerTextColor}
 			/>
 
 			<div className="chatbot-body">

@@ -37,6 +37,12 @@ class Chatbot {
 	 * @return void
 	 */
 	public function enqueue_react_chatbot_script() {
+
+		$enable_chatbot = cmb2_get_option( 'ufaqsw_chatbot_settings', 'enable_chatbot' );
+		if ( ! $enable_chatbot ) {
+			return;
+		}
+
 		wp_enqueue_script(
 			'react-chatbot',
 			UFAQSW_ASSETS_URL . 'dist/bundle.js',
@@ -45,14 +51,24 @@ class Chatbot {
 			true
 		);
 
+		$floating_button_icon_url = cmb2_get_option( 'ufaqsw_chatbot_settings', 'floating_button_icon' );
+		if ( ! $floating_button_icon_url ) {
+			$floating_button_icon_url = UFAQSW_ASSETS_URL . 'images/faq-bot-image.svg'; // Default icon URL.
+		}
+
 		// Pass data to the React chatbot script.
 		wp_localize_script(
 			'react-chatbot',
 			'chatbotData',
 			array(
-				'ajaxUrl' => admin_url( 'admin-ajax.php' ),
-				'nonce'   => wp_create_nonce( 'chatbot_nonce' ),
-				'someKey' => 'someValue', // Add your custom data here.
+				'ajaxUrl'                => admin_url( 'admin-ajax.php' ),
+				'nonce'                  => wp_create_nonce( 'chatbot_nonce' ),
+				'floating_button_icon'   => $floating_button_icon_url,
+				'floating_button_title'  => cmb2_get_option( 'ufaqsw_chatbot_settings', 'floating_button_title' ),
+				'assistant_window_headline'  => cmb2_get_option( 'ufaqsw_chatbot_settings', 'assistant_window_headline' ),
+				'assistant_window_intro_text'  => cmb2_get_option( 'ufaqsw_chatbot_settings', 'assistant_window_intro_text' ),
+				'header_background_color'  => cmb2_get_option( 'ufaqsw_chatbot_settings', 'header_background_color' ),
+				'header_text_color'  => cmb2_get_option( 'ufaqsw_chatbot_settings', 'header_text_color' ),
 			)
 		);
 	}
@@ -121,6 +137,11 @@ class Chatbot {
 	public function bot_integration() {
 
 		if ( is_admin() ) {
+			return;
+		}
+
+		$enable_chatbot = cmb2_get_option( 'ufaqsw_chatbot_settings', 'enable_chatbot' );
+		if ( ! $enable_chatbot ) {
 			return;
 		}
 

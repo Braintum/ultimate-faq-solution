@@ -95,6 +95,20 @@
 	font-weight: bold;
 }
 
+.chatbot-container .chatbot-title-group {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+}
+
+.chatbot-container .chatbot-intro {
+	font-size: 13px;
+	font-weight: normal;
+	opacity: 0.85;
+	margin-top: 2px;
+	line-height: 1.3;
+}
+
 @media (max-width: 768px) {
   .chatbot-container {
     top: 0;
