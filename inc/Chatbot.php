@@ -53,7 +53,7 @@ class Chatbot {
 
 		$floating_button_icon_url = cmb2_get_option( 'ufaqsw_chatbot_settings', 'floating_button_icon' );
 		if ( ! $floating_button_icon_url ) {
-			$floating_button_icon_url = UFAQSW_ASSETS_URL . 'images/faq-bot-image.svg'; // Default icon URL.
+			$floating_button_icon_url = UFAQSW_ASSETS_URL . 'images/faq-bot-icon.svg'; // Default icon URL.
 		}
 
 		// Pass data to the React chatbot script.
@@ -69,6 +69,8 @@ class Chatbot {
 				'assistant_window_intro_text'  => cmb2_get_option( 'ufaqsw_chatbot_settings', 'assistant_window_intro_text' ),
 				'header_background_color'  => cmb2_get_option( 'ufaqsw_chatbot_settings', 'header_background_color' ),
 				'header_text_color'  => cmb2_get_option( 'ufaqsw_chatbot_settings', 'header_text_color' ),
+				'body_text'  => cmb2_get_option( 'ufaqsw_chatbot_settings', 'body_text' ),
+
 			)
 		);
 	}

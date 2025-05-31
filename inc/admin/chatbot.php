@@ -23,7 +23,7 @@ function ufaqsw_register_settings_page() {
 			'name'        => __( 'Enable FAQ Assistant', 'ufaqsw' ),
 			'id'          => 'enable_chatbot',
 			'type'        => 'checkbox',
-			'description' => __( 'Display a floating help icon on every page of your site. When clicked, it opens the interactive FAQ Assistant, allowing visitors to browse and search your FAQs in a chat-style window.', 'ufaqsw' ),
+			'description' => __( '<i>Display a floating help icon on every page of your site. When clicked, it opens the interactive FAQ Assistant, allowing visitors to browse and search your FAQs in a chat-style window.</i>', 'ufaqsw' ),
 		)
 	);
 	$cmb->add_field(
@@ -31,12 +31,12 @@ function ufaqsw_register_settings_page() {
 			'name'        => __( 'Floating Button Icon', 'ufaqsw' ),
 			'id'          => 'floating_button_icon',
 			'type'        => 'file',
-			'description' => __( 'Upload a custom icon for the floating FAQ Assistant button. The image should be 80 × 80 pixels. Any image format is allowed, but a transparent background (e.g., PNG, SVG) is recommended for the best visual appearance. If no icon is uploaded, a default icon will be used instead.', 'ufaqsw' ),
+			'description' => __( '<i>Upload a custom icon for the floating FAQ Assistant button. The image should be 80 × 80 pixels. Any image format is allowed, but a transparent background (e.g., PNG, SVG) is recommended for the best visual appearance. If no icon is uploaded, a default icon will be used instead.</i>', 'ufaqsw' ),
 			'options'     => array(
 				'url' => false, // Hide the text input for the URL.
 			),
 			'text'    => array(
-				'add_upload_file_text' => 'Add Icon'
+				'add_upload_file_text' => __( 'Add Icon', 'ufaqsw' ),
 			),
 			'preview_size' => 'thumbnail', // Image preview size.
 		)
@@ -54,37 +54,11 @@ function ufaqsw_register_settings_page() {
 
 	$cmb->add_field(
 		array(
-			'name'    => __( 'Window Headline', 'ufaqsw' ),
-			'id'      => 'assistant_window_headline',
-			'type'    => 'text',
-			'default' => __( 'Welcome to our Help Center!', 'ufaqsw' ),
-		)
-	);
-
-	$cmb->add_field(
-		array(
-			'name'    => __( 'Window Intro Text', 'ufaqsw' ),
-			'id'      => 'assistant_window_intro_text',
-			'type'    => 'text',
-			'default' => __( 'Explore common questions and answers.', 'ufaqsw' ),
-		)
-	);
-
-	$cmb->add_field(
-		array(
-			'name'    => __( 'Preloader Text', 'ufaqsw' ),
-			'id'      => 'preloader_text',
-			'type'    => 'text',
-			'default' => __( 'Loading...', 'ufaqsw' ),
-		)
-	);
-
-	$cmb->add_field(
-		array(
 			'name'    => __( 'Header Background Color', 'ufaqsw' ),
 			'id'      => 'header_background_color',
 			'type'    => 'colorpicker',
-			'default' => '#da5c34',
+			'default' => '#1a185e',
+			'description' => __( '<i>Choose the background color of the FAQ Assistant header for better branding and visibility.</i>', 'ufaqsw' ),
 		)
 	);
 
@@ -94,8 +68,47 @@ function ufaqsw_register_settings_page() {
 			'id'      => 'header_text_color',
 			'type'    => 'colorpicker',
 			'default' => '#fff',
+			'description' => __( '<i>Select the color of the text in the FAQ Assistant header to ensure readability against the background.</i>', 'ufaqsw' ),
 		)
 	);
+
+	$cmb->add_field(
+		array(
+			'name'    => __( 'Window Headline', 'ufaqsw' ),
+			'id'      => 'assistant_window_headline',
+			'type'    => 'text',
+			'default' => __( 'Welcome to our Help Center!', 'ufaqsw' ),
+			'description' => __( '<i>Enter the main title displayed at the top of the FAQ Assistant window to welcome or guide users.</i>', 'ufaqsw' ),
+		)
+	);
+
+	$cmb->add_field(
+		array(
+			'name'    => __( 'Window Intro Text', 'ufaqsw' ),
+			'id'      => 'assistant_window_intro_text',
+			'type'    => 'text',
+			'default' => __( 'Explore common questions and answers.', 'ufaqsw' ),
+			'description' => __( '<i>Add a brief message shown below the headline to explain how visitors can use the assistant.</i>', 'ufaqsw' ),
+		)
+	);
+
+	$cmb->add_field(
+		array(
+			'name'    => __( 'Preloader Text', 'ufaqsw' ),
+			'id'      => 'preloader_text',
+			'type'    => 'text',
+			'default' => __( 'Loading...', 'ufaqsw' ),
+			'description' => __( '<i>Text displayed while the FAQ content is loading (e.g., “Loading…”) to inform users.</i>', 'ufaqsw' ),
+		)
+	);
+
+	$cmb->add_field( array(
+		'name' => __( 'Body Text', 'ufaqsw' ),
+		'desc' => __( '<i>Enter the text displayed above the list of FAQ categories in the assistant window. Use this to guide visitors on how to navigate and use the categories effectively.</i>', 'ufaqsw' ),
+		'default' => __( 'Browse our FAQ categories below to quickly find answers grouped by topic. Click a category to see related questions and solutions.', 'ufaqsw' ),
+		'id' => 'body_text',
+		'type' => 'textarea'
+	) );
 
 }
 
@@ -110,7 +123,7 @@ add_action( 'cmb2_admin_init', 'ufaqsw_register_settings_page' );
  * @param object $cmb         The CMB2 object.
  */
 function ufaqsw_add_html_before_cmb2_output( $cmb_id, $object_id, $object_type, $cmb ) {
-	
+
 	// Only output above the ufaqsw_settings_page metabox.
 	if ( 'ufaqsw_settings_page' !== $cmb_id ) {
 		return;

@@ -18,7 +18,7 @@ export const ShadowApp = ({ onClose, shadowRoot }) => {
 	const [assistantWindowIntroText, setAssistantWindowIntroText] = useState('');
 	const [headerBackgroundColor, setHeaderBackgroundColor] = useState('');
 	const [headerTextColor, setHeaderTextColor] = useState('');
-
+	const [bodyText, setBodyText] = useState('');
 	const [nonce, setNonce] = useState('');
 	const [loading, setLoading] = useState(false); // Track loading state
 
@@ -32,6 +32,7 @@ export const ShadowApp = ({ onClose, shadowRoot }) => {
 			setAssistantWindowIntroText(window.chatbotData.assistant_window_intro_text);
 			setHeaderBackgroundColor(window.chatbotData.header_background_color)
 			setHeaderTextColor(window.chatbotData.header_text_color)
+			setBodyText(window.chatbotData.body_text)
 		}
 	}, []);
 
@@ -166,6 +167,7 @@ export const ShadowApp = ({ onClose, shadowRoot }) => {
 							<FaqGroups
 								faqData={faqData}
 								onGroupClick={handleGroupClick}
+								description={bodyText}
 							/>
 						)}
 
