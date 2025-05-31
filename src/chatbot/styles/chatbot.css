@@ -37,16 +37,15 @@
 	width: 100%;
 }
 
-.chatbot-container .chatbot-close-button {
+.chatbot-container .chatbot-close-button, .chatbot-container .faq-back-button {
 	background-color: transparent;
 	border: none;
 	font-size: 16px;
 	cursor: pointer;
-	color: #fff;
-  }
+}
 
 .chatbot-container .chatbot-body {
-  padding: 10px;
+  padding: 10px 20px;
   height: calc(100% - 144px); /* Adjust height to fill remaining space below the header */
   margin-top: 20px;
   overflow-y: auto;

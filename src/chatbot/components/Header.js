@@ -26,8 +26,18 @@ export const Header = (headerProps) => {
             onClick={onBack}
             className="faq-back-button"
             style={textColor ? { color: textColor } : undefined}
+            aria-label="Back"
           >
-            {`<`}
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 20 20"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              style={textColor ? { color: textColor } : undefined}
+            >
+              <polyline points="13 5 7 10 13 15" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
           </button>
         )}
         <div className="chatbot-title-group">
@@ -40,8 +50,21 @@ export const Header = (headerProps) => {
           onClick={onClose}
           className="chatbot-close-button"
           style={textColor ? { color: textColor } : undefined}
+          aria-label="Close"
         >
-          ✖
+          {(
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 20 20"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              style={textColor ? { color: textColor } : undefined}
+            >
+              <line x1="5" y1="5" x2="15" y2="15" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+              <line x1="15" y1="5" x2="5" y2="15" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+            </svg>
+          )}
         </button>
       </div>
     </div>
