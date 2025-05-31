@@ -266,3 +266,48 @@ add_action(
 		echo '</div>';
 	}
 );
+
+add_action( 'admin_menu', 'ufaqsw_reorder_submenu', 999 );
+
+/**
+ * Reorders the submenu items under the FAQ Groups menu.
+ */
+function ufaqsw_reorder_submenu() {
+	global $submenu;
+
+	$parent_slug = 'edit.php?post_type=ufaqsw';
+
+	if ( ! isset( $submenu[ $parent_slug ] ) ) {
+		return;
+	}
+
+	$desired_order = array(
+		'edit.php?post_type=ufaqsw',        // All FAQ Groups.
+		'post-new.php?post_type=ufaqsw',    // Add New FAQ Group.
+		'ufaqsw_chatbot_settings',          // FAQ Assistant (move this to 3rd).
+		'ufaqsw-settings',                  // Settings & Help.
+		'faq-export-import',                // Export/Import.
+	);
+
+	$new_submenu = array();
+
+	// Build new submenu array in desired order.
+	foreach ( $desired_order as $slug ) {
+		foreach ( $submenu[ $parent_slug ] as $item ) {
+			if ( $item[2] === $slug ) {
+				$new_submenu[] = $item;
+				break;
+			}
+		}
+	}
+
+	// Append any submenu items not in the desired order list, keep original order.
+	foreach ( $submenu[ $parent_slug ] as $item ) {
+		if ( ! in_array( $item[2], $desired_order, true ) ) {
+			$new_submenu[] = $item;
+		}
+	}
+
+	// Replace original submenu with reordered one.
+	$submenu[ $parent_slug ] = $new_submenu; //phpcs:ignore.
+}
