@@ -113,6 +113,65 @@ function ufaqsw_register_settings_page() {
 		)
 	);
 
+	$faq_groups = get_posts(
+		array(
+			'post_type'      => 'ufaqsw',
+			'posts_per_page' => -1,
+			'orderby'        => 'menu_order',
+			'order'          => 'ASC',
+			'post_status'    => 'publish',
+			'fields'         => 'ids',
+		)
+	);
+
+	$faq_options = array();
+	if ( $faq_groups ) {
+		foreach ( $faq_groups as $group_id ) {
+			$group_title             = get_the_title( $group_id );
+			$faq_options[ $group_id ] = $group_title;
+		}
+	}
+
+	$cmb->add_field(
+		array(
+			'name'              => 'FAQ Groups',
+			'id'                => 'faq_groups',
+			'type'              => 'multicheck',
+			'options'           => $faq_options,
+			'select_all_button' => true,
+			'default'           => array_keys( $faq_options ),
+			'description'       => __( '<i>By default all FAQ groups will be displayed, but you can uncheck any groups to not show on the FAQ Assistant window.</i>', 'ufaqsw' ),
+		)
+	);
+
+	$cmb->add_field(
+		array(
+			'name'        => __( 'Display FAQ Assistant On', 'ufaqsw' ),
+			'id'          => 'display_on',
+			'type'        => 'radio_inline',
+			'default'     => 'all',
+			'options'     => array(
+				'all'     => __( 'All Pages (default)', 'ufaqsw' ),
+				'specific' => __( 'Specific Pages', 'ufaqsw' ),
+			),
+			'description' => __( 'Choose whether to display the FAQ Assistant on all pages or only on selected pages.', 'ufaqsw' ),
+		)
+	);
+
+	$cmb->add_field(
+		array(
+			'name'        => __( 'Select Pages', 'ufaqsw' ),
+			'id'          => 'display_on_pages',
+			'type'        => 'multicheck',
+			'options'     => ufaqsw_get_all_pages_for_select(),
+			'attributes'  => array(
+				'data-conditional-id'    => 'display_on',
+				'data-conditional-value' => 'specific',
+			),
+			'description' => __( 'Select the pages where the FAQ Assistant should appear. Only applies if "Specific Pages" is selected above.', 'ufaqsw' ),
+		)
+	);
+
 }
 
 add_action( 'cmb2_admin_init', 'ufaqsw_register_settings_page' );
@@ -134,7 +193,10 @@ function ufaqsw_add_html_before_cmb2_output( $cmb_id, $object_id, $object_type, 
 
 	echo '<div class="faq-assistant-wrapper">';
 	echo '<div style="margin-bottom: 20px;">';
-	echo esc_html__( 'The FAQ Assistant adds an interactive, floating help icon to your website, giving visitors quick access to your FAQs in a sleek, chat-style interface. Use the settings below to enable the assistant and customize its behavior. Improve user experience by making answers more accessible—right when and where your visitors need them.', 'ufaqsw' );
+	echo esc_html__(
+		'The FAQ Assistant adds an interactive, floating help icon to your website, giving visitors quick access to your FAQs in a sleek, chat-style interface. Use the settings below to enable the assistant and customize its behavior. Improve user experience by making answers more accessible—right when and where your visitors need them.',
+		'ufaqsw'
+	);
 
 	echo '<br><a href="https://www.braintum.com/docs/ultimate-faq-solution/faq-assistant/" target="_blank" style="display:inline-block;margin-top:10px;">' . esc_html__( 'Read the FAQ Assistant Documentation.', 'ufaqsw' ) . '</a>';
 	echo '</div>';
@@ -154,3 +216,40 @@ add_action( 'cmb2_before_form', 'ufaqsw_add_html_before_cmb2_output', 10, 4 );
 function ufaqsw_add_html_after_cmb2_output( $cmb_id, $object_id, $object_type, $cmb ) {
 	echo '</div><!-- .faq-assistant-wrapper -->';
 }
+
+/**
+ * Callback to get all pages for select field.
+ */
+function ufaqsw_get_all_pages_for_select() {
+	$pages   = get_pages( array( 'post_status' => 'publish' ) );
+	$options = array();
+	foreach ( $pages as $page ) {
+		$options[ $page->ID ] = $page->post_title;
+	}
+	return $options;
+}
+
+// Enqueue admin scripts/styles for the settings page.
+add_action(
+	'admin_enqueue_scripts',
+	function( $hook ) {
+		if ( isset( $_GET['page'] ) && 'ufaqsw_chatbot_settings' === $_GET['page'] ) {
+			wp_enqueue_script( 'ufaqsw-cmb2-conditional', UFAQSW_ASSETS_URL . 'js/cmb2-conditional-logic.js', array( 'jquery' ), '1.0.0', true );
+		}
+	}
+);
+
+add_action(
+	'admin_footer',
+	function() {
+		if ( isset( $_GET['page'] ) && 'ufaqsw_chatbot_settings' === $_GET['page'] ) {
+			?>
+			<style>
+				.field_is_hidden {
+					display: none !important;
+				}
+			</style>
+			<?php
+		}
+	}
+);

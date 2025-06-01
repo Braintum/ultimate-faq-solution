@@ -31,6 +31,25 @@ class Chatbot {
 		add_action( 'wp_footer', array( $this, 'bot_integration' ) );
 	}
 
+	public function is_assistant_enabled() {
+
+		$enable_chatbot = cmb2_get_option( 'ufaqsw_chatbot_settings', 'enable_chatbot' );
+		if ( ! $enable_chatbot ) {
+			return false;
+		}
+
+		$display_on = cmb2_get_option( 'ufaqsw_chatbot_settings', 'display_on' );
+		if ( 'on' !== $display_on ) {
+			$specific_pages = cmb2_get_option( 'ufaqsw_chatbot_settings', 'display_on_pages' );
+			if ( ! is_array( $specific_pages ) || empty( $specific_pages ) || ! in_array( get_the_ID(), $specific_pages ) ) {
+				return false;
+			}
+
+		}
+
+		return $enable_chatbot;
+	}
+
 	/**
 	 * Enqueue the React chatbot script.
 	 *
@@ -38,8 +57,7 @@ class Chatbot {
 	 */
 	public function enqueue_react_chatbot_script() {
 
-		$enable_chatbot = cmb2_get_option( 'ufaqsw_chatbot_settings', 'enable_chatbot' );
-		if ( ! $enable_chatbot ) {
+		if ( ! $this->is_assistant_enabled() ) {
 			return;
 		}
 
@@ -99,6 +117,11 @@ class Chatbot {
 			),
 		);
 
+		$faq_groups = cmb2_get_option( 'ufaqsw_chatbot_settings', 'faq_groups' );
+		if ( ! empty( $faq_groups ) ) {
+			$faq_args['post__in'] = $faq_groups; // Filter by selected FAQ groups.
+		}
+
 		$faq_data = array();
 
 		$faq_groups = get_posts( $faq_args );
@@ -142,8 +165,7 @@ class Chatbot {
 			return;
 		}
 
-		$enable_chatbot = cmb2_get_option( 'ufaqsw_chatbot_settings', 'enable_chatbot' );
-		if ( ! $enable_chatbot ) {
+		if ( ! $this->is_assistant_enabled() ) {
 			return;
 		}
 

@@ -25,7 +25,6 @@ export const ShadowApp = ({ onClose, shadowRoot }) => {
 	useEffect(() => {
 		// Access the global chatbotData object
 		if (window.chatbotData) {
-			console.log('chatbotData:', window.chatbotData);
 			setAjaxUrl(window.chatbotData.ajaxUrl);
 			setNonce(window.chatbotData.nonce);
 			setAssistantWindowHeadline(window.chatbotData.assistant_window_headline);
