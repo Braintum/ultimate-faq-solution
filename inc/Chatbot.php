@@ -117,8 +117,8 @@ class Chatbot {
 			'fields'         => 'ids',
 			'posts_per_page' => -1,
 			'post_status'    => 'publish',
-			'orderby'        => 'date',
-			'order'          => 'DESC',
+			'orderby'        => 'menu_order',
+			'order'          => 'ASC',
 			'meta_query'     => array(
 				array(
 					'key'     => 'ufaqsw_faq_item01',
