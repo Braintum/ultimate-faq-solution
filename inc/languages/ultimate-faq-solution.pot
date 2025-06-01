@@ -2,10 +2,10 @@
 # This file is distributed under the GPLv2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Ultimate FAQ Solution 1.5.7\n"
+"Project-Id-Version: Ultimate FAQ Solution 1.5.8\n"
 "Report-Msgid-Bugs-To: "
 "https://wordpress.org/support/plugin/ultimate-faq-solution\n"
-"POT-Creation-Date: 2025-05-31 23:07:37+00:00\n"
+"POT-Creation-Date: 2025-06-01 02:16:26+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -29,7 +29,7 @@ msgstr ""
 msgid "No FAQ group selected."
 msgstr ""
 
-#: inc/Chatbot.php:106
+#: inc/Chatbot.php:140
 msgid "No FAQs found."
 msgstr ""
 
@@ -210,7 +210,41 @@ msgid ""
 "Click a category to see related questions and solutions."
 msgstr ""
 
-#: inc/admin/chatbot.php:137
+#: inc/admin/chatbot.php:143
+msgid ""
+"<i>By default all FAQ groups will be displayed, but you can uncheck any "
+"groups to not show on the FAQ Assistant window.</i>"
+msgstr ""
+
+#: inc/admin/chatbot.php:149
+msgid "Display FAQ Assistant On"
+msgstr ""
+
+#: inc/admin/chatbot.php:154
+msgid "All Pages (default)"
+msgstr ""
+
+#: inc/admin/chatbot.php:155
+msgid "Specific Pages"
+msgstr ""
+
+#: inc/admin/chatbot.php:157
+msgid ""
+"Choose whether to display the FAQ Assistant on all pages or only on "
+"selected pages."
+msgstr ""
+
+#: inc/admin/chatbot.php:163
+msgid "Select Pages"
+msgstr ""
+
+#: inc/admin/chatbot.php:171
+msgid ""
+"Select the pages where the FAQ Assistant should appear. Only applies if "
+"\"Specific Pages\" is selected above."
+msgstr ""
+
+#: inc/admin/chatbot.php:196
 msgid ""
 "The FAQ Assistant adds an interactive, floating help icon to your website, "
 "giving visitors quick access to your FAQs in a sleek, chat-style interface. "
@@ -219,7 +253,7 @@ msgid ""
 "where your visitors need them."
 msgstr ""
 
-#: inc/admin/chatbot.php:139
+#: inc/admin/chatbot.php:201
 msgid "Read the FAQ Assistant Documentation."
 msgstr ""
 

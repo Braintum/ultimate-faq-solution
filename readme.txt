@@ -4,7 +4,7 @@ Donate link: https://www.solrengine.com/
 Tags: faq, faq-directory, accordion, knowledgebase, woocommerce-faq  
 Requires at least: 5.1  
 Tested up to: 6.8.1  
-Stable tag: 1.5.7  
+Stable tag: 1.5.8  
 Requires PHP: 7.4.0  
 License: GPLv2 or later  
 License URI: https://www.gnu.org/licenses/license-list.html#GPLCompatibleLicenses  
@@ -26,6 +26,7 @@ Create and edit FAQ groups just like any WordPress post, using the familiar inte
 🔗 [Support & Feature Requests](https://www.braintum.com/contact-us/) | [Live Demo](https://www.braintum.com/ultimate-faq-solution/)
 
 = ✅ Features at a Glance =
+* ✅ **FAQ Assistant: Interactive, floating help icon with chat-style FAQ access**
 * ✅ **Accessibility-Ready Templates**
 * ✅ **Gutenberg Block Support**
 * ✅ **FAQ Schema / Structured Data Support**
@@ -45,7 +46,6 @@ Create and edit FAQ groups just like any WordPress post, using the familiar inte
 * ✅ **SEO-Friendly & Lightweight**
 * ✅ **One click Export/Import**
 * ✅ **FAQ Preview Option**
-* ✅ **FAQ Assistant: Interactive, floating help icon with chat-style FAQ access**
 
 🎨 Match your site branding with full control over colors, typography, and layout styles. Whether you're building a customer support portal or a product help page, Ultimate FAQ Solution makes it seamless.
 
@@ -105,6 +105,9 @@ The FAQ Assistant adds an interactive, floating help icon to your website, givin
 5. Screenshot 5  
 
 == Changelog ==
+
+= 1.5.8 =  
+* More control options added for FAQ Assistant.
 
 = 1.5.7 =  
 * FAQ group sorting option added.  

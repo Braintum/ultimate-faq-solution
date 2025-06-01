@@ -31,6 +31,17 @@ class Chatbot {
 		add_action( 'wp_footer', array( $this, 'bot_integration' ) );
 	}
 
+	/**
+	 * Checks if the assistant (chatbot) feature is enabled based on plugin settings.
+	 *
+	 * Retrieves the chatbot enablement status from the plugin options. If enabled,
+	 * further checks if the chatbot should be displayed on the current page, either
+	 * globally or on specific pages as defined in the settings.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @return bool True if the assistant is enabled for the current context, false otherwise.
+	 */
 	public function is_assistant_enabled() {
 
 		$enable_chatbot = cmb2_get_option( 'ufaqsw_chatbot_settings', 'enable_chatbot' );
