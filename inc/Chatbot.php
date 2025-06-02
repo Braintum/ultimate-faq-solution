@@ -50,12 +50,11 @@ class Chatbot {
 		}
 
 		$display_on = cmb2_get_option( 'ufaqsw_chatbot_settings', 'display_on' );
-		if ( 'on' !== $display_on ) {
+		if ( 'all' !== $display_on ) {
 			$specific_pages = cmb2_get_option( 'ufaqsw_chatbot_settings', 'display_on_pages' );
 			if ( ! is_array( $specific_pages ) || empty( $specific_pages ) || ! in_array( get_the_ID(), $specific_pages ) ) {
 				return false;
 			}
-
 		}
 
 		return $enable_chatbot;

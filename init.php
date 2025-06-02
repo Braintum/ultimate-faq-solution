@@ -9,7 +9,7 @@
  * @license   GPL v2 or later
  *
  * Plugin Name: Ultimate FAQ Solution
- * Version: 1.6.1
+ * Version: 1.6.2
  * Plugin URI: https://www.braintum.com/ultimate-faq-solution/
  * Description: A WordPress plugin to create, organize, and display FAQs with responsive layouts and styles.
  * Author: braintum
@@ -33,7 +33,7 @@ if ( ! function_exists( 'add_action' ) ) {
 * Define some global constants
 * Use `plugin_dir_path` and `plugin_dir_url` only when necessary to reduce overhead.
 */
-define( 'UFAQSW_VERSION', '1.6.1' );
+define( 'UFAQSW_VERSION', '1.6.2' );
 define( 'UFAQSW_PRFX', 'ufaqsw' );
 define( 'UFAQSW_BASE', plugin_basename( __FILE__ ) );
 define( 'UFAQSW__PLUGIN_DIR', __DIR__ . '/' );

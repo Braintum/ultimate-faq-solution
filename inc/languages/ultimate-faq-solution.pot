@@ -2,10 +2,10 @@
 # This file is distributed under the GPLv2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Ultimate FAQ Solution 1.6.1\n"
+"Project-Id-Version: Ultimate FAQ Solution 1.6.2\n"
 "Report-Msgid-Bugs-To: "
 "https://wordpress.org/support/plugin/ultimate-faq-solution\n"
-"POT-Creation-Date: 2025-06-01 03:28:14+00:00\n"
+"POT-Creation-Date: 2025-06-02 18:31:35+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -29,7 +29,7 @@ msgstr ""
 msgid "No FAQ group selected."
 msgstr ""
 
-#: inc/Chatbot.php:140
+#: inc/Chatbot.php:139
 msgid "No FAQs found."
 msgstr ""
 
