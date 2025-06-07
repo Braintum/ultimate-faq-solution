@@ -62,6 +62,8 @@ class UFAQSW_Installation {
 		if ( ! get_option( 'ufaqsw_live_search_text' ) ) {
 			update_option( 'ufaqsw_live_search_text', 'Live Search..' );
 		}
+
+		ufaqsw_create_default_appearance();
 	}
 
 	/**

@@ -1,4 +1,16 @@
 <?php
+/**
+ * FAQ Assistant Settings Page and Admin Functionality
+ *
+ * This file contains the code for registering and rendering the FAQ Assistant settings page
+ * in the WordPress admin using CMB2, as well as related helper functions and admin scripts.
+ *
+ * @package Ultimate_FAQ_Solution
+ */
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 /**
  * Add the settings page using CMB2.

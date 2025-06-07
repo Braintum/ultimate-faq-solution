@@ -45,6 +45,9 @@ if ( file_exists( UFAQSW__PLUGIN_DIR . 'vendor/autoload.php' ) ) {
 	require_once UFAQSW__PLUGIN_DIR . 'vendor/autoload.php';
 }
 
+// Load general functions and utilities.
+require_once UFAQSW__PLUGIN_DIR . 'inc/functions/general.php';
+
 // Load admin-specific files only in the admin area.
 if ( is_admin() ) {
 	include_once UFAQSW__PLUGIN_DIR . 'inc/admin/class-directory-post-type.php';
@@ -70,6 +73,9 @@ add_action(
 		new Mahedi\UltimateFaqSolution\Rest();
 
 		new Mahedi\UltimateFaqSolution\Chatbot();
+
+		// REST API.
+		new Mahedi\UltimateFaqSolution\Upgrader();
 
 		load_plugin_textdomain( 'ufaqsw', false, dirname( plugin_basename( __FILE__ ) ) . '/inc/languages' );
 	}

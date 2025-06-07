@@ -133,7 +133,7 @@ class Shortcodes {
 					$faqs = array_values( array_reverse( $faqs, true ) );
 				}
 
-				$designs = apply_filters( 'ufaqsw_simplify_configuration_variables', get_the_ID() );
+				$designs = apply_filters( 'ufaqsw_simplify_configuration_variables', ufaqsw_get_appearance_id( get_the_ID() ) );
 
 				$template = apply_filters( 'ufaqsw_template_filter', $designs['template'] );
 
@@ -211,7 +211,7 @@ class Shortcodes {
 					$faqs = array_values( array_reverse( $faqs, true ) );
 				}
 
-				$designs              = apply_filters( 'ufaqsw_simplify_configuration_variables', get_the_ID() );
+				$designs              = apply_filters( 'ufaqsw_simplify_configuration_variables', ufaqsw_get_appearance_id( get_the_ID() ) );
 				$designs['behaviour'] = $behaviour;
 
 				$template = apply_filters( 'ufaqsw_template_filter', $designs['template'] );

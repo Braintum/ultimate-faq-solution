@@ -57,7 +57,7 @@ class UFAQSW_Icon_Settings {
 
 		global $post, $typenow, $current_screen;
 
-		if ( $typenow && 'ufaqsw' === $typenow ) {
+		if ( $typenow && 'ufaqsw_appearance' === $typenow ) {
 			$data  = file( UFAQSW__PLUGIN_DIR . 'assets/data/fa-data.txt' ); // file in to an array.
 			$icons = array();
 			foreach ( $data as $key => $val ) {

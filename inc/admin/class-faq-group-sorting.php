@@ -1,4 +1,12 @@
 <?php
+/**
+ * Handles FAQ group sorting functionality for the Ultimate FAQ Solution plugin.
+ *
+ * This file defines the FAQ_Group_Sorting class, which manages the ordering and persistence
+ * of FAQ groups in the WordPress admin interface.
+ *
+ * @package Ultimate_FAQ_Solution
+ */
 
 defined( 'ABSPATH' ) || exit;
 

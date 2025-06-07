@@ -20,25 +20,25 @@ if ( ! defined( 'ABSPATH' ) ) {
 function ufaqsw_register_cpt() {
 
 	$ufaqsw_list_labels = array(
-		'name'               => 'FAQ Groups',
-		'singular_name'      => 'FAQ Group',
-		'add_new'            => 'New FAQ Group',
-		'add_new_item'       => 'Add New FAQ Group',
-		'edit_item'          => 'Edit FAQ Group',
-		'new_item'           => 'New FAQ Group',
-		'all_items'          => 'All FAQ Groups',
-		'view_item'          => 'View FAQ Group',
-		'search_items'       => 'Search FAQ Group',
-		'not_found'          => 'No FAQ Group found',
-		'not_found_in_trash' => 'No FAQ Group found in the Trash',
+		'name'               => __( 'FAQ Groups', 'ufaqsw' ),
+		'singular_name'      => __( 'FAQ Group', 'ufaqsw' ),
+		'add_new'            => __( 'New FAQ Group', 'ufaqsw' ),
+		'add_new_item'       => __( 'Add New FAQ Group', 'ufaqsw' ),
+		'edit_item'          => __( 'Edit FAQ Group', 'ufaqsw' ),
+		'new_item'           => __( 'New FAQ Group', 'ufaqsw' ),
+		'all_items'          => __( 'All FAQ Groups', 'ufaqsw' ),
+		'view_item'          => __( 'View FAQ Group', 'ufaqsw' ),
+		'search_items'       => __( 'Search FAQ Group', 'ufaqsw' ),
+		'not_found'          => __( 'No FAQ Group found', 'ufaqsw' ),
+		'not_found_in_trash' => __( 'No FAQ Group found in the Trash', 'ufaqsw' ),
 		'parent_item_colon'  => '',
-		'menu_name'          => 'Ultimate FAQs',
+		'menu_name'          => __( 'Ultimate FAQs', 'ufaqsw' ),
 
 	);
 
 	$ufaqsw_list_args = array(
 		'labels'              => $ufaqsw_list_labels,
-		'description'         => 'This post type holds all FAQs for your site.',
+		'description'         => __( 'This post type holds all FAQs for your site.', 'ufaqsw' ),
 		'menu_position'       => 25,
 		'exclude_from_search' => true,
 		'show_in_nav_menus'   => false,
@@ -57,6 +57,36 @@ function ufaqsw_register_cpt() {
 
 	register_post_type( 'ufaqsw', $ufaqsw_list_args );
 
+	// FAQ Appearance Custom Post Type.
+	$labels = array(
+		'name'               => __( 'Appearances', 'ufaqsw' ),
+		'singular_name'      => __( 'Appearance', 'ufaqsw' ),
+		'menu_name'          => __( 'Appearances', 'ufaqsw' ),
+		'name_admin_bar'     => __( 'Appearance', 'ufaqsw' ),
+		'add_new'            => __( 'Add New', 'ufaqsw' ),
+		'add_new_item'       => __( 'Add New Appearance', 'ufaqsw' ),
+		'new_item'           => __( 'New Appearance', 'ufaqsw' ),
+		'edit_item'          => __( 'Edit Appearance', 'ufaqsw' ),
+		'view_item'          => __( 'View Appearance', 'ufaqsw' ),
+		'all_items'          => __( 'All Appearances', 'ufaqsw' ),
+		'search_items'       => __( 'Search Appearances', 'ufaqsw' ),
+		'not_found'          => __( 'No appearances found.', 'ufaqsw' ),
+		'not_found_in_trash' => __( 'No appearances found in Trash.', 'ufaqsw' ),
+	);
+
+	$args = array(
+		'labels'             => $labels,
+		'public'             => false, // Not public-facing.
+		'show_ui'            => true,  // Show in admin.
+		'show_in_menu'       => false, // We'll manually add it under FAQ Group.
+		'capability_type'    => 'post',
+		'hierarchical'       => false,
+		'supports'           => array( 'title' ),
+		'menu_position'      => null,
+		'menu_icon'          => 'dashicons-admin-customizer',
+	);
+
+	register_post_type( 'ufaqsw_appearance', $args );
 }
 add_action( 'init', 'ufaqsw_register_cpt' );
 
@@ -89,8 +119,8 @@ function ufaqsw_register_appearance_metabox() {
 		array(
 			'id'           => 'ufaqsw_faq_conf',
 			'title'        => esc_html__( 'Appearance', 'ufaqsw' ),
-			'object_types' => array( 'ufaqsw' ), // Post type.
-			'closed'       => true,
+			'object_types' => array( 'ufaqsw_appearance' ), // Post type.
+			'closed'       => false,
 			'classes'      => 'extra-class',
 		)
 	);
@@ -493,6 +523,16 @@ function bt_cmb2_sanitize_text_html_callback( $override_value, $value ) {
 }
 add_filter( 'cmb2_sanitize_text_html', 'bt_cmb2_sanitize_text_html_callback', 10, 2 );
 
-
-
-
+add_action( 'admin_menu', 'add_faq_appearance_submenu' );
+/**
+ * Adds the FAQ Appearances submenu under the FAQ Groups menu.
+ */
+function add_faq_appearance_submenu() {
+	add_submenu_page(
+		'edit.php?post_type=ufaqsw',         // Parent slug.
+		'FAQ Appearances',                   // Page title.
+		'FAQ Appearances',                   // Menu title.
+		'manage_options',                    // Capability.
+		'edit.php?post_type=ufaqsw_appearance' // Target link.
+	);
+}

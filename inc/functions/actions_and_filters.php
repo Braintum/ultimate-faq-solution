@@ -284,6 +284,7 @@ function ufaqsw_reorder_submenu() {
 	$desired_order = array(
 		'edit.php?post_type=ufaqsw',        // All FAQ Groups.
 		'post-new.php?post_type=ufaqsw',    // Add New FAQ Group.
+		'edit.php?post_type=ufaqsw_appearance', // Appearance (move this to 2nd).
 		'ufaqsw_chatbot_settings',          // FAQ Assistant (move this to 3rd).
 		'ufaqsw-settings',                  // Settings & Help.
 		'faq-export-import',                // Export/Import.
@@ -310,4 +311,143 @@ function ufaqsw_reorder_submenu() {
 
 	// Replace original submenu with reordered one.
 	$submenu[ $parent_slug ] = $new_submenu; //phpcs:ignore.
+}
+
+add_filter( 'parent_file', 'ufaqsw_appearance_set_menu_parent' );
+add_filter( 'submenu_file', 'ufaqsw_appearance_set_submenu_file' );
+
+/**
+ * Sets the parent menu as active for the Appearance post type.
+ *
+ * @param string $parent_file The parent file.
+ * @return string The modified parent file.
+ */
+function ufaqsw_appearance_set_menu_parent( $parent_file ) {
+	global $current_screen;
+
+	if ( isset( $current_screen->post_type ) && 'ufaqsw_appearance' === $current_screen->post_type ) {
+		return 'edit.php?post_type=ufaqsw'; // Set the FAQ Group menu as active.
+	}
+
+	return $parent_file;
+}
+
+/**
+ * Sets the submenu highlight for the Appearance post type.
+ *
+ * @param string $submenu_file The submenu file.
+ * @return string The modified submenu file.
+ */
+function ufaqsw_appearance_set_submenu_file( $submenu_file ) {
+	global $current_screen;
+
+	if ( isset( $current_screen->post_type ) && 'ufaqsw_appearance' === $current_screen->post_type ) {
+		return 'edit.php?post_type=ufaqsw_appearance'; // Set the submenu highlight.
+	}
+
+	return $submenu_file;
+}
+
+add_action( 'add_meta_boxes', 'ufaqsw_add_faq_group_appearance_metabox' );
+
+/**
+ * Adds the FAQ Group Appearance metabox to the FAQ Group post type.
+ */
+function ufaqsw_add_faq_group_appearance_metabox() {
+	add_meta_box(
+		'faq_group_appearance',
+		esc_html__( 'FAQ Appearance', 'ufaqsw' ),
+		'ufaqsw_render_faq_group_appearance_metabox',
+		'ufaqsw',
+		'side',
+		'default'
+	);
+}
+
+/**
+ * Renders the FAQ Group Appearance metabox.
+ *
+ * This metabox allows users to select an appearance for the FAQ group.
+ *
+ * @param WP_Post $post The current post object.
+ */
+function ufaqsw_render_faq_group_appearance_metabox( $post ) {
+	$selected_id = get_post_meta( $post->ID, 'linked_faq_appearance_id', true );
+
+	if ( empty( $selected_id ) || ! get_post( $selected_id ) ) {
+		// If no valid appearance is linked, use the default appearance ID.
+		$selected_id = get_option( 'faq_default_appearance_id', 0 );
+	}
+
+	$appearances = get_posts(
+		array(
+			'post_type'   => 'ufaqsw_appearance',
+			'post_status' => 'publish',
+			'numberposts' => -1,
+		)
+	);
+
+	wp_nonce_field( 'save_faq_group_appearance', 'faq_group_appearance_nonce' );
+
+	echo '<label for="faq_appearance_select">' . esc_html__( 'Select an appearance:', 'ufaqsw' ) . '</label>';
+	echo '<select name="faq_appearance_select" id="faq_appearance_select" style="width:100%;">';
+
+	foreach ( $appearances as $appearance ) {
+		$selected = ( $appearance->ID === $selected_id ) ? 'selected' : '';
+		echo '<option value="' . esc_attr( $appearance->ID ) . '" ' . esc_attr( $selected ) . '>' . esc_html( $appearance->post_title ) . '</option>';
+	}
+
+	echo '</select>';
+
+	// Add edit link if a valid appearance is selected.
+	if ( $selected_id && get_post( $selected_id ) ) {
+		$edit_url = get_edit_post_link( $selected_id );
+		if ( $edit_url ) {
+			echo '<p style="margin-top:8px;"><a href="' . esc_url( $edit_url ) . '" target="_blank">' . esc_html__( 'Edit Appearance', 'ufaqsw' ) . '</a></p>';
+		}
+	}
+}
+
+add_filter( 'post_updated_messages', 'ufaqsw_faq_group_updated_messages' );
+
+/**
+ * Adds custom post updated messages for the FAQ Group post type.
+ *
+ * This function customizes the messages displayed in the WordPress admin
+ * when a FAQ Group post is updated, published, or otherwise modified.
+ *
+ * @param array $messages The existing post updated messages.
+ * @return array The modified post updated messages.
+ */
+function ufaqsw_faq_group_updated_messages( $messages ) {
+	global $post;
+
+	$post_type = get_post_type( $post );
+	if ( 'ufaqsw' !== $post_type ) {
+		return $messages;
+	}
+
+	$messages['ufaqsw'] = array(
+		0  => '', // Unused.
+		1  => __( 'FAQ Group published.', 'ufaqsw' ),
+		2  => __( 'Custom field updated.', 'ufaqsw' ),
+		3  => __( 'Custom field deleted.', 'ufaqsw' ),
+		4  => __( 'FAQ Group updated.', 'ufaqsw' ),
+		5  => isset( $_GET['revision'] ) ? sprintf( // phpcs:ignore
+			/* translators: %s: Date and time of the revision */
+			__( 'FAQ Group restored to revision from %s.', 'ufaqsw' ),
+			wp_post_revision_title( (int) $_GET['revision'], false ) // phpcs:ignore
+		) : false,
+		6  => __( 'FAQ Group published.', 'ufaqsw' ),
+		7  => __( 'FAQ Group saved.', 'ufaqsw' ),
+		8  => __( 'FAQ Group submitted.', 'ufaqsw' ),
+		9  => sprintf(
+			/* translators: %s: Date and time the FAQ Group is scheduled for */
+			__( 'FAQ Group scheduled for: <strong>%s</strong>.', 'ufaqsw' ),
+			date_i18n( 'M j, Y @ G:i', strtotime( $post->post_date ) )
+		),
+		10 => __( 'FAQ Group draft updated.', 'ufaqsw' ),
+	);
+
+	return $messages;
 }
