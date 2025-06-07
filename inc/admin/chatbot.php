@@ -15,6 +15,41 @@ function ufaqsw_register_settings_page() {
 			'icon_url'     => 'dashicons-admin-generic', // Menu icon.
 			'position'     => 2, // Position in the menu.
 			'menu_title'   => __( 'FAQ Assistant', 'ufaqsw' ), // Custom menu title.
+			'tabs'         => array(
+				array(
+					'id'     => 'general',
+					'title'  => __( 'General', 'ufaqsw' ),
+					'icon'   => 'dashicons-admin-site',
+					'fields' => array(
+						'enable_chatbot',
+						'display_on',
+						'display_on_pages',
+						'faq_groups',
+					),
+				),
+				array(
+					'id'     => 'appearance',
+					'title'  => __( 'Appearance', 'ufaqsw' ),
+					'icon'   => 'dashicons-admin-appearance',
+					'fields' => array(
+						'floating_button_icon',
+						'header_background_color',
+						'header_text_color',
+					),
+				),
+				array(
+					'id'     => 'ui_labels',
+					'title'  => __( 'UI Labels & Messages', 'ufaqsw' ),
+					'icon'   => 'dashicons-editor-textcolor',
+					'fields' => array(
+						'floating_button_title',
+						'assistant_window_headline',
+						'assistant_window_intro_text',
+						'preloader_text',
+						'body_text',
+					),
+				),
+			),
 		)
 	);
 
@@ -191,7 +226,6 @@ function ufaqsw_add_html_before_cmb2_output( $cmb_id, $object_id, $object_type, 
 		return;
 	}
 
-	echo '<div class="faq-assistant-wrapper">';
 	echo '<div style="margin-bottom: 20px;">';
 	echo esc_html__(
 		'The FAQ Assistant adds an interactive, floating help icon to your website, giving visitors quick access to your FAQs in a sleek, chat-style interface. Use the settings below to enable the assistant and customize its behavior. Improve user experience by making answers more accessible—right when and where your visitors need them.',
@@ -201,21 +235,8 @@ function ufaqsw_add_html_before_cmb2_output( $cmb_id, $object_id, $object_type, 
 	echo '<br><a href="https://www.braintum.com/docs/ultimate-faq-solution/faq-assistant/" target="_blank" style="display:inline-block;margin-top:10px;">' . esc_html__( 'Read the FAQ Assistant Documentation.', 'ufaqsw' ) . '</a>';
 	echo '</div>';
 
-	add_action( 'cmb2_after_form', 'ufaqsw_add_html_after_cmb2_output', 10, 4 );
 }
-add_action( 'cmb2_before_form', 'ufaqsw_add_html_before_cmb2_output', 10, 4 );
-
-/**
- * Output custom HTML after the CMB2 form.
- *
- * @param string $cmb_id      The CMB2 metabox ID.
- * @param int    $object_id   The object ID.
- * @param string $object_type The object type.
- * @param object $cmb         The CMB2 object.
- */
-function ufaqsw_add_html_after_cmb2_output( $cmb_id, $object_id, $object_type, $cmb ) {
-	echo '</div><!-- .faq-assistant-wrapper -->';
-}
+add_action( 'cmb2_before_form', 'ufaqsw_add_html_before_cmb2_output', 1, 4 );
 
 /**
  * Callback to get all pages for select field.

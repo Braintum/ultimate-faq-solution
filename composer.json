@@ -10,7 +10,7 @@
         "psr-4": {
             "Mahedi\\UltimateFaqSolution\\": "inc/"
         },
-        "files": ["vendor/cmb2/cmb2/init.php"]
+        "files": ["vendor/cmb2/cmb2/init.php", "vendor/cmb2-tabs-master/cmb2-tabs.php"]
     },
     "authors": [
         {

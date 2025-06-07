@@ -12,7 +12,6 @@
 
   function CMB2Conditional() {
     $('[data-conditional-id]').each((i, el) => {
-		console.log('safasdfsdaf');
       let condName = el.dataset.conditionalId,
         condValue = el.dataset.conditionalValue,
         inverted = (el.dataset.conditionalInvert) ? true : false,

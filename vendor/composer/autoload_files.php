@@ -7,4 +7,5 @@ $baseDir = dirname($vendorDir);
 
 return array(
     '36cee1082cb03d70f851fddb19f95211' => $vendorDir . '/cmb2/cmb2/init.php',
+    '4f2970037dff768b2e99a3450a408e94' => $vendorDir . '/cmb2-tabs-master/cmb2-tabs.php',
 );
