@@ -389,6 +389,11 @@ function ufaqsw_render_faq_group_appearance_metabox( $post ) {
 
 	wp_nonce_field( 'save_faq_group_appearance', 'faq_group_appearance_nonce' );
 
+	echo '<div class="description" style="margin-bottom:8px;">';
+	echo '<p>' . esc_html__( 'Select an appearance for this FAQ group. This will determine how the FAQs are displayed on the front end.', 'ufaqsw' ) . '</p>';
+	echo '<p style="margin-bottom:8px;"><a href="https://www.braintum.com/docs/ultimate-faq-solution/displaying-faqs/appearance-settings/" target="_blank" rel="noopener noreferrer">' . esc_html__( 'Learn more about Appearance Settings', 'ufaqsw' ) . '</a></p>';
+	echo '</div>';
+	echo '</hr>';
 	echo '<label for="faq_appearance_select">' . esc_html__( 'Select an appearance:', 'ufaqsw' ) . '</label>';
 	echo '<select name="faq_appearance_select" id="faq_appearance_select" style="width:100%;">';
 
@@ -450,4 +455,48 @@ function ufaqsw_faq_group_updated_messages( $messages ) {
 	);
 
 	return $messages;
+}
+
+/**
+ * Adds a metabox to display the FAQ Group shortcode in the post editor.
+ *
+ * @since 1.0.0
+ */
+add_action( 'add_meta_boxes', 'ufaqsw_add_shortcode_metabox' );
+
+/**
+ * Registers the FAQ Shortcode metabox for the FAQ Group post type.
+ *
+ * @since 1.0.0
+ */
+function ufaqsw_add_shortcode_metabox() {
+	add_meta_box(
+		'ufaqsw_faq_group_shortcode',
+		esc_html__( 'FAQ Shortcode', 'ufaqsw' ),
+		'ufaqsw_render_shortcode_metabox',
+		'ufaqsw',
+		'side',
+		'default'
+	);
+}
+
+/**
+ * Renders the FAQ Shortcode metabox content.
+ *
+ * Displays the shortcode for the current FAQ group, allowing users to copy it.
+ *
+ * @since 1.0.0
+ *
+ * @param WP_Post $post The current post object.
+ */
+function ufaqsw_render_shortcode_metabox( $post ) {
+	$slug = $post->ID;
+	if ( ! $slug ) {
+		return;
+	}
+	$slug = (int) $slug; // Ensure the slug is an integer.
+
+	echo '<p>' . esc_html__( 'Use the shortcode below to display this FAQ group:', 'ufaqsw' ) . '</p>';
+	echo '<input class="ufaqsw_admin_faq_shorcode_copy" type="text" readonly value="[ufaqsw id=' . esc_attr( $slug ) . ']" style="width:100%; font-family:monospace;">';
+	echo '<p style="margin-top:5px;"><small>' . esc_html__( 'Copy and paste this into any post, page, or widget.', 'ufaqsw' ) . '</small></p>';
 }
