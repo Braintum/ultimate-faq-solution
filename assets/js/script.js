@@ -92,15 +92,6 @@ jQuery(window).on('load', function() {
 		element.closest('.ufaqsw_toggle_default').find('.ufaqsw-toggle-inner-default').slideUp(200);
 	};
 
-	$(".ufaqsw_toggle_default .ufaqsw-toggle-title-area-default").each(function() {
-		const obj = $(this);
-		if (obj.hasClass('ufaqsw_active')) {	
-			showItem(obj);
-		} else {
-			hideItem(obj);
-		}
-	});
-
 	// Handle click event
 	$(".ufaqsw_toggle_default .ufaqsw-toggle-title-area-default").on('click', function() {
 		toggleItem($(this));
@@ -167,7 +158,7 @@ jQuery(window).on('load', function() {
 	}
 
 	const showItem = ( element ) => {
-		element.next().next().css({"height": "auto", "opacity": "1", "padding": "15px"});			
+		element.next().next().css({"height": "auto", "opacity": "1"});			
 		element.next().find('.ufaqsw-style1-active-icon').css({"display": "inline-block"});			
 		element.next().find('.ufaqsw-style1-normal-icon').css({"display": "none"});	
 	}
@@ -187,17 +178,6 @@ jQuery(window).on('load', function() {
 			}
 		});
 	};
-	
-	$('.ufaqsw_questions_style1').each(function(){
-		
-		var obj = $(this);
-		if(obj.attr('checked')){
-			showItem(obj);
-		}else{
-			hideItem(obj);
-		}
-		
-	});
 	
 });;jQuery(function($) {
 	'use strict';
@@ -239,9 +219,9 @@ jQuery(window).on('load', function() {
 		});
 	}
 	
-	if( typeof( ufaqsw_object_style_2 ) !== 'undefined' && ufaqsw_object_style_2.showall=='1' && ufaqsw_object_style_2.behaviour!='accordion'){
-		$(".ufaqsw_box_style2").each(function(){
-			$(this).trigger('click');
-		})
-	}
+	// if( typeof( ufaqsw_object_style_2 ) !== 'undefined' && ufaqsw_object_style_2.showall=='1' && ufaqsw_object_style_2.behaviour!='accordion'){
+	// 	$(".ufaqsw_box_style2").each(function(){
+	// 		$(this).trigger('click');
+	// 	})
+	// }
 })

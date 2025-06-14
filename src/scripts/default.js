@@ -31,15 +31,6 @@ jQuery(function($) {
 		element.closest('.ufaqsw_toggle_default').find('.ufaqsw-toggle-inner-default').slideUp(200);
 	};
 
-	$(".ufaqsw_toggle_default .ufaqsw-toggle-title-area-default").each(function() {
-		const obj = $(this);
-		if (obj.hasClass('ufaqsw_active')) {	
-			showItem(obj);
-		} else {
-			hideItem(obj);
-		}
-	});
-
 	// Handle click event
 	$(".ufaqsw_toggle_default .ufaqsw-toggle-title-area-default").on('click', function() {
 		toggleItem($(this));

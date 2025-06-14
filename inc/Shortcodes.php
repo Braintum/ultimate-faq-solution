@@ -122,7 +122,7 @@ class Shortcodes {
 
 				if ( null === $title_hide ) {
 
-					$hide_title = get_post_meta( get_the_ID(), 'ufaqsw_hide_title', true );
+					$hide_title = get_post_meta( ufaqsw_get_appearance_id( get_the_ID() ), 'ufaqsw_hide_title', true );
 
 					if ( '' !== $hide_title ) {
 						$title_hide = 'yes';

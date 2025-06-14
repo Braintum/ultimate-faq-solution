@@ -37,7 +37,7 @@ jQuery(function($) {
 	}
 
 	const showItem = ( element ) => {
-		element.next().next().css({"height": "auto", "opacity": "1", "padding": "15px"});			
+		element.next().next().css({"height": "auto", "opacity": "1"});			
 		element.next().find('.ufaqsw-style1-active-icon').css({"display": "inline-block"});			
 		element.next().find('.ufaqsw-style1-normal-icon').css({"display": "none"});	
 	}
@@ -57,16 +57,5 @@ jQuery(function($) {
 			}
 		});
 	};
-	
-	$('.ufaqsw_questions_style1').each(function(){
-		
-		var obj = $(this);
-		if(obj.attr('checked')){
-			showItem(obj);
-		}else{
-			hideItem(obj);
-		}
-		
-	});
 	
 });

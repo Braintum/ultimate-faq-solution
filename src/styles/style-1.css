@@ -17,11 +17,12 @@
   display: block;
   width:100%;
   cursor: pointer;
+  box-sizing: border-box;
 }
 
 .ufaqsw_answers_style1 {
   background: #f7f7f7;
-  padding: 0px 15px;
+  padding: 0px 10px;
   margin: 5px 0;
   height: 0;
   overflow: hidden;
@@ -32,6 +33,7 @@
   -o-transition: .3s ease;
   transition: .3s ease;
 }
+
 .ufaqsw_title_area_style1{position:relative;  background: #eac8d3;}
 
 .ufaqsw_title_area_style1:focus {

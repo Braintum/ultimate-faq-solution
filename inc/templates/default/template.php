@@ -23,7 +23,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 */
 extract( $designs ); // phpcs:ignore
 
-$is_show_all = 'accordion' !== $behaviour && '1' === $showall;
+$is_show_all = 'accordion' !== $behaviour && 1 === $showall;
 ?>
 <div class="ufaqsw_container_default ufaqsw_container_default_<?php echo esc_attr( get_the_ID() ); ?> ufaqsw_element_group_src"> 
 
@@ -64,8 +64,8 @@ $is_show_all = 'accordion' !== $behaviour && '1' === $showall;
 			>
 				<div class="ufaqsw-title-name-default ufaqsw-title-name-default_<?php echo esc_attr( get_the_ID() ); ?>">
 					<span class="ufaqsw-default-icon">
-						<i class="fa <?php echo esc_attr( isset( $designs['normal_icon'] ) && '' !== $designs['normal_icon'] ? $designs['normal_icon'] : 'fa fa-plus' ); ?>" aria-hidden="true"></i>
-						<i class="fa <?php echo esc_attr( isset( $designs['active_icon'] ) && '' !== $designs['active_icon'] ? $designs['active_icon'] : 'fa fa-minus' ); ?>" id="ufaqsw_other_style" aria-hidden="true"></i>
+						<i class="fa <?php echo esc_attr( isset( $designs['normal_icon'] ) && '' !== $designs['normal_icon'] ? $designs['normal_icon'] : 'fa fa-plus' ); ?>" <?php echo true === $is_show_all ? 'style="display:none"' : ''; ?> aria-hidden="true"></i>
+						<i class="fa <?php echo esc_attr( isset( $designs['active_icon'] ) && '' !== $designs['active_icon'] ? $designs['active_icon'] : 'fa fa-minus' ); ?>" id="ufaqsw_other_style" <?php echo true === $is_show_all ? 'style="display:inline"' : ''; ?> aria-hidden="true"></i>
 					</span>				
 					<span class="ufaqsw-default-title ufaqsw_faq_question_src"><?php echo wp_kses_post( $question ); ?></span>
 				</div>
@@ -74,6 +74,7 @@ $is_show_all = 'accordion' !== $behaviour && '1' === $showall;
 			id="ufaqsw_faq_answer_<?php echo esc_html( $c ); ?>_<?php echo esc_html( get_the_ID() ); ?>"
 			aria-hidden="<?php echo $is_show_all ? 'false' : 'true'; ?>"
 			aria-labelledby="ufaqsw_faq_answer_<?php echo esc_html( $c ); ?>_<?php echo esc_html( get_the_ID() ); ?>"
+			<?php echo true !== $is_show_all ? 'style="display:none"' : ''; ?>
 			>
 			<?php echo wp_kses_post( apply_filters( 'the_content', $answer ) ); ?>
 			</div>
