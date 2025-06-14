@@ -84,6 +84,7 @@ function ufaqsw_simplify_configuration_variables( $id ) {
 	$answer_color              = get_post_meta( $id, 'ufaqsw_answer_color' );
 	$question_background_color = get_post_meta( $id, 'ufaqsw_question_background_color' );
 	$answer_background_color   = get_post_meta( $id, 'ufaqsw_answer_background_color' );
+	$border_color              = get_post_meta( $id, 'ufaqsw_border_color' );
 	$question_font_size        = get_post_meta( $id, 'ufaqsw_question_font_size' );
 	$answer_font_size          = get_post_meta( $id, 'ufaqsw_answer_font_size' );
 	$template                  = get_post_meta( $id, 'ufaqsw_template' );
@@ -101,6 +102,7 @@ function ufaqsw_simplify_configuration_variables( $id ) {
 	$formated_data['answer_color']              = ( isset( $answer_color[0] ) ? $answer_color[0] : '' );
 	$formated_data['question_background_color'] = ( isset( $question_background_color[0] ) ? $question_background_color[0] : '' );
 	$formated_data['answer_background_color']   = ( isset( $answer_background_color[0] ) ? $answer_background_color[0] : '' );
+	$formated_data['border_color']              = ( isset( $border_color[0] ) ? $border_color[0] : '' );
 	$formated_data['question_font_size']        = ( isset( $question_font_size[0] ) ? $question_font_size[0] : '' );
 	$formated_data['answer_font_size']          = ( isset( $answer_font_size[0] ) ? $answer_font_size[0] : '' );
 	$formated_data['template']                  = ( isset( $template[0] ) ? $template[0] : 'default' );

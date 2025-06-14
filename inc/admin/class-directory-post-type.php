@@ -206,6 +206,20 @@ function ufaqsw_register_appearance_metabox() {
 
 		)
 	);
+
+	$cmb_demo->add_field(
+		array(
+			'name' => esc_html__( 'Border Color', 'ufaqsw' ),
+			'id'   => 'ufaqsw_border_color',
+			'desc' => esc_html__( 'Change the default border color', 'ufaqsw' ),
+			'type' => 'colorpicker',
+			'attributes'  => array(
+				'data-conditional-id'    => 'ufaqsw_template',
+				'data-conditional-value' => 'style-2',
+			),
+		)
+	);
+
 	$cmb_demo->add_field(
 		array(
 			'name' => esc_html__( 'Question Font Size (ex: 20px)', 'ufaqsw' ),

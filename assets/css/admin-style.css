@@ -106,4 +106,6 @@
 .ufaqsw_clear_icon_field{display: inline-block !important;float: right;}
 .ufaqsw-fa-field-modal-icons form{display:inline-block !important;}
 .ufaqsw_clear_fix{clear:both}
-
+.field_is_hidden {
+  display: none !important;
+}

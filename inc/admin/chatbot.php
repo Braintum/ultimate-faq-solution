@@ -262,27 +262,3 @@ function ufaqsw_get_all_pages_for_select() {
 	return $options;
 }
 
-// Enqueue admin scripts/styles for the settings page.
-add_action(
-	'admin_enqueue_scripts',
-	function( $hook ) {
-		if ( isset( $_GET['page'] ) && 'ufaqsw_chatbot_settings' === $_GET['page'] ) {
-			wp_enqueue_script( 'ufaqsw-cmb2-conditional', UFAQSW_ASSETS_URL . 'js/cmb2-conditional-logic.js', array( 'jquery' ), '1.0.0', true );
-		}
-	}
-);
-
-add_action(
-	'admin_footer',
-	function() {
-		if ( isset( $_GET['page'] ) && 'ufaqsw_chatbot_settings' === $_GET['page'] ) {
-			?>
-			<style>
-				.field_is_hidden {
-					display: none !important;
-				}
-			</style>
-			<?php
-		}
-	}
-);

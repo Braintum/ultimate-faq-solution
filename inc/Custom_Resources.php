@@ -214,6 +214,11 @@ class Custom_Resources {
 					$custom_css .= ".ufaqsw-toggle-inner-default_{$this->id} *{ font-size: {$answer_font_size} !important;}";
 				}
 
+				if ( isset( $border_color ) && '' !== $border_color ) {
+					$custom_css .= ".ufaqsw-toggle-title-area-default_{$this->id}{ border-color: {$border_color} !important;}";
+					$custom_css .= ".ufaqsw-toggle-inner-default_{$this->id}{ border-color: {$border_color} !important;}";
+				}
+
 				wp_add_inline_style( $this->css_handler, $custom_css );
 			}
 		}
