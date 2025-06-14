@@ -4,7 +4,7 @@ Donate link: https://www.solrengine.com/
 Tags: faq, faq-directory, accordion, knowledgebase, woocommerce-faq  
 Requires at least: 5.1  
 Tested up to: 6.8.1  
-Stable tag: 1.6.2 
+Stable tag: 1.6.3 
 Requires PHP: 7.4.0  
 License: GPLv2 or later  
 License URI: https://www.gnu.org/licenses/license-list.html#GPLCompatibleLicenses  
@@ -105,6 +105,9 @@ The FAQ Assistant adds an interactive, floating help icon to your website, givin
 5. Screenshot 5  
 
 == Changelog ==
+
+= 1.6.3 =  
+* ✨ New Appearance settings panel: Easily customize FAQ colors, fonts, and layout styles from the plugin settings.
 
 = 1.6.2 =  
 * 🖋️ FAQ Assistant display on all pages issue fixed.
