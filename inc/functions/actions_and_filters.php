@@ -398,7 +398,7 @@ function ufaqsw_render_faq_group_appearance_metabox( $post ) {
 	echo '<select name="faq_appearance_select" id="faq_appearance_select" style="width:100%;">';
 
 	foreach ( $appearances as $appearance ) {
-		$selected = ( $appearance->ID === $selected_id ) ? 'selected' : '';
+		$selected = ( $appearance->ID === (int) $selected_id ) ? 'selected' : '';
 		echo '<option value="' . esc_attr( $appearance->ID ) . '" ' . esc_attr( $selected ) . '>' . esc_html( $appearance->post_title ) . '</option>';
 	}
 
@@ -414,6 +414,45 @@ function ufaqsw_render_faq_group_appearance_metabox( $post ) {
 }
 
 add_filter( 'post_updated_messages', 'ufaqsw_faq_group_updated_messages' );
+
+add_action( 'save_post', 'ufaqsw_save_faq_group_appearance_meta' );
+
+/**
+ * Saves the selected FAQ Appearance when the FAQ Group post is saved.
+ *
+ * @param int $post_id The ID of the post being saved.
+ */
+function ufaqsw_save_faq_group_appearance_meta( $post_id ) {
+	// Check if our nonce is set.
+	if ( ! isset( $_POST['faq_group_appearance_nonce'] ) ) {
+		return;
+	}
+
+	// Verify that the nonce is valid.
+	if ( ! wp_verify_nonce( $_POST['faq_group_appearance_nonce'], 'save_faq_group_appearance' ) ) {
+		return;
+	}
+
+	// Don't autosave.
+	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
+		return;
+	}
+
+	// Check the user's permissions.
+	if ( isset( $_POST['post_type'] ) && 'ufaqsw' === $_POST['post_type'] ) {
+		if ( ! current_user_can( 'edit_post', $post_id ) ) {
+			return;
+		}
+	} else {
+		return;
+	}
+
+	// Save the selected appearance.
+	if ( isset( $_POST['faq_appearance_select'] ) ) {
+		$appearance_id = intval( $_POST['faq_appearance_select'] );
+		update_post_meta( $post_id, 'linked_faq_appearance_id', $appearance_id );
+	}
+}
 
 /**
  * Adds custom post updated messages for the FAQ Group post type.
