@@ -108,6 +108,7 @@ The FAQ Assistant adds an interactive, floating help icon to your website, givin
 
 = 1.6.3 =  
 * ✨ New Appearance settings panel: Easily customize FAQ colors, fonts, and layout styles from the plugin settings.
+* 🎨 All 3 FAQ templates refined for improved appearance and usability.
 
 = 1.6.2 =  
 * 🖋️ FAQ Assistant display on all pages issue fixed.
