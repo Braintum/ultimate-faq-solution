@@ -108,6 +108,7 @@ class Chatbot {
 				'back_button_label'           => cmb2_get_option( 'ufaqsw_chatbot_settings', 'assistant_back_button_title' ) ? cmb2_get_option( 'ufaqsw_chatbot_settings', 'assistant_back_button_title' ) : __( 'Back', 'ufaqsw' ),
 				'close_button_label'          => cmb2_get_option( 'ufaqsw_chatbot_settings', 'assistant_close_button_title' ) ? cmb2_get_option( 'ufaqsw_chatbot_settings', 'assistant_close_button_title' ) : __( 'Close the window', 'ufaqsw' ),
 				'bottom_text'                 => cmb2_get_option( 'ufaqsw_chatbot_settings', 'bottom_text' ) ?? '',
+				'faqs_count_text'             => cmb2_get_option( 'ufaqsw_chatbot_settings', 'faqs_count_text' ) ?? __( '[count] Frequently Asked Questions', 'ufaqsw' ),
 			)
 		);
 	}

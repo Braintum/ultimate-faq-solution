@@ -63,6 +63,7 @@ function ufaqsw_register_settings_page() {
 						'assistant_back_button_title',
 						'assistant_close_button_title',
 						'bottom_text',
+						'faqs_count_text',
 					),
 				),
 			),
@@ -181,6 +182,16 @@ function ufaqsw_register_settings_page() {
 			'type'        => 'text',
 			'default'     => '',
 			'description' => __( '<i>Text displayed while the FAQ content is loading (e.g., “Loading…”) to inform users.</i>', 'ufaqsw' ),
+		)
+	);
+
+	$cmb->add_field(
+		array(
+			'name'        => __( 'FAQ Count Text', 'ufaqsw' ),
+			'id'          => 'faqs_count_text',
+			'type'        => 'text',
+			'default'     => __( '[count] Frequently Asked Questions', 'ufaqsw' ),
+			'description' => __( '<i>Enter the text to show the total number of FAQs available (e.g., “[count] Questions and Answers”). Use <code>[count]</code> as a placeholder for the number.</i>', 'ufaqsw' ),
 		)
 	);
 

@@ -174,6 +174,7 @@ export const ShadowApp = ({ onClose, shadowRoot }) => {
 								faqData={faqData}
 								onGroupClick={handleGroupClick}
 								description={bodyText}
+								faqs_count_text={window.chatbotData.faqs_count_text || '[count] Frequently Asked Questions'}
 							/>
 						)}
 
