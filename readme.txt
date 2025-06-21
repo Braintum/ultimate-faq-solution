@@ -21,12 +21,19 @@ Create and edit FAQ groups just like any WordPress post, using the familiar inte
 
 > The plugin also supports **FAQPage structured data (FAQ Schema)**, helping your FAQs show up as rich snippets in Google search results—improving SEO and visibility!
 
+= 🤖 AI-Powered FAQ Answer Suggestions =
+
+Starting from version 1.6.4, Ultimate FAQ Solution includes an AI-powered feature that can instantly generate suggested answers for your FAQs. When creating or editing a FAQ, simply click the "AI Assistant" button to receive a relevant answer draft—saving you time and helping you craft accurate, helpful responses. You can review, edit, and customize the AI-generated content before publishing.
+
+This feature is designed to streamline your workflow, especially when building large knowledge bases or handling repetitive questions. AI-generated answers are optional and fully under your control, ensuring your content always matches your brand voice and standards.
+
 💡 Save time, reduce customer support queries, and enhance user experience with beautifully styled, mobile-responsive FAQ sections.
 
 🔗 [Support & Feature Requests](https://www.braintum.com/contact-us/) | [Live Demo](https://www.braintum.com/ultimate-faq-solution/)
 
 = ✅ Features at a Glance =
 * ✅ **FAQ Assistant: Interactive, floating help icon with chat-style FAQ access**
+* ✅ **AI-Powered Answer Suggestions: Instantly generate FAQ answers using AI**
 * ✅ **Accessibility-Ready Templates**
 * ✅ **Gutenberg Block Support**
 * ✅ **FAQ Schema / Structured Data Support**
@@ -96,6 +103,9 @@ Yes, you can pass parameters like `behavior=toggle`, or `element_order="DESC"` t
 = What is the FAQ Assistant feature? =  
 The FAQ Assistant adds an interactive, floating help icon to your website, giving visitors quick access to your FAQs in a sleek, chat-style interface. It improves user experience by making answers more accessible—right when and where your visitors need them.
 
+= Does the plugin use AI to generate FAQ answers? =  
+Yes! Starting from version 1.6.4, Ultimate FAQ Solution includes an AI-powered feature that can suggest answers for your FAQs. This helps you quickly generate accurate responses and save time when creating new FAQs. You can review and edit the AI-generated answers before publishing them.
+
 == Screenshots ==
 
 1. Screenshot 1  
@@ -105,6 +115,10 @@ The FAQ Assistant adds an interactive, floating help icon to your website, givin
 5. Screenshot 5  
 
 == Changelog ==
+
+= 1.6.4 =  
+* 🤖 AI-powered FAQ: Instantly generate suggested answers for your FAQs using AI, saving time and improving accuracy.
+* 🛠️ Settings page refined: Improved layout, clearer descriptions, and easier navigation for a better admin experience.
 
 = 1.6.3 =  
 * ✨ New Appearance settings panel: Easily customize FAQ colors, fonts, and layout styles from the plugin settings.
