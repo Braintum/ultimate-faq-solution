@@ -124,7 +124,7 @@ function ufaqsw_ai_settings_before_cmb2_output( $cmb_id, $object_id, $object_typ
 		'Configure AI integration to automatically generate and enhance FAQ answers using OpenAI\'s ChatGPT. Enable AI-powered features, set your API key, choose a model, and define custom commands to streamline FAQ creation and editing. These settings let you leverage AI to improve the quality and efficiency of your FAQ content.',
 		'ufaqsw'
 	);
-
+	echo '<br><a href="https://www.braintum.com/docs/ultimate-faq-solution/ai-integration/" target="_blank" style="display:inline-block;margin-top:10px;">' . esc_html__( 'Read the AI Integration Documentation', 'ufaqsw' ) . '</a>';
 	echo '</div>';
 
 }
