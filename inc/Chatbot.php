@@ -152,6 +152,9 @@ class Chatbot {
 
 		foreach ( $faq_groups as $faq_group ) {
 			$faq_items = get_post_meta( $faq_group, 'ufaqsw_faq_item01' );
+
+			$group_description = get_post_meta( $faq_group, 'group_short_desc', true );
+
 			$faq_items = isset( $faq_items[0] ) ? $faq_items[0] : $faq_items;
 			$faq_items = array_map(
 				function ( $item ) {
@@ -163,10 +166,16 @@ class Chatbot {
 				$faq_items
 			);
 
-			$faq_data[] = array(
+			$faq_data_array = array(
 				'group' => html_entity_decode( get_the_title( $faq_group ) ),
 				'items' => $faq_items,
 			);
+
+			if ( ! empty( $group_description ) ) {
+				$faq_data_array['description'] = wp_kses_post( apply_filters( 'the_content', $group_description ) );
+			}
+
+			$faq_data[] = $faq_data_array;
 		}
 
 		// Return the FAQ data as a JSON response.

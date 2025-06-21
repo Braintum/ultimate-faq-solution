@@ -147,6 +147,18 @@ export const ShadowApp = ({ onClose, shadowRoot }) => {
 		return assistantWindowHeadline || 'Frequently Asked Questions'; // Default title if no specific group or FAQ is selected
 	};
 
+	const chatbotContainerRef = React.useRef(null);
+
+	// Scroll to top when an FAQ is selected
+	useEffect(() => {
+		if (view === 'answer' && chatbotContainerRef.current) {
+			chatbotContainerRef.current.scrollTop = 0;
+		}
+		if (view === 'list' && chatbotContainerRef.current) {
+			chatbotContainerRef.current.scrollTop = 0;
+		}
+	}, [view]);
+
 	return (
 		<div className="chatbot-container">
 			<Header
@@ -161,7 +173,7 @@ export const ShadowApp = ({ onClose, shadowRoot }) => {
 				close_button_label={window.chatbotData.close_button_label || 'Close'}
 			/>
 
-			<div className="chatbot-body">
+			<div className="chatbot-body" ref={chatbotContainerRef}>
 				{loading ? (
 					<Preloader 
 						dotColor={ window.chatbotData.loading_animation_color || '#222' }
@@ -180,7 +192,7 @@ export const ShadowApp = ({ onClose, shadowRoot }) => {
 
 						{view === 'list' && selectedGroup && (
 							<FaqList
-								faqs={selectedGroup.items}
+								group={selectedGroup}
 								onListClick={handleQuestionClick}
 							/>
 						)}
