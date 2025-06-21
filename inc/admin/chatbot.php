@@ -62,6 +62,7 @@ function ufaqsw_register_settings_page() {
 						'body_text',
 						'assistant_back_button_title',
 						'assistant_close_button_title',
+						'bottom_text',
 					),
 				),
 			),
@@ -189,6 +190,18 @@ function ufaqsw_register_settings_page() {
 			'desc'    => __( '<i>Enter the text displayed above the list of FAQ categories in the assistant window. Use this to guide visitors on how to navigate and use the categories effectively.</i>', 'ufaqsw' ),
 			'default' => __( 'Browse our FAQ categories below to quickly find answers grouped by topic. Click a category to see related questions and solutions.', 'ufaqsw' ),
 			'id'      => 'body_text',
+			'type'    => 'wysiwyg',
+			'options' => array(
+				'textarea_rows' => 20,
+			),
+		)
+	);
+
+	$cmb->add_field(
+		array(
+			'name'    => __( 'Bottom Text', 'ufaqsw' ),
+			'desc'    => __( '<i>Enter the text that will appear at the bottom of the FAQ Assistant window, below the FAQ categories and answers. This is a good place for additional instructions, a call-to-action, or any helpful message you want users to see after browsing the FAQs. Button text will be added at the bottom in each screen.</i>', 'ufaqsw' ),
+			'id'      => 'bottom_text',
 			'type'    => 'wysiwyg',
 			'options' => array(
 				'textarea_rows' => 20,

@@ -4,6 +4,7 @@ import { FaqList } from './FaqList';
 import { FaqAnswer } from './FaqAnswer';
 import { Header } from './Header';
 import Preloader from './Preloader';
+import Bottom from './bottom/Bottom';
 
 // Global variable to cache FAQ data
 let cachedFaqData = null;
@@ -161,7 +162,7 @@ export const ShadowApp = ({ onClose, shadowRoot }) => {
 			/>
 
 			<div className="chatbot-body">
-					{loading ? (
+				{loading ? (
 					<Preloader 
 						dotColor={ window.chatbotData.loading_animation_color || '#222' }
 						preloader_text={window.chatbotData.preloader_text}
@@ -186,6 +187,9 @@ export const ShadowApp = ({ onClose, shadowRoot }) => {
 						{view === 'answer' && selectedFaq && (
 							<FaqAnswer faq={selectedFaq} />
 						)}
+
+						{ window.chatbotData.bottom_text && <Bottom text={window.chatbotData.bottom_text} /> }
+						
 					</>
 				)}
 			</div>

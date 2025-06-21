@@ -97,11 +97,17 @@ class Chatbot {
 				'assistant_window_intro_text' => cmb2_get_option( 'ufaqsw_chatbot_settings', 'assistant_window_intro_text' ),
 				'header_background_color'     => cmb2_get_option( 'ufaqsw_chatbot_settings', 'header_background_color' ),
 				'header_text_color'           => cmb2_get_option( 'ufaqsw_chatbot_settings', 'header_text_color' ),
-				'body_text'                   => wp_kses_post( apply_filters( 'the_content', cmb2_get_option( 'ufaqsw_chatbot_settings', 'body_text' ) ) ),
+				'body_text'                   => wp_kses_post(
+					apply_filters(
+						'the_content',
+						cmb2_get_option( 'ufaqsw_chatbot_settings', 'body_text' )
+					)
+				),
 				'preloader_text'              => cmb2_get_option( 'ufaqsw_chatbot_settings', 'preloader_text' ),
-				'loading_animation_color'     => cmb2_get_option( 'ufaqsw_chatbot_settings', 'loading_animation_color' ) ?? '#222',
-				'back_button_label'           => cmb2_get_option( 'ufaqsw_chatbot_settings', 'assistant_back_button_title' ) ?? __( 'Back', 'ufaqsw' ),
-				'close_button_label'          => cmb2_get_option( 'ufaqsw_chatbot_settings', 'assistant_close_button_title' ) ?? __( 'Close the window', 'ufaqsw' ),
+				'loading_animation_color'     => cmb2_get_option( 'ufaqsw_chatbot_settings', 'loading_animation_color' ) ? cmb2_get_option( 'ufaqsw_chatbot_settings', 'loading_animation_color' ) : '#222',
+				'back_button_label'           => cmb2_get_option( 'ufaqsw_chatbot_settings', 'assistant_back_button_title' ) ? cmb2_get_option( 'ufaqsw_chatbot_settings', 'assistant_back_button_title' ) : __( 'Back', 'ufaqsw' ),
+				'close_button_label'          => cmb2_get_option( 'ufaqsw_chatbot_settings', 'assistant_close_button_title' ) ? cmb2_get_option( 'ufaqsw_chatbot_settings', 'assistant_close_button_title' ) : __( 'Close the window', 'ufaqsw' ),
+				'bottom_text'                 => cmb2_get_option( 'ufaqsw_chatbot_settings', 'bottom_text' ) ?? '',
 			)
 		);
 	}

@@ -91,6 +91,9 @@
   margin-bottom: 20px;
   font-size: 14px;
   line-height: 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .chatbot-container .chatbot-body img{
@@ -104,14 +107,14 @@
   margin-bottom: 10px;
 }
 
-.chatbot-container .chatbot-body .faq-answer > h2{
+.chatbot-container .chatbot-body .faq-answer > :first-child{
   margin-top: 0px;
   border-bottom: 1px solid #ddd;
   padding-bottom: 20px;
   margin-bottom: 20px;
 }
 
-.chatbot-container .chatbot-body .faq-answer-content iframe { 
+.chatbot-container .chatbot-body iframe { 
   margin: 0 auto;
   display: block;
   max-width: 100%;
@@ -150,7 +153,8 @@
   color: #707070;
 }
 
-.chatbot-container .faq-groups .faq-groups-description > p {
+.chatbot-container .faq-groups .faq-groups-description > :first-child,
+.chatbot-container .chatbot-body .chatbot-footer > :first-child {
   margin-top: 0;
 }
 
@@ -200,5 +204,15 @@
   }
 }
 /* END Preloder styles */
+
+.chatbot-container .chatbot-body .chatbot-footer {
+  padding: 10px 0;
+  text-align: center;
+  font-size: 13px;
+  flex-shrink: 0;
+  border-top: 1px solid #e3e3e4;
+  max-width: 100%;
+  margin-top: 20px;
+}
 
 /* END Body styles */
