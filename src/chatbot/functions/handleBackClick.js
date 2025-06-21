@@ -11,13 +11,14 @@ import React from 'react';
  *
  * @returns {void}
  */
-const handleBackClick = ({ view, setView, setSelectedFaq, setSelectedGroup }) => {
+const handleBackClick = (params) => {
+	const { view, setView, setSelectedFaq, setSelectedGroup } = params;
 	if (view === 'answer') {
 		setView('list');
-		setSelectedFaq(null);
+		if (typeof setSelectedFaq === 'function') setSelectedFaq(null);
 	} else if (view === 'list') {
 		setView('group');
-		setSelectedGroup(null);
+		if (typeof setSelectedGroup === 'function') setSelectedGroup(null);
 	}
 };
 

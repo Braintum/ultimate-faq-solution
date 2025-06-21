@@ -7,11 +7,27 @@ import Preloader from './Preloader';
 import Bottom from './bottom/Bottom';
 import fetchData from '../models/fetchData';
 import getTitle from '../functions/getTitle';
-//import handleBackClick from '../functions/handleBackClick';
+import handleBackClick from '../functions/handleBackClick';
+import handleQuestionClick from '../functions/handleQuestionClick';
+import handleGroupClick from '../functions/handleGroupClick';
+import handleResize from '../functions/handleResize';
+import adjustHeight from '../functions/adjustHeight';
 
 // Global variable to cache FAQ data
 let cachedFaqData = null;
 
+/**
+ * ShadowApp is the main component for the chatbot UI rendered inside a Shadow DOM.
+ * It manages the view state (group, list, answer), fetches FAQ data, and handles UI transitions and animations.
+ * The component also applies dynamic styles and text based on global configuration provided via `window.chatbotData`.
+ *
+ * @component
+ * @param {Object} props - The component props.
+ * @param {Function} props.onClose - Callback function to close the chatbot window.
+ * @param {ShadowRoot} props.shadowRoot - The ShadowRoot instance where the component is rendered.
+ *
+ * @returns {JSX.Element} The rendered chatbot UI.
+ */
 const ShadowApp = ({ onClose, shadowRoot }) => {
 	const [view, setView] = useState('group'); // 'group', 'list', or 'answer'
 	const [selectedGroup, setSelectedGroup] = useState(null);
@@ -66,70 +82,32 @@ const ShadowApp = ({ onClose, shadowRoot }) => {
 	}, [ajaxUrl, nonce, view]);
 
 	useEffect(() => {
-		const adjustHeight = () => {
-			if (shadowRoot && window.innerWidth > 768) { // Only apply on desktop
-				const chatbotContainer = shadowRoot.querySelector('.chatbot-container');
-				if (chatbotContainer) {
-					chatbotContainer.style.height = `${window.innerHeight * 0.8}px`; // Set height to 80% of window height
-				}
-			}
-		};
+		const adjustHeightHandler = () => adjustHeight(shadowRoot);
 
-		adjustHeight(); // Adjust height on initial load
-		window.addEventListener('resize', adjustHeight); // Adjust height on window resize
+		adjustHeightHandler(); // Adjust height on initial load
+		window.addEventListener('resize', adjustHeightHandler); // Adjust height on window resize
 
 		return () => {
-			window.removeEventListener('resize', adjustHeight); // Cleanup event listener
+			window.removeEventListener('resize', adjustHeightHandler); // Cleanup event listener
 		};
 	}, [shadowRoot]);
 
 	useEffect(() => {
-		const handleResize = () => {
-			if (shadowRoot) {
-				const chatbotContainer = shadowRoot.querySelector('.chatbot-container');
-				if (chatbotContainer) {
-					if (window.innerWidth <= 768) {
-						chatbotContainer.classList.add('full-screen');
-					} else {
-						chatbotContainer.classList.remove('full-screen');
-					}
-				}
-			}
-		};
+		const resizeHandler = () => handleResize(shadowRoot);
 
-		handleResize(); // Apply full-screen class on initial load
-		window.addEventListener('resize', handleResize); // Adjust on window resize
+		resizeHandler(); // Initial call
+		window.addEventListener('resize', resizeHandler);
 
 		return () => {
-			window.removeEventListener('resize', handleResize); // Cleanup event listener
+			window.removeEventListener('resize', resizeHandler);
 		};
 	}, [shadowRoot]);
-
-	const handleGroupClick = (group) => {
-		setSelectedGroup(group);
-		setView('list');
-	};
-
-	const handleQuestionClick = (faq) => {
-		setSelectedFaq(faq);
-		setView('answer');
-	};
-
-	const handleBackClick = () => {
-		if (view === 'answer') {
-			setView('list');
-			setSelectedFaq(null);
-		} else if (view === 'list') {
-			setView('group');
-			setSelectedGroup(null);
-		}
-	};
 
 	return (
 		<div className={`chatbot-container${animateOpen ? ' chatbot-open-animate' : ''}`}>
 			<Header
 				onClose={onClose}
-				onBack={handleBackClick}
+				onBack={() => handleBackClick({ view, setView, setSelectedGroup, setSelectedFaq })}
 				showBackButton={view !== 'group'}
 				title={getTitle({ view, selectedGroup, selectedFaq, assistantWindowHeadline })}
 				intro={view == 'group' ? assistantWindowIntroText : ""}
@@ -150,7 +128,11 @@ const ShadowApp = ({ onClose, shadowRoot }) => {
 						{view === 'group' && (
 							<FaqGroups
 								faqData={faqData}
-								onGroupClick={handleGroupClick}
+								onGroupClick={(group) => handleGroupClick({
+									group, 
+									setSelectedGroup, 
+									setView 
+								})}
 								description={bodyText}
 								faqs_count_text={window.chatbotData.faqs_count_text || '[count] Frequently Asked Questions'}
 							/>
@@ -159,7 +141,11 @@ const ShadowApp = ({ onClose, shadowRoot }) => {
 						{view === 'list' && selectedGroup && (
 							<FaqList
 								group={selectedGroup}
-								onListClick={handleQuestionClick}
+								onListClick={(faq) => handleQuestionClick({ 
+									faq, 
+									setSelectedFaq, 
+									setView 
+								})}
 							/>
 						)}
 

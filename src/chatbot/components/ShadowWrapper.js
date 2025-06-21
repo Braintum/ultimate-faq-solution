@@ -14,6 +14,14 @@ const shadowHost = document.createElement('div');
 chatbotComponent.appendChild(shadowHost); // Append the new element to the custom element
 const shadowRoot = shadowHost.attachShadow({ mode: 'open' });
 
+/**
+ * Renders the chatbot UI inside a Shadow DOM, ensuring styles are encapsulated.
+ *
+ * @component
+ * @param {Object} props - Component props.
+ * @param {Function} props.onClose - Callback function to handle closing the chatbot.
+ * @returns {React.ReactPortal} A React portal rendering the ShadowApp inside the Shadow DOM.
+ */
 const ShadowWrapper = ({ onClose }) => {
 
   let mountPoint = shadowRoot.querySelector('div');

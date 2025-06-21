@@ -1,6 +1,21 @@
 import React from 'react';
 
 // Accept a single 'headerProps' object to reduce the number of function parameters.
+/**
+ * Header component for the chatbot UI.
+ *
+ * @param {Object} headerProps - The properties for the Header component.
+ * @param {Function} headerProps.onClose - Callback function to handle the close button click.
+ * @param {Function} [headerProps.onBack] - Callback function to handle the back button click.
+ * @param {boolean} [headerProps.showBackButton] - Whether to display the back button.
+ * @param {string} headerProps.title - The title text to display in the header.
+ * @param {string} [headerProps.intro] - Optional introductory text to display below the title.
+ * @param {string} [headerProps.headerColor] - Optional background color for the header.
+ * @param {string} [headerProps.textColor] - Optional text color for the header content and icons.
+ * @param {string} [headerProps.back_button_label] - Accessible label and tooltip for the back button.
+ * @param {string} [headerProps.close_button_label] - Accessible label and tooltip for the close button.
+ * @returns {JSX.Element} The rendered Header component.
+ */
 export const Header = (headerProps) => {
   const {
     onClose,
