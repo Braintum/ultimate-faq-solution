@@ -29,9 +29,8 @@ class Ajax {
 
 		try {
 			$chatgpt = new ChatGPT();
-			$chatgpt->set_api_key( get_field( 'ufaqsw_ai_chatgpt_api_key', 'options' ) );
-			$chatgpt->set_model( get_field( 'ufaqsw_ai_model', 'options' ) );
-			$chatgpt->set_language( get_field( 'ufaqsw_ai_language', 'options' ) );
+			$chatgpt->set_api_key( cmb2_get_option( 'ufaqsw_ai_integration_settings', 'chatgpt_api_key' ) );
+			$chatgpt->set_model( cmb2_get_option( 'ufaqsw_ai_integration_settings', 'chatgpt_model' ) );
 			$result  = $chatgpt->refine( $text, $instruction );
 			
 			wp_send_json_success( $result );

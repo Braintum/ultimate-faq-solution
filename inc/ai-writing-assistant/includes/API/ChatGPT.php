@@ -61,7 +61,7 @@ class ChatGPT {
 	 */
 	public function refine( string $text, string $instruction = 'Refine the text' ): string {
 		if ( ! $this->api_key ) {
-			return 'Missing OpenAI API key.';
+			return __( 'Missing OpenAI API key.', 'ufaqsw' );
 		}
 
 		// Append language instruction if not English
@@ -100,8 +100,7 @@ class ChatGPT {
 		}
 
 		$body = json_decode( wp_remote_retrieve_body( $response ), true );
-		error_log( print_r( $body['choices'], true ) ); // Log the response for debugging
-		return $body['choices'][0]['message']['content'] ?? 'No response.';
+		return $body['choices'][0]['message']['content'] ?? __( 'No response.', 'ufaqsw' );
 	}
 
 	/**

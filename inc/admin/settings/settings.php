@@ -46,6 +46,10 @@ class UFAQSW_Global_Settings {
 	 * and registering plugin settings.
 	 */
 	public function __construct() {
+
+		// Include AI integration settings.
+		require_once UFAQSW__PLUGIN_DIR . 'inc/admin/settings/ai-integration.php';
+
 		add_action( 'admin_menu', array( $this, 'show_settings_page_callback_func' ) );
 		add_action( 'admin_init', array( $this, 'register_plugin_settings' ) );
 		add_action( 'admin_notices', array( $this, 'display_admin_notices' ) ); // Add this line.
@@ -98,17 +102,6 @@ class UFAQSW_Global_Settings {
 	public function settings_page_callback_func() {
 		if ( file_exists( UFAQSW__PLUGIN_DIR . 'inc/admin/settings/ui.php' ) ) {
 			include_once UFAQSW__PLUGIN_DIR . 'inc/admin/settings/ui.php';
-		}
-	}
-
-	/**
-	 * Callback function to render the FAQ export/import page.
-	 *
-	 * This function includes the UI file for the FAQ export/import page if it exists.
-	 */
-	public function render_faq_export_import_page() {
-		if ( file_exists( UFAQSW__PLUGIN_DIR . 'inc/admin/settings/faq-export-import.php' ) ) {
-			include_once UFAQSW__PLUGIN_DIR . 'inc/admin/settings/faq-export-import.php';
 		}
 	}
 
