@@ -146,15 +146,15 @@ class Chatbot {
 			$faq_items = array_map(
 				function ( $item ) {
 					return array(
-						'question' => $item['ufaqsw_faq_question'],
-						'answer'   => $item['ufaqsw_faq_answer'],
+						'question' => html_entity_decode( $item['ufaqsw_faq_question'] ),
+						'answer'   => wp_kses_post( apply_filters( 'the_content', $item['ufaqsw_faq_answer'] ) ),
 					);
 				},
 				$faq_items
 			);
 
 			$faq_data[] = array(
-				'group' => get_the_title( $faq_group ),
+				'group' => html_entity_decode( get_the_title( $faq_group ) ),
 				'items' => $faq_items,
 			);
 		}

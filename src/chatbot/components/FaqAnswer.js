@@ -1,6 +1,6 @@
 import React from "react";
 
-export const FaqAnswer = ({ faq, onBackClick }) => {
+export const FaqAnswer = ({ faq }) => {
 	return (
 		<div className="faq-answer">
 			<h2>{faq.question}</h2>

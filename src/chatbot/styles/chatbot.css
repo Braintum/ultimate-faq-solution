@@ -43,8 +43,8 @@
 }
 
 .chatbot-container .chatbot-body {
-  padding: 10px 20px;
-  height: calc(100% - 144px); /* Adjust height to fill remaining space below the header */
+  padding: 0px 20px;
+  height: calc(100% - 145px);
   margin-top: 20px;
   overflow-y: auto;
   overflow-x: hidden;
@@ -58,24 +58,32 @@
     max-width: 100%;
     border-radius: 6px;
     box-sizing: border-box;
+    margin: 0 auto;
+    display: block;
     margin-bottom: 10px;
 }
 
-.chatbot-container .chatbot-body .list-items {
-    box-shadow: 0 0 10px #00000014;
-    border-radius: 6px;
+.chatbot-container .chatbot-body .faq-answer-content iframe {
+  margin: 0 auto;
+  display: block;
+  max-width: 100%;
 }
 
 .chatbot-container .chatbot-body .list-item {
 	padding: 15px 16px;
-    border-bottom: 1px solid #e3e3e4;
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    transition: .5s all;
-    width: 100%;
-    border-radius: unset;
-    box-sizing: border-box;
+  border: 1px solid #e3e3e4;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: .5s all;
+  width: 100%;
+  border-radius: unset;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+}
+
+.chatbot-container .chatbot-body .list-item:last-child {
+  margin-bottom: 0;
 }
 
 .chatbot-container .chatbot-body .list-item:hover {
@@ -90,6 +98,7 @@
 
 .chatbot-container .header-content .chatbot-title {
 	font-weight: bold;
+  text-align: center;
 }
 
 .chatbot-container .chatbot-title-group {
@@ -121,3 +130,6 @@
   }
 }
 
+.chatbot-container .faq-groups > p {
+  margin-top: 0;
+}

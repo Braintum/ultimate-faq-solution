@@ -178,7 +178,7 @@ export const ShadowApp = ({ onClose, shadowRoot }) => {
 						)}
 
 						{view === 'answer' && selectedFaq && (
-							<FaqAnswer faq={selectedFaq} onBackClick={handleBackClick} />
+							<FaqAnswer faq={selectedFaq} />
 						)}
 					</>
 				)}
