@@ -143,6 +143,10 @@ function ufaqsw_prepopulate_ai_settings_defaults() {
 	// Only populate if empty or not set.
 	if ( empty( $options ) || empty( $options[ $field_id ] ) ) {
 
+		if ( ! is_array( $options ) ) {
+			$options = array();
+		}
+
 		// Default repeater values.
 		$options[ $field_id ] = array(
 			array(

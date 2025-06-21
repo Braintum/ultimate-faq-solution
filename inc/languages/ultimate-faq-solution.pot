@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: Ultimate FAQ Solution 1.6.4\n"
 "Report-Msgid-Bugs-To: "
 "https://wordpress.org/support/plugin/ultimate-faq-solution\n"
-"POT-Creation-Date: 2025-06-21 02:36:02+00:00\n"
+"POT-Creation-Date: 2025-06-21 02:38:31+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -645,35 +645,35 @@ msgid ""
 "efficiency of your FAQ content."
 msgstr ""
 
-#: inc/admin/settings/ai-integration.php:149
+#: inc/admin/settings/ai-integration.php:153
 msgid "Refine the text"
 msgstr ""
 
-#: inc/admin/settings/ai-integration.php:150
+#: inc/admin/settings/ai-integration.php:154
 msgid "Refine and improve the following text."
 msgstr ""
 
-#: inc/admin/settings/ai-integration.php:153
+#: inc/admin/settings/ai-integration.php:157
 msgid "Make it longer"
 msgstr ""
 
-#: inc/admin/settings/ai-integration.php:154
+#: inc/admin/settings/ai-integration.php:158
 msgid "Make the following text longer and more detailed."
 msgstr ""
 
-#: inc/admin/settings/ai-integration.php:157
+#: inc/admin/settings/ai-integration.php:161
 msgid "Make it shorter"
 msgstr ""
 
-#: inc/admin/settings/ai-integration.php:158
+#: inc/admin/settings/ai-integration.php:162
 msgid "Make the following text more concise."
 msgstr ""
 
-#: inc/admin/settings/ai-integration.php:161
+#: inc/admin/settings/ai-integration.php:165
 msgid "Execute as command"
 msgstr ""
 
-#: inc/admin/settings/ai-integration.php:162
+#: inc/admin/settings/ai-integration.php:166
 msgid "Execute this text as prompt."
 msgstr ""
 
