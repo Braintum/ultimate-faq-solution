@@ -2,9 +2,7 @@
 
 namespace BTRefiner\Core;
 
-use BTRefiner\Admin\ACFIntegration;
 use BTRefiner\Admin\Ajax;
-use BTRefiner\Admin\Settings;
 use BTRefiner\Admin\TinyMCEIntegration;
 
 class Plugin {

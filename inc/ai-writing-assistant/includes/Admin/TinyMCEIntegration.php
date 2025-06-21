@@ -47,7 +47,7 @@ class TinyMCEIntegration {
 		echo 'var ufaqsw_tiny_plugin_options = \'' . wp_json_encode( $selected_options_detailed ) . '\';';
 		echo "var ufaqsw_tiny_ajax_nonce = '" . esc_js( wp_create_nonce( 'ufaqsw-ajax-nonce' ) ) . "';";
 		echo "var ufaqsw_tiny_mode = '" . esc_js( 'prod' ) . "';";
-		echo 'let ufaqsw_tiny_plugin_texts = {ufaqsw_tiny_text_ai_tools:"' . esc_html__( '✨ AI Assistant', 'ufaqsw' ) . '", ufaqsw_tiny_text_available_ai_tools:"' . esc_html__( 'Available AI Commands - you can set these on settings page', 'ufaqsw' ) . '", ufaqsw_tiny_text_undo:"' . esc_html__( 'Undo last AI text modification', 'ufaqsw' ) . '"};';
+		echo 'let ufaqsw_tiny_plugin_texts = {ufaqsw_tiny_text_ai_tools:"' . esc_html__( '✨ AI Assistant', 'ufaqsw' ) . '", ufaqsw_tiny_text_available_ai_tools:"' . esc_html__( 'Refine Answer with AI', 'ufaqsw' ) . '", ufaqsw_tiny_text_undo:"' . esc_html__( 'Undo last AI text modification', 'ufaqsw' ) . '"};';
 		echo '</script>';
 	}
 
@@ -55,8 +55,27 @@ class TinyMCEIntegration {
 	 * Setup plugin hooks.
 	 */
 	public function setup_plugin() {
-		add_filter( 'mce_external_plugins', array( $this, 'add_tiny_plugin' ), 1, 2 );
-		add_filter( 'mce_buttons', array( $this, 'add_tiny_toolbar_button' ) );
+		// Only add TinyMCE plugin and buttons on 'ufaqsw' post type edit screens.
+		global $pagenow;
+		$post_type = '';
+
+		if ( isset( $_GET['post'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+			$post_id = intval( $_GET['post'] ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+			$post    = get_post( $post_id );
+			if ( $post ) {
+				$post_type = $post->post_type;
+			}
+		} elseif ( isset( $_GET['post_type'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+			$post_type = sanitize_key( wp_unslash( $_GET['post_type'] ) ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		}
+
+		if (
+			( 'post.php' === $pagenow || 'post-new.php' === $pagenow ) &&
+			'ufaqsw' === $post_type
+		) {
+			add_filter( 'mce_external_plugins', array( $this, 'add_tiny_plugin' ), 1, 2 );
+			add_filter( 'mce_buttons', array( $this, 'add_tiny_toolbar_button' ) );
+		}
 	}
 
 	/**

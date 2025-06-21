@@ -1,10 +1,20 @@
 <?php
+/**
+ * AJAX handler for the AI Writing Assistant in the Ultimate FAQ Solution plugin.
+ *
+ * @package Ultimate_FAQ_Solution
+ * @subpackage AI_Writing_Assistant
+ */
 
 namespace BTRefiner\Admin;
 
 use BTRefiner\API\ChatGPT;
 
+/**
+ * Handles AJAX actions for the AI Writing Assistant in the Ultimate FAQ Solution plugin.
+ */
 class Ajax {
+
 
 	/**
 	 * Register AJAX actions.
@@ -19,28 +29,30 @@ class Ajax {
 	public function handle_refine() {
 		check_ajax_referer( 'ufaqsw-ajax-nonce', 'nonce' );
 
-		$text        = sanitize_text_field( $_POST['content'] ?? '' );
-		$instruction = sanitize_text_field( $_POST['cmd'] ?? 'Refine and improve the following text.' );
+		$text        = isset( $_POST['content'] ) ? sanitize_text_field( wp_unslash( $_POST['content'] ) ) : '';
+		$instruction = isset( $_POST['cmd'] ) ? sanitize_text_field( wp_unslash( $_POST['cmd'] ) ) : 'Refine and improve the following text.';
 
-		if ( ! $text ) {
-			wp_send_json_error( 'No text provided.' );
-			exit;
+		if ( empty( $text ) ) {
+			wp_send_json_error( __( 'No text provided.', 'ufaqsw' ) );
+			wp_die();
 		}
 
 		try {
 			$chatgpt = new ChatGPT();
-			$chatgpt->set_api_key( cmb2_get_option( 'ufaqsw_ai_integration_settings', 'chatgpt_api_key' ) );
-			$chatgpt->set_model( cmb2_get_option( 'ufaqsw_ai_integration_settings', 'chatgpt_model' ) );
-			$result  = $chatgpt->refine( $text, $instruction );
-			
+			$chatgpt->set_api_key( (string) cmb2_get_option( 'ufaqsw_ai_integration_settings', 'chatgpt_api_key' ) );
+			$chatgpt->set_model( (string) cmb2_get_option( 'ufaqsw_ai_integration_settings', 'chatgpt_model' ) );
+			$result = $chatgpt->refine( $text, $instruction );
+
 			wp_send_json_success( $result );
 
 		} catch ( \Exception $e ) {
-			wp_send_json( array(
-				'success'  => false,
-				'data' => $e->getMessage(),
-			) );
-			exit;
+			wp_send_json(
+				array(
+					'success' => false,
+					'data'    => $e->getMessage(),
+				)
+			);
+			wp_die();
 		}
 	}
 }

@@ -15,7 +15,19 @@ class ChatGPT {
 	 * @var string
 	 */
 	private string $api_key;
+
+	/**
+	 * Model to use.
+	 *
+	 * @var string
+	 */
 	private string $model = 'gpt-4';
+
+	/**
+	 * Language code.
+	 *
+	 * @var string
+	 */
 	private string $language = 'en';
 
 	/**
@@ -28,7 +40,7 @@ class ChatGPT {
 	/**
 	 * Set the API key.
 	 *
-	 * @param string $api_key
+	 * @param string $api_key API key.
 	 */
 	public function set_api_key( string $api_key ): void {
 		$this->api_key = $api_key;
@@ -37,7 +49,7 @@ class ChatGPT {
 	/**
 	 * Set the model.
 	 *
-	 * @param string $model
+	 * @param string $model Model name.
 	 */
 	public function set_model( string $model ): void {
 		$this->model = $model;
@@ -46,7 +58,7 @@ class ChatGPT {
 	/**
 	 * Set the language.
 	 *
-	 * @param string $language
+	 * @param string $language Language code.
 	 */
 	public function set_language( string $language ): void {
 		$this->language = $language;
@@ -58,21 +70,22 @@ class ChatGPT {
 	 * @param string $text        The text to refine.
 	 * @param string $instruction The instruction for refinement.
 	 * @return string
+	 * @throws \RuntimeException If the request to OpenAI API fails.
 	 */
 	public function refine( string $text, string $instruction = 'Refine the text' ): string {
 		if ( ! $this->api_key ) {
-			return __( 'Missing OpenAI API key.', 'ufaqsw' );
+			throw new \RuntimeException( __( 'Missing OpenAI API key.', 'ufaqsw' ) );
 		}
 
-		// Append language instruction if not English
-		if ( $this->language && $this->language !== 'en' ) {
+		// Append language instruction if not English.
+		if ( $this->language && 'en' !== $this->language ) {
 			$instruction .= ' Respond in ' . $this->get_language_name( $this->language ) . '.';
 		}
 
 		$response = wp_remote_post(
 			'https://api.openai.com/v1/chat/completions',
 			array(
-				'timeout' => 60, // seconds
+				'timeout' => 60, // seconds.
 				'headers' => array(
 					'Authorization' => 'Bearer ' . $this->api_key,
 					'Content-Type'  => 'application/json',
@@ -96,17 +109,19 @@ class ChatGPT {
 		);
 
 		if ( is_wp_error( $response ) ) {
+
 			throw new \RuntimeException( 'Request to OpenAI API failed: ' . $response->get_error_message() );
 		}
 
 		$body = json_decode( wp_remote_retrieve_body( $response ), true );
+
 		return $body['choices'][0]['message']['content'] ?? __( 'No response.', 'ufaqsw' );
 	}
 
 	/**
 	 * Get language name by code.
 	 *
-	 * @param string $code
+	 * @param string $code Language code.
 	 * @return string
 	 */
 	private function get_language_name( string $code ): string {
@@ -120,6 +135,7 @@ class ChatGPT {
 			'nl' => 'Dutch',
 			'pl' => 'Polish',
 		);
+
 		return $languages[ $code ] ?? $code;
 	}
 }
