@@ -11,6 +11,20 @@
   font-size: 16px;
   max-height: 750px;
 }
+.chatbot-open-animate {
+  animation: chatbotOpen 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+@keyframes chatbotOpen {
+  0% {
+    transform: translateY(40px) scale(0.95);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
 
 @media (max-width: 768px) {
   .chatbot-container {

@@ -5,15 +5,17 @@ import { FaqAnswer } from './FaqAnswer';
 import { Header } from './Header';
 import Preloader from './Preloader';
 import Bottom from './bottom/Bottom';
+import fetchData from '../models/fetchData';
+import getTitle from '../functions/getTitle';
+//import handleBackClick from '../functions/handleBackClick';
 
 // Global variable to cache FAQ data
 let cachedFaqData = null;
 
-export const ShadowApp = ({ onClose, shadowRoot }) => {
+const ShadowApp = ({ onClose, shadowRoot }) => {
 	const [view, setView] = useState('group'); // 'group', 'list', or 'answer'
 	const [selectedGroup, setSelectedGroup] = useState(null);
 	const [selectedFaq, setSelectedFaq] = useState(null);
-
 	const [faqData, setFaqData] = useState([]); // Store fetched FAQ data
 	const [ajaxUrl, setAjaxUrl] = useState('');
 	const [assistantWindowHeadline, setAssistantWindowHeadline] = useState('');
@@ -23,6 +25,9 @@ export const ShadowApp = ({ onClose, shadowRoot }) => {
 	const [bodyText, setBodyText] = useState('');
 	const [nonce, setNonce] = useState('');
 	const [loading, setLoading] = useState(false); // Track loading state
+	const [animateOpen, setAnimateOpen] = useState(false);
+
+	const chatbotContainerRef = React.useRef(null);
 
 	useEffect(() => {
 		// Access the global chatbotData object
@@ -35,47 +40,30 @@ export const ShadowApp = ({ onClose, shadowRoot }) => {
 			setHeaderTextColor(window.chatbotData.header_text_color)
 			setBodyText(window.chatbotData.body_text)
 		}
-	}, []);
 
-	const fetchData = async () => {
-		setLoading(true); // Start loading
-		try {
-			const response = await fetch(ajaxUrl, {
-				method: 'POST',
-				headers: {
-					'Content-Type': 'application/x-www-form-urlencoded',
-				},
-				body: new URLSearchParams({
-					action: 'ufaqsw_get_faqs',
-					nonce: nonce,
-				}),
-			});
-
-			const result = await response.json();
-			if (result.success) {
-				cachedFaqData = result.data; // Cache the fetched data
-				setFaqData(result.data); // Update state with fetched data
-			} else {
-				console.error('Error fetching FAQs:', result);
-			}
-		} catch (error) {
-			console.error('Error fetching data:', error);
-		} finally {
-			setLoading(false); // Stop loading
-		}
-	};
-
-	useEffect(() => {
+		// fetch data when the component mounts
 		if (ajaxUrl && nonce) {
 			if (cachedFaqData) {
 				// Use cached data if available
 				setFaqData(cachedFaqData);
 			} else {
 				// Fetch data from the server if not cached
-				fetchData();
+				fetchData({ setLoading, ajaxUrl, setFaqData, nonce });
 			}
 		}
-	}, [ajaxUrl, nonce]);
+
+		// Trigger open animation on mount
+		setAnimateOpen(true);
+
+		// Scroll to top when an FAQ is selected
+		if (view === 'answer' && chatbotContainerRef.current) {
+			chatbotContainerRef.current.scrollTop = 0;
+		}
+		if (view === 'list' && chatbotContainerRef.current) {
+			chatbotContainerRef.current.scrollTop = 0;
+		}
+
+	}, [ajaxUrl, nonce, view]);
 
 	useEffect(() => {
 		const adjustHeight = () => {
@@ -137,35 +125,13 @@ export const ShadowApp = ({ onClose, shadowRoot }) => {
 		}
 	};
 
-	const getTitle = () => {
-		if (view === 'list' && selectedGroup) {
-			return selectedGroup.group;
-		}
-		if (view === 'answer' && selectedFaq) {
-			return selectedGroup.group;
-		}
-		return assistantWindowHeadline || 'Frequently Asked Questions'; // Default title if no specific group or FAQ is selected
-	};
-
-	const chatbotContainerRef = React.useRef(null);
-
-	// Scroll to top when an FAQ is selected
-	useEffect(() => {
-		if (view === 'answer' && chatbotContainerRef.current) {
-			chatbotContainerRef.current.scrollTop = 0;
-		}
-		if (view === 'list' && chatbotContainerRef.current) {
-			chatbotContainerRef.current.scrollTop = 0;
-		}
-	}, [view]);
-
 	return (
-		<div className="chatbot-container">
+		<div className={`chatbot-container${animateOpen ? ' chatbot-open-animate' : ''}`}>
 			<Header
 				onClose={onClose}
 				onBack={handleBackClick}
 				showBackButton={view !== 'group'}
-				title={getTitle()}
+				title={getTitle({ view, selectedGroup, selectedFaq, assistantWindowHeadline })}
 				intro={view == 'group' ? assistantWindowIntroText : ""}
 				headerColor={headerBackgroundColor}
 				textColor={headerTextColor}
@@ -209,3 +175,5 @@ export const ShadowApp = ({ onClose, shadowRoot }) => {
 		</div>
 	);
 };
+
+export { ShadowApp, cachedFaqData };
