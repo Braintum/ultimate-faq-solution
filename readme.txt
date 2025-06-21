@@ -1,7 +1,7 @@
 === Ultimate FAQ Solution ===
 Contributors: braintum  
 Donate link: https://www.solrengine.com/  
-Tags: faq, faq-directory, accordion, knowledgebase, woocommerce-faq  
+Tags: faq-directory, accordion, knowledgebase, product-faq, ai  
 Requires at least: 5.1  
 Tested up to: 6.8.1  
 Stable tag: 1.6.3 
@@ -9,7 +9,7 @@ Requires PHP: 7.4.0
 License: GPLv2 or later  
 License URI: https://www.gnu.org/licenses/license-list.html#GPLCompatibleLicenses  
 
-A WordPress plugin to create, organize, and display FAQs with responsive layouts and styles.
+A WordPress plugin to create, organize, and display FAQs with responsive layouts, styles, and AI-powered answer suggestions.
 
 == Description ==
 
