@@ -156,6 +156,8 @@ export const ShadowApp = ({ onClose, shadowRoot }) => {
 				intro={view == 'group' ? assistantWindowIntroText : ""}
 				headerColor={headerBackgroundColor}
 				textColor={headerTextColor}
+				back_button_label={window.chatbotData.back_button_label || 'Back'}
+				close_button_label={window.chatbotData.close_button_label || 'Close'}
 			/>
 
 			<div className="chatbot-body">

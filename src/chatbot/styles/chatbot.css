@@ -56,6 +56,7 @@
 	border: none;
 	font-size: 16px;
 	cursor: pointer;
+  display: flex;
 }
 
 .chatbot-container .header-content .chatbot-title {
@@ -149,7 +150,7 @@
   color: #707070;
 }
 
-.chatbot-container .faq-groups > p {
+.chatbot-container .faq-groups .faq-groups-description > p {
   margin-top: 0;
 }
 

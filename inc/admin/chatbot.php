@@ -60,6 +60,8 @@ function ufaqsw_register_settings_page() {
 						'assistant_window_intro_text',
 						'preloader_text',
 						'body_text',
+						'assistant_back_button_title',
+						'assistant_close_button_title',
 					),
 				),
 			),
@@ -153,6 +155,26 @@ function ufaqsw_register_settings_page() {
 
 	$cmb->add_field(
 		array(
+			'name'        => __( 'Back Button Title', 'ufaqsw' ),
+			'id'          => 'assistant_back_button_title',
+			'type'        => 'text',
+			'default'     => __( 'Go back to the previous view', 'ufaqsw' ),
+			'description' => __( '<i>This text appears as a tooltip when hovering over the back button in the FAQ Assistant window. Use it to guide users on its function (e.g., “Go back to the previous view”).</i>', 'ufaqsw' ),
+		)
+	);
+
+	$cmb->add_field(
+		array(
+			'name'        => __( 'Close Button Title', 'ufaqsw' ),
+			'id'          => 'assistant_close_button_title',
+			'type'        => 'text',
+			'default'     => __( 'Close the window', 'ufaqsw' ),
+			'description' => __( '<i>This text appears as a tooltip when hovering over the close button in the FAQ Assistant window. Use it to let users know that clicking will close the assistant window.</i>', 'ufaqsw' ),
+		)
+	);
+
+	$cmb->add_field(
+		array(
 			'name'        => __( 'Preloader Text', 'ufaqsw' ),
 			'id'          => 'preloader_text',
 			'type'        => 'text',
@@ -167,7 +189,10 @@ function ufaqsw_register_settings_page() {
 			'desc'    => __( '<i>Enter the text displayed above the list of FAQ categories in the assistant window. Use this to guide visitors on how to navigate and use the categories effectively.</i>', 'ufaqsw' ),
 			'default' => __( 'Browse our FAQ categories below to quickly find answers grouped by topic. Click a category to see related questions and solutions.', 'ufaqsw' ),
 			'id'      => 'body_text',
-			'type'    => 'textarea',
+			'type'    => 'wysiwyg',
+			'options' => array(
+				'textarea_rows' => 20,
+			),
 		)
 	);
 

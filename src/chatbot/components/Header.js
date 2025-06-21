@@ -10,6 +10,8 @@ export const Header = (headerProps) => {
     intro,
     headerColor,
     textColor,
+    back_button_label,
+    close_button_label
   } = headerProps;
 
   return (
@@ -27,6 +29,7 @@ export const Header = (headerProps) => {
             className="faq-back-button"
             style={textColor ? { color: textColor } : undefined}
             aria-label="Back"
+            title={back_button_label}
           >
             <svg
               width="20"
@@ -51,6 +54,7 @@ export const Header = (headerProps) => {
           className="chatbot-close-button"
           style={textColor ? { color: textColor } : undefined}
           aria-label="Close"
+          title={close_button_label}
         >
           {(
             <svg
