@@ -34,6 +34,16 @@
   transition: .3s ease;
 }
 
+.ufaqsw_answers_style1 * {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.ufaqsw_answers_style1 iframe, .ufaqsw_answers_style1 img {
+  margin: 0 auto;
+  display: block;
+}
+
 .ufaqsw_title_area_style1{position:relative;  background: #eac8d3;}
 
 .ufaqsw_title_area_style1:focus {

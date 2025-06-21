@@ -129,12 +129,19 @@
 .ufaqsw_toggle_default .ufaqsw-toggle-inner-default {
   padding: 5px 20px;
 }
-.ufaqsw_toggle_default .ufaqsw-toggle-inner-default div {
+
+.ufaqsw_toggle_default .ufaqsw-toggle-inner-default * {
   max-width: 100%;
 }
+
+.ufaqsw_toggle_default .ufaqsw-toggle-inner-default img, .ufaqsw_toggle_default .ufaqsw-toggle-inner-default iframe {
+  margin: 0 auto;
+  display: block;
+}
+
 .ufaqsw_toggle_default .ufaqsw-toggle-title-area-default .ufaqsw-title-name-default {
 	display: block;
-    padding: 15px 10px;
+  padding: 15px 10px;
 }
 .ufaqsw_toggle_default .ufaqsw-toggle-title-area-default a i {
   font-size: 22px;
@@ -180,6 +187,16 @@
   opacity: 0;
   -webkit-transition: .3s ease;
   transition: .3s ease;
+}
+
+.ufaqsw_answers_style1 * {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.ufaqsw_answers_style1 iframe, .ufaqsw_answers_style1 img {
+  margin: 0 auto;
+  display: block;
 }
 
 .ufaqsw_title_area_style1{position:relative;  background: #eac8d3;}
@@ -264,6 +281,17 @@
   padding-left:20px;
   padding-right: 20px;
 }
+
+.ufaqsw_draw_style2 *{
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.ufaqsw_draw_style2 img, .ufaqsw_draw_style2 iframe {
+  margin: 0 auto;
+  display: block;
+}
+
 #ufaqsw_other_style2{
 	display: none;
 }

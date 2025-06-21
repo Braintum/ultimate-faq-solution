@@ -75,8 +75,6 @@ class Shortcodes {
 	 * for the proper functioning of the plugin's front-end features.
 	 */
 	private function enqueue_assets() {
-		wp_enqueue_style( 'ufaqsw_fa_css' );
-		wp_enqueue_style( self::$css_handler, UFAQSW__PLUGIN_URL . 'assets/css/styles.min.css', array(), UFAQSW_VERSION, 'all' );
 		wp_enqueue_script( 'ufaqsw-quicksearch-front-js' );
 		wp_enqueue_script( self::$js_handler, UFAQSW__PLUGIN_URL . 'assets/js/script.min.js', array( 'jquery', 'ufaqsw-quicksearch-front-js' ), UFAQSW_VERSION, false );
 	}
