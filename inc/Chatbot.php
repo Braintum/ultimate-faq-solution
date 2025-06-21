@@ -98,7 +98,8 @@ class Chatbot {
 				'header_background_color'  => cmb2_get_option( 'ufaqsw_chatbot_settings', 'header_background_color' ),
 				'header_text_color'  => cmb2_get_option( 'ufaqsw_chatbot_settings', 'header_text_color' ),
 				'body_text'  => cmb2_get_option( 'ufaqsw_chatbot_settings', 'body_text' ),
-
+				'preloader_text'  => cmb2_get_option( 'ufaqsw_chatbot_settings', 'preloader_text' ),
+				'loading_animation_color'  => cmb2_get_option( 'ufaqsw_chatbot_settings', 'loading_animation_color' ) ?? '#222',
 			)
 		);
 	}

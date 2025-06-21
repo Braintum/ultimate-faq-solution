@@ -3,6 +3,7 @@ import { FaqGroups } from './FaqGroups';
 import { FaqList } from './FaqList';
 import { FaqAnswer } from './FaqAnswer';
 import { Header } from './Header';
+import Preloader from './Preloader';
 
 // Global variable to cache FAQ data
 let cachedFaqData = null;
@@ -159,7 +160,10 @@ export const ShadowApp = ({ onClose, shadowRoot }) => {
 
 			<div className="chatbot-body">
 					{loading ? (
-					<div className="preloader">Loading...</div> // Preloader
+					<Preloader 
+						dotColor={ window.chatbotData.loading_animation_color || '#222' }
+						preloader_text={window.chatbotData.preloader_text}
+					/>
 				) : (
 					<>
 						{view === 'group' && (

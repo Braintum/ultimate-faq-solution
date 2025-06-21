@@ -1,7 +1,6 @@
 import React from "react";
 
 export const ListItem = ({ item, index, onClick, content }) => {
-	console.log( item.items );
 	return (
 		<div key={index} className="list-item" onClick={() => onClick(item)}>
 			<div className="title">{content}</div>

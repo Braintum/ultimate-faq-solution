@@ -47,6 +47,7 @@ function ufaqsw_register_settings_page() {
 						'floating_button_icon',
 						'header_background_color',
 						'header_text_color',
+						'loading_animation_color',
 					),
 				),
 				array(
@@ -122,6 +123,16 @@ function ufaqsw_register_settings_page() {
 
 	$cmb->add_field(
 		array(
+			'name'        => __( 'Loading Animation Color', 'ufaqsw' ),
+			'id'          => 'loading_animation_color',
+			'type'        => 'colorpicker',
+			'default'     => '#222',
+			'description' => __( '<i>Choose the color for the loading animation (animated dots) shown while the FAQ Assistant is fetching content. Adjust for better visibility and branding.</i>', 'ufaqsw' ),
+		)
+	);
+
+	$cmb->add_field(
+		array(
 			'name'        => __( 'Window Headline', 'ufaqsw' ),
 			'id'          => 'assistant_window_headline',
 			'type'        => 'text',
@@ -145,7 +156,7 @@ function ufaqsw_register_settings_page() {
 			'name'        => __( 'Preloader Text', 'ufaqsw' ),
 			'id'          => 'preloader_text',
 			'type'        => 'text',
-			'default'     => __( 'Loading...', 'ufaqsw' ),
+			'default'     => '',
 			'description' => __( '<i>Text displayed while the FAQ content is loading (e.g., “Loading…”) to inform users.</i>', 'ufaqsw' ),
 		)
 	);

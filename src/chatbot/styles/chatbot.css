@@ -62,6 +62,21 @@
 	font-weight: bold;
   text-align: center;
 }
+
+.chatbot-container .chatbot-intro {
+	font-size: 13px;
+	font-weight: normal;
+	opacity: 0.85;
+	margin-top: 2px;
+	line-height: 1.3;
+}
+
+.chatbot-container .chatbot-title-group {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+}
+
 /* END Header styles */
 
 /* Body styles */
@@ -137,4 +152,52 @@
 .chatbot-container .faq-groups > p {
   margin-top: 0;
 }
+
+/* Preloder styles */
+.chatbot-container .chatbot-body .preloader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  font-family: sans-serif;
+  color: #444;
+  height: 80px;
+  flex-direction: column;
+}
+
+.chatbot-container .chatbot-body .preloader .dots {
+  display: flex;
+  gap: 6px;
+  --dot-color: #3498db; /* default fallback */
+}
+
+.chatbot-container .chatbot-body .preloader .dots span {
+  width: 10px;
+  height: 10px;
+  background-color: var(--dot-color);
+  border-radius: 50%;
+  display: inline-block;
+  animation: bounce 1.4s infinite ease-in-out both;
+}
+
+.chatbot-container .chatbot-body .preloader .dots span:nth-child(1) {
+  animation-delay: -0.32s;
+}
+.chatbot-container .chatbot-body .preloader .dots span:nth-child(2) {
+  animation-delay: -0.16s;
+}
+.chatbot-container .chatbot-body .preloader .dots span:nth-child(3) {
+  animation-delay: 0s;
+}
+
+@keyframes bounce {
+  0%, 80%, 100% {
+    transform: scale(0);
+  }
+  40% {
+    transform: scale(1);
+  }
+}
+/* END Preloder styles */
+
 /* END Body styles */
