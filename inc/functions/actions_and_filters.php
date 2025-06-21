@@ -289,7 +289,6 @@ function ufaqsw_reorder_submenu() {
 		'edit.php?post_type=ufaqsw_appearance', // Appearance (move this to 2nd).
 		'ufaqsw_chatbot_settings',          // FAQ Assistant (move this to 3rd).
 		'ufaqsw-settings',                  // Settings & Help.
-		'faq-export-import',                // Export/Import.
 	);
 
 	$new_submenu = array();

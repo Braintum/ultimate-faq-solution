@@ -109,3 +109,16 @@
 .field_is_hidden {
   display: none !important;
 }
+
+.ufaqsw_settings_table{
+  background: #fff;
+  padding: 20px 20px;
+  display: block;
+  margin-bottom: 20px;
+}
+
+.ufaqsw_settings_table tr td i{
+  display: block;
+  font-size: 13px;
+  margin-top: 8px;
+}

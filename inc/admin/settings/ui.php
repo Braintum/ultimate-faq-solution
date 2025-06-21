@@ -19,19 +19,226 @@ $allowed_html = ufaqsw_wses_allowed_menu_html();
 	<h1><?php echo esc_html( 'Settings & Help - Ultimate FAQs' ); ?></h1>
 
 	<h2 class="nav-tab-wrapper sld_nav_container">
-		<a class="nav-tab ufaqsw_click_handle nav-tab-active" href="#getting_started"><?php echo esc_html( 'Getting Stared' ); ?></a>
-		<a class="nav-tab ufaqsw_click_handle" href="#faq_directory"><?php echo esc_html( 'Shortcodes' ); ?></a>
-		<a class="nav-tab ufaqsw_click_handle" href="#language_settings"><?php echo esc_html( 'Language Settings' ); ?></a>
-		<a class="nav-tab ufaqsw_click_handle" href="#general_settings"><?php echo esc_html( 'Woocommerce' ); ?></a>
-		<a class="nav-tab ufaqsw_click_handle" href="#custom_css"><?php echo esc_html( 'Custom Css' ); ?></a>
-		<a class="nav-tab ufaqsw_click_handle" href="#support"><?php echo esc_html( 'Support' ); ?></a>
+		<a class="nav-tab ufaqsw_click_handle nav-tab-active" href="#general_settings"><?php echo esc_html( 'General Settings' ); ?></a>
+		<a class="nav-tab ufaqsw_click_handle" href="#export_import"><?php echo esc_html( 'Export/Import' ); ?></a>
+		<a class="nav-tab ufaqsw_click_handle" href="#getting_started"><?php echo esc_html( 'Getting Stared' ); ?></a>
+
 	</h2>
 
 	<form method="post" action="options.php">
 		<?php settings_fields( 'ufaqsw-plugin-settings-group' ); ?>
 		<?php do_settings_sections( 'ufaqsw-plugin-settings-group' ); ?>
 
-		<div id="getting_started">
+		<div id="general_settings">
+
+			<h3><?php echo esc_html( 'FAQs Directory Settings' ); ?></h3>
+
+			<table class="form-table ufaqsw_settings_table">
+				<tr valign="top">
+					<th scope="row"><?php echo esc_html( 'FAQs Directory Shortcode' ); ?></th>
+					<td>
+						<input type="text" class="ufaqsw_admin_faq_shorcode_copy" value="[ufaqsw-all]" />
+						<i>
+							<?php echo esc_html( 'Copy and use this shortcode to display all FAQ groups in a directory-style layout on any page. You can also use the FAQ block in the block editor for easy insertion.' ); ?>
+							<br>
+							<a href="https://www.braintum.com/docs/ultimate-faq-solution/displaying-faqs/shortcode-parameters/" target="_blank">
+								<?php echo esc_html( 'Learn more about shortcode parameters' ); ?>
+							</a>
+						</i>
+					</td>
+				</tr>
+				<tr valign="top">
+					<th scope="row"><?php echo esc_html( 'Live Search' ); ?></th>
+					<td>
+						<label>
+							<input type="checkbox" name="ufaqsw_enable_search" value="on" <?php echo ( esc_attr( get_option( 'ufaqsw_enable_search' ) ) === 'on' ? 'checked="checked"' : '' ); ?> />
+							<?php echo esc_html( 'Enable Live Search' ); ?>
+						</label>
+						<i><?php echo wp_kses( 'Enable this option to add a fast, modern live search to your <b>FAQs Directory</b> page. Instantly filter FAQs as users type, powered by JavaScript.', $allowed_html ); ?></i>
+					</td>
+				</tr>
+
+				<tr valign="top">
+					<th scope="row"><?php echo esc_html( 'Sticky Filter' ); ?></th>
+					<td>
+						<label>
+							<input type="checkbox" name="ufaqsw_enable_filter" value="on" <?php echo ( esc_attr( get_option( 'ufaqsw_enable_filter' ) ) === 'on' ? 'checked="checked"' : '' ); ?> />
+							<?php echo esc_html( 'Enable Sticky Filter' ); ?>
+						</label>
+						<br>
+						<i><?php echo wp_kses( 'Display sticky filter buttons at the top of the FAQ list, allowing users to easily filter FAQs by group as they scroll.', $allowed_html ); ?></i>
+					</td>
+				</tr>
+
+			</table>
+
+			<h3><?php echo esc_html( 'Woocommerce Settings' ); ?></h3>
+			<table class="form-table ufaqsw_settings_table">
+				<tr valign="top">
+					<th scope="row"><?php echo esc_html( 'Product FAQ' ); ?></th>
+					<td>
+						<label>
+							<input type="checkbox" name="ufaqsw_enable_woocommerce" value="on" <?php echo ( esc_attr( get_option( 'ufaqsw_enable_woocommerce' ) ) === 'on' ? 'checked="checked"' : '' ); ?> />
+							<?php echo esc_html( 'Enable Product FAQ' ); ?>
+						</label>
+						<i>
+							<?php echo wp_kses( 'Enable this option to display FAQs on the product landing page.', $allowed_html ); ?>
+							<br>
+							<a href="https://www.braintum.com/docs/ultimate-faq-solution/advanced-configurations/woocommerce/" target="_blank">
+								<?php echo esc_html( 'Learn more about WooCommerce FAQ integration' ); ?>
+							</a>
+						</i>
+					</td>
+				</tr>
+
+				<tr valign="top">
+					<th scope="row"><?php echo esc_html( 'Global FAQ for All Products' ); ?></th>
+					<td>
+						<label>
+							<input type="checkbox" name="ufaqsw_enable_global_faq" value="on" <?php echo ( esc_attr( get_option( 'ufaqsw_enable_global_faq' ) ) === 'on' ? 'checked="checked"' : '' ); ?> />
+							<?php echo esc_html( 'Enable Global FAQ for All Products' ); ?>
+						</label>
+						<i><?php echo wp_kses( 'Enable this option to show a global <b>FAQ</b> to all products', $allowed_html ); ?></i>
+					</td>
+				</tr>
+
+				<tr valign="top" id="ufaqsw_global_faq_fields_tr" style="<?php echo ( esc_attr( get_option( 'ufaqsw_enable_global_faq' ) ) === 'on' ? '' : 'display:none;' ); ?>">
+					<th scope="row"><?php echo esc_html( 'FAQ Tab Label' ); ?></th>
+					<td>
+						<div id="ufaqsw_global_faq_fields">
+							<input type="text" name="ufaqsw_global_faq_label" size="100" value="<?php echo esc_attr( '' !== get_option( 'ufaqsw_global_faq_label' ) ? get_option( 'ufaqsw_global_faq_label' ) : 'Faqs' ); ?>"  />
+							<i><?php echo esc_html( 'Add faq tab label. e.g: Faqs' ); ?></i>
+						</div>
+					</td>
+				</tr>
+
+				<?php
+				$faqs = Product_Tab::get_instance()->get_all_faqs();
+				?>
+
+				<tr valign="top" id="ufaqsw_global_faq_group_field_tr" style="<?php echo ( esc_attr( get_option( 'ufaqsw_enable_global_faq' ) ) === 'on' ? '' : 'display:none;' ); ?>">
+					<th scope="row"><?php echo esc_html( 'Select A FAQ Group' ); ?></th>
+					<td>
+						<div id="ufaqsw_global_faq_group_field">
+							<select name="ufaqsw_global_faq" >
+								<?php
+								foreach ( $faqs as $key => $val ) {
+									echo '<option value="' . esc_attr( $key ) . '" ' . ( get_option( 'ufaqsw_global_faq' ) === $key ? 'selected="selected"' : '' ) . ' > ' . esc_html( $val ) . ' </option>';
+								}
+								?>
+							</select>
+						</div>
+					</td>
+				</tr>
+
+				<script>
+				document.addEventListener('DOMContentLoaded', function() {
+					const globalFaqCheckbox = document.querySelector('input[name="ufaqsw_enable_global_faq"]');
+					const labelTr = document.getElementById('ufaqsw_global_faq_fields_tr');
+					const groupTr = document.getElementById('ufaqsw_global_faq_group_field_tr');
+					if (globalFaqCheckbox) {
+						globalFaqCheckbox.addEventListener('change', function() {
+							if (this.checked) {
+								labelTr.style.display = '';
+								groupTr.style.display = '';
+							} else {
+								labelTr.style.display = 'none';
+								groupTr.style.display = 'none';
+							}
+						});
+					}
+				});
+				</script>
+
+				<script>
+				document.addEventListener('DOMContentLoaded', function() {
+					const globalFaqCheckbox = document.querySelector('input[name="ufaqsw_enable_global_faq"]');
+					const labelField = document.getElementById('ufaqsw_global_faq_fields');
+					const groupField = document.getElementById('ufaqsw_global_faq_group_field');
+					if (globalFaqCheckbox) {
+						globalFaqCheckbox.addEventListener('change', function() {
+							if (this.checked) {
+								labelField.style.display = '';
+								groupField.style.display = '';
+							} else {
+								labelField.style.display = 'none';
+								groupField.style.display = 'none';
+							}
+						});
+					}
+				});
+				</script>
+
+			</table>
+
+			<h3><?php echo esc_html( 'Labels' ); ?></h3>
+			<p><?php echo esc_html( 'Customize all static texts displayed on the frontend by this plugin.' ); ?></p>
+			<table class="form-table ufaqsw_settings_table">
+
+				<tr valign="top">
+					<th scope="row"><?php echo esc_html( 'Live Search' ); ?></th>
+					<td>
+						<input type="text" name="ufaqsw_live_search_text" size="100" value="<?php echo esc_attr( ( '' !== get_option( 'ufaqsw_live_search_text' ) ? get_option( 'ufaqsw_live_search_text' ) : esc_html( 'Live Search..' ) ) ); ?>"  />
+					</td>
+				</tr>
+				<tr valign="top">
+					<th scope="row"><?php echo esc_html( 'Loading' ); ?></th>
+					<td>
+						<input type="text" name="ufaqsw_live_search_loading_text" size="100" value="<?php echo esc_attr( ( '' !== get_option( 'ufaqsw_live_search_loading_text' ) ? get_option( 'ufaqsw_live_search_loading_text' ) : esc_html( 'Loading...' ) ) ); ?>"  />
+					</td>
+				</tr>
+				<tr valign="top">
+					<th scope="row"><?php echo esc_html( 'No result Found' ); ?></th>
+					<td>
+						<input type="text" name="ufaqsw_search_result_not_found" size="100" value="<?php echo esc_attr( '' !== get_option( 'ufaqsw_search_result_not_found' ) ? get_option( 'ufaqsw_search_result_not_found' ) : esc_html( 'No result Found!' ) ); ?>"  />
+					</td>
+				</tr>
+
+			</table>
+
+			<h3><?php echo esc_html( 'Custom Css' ); ?></h3>
+			<p><?php echo esc_html( 'Add your own CSS to customize the appearance of the FAQs on the frontend.' ); ?></p>
+
+			<table class="form-table ufaqsw_settings_table">
+
+				<tr valign="top">
+					<th scope="row"><?php echo esc_html( 'Custom Css' ); ?></th>
+					<td>
+						<textarea name="ufaqsw_setting_custom_style" id="ufaqsw_setting_custom_style" rows="10" cols="100"><?php echo esc_attr( get_option( 'ufaqsw_setting_custom_style' ) ); ?></textarea>
+						<?php echo wp_kses( '<br><i>Write your custom CSS here. Please do not use <b>style</b> tag in this textarea. Use *!important* flag if the styling does not take place as expected.</i>', $allowed_html ); ?>
+					</td>
+				</tr>
+
+			</table>
+		</div>
+
+		<div id="export_import" style="display:none">
+			<h2><?php echo esc_html__( 'Export', 'ufaqsw' ); ?></h2>
+			<p>
+				<?php echo esc_html__( 'To export all FAQ groups, click here', 'ufaqsw' ); ?>
+				<a class="button button-primary" href="<?php echo esc_attr( admin_url( 'export.php?download=true&cat=0&post_author=0&post_start_date=0&post_end_date=0&post_status=0&page_author=0&page_start_date=0&page_end_date=0&page_status=0&content=' . UFAQSW_PRFX . '&attachment_start_date=0&attachment_end_date=0&submit=Download+Export+File' ) ); ?>"><?php echo esc_html__( 'Export', 'ufaqsw' ); ?></a>
+			</p>
+			<hr>
+
+			<h2><?php echo esc_html__( 'Import', 'ufaqsw' ); ?></h2>
+			<p>
+			<?php echo esc_html__( 'To import FAQ groups, go to', 'ufaqsw' ); ?> 
+				<a href="<?php echo esc_attr( admin_url( 'import.php' ) ); ?>"><?php echo esc_html__( 'Tools → Import', 'ufaqsw' ); ?></a>, 
+				<?php echo esc_html__( 'then choose "WordPress" and upload the exported file.', 'ufaqsw' ); ?>
+			</p>
+
+			<p><?php echo esc_html__( 'If the WordPress Importer is not yet installed, it will prompt you to install it. Just click the “Install Now” button, then once installed, click “Run Importer.”', 'ufaqsw' ); ?></p>
+
+			<p>
+				<?php echo esc_html__( 'On the importer screen, upload the', 'ufaqsw' ); ?> <code>.xml</code> <?php echo esc_html__( 'file you previously exported. Be sure to check the option to', 'ufaqsw' ); ?> <strong><?php echo esc_html__( '“Download and import file attachments”', 'ufaqsw' ); ?></strong> <?php echo esc_html__( 'if you want to bring in any images or media associated with your FAQs.', 'ufaqsw' ); ?>
+			</p>
+
+			<p>
+				<?php echo esc_html__( 'After the import is complete, all your FAQ groups will be added to the current site, including their content, and metadata.', 'ufaqsw' ); ?>
+			</p>
+		</div>
+
+		<div id="getting_started" style="display:none">
 			<div class="wrap">
 
 				<div id="poststuff">
@@ -73,178 +280,7 @@ $allowed_html = ufaqsw_wses_allowed_menu_html();
 							To enable it, go to <a href="<?php echo esc_url( admin_url( 'edit.php?post_type=ufaqsw&page=ufaqsw_chatbot_settings' ) ); ?>"><strong>FAQ Assistant Settings</strong></a> from the plugin menu and toggle the <em>“Enable FAQ Assistant”</em> option.
 						</p>
 
-					</div>
-				</div>
-					<!-- /poststuff -->
-			</div>
-		</div>
-
-		<div id="faq_directory" style="display:none">
-			<?php echo wp_kses( '<p>You can display all your <b>FAQ Groups</b> in one page as a <b>FAQs Directory</b>. A very simple <b>Shortcode</b> will does the job. Also there is a quick search feature available which will able to search & find FAQs before user\'s typing completed.</p>', $allowed_html ); ?>
-			<p><b><?php echo esc_html( 'FAQs Directory Shortcode:' ); ?></b> <input type="text" class="ufaqsw_admin_faq_shorcode_copy" value="[ufaqsw-all]" /></p>
-
-			<table class="form-table">
-				<tr valign="top">
-					<th scope="row"><?php echo esc_html( 'Enable Search for FAQs Directory' ); ?></th>
-					<td>
-						<input type="checkbox" name="ufaqsw_enable_search" value="on" <?php echo ( esc_attr( get_option( 'ufaqsw_enable_search' ) ) === 'on' ? 'checked="checked"' : '' ); ?> />
-						<i><?php echo wp_kses( 'Turn it on to add a <b>Search Bar</b> at the top of <b>FAQs Directory</b>. It is the most quick any easy <b>Live Search</b> system powered by modern javascript.', $allowed_html ); ?></i>
-					</td>
-				</tr>
-
-				<tr valign="top">
-					<th scope="row"><?php echo esc_html( 'Enable Filter by Group' ); ?></th>
-					<td>
-						<input type="checkbox" name="ufaqsw_enable_filter" value="on" <?php echo ( esc_attr( get_option( 'ufaqsw_enable_filter' ) ) === 'on' ? 'checked="checked"' : '' ); ?> />
-						<i><?php echo wp_kses( 'Display a set of filter buttons above the FAQ list, allowing users to view FAQs by specific groups.', $allowed_html ); ?></i>
-					</td>
-				</tr>
-
-			</table>
-			<hr>
-			<p><b><u><?php echo esc_html( 'Directory Shortcode Parameters' ); ?></u></b></p>
-			<p><?php echo wp_kses( 'There are some parameters for <b>[ufaqsw-all]</b> shortcode to inhance its usability.', $allowed_html ); ?></p>
-			<p>
-				<b><?php echo esc_html( '1. exclude' ); ?></b><br>
-				<?php
-				echo wp_kses(
-					'<span>This parameter accepts <b>FAQ Group ID</b> which you can find in <b>Manage FAQ Groups</b> page. This parameter can be used for excluding a <b>FAQ Group</b> from <b>FAQ Directory</b>. The basic use case would be - you can remove a <b>FAQ Group</b> which you have added for a Woocommerce Product specifically from <b>FAQs Directory</b>. Also you can remove multiple FAQ Groups by adding multiple FAQ Group ID seperated by (,)Comma.</span><br>
-				<span><b>Ex:</b> [ufaqsw-all exclude="1, 2"] </span>',
-					$allowed_html
-				);
-				?>
-			</p>
-			<p>
-				<b><?php echo esc_html( '2. behaviour' ); ?></b><br>
-				<?php
-				echo wp_kses(
-					'<span>Supported values for this parameter are toggle, accordion.
-				<span><b>Ex:</b> [ufaqsw-all exclude="1, 2" behaviour="accordion"] </span>',
-					$allowed_html
-				);
-				?>
-			</p>
-
-			<p><b><u><?php echo esc_html( 'Group Shortcode Parameters' ); ?></u></b></p>
-			<p><?php echo wp_kses( 'There are some parameters for <b>[ufaqsw]</b> shortcode to inhance its usability.', $allowed_html ); ?></p>
-
-			<p>
-				<b><?php echo esc_html( '1. id' ); ?></b><br>
-				<?php
-				echo wp_kses(
-					'<span>This parameter accepts <b>FAQ Group ID</b> which you can find in <b>Manage FAQ Groups</b> page.</span><br>
-				<span><b>Ex:</b> [ufaqsw id="1"] </span>',
-					$allowed_html
-				);
-				?>
-			</p>
-
-			<p>
-				<b><?php echo esc_html( '1. elements_order' ); ?></b><br>
-				<?php
-				echo wp_kses(
-					'<span>This parameter allows faq elements to sort from last to first. Available values: ASC, DESC. By default it is ASC</span><br>
-				<span><b>Ex:</b> [ufaqsw id="1" elements_order="DESC"] </span>',
-					$allowed_html
-				);
-				?>
-			</p>
-		</div>
-		<div id="language_settings" style="display:none">
-			<?php echo wp_kses( '<p>In this section you can change all of the texts that <b title="Ultimate FAQ Solution"><u>Ultimate FAQ Solution</u></b> using in the Frontend.</p>', $allowed_html ); ?>
-			<table class="form-table">
-
-				<tr valign="top">
-					<th scope="row"><?php echo esc_html( 'Live Search Placeholder Text' ); ?></th>
-					<td>
-						<input type="text" name="ufaqsw_live_search_text" size="100" value="<?php echo esc_attr( ( '' !== get_option( 'ufaqsw_live_search_text' ) ? get_option( 'ufaqsw_live_search_text' ) : esc_html( 'Live Search..' ) ) ); ?>"  />
-						<i><?php echo esc_html( 'Please change the text if it is not suitable for you.' ); ?></i>
-					</td>
-				</tr>
-				<tr valign="top">
-					<th scope="row"><?php echo esc_html( 'Live Search Loading.. Text' ); ?></th>
-					<td>
-						<input type="text" name="ufaqsw_live_search_loading_text" size="100" value="<?php echo esc_attr( ( '' !== get_option( 'ufaqsw_live_search_loading_text' ) ? get_option( 'ufaqsw_live_search_loading_text' ) : esc_html( 'Loading...' ) ) ); ?>"  />
-						<i><?php echo esc_html( 'Please change the text if it is not suitable for you.' ); ?></i>
-					</td>
-				</tr>
-				<tr valign="top">
-					<th scope="row"><?php echo esc_html( 'Search Result Not Found Text' ); ?></th>
-					<td>
-						<input type="text" name="ufaqsw_search_result_not_found" size="100" value="<?php echo esc_attr( '' !== get_option( 'ufaqsw_search_result_not_found' ) ? get_option( 'ufaqsw_search_result_not_found' ) : esc_html( 'No result Found!' ) ); ?>"  />
-						<i><?php echo esc_html( 'Please change the text if it is not suitable for you.' ); ?></i>
-					</td>
-				</tr>
-
-			</table>
-		</div>
-
-		<div id="general_settings" style="display:none">
-			<table class="form-table">
-				<tr valign="top">
-					<th scope="row"><?php echo esc_html( 'Enable FAQ for Woocommerce' ); ?></th>
-					<td>
-						<input type="checkbox" name="ufaqsw_enable_woocommerce" value="on" <?php echo ( esc_attr( get_option( 'ufaqsw_enable_woocommerce' ) ) === 'on' ? 'checked="checked"' : '' ); ?> />
-						<i><?php echo wp_kses( 'Turn it on to enable faq for <b>Woocommerce</b>. It will add an extra tab called <b>FAQ</b> in every <b>Product Edit</b> page in <b>Product Data</b> Section', $allowed_html ); ?></i>
-					</td>
-				</tr>
-
-				<tr valign="top">
-					<th scope="row"><?php echo esc_html( 'Enable Global FAQ for All Products' ); ?></th>
-					<td>
-						<input type="checkbox" name="ufaqsw_enable_global_faq" value="on" <?php echo ( esc_attr( get_option( 'ufaqsw_enable_global_faq' ) ) === 'on' ? 'checked="checked"' : '' ); ?> />
-						<i><?php echo wp_kses( 'Enable this option to show a global <b>FAQ</b> to all products', $allowed_html ); ?></i>
-					</td>
-				</tr>
-
-				<tr valign="top">
-					<th scope="row"><?php echo esc_html( 'Global FAQ Tab Label' ); ?></th>
-					<td>
-						<input type="text" name="ufaqsw_global_faq_label" size="100" value="<?php echo esc_attr( '' !== get_option( 'ufaqsw_global_faq_label' ) ? get_option( 'ufaqsw_global_faq_label' ) : 'Faqs' ); ?>"  />
-						<i><?php echo esc_html( 'Please add faq tab label. e.g: Faqs' ); ?></i>
-					</td>
-				</tr>
-
-				<?php
-				$faqs = Product_Tab::get_instance()->get_all_faqs();
-				?>
-
-				<tr valign="top">
-					<th scope="row"><?php echo esc_html( 'Select A Global FAQ Group' ); ?></th>
-					<td>
-						<select name="ufaqsw_global_faq" >
-							<?php
-
-							foreach ( $faqs as $key => $val ) {
-								echo '<option value="' . esc_attr( $key ) . '" ' . ( get_option( 'ufaqsw_global_faq' ) === $key ? 'selected="selected"' : '' ) . ' > ' . esc_html( $val ) . ' </option>';
-							}
-							?>
-						</select>
-					</td>
-				</tr>
-
-			</table>
-		</div>
-
-		<div id="custom_css" style="display:none">
-			<table class="form-table">
-
-				<tr valign="top">
-					<th scope="row"><?php echo esc_html( 'Custom Css' ); ?></th>
-					<td>
-						<textarea name="ufaqsw_setting_custom_style" id="ufaqsw_setting_custom_style" rows="10" cols="100"><?php echo esc_attr( get_option( 'ufaqsw_setting_custom_style' ) ); ?></textarea>
-						<?php echo wp_kses( '<br><i>Write your custom CSS here. Please do not use <b>style</b> tag in this textarea. Use *!important* flag if the styling does not take place as expected.</i>', $allowed_html ); ?>
-					</td>
-				</tr>
-
-			</table>
-		</div>
-
-		<div id="support" style="display:none">
-			<div class="wrap">
-				<div id="poststuff">
-
-						<h1>🛠️ Welcome to the Ultimate FAQ Solution Support Center</h1>
+						<hr>
 
 						<p><strong>Any troubles?</strong><br>
 						We’re here to help! You can:</p>
@@ -270,16 +306,8 @@ $allowed_html = ufaqsw_wses_allowed_menu_html();
 							🔗 <a href="https://www.braintum.com/docs/ultimate-faq-solution/" target="_blank"><strong>View Ultimate FAQ Solution Documentation</strong></a>
 						</p>
 
-						<ul>
-							<li>Getting Started</li>
-							<li>Creating FAQ Groups & Items</li>
-							<li>Using Shortcodes & Blocks</li>
-							<li>FAQ Assistant Setup</li>
-							<li>Advanced Configuration</li>
-							<li>Troubleshooting</li>
-						</ul>
-
 					</div>
+				</div>
 					<!-- /poststuff -->
 			</div>
 		</div>

@@ -61,20 +61,11 @@ class UFAQSW_Global_Settings {
 
 		add_submenu_page(
 			'edit.php?post_type=ufaqsw',
-			'Settings & Help - Ultimate FAQs',
-			'Settings & Help',
+			'Settings - Ultimate FAQs',
+			'Settings',
 			'manage_options',
 			'ufaqsw-settings',
 			array( $this, 'settings_page_callback_func' )
-		);
-
-		add_submenu_page(
-			'edit.php?post_type=ufaqsw',
-			'Export/Import FAQs',
-			'Export/Import',
-			'manage_options',
-			'faq-export-import',
-			array( $this, 'render_faq_export_import_page' )
 		);
 
 	}

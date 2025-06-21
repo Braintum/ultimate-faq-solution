@@ -69,7 +69,9 @@ jQuery(document).ready(function($) {
 		obj.addClass('nav-tab-active');
 		$(container_id).show();
 
-		if ( '#support' === container_id ) {
+		if ( '#getting_started' === container_id ) {
+			$('.submit').hide();
+		} else if ( '#export_import' === container_id ) {
 			$('.submit').hide();
 		} else {
 			$('.submit').show();
@@ -91,7 +93,9 @@ jQuery(document).ready(function($) {
 			if($(this).attr('href')==hash){
 				$(this).removeClass('nav-tab-active').addClass('nav-tab-active');
 
-				if ( '#support' === hash ) {
+				if ( '#getting_started' === hash ) {
+					$('.submit').hide();
+				} else if ( '#export_import' === hash ) {
 					$('.submit').hide();
 				} else {
 					$('.submit').show();

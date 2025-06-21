@@ -56,6 +56,7 @@ if ( is_admin() ) {
 	include_once UFAQSW__PLUGIN_DIR . 'inc/admin/chatbot.php';
 	include_once UFAQSW__PLUGIN_DIR . 'inc/admin/icons/class.icons.php';
 	include_once UFAQSW__PLUGIN_DIR . 'inc/admin/installation.php';
+	include_once UFAQSW__PLUGIN_DIR . 'inc/ai-writing-assistant/init.php';
 }
 
 // Lazy-load classes to improve performance.
