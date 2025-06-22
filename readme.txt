@@ -4,7 +4,7 @@ Donate link: https://www.solrengine.com/
 Tags: faq-directory, accordion, knowledgebase, product-faq, ai  
 Requires at least: 5.1  
 Tested up to: 6.8.1  
-Stable tag: 1.6.4 
+Stable tag: 1.6.5 
 Requires PHP: 7.4.0  
 License: GPLv2 or later  
 License URI: https://www.gnu.org/licenses/license-list.html#GPLCompatibleLicenses  
@@ -15,11 +15,19 @@ A WordPress plugin to create, organize, and display FAQs with responsive layouts
 
 = 🚀 What is Ultimate FAQ Solution? =
 
-Ultimate FAQ Solution is a comprehensive FAQ and knowledge base plugin built for WordPress and WooCommerce. It allows you to quickly create, manage, and display FAQs using responsive accordion layouts and searchable directories.
+Ultimate FAQ Solution is a powerful and flexible WordPress plugin for creating, organizing, and displaying FAQs with ease. Designed for both standard WordPress sites and WooCommerce stores, it offers responsive layouts, accordion and toggle display modes, and a searchable FAQ directory.
 
-Create and edit FAQ groups just like any WordPress post, using the familiar interface you already know. Add FAQs to your WooCommerce product pages or insert them anywhere via shortcode.
+With Ultimate FAQ Solution, you can:
+- Create and manage FAQ groups using the familiar WordPress editor.
+- Display FAQs anywhere using shortcodes or Gutenberg blocks.
+- Add FAQs directly to WooCommerce product pages with a dedicated FAQ tab.
+- Enhance SEO with built-in FAQPage structured data (FAQ Schema) for rich Google snippets.
+- Instantly generate suggested answers for your FAQs using AI-powered answer suggestions.
+- Improve user experience with the interactive FAQ Assistant—a floating help icon with chat-style access to your FAQs.
+- Customize layouts, colors, and more to match your site branding.
+- Enjoy accessibility-ready templates, and multi-language compatibility.
 
-> The plugin also supports **FAQPage structured data (FAQ Schema)**, helping your FAQs show up as rich snippets in Google search results—improving SEO and visibility!
+Whether you need a simple FAQ section or a full-featured knowledge base, Ultimate FAQ Solution streamlines the process and helps you deliver fast, accurate answers to your visitors.
 
 = 🤖 AI-Powered FAQ Answer Suggestions =
 
@@ -27,37 +35,39 @@ Starting from version 1.6.4, Ultimate FAQ Solution includes an AI-powered featur
 
 This feature is designed to streamline your workflow, especially when building large knowledge bases or handling repetitive questions. AI-generated answers are optional and fully under your control, ensuring your content always matches your brand voice and standards.
 
-💡 Save time, reduce customer support queries, and enhance user experience with beautifully styled, mobile-responsive FAQ sections.
+💡 Streamline your workflow, minimize support requests, and deliver a seamless user experience with customizable, mobile-friendly FAQ sections.
 
-🔗 [Support & Feature Requests](https://www.braintum.com/contact-us/) | [Live Demo](https://www.braintum.com/ultimate-faq-solution/)
+🔗 [Support & Feature Requests](https://www.braintum.com/contact-us/) | [Live Demo](https://www.braintum.com/ultimate-faq-solution/) | [GitHub](https://github.com/Braintum/ultimate-faq-solution)
 
-= ✅ Features at a Glance =
-* ✅ **FAQ Assistant: Interactive, floating help icon with chat-style FAQ access**
-* ✅ **AI-Powered Answer Suggestions: Instantly generate FAQ answers using AI**
-* ✅ **Accessibility-Ready Templates**
-* ✅ **Gutenberg Block Support**
-* ✅ **FAQ Schema / Structured Data Support**
-* ✅ **WooCommerce Product FAQ Tabs**
-* ✅ **Live AJAX Search**
-* ✅ **FAQ Directory with Search & Filter by Group**
-* ✅ **Accordion & Toggle Display Modes**
-* ✅ **Edit All FAQs in a Group from One Screen**
-* ✅ **Shortcode for Easy Placement**
-* ✅ **200+ Icons Available**
-* ✅ **Customizable Layouts & Typography**
-* ✅ **3 Fully Responsive Templates**
-* ✅ **Fluid Width for Any Device**
-* ✅ **Multi-Language Support**
-* ✅ **RTL Support**
-* ✅ **Developer-Friendly Clean Code**
-* ✅ **SEO-Friendly & Lightweight**
-* ✅ **One click Export/Import**
-* ✅ **FAQ Preview Option**
+= ✅ Key Features Overview =
+* 💬 **FAQ Assistant:** Add an interactive, floating help icon with chat-style FAQ access for instant answers.
+* 🤖 **AI-Powered Answer Suggestions:** Instantly generate FAQ answers using AI to save time and improve accuracy.
+* ♿ **Accessibility-Ready Templates:** Ensure your FAQs are usable by everyone, including assistive technology users.
+* 🧩 **Gutenberg Block Support:** Easily insert in the WordPress block editor.
+* 📄 **FAQ Schema / Structured Data:** Built-in support for FAQPage schema for enhanced SEO and Google rich snippets.
+* 🛒 **WooCommerce Product FAQ Tabs:** Display FAQs directly on product pages with a dedicated tab.
+* 🔍 **Live AJAX Search:** Let users find answers instantly with real-time search.
+* 📚 **FAQ Directory with Search & Group Filter:** Create a searchable, filterable FAQ directory for easy navigation.
+* 🔄 **Accordion & Toggle Display Modes:** Choose between accordion or toggle layouts for your FAQ sections.
+* 📝 **Bulk Edit FAQs in a Group:** Edit all FAQs within a group from a single screen for streamlined management.
+* 🔗 **Easy Shortcode Placement:** Insert FAQs anywhere using simple shortcodes.
+* 🎨 **200+ Icon Choices:** Enhance your FAQ design with a wide selection of icons.
+* 🖌️ **Customizable Layouts:** Match your site’s branding with flexible design options.
+* 📱 **3 Responsive Templates:** Choose from three fully responsive templates for any device.
+* 🌐 **Fluid Width Support:** FAQs adapt seamlessly to any screen size.
+* 🌍 **Multi-Language:** Compatible with translation plugins.
+* 🧑‍💻 **Developer-Friendly Code:** Clean, well-documented code for easy customization.
+* 🚀 **SEO-Friendly & Lightweight:** Optimized for speed and search engine visibility.
+* ⬆️ **One-Click Export/Import:** Easily migrate or back up your FAQs.
+* 👁️ **FAQ Preview Option:** Preview your FAQ groups before publishing.
 
-🎨 Match your site branding with full control over colors, typography, and layout styles. Whether you're building a customer support portal or a product help page, Ultimate FAQ Solution makes it seamless.
 
 🤝 **FAQ Assistant**  
 The FAQ Assistant adds an interactive, floating help icon to your website, giving visitors quick access to your FAQs in a sleek, chat-style interface. Use the settings below to enable the assistant and customize its behavior. Improve user experience by making answers more accessible—right when and where your visitors need them.
+
+With the FAQ Assistant, your users can search for answers, browse FAQ groups, and interact with your knowledge base in real time—without leaving the page they’re on. The assistant is fully customizable: you can adjust its appearance, welcome message, and even the footer text to match your site’s branding and tone. It’s designed to be mobile-friendly and accessibility-ready, ensuring all visitors can benefit from instant support.
+
+Whether you run a WooCommerce store, a membership site, or a blog, the FAQ Assistant helps reduce support requests and empowers your users to find answers independently. Enable it today to provide a modern, conversational FAQ experience that keeps your audience engaged and informed.
 
 == Installation ==
 
@@ -108,13 +118,33 @@ Yes! Starting from version 1.6.4, Ultimate FAQ Solution includes an AI-powered f
 
 == Screenshots ==
 
-1. Screenshot 1  
-2. Screenshot 2  
-3. Screenshot 3  
-4. Screenshot 4  
-5. Screenshot 5  
+1. FAQ Directory: Searchable, filterable list of all FAQs in a responsive layout.
+2. Default Style - template.
+3. Style 1 - template.
+4. Style 2 - template.
+5. FAQ Assistant: Floating help icon with chat-style FAQ access.
+6. AI Integration settings: Configure and enable AI-powered answer suggestions for your FAQs, allowing you to generate answers instantly with a single click.
+7. FAQ Group creation admin page: Easily create and organize FAQ groups from the WordPress dashboard for streamlined management.
+8. Create FAQ page: Add questions and answers in an organized, user-friendly layout.
+9. FAQ Appearance settings: Customize colors & layout styles for your FAQ sections to match your site branding.
+10. Assigning a custom appearance to a specific FAQ group for tailored styling.
+11. WooCommerce Product FAQ Tab: Example of FAQs displayed directly on a WooCommerce product landing page, helping customers get instant answers before purchase.
+12. Assigning a FAQ group to a WooCommerce product: Easily link specific FAQ groups to individual products.
+13. Plugin general settings: Configure global options and behavior for the plugin from the settings page.
+14. AI content generation: Instantly generate suggested answers for your FAQs using AI, streamlining the process of creating accurate and helpful responses.
 
 == Changelog ==
+
+= 1.6.5 =
+* 🎨 FAQ template and style improvements for a more polished appearance.
+* 💬 FAQ Assistant: Bot window and chat window style updates for better user experience.
+* ⏳ Added preloader animation to FAQ Assistant.
+* 📝 Added several new text options for FAQ Assistant customization.
+* 🦶 FAQ Assistant footer text option added.
+* 🔢 FAQ count text now displayed in the FAQ group screen.
+* 📝 Group description now shown in FAQ Assistant.
+* 🪟 Added window open animation and refactored related code for smoother transitions.
+* 🛠️ Code refactored for FAQ Assistant for improved maintainability.
 
 = 1.6.4 =  
 * 🤖 AI-powered FAQ: Instantly generate suggested answers for your FAQs using AI, saving time and improving accuracy.
