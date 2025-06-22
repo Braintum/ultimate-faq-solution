@@ -1,6 +1,21 @@
 import React from 'react';
 
 // Accept a single 'headerProps' object to reduce the number of function parameters.
+/**
+ * Header component for the chatbot UI.
+ *
+ * @param {Object} headerProps - The properties for the Header component.
+ * @param {Function} headerProps.onClose - Callback function to handle the close button click.
+ * @param {Function} [headerProps.onBack] - Callback function to handle the back button click.
+ * @param {boolean} [headerProps.showBackButton] - Whether to display the back button.
+ * @param {string} headerProps.title - The title text to display in the header.
+ * @param {string} [headerProps.intro] - Optional introductory text to display below the title.
+ * @param {string} [headerProps.headerColor] - Optional background color for the header.
+ * @param {string} [headerProps.textColor] - Optional text color for the header content and icons.
+ * @param {string} [headerProps.back_button_label] - Accessible label and tooltip for the back button.
+ * @param {string} [headerProps.close_button_label] - Accessible label and tooltip for the close button.
+ * @returns {JSX.Element} The rendered Header component.
+ */
 export const Header = (headerProps) => {
   const {
     onClose,
@@ -10,6 +25,8 @@ export const Header = (headerProps) => {
     intro,
     headerColor,
     textColor,
+    back_button_label,
+    close_button_label
   } = headerProps;
 
   return (
@@ -27,6 +44,7 @@ export const Header = (headerProps) => {
             className="faq-back-button"
             style={textColor ? { color: textColor } : undefined}
             aria-label="Back"
+            title={back_button_label}
           >
             <svg
               width="20"
@@ -51,6 +69,7 @@ export const Header = (headerProps) => {
           className="chatbot-close-button"
           style={textColor ? { color: textColor } : undefined}
           aria-label="Close"
+          title={close_button_label}
         >
           {(
             <svg

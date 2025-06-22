@@ -55,8 +55,26 @@ class TinyMCEIntegration {
 	 * Setup plugin hooks.
 	 */
 	public function setup_plugin() {
-		// Only add TinyMCE plugin and buttons on 'ufaqsw' post type edit screens.
+		// Only add TinyMCE integration if we are on a FAQ post type page.
+		if ( $this->is_faq_page() ) {
+			add_filter( 'mce_external_plugins', array( $this, 'add_tiny_plugin' ), 1, 2 );
+			add_filter( 'mce_buttons', array( $this, 'add_tiny_toolbar_button' ) );
+		}
+	}
+
+	/**
+	 * Determines if the current admin page is for editing or creating a 'ufaqsw' FAQ post type.
+	 *
+	 * Checks the current page and post type based on the global $pagenow and $_GET parameters.
+	 * Returns true if the current page is either 'post.php' or 'post-new.php' and the post type is 'ufaqsw'.
+	 *
+	 * @return bool True if on a FAQ post type edit or create page, false otherwise.
+	 */
+	private function is_faq_page() {
 		global $pagenow;
+
+		$show = false;
+
 		$post_type = '';
 
 		if ( isset( $_GET['post'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
@@ -73,9 +91,25 @@ class TinyMCEIntegration {
 			( 'post.php' === $pagenow || 'post-new.php' === $pagenow ) &&
 			'ufaqsw' === $post_type
 		) {
-			add_filter( 'mce_external_plugins', array( $this, 'add_tiny_plugin' ), 1, 2 );
-			add_filter( 'mce_buttons', array( $this, 'add_tiny_toolbar_button' ) );
+			$show = true;
 		}
+
+		if (
+			! $show
+			&& isset( $_GET['post_type'], $_GET['page'] ) // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+			&& 'ufaqsw_chatbot_settings' === sanitize_text_field( wp_unslash( $_GET['page'] ) ) // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		) {
+			// If we are on the AI Assistant settings page.
+			$show = true;
+		}
+
+		/**
+		 * Allow filtering whether to show the TinyMCE integration on this page.
+		 *
+		 * @param bool $show Whether to show the integration.
+		 * @param string $post_type The current post type.
+		 */
+		return apply_filters( 'ufaqsw_tinymce_integration_show', $show, $post_type );
 	}
 
 	/**

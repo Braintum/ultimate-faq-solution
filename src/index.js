@@ -2,7 +2,10 @@ import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { App } from './chatbot/App'; // Updated import
 
-// Locate the custom element
+/**
+ * Represents the first instance of the <chatbot-component> element found in the DOM.
+ * @type {Element|null}
+ */
 const chatbotComponent = document.querySelector('chatbot-component');
 if (chatbotComponent) {
     // Create a div inside the custom element

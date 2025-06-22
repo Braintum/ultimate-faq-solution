@@ -47,6 +47,7 @@ function ufaqsw_register_settings_page() {
 						'floating_button_icon',
 						'header_background_color',
 						'header_text_color',
+						'loading_animation_color',
 					),
 				),
 				array(
@@ -59,6 +60,10 @@ function ufaqsw_register_settings_page() {
 						'assistant_window_intro_text',
 						'preloader_text',
 						'body_text',
+						'assistant_back_button_title',
+						'assistant_close_button_title',
+						'bottom_text',
+						'faqs_count_text',
 					),
 				),
 			),
@@ -122,6 +127,16 @@ function ufaqsw_register_settings_page() {
 
 	$cmb->add_field(
 		array(
+			'name'        => __( 'Loading Animation Color', 'ufaqsw' ),
+			'id'          => 'loading_animation_color',
+			'type'        => 'colorpicker',
+			'default'     => '#222',
+			'description' => __( '<i>Choose the color for the loading animation (animated dots) shown while the FAQ Assistant is fetching content. Adjust for better visibility and branding.</i>', 'ufaqsw' ),
+		)
+	);
+
+	$cmb->add_field(
+		array(
 			'name'        => __( 'Window Headline', 'ufaqsw' ),
 			'id'          => 'assistant_window_headline',
 			'type'        => 'text',
@@ -142,11 +157,41 @@ function ufaqsw_register_settings_page() {
 
 	$cmb->add_field(
 		array(
+			'name'        => __( 'Back Button Title', 'ufaqsw' ),
+			'id'          => 'assistant_back_button_title',
+			'type'        => 'text',
+			'default'     => __( 'Go back to the previous view', 'ufaqsw' ),
+			'description' => __( '<i>This text appears as a tooltip when hovering over the back button in the FAQ Assistant window. Use it to guide users on its function (e.g., “Go back to the previous view”).</i>', 'ufaqsw' ),
+		)
+	);
+
+	$cmb->add_field(
+		array(
+			'name'        => __( 'Close Button Title', 'ufaqsw' ),
+			'id'          => 'assistant_close_button_title',
+			'type'        => 'text',
+			'default'     => __( 'Close the window', 'ufaqsw' ),
+			'description' => __( '<i>This text appears as a tooltip when hovering over the close button in the FAQ Assistant window. Use it to let users know that clicking will close the assistant window.</i>', 'ufaqsw' ),
+		)
+	);
+
+	$cmb->add_field(
+		array(
 			'name'        => __( 'Preloader Text', 'ufaqsw' ),
 			'id'          => 'preloader_text',
 			'type'        => 'text',
-			'default'     => __( 'Loading...', 'ufaqsw' ),
+			'default'     => '',
 			'description' => __( '<i>Text displayed while the FAQ content is loading (e.g., “Loading…”) to inform users.</i>', 'ufaqsw' ),
+		)
+	);
+
+	$cmb->add_field(
+		array(
+			'name'        => __( 'FAQ Count Text', 'ufaqsw' ),
+			'id'          => 'faqs_count_text',
+			'type'        => 'text',
+			'default'     => __( '[count] Frequently Asked Questions', 'ufaqsw' ),
+			'description' => __( '<i>Enter the text to show the total number of FAQs available (e.g., “[count] Questions and Answers”). Use <code>[count]</code> as a placeholder for the number.</i>', 'ufaqsw' ),
 		)
 	);
 
@@ -156,7 +201,22 @@ function ufaqsw_register_settings_page() {
 			'desc'    => __( '<i>Enter the text displayed above the list of FAQ categories in the assistant window. Use this to guide visitors on how to navigate and use the categories effectively.</i>', 'ufaqsw' ),
 			'default' => __( 'Browse our FAQ categories below to quickly find answers grouped by topic. Click a category to see related questions and solutions.', 'ufaqsw' ),
 			'id'      => 'body_text',
-			'type'    => 'textarea',
+			'type'    => 'wysiwyg',
+			'options' => array(
+				'textarea_rows' => 20,
+			),
+		)
+	);
+
+	$cmb->add_field(
+		array(
+			'name'    => __( 'Bottom Text', 'ufaqsw' ),
+			'desc'    => __( '<i>Enter the text that will appear at the bottom of the FAQ Assistant window, below the FAQ categories and answers. This is a good place for additional instructions, a call-to-action, or any helpful message you want users to see after browsing the FAQs. Button text will be added at the bottom in each screen.</i>', 'ufaqsw' ),
+			'id'      => 'bottom_text',
+			'type'    => 'wysiwyg',
+			'options' => array(
+				'textarea_rows' => 20,
+			),
 		)
 	);
 

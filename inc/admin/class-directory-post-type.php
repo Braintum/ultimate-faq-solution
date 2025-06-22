@@ -294,6 +294,43 @@ function ufaqsw_register_appearance_metabox() {
 	);
 }
 
+add_action( 'cmb2_admin_init', 'ufaqsw_register_description_field_metabox' );
+
+/**
+ * Registers a metabox for the FAQ group description for the 'ufaqsw' post type.
+ */
+function ufaqsw_register_description_field_metabox() {
+
+	$cmb_group = new_cmb2_box(
+		array(
+			'id'           => 'ufaqsw_faq_meta',
+			'title'        => esc_html__( 'Group Description', 'ufaqsw' ),
+			'object_types' => array( 'ufaqsw' ),
+			'closed'       => true, // Collapse by default.
+		)
+	);
+
+	$cmb_group->add_field(
+		array(
+			'name' => '',
+			'desc' => esc_html__( 'Note: This section is visible only in the FAQ Assistant window.', 'ufaqsw' ),
+			'type' => 'title',
+			'id'   => 'description_meta_title',
+		)
+	);
+
+	$cmb_group->add_field(
+		array(
+			'name'    => esc_html__( 'Short Description', 'ufaqsw' ),
+			'desc'    => esc_html__( 'Write a short description about the FAQ group. This will only be displayed in the FAQ assistant window at this moment.', 'ufaqsw' ),
+			'id'      => 'group_short_desc',
+			'type'    => 'wysiwyg',
+			'options' => array(
+				'textarea_rows' => 5,
+			),
+		)
+	);
+}
 
 add_action( 'cmb2_admin_init', 'ufaqsw_register_repeatable_group_field_metabox' );
 /**

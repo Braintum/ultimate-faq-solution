@@ -36,6 +36,17 @@
   padding-left:20px;
   padding-right: 20px;
 }
+
+.ufaqsw_draw_style2 *{
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.ufaqsw_draw_style2 img, .ufaqsw_draw_style2 iframe {
+  margin: 0 auto;
+  display: block;
+}
+
 #ufaqsw_other_style2{
 	display: none;
 }

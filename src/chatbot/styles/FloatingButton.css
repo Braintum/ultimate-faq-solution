@@ -9,4 +9,5 @@
 	height: 80px;
 	cursor: pointer;
 	background-color: transparent;
+	z-index: 9999;
 }

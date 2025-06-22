@@ -89,16 +89,26 @@ class Chatbot {
 			'react-chatbot',
 			'chatbotData',
 			array(
-				'ajaxUrl'                => admin_url( 'admin-ajax.php' ),
-				'nonce'                  => wp_create_nonce( 'chatbot_nonce' ),
-				'floating_button_icon'   => $floating_button_icon_url,
-				'floating_button_title'  => cmb2_get_option( 'ufaqsw_chatbot_settings', 'floating_button_title' ),
-				'assistant_window_headline'  => cmb2_get_option( 'ufaqsw_chatbot_settings', 'assistant_window_headline' ),
-				'assistant_window_intro_text'  => cmb2_get_option( 'ufaqsw_chatbot_settings', 'assistant_window_intro_text' ),
-				'header_background_color'  => cmb2_get_option( 'ufaqsw_chatbot_settings', 'header_background_color' ),
-				'header_text_color'  => cmb2_get_option( 'ufaqsw_chatbot_settings', 'header_text_color' ),
-				'body_text'  => cmb2_get_option( 'ufaqsw_chatbot_settings', 'body_text' ),
-
+				'ajaxUrl'                     => admin_url( 'admin-ajax.php' ),
+				'nonce'                       => wp_create_nonce( 'chatbot_nonce' ),
+				'floating_button_icon'        => $floating_button_icon_url,
+				'floating_button_title'       => cmb2_get_option( 'ufaqsw_chatbot_settings', 'floating_button_title' ),
+				'assistant_window_headline'   => cmb2_get_option( 'ufaqsw_chatbot_settings', 'assistant_window_headline' ),
+				'assistant_window_intro_text' => cmb2_get_option( 'ufaqsw_chatbot_settings', 'assistant_window_intro_text' ),
+				'header_background_color'     => cmb2_get_option( 'ufaqsw_chatbot_settings', 'header_background_color' ),
+				'header_text_color'           => cmb2_get_option( 'ufaqsw_chatbot_settings', 'header_text_color' ),
+				'body_text'                   => wp_kses_post(
+					apply_filters(
+						'the_content',
+						cmb2_get_option( 'ufaqsw_chatbot_settings', 'body_text' )
+					)
+				),
+				'preloader_text'              => cmb2_get_option( 'ufaqsw_chatbot_settings', 'preloader_text' ),
+				'loading_animation_color'     => cmb2_get_option( 'ufaqsw_chatbot_settings', 'loading_animation_color' ) ? cmb2_get_option( 'ufaqsw_chatbot_settings', 'loading_animation_color' ) : '#222',
+				'back_button_label'           => cmb2_get_option( 'ufaqsw_chatbot_settings', 'assistant_back_button_title' ) ? cmb2_get_option( 'ufaqsw_chatbot_settings', 'assistant_back_button_title' ) : __( 'Back', 'ufaqsw' ),
+				'close_button_label'          => cmb2_get_option( 'ufaqsw_chatbot_settings', 'assistant_close_button_title' ) ? cmb2_get_option( 'ufaqsw_chatbot_settings', 'assistant_close_button_title' ) : __( 'Close the window', 'ufaqsw' ),
+				'bottom_text'                 => cmb2_get_option( 'ufaqsw_chatbot_settings', 'bottom_text' ) ?? '',
+				'faqs_count_text'             => cmb2_get_option( 'ufaqsw_chatbot_settings', 'faqs_count_text' ) ?? __( '[count] Frequently Asked Questions', 'ufaqsw' ),
 			)
 		);
 	}
@@ -142,21 +152,30 @@ class Chatbot {
 
 		foreach ( $faq_groups as $faq_group ) {
 			$faq_items = get_post_meta( $faq_group, 'ufaqsw_faq_item01' );
+
+			$group_description = get_post_meta( $faq_group, 'group_short_desc', true );
+
 			$faq_items = isset( $faq_items[0] ) ? $faq_items[0] : $faq_items;
 			$faq_items = array_map(
 				function ( $item ) {
 					return array(
-						'question' => $item['ufaqsw_faq_question'],
-						'answer'   => $item['ufaqsw_faq_answer'],
+						'question' => html_entity_decode( $item['ufaqsw_faq_question'] ),
+						'answer'   => wp_kses_post( apply_filters( 'the_content', $item['ufaqsw_faq_answer'] ) ),
 					);
 				},
 				$faq_items
 			);
 
-			$faq_data[] = array(
-				'group' => get_the_title( $faq_group ),
+			$faq_data_array = array(
+				'group' => html_entity_decode( get_the_title( $faq_group ) ),
 				'items' => $faq_items,
 			);
+
+			if ( ! empty( $group_description ) ) {
+				$faq_data_array['description'] = wp_kses_post( apply_filters( 'the_content', $group_description ) );
+			}
+
+			$faq_data[] = $faq_data_array;
 		}
 
 		// Return the FAQ data as a JSON response.

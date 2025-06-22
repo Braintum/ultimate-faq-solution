@@ -22,12 +22,19 @@
 .ufaqsw_toggle_default .ufaqsw-toggle-inner-default {
   padding: 5px 20px;
 }
-.ufaqsw_toggle_default .ufaqsw-toggle-inner-default div {
+
+.ufaqsw_toggle_default .ufaqsw-toggle-inner-default * {
   max-width: 100%;
 }
+
+.ufaqsw_toggle_default .ufaqsw-toggle-inner-default img, .ufaqsw_toggle_default .ufaqsw-toggle-inner-default iframe {
+  margin: 0 auto;
+  display: block;
+}
+
 .ufaqsw_toggle_default .ufaqsw-toggle-title-area-default .ufaqsw-title-name-default {
 	display: block;
-    padding: 15px 10px;
+  padding: 15px 10px;
 }
 .ufaqsw_toggle_default .ufaqsw-toggle-title-area-default a i {
   font-size: 22px;
