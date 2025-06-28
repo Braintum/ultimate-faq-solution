@@ -65,3 +65,50 @@ function ufaqsw_get_appearance_id( $group_id ) {
 	// If no linked appearance, return the default appearance ID.
 	return get_option( 'faq_default_appearance_id', 0 );
 }
+
+/**
+ * Retrieves group IDs associated with a specific appearance ID.
+ *
+ * This function queries and returns an array of group IDs that are linked to the provided appearance ID.
+ *
+ * @param int $appearance_id The ID of the appearance to retrieve group IDs for.
+ * @return array An array of group IDs associated with the given appearance ID.
+ */
+function ufaqsw_get_group_ids_by_appearance( $appearance_id ) {
+	$group_ids = get_posts(
+		array(
+			'post_type'      => 'ufaqsw',
+			'posts_per_page' => -1,
+			'fields'         => 'ids',
+			'meta_query'     => array(
+				array(
+					'key'     => 'linked_faq_appearance_id',
+					'value'   => $appearance_id,
+					'compare' => '=',
+				),
+			),
+		)
+	);
+
+	return $group_ids;
+
+}
+
+/**
+ * Detaches a FAQ group from an appearance.
+ *
+ * This function removes the link between a FAQ group and an appearance by deleting the
+ * 'linked_faq_appearance_id' meta key from the group's post meta.
+ *
+ * @param int $appearance_id The ID of the appearance to detach from.
+ * @param int $group_id The ID of the FAQ group to detach.
+ * @return bool True if the detachment was successful, false otherwise.
+ */
+function ufaqsw_detach_group_from_appearance( $appearance_id, $group_id ) {
+	if ( empty( $appearance_id ) || empty( $group_id ) ) {
+		return false;
+	}
+
+	// Remove the linked appearance ID from the group's post meta.
+	return delete_post_meta( $group_id, 'linked_faq_appearance_id', $appearance_id );
+}

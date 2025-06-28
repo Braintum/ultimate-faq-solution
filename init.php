@@ -78,6 +78,9 @@ add_action(
 		// REST API.
 		new Mahedi\UltimateFaqSolution\Upgrader();
 
+		// Appearance actions for custom post type.
+		new Mahedi\UltimateFaqSolution\Functions\AppearanceActions();
+
 		load_plugin_textdomain( 'ufaqsw', false, dirname( plugin_basename( __FILE__ ) ) . '/inc/languages' );
 	}
 );

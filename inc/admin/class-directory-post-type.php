@@ -398,11 +398,14 @@ function ufaqsw_register_repeatable_group_field_metabox() {
  */
 function ufaqsw_faq_columns_head( $defaults ) {
 
-	$new_columns['cb']                = '<input type="checkbox" />';
-	$new_columns['title']             = __( 'Title', 'ufaqsw' );
-	$new_columns['ufaqsw_item_count'] = 'Number of Questions & Answers';
-	$new_columns['shortcode_col']     = 'Shortcode';
-	$new_columns['date']              = __( 'Date', 'ufaqsw' );
+	$new_columns = array();
+
+	$new_columns['cb']                     = '<input type="checkbox" />';
+	$new_columns['title']                  = __( 'Title', 'ufaqsw' );
+	$new_columns['ufaqsw_item_count']      = __( 'Number of FAQs', 'ufaqsw' );
+	$new_columns['ufaqsw_item_appearance'] = __( 'Appearance', 'ufaqsw' );
+	$new_columns['shortcode_col']          = __( 'Shortcode', 'ufaqsw' );
+	$new_columns['date']                   = __( 'Date', 'ufaqsw' );
 	return $new_columns;
 }
 
@@ -420,6 +423,14 @@ function ufaqsw_faq_columns_content( $column_name, $post_ID ) {
 	}
 	if ( 'shortcode_col' === $column_name ) {
 		echo '<input type="text" value="[ufaqsw id=' . esc_attr( $post_ID ) . ']" class="ufaqsw_admin_faq_shorcode_copy" />';
+	}
+
+	if ( 'ufaqsw_item_appearance' === $column_name ) {
+		$appearance = get_post_meta( $post_ID, 'linked_faq_appearance_id', true );
+		if ( ! empty( $appearance ) ) {
+			$edit_link = get_edit_post_link( $appearance );
+			echo '<a href="' . esc_url( $edit_link ) . '" title="' . esc_html__( 'Edit Appearance', 'ufaqsw' ) . '" >' . esc_html( get_the_title( $appearance ) ) . '</a>';
+		}
 	}
 }
 
@@ -574,16 +585,4 @@ function bt_cmb2_sanitize_text_html_callback( $override_value, $value ) {
 }
 add_filter( 'cmb2_sanitize_text_html', 'bt_cmb2_sanitize_text_html_callback', 10, 2 );
 
-add_action( 'admin_menu', 'add_faq_appearance_submenu' );
-/**
- * Adds the FAQ Appearances submenu under the FAQ Groups menu.
- */
-function add_faq_appearance_submenu() {
-	add_submenu_page(
-		'edit.php?post_type=ufaqsw',         // Parent slug.
-		'FAQ Appearances',                   // Page title.
-		'FAQ Appearances',                   // Menu title.
-		'manage_options',                    // Capability.
-		'edit.php?post_type=ufaqsw_appearance' // Target link.
-	);
-}
+
