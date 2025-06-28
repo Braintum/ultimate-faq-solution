@@ -2,10 +2,10 @@
 # This file is distributed under the GPLv2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Ultimate FAQ Solution 1.6.5\n"
+"Project-Id-Version: Ultimate FAQ Solution 1.6.6\n"
 "Report-Msgid-Bugs-To: "
 "https://wordpress.org/support/plugin/ultimate-faq-solution\n"
-"POT-Creation-Date: 2025-06-22 00:34:05+00:00\n"
+"POT-Creation-Date: 2025-06-28 20:47:39+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -45,53 +45,28 @@ msgstr ""
 msgid "No FAQs found."
 msgstr ""
 
-#: inc/Product_Tab.php:89 inc/Product_Tab.php:201
+#: inc/Product_Tab.php:75 inc/Product_Tab.php:80 inc/Product_Tab.php:89
+#: inc/Product_Tab.php:109 inc/SEO.php:183
 #: inc/admin/class-directory-post-type.php:347
 msgid "FAQs"
 msgstr ""
 
-#: inc/Product_Tab.php:141
+#: inc/Product_Tab.php:137
 msgid "FAQ"
 msgstr ""
 
-#: inc/Product_Tab.php:188
+#: inc/Product_Tab.php:184
 msgid "Enable FAQ Tab"
 msgstr ""
 
-#: inc/Product_Tab.php:189
-msgid "Check this field if you want to enable faq tab for this product"
+#: inc/Product_Tab.php:185
+msgid ""
+"Enable this option to display a FAQ tab for this product on the product "
+"page."
 msgstr ""
 
-#: inc/Product_Tab.php:200
-msgid "FAQ Tab Label"
-msgstr ""
-
-#: inc/Product_Tab.php:203
-msgid "Enter the tab label. Default will be FAQs."
-msgstr ""
-
-#: inc/Product_Tab.php:219
+#: inc/Product_Tab.php:198
 msgid "Please select a FAQ Group from dropdown."
-msgstr ""
-
-#: inc/Product_Tab.php:232
-msgid "Or Add FAQ Group ID"
-msgstr ""
-
-#: inc/Product_Tab.php:233
-msgid "ex: 10"
-msgstr ""
-
-#: inc/Product_Tab.php:235
-msgid "Or add a FAQ ID here. This will help for multilangual site built with WPML"
-msgstr ""
-
-#: inc/Product_Tab.php:249
-msgid "Hide FAQ Group Title"
-msgstr ""
-
-#: inc/Product_Tab.php:250
-msgid "Check this field if you want to hide FAQ Group Title."
 msgstr ""
 
 #: inc/Shortcodes.php:150 inc/Shortcodes.php:230 inc/Shortcodes.php:247
@@ -771,58 +746,64 @@ msgstr ""
 msgid "Execute this text as prompt."
 msgstr ""
 
-#: inc/admin/settings/settings.php:114
+#: inc/admin/settings/settings.php:115
 msgid "Settings saved successfully."
 msgstr ""
 
-#: inc/admin/settings/ui.php:216 inc/admin/settings/ui.php:219
+#: inc/admin/settings/ui.php:172
+msgid ""
+"You need the WooCommerce plugin installed and activated to use these "
+"integration settings."
+msgstr ""
+
+#: inc/admin/settings/ui.php:221 inc/admin/settings/ui.php:224
 msgid "Export"
 msgstr ""
 
-#: inc/admin/settings/ui.php:218
+#: inc/admin/settings/ui.php:223
 msgid "To export all FAQ groups, click here"
 msgstr ""
 
-#: inc/admin/settings/ui.php:223
+#: inc/admin/settings/ui.php:228
 msgid "Import"
 msgstr ""
 
-#: inc/admin/settings/ui.php:225
+#: inc/admin/settings/ui.php:230
 msgid "To import FAQ groups, go to"
 msgstr ""
 
-#: inc/admin/settings/ui.php:226
+#: inc/admin/settings/ui.php:231
 msgid "Tools → Import"
 msgstr ""
 
-#: inc/admin/settings/ui.php:227
+#: inc/admin/settings/ui.php:232
 msgid "then choose \"WordPress\" and upload the exported file."
 msgstr ""
 
-#: inc/admin/settings/ui.php:230
+#: inc/admin/settings/ui.php:235
 msgid ""
 "If the WordPress Importer is not yet installed, it will prompt you to "
 "install it. Just click the “Install Now” button, then once installed, click "
 "“Run Importer.”"
 msgstr ""
 
-#: inc/admin/settings/ui.php:233
+#: inc/admin/settings/ui.php:238
 msgid "On the importer screen, upload the"
 msgstr ""
 
-#: inc/admin/settings/ui.php:233
+#: inc/admin/settings/ui.php:238
 msgid "file you previously exported. Be sure to check the option to"
 msgstr ""
 
-#: inc/admin/settings/ui.php:233
+#: inc/admin/settings/ui.php:238
 msgid "“Download and import file attachments”"
 msgstr ""
 
-#: inc/admin/settings/ui.php:233
+#: inc/admin/settings/ui.php:238
 msgid "if you want to bring in any images or media associated with your FAQs."
 msgstr ""
 
-#: inc/admin/settings/ui.php:237
+#: inc/admin/settings/ui.php:242
 msgid ""
 "After the import is complete, all your FAQ groups will be added to the "
 "current site, including their content, and metadata."
