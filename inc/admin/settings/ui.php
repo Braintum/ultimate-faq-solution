@@ -73,103 +73,108 @@ $allowed_html = ufaqsw_wses_allowed_menu_html();
 			</table>
 
 			<h3><?php echo esc_html( 'Woocommerce Settings' ); ?></h3>
-			<table class="form-table ufaqsw_settings_table">
-				<tr valign="top">
-					<th scope="row"><?php echo esc_html( 'Product FAQ' ); ?></th>
-					<td>
-						<label>
-							<input type="checkbox" name="ufaqsw_enable_woocommerce" value="on" <?php echo ( esc_attr( get_option( 'ufaqsw_enable_woocommerce' ) ) === 'on' ? 'checked="checked"' : '' ); ?> />
-							<?php echo esc_html( 'Enable Product FAQ' ); ?>
-						</label>
-						<i>
-							<?php echo wp_kses( 'Enable this option to display FAQs on the product landing page.', $allowed_html ); ?>
-							<br>
-							<a href="https://www.braintum.com/docs/ultimate-faq-solution/advanced-configurations/woocommerce/" target="_blank">
-								<?php echo esc_html( 'Learn more about WooCommerce FAQ integration' ); ?>
-							</a>
-						</i>
-					</td>
-				</tr>
+			<p>
+				<?php echo esc_html( 'Configure WooCommerce integration settings for displaying FAQs on product pages.' ); ?>
+				<a href="https://www.braintum.com/docs/ultimate-faq-solution/advanced-configurations/woocommerce/" target="_blank">
+					<?php echo esc_html( 'Learn more' ); ?>
+				</a>
+			</p>
+			<?php if ( class_exists( 'WooCommerce' ) ) : ?>
+				<table class="form-table ufaqsw_settings_table">
+					<tr valign="top">
+						<th scope="row"><?php echo esc_html( 'Product FAQ' ); ?></th>
+						<td>
+							<label>
+								<input type="checkbox" name="ufaqsw_enable_woocommerce" value="on" <?php echo ( esc_attr( get_option( 'ufaqsw_enable_woocommerce' ) ) === 'on' ? 'checked="checked"' : '' ); ?> />
+								<?php echo esc_html( 'Enable Product FAQ' ); ?>
+							</label>
+							<i>
+								<?php echo wp_kses( 'Enable this option to display FAQs on the product landing page.', $allowed_html ); ?>
+							</i>
+						</td>
+					</tr>
 
-				<tr valign="top">
-					<th scope="row"><?php echo esc_html( 'Global FAQ for All Products' ); ?></th>
-					<td>
-						<label>
-							<input type="checkbox" name="ufaqsw_enable_global_faq" value="on" <?php echo ( esc_attr( get_option( 'ufaqsw_enable_global_faq' ) ) === 'on' ? 'checked="checked"' : '' ); ?> />
-							<?php echo esc_html( 'Enable Global FAQ for All Products' ); ?>
-						</label>
-						<i><?php echo wp_kses( 'Enable this option to show a global <b>FAQ</b> to all products', $allowed_html ); ?></i>
-					</td>
-				</tr>
+					<tr valign="top" id="ufaqsw_faq_tab_label_tr">
+						<th scope="row"><?php echo esc_html( 'FAQ Tab Label' ); ?></th>
+						<td>
+							<div id="ufaqsw_global_faq_fields">
+								<input type="text" name="ufaqsw_global_faq_label" size="100" value="<?php echo esc_attr( '' !== get_option( 'ufaqsw_global_faq_label' ) ? get_option( 'ufaqsw_global_faq_label' ) : 'Faqs' ); ?>"  />
+								<i><?php echo esc_html( 'Add faq tab label. e.g: Faqs' ); ?></i>
+							</div>
+						</td>
+					</tr>
 
-				<tr valign="top" id="ufaqsw_global_faq_fields_tr" style="<?php echo ( esc_attr( get_option( 'ufaqsw_enable_global_faq' ) ) === 'on' ? '' : 'display:none;' ); ?>">
-					<th scope="row"><?php echo esc_html( 'FAQ Tab Label' ); ?></th>
-					<td>
-						<div id="ufaqsw_global_faq_fields">
-							<input type="text" name="ufaqsw_global_faq_label" size="100" value="<?php echo esc_attr( '' !== get_option( 'ufaqsw_global_faq_label' ) ? get_option( 'ufaqsw_global_faq_label' ) : 'Faqs' ); ?>"  />
-							<i><?php echo esc_html( 'Add faq tab label. e.g: Faqs' ); ?></i>
-						</div>
-					</td>
-				</tr>
+					<tr valign="top">
+						<th scope="row"><?php echo esc_html( 'Hide FAQ Group Title' ); ?></th>
+						<td>
+							<label>
+								<input type="checkbox" name="ufaqsw_product_hide_group_title" value="on" <?php echo ( esc_attr( get_option( 'ufaqsw_product_hide_group_title' ) ) === 'on' ? 'checked="checked"' : '' ); ?> />
+								<?php echo esc_html( 'Hide the FAQ group title on the product page.' ); ?>
+							</label>
+							<i>
+								<?php echo wp_kses( 'Enable this option to hide the FAQ group title on the WooCommerce product page for a cleaner look.', $allowed_html ); ?>
+							</i>
+						</td>
+					</tr>
 
-				<?php
-				$faqs = Product_Tab::get_instance()->get_all_faqs();
-				?>
+					<tr valign="top">
+						<th scope="row"><?php echo esc_html( 'Global FAQ for All Products' ); ?></th>
+						<td>
+							<label>
+								<input type="checkbox" name="ufaqsw_enable_global_faq" value="on" <?php echo ( esc_attr( get_option( 'ufaqsw_enable_global_faq' ) ) === 'on' ? 'checked="checked"' : '' ); ?> />
+								<?php echo esc_html( 'Enable Global FAQ for All Products' ); ?>
+							</label>
+							<i><?php echo wp_kses( 'Enable this option to show a global <b>FAQ</b> to all products', $allowed_html ); ?></i>
+						</td>
+					</tr>
 
-				<tr valign="top" id="ufaqsw_global_faq_group_field_tr" style="<?php echo ( esc_attr( get_option( 'ufaqsw_enable_global_faq' ) ) === 'on' ? '' : 'display:none;' ); ?>">
-					<th scope="row"><?php echo esc_html( 'Select A FAQ Group' ); ?></th>
-					<td>
-						<div id="ufaqsw_global_faq_group_field">
-							<select name="ufaqsw_global_faq" >
-								<?php
-								foreach ( $faqs as $key => $val ) {
-									echo '<option value="' . esc_attr( $key ) . '" ' . ( get_option( 'ufaqsw_global_faq' ) === $key ? 'selected="selected"' : '' ) . ' > ' . esc_html( $val ) . ' </option>';
+					<?php
+					$faqs = Product_Tab::get_instance()->get_all_faqs();
+					?>
+
+					<tr valign="top" id="ufaqsw_global_faq_group_field_tr" style="<?php echo ( esc_attr( get_option( 'ufaqsw_enable_global_faq' ) ) === 'on' ? '' : 'display:none;' ); ?>">
+						<th scope="row"><?php echo esc_html( 'Select A FAQ Group' ); ?></th>
+						<td>
+							<div id="ufaqsw_global_faq_group_field">
+								<select name="ufaqsw_global_faq" >
+									<?php
+									foreach ( $faqs as $key => $val ) {
+										echo '<option value="' . esc_attr( $key ) . '" ' . ( (int) get_option( 'ufaqsw_global_faq' ) === $key ? 'selected="selected"' : '' ) . ' > ' . esc_html( $val ) . ' </option>';
+									}
+									?>
+								</select>
+							</div>
+						</td>
+					</tr>
+
+					<script>
+					document.addEventListener('DOMContentLoaded', function() {
+						const globalFaqCheckbox = document.querySelector('input[name="ufaqsw_enable_global_faq"]');
+						const groupTr = document.getElementById('ufaqsw_global_faq_group_field_tr');
+						if (globalFaqCheckbox) {
+							globalFaqCheckbox.addEventListener('change', function() {
+								if (this.checked) {
+									groupTr.style.display = '';
+								} else {
+									groupTr.style.display = 'none';
 								}
-								?>
-							</select>
-						</div>
-					</td>
-				</tr>
+							});
+						}
+					});
+					</script>
 
-				<script>
-				document.addEventListener('DOMContentLoaded', function() {
-					const globalFaqCheckbox = document.querySelector('input[name="ufaqsw_enable_global_faq"]');
-					const labelTr = document.getElementById('ufaqsw_global_faq_fields_tr');
-					const groupTr = document.getElementById('ufaqsw_global_faq_group_field_tr');
-					if (globalFaqCheckbox) {
-						globalFaqCheckbox.addEventListener('change', function() {
-							if (this.checked) {
-								labelTr.style.display = '';
-								groupTr.style.display = '';
-							} else {
-								labelTr.style.display = 'none';
-								groupTr.style.display = 'none';
-							}
-						});
-					}
-				});
-				</script>
-
-				<script>
-				document.addEventListener('DOMContentLoaded', function() {
-					const globalFaqCheckbox = document.querySelector('input[name="ufaqsw_enable_global_faq"]');
-					const labelField = document.getElementById('ufaqsw_global_faq_fields');
-					const groupField = document.getElementById('ufaqsw_global_faq_group_field');
-					if (globalFaqCheckbox) {
-						globalFaqCheckbox.addEventListener('change', function() {
-							if (this.checked) {
-								labelField.style.display = '';
-								groupField.style.display = '';
-							} else {
-								labelField.style.display = 'none';
-								groupField.style.display = 'none';
-							}
-						});
-					}
-				});
-				</script>
-
-			</table>
+				</table>
+			<?php else : ?>
+				<table class="form-table ufaqsw_settings_table">
+					<tr valign="top">
+						<td colspan="2">
+							<p>
+								<?php echo esc_html__( 'You need the WooCommerce plugin installed and activated to use these integration settings.', 'ufaqsw' ); ?>
+							</p>
+						</td>
+					</tr>
+				</table>
+			<?php endif; ?>
 
 			<h3><?php echo esc_html( 'Labels' ); ?></h3>
 			<p><?php echo esc_html( 'Customize all static texts displayed on the frontend by this plugin.' ); ?></p>

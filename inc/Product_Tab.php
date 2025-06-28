@@ -72,12 +72,12 @@ class Product_Tab {
 		global $post;
 		$post_id   = $post->ID;
 		$is_enable = get_post_meta( $post_id, '_ufaqsw_enable_faq_tab', true );
-		$title     = get_post_meta( $post_id, '_ufaqsw_tab_label', true );
+		$title     = get_option( 'ufaqsw_global_faq_label' ) ?? esc_html__( 'FAQs', 'ufaqsw' );
 
 		// Global option.
 		if ( get_option( 'ufaqsw_enable_global_faq' ) === 'on' ) {
 			$tabs['desc_tab'] = array(
-				'title'    => get_option( 'ufaqsw_global_faq_label' ),
+				'title'    => get_option( 'ufaqsw_global_faq_label' ) ?? esc_html__( 'FAQs', 'ufaqsw' ),
 				'priority' => 50,
 				'callback' => array( $this, 'woo_new_product_tab_content' ),
 			);
@@ -106,18 +106,14 @@ class Product_Tab {
 
 		$post_id   = $post->ID;
 		$is_enable = get_post_meta( $post_id, '_ufaqsw_enable_faq_tab', true );
-		$title     = get_post_meta( $post_id, '_ufaqsw_tab_label', true );
+		$title     = get_option( 'ufaqsw_global_faq_label' ) ?? esc_html__( 'FAQs', 'ufaqsw' );
 		$data      = get_post_meta( $post_id, '_ufaqsw_tab_data', true );
 
-		// New option FAQ group id.
-		if ( '' === $data ) {
-			$data = get_post_meta( $post_id, '_ufaqsw_tab_data_id', true );
-		}
-		$group_title = get_post_meta( $post_id, '_ufaqsw_hide_group_title', true );
+		$group_title = 'on' == get_option( 'ufaqsw_product_hide_group_title' ) ? 'yes' : 'no';
 
 		if ( get_option( 'ufaqsw_enable_global_faq' ) === 'on' && get_option( 'ufaqsw_global_faq' ) !== '' ) {
 
-			$shortcode = '[ufaqsw id="' . get_option( 'ufaqsw_global_faq' ) . '"]';
+			$shortcode = '[ufaqsw id="' . get_option( 'ufaqsw_global_faq' ) . '" title_hide="' . $group_title . '"]';
 
 		}
 		if ( 'yes' === $is_enable && '' !== $data ) {
@@ -186,36 +182,19 @@ class Product_Tab {
 					'id'            => '_ufaqsw_enable_faq_tab',
 					'wrapper_class' => 'ufaqsw_enable_faq',
 					'label'         => esc_html__( 'Enable FAQ Tab', 'ufaqsw' ),
-					'description'   => esc_html__( 'Check this field if you want to enable faq tab for this product', 'ufaqsw' ),
+					'description'   => esc_html__( 'Enable this option to display a FAQ tab for this product on the product page.', 'ufaqsw' ),
 					'default'       => '0',
-					'desc_tip'      => true,
 				)
 			);
 			?>
 
-			<?php
-			woocommerce_wp_text_input(
-				array(
-					'id'          => '_ufaqsw_tab_label',
-					'label'       => esc_html__( 'FAQ Tab Label', 'ufaqsw' ),
-					'placeholder' => __( 'FAQs', 'ufaqsw' ),
-					'desc_tip'    => true,
-					'description' => esc_html__(
-						'Enter the tab label. Default will be FAQs.',
-						'ufaqsw'
-					),
-				)
-			);
-			?>
-
-			<div class="bt_ufaqsw_faq_id" style="background:#eee; padding: 3px 0px">
+			<div class="bt_ufaqsw_faq_id">
 			<?php
 			woocommerce_wp_select(
 				array(
 					'id'          => '_ufaqsw_tab_data',
 					'options'     => $faqs,
 					'label'       => esc_html( 'Select A FAQ Group' ),
-					'desc_tip'    => true,
 					'description' => esc_html__(
 						'Please select a FAQ Group from dropdown.',
 						'ufaqsw'
@@ -225,34 +204,7 @@ class Product_Tab {
 			);
 			?>
 
-			<?php
-			woocommerce_wp_text_input(
-				array(
-					'id'          => '_ufaqsw_tab_data_id',
-					'label'       => esc_html__( 'Or Add FAQ Group ID', 'ufaqsw' ),
-					'placeholder' => __( 'ex: 10', 'ufaqsw' ),
-					'desc_tip'    => true,
-					'description' => esc_html__(
-						'Or add a FAQ ID here. This will help for multilangual site built with WPML',
-						'ufaqsw'
-					),
-				)
-			);
-			?>
 			</div>
-
-			<?php
-			woocommerce_wp_checkbox(
-				array(
-					'id'            => '_ufaqsw_hide_group_title',
-					'wrapper_class' => 'ufaqsw_hide_group_title',
-					'label'         => esc_html__( 'Hide FAQ Group Title', 'ufaqsw' ),
-					'description'   => esc_html__( 'Check this field if you want to hide FAQ Group Title.', 'ufaqsw' ),
-					'default'       => '0',
-					'desc_tip'      => true,
-				)
-			);
-			?>
 
 		</div>
 		<?php
@@ -266,15 +218,9 @@ class Product_Tab {
 	 * @param int $post_id The ID of the product being saved.
 	 */
 	public function woocommerce_process_product_meta_fields_save( $post_id ) {
-		$woo_data = isset( $_POST['_ufaqsw_tab_label'] ) ? sanitize_text_field( $_POST['_ufaqsw_tab_label'] ) : sanitize_text_field( 'FAQs' ); // phpcs:ignore
-		update_post_meta( $post_id, '_ufaqsw_tab_label', $woo_data );
 		update_post_meta( $post_id, '_ufaqsw_tab_data', sanitize_text_field( $_POST['_ufaqsw_tab_data'] ) ); // phpcs:ignore
-		update_post_meta( $post_id, '_ufaqsw_tab_data_id', sanitize_text_field( $_POST['_ufaqsw_tab_data_id'] ) ); // phpcs:ignore
 		$woo_checkbox = isset( $_POST['_ufaqsw_enable_faq_tab'] ) ? sanitize_text_field( 'yes' ) : sanitize_text_field( 'no' ); // phpcs:ignore
 		update_post_meta( $post_id, '_ufaqsw_enable_faq_tab', $woo_checkbox );
-		$woo_hide_title = isset( $_POST['_ufaqsw_hide_group_title'] ) ? sanitize_text_field( 'yes' ) : sanitize_text_field( 'no' ); // phpcs:ignore
-		update_post_meta( $post_id, '_ufaqsw_hide_group_title', $woo_hide_title );
-
 	}
 
 }

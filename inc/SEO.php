@@ -180,13 +180,8 @@ class SEO {
 		if ( function_exists( 'is_product' ) && is_product() ) {
 
 			$is_enable = get_post_meta( $post->ID, '_ufaqsw_enable_faq_tab', true );
-			$title     = get_post_meta( $post->ID, '_ufaqsw_tab_label', true );
+			$title     = get_option( 'ufaqsw_global_faq_label' ) ?? esc_html__( 'FAQs', 'ufaqsw' );
 			$data      = get_post_meta( $post->ID, '_ufaqsw_tab_data', true );
-
-			// New option FAQ group id.
-			if ( '' === $data ) {
-				$data = get_post_meta( $post->ID, '_ufaqsw_tab_data_id', true );
-			}
 
 			if ( get_option( 'ufaqsw_enable_global_faq' ) === 'on' && get_option( 'ufaqsw_global_faq' ) !== '' ) {
 

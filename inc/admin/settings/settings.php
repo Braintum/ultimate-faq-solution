@@ -91,6 +91,7 @@ class UFAQSW_Global_Settings {
 
 		register_setting( 'ufaqsw-plugin-settings-group', 'ufaqsw_enable_global_faq' );
 		register_setting( 'ufaqsw-plugin-settings-group', 'ufaqsw_global_faq_label' );
+		register_setting( 'ufaqsw-plugin-settings-group', 'ufaqsw_product_hide_group_title' );
 		register_setting( 'ufaqsw-plugin-settings-group', 'ufaqsw_global_faq' );
 	}
 
