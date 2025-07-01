@@ -81,6 +81,9 @@ add_action(
 		// Appearance actions for custom post type.
 		new Mahedi\UltimateFaqSolution\Functions\AppearanceActions();
 
+		// FAQ group actions for custom post type.
+		new Mahedi\UltimateFaqSolution\Functions\FAQGroupActions();
+
 		load_plugin_textdomain( 'ufaqsw', false, dirname( plugin_basename( __FILE__ ) ) . '/inc/languages' );
 	}
 );

@@ -112,3 +112,22 @@ function ufaqsw_detach_group_from_appearance( $appearance_id, $group_id ) {
 	// Remove the linked appearance ID from the group's post meta.
 	return delete_post_meta( $group_id, 'linked_faq_appearance_id', $appearance_id );
 }
+
+/**
+ * Checks if WooCommerce is active and enabled in the plugin settings.
+ *
+ * This function verifies if the WooCommerce plugin is active and if the option to enable
+ * WooCommerce integration is set to 'on' in the plugin's settings.
+ *
+ * @return bool True if WooCommerce is active and enabled, false otherwise.
+ */
+function ufaqsw_is_woocommerce_active() {
+
+	// Check if WooCommerce is active and the option to enable it is set to 'on'.
+	if ( class_exists( 'WooCommerce' ) && 'on' === get_option( 'ufaqsw_enable_woocommerce' ) ) {
+		return true;
+	}
+
+	// If WooCommerce is not active or the option is not set to 'on', return false.
+	return false;
+}

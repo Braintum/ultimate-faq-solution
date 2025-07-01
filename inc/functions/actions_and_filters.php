@@ -12,23 +12,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-
-/**
- * Callback function for the title filter.
- *
- * This function is used to modify or filter the title based on specific requirements.
- * It is hooked into a WordPress filter to allow customization of the title.
- *
- * @param string $title The original title.
- * @return string The modified title.
- */
-function ufaqsw_the_title( $title ) {
-	return $title;
-}
-add_filter( 'ufaqsw_the_title', 'ufaqsw_the_title' );
-
-
-
 /**
  * Callback function for the "Simplify variables" filter.
  *
@@ -349,111 +332,7 @@ function ufaqsw_appearance_set_submenu_file( $submenu_file ) {
 	return $submenu_file;
 }
 
-add_action( 'add_meta_boxes', 'ufaqsw_add_faq_group_appearance_metabox' );
-
-/**
- * Adds the FAQ Group Appearance metabox to the FAQ Group post type.
- */
-function ufaqsw_add_faq_group_appearance_metabox() {
-	add_meta_box(
-		'faq_group_appearance',
-		esc_html__( 'FAQ Appearance', 'ufaqsw' ),
-		'ufaqsw_render_faq_group_appearance_metabox',
-		'ufaqsw',
-		'side',
-		'default'
-	);
-}
-
-/**
- * Renders the FAQ Group Appearance metabox.
- *
- * This metabox allows users to select an appearance for the FAQ group.
- *
- * @param WP_Post $post The current post object.
- */
-function ufaqsw_render_faq_group_appearance_metabox( $post ) {
-	$selected_id = get_post_meta( $post->ID, 'linked_faq_appearance_id', true );
-
-	if ( empty( $selected_id ) || ! get_post( $selected_id ) ) {
-		// If no valid appearance is linked, use the default appearance ID.
-		$selected_id = get_option( 'faq_default_appearance_id', 0 );
-	}
-
-	$appearances = get_posts(
-		array(
-			'post_type'   => 'ufaqsw_appearance',
-			'post_status' => 'publish',
-			'numberposts' => -1,
-		)
-	);
-
-	wp_nonce_field( 'save_faq_group_appearance', 'faq_group_appearance_nonce' );
-
-	echo '<div class="description" style="margin-bottom:8px;">';
-	echo '<p>' . esc_html__( 'Select an appearance for this FAQ group. This will determine how the FAQs are displayed on the front end.', 'ufaqsw' ) . '</p>';
-	echo '<p style="margin-bottom:8px;"><a href="https://www.braintum.com/docs/ultimate-faq-solution/displaying-faqs/appearance-settings/" target="_blank" rel="noopener noreferrer">' . esc_html__( 'Learn more about Appearance Settings', 'ufaqsw' ) . '</a></p>';
-	echo '</div>';
-	echo '</hr>';
-	echo '<label for="faq_appearance_select">' . esc_html__( 'Select an appearance:', 'ufaqsw' ) . '</label>';
-	echo '<select name="faq_appearance_select" id="faq_appearance_select" style="width:100%;">';
-
-	foreach ( $appearances as $appearance ) {
-		$selected = ( $appearance->ID === (int) $selected_id ) ? 'selected' : '';
-		echo '<option value="' . esc_attr( $appearance->ID ) . '" ' . esc_attr( $selected ) . '>' . esc_html( $appearance->post_title ) . '</option>';
-	}
-
-	echo '</select>';
-
-	// Add edit link if a valid appearance is selected.
-	if ( $selected_id && get_post( $selected_id ) ) {
-		$edit_url = get_edit_post_link( $selected_id );
-		if ( $edit_url ) {
-			echo '<p style="margin-top:8px;"><a href="' . esc_url( $edit_url ) . '" target="_blank">' . esc_html__( 'Edit Appearance', 'ufaqsw' ) . '</a></p>';
-		}
-	}
-}
-
 add_filter( 'post_updated_messages', 'ufaqsw_faq_group_updated_messages' );
-
-add_action( 'save_post', 'ufaqsw_save_faq_group_appearance_meta' );
-
-/**
- * Saves the selected FAQ Appearance when the FAQ Group post is saved.
- *
- * @param int $post_id The ID of the post being saved.
- */
-function ufaqsw_save_faq_group_appearance_meta( $post_id ) {
-	// Check if our nonce is set.
-	if ( ! isset( $_POST['faq_group_appearance_nonce'] ) ) {
-		return;
-	}
-
-	// Verify that the nonce is valid.
-	if ( ! wp_verify_nonce( $_POST['faq_group_appearance_nonce'], 'save_faq_group_appearance' ) ) {
-		return;
-	}
-
-	// Don't autosave.
-	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
-		return;
-	}
-
-	// Check the user's permissions.
-	if ( isset( $_POST['post_type'] ) && 'ufaqsw' === $_POST['post_type'] ) {
-		if ( ! current_user_can( 'edit_post', $post_id ) ) {
-			return;
-		}
-	} else {
-		return;
-	}
-
-	// Save the selected appearance.
-	if ( isset( $_POST['faq_appearance_select'] ) ) {
-		$appearance_id = intval( $_POST['faq_appearance_select'] );
-		update_post_meta( $post_id, 'linked_faq_appearance_id', $appearance_id );
-	}
-}
 
 /**
  * Adds custom post updated messages for the FAQ Group post type.
@@ -497,46 +376,3 @@ function ufaqsw_faq_group_updated_messages( $messages ) {
 	return $messages;
 }
 
-/**
- * Adds a metabox to display the FAQ Group shortcode in the post editor.
- *
- * @since 1.0.0
- */
-add_action( 'add_meta_boxes', 'ufaqsw_add_shortcode_metabox' );
-
-/**
- * Registers the FAQ Shortcode metabox for the FAQ Group post type.
- *
- * @since 1.0.0
- */
-function ufaqsw_add_shortcode_metabox() {
-	add_meta_box(
-		'ufaqsw_faq_group_shortcode',
-		esc_html__( 'FAQ Shortcode', 'ufaqsw' ),
-		'ufaqsw_render_shortcode_metabox',
-		'ufaqsw',
-		'side',
-		'default'
-	);
-}
-
-/**
- * Renders the FAQ Shortcode metabox content.
- *
- * Displays the shortcode for the current FAQ group, allowing users to copy it.
- *
- * @since 1.0.0
- *
- * @param WP_Post $post The current post object.
- */
-function ufaqsw_render_shortcode_metabox( $post ) {
-	$slug = $post->ID;
-	if ( ! $slug ) {
-		return;
-	}
-	$slug = (int) $slug; // Ensure the slug is an integer.
-
-	echo '<p>' . esc_html__( 'Use the shortcode below to display this FAQ group:', 'ufaqsw' ) . '</p>';
-	echo '<input class="ufaqsw_admin_faq_shorcode_copy" type="text" readonly value="[ufaqsw id=' . esc_attr( $slug ) . ']" style="width:100%; font-family:monospace;">';
-	echo '<p style="margin-top:5px;"><small>' . esc_html__( 'Copy and paste this into any post, page, or widget.', 'ufaqsw' ) . '</small></p>';
-}
