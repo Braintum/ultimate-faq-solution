@@ -79,20 +79,15 @@ class Custom_Resources {
 	 *
 	 * @return $this
 	 */
-	public function render_css() {
+	public function get_css() {
 
 		$custom_css = ( get_option( 'ufaqsw_setting_custom_style' ) !== '' ? get_option( 'ufaqsw_setting_custom_style' ) : '' );
-		wp_add_inline_style( $this->css_handler, $custom_css );
 
 		if ( ! empty( $this->configuration ) ) {
 
 			if ( 'default' === $this->template ) {
 				extract( $this->configuration ); // phpcs:ignore
 
-				/*
-				* Need commenting later on
-				*/
-				$custom_css = '';
 				// Title color - from backend.
 				if ( isset( $title_color ) && '' !== $title_color ) {
 					$custom_css .= ".ufaqsw_faq_title_{$this->id}{ color: {$title_color} !important;}";
@@ -127,8 +122,11 @@ class Custom_Resources {
 					$custom_css .= ".ufaqsw-toggle-inner-default_{$this->id} *{ font-size: {$answer_font_size} !important;}";
 				}
 
-				wp_add_inline_style( $this->css_handler, $custom_css );
+				if ( isset( $border_color ) && '' !== $border_color ) {
+					$custom_css .= ".ufaqsw-toggle-title-area-default_{$this->id}{ border-color: {$border_color} !important;}";
+				}
 			}
+
 			if ( 'style-1' === $this->template ) {
 				/*
 				* Need commenting later on
@@ -169,9 +167,8 @@ class Custom_Resources {
 				if ( isset( $answer_font_size ) && '' !== $answer_font_size ) {
 					$custom_css .= ".ufaqsw-toggle-inner-default_{$this->id} *{ font-size: {$answer_font_size} !important;}";
 				}
-
-				wp_add_inline_style( $this->css_handler, $custom_css );
 			}
+
 			if ( 'style-2' === $this->template ) {
 				/*
 				* Need commenting later on
@@ -218,11 +215,9 @@ class Custom_Resources {
 					$custom_css .= ".ufaqsw-toggle-title-area-default_{$this->id}{ border-color: {$border_color} !important;}";
 					$custom_css .= ".ufaqsw-toggle-inner-default_{$this->id}{ border-color: {$border_color} !important;}";
 				}
-
-				wp_add_inline_style( $this->css_handler, $custom_css );
 			}
 		}
-		return $this;
+		return $custom_css;
 	}
 
 	/**

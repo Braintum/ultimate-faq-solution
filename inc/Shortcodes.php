@@ -135,15 +135,16 @@ class Shortcodes {
 
 				$template = apply_filters( 'ufaqsw_template_filter', $designs['template'] );
 
-				( new Custom_Resources(
+				$custom_style = ( new Custom_Resources(
 					get_the_ID(),
 					$designs,
 					$template,
 					self::$js_handler,
 					self::$css_handler
-				) )->render_css()->render_js();
+				) )->render_js()->get_css();
 
 				if ( file_exists( Template::locate( $template ) ) ) {
+					echo '<style type="text/css">' . esc_html( $custom_style ) . '</style>';
 					include Template::locate( $template );
 				} else {
 					// translators: %s is the name of the template that was not found.
@@ -195,6 +196,8 @@ class Shortcodes {
 		// load assets.
 		$this->enqueue_assets();
 
+		$custom_styles = '';
+
 		if ( $faq_query->have_posts() ) {
 
 			$all_content = '';
@@ -214,13 +217,15 @@ class Shortcodes {
 
 				$template = apply_filters( 'ufaqsw_template_filter', $designs['template'] );
 
-				( new Custom_Resources(
+				$custom_style = ( new Custom_Resources(
 					get_the_ID(),
 					$designs,
 					$template,
 					self::$js_handler,
 					self::$css_handler
-				) )->render_css()->render_js();
+				) )->render_js()->get_css();
+
+				$custom_styles .= $custom_style;
 
 				ob_start();
 				if ( file_exists( Template::locate( $template ) ) ) {
@@ -241,6 +246,7 @@ class Shortcodes {
 		ob_start();
 		$template = 'all'; // Template for All with search box.
 		if ( file_exists( Template::locate( $template ) ) ) {
+			echo '<style type="text/css">' . esc_html( $custom_styles ) . '</style>';
 			include Template::locate( $template );
 		} else {
 			// translators: %s is the name of the template that was not found.
