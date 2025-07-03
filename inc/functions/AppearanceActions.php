@@ -153,7 +153,7 @@ class AppearanceActions {
 
 		// Show success message if redirected after applying appearance.
 		if ( isset( $_GET['ufaqsw_applied_all'] ) && '1' === $_GET['ufaqsw_applied_all'] ) {
-			echo '<div class="notice notice-success inline"><p>' . esc_html__( 'Appearance applied to all FAQ groups.', 'ufaqsw' ) . '</p></div>';
+			echo '<div id="message" class="notice notice-success is-dismissible updated"><p>' . esc_html__( 'Appearance applied to all FAQ groups.', 'ufaqsw' ) . '</p></div>';
 		}
 	}
 
