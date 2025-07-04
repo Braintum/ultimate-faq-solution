@@ -7,7 +7,7 @@
  * @package UltimateFAQSolution
  */
 
-namespace Mahedi\UltimateFaqSolution\Functions;
+namespace Mahedi\UltimateFaqSolution;
 
 /**
  * Class AppearanceActions

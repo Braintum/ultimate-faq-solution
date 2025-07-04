@@ -279,6 +279,10 @@ rm -f trunk/package-lock.json
 rm -f trunk/phpcs.xml.dist
 rm -f trunk/tmp
 rm -f trunk/.phpcs.xml.dist
+rm -f trunk/webpack.config.js
+rm -f trunk/inc/functions/AppearanceActions.php
+rm -f trunk/inc/functions/FAQGroupActions.php
+
 
 echo
 
