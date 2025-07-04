@@ -1,5 +1,5 @@
 === Ultimate FAQ Solution ===
-Contributors: braintum  
+Contributors: braintum
 Donate link: https://www.solrengine.com/  
 Tags: faq-directory, accordion, knowledgebase, product-faq, ai  
 Requires at least: 5.1  
