@@ -38,7 +38,7 @@ class UFAQSW_Installation {
 	public function activation_redirect( $plugin ) {
 		if ( UFAQSW_BASE === $plugin ) {
 			if ( 'cli' !== php_sapi_name() ) {
-				wp_safe_redirect( esc_url( admin_url( 'edit.php?post_type=ufaqsw&page=ufaqsw-settings#getting_started' ) ) );
+				wp_safe_redirect( admin_url( 'edit.php?post_type=ufaqsw&page=ufaqsw-settings#getting_started' ) );
 				exit;
 			}
 		}
