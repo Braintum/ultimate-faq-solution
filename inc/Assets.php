@@ -102,6 +102,23 @@ class Assets {
 			}
 		}
 
+		// Check if WooCommerce is active and the FAQ tab is enabled for products.
+		if ( ufaqsw_is_woocommerce_active() && is_product() ) {
+
+			// Check if FAQ is present in WooCommerce product pages.
+			$is_enable = get_post_meta( $post->ID, '_ufaqsw_enable_faq_tab', true );
+
+			// Global option.
+			if ( get_option( 'ufaqsw_enable_global_faq' ) === 'on' ) {
+				$enqueue = true;
+			}
+
+			// Product specific.
+			if ( 'yes' === $is_enable ) {
+				$enqueue = true;
+			}
+		}
+
 		// Check if FAQ is present in widgets.
 		if ( ! $enqueue && $this->is_faq_present_in_widgets() ) {
 			$enqueue = true;
