@@ -160,7 +160,7 @@ class Chatbot {
 				function ( $item ) {
 					return array(
 						'question' => html_entity_decode( $item['ufaqsw_faq_question'] ),
-						'answer'   => wp_kses_post( apply_filters( 'the_content', $item['ufaqsw_faq_answer'] ) ),
+						'answer'   => do_shortcode( $item['ufaqsw_faq_answer'] ),
 					);
 				},
 				$faq_items
