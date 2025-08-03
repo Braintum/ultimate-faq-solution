@@ -93,6 +93,7 @@ class Shortcodes {
 					'id'             => 1,
 					'title_hide'     => null,
 					'elements_order' => 'asc',
+					'exclude_items' => '',
 				),
 				$atts
 			)
@@ -125,6 +126,19 @@ class Shortcodes {
 					if ( '' !== $hide_title ) {
 						$title_hide = 'yes';
 					}
+				}
+
+				if ( ! empty( $exclude_items ) ) {
+					$exclude_items = array_map( 'trim', explode( ',', $exclude_items ) );
+					$faqs = array_filter(
+						$faqs,
+						function ( $faq, $index ) use ( $exclude_items ) {
+							// Adjust index to start from 1 instead of 0
+							$one_based_index = $index + 1;
+							return ! in_array( (string) $one_based_index, $exclude_items, true );
+						},
+						ARRAY_FILTER_USE_BOTH
+					);
 				}
 
 				if ( 'desc' === strtolower( $elements_order ) ) {
