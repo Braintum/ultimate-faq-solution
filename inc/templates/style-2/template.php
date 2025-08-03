@@ -64,7 +64,7 @@ $is_show_all = 'accordion' !== $behaviour && 1 === $showall;
 			aria-labelledby="ufaqsw_faq_answer_<?php echo esc_html( $c ); ?>_<?php echo esc_html( get_the_ID() ); ?>"
 			<?php echo true === $is_show_all ? 'style="display: block;"' : 'style="display: none;"'; ?>
 		>
-			<?php echo wp_kses_post( apply_filters( 'the_content', $answer ) ); ?>
+			<?php echo do_shortcode( $answer ); ?>
 		</section>
 	</div>
 		<?php
