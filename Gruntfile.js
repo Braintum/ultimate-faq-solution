@@ -190,11 +190,6 @@ module.exports = function( grunt ) {
                 cmd: 'composer',
                 args: ['dumpautoload', '-o']
             },
-
-            composerInstall:{
-                cmd: 'composer',
-                args: ['install']
-            },
         }
 	} );
 
@@ -217,7 +212,7 @@ module.exports = function( grunt ) {
         'run:dumpautoload',
         'copy',
         'compress',
-        'run:composerInstall',
+        'run:removeDev',
         'run:dumpautoload',
 		'clean',
     ]);
