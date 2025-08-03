@@ -27,17 +27,6 @@ class ComposerStaticInit35bfc3cd1c7f61ceaf40d8bf9eb1470a
 
     public static $classMap = array (
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
-        'Mahedi\\UltimateFaqSolution\\AppearanceActions' => __DIR__ . '/../..' . '/inc/AppearanceActions.php',
-        'Mahedi\\UltimateFaqSolution\\Assets' => __DIR__ . '/../..' . '/inc/Assets.php',
-        'Mahedi\\UltimateFaqSolution\\Chatbot' => __DIR__ . '/../..' . '/inc/Chatbot.php',
-        'Mahedi\\UltimateFaqSolution\\Custom_Resources' => __DIR__ . '/../..' . '/inc/Custom_Resources.php',
-        'Mahedi\\UltimateFaqSolution\\FAQGroupActions' => __DIR__ . '/../..' . '/inc/FAQGroupActions.php',
-        'Mahedi\\UltimateFaqSolution\\Product_Tab' => __DIR__ . '/../..' . '/inc/Product_Tab.php',
-        'Mahedi\\UltimateFaqSolution\\Rest' => __DIR__ . '/../..' . '/inc/Rest.php',
-        'Mahedi\\UltimateFaqSolution\\SEO' => __DIR__ . '/../..' . '/inc/SEO.php',
-        'Mahedi\\UltimateFaqSolution\\Shortcodes' => __DIR__ . '/../..' . '/inc/Shortcodes.php',
-        'Mahedi\\UltimateFaqSolution\\Template' => __DIR__ . '/../..' . '/inc/Template.php',
-        'Mahedi\\UltimateFaqSolution\\Upgrader' => __DIR__ . '/../..' . '/inc/Upgrader.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
