@@ -2,10 +2,10 @@
 # This file is distributed under the GPLv2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Ultimate FAQ Solution 1.7.0\n"
+"Project-Id-Version: Ultimate FAQ Solution 1.7.1\n"
 "Report-Msgid-Bugs-To: "
 "https://wordpress.org/support/plugin/ultimate-faq-solution\n"
-"POT-Creation-Date: 2025-08-03 18:54:12+00:00\n"
+"POT-Creation-Date: 2025-09-03 18:29:45+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -74,19 +74,19 @@ msgstr ""
 msgid "Date"
 msgstr ""
 
-#: inc/Chatbot.php:108
+#: inc/Chatbot.php:103
 msgid "Back"
 msgstr ""
 
-#: inc/Chatbot.php:109 inc/admin/chatbot.php:173
+#: inc/Chatbot.php:104 inc/admin/chatbot.php:173
 msgid "Close the window"
 msgstr ""
 
-#: inc/Chatbot.php:111 inc/admin/chatbot.php:193
+#: inc/Chatbot.php:106 inc/admin/chatbot.php:193
 msgid "[count] Frequently Asked Questions"
 msgstr ""
 
-#: inc/Chatbot.php:149
+#: inc/Chatbot.php:144
 msgid "No FAQs found."
 msgstr ""
 
