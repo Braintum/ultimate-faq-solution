@@ -75,6 +75,7 @@ class Shortcodes {
 	 * for the proper functioning of the plugin's front-end features.
 	 */
 	private function enqueue_assets() {
+		wp_enqueue_style( 'ufaqsw_fa_css' );
 		wp_enqueue_script( 'ufaqsw-quicksearch-front-js' );
 		wp_enqueue_script( self::$js_handler, UFAQSW__PLUGIN_URL . 'assets/js/script.min.js', array( 'jquery', 'ufaqsw-quicksearch-front-js' ), UFAQSW_VERSION, false );
 	}
@@ -133,7 +134,7 @@ class Shortcodes {
 					$faqs = array_filter(
 						$faqs,
 						function ( $faq, $index ) use ( $exclude_items ) {
-							// Adjust index to start from 1 instead of 0
+							// Adjust index to start from 1 instead of 0.
 							$one_based_index = $index + 1;
 							return ! in_array( (string) $one_based_index, $exclude_items, true );
 						},
@@ -162,7 +163,7 @@ class Shortcodes {
 					include Template::locate( $template );
 				} else {
 					// translators: %s is the name of the template that was not found.
-					echo sprintf( esc_html__( '%s Template Not Found', 'ufaqsw' ), esc_html( $template ) );
+					printf( esc_html__( '%s Template Not Found', 'ufaqsw' ), esc_html( $template ) );
 				}
 			}
 		}
@@ -170,7 +171,6 @@ class Shortcodes {
 
 		$content = ob_get_clean();
 		return $content;
-
 	}
 
 	/**
@@ -246,7 +246,7 @@ class Shortcodes {
 					include Template::locate( $template );
 				} else {
 					// translators: %s is the name of the template that was not found.
-					echo sprintf( esc_html__( '%s Template Not Found', 'ufaqsw' ), esc_html( ucfirst( $template ) ) );
+					printf( esc_html__( '%s Template Not Found', 'ufaqsw' ), esc_html( ucfirst( $template ) ) );
 				}
 
 				$content = ob_get_clean();
@@ -264,11 +264,10 @@ class Shortcodes {
 			include Template::locate( $template );
 		} else {
 			// translators: %s is the name of the template that was not found.
-			echo sprintf( esc_html__( '%s Template Not Found', 'ufaqsw' ), esc_html( ucfirst( $template ) ) );
+			printf( esc_html__( '%s Template Not Found', 'ufaqsw' ), esc_html( ucfirst( $template ) ) );
 		}
 		$content = ob_get_clean();
 
 		return str_replace( '{{content}}', $all_content, $content );
-
 	}
 }

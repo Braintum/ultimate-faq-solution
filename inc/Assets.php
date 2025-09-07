@@ -53,123 +53,13 @@ class Assets {
 	 * @return void
 	 */
 	public function render_resources_frontend() {
-
-		if ( $this->is_faq_present() ) {
-			wp_register_style( 'ufaqsw_fa_css', UFAQSW__PLUGIN_URL . 'assets/css/font-awesome.min.css', array(), UFAQSW_VERSION, 'all' );
-			wp_register_style( 'ufaqsw_styles_css', UFAQSW__PLUGIN_URL . 'assets/css/styles.min.css', array(), UFAQSW_VERSION, 'all' );
-
-			wp_enqueue_style( 'ufaqsw_fa_css' );
-			wp_enqueue_style( 'ufaqsw_styles_css' );
-		}
+		wp_register_style( 'ufaqsw_fa_css', UFAQSW__PLUGIN_URL . 'assets/css/font-awesome.min.css', array(), UFAQSW_VERSION, 'all' );
+		wp_register_style( 'ufaqsw_styles_css', UFAQSW__PLUGIN_URL . 'assets/css/styles.min.css', array(), UFAQSW_VERSION, 'all' );
+		wp_enqueue_style( 'ufaqsw_styles_css' );
 
 		// jQuery for fronend.
 		wp_enqueue_script( 'jquery', 'jquery', array(), UFAQSW_VERSION, true );
 		wp_register_script( 'ufaqsw-quicksearch-front-js', UFAQSW__PLUGIN_URL . 'assets/js/jquery.quicksearch.js', array( 'jquery' ), UFAQSW_VERSION, true );
-
-	}
-
-	/**
-	 * Checks if the FAQ shortcode or block is present in the content.
-	 *
-	 * This function checks if the FAQ shortcode or block is used in the current post content.
-	 * If either is found, it returns true, indicating that the FAQ assets should be enqueued.
-	 *
-	 * @return bool True if FAQ shortcode or block is present, false otherwise.
-	 */
-	private function is_faq_present() {
-
-		// Check if FAQ shortcode is present or FAQ block is used.
-		global $post;
-
-		$enqueue = false;
-
-		if ( is_a( $post, 'WP_Post' ) ) {
-			// Check for shortcode in post content.
-			if ( has_shortcode( $post->post_content, 'ufaqsw-all' ) ) {
-				$enqueue = true;
-			}
-
-			if ( has_shortcode( $post->post_content, 'ufaqsw' ) ) {
-				$enqueue = true;
-			}
-		}
-
-		// Check for FAQ block in the content (for block editor).
-		if ( ! $enqueue && function_exists( 'has_block' ) && is_a( $post, 'WP_Post' ) ) {
-
-			if ( has_block( 'ultimate-faq-solution/block', $post ) ) {
-				$enqueue = true;
-			}
-		}
-
-		// Check if WooCommerce is active and the FAQ tab is enabled for products.
-		if ( ufaqsw_is_woocommerce_active() && is_product() ) {
-
-			// Check if FAQ is present in WooCommerce product pages.
-			$is_enable = get_post_meta( $post->ID, '_ufaqsw_enable_faq_tab', true );
-
-			// Global option.
-			if ( get_option( 'ufaqsw_enable_global_faq' ) === 'on' ) {
-				$enqueue = true;
-			}
-
-			// Product specific.
-			if ( 'yes' === $is_enable ) {
-				$enqueue = true;
-			}
-		}
-
-		// Check if FAQ is present in widgets.
-		if ( ! $enqueue && $this->is_faq_present_in_widgets() ) {
-			$enqueue = true;
-		}
-
-		/**
-		 * Filter to allow overriding whether FAQ assets should be enqueued.
-		 *
-		 * @param bool $enqueue Whether to enqueue FAQ assets.
-		 * @param WP_Post|null $post The current post object.
-		 */
-		return apply_filters( 'ufaqsw_should_enqueue_styles', $enqueue, $post );
-	}
-
-	/**
-	 * Checks if FAQ shortcodes or blocks are present in widgets.
-	 *
-	 * @return bool True if FAQ is used in any widget, false otherwise.
-	 */
-	private function is_faq_present_in_widgets() {
-		$faq_used = false;
-
-		$sidebars_widgets = wp_get_sidebars_widgets();
-
-		foreach ( $sidebars_widgets as $sidebar_id => $widget_ids ) {
-			if ( is_array( $widget_ids ) ) {
-				foreach ( $widget_ids as $widget_id ) {
-					$widget_instance = get_option( 'widget_' . _get_widget_id_base( $widget_id ) );
-
-					if ( is_array( $widget_instance ) ) {
-						foreach ( $widget_instance as $instance ) {
-							if ( isset( $instance['content'] ) ) {
-								$content = $instance['content'];
-
-								// Check for FAQ shortcode.
-								if ( has_shortcode( $content, 'ufaqsw-all' ) || has_shortcode( $content, 'ufaqsw' ) ) {
-									$faq_used = true;
-								}
-
-								// Check for FAQ block.
-								if ( strpos( $content, 'wp:ultimate-faq-solution/block' ) !== false ) {
-									$faq_used = true;
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-
-		return $faq_used;
 	}
 
 	/**

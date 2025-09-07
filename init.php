@@ -95,4 +95,3 @@ require_once UFAQSW__PLUGIN_DIR . 'block/block.php';
 // Register activation and deactivation hooks.
 register_activation_hook( __FILE__, array( 'UFAQSW_installation', 'plugin_activation' ) );
 register_deactivation_hook( __FILE__, array( 'UFAQSW_installation', 'plugin_deactivation' ) );
-
