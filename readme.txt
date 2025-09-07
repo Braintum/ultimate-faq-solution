@@ -4,7 +4,7 @@ Donate link: https://www.solrengine.com/
 Tags: faq-directory, accordion, knowledgebase, product-faq, ai  
 Requires at least: 5.1  
 Tested up to: 6.8.2  
-Stable tag: 1.7.1
+Stable tag: 1.7.2
 Requires PHP: 7.4.0  
 License: GPLv2 or later  
 License URI: https://www.gnu.org/licenses/license-list.html#GPLCompatibleLicenses  
@@ -134,6 +134,10 @@ Yes! Starting from version 1.6.4, Ultimate FAQ Solution includes an AI-powered f
 14. AI content generation: Instantly generate suggested answers for your FAQs using AI, streamlining the process of creating accurate and helpful responses.
 
 == Changelog ==
+
+=1.7.2=
+* Improved compatibility: Shortcodes now work when inserted dynamically via ACF fields, popular page builders, and widgets.
+
 =1.7.1=
 * Fixed: Page information incorrectly populating inside the FAQ Assistant area.
 * Improved: Data handling to ensure only relevant content is displayed in the chatbot assistant interface.

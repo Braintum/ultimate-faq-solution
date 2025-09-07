@@ -2,10 +2,10 @@
 # This file is distributed under the GPLv2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Ultimate FAQ Solution 1.7.1\n"
+"Project-Id-Version: Ultimate FAQ Solution 1.7.2\n"
 "Report-Msgid-Bugs-To: "
 "https://wordpress.org/support/plugin/ultimate-faq-solution\n"
-"POT-Creation-Date: 2025-09-03 18:29:45+00:00\n"
+"POT-Creation-Date: 2025-09-07 20:40:13+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -149,7 +149,7 @@ msgstr ""
 msgid "Please select a FAQ Group from dropdown."
 msgstr ""
 
-#: inc/Shortcodes.php:165 inc/Shortcodes.php:249 inc/Shortcodes.php:267
+#: inc/Shortcodes.php:166 inc/Shortcodes.php:249 inc/Shortcodes.php:267
 #. translators: %s is the name of the template that was not found.
 msgid "%s Template Not Found"
 msgstr ""
