@@ -180,20 +180,18 @@ class SEO {
 		if ( function_exists( 'is_product' ) && is_product() ) {
 
 			$is_enable = get_post_meta( $post->ID, '_ufaqsw_enable_faq_tab', true );
-			$title     = get_option( 'ufaqsw_global_faq_label' ) ?? esc_html__( 'FAQs', 'ufaqsw' );
 			$data      = get_post_meta( $post->ID, '_ufaqsw_tab_data', true );
 
-			if ( get_option( 'ufaqsw_enable_global_faq' ) === 'on' && get_option( 'ufaqsw_global_faq' ) !== '' ) {
+			if ( 'yes' === $is_enable && '' !== $data ) {
 
-				$faqs = apply_filters( 'ufaqsw_simplify_faqs', get_post_meta( get_post( get_option( 'ufaqsw_global_faq' ) )->ID, 'ufaqsw_faq_item01' ) );
+				$faqs = apply_filters( 'ufaqsw_simplify_faqs', get_post_meta( get_post( $data )->ID, 'ufaqsw_faq_item01' ) );
 
 				if ( ! empty( $faqs ) ) {
 					$faqs_data = array_merge( $faqs_data, $faqs );
 				}
-			}
-			if ( 'yes' === $is_enable && '' !== $data ) {
+			} elseif ( get_option( 'ufaqsw_enable_global_faq' ) === 'on' && get_option( 'ufaqsw_global_faq' ) !== '' ) {
 
-				$faqs = apply_filters( 'ufaqsw_simplify_faqs', get_post_meta( get_post( $data )->ID, 'ufaqsw_faq_item01' ) );
+				$faqs = apply_filters( 'ufaqsw_simplify_faqs', get_post_meta( get_post( get_option( 'ufaqsw_global_faq' ) )->ID, 'ufaqsw_faq_item01' ) );
 
 				if ( ! empty( $faqs ) ) {
 					$faqs_data = array_merge( $faqs_data, $faqs );

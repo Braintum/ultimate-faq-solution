@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: Ultimate FAQ Solution 1.7.2\n"
 "Report-Msgid-Bugs-To: "
 "https://wordpress.org/support/plugin/ultimate-faq-solution\n"
-"POT-Creation-Date: 2025-09-07 20:40:13+00:00\n"
+"POT-Creation-Date: 2025-09-20 17:08:42+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -61,7 +61,7 @@ msgstr ""
 msgid "Appearance applied to all FAQ groups."
 msgstr ""
 
-#: inc/AppearanceActions.php:189 inc/admin/class-directory-post-type.php:400
+#: inc/AppearanceActions.php:189 inc/admin/class-directory-post-type.php:399
 #: inc/admin/settings/ai-integration.php:85
 msgid "Title"
 msgstr ""
@@ -70,7 +70,7 @@ msgstr ""
 msgid "Connected FAQ Groups"
 msgstr ""
 
-#: inc/AppearanceActions.php:191 inc/admin/class-directory-post-type.php:404
+#: inc/AppearanceActions.php:191 inc/admin/class-directory-post-type.php:403
 msgid "Date"
 msgstr ""
 
@@ -112,8 +112,8 @@ msgstr ""
 msgid "Select an appearance:"
 msgstr ""
 
-#: inc/FAQGroupActions.php:109 inc/admin/class-directory-post-type.php:69
-#: inc/admin/class-directory-post-type.php:428
+#: inc/FAQGroupActions.php:109 inc/admin/class-directory-post-type.php:68
+#: inc/admin/class-directory-post-type.php:427
 msgid "Edit Appearance"
 msgstr ""
 
@@ -127,7 +127,7 @@ msgstr ""
 
 #: inc/Product_Tab.php:75 inc/Product_Tab.php:80 inc/Product_Tab.php:89
 #: inc/Product_Tab.php:109 inc/SEO.php:183
-#: inc/admin/class-directory-post-type.php:343
+#: inc/admin/class-directory-post-type.php:342
 msgid "FAQs"
 msgstr ""
 
@@ -166,10 +166,10 @@ msgstr ""
 msgid "General"
 msgstr ""
 
-#: inc/admin/chatbot.php:44 inc/admin/class-directory-post-type.php:63
-#: inc/admin/class-directory-post-type.php:65
-#: inc/admin/class-directory-post-type.php:121
-#: inc/admin/class-directory-post-type.php:402
+#: inc/admin/chatbot.php:44 inc/admin/class-directory-post-type.php:62
+#: inc/admin/class-directory-post-type.php:64
+#: inc/admin/class-directory-post-type.php:120
+#: inc/admin/class-directory-post-type.php:401
 msgid "Appearance"
 msgstr ""
 
@@ -444,243 +444,243 @@ msgstr ""
 msgid "This post type holds all FAQs for your site."
 msgstr ""
 
-#: inc/admin/class-directory-post-type.php:62
-#: inc/admin/class-directory-post-type.php:64
+#: inc/admin/class-directory-post-type.php:61
+#: inc/admin/class-directory-post-type.php:63
 msgid "Appearances"
 msgstr ""
 
-#: inc/admin/class-directory-post-type.php:66
+#: inc/admin/class-directory-post-type.php:65
 msgid "Add New"
 msgstr ""
 
-#: inc/admin/class-directory-post-type.php:67
+#: inc/admin/class-directory-post-type.php:66
 msgid "Add New Appearance"
 msgstr ""
 
-#: inc/admin/class-directory-post-type.php:68
+#: inc/admin/class-directory-post-type.php:67
 msgid "New Appearance"
 msgstr ""
 
-#: inc/admin/class-directory-post-type.php:70
+#: inc/admin/class-directory-post-type.php:69
 msgid "View Appearance"
 msgstr ""
 
-#: inc/admin/class-directory-post-type.php:71
+#: inc/admin/class-directory-post-type.php:70
 msgid "All Appearances"
 msgstr ""
 
-#: inc/admin/class-directory-post-type.php:72
+#: inc/admin/class-directory-post-type.php:71
 msgid "Search Appearances"
 msgstr ""
 
-#: inc/admin/class-directory-post-type.php:73
+#: inc/admin/class-directory-post-type.php:72
 msgid "No appearances found."
 msgstr ""
 
-#: inc/admin/class-directory-post-type.php:74
+#: inc/admin/class-directory-post-type.php:73
 msgid "No appearances found in Trash."
 msgstr ""
 
-#: inc/admin/class-directory-post-type.php:130
+#: inc/admin/class-directory-post-type.php:129
 msgid "Choose A Template"
 msgstr ""
 
-#: inc/admin/class-directory-post-type.php:134
+#: inc/admin/class-directory-post-type.php:133
 #: vendor/cmb2/cmb2/includes/CMB2_JS.php:178
 msgid "Default"
 msgstr ""
 
-#: inc/admin/class-directory-post-type.php:135
+#: inc/admin/class-directory-post-type.php:134
 msgid "Style 1"
 msgstr ""
 
-#: inc/admin/class-directory-post-type.php:136
+#: inc/admin/class-directory-post-type.php:135
 msgid "Style 2"
 msgstr ""
 
-#: inc/admin/class-directory-post-type.php:144
+#: inc/admin/class-directory-post-type.php:143
 msgid "Faq Group Title Color"
 msgstr ""
 
-#: inc/admin/class-directory-post-type.php:146
+#: inc/admin/class-directory-post-type.php:145
 msgid "Change the Group Title color"
 msgstr ""
 
-#: inc/admin/class-directory-post-type.php:153
+#: inc/admin/class-directory-post-type.php:152
 msgid "Faq Group Title Font Size (ex: 30px)"
 msgstr ""
 
-#: inc/admin/class-directory-post-type.php:154
+#: inc/admin/class-directory-post-type.php:153
 msgid "Change the Group Title font size ex: 30px"
 msgstr ""
 
-#: inc/admin/class-directory-post-type.php:163
+#: inc/admin/class-directory-post-type.php:162
 msgid "Question Color"
 msgstr ""
 
-#: inc/admin/class-directory-post-type.php:165
+#: inc/admin/class-directory-post-type.php:164
 msgid "Change the Question color"
 msgstr ""
 
-#: inc/admin/class-directory-post-type.php:173
-#: inc/admin/class-directory-post-type.php:176
+#: inc/admin/class-directory-post-type.php:172
+#: inc/admin/class-directory-post-type.php:175
 msgid "Display Question in Bold"
 msgstr ""
 
-#: inc/admin/class-directory-post-type.php:182
+#: inc/admin/class-directory-post-type.php:181
 msgid "Answer Color"
 msgstr ""
 
-#: inc/admin/class-directory-post-type.php:184
+#: inc/admin/class-directory-post-type.php:183
 msgid "Change the Answer color"
 msgstr ""
 
-#: inc/admin/class-directory-post-type.php:192
+#: inc/admin/class-directory-post-type.php:191
 msgid "Question Background Color"
 msgstr ""
 
-#: inc/admin/class-directory-post-type.php:194
+#: inc/admin/class-directory-post-type.php:193
 msgid "Change the Question Background color"
 msgstr ""
 
-#: inc/admin/class-directory-post-type.php:202
+#: inc/admin/class-directory-post-type.php:201
 msgid "Answer Background Color"
 msgstr ""
 
-#: inc/admin/class-directory-post-type.php:204
+#: inc/admin/class-directory-post-type.php:203
 msgid "Change the Answer Background color"
 msgstr ""
 
-#: inc/admin/class-directory-post-type.php:212
+#: inc/admin/class-directory-post-type.php:211
 msgid "Border Color"
 msgstr ""
 
-#: inc/admin/class-directory-post-type.php:214
+#: inc/admin/class-directory-post-type.php:213
 msgid "Change the default border color"
 msgstr ""
 
-#: inc/admin/class-directory-post-type.php:221
+#: inc/admin/class-directory-post-type.php:220
 msgid "Question Font Size (ex: 20px)"
 msgstr ""
 
-#: inc/admin/class-directory-post-type.php:222
+#: inc/admin/class-directory-post-type.php:221
 msgid "Change the Question Font Size ex: 20px"
 msgstr ""
 
-#: inc/admin/class-directory-post-type.php:231
+#: inc/admin/class-directory-post-type.php:230
 msgid "Answer Font Size (ex: 20px)"
 msgstr ""
 
-#: inc/admin/class-directory-post-type.php:232
+#: inc/admin/class-directory-post-type.php:231
 msgid "Change the Answer Font Size ex: 20px"
 msgstr ""
 
-#: inc/admin/class-directory-post-type.php:241
+#: inc/admin/class-directory-post-type.php:240
 msgid "Normal Icon"
 msgstr ""
 
-#: inc/admin/class-directory-post-type.php:243
-#: inc/admin/class-directory-post-type.php:252
+#: inc/admin/class-directory-post-type.php:242
+#: inc/admin/class-directory-post-type.php:251
 msgid "Change the default icon by clicking on the input box."
 msgstr ""
 
-#: inc/admin/class-directory-post-type.php:250
+#: inc/admin/class-directory-post-type.php:249
 msgid "Active Icon"
 msgstr ""
 
-#: inc/admin/class-directory-post-type.php:259
+#: inc/admin/class-directory-post-type.php:258
 msgid "FAQ Behaviour"
 msgstr ""
 
-#: inc/admin/class-directory-post-type.php:260
+#: inc/admin/class-directory-post-type.php:259
 msgid "Default behaviour is Toggle. You can change it to Accordion"
 msgstr ""
 
-#: inc/admin/class-directory-post-type.php:264
+#: inc/admin/class-directory-post-type.php:263
 msgid "Toggle"
 msgstr ""
 
-#: inc/admin/class-directory-post-type.php:265
+#: inc/admin/class-directory-post-type.php:264
 msgid "Accordion"
 msgstr ""
 
+#: inc/admin/class-directory-post-type.php:271
 #: inc/admin/class-directory-post-type.php:272
-#: inc/admin/class-directory-post-type.php:273
 msgid "Show all Answers by Default"
 msgstr ""
 
+#: inc/admin/class-directory-post-type.php:284
 #: inc/admin/class-directory-post-type.php:285
-#: inc/admin/class-directory-post-type.php:286
 msgid "Hide Group Title"
 msgstr ""
 
-#: inc/admin/class-directory-post-type.php:303
+#: inc/admin/class-directory-post-type.php:302
 msgid "Group Description"
 msgstr ""
 
-#: inc/admin/class-directory-post-type.php:312
+#: inc/admin/class-directory-post-type.php:311
 msgid "Note: This section is visible only in the FAQ Assistant window."
 msgstr ""
 
-#: inc/admin/class-directory-post-type.php:320
+#: inc/admin/class-directory-post-type.php:319
 msgid "Short Description"
 msgstr ""
 
-#: inc/admin/class-directory-post-type.php:321
+#: inc/admin/class-directory-post-type.php:320
 msgid ""
 "Write a short description about the FAQ group. This will only be displayed "
 "in the FAQ assistant window at this moment."
 msgstr ""
 
-#: inc/admin/class-directory-post-type.php:352
+#: inc/admin/class-directory-post-type.php:351
 msgid "Add FAQ to this group by click on \"Add FAQ Entry\" Button"
 msgstr ""
 
-#: inc/admin/class-directory-post-type.php:354
+#: inc/admin/class-directory-post-type.php:353
 msgid "FAQ {#}"
 msgstr ""
 
-#: inc/admin/class-directory-post-type.php:355
+#: inc/admin/class-directory-post-type.php:354
 msgid "Add FAQ Entry"
 msgstr ""
 
-#: inc/admin/class-directory-post-type.php:356
+#: inc/admin/class-directory-post-type.php:355
 msgid "Remove FAQ Entry"
 msgstr ""
 
-#: inc/admin/class-directory-post-type.php:359
+#: inc/admin/class-directory-post-type.php:358
 msgid "Are you sure you want to remove the FAQ entry?"
 msgstr ""
 
-#: inc/admin/class-directory-post-type.php:367
+#: inc/admin/class-directory-post-type.php:366
 msgid "Question"
 msgstr ""
 
-#: inc/admin/class-directory-post-type.php:369
+#: inc/admin/class-directory-post-type.php:368
 msgid "Write Your Question"
 msgstr ""
 
-#: inc/admin/class-directory-post-type.php:377
+#: inc/admin/class-directory-post-type.php:376
 msgid "Answer"
 msgstr ""
 
-#: inc/admin/class-directory-post-type.php:378
+#: inc/admin/class-directory-post-type.php:377
 msgid "Write Your Answer"
 msgstr ""
 
-#: inc/admin/class-directory-post-type.php:401
+#: inc/admin/class-directory-post-type.php:400
 msgid "Number of FAQs"
 msgstr ""
 
-#: inc/admin/class-directory-post-type.php:403
+#: inc/admin/class-directory-post-type.php:402
 msgid "Shortcode"
 msgstr ""
 
-#: inc/admin/class-directory-post-type.php:547
+#: inc/admin/class-directory-post-type.php:546
 msgid "Duplicate this item"
 msgstr ""
 
-#: inc/admin/class-directory-post-type.php:547
+#: inc/admin/class-directory-post-type.php:546
 msgid "Duplicate"
 msgstr ""
 
