@@ -42,9 +42,8 @@ function ufaqsw_register_cpt() {
 		'menu_position'       => 25,
 		'exclude_from_search' => true,
 		'show_in_nav_menus'   => false,
-		'supports'            => array( 'title', 'revisions' ),
+		'supports'            => array( 'title' ),
 		'has_archive'         => false,
-		'menu_icon'           => '',
 		'public'              => false,  // it's not public, it shouldn't have its own permalink, and so on.
 		'publicly_queryable'  => false,  // you should be able to query it.
 		'show_ui'             => true,  // you should be able to edit it in wp-admin.

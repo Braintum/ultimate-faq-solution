@@ -239,11 +239,12 @@ window.CMB2.wysiwyg = window.CMB2.wysiwyg || {};
 
 		$row.find( '.cmb2-wysiwyg-inner-wrap' ).each( function() {
 			$toReplace    = $( this );
+			var parentGroup = $toReplace.closest('.cmb-repeatable-grouping');
 			data          = $toReplace.data();
 			defVal        = cmb.getFieldArg( data.hash, 'default', '' );
 			defVal        = 'undefined' !== typeof defVal && false !== defVal ? defVal : '';
 
-			data.iterator = $row.data( 'iterator' );
+			data.iterator = parentGroup.attr( 'data-iterator' );
 			data.fieldid  = data.id;
 			data.id       = data.groupid + '_' + data.iterator + '_' + data.fieldid;
 			data.name     = data.groupid + '[' + data.iterator + '][' + data.fieldid + ']';
