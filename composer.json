@@ -2,9 +2,6 @@
     "name": "mahedi/ultimate-faq-solution",
     "description": "An ultimate FAQ Solution plugin for Wordpress & Woocommerce",
     "type": "wordpress-plugin",
-    "require": {
-        "cmb2/cmb2": "dev-master"
-    },
     "license": "GPL v2",
     "autoload": {
         "psr-4": {

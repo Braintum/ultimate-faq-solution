@@ -80,7 +80,7 @@ class CMB2_JS {
 		$dependencies = self::$dependencies = apply_filters( 'cmb2_script_dependencies', self::$dependencies );
 
 		// Only use minified files if SCRIPT_DEBUG is off.
-		$debug = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG;
+		$debug = true;
 
 		$min = $debug ? '' : '.min';
 
@@ -146,7 +146,7 @@ class CMB2_JS {
 	 */
 	public static function register_colorpicker_alpha( $enqueue = false ) {
 		// Only use minified files if SCRIPT_DEBUG is off.
-		$min = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
+		$min = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '';
 		$func = $enqueue ? 'wp_enqueue_script' : 'wp_register_script';
 		$func( 'wp-color-picker-alpha', CMB2_Utils::url( "js/wp-color-picker-alpha{$min}.js" ), array( 'wp-color-picker' ), '2.1.3' );
 	}
