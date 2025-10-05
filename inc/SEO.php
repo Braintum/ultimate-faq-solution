@@ -75,6 +75,19 @@ class SEO {
 			return $faqs_data;
 		}
 
+		if ( is_singular( 'ufaqsw' ) ) {
+
+			$faqs = apply_filters( 'ufaqsw_simplify_faqs', get_post_meta( $post->ID, 'ufaqsw_faq_item01', false ) );
+
+			if ( isset( $value['attrs']['elements_order'] ) && 'desc' === strtolower( $value['attrs']['elements_order'] ) ) {
+				$faqs = array_values( array_reverse( $faqs, true ) );
+			}
+
+			if ( ! empty( $faqs ) ) {
+				$faqs_data = array_merge( $faqs_data, $faqs );
+			}
+		}
+
 		// Check if post has the FAQ block.
 		if ( has_block( 'ultimate-faq-solution/block', $post->post_content ) ) {
 			$block = parse_blocks( $post->post_content );
@@ -201,5 +214,4 @@ class SEO {
 
 		return $faqs_data;
 	}
-
 }

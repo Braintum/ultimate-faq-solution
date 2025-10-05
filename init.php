@@ -48,9 +48,11 @@ if ( file_exists( UFAQSW__PLUGIN_DIR . 'vendor/autoload.php' ) ) {
 // Load general functions and utilities.
 require_once UFAQSW__PLUGIN_DIR . 'inc/functions/general.php';
 
+// Load cpt.
+require_once UFAQSW__PLUGIN_DIR . 'inc/admin/class-directory-post-type.php';
+
 // Load admin-specific files only in the admin area.
 if ( is_admin() ) {
-	include_once UFAQSW__PLUGIN_DIR . 'inc/admin/class-directory-post-type.php';
 	include_once UFAQSW__PLUGIN_DIR . 'inc/admin/class-faq-group-sorting.php';
 	include_once UFAQSW__PLUGIN_DIR . 'inc/admin/settings/settings.php';
 	include_once UFAQSW__PLUGIN_DIR . 'inc/admin/chatbot.php';

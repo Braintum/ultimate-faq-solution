@@ -42,7 +42,7 @@ function ufaqsw_register_cpt() {
 		'menu_position'       => 25,
 		'exclude_from_search' => true,
 		'show_in_nav_menus'   => false,
-		'supports'            => array( 'title' ),
+		'supports'            => array( 'title', 'author' ), // Added 'author' support.
 		'has_archive'         => false,
 		'public'              => false,  // it's not public, it shouldn't have its own permalink, and so on.
 		'publicly_queryable'  => false,  // you should be able to query it.
@@ -53,6 +53,13 @@ function ufaqsw_register_cpt() {
 		'rest_base'           => 'ufaqsw', // Optional custom REST API base slug.
 		'rewrite'             => false,
 	);
+
+	if ( 'on' === get_option( 'ufaqsw_enable_group_detail_page' ) ) {
+		$ufaqsw_list_args['public']             = true;
+		$ufaqsw_list_args['publicly_queryable'] = true;
+		$ufaqsw_list_args['capability_type']    = 'post';
+		$ufaqsw_list_args['rewrite']            = array( 'slug' => ( get_option( 'ufaqsw_detail_page_slug' ) ? get_option( 'ufaqsw_detail_page_slug' ) : 'faq-group' ) );
+	}
 
 	register_post_type( 'ufaqsw', $ufaqsw_list_args );
 
@@ -88,22 +95,6 @@ function ufaqsw_register_cpt() {
 	register_post_type( 'ufaqsw_appearance', $args );
 }
 add_action( 'init', 'ufaqsw_register_cpt' );
-
-add_filter( 'post_row_actions', 'ufaqsw_remove_row_actions', 10, 1 );
-
-/**
- * Removes the 'view' action link for the custom post type 'ufaqsw'.
- *
- * @param array $actions The existing row actions.
- * @return array Modified row actions without the 'view' link.
- */
-function ufaqsw_remove_row_actions( $actions ) {
-	if ( get_post_type() === 'ufaqsw' ) {
-		unset( $actions['view'] );
-	}
-	return $actions;
-}
-
 
 add_action( 'cmb2_admin_init', 'ufaqsw_register_appearance_metabox' );
 /**
@@ -382,7 +373,6 @@ function ufaqsw_register_repeatable_group_field_metabox() {
 			),
 		)
 	);
-
 }
 
 /**
@@ -579,5 +569,3 @@ function bt_cmb2_sanitize_text_html_callback( $override_value, $value ) {
 	return $value;
 }
 add_filter( 'cmb2_sanitize_text_html', 'bt_cmb2_sanitize_text_html_callback', 10, 2 );
-
-

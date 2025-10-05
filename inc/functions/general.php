@@ -80,7 +80,7 @@ function ufaqsw_get_group_ids_by_appearance( $appearance_id ) {
 			'post_type'      => 'ufaqsw',
 			'posts_per_page' => -1,
 			'fields'         => 'ids',
-			'meta_query'     => array(
+			'meta_query'     => array( // phpcs:ignore
 				array(
 					'key'     => 'linked_faq_appearance_id',
 					'value'   => $appearance_id,
@@ -91,7 +91,6 @@ function ufaqsw_get_group_ids_by_appearance( $appearance_id ) {
 	);
 
 	return $group_ids;
-
 }
 
 /**

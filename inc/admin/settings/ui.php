@@ -72,6 +72,41 @@ $allowed_html = ufaqsw_wses_allowed_menu_html();
 
 			</table>
 
+			<h3><?php echo esc_html( 'FAQ Group Detail Page' ); ?></h3>
+			<p>
+				<?php echo esc_html( 'You can still use shortcodes to display FAQ groups in pages or posts. However, enabling the detail page option will add a dedicated detail page for each FAQ group.' ); ?>
+			</p>
+
+			<table class="form-table ufaqsw_settings_table">
+
+				<tr valign="top">
+					<th scope="row"><?php echo esc_html( 'FAQ Group Detail Page' ); ?></th>
+					<td>
+						<label>
+							<input type="checkbox" name="ufaqsw_enable_group_detail_page" value="on" <?php echo ( esc_attr( get_option( 'ufaqsw_enable_group_detail_page' ) ) === 'on' ? 'checked="checked"' : '' ); ?> />
+							<?php echo esc_html( 'Enable FAQ Group Detail Page' ); ?>
+						</label>
+						<i><?php echo wp_kses( 'Enable this option to add a dedicated detail page for each FAQ group, allowing for a more focused presentation of FAQs within that group.', $allowed_html ); ?></i>
+					</td>
+				</tr>
+				<tr valign="top">
+					<th scope="row"><?php echo esc_html( 'Detail Page Slug' ); ?></th>
+					<td>
+						
+						<input type="text" name="ufaqsw_detail_page_slug" class="ufaqsw_detail_page_slug" value="<?php echo get_option( 'ufaqsw_detail_page_slug' ) ? esc_attr( get_option( 'ufaqsw_detail_page_slug' ) ) : 'faq-group'; ?>" />
+						<i>
+							<?php echo esc_html( 'This slug will be used in the URL for the FAQ group detail page.' ); ?>
+							<br>
+							<strong style="color: #d63638;">
+								<?php echo esc_html( 'Warning: Changing this permalink will update the URLs for all FAQ group detail pages. Any existing links to FAQ groups using the old slug will no longer work.' ); ?>
+							</strong>
+						</i>
+					</td>
+				</tr>
+
+
+			</table>
+
 			<h3><?php echo esc_html( 'Woocommerce Settings' ); ?></h3>
 			<p>
 				<?php echo esc_html( 'Configure WooCommerce integration settings for displaying FAQs on product pages.' ); ?>

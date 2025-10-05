@@ -71,7 +71,6 @@ class UFAQSW_Global_Settings {
 			'ufaqsw-settings',
 			array( $this, 'settings_page_callback_func' )
 		);
-
 	}
 
 	/**
@@ -93,6 +92,9 @@ class UFAQSW_Global_Settings {
 		register_setting( 'ufaqsw-plugin-settings-group', 'ufaqsw_global_faq_label' );
 		register_setting( 'ufaqsw-plugin-settings-group', 'ufaqsw_product_hide_group_title' );
 		register_setting( 'ufaqsw-plugin-settings-group', 'ufaqsw_global_faq' );
+
+		register_setting( 'ufaqsw-plugin-settings-group', 'ufaqsw_detail_page_slug' );
+		register_setting( 'ufaqsw-plugin-settings-group', 'ufaqsw_enable_group_detail_page' );
 	}
 
 	/**
@@ -112,7 +114,15 @@ class UFAQSW_Global_Settings {
 	public function display_admin_notices() {
 		if ( isset( $_GET['settings-updated'] ) && $_GET['settings-updated'] ) { //phpcs:ignore
 			if ( isset( $_GET['page'] ) && $_GET['page'] === 'ufaqsw-settings' ) { //phpcs:ignore
-				add_settings_error( 'ufaqsw_messages', 'ufaqsw_message', __( 'Settings saved successfully.', 'ufaqsw' ), 'updated' );
+				$message = __( 'Settings saved successfully.', 'ufaqsw' );
+
+				// Flush rewrite rules only when group detail page is enabled.
+				if ( get_option( 'ufaqsw_enable_group_detail_page' ) === 'on' ) {
+					flush_rewrite_rules();
+					$message = __( 'Settings saved successfully. Permalinks have been refreshed.', 'ufaqsw' );
+				}
+
+				add_settings_error( 'ufaqsw_messages', 'ufaqsw_message', $message, 'updated' );
 			}
 		}
 		settings_errors( 'ufaqsw_messages' );
@@ -127,7 +137,7 @@ class UFAQSW_Global_Settings {
  *
  * @return UFAQSW_Global_Settings The global settings instance.
  */
-function ufaqsw_global_settings() {
+function ufaqsw_global_settings() { //phpcs:ignore
 	return UFAQSW_Global_Settings::get_instance();
 }
 ufaqsw_global_settings();

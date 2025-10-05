@@ -61,22 +61,22 @@ add_filter( 'ufaqsw_simplify_variables', 'ufaqsw_simplify_variables' );
  */
 function ufaqsw_simplify_configuration_variables( $id ) {
 
-	$title_color               = get_post_meta( $id, 'ufaqsw_title_color' );
-	$title_font_size           = get_post_meta( $id, 'ufaqsw_title_font_size' );
-	$question_color            = get_post_meta( $id, 'ufaqsw_question_color' );
-	$answer_color              = get_post_meta( $id, 'ufaqsw_answer_color' );
-	$question_background_color = get_post_meta( $id, 'ufaqsw_question_background_color' );
-	$answer_background_color   = get_post_meta( $id, 'ufaqsw_answer_background_color' );
-	$border_color              = get_post_meta( $id, 'ufaqsw_border_color' );
-	$question_font_size        = get_post_meta( $id, 'ufaqsw_question_font_size' );
-	$answer_font_size          = get_post_meta( $id, 'ufaqsw_answer_font_size' );
-	$template                  = get_post_meta( $id, 'ufaqsw_template' );
-	$showall                   = get_post_meta( $id, 'ufaqsw_answer_showall' );
-	$hidetitle                 = get_post_meta( $id, 'ufaqsw_hide_title' );
-	$normal_icon               = get_post_meta( $id, 'ufaqsw_normal_icon' );
-	$active_icon               = get_post_meta( $id, 'ufaqsw_active_icon' );
-	$behaviour                 = get_post_meta( $id, 'ufaqsw_faq_behaviour' );
-	$question_bold             = get_post_meta( $id, 'ufaqsw_question_bold' );
+	$title_color               = get_post_meta( $id, 'ufaqsw_title_color', false );
+	$title_font_size           = get_post_meta( $id, 'ufaqsw_title_font_size', false );
+	$question_color            = get_post_meta( $id, 'ufaqsw_question_color', false );
+	$answer_color              = get_post_meta( $id, 'ufaqsw_answer_color', false );
+	$question_background_color = get_post_meta( $id, 'ufaqsw_question_background_color', false );
+	$answer_background_color   = get_post_meta( $id, 'ufaqsw_answer_background_color', false );
+	$border_color              = get_post_meta( $id, 'ufaqsw_border_color', false );
+	$question_font_size        = get_post_meta( $id, 'ufaqsw_question_font_size', false );
+	$answer_font_size          = get_post_meta( $id, 'ufaqsw_answer_font_size', false );
+	$template                  = get_post_meta( $id, 'ufaqsw_template', false );
+	$showall                   = get_post_meta( $id, 'ufaqsw_answer_showall', false );
+	$hidetitle                 = get_post_meta( $id, 'ufaqsw_hide_title', false );
+	$normal_icon               = get_post_meta( $id, 'ufaqsw_normal_icon', false );
+	$active_icon               = get_post_meta( $id, 'ufaqsw_active_icon', false );
+	$behaviour                 = get_post_meta( $id, 'ufaqsw_faq_behaviour', false );
+	$question_bold             = get_post_meta( $id, 'ufaqsw_question_bold', false );
 
 	$formated_data                              = array();
 	$formated_data['title_color']               = ( isset( $title_color[0] ) ? $title_color[0] : '' );
@@ -210,9 +210,9 @@ add_filter(
 		if ( isset( $_GET['ufaqsw-preview'] ) && ! empty( $_GET['ufaqsw-preview'] ) ) {
 			if ( isset( $_GET['_wpnonce'] ) && wp_verify_nonce( $_GET['_wpnonce'], 'ufaqsw_preview_nonce' ) ) { //phpcs:ignore
 				return UFAQSW__PLUGIN_DIR . '/inc/templates/single-faq-preview.php';
-			} else {
-				wp_die( esc_html__( 'Invalid nonce verification.', 'ufaqsw' ) );
+
 			}
+			wp_die( esc_html__( 'Invalid nonce verification.', 'ufaqsw' ) );
 		}
 
 		return $template;
@@ -231,6 +231,10 @@ add_action(
 			return;
 		}
 
+		if ( 'on' === get_option( 'ufaqsw_enable_group_detail_page' ) ) {
+			return;
+		}
+
 		$preview_url = add_query_arg(
 			array(
 				'ufaqsw-preview' => $post->ID,
@@ -240,10 +244,10 @@ add_action(
 			home_url()
 		);
 
-		echo '<div class="misc-pub-section">
-			<a href="' . esc_url( $preview_url ) . '" class="button" target="_blank">' . esc_html__( 'Preview FAQ Group', 'ufaqsw' ) . '</a>
-			<p class="description">' . esc_html__( 'Click the button to preview the FAQ on the front end. Make sure to save/update the FAQ group first.', 'ufaqsw' ) . '</p>
-		</div>';
+		echo '<div class="misc-pub-section">';
+		echo '<a href="' . esc_url( $preview_url ) . '" class="button" target="_blank">' . esc_html__( 'Preview FAQ Group', 'ufaqsw' ) . '</a>';
+		echo '<p class="description">' . esc_html__( 'Click the button to preview the FAQ on the front end. Make sure to save/update the FAQ group first.', 'ufaqsw' ) . '</p>';
+		echo '</div>';
 
 		echo '<div class="misc-pub-section">';
 		echo '<strong>' . esc_html__( 'Note:', 'ufaqsw' ) . '</strong> ' . esc_html__( 'Creating an FAQ Group does not mean it will automatically appear on your website. ', 'ufaqsw' );
@@ -267,16 +271,14 @@ function ufaqsw_reorder_submenu() {
 	}
 
 	$desired_order = array(
-		'edit.php?post_type=ufaqsw',        // All FAQ Groups.
-		'post-new.php?post_type=ufaqsw',    // Add New FAQ Group.
-		'edit.php?post_type=ufaqsw_appearance', // Appearance (move this to 2nd).
-		'ufaqsw_chatbot_settings',          // FAQ Assistant (move this to 3rd).
-		'ufaqsw-settings',                  // Settings & Help.
+		'edit.php?post_type=ufaqsw',
+		'post-new.php?post_type=ufaqsw',
+		'edit.php?post_type=ufaqsw_appearance',
+		'ufaqsw_chatbot_settings',
+		'ufaqsw-settings',
 	);
 
 	$new_submenu = array();
-
-	// Build new submenu array in desired order.
 	foreach ( $desired_order as $slug ) {
 		foreach ( $submenu[ $parent_slug ] as $item ) {
 			if ( $item[2] === $slug ) {
@@ -286,15 +288,13 @@ function ufaqsw_reorder_submenu() {
 		}
 	}
 
-	// Append any submenu items not in the desired order list, keep original order.
 	foreach ( $submenu[ $parent_slug ] as $item ) {
 		if ( ! in_array( $item[2], $desired_order, true ) ) {
 			$new_submenu[] = $item;
 		}
 	}
 
-	// Replace original submenu with reordered one.
-	$submenu[ $parent_slug ] = $new_submenu; //phpcs:ignore.
+	$submenu[ $parent_slug ] = $new_submenu; //phpcs:ignore
 }
 
 add_filter( 'parent_file', 'ufaqsw_appearance_set_menu_parent' );
@@ -304,13 +304,13 @@ add_filter( 'submenu_file', 'ufaqsw_appearance_set_submenu_file' );
  * Sets the parent menu as active for the Appearance post type.
  *
  * @param string $parent_file The parent file.
- * @return string The modified parent file.
+ * @return string
  */
 function ufaqsw_appearance_set_menu_parent( $parent_file ) {
 	global $current_screen;
 
 	if ( isset( $current_screen->post_type ) && 'ufaqsw_appearance' === $current_screen->post_type ) {
-		return 'edit.php?post_type=ufaqsw'; // Set the FAQ Group menu as active.
+		return 'edit.php?post_type=ufaqsw';
 	}
 
 	return $parent_file;
@@ -320,13 +320,13 @@ function ufaqsw_appearance_set_menu_parent( $parent_file ) {
  * Sets the submenu highlight for the Appearance post type.
  *
  * @param string $submenu_file The submenu file.
- * @return string The modified submenu file.
+ * @return string
  */
 function ufaqsw_appearance_set_submenu_file( $submenu_file ) {
 	global $current_screen;
 
 	if ( isset( $current_screen->post_type ) && 'ufaqsw_appearance' === $current_screen->post_type ) {
-		return 'edit.php?post_type=ufaqsw_appearance'; // Set the submenu highlight.
+		return 'edit.php?post_type=ufaqsw_appearance';
 	}
 
 	return $submenu_file;
@@ -337,11 +337,8 @@ add_filter( 'post_updated_messages', 'ufaqsw_faq_group_updated_messages' );
 /**
  * Adds custom post updated messages for the FAQ Group post type.
  *
- * This function customizes the messages displayed in the WordPress admin
- * when a FAQ Group post is updated, published, or otherwise modified.
- *
  * @param array $messages The existing post updated messages.
- * @return array The modified post updated messages.
+ * @return array
  */
 function ufaqsw_faq_group_updated_messages( $messages ) {
 	global $post;
@@ -352,15 +349,15 @@ function ufaqsw_faq_group_updated_messages( $messages ) {
 	}
 
 	$messages['ufaqsw'] = array(
-		0  => '', // Unused.
+		0  => '',
 		1  => __( 'FAQ Group published.', 'ufaqsw' ),
 		2  => __( 'Custom field updated.', 'ufaqsw' ),
 		3  => __( 'Custom field deleted.', 'ufaqsw' ),
 		4  => __( 'FAQ Group updated.', 'ufaqsw' ),
-		5  => isset( $_GET['revision'] ) ? sprintf( // phpcs:ignore
+		5  => isset( $_GET['revision'] ) ? sprintf( //phpcs:ignore
 			/* translators: %s: Date and time of the revision */
 			__( 'FAQ Group restored to revision from %s.', 'ufaqsw' ),
-			wp_post_revision_title( (int) $_GET['revision'], false ) // phpcs:ignore
+			wp_post_revision_title( (int) $_GET['revision'], false )
 		) : false,
 		6  => __( 'FAQ Group published.', 'ufaqsw' ),
 		7  => __( 'FAQ Group saved.', 'ufaqsw' ),
@@ -376,3 +373,61 @@ function ufaqsw_faq_group_updated_messages( $messages ) {
 	return $messages;
 }
 
+/**
+ * Renders the FAQ group content on single FAQ group pages.
+ *
+ * @param string $content The original post content.
+ * @return string
+ */
+function ufaqsw_render_faq_group_content( $content ) {
+	if ( is_singular( 'ufaqsw' ) && in_the_loop() && is_main_query() ) {
+
+		remove_filter( 'the_content', 'ufaqsw_render_faq_group_content' );
+		ob_start();
+
+		$group_id = get_the_ID();
+
+		/**
+		 * Hook: ufaqsw_before_faq_group_content
+		 */
+		do_action( 'ufaqsw_before_faq_group_content', $group_id );
+
+		$group_description = get_post_meta( $group_id, 'group_short_desc', true );
+		if ( ! empty( $group_description ) ) {
+			echo '<div class="ufaqsw-group-description">' . wp_kses_post( wpautop( $group_description ) ) . '</div>';
+		}
+		echo do_shortcode( '[ufaqsw id="' . esc_attr( $group_id ) . '" title_hide="yes"]' );
+
+		/**
+		 * Hook: ufaqsw_after_faq_group_content
+		 */
+		do_action( 'ufaqsw_after_faq_group_content', $group_id );
+
+		$faq_output = ob_get_clean();
+
+		$faq_output = apply_filters( 'ufaqsw_faq_group_output', $faq_output, $group_id );
+
+		return $content . $faq_output;
+	}
+
+	add_filter( 'the_content', 'ufaqsw_render_faq_group_content' );
+	return $content;
+}
+add_filter( 'the_content', 'ufaqsw_render_faq_group_content' );
+
+/**
+ * Use custom template for FAQ group single.
+ *
+ * @param string $template The path to the template.
+ * @return string
+ */
+function ufaqsw_get_faq_group_template( $template ) {
+	if ( is_singular( 'ufaqsw' ) ) {
+		$theme_template = locate_template( array( 'single-faq-group.php' ) );
+		if ( $theme_template ) {
+			return $theme_template;
+		}
+	}
+	return $template;
+}
+add_filter( 'single_template', 'ufaqsw_get_faq_group_template' );
