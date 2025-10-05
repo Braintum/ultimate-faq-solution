@@ -3,8 +3,8 @@ Contributors: braintum
 Donate link: https://www.solrengine.com/  
 Tags: faq-directory, accordion, knowledgebase, product-faq, ai  
 Requires at least: 5.1  
-Tested up to: 6.8.2  
-Stable tag: 1.7.3
+Tested up to: 6.8.3  
+Stable tag: 1.7.4
 Requires PHP: 7.4.0  
 License: GPLv2 or later  
 License URI: https://www.gnu.org/licenses/license-list.html#GPLCompatibleLicenses  
@@ -134,6 +134,9 @@ Yes! Starting from version 1.6.4, Ultimate FAQ Solution includes an AI-powered f
 14. AI content generation: Instantly generate suggested answers for your FAQs using AI, streamlining the process of creating accurate and helpful responses.
 
 == Changelog ==
+
+= 1.7.4 =
+* New: FAQ group detail page supported—view individual FAQ group details on their own page.
 
 = 1.7.3 =
 * Fixed: FAQ schema for WooCommerce products now outputs correctly for improved SEO.
