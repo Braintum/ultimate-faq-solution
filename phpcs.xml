@@ -4,6 +4,11 @@
     <rule ref="WordPress">
         <!-- Disable the filename rule globally -->
         <exclude name="WordPress.Files.FileName" />
+        <!-- Ignore snake_case naming convention warnings for all naming -->
+        <exclude name="WordPress.NamingConventions.ValidVariableName" />
+        <exclude name="WordPress.NamingConventions.ValidFunctionName" />
+        <exclude name="WordPress.NamingConventions.ValidHookName" />
+        <exclude name="PSR1.Methods.CamelCapsMethodName" />
     </rule>
 
     <!-- Exclude vendor and node_modules -->
