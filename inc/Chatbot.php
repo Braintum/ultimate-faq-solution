@@ -195,7 +195,4 @@ class Chatbot {
 
 		echo '<chatbot-component></chatbot-component>';
 	}
-
 }
-
-

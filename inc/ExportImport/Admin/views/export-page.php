@@ -16,16 +16,38 @@ if ( ! defined( 'ABSPATH' ) ) {
 ?>
 <div class="wrap">
 
-	<?php if ( isset( $report ) && is_array( $report ) ) : ?>
-		<div style="background:#fff;padding:10px;border:1px solid #ccd;max-width:800px;">
-			<h3><?php esc_html_e( 'Import Report', 'ufaqsw' ); ?></h3>
-			<pre style="white-space:pre-wrap;"><?php echo esc_html( print_r( $report, true ) ); ?></pre>
-		</div>
-	<?php endif; ?>
+	<h1><?php esc_html_e( 'Export / Import page.', 'ufaqsw' ); ?></h1>
+	<p>
+		<?php
+		esc_html_e(
+			'Use this tool to export and import your FAQ data between different sites using the Ultimate FAQ Solution plugin.',
+			'ufaqsw'
+		);
+		?>
+	</p>
 
-	<h1><?php esc_html_e( 'Export FAQs', 'ufaqsw' ); ?></h1>
+	<p>
+		<?php
+		esc_html_e(
+			'You can choose to export or import only specific data types — such as FAQ Groups, Appearances, FAQ Assistant, AI Integration, or Plugin Settings. The exported file will be generated in JSON format, which can easily be imported on another site running the same plugin.',
+			'ufaqsw'
+		);
+		?>
+	</p>
+
+	<div style="margin-top:10px; padding:10px; background:#fff3cd; border-left:4px solid #ff9800;">
+		<strong><?php esc_html_e( 'Note:', 'ufaqsw' ); ?></strong>
+		<?php
+		esc_html_e(
+			'Uploaded media such as images, videos, or other attachments linked to your FAQs will not be included in the export file. Only text-based FAQ data, configuration, and appearance settings will be exported. You\'ll need to manually upload media files on the destination site if they\'re used inside your FAQ content.',
+			'ufaqsw'
+		);
+		?>
+	</div>
+
+	<h2><?php esc_html_e( 'Export', 'ufaqsw' ); ?></h2>
 	<form method="post" action="">
-		<p><?php esc_html_e( 'Select what you want to export:', 'ufaqsw' ); ?></p>
+		<p><?php esc_html_e( 'Select the specific data types you want to export. You can choose one or multiple options based on your needs:', 'ufaqsw' ); ?></p>
 
 		<label>
 			<input type="checkbox" name="ufs_export_types[]" value="faq_groups">
@@ -36,6 +58,21 @@ if ( ! defined( 'ABSPATH' ) ) {
 			<input type="checkbox" name="ufs_export_types[]" value="appearances">
 			<?php esc_html_e( 'Appearances', 'ufaqsw' ); ?>
 		</label><br>
+
+		<label>
+			<input type="checkbox" name="ufs_export_types[]" value="faq_assistant">
+			<?php esc_html_e( 'FAQ Assistant', 'ufaqsw' ); ?>
+		</label><br>
+
+		<label>
+			<input type="checkbox" name="ufs_export_types[]" value="settings">
+			<?php esc_html_e( 'Settings', 'ufaqsw' ); ?>
+		</label><br>
+
+		<label>
+			<input type="checkbox" name="ufs_export_types[]" value="ai_integration">
+			<?php esc_html_e( 'AI Integration', 'ufaqsw' ); ?>
+		</label><br>
 	
 		<input type="hidden" name="ufs_action" value="export">
 		<?php submit_button( __( 'Export Selected', 'ufaqsw' ) ); ?>
@@ -44,7 +81,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	<hr>
 
 	<h2><?php esc_html_e( 'Import', 'ufaqsw' ); ?></h2>
-	<p><?php esc_html_e( 'Upload a JSON previously exported by this plugin. Import will create posts and options.', 'ufaqsw' ); ?></p>
+	<p><?php esc_html_e( 'Upload a JSON file previously exported by this plugin. Import will create new FAQ items and update settings.', 'ufaqsw' ); ?></p>
 
 	<form method="post" enctype="multipart/form-data" style="margin-top:12px;">
 		<?php wp_nonce_field( 'ufs_import', 'ufs_import_nonce' ); ?>

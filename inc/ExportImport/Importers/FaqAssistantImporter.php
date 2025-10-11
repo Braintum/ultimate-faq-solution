@@ -12,14 +12,14 @@ use Mahedi\UltimateFaqSolution\ExportImport\Base\BaseImporter;
 /**
  * Class to handle importing of FAQ settings.
  */
-class SettingsImporter extends BaseImporter {
+class FaqAssistantImporter extends BaseImporter {
 
 	/**
 	 * The type of the importer.
 	 *
 	 * @var string
 	 */
-	protected string $type = 'settings';
+	protected string $type = 'faq_assistant';
 
 	/**
 	 * Import settings data.
@@ -31,19 +31,23 @@ class SettingsImporter extends BaseImporter {
 
 		foreach ( $data as $key => $value ) {
 
-			if ( 'ufaqsw_global_faq' === $key && ! empty( $value ) ) {
-				$old_id = $value;
-				$new_id = $this->getMappedId( intval( $old_id ) );
-				if ( $new_id ) {
-					$value = $new_id;
-				} else {
-					$value = $old_id; // Fallback to old ID if no mapping found.
+			if ( isset( $value['faq_groups'] ) && is_array( $value['faq_groups'] ) ) {
+				$updated_groups = array();
+				foreach ( $value['faq_groups'] as $old_id ) {
+					$new_id = $this->getMappedId( intval( $old_id ) );
+					if ( $new_id ) {
+						$updated_groups[] = $new_id;
+					} else {
+						$updated_groups[] = $old_id; // Fallback to old ID if no mapping found.
+					}
 				}
+				$value['faq_groups'] = $updated_groups;
+
 			}
 
 			update_option( $key, maybe_unserialize( $value ) );
 		}
-		return $data;
+		return $data['ufaqsw_chatbot_settings'];
 	}
 
 	/**

@@ -57,6 +57,8 @@ class FaqGroupImporter extends BaseImporter {
 				update_post_meta( $post_id, '_old_appearance_id', $group['appearance_id'] );
 			}
 
+			update_post_meta( $post_id, '_old_group_id', $group['id'] );
+
 			$mapping[ intval( $group['id'] ?? 0 ) ] = $post_id;
 		}
 

@@ -27,7 +27,29 @@ class SettingsExporter extends BaseExporter {
 	 * @return array<string, mixed>
 	 */
 	public function export(): array {
-		$settings = get_option( 'ultimate_faq_solution_settings', array() );
-		return (array) $settings;
+
+		$settings = array();
+
+		$settings_field = array(
+			'ufaqsw_enable_woocommerce',
+			'ufaqsw_enable_search',
+			'ufaqsw_enable_filter',
+			'ufaqsw_live_search_text',
+			'ufaqsw_live_search_loading_text',
+			'ufaqsw_search_result_not_found',
+			'ufaqsw_setting_custom_style',
+			'ufaqsw_enable_global_faq',
+			'ufaqsw_global_faq_label',
+			'ufaqsw_product_hide_group_title',
+			'ufaqsw_global_faq',
+			'ufaqsw_detail_page_slug',
+			'ufaqsw_enable_group_detail_page',
+		);
+
+		foreach ( $settings_field as $field ) {
+			$settings[ $field ] = get_option( $field );
+		}
+
+		return $settings;
 	}
 }

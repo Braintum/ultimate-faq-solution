@@ -24,7 +24,7 @@ class FileHelper {
 	 */
 	public static function downloadJsonResponse( string $json, string $filename = 'ufs-export.json' ): void {
 		if ( headers_sent() ) {
-			wp_die( esc_html__( 'Headers already sent, cannot download file.', 'ultimate-faq-solution' ) );
+			wp_die( esc_html__( 'Headers already sent, cannot download file.', 'ufaqsw' ) );
 		}
 		header( 'Content-Type: application/json; charset=utf-8' );
 		header( 'Content-Disposition: attachment; filename="' . sanitize_file_name( basename( $filename ) ) . '"' );

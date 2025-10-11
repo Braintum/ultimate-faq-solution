@@ -38,6 +38,9 @@ class AdminPage {
 
 		// Hook into admin_init to handle form submissions.
 		add_action( 'admin_init', array( self::class, 'handle_form_submission' ) );
+
+		// Hook into admin_notices to display reports.
+		add_action( 'admin_notices', array( self::class, 'display_admin_notices' ) );
 	}
 
 	/**
@@ -48,8 +51,8 @@ class AdminPage {
 	public static function add_menu(): void {
 		add_submenu_page(
 			'edit.php?post_type=ufaqsw',
-			__( 'Export/Import', 'ultimate-faq-solution' ),
-			__( 'Export/Import', 'ultimate-faq-solution' ),
+			__( 'Export/Import', 'ufaqsw' ),
+			__( 'Export/Import', 'ufaqsw' ),
 			'manage_options',
 			'ufs-export-import',
 			array( self::class, 'render' )
@@ -77,8 +80,16 @@ class AdminPage {
 		// Handle import form submission.
 		if ( isset( $_POST['ufs_import_nonce'] ) && wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['ufs_import_nonce'] ) ), 'ufs_import' ) ) {
 			if ( ! empty( $_FILES['ufs_import_file'] ) ) {
-				$res    = ImportService::handleUpload( $_FILES['ufs_import_file'] ); // phpcs:ignore
-				self::$report = $res;
+				// Check MIME type for security.
+				$allowed_types = array( 'application/json' );
+				$file_type     = isset( $_FILES['ufs_import_file']['type'] ) ? sanitize_text_field( $_FILES['ufs_import_file']['type'] ) : '';
+
+				if ( ! in_array( $file_type, $allowed_types, true ) ) {
+					self::$report = array( 'error' => esc_html__( 'Invalid file type. Only JSON files are allowed.', 'ufaqsw' ) );
+				} else {
+					$res = ImportService::handleUpload( $_FILES['ufs_import_file'] ); // phpcs:ignore
+					self::$report = $res;
+				}
 			} else {
 				self::$report = array( 'error' => 'no_file' );
 			}
@@ -96,5 +107,62 @@ class AdminPage {
 			$report = self::$report;
 		}
 		include UFAQSW__PLUGIN_DIR . 'inc/ExportImport/Admin/views/export-page.php';
+	}
+
+	/**
+	 * Display admin notices based on the report data.
+	 *
+	 * @return void
+	 */
+	public static function display_admin_notices(): void {
+		// Only show notices on the export/import page.
+		$screen = get_current_screen();
+		if ( ! isset( $screen->id ) || 'ufaqsw_page_ufs-export-import' !== $screen->id ) {
+			return;
+		}
+
+		if ( empty( self::$report ) ) {
+			return;
+		}
+
+		$report = self::$report;
+
+		// Handle error messages.
+		if ( isset( $report['error'] ) ) {
+			$error_message = '';
+			switch ( $report['error'] ) {
+				case 'no_file':
+					$error_message = esc_html__( 'Please select a file to import.', 'ufaqsw' );
+					break;
+				case 'Invalid file type. Only JSON files are allowed.':
+					$error_message = esc_html__( 'Invalid file type. Only JSON files are allowed.', 'ufaqsw' );
+					break;
+				default:
+					$error_message = esc_html( $report['error'] );
+					break;
+			}
+			printf(
+				'<div class="notice notice-error is-dismissible"><p>%s</p></div>',
+				esc_html( $error_message )
+			);
+		}
+
+		// Handle success messages.
+		if ( isset( $report['results'] ) && $report['results'] ) {
+			$success_message = '';
+
+			foreach ( $report['results'] as $key => $value ) {
+				// translators: %1$s is the import result key (like 'faqs', 'categories'), %2$s is the number/count value.
+				$success_message .= sprintf( esc_html__( '%1$s: %2$s', 'ufaqsw' ), ucfirst( str_replace( '_', ' ', $key ) ), $value ) . '<br>';
+			}
+
+			printf(
+				'<div class="notice notice-success is-dismissible"><p>%s</p></div>',
+				$success_message // phpcs:ignore
+			);
+		}
+
+		// Clear the report after displaying.
+		self::$report = array();
 	}
 }

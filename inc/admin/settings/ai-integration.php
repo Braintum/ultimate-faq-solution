@@ -99,7 +99,6 @@ function ufaqsw_register_ai_settings_page() {
 			),
 		)
 	);
-
 }
 
 add_action( 'cmb2_admin_init', 'ufaqsw_register_ai_settings_page' );
@@ -126,7 +125,6 @@ function ufaqsw_ai_settings_before_cmb2_output( $cmb_id, $object_id, $object_typ
 	);
 	echo '<br><a href="https://www.braintum.com/docs/ultimate-faq-solution/ai-integration/" target="_blank" style="display:inline-block;margin-top:10px;">' . esc_html__( 'Read the AI Integration Documentation', 'ufaqsw' ) . '</a>';
 	echo '</div>';
-
 }
 add_action( 'cmb2_before_form', 'ufaqsw_ai_settings_before_cmb2_output', 1, 4 );
 
@@ -170,5 +168,3 @@ function ufaqsw_prepopulate_ai_settings_defaults() {
 		update_option( $option_key, $options );
 	}
 }
-
-
