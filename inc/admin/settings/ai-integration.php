@@ -16,6 +16,17 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Add the settings page using CMB2.
  */
 function ufaqsw_register_ai_settings_page() {
+
+	if ( ! function_exists( 'wp_get_available_translations' ) ) {
+		require_once ABSPATH . 'wp-admin/includes/translation-install.php';
+	}
+
+	$translations = wp_get_available_translations();
+	$traslation_options = array( 'en_US' => 'English (US)' );
+	foreach ( $translations as $lang_code => $translation ) {
+		$traslation_options[ $lang_code ] = $translation['english_name'] . ' (' . $lang_code . ')';
+	}
+
 	$cmb = new_cmb2_box(
 		array(
 			'id'           => 'ufaqsw_ai_settings_page',
@@ -55,13 +66,24 @@ function ufaqsw_register_ai_settings_page() {
 			'name'        => __( 'ChatGPT Model', 'ufaqsw' ),
 			'id'          => 'chatgpt_model',
 			'type'        => 'select',
-			'default'     => 'gpt-3.5-turbo',
+			'default'     => 'GPT-4o',
 			'options'     => array(
 				'gpt-3.5-turbo' => __( 'GPT-3.5 Turbo', 'ufaqsw' ),
 				'gpt-4'         => __( 'GPT-4', 'ufaqsw' ),
 				'gpt-4o'        => __( 'GPT-4o', 'ufaqsw' ),
 			),
 			'description' => __( '<i>Select the ChatGPT model to use for AI-powered FAQ generation.</i>', 'ufaqsw' ),
+		)
+	);
+
+	$cmb->add_field(
+		array(
+			'name'        => __( 'Language', 'ufaqsw' ),
+			'id'          => 'ai_language',
+			'type'        => 'select',
+			'default'     => get_option( 'WPLANG', 'en_US' ),
+			'options'     => $traslation_options,
+			'description' => __( '<i>Select the language to use for AI-powered FAQ generation.</i>', 'ufaqsw' ),
 		)
 	);
 

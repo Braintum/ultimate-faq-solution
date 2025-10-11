@@ -21,7 +21,7 @@ class ChatGPT {
 	 *
 	 * @var string
 	 */
-	private string $model = 'gpt-4';
+	private string $model = 'gpt-4o';
 
 	/**
 	 * Language code.
@@ -74,7 +74,7 @@ class ChatGPT {
 	 */
 	public function refine( string $text, string $instruction = 'Refine the text' ): string {
 		if ( ! $this->api_key ) {
-			throw new \RuntimeException( __( 'Missing OpenAI API key.', 'ufaqsw' ) );
+			throw new \RuntimeException( esc_html__( 'Missing OpenAI API key.', 'ufaqsw' ) );
 		}
 
 		// Append language instruction if not English.
@@ -110,10 +110,14 @@ class ChatGPT {
 
 		if ( is_wp_error( $response ) ) {
 
-			throw new \RuntimeException( 'Request to OpenAI API failed: ' . $response->get_error_message() );
+			throw new \RuntimeException( esc_html__( 'Request to OpenAI API failed: ', 'ufaqsw' ) . esc_html( $response->get_error_message() ) );
 		}
 
 		$body = json_decode( wp_remote_retrieve_body( $response ), true );
+
+		if ( isset( $body['error'] ) ) {
+			throw new \RuntimeException( esc_html__( 'OpenAI API error: ', 'ufaqsw' ) . esc_html( $body['error']['message'] ) );
+		}
 
 		return $body['choices'][0]['message']['content'] ?? __( 'No response.', 'ufaqsw' );
 	}
@@ -125,17 +129,17 @@ class ChatGPT {
 	 * @return string
 	 */
 	private function get_language_name( string $code ): string {
-		$languages = array(
-			'en' => 'English',
-			'es' => 'Spanish',
-			'fr' => 'French',
-			'de' => 'German',
-			'it' => 'Italian',
-			'pt' => 'Portuguese',
-			'nl' => 'Dutch',
-			'pl' => 'Polish',
-		);
 
-		return $languages[ $code ] ?? $code;
+		if ( ! function_exists( 'wp_get_available_translations' ) ) {
+			require_once ABSPATH . 'wp-admin/includes/translation-install.php';
+		}
+
+		$translations = wp_get_available_translations();
+		$traslation_options = array( 'en_US' => 'English (US)' );
+		foreach ( $translations as $lang_code => $translation ) {
+			$traslation_options[ $lang_code ] = $translation['english_name'] . ' (' . $lang_code . ')';
+		}
+
+		return $traslation_options[ $code ] ?? $code;
 	}
 }

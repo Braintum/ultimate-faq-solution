@@ -3,6 +3,7 @@
 namespace BTRefiner\Core;
 
 use BTRefiner\Admin\Ajax;
+use BTRefiner\Admin\AiGenerator;
 use BTRefiner\Admin\TinyMCEIntegration;
 
 class Plugin {
@@ -25,6 +26,8 @@ class Plugin {
 			new TinyMCEIntegration();
 			new Ajax();
 		}
+
+		new AiGenerator();
 	}
 
 }

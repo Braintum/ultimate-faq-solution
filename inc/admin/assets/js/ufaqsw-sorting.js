@@ -1,5 +1,5 @@
 jQuery(function($) {
-	console.log( 'Testing...' );
+    'use strict';
     var $tbody = $('#the-list');
     $tbody.sortable({
         handle: '.ufaqsw-sort-handle',

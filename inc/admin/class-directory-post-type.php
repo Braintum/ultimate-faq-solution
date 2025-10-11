@@ -299,7 +299,7 @@ function ufaqsw_register_description_field_metabox() {
 	$cmb_group->add_field(
 		array(
 			'name' => '',
-			'desc' => esc_html__( 'Note: This section is visible only in the FAQ Assistant window.', 'ufaqsw' ),
+			'desc' => esc_html__( 'Note: This section is visible only in the FAQ Assistant window and FAQ Group detail page if enabled.', 'ufaqsw' ),
 			'type' => 'title',
 			'id'   => 'description_meta_title',
 		)
@@ -411,7 +411,9 @@ function ufaqsw_faq_columns_content( $column_name, $post_ID ) {
 	}
 
 	if ( 'ufaqsw_item_appearance' === $column_name ) {
-		$appearance = get_post_meta( $post_ID, 'linked_faq_appearance_id', true );
+
+		$appearance = ufaqsw_get_appearance_id( $post_ID );
+
 		if ( ! empty( $appearance ) ) {
 			$edit_link = get_edit_post_link( $appearance );
 			echo '<a href="' . esc_url( $edit_link ) . '" title="' . esc_html__( 'Edit Appearance', 'ufaqsw' ) . '" >' . esc_html( get_the_title( $appearance ) ) . '</a>';
