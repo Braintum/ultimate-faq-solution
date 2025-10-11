@@ -35,16 +35,18 @@ class ExportService {
 	/**
 	 * Export FAQ data and trigger JSON file download.
 	 *
+	 * @param array $selectedTypes The types of data to export.
 	 * @return void
 	 */
-	public static function exportDownload(): void {
+	public static function exportDownload( array $selectedTypes ): void {
 		if ( ! current_user_can( 'manage_options' ) ) {
 			wp_die( 'Insufficient permission' );
 		}
 		if ( ! self::$manager ) {
 			wp_die( 'Export manager not initialized' );
 		}
-		$json = self::$manager->exportToJson();
+		$json = self::$manager->exportToJson( $selectedTypes );
+
 		FileHelper::downloadJsonResponse( $json, 'ufs-export-' . date( 'Ymd-His' ) . '.json' ); // phpcs:ignore
 	}
 }

@@ -41,7 +41,7 @@ class ExportManager {
 			'meta' => array(
 				'exported_at' => gmdate( 'c' ),
 				'plugin'      => 'ultimate-faq-solution',
-				'version'     => '1.0.0',
+				'version'     => UFAQSW_VERSION,
 			),
 			'data' => array(),
 		);
@@ -59,23 +59,38 @@ class ExportManager {
 	 * @return array
 	 */
 	public function export( array $types ): array {
-		$export_data = array();
+		$out = array(
+			'meta' => array(
+				'exported_at' => gmdate( 'c' ),
+				'plugin'      => 'ultimate-faq-solution',
+				'version'     => UFAQSW_VERSION,
+			),
+			'data' => array(),
+		);
 
 		foreach ( $types as $type ) {
 			if ( isset( $this->exporters[ $type ] ) ) {
-				$export_data[ $type ] = $this->exporters[ $type ]->export();
+				$out['data'][ $type ] = $this->exporters[ $type ]->export();
 			}
 		}
 
-		return $export_data;
+		return $out;
 	}
 
 	/**
 	 * Export all data as a JSON string
 	 *
+	 * @param array $types Array of selected types to export.
 	 * @return string
 	 */
-	public function exportToJson(): string {
-		return wp_json_encode( $this->exportAll(), JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE );
+	public function exportToJson( array $types ): string {
+		return wp_json_encode( $this->export( $types ), JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE );
+	}
+
+	/**
+	 * Get all available exporter keys for UI rendering
+	 */
+	public function getAvailableExportTypes(): array {
+		return array_keys( $this->exporters );
 	}
 }

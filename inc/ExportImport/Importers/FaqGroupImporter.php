@@ -33,7 +33,7 @@ class FaqGroupImporter extends BaseImporter {
 			// Create group.
 			$post_id = $this->insertPost(
 				array(
-					'post_type' => 'faq_group',
+					'post_type' => 'ufaqsw',
 					'title'     => $group['title'] ?? '',
 					'content'   => $group['content'] ?? '',
 					'status'    => $group['status'] ?? 'publish',
@@ -54,35 +54,7 @@ class FaqGroupImporter extends BaseImporter {
 
 			// Appearance relationship (store old appearance id for later mapping).
 			if ( isset( $group['appearance_id'] ) ) {
-				update_post_meta( $post_id, '_appearance_id', $group['appearance_id'] );
-			}
-
-			// FAQ items (embedded).
-			if ( ! empty( $group['faq_items'] ) && is_array( $group['faq_items'] ) ) {
-				foreach ( $group['faq_items'] as $fi ) {
-					$faq_post_id = wp_insert_post(
-						array(
-							'post_type'    => 'faq_item',
-							'post_title'   => $fi['title'] ?? '',
-							'post_content' => $fi['content'] ?? '',
-							'post_status'  => $fi['status'] ?? 'publish',
-						)
-					);
-
-					if ( is_wp_error( $faq_post_id ) ) {
-						continue;
-					}
-
-					// Attach meta.
-					if ( ! empty( $fi['meta'] ) && is_array( $fi['meta'] ) ) {
-						foreach ( $fi['meta'] as $mk => $mv ) {
-							update_post_meta( $faq_post_id, $mk, maybe_unserialize( $mv[0] ?? $mv ) );
-						}
-					}
-
-					// Link to group.
-					update_post_meta( $faq_post_id, '_faq_group_id', $post_id );
-				}
+				update_post_meta( $post_id, '_old_appearance_id', $group['appearance_id'] );
 			}
 
 			$mapping[ intval( $group['id'] ?? 0 ) ] = $post_id;

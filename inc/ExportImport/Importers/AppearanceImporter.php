@@ -32,7 +32,7 @@ class AppearanceImporter extends BaseImporter {
 		foreach ( $data as $ap ) {
 			$post_id = $this->insertPost(
 				array(
-					'post_type' => 'faq_appearance',
+					'post_type' => 'ufaqsw_appearance',
 					'title'     => $ap['name'] ?? '',
 					'content'   => $ap['content'] ?? '',
 					'status'    => $ap['status'] ?? 'publish',
@@ -48,6 +48,42 @@ class AppearanceImporter extends BaseImporter {
 			}
 			$mapping[ intval( $ap['id'] ?? 0 ) ] = $post_id;
 		}
+
+		if ( ! empty( $mapping ) ) {
+			$this->updateMapping( $mapping );
+		}
+
 		return $mapping;
+	}
+
+	/**
+	 * Update FAQ groups to point to new appearance IDs based on the provided mapping.
+	 *
+	 * @param array $mapping Mapping of old appearance IDs to new post IDs.
+	 * @return void
+	 */
+	private function updateMapping( array $mapping ): void {
+		// Update FAQ groups to point to new appearance IDs.
+		$posts = get_posts(
+			array(
+				'post_type'   => 'ufaqsw',
+				'numberposts' => -1,
+				'post_status' => 'any',
+				'meta_query'  => array(
+					array(
+						'key'     => '_old_appearance_id',
+						'compare' => 'EXISTS',
+					),
+				),
+			)
+		);
+
+		foreach ( $posts as $p ) {
+			$old_id = get_post_meta( $p->ID, '_old_appearance_id', true );
+			if ( $old_id && isset( $mapping[ intval( $old_id ) ] ) ) {
+				update_post_meta( $p->ID, 'linked_faq_appearance_id', $mapping[ intval( $old_id ) ] );
+				delete_post_meta( $p->ID, '_old_appearance_id' );
+			}
+		}
 	}
 }

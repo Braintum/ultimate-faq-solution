@@ -43,16 +43,17 @@ class ImportManager {
 			'results' => array(),
 		);
 
-		$data = $payload['data'] ?? array();
+		$data = $payload['data'] ?? $payload;
 		foreach ( $data as $type => $items ) {
 			if ( isset( $this->importers[ $type ] ) ) {
 				$result                     = $this->importers[ $type ]->import( $items );
-				$report['results'][ $type ] = $result;
-			} else {
-				$report['results'][ $type ] = array(
-					'skipped' => true,
-					'reason'  => 'no importer registered for this type',
+				$report['results'][ $type ] = sprintf(
+					/* translators: %d: number of imported items */
+					esc_html__( '%d item(s) imported successfully', 'ufaqsw' ),
+					is_array( $result ) ? count( $result ) : ( is_object( $result ) ? 1 : 0 )
 				);
+			} else {
+				$report['results'][ $type ] = esc_html__( 'no importer registered for this type', 'ufaqsw' );
 			}
 		}
 		return $report;

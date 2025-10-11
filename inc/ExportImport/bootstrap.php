@@ -23,6 +23,7 @@ use Mahedi\UltimateFaqSolution\ExportImport\Managers\ExportManager;
 use Mahedi\UltimateFaqSolution\ExportImport\Managers\ImportManager;
 use Mahedi\UltimateFaqSolution\ExportImport\Services\ExportService;
 use Mahedi\UltimateFaqSolution\ExportImport\Services\ImportService;
+use Mahedi\UltimateFaqSolution\ExportImport\Admin\AdminPage;
 
 /**
  * Bootstrap the ExportImport functionality by registering exporters and importers.
@@ -33,7 +34,7 @@ function bootstrap(): void {
 	// Register and wire managers and services as simple singletons stored on static properties.
 	$exportManager = new ExportManager();
 	$exportManager->registerExporter( new FaqGroupExporter() );
-	// $exportManager->registerExporter( new AppearanceExporter() );
+	$exportManager->registerExporter( new AppearanceExporter() );
 	// $exportManager->registerExporter( new SettingsExporter() );
 	ExportService::setManager( $exportManager );
 
@@ -42,4 +43,6 @@ function bootstrap(): void {
 	$importManager->registerImporter( new AppearanceImporter() );
 	$importManager->registerImporter( new SettingsImporter() );
 	ImportService::setManager( $importManager );
+
+	AdminPage::init();
 }

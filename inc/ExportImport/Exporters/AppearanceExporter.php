@@ -29,9 +29,11 @@ class AppearanceExporter extends BaseExporter {
 	public function export(): array {
 		$posts = get_posts(
 			array(
-				'post_type'   => 'faq_appearance',
+				'post_type'   => 'ufaqsw_appearance',
 				'numberposts' => -1,
 				'post_status' => 'any',
+				'orderby'     => 'date',
+				'order'       => 'ASC',
 			)
 		);
 
