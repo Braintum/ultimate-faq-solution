@@ -123,74 +123,47 @@ class AiGenerator {
 		if ( isset( $ai_settings['enable_ai_integration'] ) && $ai_settings['enable_ai_integration'] ) {
 			?>
 		<div id="create-faq-ai-popup" style="display:none;">
-			<h2>Create FAQ Group with AI</h2>
+			<h2><?php echo esc_html__( 'Create FAQ Group with AI', 'ufaqsw' ); ?></h2>
 			<form id="ufaq-ai-form">
 				<p>
-					<label><strong>FAQ Group Title:</strong></label><br>
-					<input type="text" name="faq_title" class="regular-text" placeholder="e.g. Shipping & Delivery" required /><br>
-					<small class="description">Give your FAQ group a short, descriptive title. For example, "Shipping & Delivery", "Product Returns", or "Account Setup".</small>
+					<label><strong><?php echo esc_html__( 'FAQ Group Title:', 'ufaqsw' ); ?></strong></label><br>
+					<input type="text" name="faq_title" class="regular-text" placeholder="<?php echo esc_attr__( 'e.g. Shipping & Delivery', 'ufaqsw' ); ?>" required /><br>
+					<small class="description"><?php echo esc_html__( 'Give your FAQ group a short, descriptive title. For example, "Shipping & Delivery", "Product Returns", or "Account Setup".', 'ufaqsw' ); ?></small>
 				</p>
 
 				<p>
-					<label><strong>Context (page link or text):</strong></label><br>
-					<textarea name="faq_context" rows="4" class="large-text" placeholder="Paste a page link or short description..." required></textarea>
+					<label><strong><?php echo esc_html__( 'Context (page link or text):', 'ufaqsw' ); ?></strong></label><br>
+					<textarea name="faq_context" rows="4" class="large-text" placeholder="<?php echo esc_attr__( 'Paste a page link or short description...', 'ufaqsw' ); ?>" required></textarea>
 					<small class="description">
-						Provide the content or context that the AI will use to generate relevant FAQs.<br>
-						You can paste a page URL, a paragraph of text, or product/service details.
+						<?php echo esc_html__( 'Provide the content or context that the AI will use to generate relevant FAQs.', 'ufaqsw' ); ?><br>
+						<?php echo esc_html__( 'You can paste a page URL, a paragraph of text, or product/service details.', 'ufaqsw' ); ?>
 					</small>
 				</p>
 
 				<p>
-					<label><strong>Number of FAQ items:</strong></label><br>
+					<label><strong><?php echo esc_html__( 'Number of FAQ items:', 'ufaqsw' ); ?></strong></label><br>
 					<input type="number" name="faq_count" value="5" min="1" max="20" /><br>
-					<small class="description">Select how many FAQs you want the AI to generate for this group (1–20).</small>
+					<small class="description"><?php echo esc_html__( 'Select how many FAQs you want the AI to generate for this group (1-20).', 'ufaqsw' ); ?></small>
 				</p>
 
 				<p>
-					<label><strong>Tone / Style:</strong></label><br>
+					<label><strong><?php echo esc_html__( 'Tone / Style:', 'ufaqsw' ); ?></strong></label><br>
 					<select name="faq_tone" class="regular-text">
-						<option value="neutral" selected>Neutral / Informative</option>
-						<option value="friendly">Friendly & Conversational</option>
-						<option value="professional">Professional & Formal</option>
-						<option value="technical">Technical & Detailed</option>
-						<option value="marketing">Persuasive / Marketing Style</option>
+						<option value="neutral" selected><?php echo esc_html__( 'Neutral / Informative', 'ufaqsw' ); ?></option>
+						<option value="friendly"><?php echo esc_html__( 'Friendly & Conversational', 'ufaqsw' ); ?></option>
+						<option value="professional"><?php echo esc_html__( 'Professional & Formal', 'ufaqsw' ); ?></option>
+						<option value="technical"><?php echo esc_html__( 'Technical & Detailed', 'ufaqsw' ); ?></option>
+						<option value="marketing"><?php echo esc_html__( 'Persuasive / Marketing Style', 'ufaqsw' ); ?></option>
 					</select><br>
-					<small class="description">Choose the style in which answers should be written.</small>
+					<small class="description"><?php echo esc_html__( 'Choose the style in which answers should be written.', 'ufaqsw' ); ?></small>
 				</p>
 
 				<p>
-					<button type="submit" class="button button-primary">Generate FAQ Group</button>
+					<button type="submit" class="button button-primary"><?php echo esc_html__( 'Generate FAQ Group', 'ufaqsw' ); ?></button>
 				</p>
 			</form>
 
-			<div id="ufaq-ai-result" style="margin-top:15px;">
-				<div id="ufaq-ai-success" style="display:none;">
-					<div style="background:#d4edda; border:1px solid #c3e6cb; color:#155724; padding:15px; border-radius:5px; margin-bottom:15px;">
-						<h4 style="margin:0 0 10px 0; display:flex; align-items:center;">
-							<span style="color:#28a745; margin-right:8px;">✓</span>
-							Success!
-						</h4>
-						<p id="ufaq-success-message" style="margin:0;"></p>
-					</div>
-					<div style="text-align:center;">
-						<a id="ufaq-edit-link" href="#" class="button button-primary" style="margin-right:10px;">Edit FAQ Group</a>
-						<button type="button" class="button" onclick="tb_remove();">Close</button>
-					</div>
-				</div>
-				
-				<div id="ufaq-ai-error" style="display:none;">
-					<div style="background:#f8d7da; border:1px solid #f5c6cb; color:#721c24; padding:15px; border-radius:5px; margin-bottom:15px;">
-						<h4 style="margin:0 0 10px 0; display:flex; align-items:center;">
-							<span style="color:#dc3545; margin-right:8px;">✗</span>
-							Error
-						</h4>
-						<p id="ufaq-error-message" style="margin:0;"></p>
-					</div>
-					<div style="text-align:center;">
-						<button type="button" class="button button-primary" onclick="jQuery('#ufaq-ai-result > div').hide(); jQuery('#ufaq-ai-form').show();">Try Again</button>
-					</div>
-				</div>
-			</div>
+			<div id="ufaq-ai-result" style="margin-top:15px;"></div>
 
 			<style>
 				@keyframes spin {
