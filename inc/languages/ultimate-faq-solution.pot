@@ -2,10 +2,10 @@
 # This file is distributed under the GPLv2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Ultimate FAQ Solution 1.7.4\n"
+"Project-Id-Version: Ultimate FAQ Solution 1.7.5\n"
 "Report-Msgid-Bugs-To: "
 "https://wordpress.org/support/plugin/ultimate-faq-solution\n"
-"POT-Creation-Date: 2025-10-05 17:05:09+00:00\n"
+"POT-Creation-Date: 2025-10-11 15:59:57+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -90,6 +90,124 @@ msgstr ""
 msgid "No FAQs found."
 msgstr ""
 
+#: inc/ExportImport/Admin/AdminPage.php:54
+#: inc/ExportImport/Admin/AdminPage.php:55
+msgid "Export/Import"
+msgstr ""
+
+#: inc/ExportImport/Admin/AdminPage.php:88
+#: inc/ExportImport/Admin/AdminPage.php:138
+msgid "Invalid file type. Only JSON files are allowed."
+msgstr ""
+
+#: inc/ExportImport/Admin/AdminPage.php:135
+msgid "Please select a file to import."
+msgstr ""
+
+#: inc/ExportImport/Admin/AdminPage.php:156
+#. translators: %1$s is the import result key (like 'faqs', 'categories'), %2$s
+#. is the number/count value.
+msgid "%1$s: %2$s"
+msgstr ""
+
+#: inc/ExportImport/Admin/views/export-page.php:19
+msgid "Export / Import page."
+msgstr ""
+
+#: inc/ExportImport/Admin/views/export-page.php:22
+msgid ""
+"Use this tool to export and import your FAQ data between different sites "
+"using the Ultimate FAQ Solution plugin."
+msgstr ""
+
+#: inc/ExportImport/Admin/views/export-page.php:31
+msgid ""
+"You can choose to export or import only specific data types — such as FAQ "
+"Groups, Appearances, FAQ Assistant, AI Integration, or Plugin Settings. The "
+"exported file will be generated in JSON format, which can easily be "
+"imported on another site running the same plugin."
+msgstr ""
+
+#: inc/ExportImport/Admin/views/export-page.php:39
+#: inc/functions/actions_and_filters.php:253
+msgid "Note:"
+msgstr ""
+
+#: inc/ExportImport/Admin/views/export-page.php:41
+msgid ""
+"Uploaded media such as images, videos, or other attachments linked to your "
+"FAQs will not be included in the export file. Only text-based FAQ data, "
+"configuration, and appearance settings will be exported. You'll need to "
+"manually upload media files on the destination site if they're used inside "
+"your FAQ content."
+msgstr ""
+
+#: inc/ExportImport/Admin/views/export-page.php:48
+msgid "Export"
+msgstr ""
+
+#: inc/ExportImport/Admin/views/export-page.php:50
+msgid ""
+"Select the specific data types you want to export. You can choose one or "
+"multiple options based on your needs:"
+msgstr ""
+
+#: inc/ExportImport/Admin/views/export-page.php:54
+#: inc/admin/class-directory-post-type.php:23
+msgid "FAQ Groups"
+msgstr ""
+
+#: inc/ExportImport/Admin/views/export-page.php:59
+#: inc/admin/class-directory-post-type.php:68
+#: inc/admin/class-directory-post-type.php:70
+msgid "Appearances"
+msgstr ""
+
+#: inc/ExportImport/Admin/views/export-page.php:64 inc/admin/chatbot.php:29
+msgid "FAQ Assistant"
+msgstr ""
+
+#: inc/ExportImport/Admin/views/export-page.php:69
+msgid "Settings"
+msgstr ""
+
+#: inc/ExportImport/Admin/views/export-page.php:74
+#: inc/admin/settings/ai-integration.php:28
+#: inc/admin/settings/ai-integration.php:34
+msgid "AI Integration"
+msgstr ""
+
+#: inc/ExportImport/Admin/views/export-page.php:78
+msgid "Export Selected"
+msgstr ""
+
+#: inc/ExportImport/Admin/views/export-page.php:83
+msgid "Import"
+msgstr ""
+
+#: inc/ExportImport/Admin/views/export-page.php:84
+msgid ""
+"Upload a JSON file previously exported by this plugin. Import will create "
+"new FAQ items and update settings."
+msgstr ""
+
+#: inc/ExportImport/Admin/views/export-page.php:89
+msgid "Upload and Import"
+msgstr ""
+
+#: inc/ExportImport/Helpers/FileHelper.php:27
+msgid "Headers already sent, cannot download file."
+msgstr ""
+
+#: inc/ExportImport/Managers/ImportManager.php:52
+#. translators: %d: number of imported items
+msgid "%d item(s) imported successfully"
+msgstr ""
+
+#: inc/ExportImport/Managers/ImportManager.php:56
+msgid "no importer registered for this type"
+msgstr ""
+
 #: inc/FAQGroupActions.php:46
 msgid "FAQ Appearance"
 msgstr ""
@@ -155,10 +273,6 @@ msgstr ""
 
 #: inc/admin/chatbot.php:22
 msgid "FAQ Assistant Settings"
-msgstr ""
-
-#: inc/admin/chatbot.php:29
-msgid "FAQ Assistant"
 msgstr ""
 
 #: inc/admin/chatbot.php:33
@@ -381,7 +495,7 @@ msgid ""
 "\"Specific Pages\" is selected above."
 msgstr ""
 
-#: inc/admin/chatbot.php:302
+#: inc/admin/chatbot.php:301
 msgid ""
 "The FAQ Assistant adds an interactive, floating help icon to your website, "
 "giving visitors quick access to your FAQs in a sleek, chat-style interface. "
@@ -390,12 +504,8 @@ msgid ""
 "where your visitors need them."
 msgstr ""
 
-#: inc/admin/chatbot.php:307
+#: inc/admin/chatbot.php:306
 msgid "Read the FAQ Assistant Documentation."
-msgstr ""
-
-#: inc/admin/class-directory-post-type.php:23
-msgid "FAQ Groups"
 msgstr ""
 
 #: inc/admin/class-directory-post-type.php:24
@@ -441,11 +551,6 @@ msgstr ""
 
 #: inc/admin/class-directory-post-type.php:41
 msgid "This post type holds all FAQs for your site."
-msgstr ""
-
-#: inc/admin/class-directory-post-type.php:68
-#: inc/admin/class-directory-post-type.php:70
-msgid "Appearances"
 msgstr ""
 
 #: inc/admin/class-directory-post-type.php:72
@@ -707,11 +812,6 @@ msgstr ""
 msgid "AI Integration Settings"
 msgstr ""
 
-#: inc/admin/settings/ai-integration.php:28
-#: inc/admin/settings/ai-integration.php:34
-msgid "AI Integration"
-msgstr ""
-
 #: inc/admin/settings/ai-integration.php:37
 msgid ""
 "<i>Enable this option to activate the AI-powered FAQ generation on your "
@@ -775,7 +875,7 @@ msgstr ""
 msgid "Commands"
 msgstr ""
 
-#: inc/admin/settings/ai-integration.php:123
+#: inc/admin/settings/ai-integration.php:122
 msgid ""
 "Configure AI integration to automatically generate and enhance FAQ answers "
 "using OpenAI's ChatGPT. Enable AI-powered features, set your API key, "
@@ -784,39 +884,39 @@ msgid ""
 "efficiency of your FAQ content."
 msgstr ""
 
-#: inc/admin/settings/ai-integration.php:127
+#: inc/admin/settings/ai-integration.php:126
 msgid "Read the AI Integration Documentation"
 msgstr ""
 
-#: inc/admin/settings/ai-integration.php:153
+#: inc/admin/settings/ai-integration.php:151
 msgid "Refine the text"
 msgstr ""
 
-#: inc/admin/settings/ai-integration.php:154
+#: inc/admin/settings/ai-integration.php:152
 msgid "Refine and improve the following text."
 msgstr ""
 
-#: inc/admin/settings/ai-integration.php:157
+#: inc/admin/settings/ai-integration.php:155
 msgid "Make it longer"
 msgstr ""
 
-#: inc/admin/settings/ai-integration.php:158
+#: inc/admin/settings/ai-integration.php:156
 msgid "Make the following text longer and more detailed."
 msgstr ""
 
-#: inc/admin/settings/ai-integration.php:161
+#: inc/admin/settings/ai-integration.php:159
 msgid "Make it shorter"
 msgstr ""
 
-#: inc/admin/settings/ai-integration.php:162
+#: inc/admin/settings/ai-integration.php:160
 msgid "Make the following text more concise."
 msgstr ""
 
-#: inc/admin/settings/ai-integration.php:165
+#: inc/admin/settings/ai-integration.php:163
 msgid "Execute as command"
 msgstr ""
 
-#: inc/admin/settings/ai-integration.php:166
+#: inc/admin/settings/ai-integration.php:164
 msgid "Execute this text as prompt."
 msgstr ""
 
@@ -828,63 +928,10 @@ msgstr ""
 msgid "Settings saved successfully. Permalinks have been refreshed."
 msgstr ""
 
-#: inc/admin/settings/ui.php:207
+#: inc/admin/settings/ui.php:206
 msgid ""
 "You need the WooCommerce plugin installed and activated to use these "
 "integration settings."
-msgstr ""
-
-#: inc/admin/settings/ui.php:256 inc/admin/settings/ui.php:259
-msgid "Export"
-msgstr ""
-
-#: inc/admin/settings/ui.php:258
-msgid "To export all FAQ groups, click here"
-msgstr ""
-
-#: inc/admin/settings/ui.php:263
-msgid "Import"
-msgstr ""
-
-#: inc/admin/settings/ui.php:265
-msgid "To import FAQ groups, go to"
-msgstr ""
-
-#: inc/admin/settings/ui.php:266
-msgid "Tools → Import"
-msgstr ""
-
-#: inc/admin/settings/ui.php:267
-msgid "then choose \"WordPress\" and upload the exported file."
-msgstr ""
-
-#: inc/admin/settings/ui.php:270
-msgid ""
-"If the WordPress Importer is not yet installed, it will prompt you to "
-"install it. Just click the “Install Now” button, then once installed, click "
-"“Run Importer.”"
-msgstr ""
-
-#: inc/admin/settings/ui.php:273
-msgid "On the importer screen, upload the"
-msgstr ""
-
-#: inc/admin/settings/ui.php:273
-msgid "file you previously exported. Be sure to check the option to"
-msgstr ""
-
-#: inc/admin/settings/ui.php:273
-msgid "“Download and import file attachments”"
-msgstr ""
-
-#: inc/admin/settings/ui.php:273
-msgid "if you want to bring in any images or media associated with your FAQs."
-msgstr ""
-
-#: inc/admin/settings/ui.php:277
-msgid ""
-"After the import is complete, all your FAQ groups will be added to the "
-"current site, including their content, and metadata."
 msgstr ""
 
 #: inc/ai-writing-assistant/includes/API/ChatGPT.php:77
@@ -923,10 +970,6 @@ msgstr ""
 msgid ""
 "Click the button to preview the FAQ on the front end. Make sure to "
 "save/update the FAQ group first."
-msgstr ""
-
-#: inc/functions/actions_and_filters.php:253
-msgid "Note:"
 msgstr ""
 
 #: inc/functions/actions_and_filters.php:253

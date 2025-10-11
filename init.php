@@ -9,7 +9,7 @@
  * @license   GPL v2 or later
  *
  * Plugin Name: Ultimate FAQ Solution
- * Version: 1.7.4
+ * Version: 1.7.5
  * Plugin URI: https://www.braintum.com/ultimate-faq-solution/
  * Description: A WordPress plugin to create, organize, and display FAQs with responsive layouts and styles.
  * Author: braintum
@@ -19,7 +19,7 @@
  * License: GPLv2 or later
  * License URI: https://www.gnu.org/licenses/license-list.html#GPLCompatibleLicenses
  * Requires at least: 5.1
- * Tested up to: 6.8.2
+ * Tested up to: 6.8.3
  *
  * Requires PHP: 7.4
  */
@@ -33,7 +33,7 @@ if ( ! function_exists( 'add_action' ) ) {
 * Define some global constants
 * Use `plugin_dir_path` and `plugin_dir_url` only when necessary to reduce overhead.
 */
-define( 'UFAQSW_VERSION', '1.7.4' );
+define( 'UFAQSW_VERSION', '1.7.5' );
 define( 'UFAQSW_PRFX', 'ufaqsw' );
 define( 'UFAQSW_BASE', plugin_basename( __FILE__ ) );
 define( 'UFAQSW__PLUGIN_DIR', __DIR__ . '/' );
@@ -61,7 +61,7 @@ if ( is_admin() ) {
 	include_once UFAQSW__PLUGIN_DIR . 'inc/ai-writing-assistant/init.php';
 	include_once UFAQSW__PLUGIN_DIR . 'inc/ExportImport/bootstrap.php';
 
-	\Mahedi\UltimateFaqSolution\ExportImport\bootstrap();
+	Mahedi\UltimateFaqSolution\ExportImport\bootstrap();
 }
 
 // Lazy-load classes to improve performance.

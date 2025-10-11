@@ -4,7 +4,7 @@ Donate link: https://www.solrengine.com/
 Tags: faq-directory, accordion, knowledgebase, product-faq, ai  
 Requires at least: 5.1  
 Tested up to: 6.8.3  
-Stable tag: 1.7.4
+Stable tag: 1.7.5
 Requires PHP: 7.4.0  
 License: GPLv2 or later  
 License URI: https://www.gnu.org/licenses/license-list.html#GPLCompatibleLicenses  
@@ -58,7 +58,7 @@ This feature is designed to streamline your workflow, especially when building l
 * 🌍 **Multi-Language:** Compatible with translation plugins.
 * 🧑‍💻 **Developer-Friendly Code:** Clean, well-documented code for easy customization.
 * 🚀 **SEO-Friendly & Lightweight:** Optimized for speed and search engine visibility.
-* ⬆️ **One-Click Export/Import:** Easily migrate or back up your FAQs.
+* ⬆️ **Native Export/Import System:** Seamlessly migrate, backup, or transfer your FAQs with our custom-built export/import functionality.
 * 👁️ **FAQ Preview Option:** Preview your FAQ groups before publishing.
 
 
@@ -68,6 +68,26 @@ The FAQ Assistant adds an interactive, floating help icon to your website, givin
 With the FAQ Assistant, your users can search for answers, browse FAQ groups, and interact with your knowledge base in real time—without leaving the page they’re on. The assistant is fully customizable: you can adjust its appearance, welcome message, and even the footer text to match your site’s branding and tone. It’s designed to be mobile-friendly and accessibility-ready, ensuring all visitors can benefit from instant support.
 
 Whether you run a WooCommerce store, a membership site, or a blog, the FAQ Assistant helps reduce support requests and empowers your users to find answers independently. Enable it today to provide a modern, conversational FAQ experience that keeps your audience engaged and informed.
+
+🔄 **Native Export/Import System**  
+Ultimate FAQ Solution features a powerful, custom-built export/import system that goes beyond WordPress's default import/export functionality. Our native solution is specifically designed for FAQ data, ensuring perfect compatibility and a seamless migration experience.
+
+**Why Choose Our Native Export/Import?**
+* **Purpose-Built for FAQs:** Unlike generic WordPress importers, our system is specifically designed to handle FAQ groups, questions, answers, and their relationships perfectly.
+* **Complete Data Integrity:** Preserve all FAQ metadata, custom fields, and relationships during export/import operations.
+* **Selective Export:** Choose exactly what to export - specific FAQ groups, settings, or everything at once.
+* **JSON Format:** Clean, readable JSON format that's both human-readable and developer-friendly.
+* **No Data Loss:** Our native system ensures 100% accuracy when transferring FAQ content between sites.
+* **Better Performance:** Faster and more reliable than WordPress's default import system for FAQ-specific content.
+
+**Perfect for:**
+* Migrating FAQs between staging and production sites
+* Creating backups of your FAQ content
+* Transferring FAQ databases between different WordPress installations
+* Sharing FAQ templates with team members or clients
+* Setting up multiple sites with similar FAQ structures
+
+The export/import functionality is accessible directly from your WordPress admin under **Ultimate FAQs > Export/Import**, providing an intuitive interface for managing your FAQ data transfers with just a few clicks.
 
 == Installation ==
 
@@ -97,6 +117,15 @@ Yes, the plugin includes accessibility-ready templates to ensure usability for a
 
 = Can I add FAQs to WooCommerce products? =  
 Absolutely. You can display a dedicated FAQ tab on each product page.
+
+= How does the export/import feature work? =  
+Ultimate FAQ Solution includes a native export/import system that's specifically designed for FAQ content. Unlike WordPress's default import/export, our system ensures perfect data integrity and handles all FAQ-specific metadata. You can export your entire FAQ database or select specific groups, then import them to another site with zero data loss.
+
+= Can I migrate FAQs between different WordPress sites? =  
+Yes! The native export/import feature makes it easy to transfer FAQs between sites. Simply export your FAQ data as a JSON file from the source site, then import it to your destination site using the Export/Import page under Ultimate FAQs in your admin menu.
+
+= What formats does the export/import support? =  
+The system uses a clean JSON format that preserves all FAQ data, including questions, answers, metadata, and group relationships. This format is both human-readable and ensures complete compatibility when importing.
 
 = Can I include media in the answers? =  
 Yes. You can embed images, videos, and even shortcodes using the WYSIWYG editor.
@@ -134,6 +163,11 @@ Yes! Starting from version 1.6.4, Ultimate FAQ Solution includes an AI-powered f
 14. AI content generation: Instantly generate suggested answers for your FAQs using AI, streamlining the process of creating accurate and helpful responses.
 
 == Changelog ==
+
+= 1.7.5 =
+* New: Enhanced native export/import functionality for seamless FAQ data migration and backup.
+* Improved: Better error handling and validation during import operations.
+* Fixed: Minor compatibility issues with latest WordPress version.
 
 = 1.7.4 =
 * New: FAQ group detail page supported—view individual FAQ group details on their own page.
@@ -214,7 +248,7 @@ Yes! Starting from version 1.6.4, Ultimate FAQ Solution includes an AI-powered f
 * FAQ Assistant: added floating help icon with chat-style FAQ interface.
 
 = 1.5.5 =  
-* Export/Import feature added.  
+* **Native Export/Import System:** Introduced custom-built export/import functionality specifically designed for FAQ content, replacing WordPress default import system for better performance and data integrity.  
 * Settings save success message added.  
 * Question in bold option added for faq group.
 
