@@ -207,8 +207,23 @@ class AiGenerator {
 		} else {
 			?>
 		<div id="create-faq-ai-popup" style="display:none;">
-			<h2>AI Integration Not Enabled</h2>
-			<p>Please enable AI Integration in the <a href="<?php echo esc_url( admin_url( 'admin.php?page=ufaqsw_ai_integration_settings' ) ); ?>">AI Integration Settings</a> to use this feature.</p>
+			<div style="text-align: center; padding: 40px 20px;">
+				<div style="background: #f8f9fa; border: 1px solid #dee2e6; border-radius: 8px; padding: 30px; max-width: 400px; margin: 0 auto;">
+					<div style="font-size: 48px; color: #6c757d; margin-bottom: 20px;">🤖</div>
+					<h3 style="color: #495057; margin: 0 0 15px 0; font-size: 18px;"><?php echo esc_html__( 'AI Integration Not Enabled', 'ufaqsw' ); ?></h3>
+					<p style="color: #6c757d; margin: 0 0 25px 0; line-height: 1.5;">
+						<?php echo esc_html__( 'To use the AI FAQ Generator, please enable AI Integration in your plugin settings.', 'ufaqsw' ); ?>
+					</p>
+					<div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
+						<a href="<?php echo esc_url( admin_url( 'admin.php?page=ufaqsw_ai_integration_settings' ) ); ?>" 
+						   class="button button-primary" 
+						   style="text-decoration: none;">
+							<?php echo esc_html__( 'Enable AI Integration', 'ufaqsw' ); ?>
+						</a>
+						<button type="button" class="button" onclick="tb_remove();"><?php echo esc_html__( 'Close', 'ufaqsw' ); ?></button>
+					</div>
+				</div>
+			</div>
 		</div>
 			<?php
 		}
