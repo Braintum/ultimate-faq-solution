@@ -90,6 +90,9 @@ add_action(
 		new Mahedi\UltimateFaqSolution\FAQGroupActions();
 
 		load_plugin_textdomain( 'ufaqsw', false, dirname( plugin_basename( __FILE__ ) ) . '/inc/languages' );
+
+		// Deactivation feedback.
+		new Mahedi\UltimateFaqSolution\DeactivationFeedback();
 	}
 );
 
