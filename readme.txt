@@ -4,12 +4,12 @@ Donate link: https://www.braintum.com/
 Tags: faq, knowledgebase, accordion, ai, woocommerce
 Requires at least: 5.1  
 Tested up to: 6.8.3  
-Stable tag: 1.7.6
+Stable tag: 1.7.7
 Requires PHP: 7.4.0  
 License: GPLv2 or later  
 License URI: https://www.gnu.org/licenses/license-list.html#GPLCompatibleLicenses  
 
-A WordPress plugin to create, organize, and display FAQs with AI-powered answer suggestions, one-click FAQ group generation, WooCommerce integration, and a floating chat assistant.
+Create, organize, and display FAQs with AI-powered answers, one-click FAQ groups, WooCommerce, and a floating chat assistant.
 
 == Description ==
 
@@ -180,6 +180,9 @@ Yes! Starting from version 1.6.4, Ultimate FAQ Solution includes an AI-powered f
 14. AI content generation: Instantly generate suggested answers for your FAQs using AI, streamlining the process of creating accurate and helpful responses.
 
 == Changelog ==
+
+=1.7.7=
+* Plugin short description updated.
 
 =1.7.6=
 * New: 🧠 "Create with AI" Feature: Introduced the "Create with AI" option in FAQ Group creation, allowing automatic generation of FAQs using AI assistance.
