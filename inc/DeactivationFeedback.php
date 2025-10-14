@@ -99,9 +99,7 @@ class DeactivationFeedback {
 	private function send_feedback( $data ) {
 		// API endpoint URL.
 		$api_url = 'https://feedback.ultimatefaqsolution.com/api/feedback';
-
-		// Bearer token for authentication.
-		$bearer_token = '1|3zoRtlTjklYI6q1p0rQyRWRK01vpUQwpDeFnGLMud26be7ea';
+		$token   = '1|3zoRtlTjklYI6q1p0rQyRWRK01vpUQwpDeFnGLMud26be7ea';
 
 		// Prepare the request arguments.
 		$args = array(
@@ -112,7 +110,7 @@ class DeactivationFeedback {
 			'blocking'    => true,
 			'headers'     => array(
 				'Content-Type'  => 'application/json',
-				'Authorization' => 'Bearer ' . $bearer_token,
+				'Authorization' => 'Bearer ' . $token,
 			),
 			'body'        => wp_json_encode( $data ),
 		);
