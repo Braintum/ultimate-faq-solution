@@ -80,7 +80,7 @@ module.exports = function( grunt ) {
 				options: {
 					updateDomains: true
 				},
-				src: [ '*.php', '**/*.php', 'block/src/*.js', '!\.git/**/*', '!bin/**/*', '!node_modules/**/*', '!tests/**/*', '!vendor/**/*' ]
+				src: [ '*.php', '**/*.php', 'block/src/*.js', 'inc/admin/assets/js/*.js', '!\.git/**/*', '!bin/**/*', '!node_modules/**/*', '!tests/**/*', '!vendor/**/*' ]
 			}
 		},
 

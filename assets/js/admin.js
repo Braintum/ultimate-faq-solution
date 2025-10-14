@@ -55,57 +55,5 @@ jQuery(document).ready(function($) {
 		  $(this).select();		  
 		  document.execCommand("copy");
 	})
-	
-	//Settings tab scripts
-
-	$('.ufaqsw_click_handle').on('click', function(e){
-		
-		var obj = $(this);
-		var container_id = obj.attr('href');
-		$('.ufaqsw_click_handle').each(function(){
-			$(this).removeClass('nav-tab-active');
-			$($(this).attr('href')).hide();
-		})
-		obj.addClass('nav-tab-active');
-		$(container_id).show();
-
-		if ( '#getting_started' === container_id ) {
-			$('.submit').hide();
-		} else if ( '#export_import' === container_id ) {
-			$('.submit').hide();
-		} else {
-			$('.submit').show();
-		}
-
-		setTimeout(function() {
-			window.scrollTo(0, 0);
-		}, 1);
-	})
-	
-
-	
-	var hash = window.location.hash;
-	
-	if(hash!=''){
-		$('.ufaqsw_click_handle').each(function(){
-			
-			$($(this).attr('href')).hide();
-			if($(this).attr('href')==hash){
-				$(this).removeClass('nav-tab-active').addClass('nav-tab-active');
-
-				if ( '#getting_started' === hash ) {
-					$('.submit').hide();
-				} else if ( '#export_import' === hash ) {
-					$('.submit').hide();
-				} else {
-					$('.submit').show();
-				}
-
-			}else{
-				$(this).removeClass('nav-tab-active');
-			}
-		})
-		$(hash).show();
-	}
 
 });

@@ -42,7 +42,7 @@ class FAQ_Group_Sorting {
 		if ( 'ufaqsw' === $typenow && 'edit.php' === $hook ) {
 			wp_enqueue_script(
 				'ufaqsw-sorting',
-				plugins_url( 'admin/assets/js/ufaqsw-sorting.js', dirname( __FILE__ ) ),
+				plugins_url( 'admin/assets/js/ufaqsw-sorting.js', __DIR__ ),
 				array( 'jquery', 'jquery-ui-sortable' ),
 				defined( 'UFAQSW_VERSION' ) ? UFAQSW_VERSION : '1.0.0',
 				true
@@ -57,7 +57,7 @@ class FAQ_Group_Sorting {
 			);
 			wp_enqueue_style(
 				'ufaqsw-sorting-css',
-				plugins_url( 'admin/assets/css/ufaqsw-sorting.css', dirname( __FILE__ ) ),
+				plugins_url( 'admin/assets/css/ufaqsw-sorting.css', __DIR__ ),
 				array(),
 				defined( 'UFAQSW_VERSION' ) ? UFAQSW_VERSION : '1.0.0'
 			);
@@ -137,4 +137,3 @@ class FAQ_Group_Sorting {
 }
 
 new FAQ_Group_Sorting();
-

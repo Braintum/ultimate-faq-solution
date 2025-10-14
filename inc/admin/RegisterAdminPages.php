@@ -7,21 +7,23 @@
  * @package UltimateFAQSolution
  */
 
+namespace Mahedi\UltimateFaqSolution\Admin;
+
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
 /**
- * Class UFAQSW_Global_Settings
+ * Class RegisterAdminPages
  *
  * Handles the global settings for the Ultimate FAQ Solution plugin.
  */
-class UFAQSW_Global_Settings {
+class RegisterAdminPages {
 
 	/**
 	 * Holds the singleton instance of the class.
 	 *
-	 * @var UFAQSW_Global_Settings
+	 * @var RegisterAdminPages
 	 */
 	private static $instance;
 
@@ -30,7 +32,7 @@ class UFAQSW_Global_Settings {
 	 *
 	 * Ensures that only one instance of the class is created and used.
 	 *
-	 * @return UFAQSW_Global_Settings The singleton instance of the class.
+	 * @return RegisterAdminPages The singleton instance of the class.
 	 */
 	public static function get_instance() {
 		if ( ! isset( self::$instance ) ) {
@@ -40,7 +42,7 @@ class UFAQSW_Global_Settings {
 		return self::$instance;
 	}
 	/**
-	 * Constructor for the UFAQSW_Global_Settings class.
+	 * Constructor for the RegisterAdminPages class.
 	 *
 	 * Initializes the class by adding actions for displaying the settings page
 	 * and registering plugin settings.
@@ -70,6 +72,15 @@ class UFAQSW_Global_Settings {
 			'manage_options',
 			'ufaqsw-settings',
 			array( $this, 'settings_page_callback_func' )
+		);
+
+		add_submenu_page(
+			'edit.php?post_type=ufaqsw',
+			'Get Help - Ultimate FAQ Solution',
+			'Get Help',
+			'manage_options',
+			'ufaqsw-get-help',
+			array( $this, 'get_help_page_callback_func' )
 		);
 	}
 
@@ -103,8 +114,19 @@ class UFAQSW_Global_Settings {
 	 * This function includes the UI file for the settings page if it exists.
 	 */
 	public function settings_page_callback_func() {
-		if ( file_exists( UFAQSW__PLUGIN_DIR . 'inc/admin/settings/ui.php' ) ) {
-			include_once UFAQSW__PLUGIN_DIR . 'inc/admin/settings/ui.php';
+		if ( file_exists( UFAQSW__PLUGIN_DIR . 'inc/admin/templates/settings.php' ) ) {
+			include_once UFAQSW__PLUGIN_DIR . 'inc/admin/templates/settings.php';
+		}
+	}
+
+	/**
+	 * Callback function to display the help page.
+	 *
+	 * This function includes the help template file if it exists.
+	 */
+	public function get_help_page_callback_func() {
+		if ( file_exists( UFAQSW__PLUGIN_DIR . 'inc/admin/templates/get-help.php' ) ) {
+			include_once UFAQSW__PLUGIN_DIR . 'inc/admin/templates/get-help.php';
 		}
 	}
 
@@ -128,16 +150,3 @@ class UFAQSW_Global_Settings {
 		settings_errors( 'ufaqsw_messages' );
 	}
 }
-
-/**
- * Retrieve the global settings instance.
- *
- * This function ensures that the global settings instance is initialized
- * and returned for use throughout the plugin.
- *
- * @return UFAQSW_Global_Settings The global settings instance.
- */
-function ufaqsw_global_settings() { //phpcs:ignore
-	return UFAQSW_Global_Settings::get_instance();
-}
-ufaqsw_global_settings();

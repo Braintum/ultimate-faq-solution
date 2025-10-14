@@ -275,7 +275,10 @@ function ufaqsw_reorder_submenu() {
 		'post-new.php?post_type=ufaqsw',
 		'edit.php?post_type=ufaqsw_appearance',
 		'ufaqsw_chatbot_settings',
+		'ufaqsw_ai_integration_settings',
 		'ufaqsw-settings',
+		'ufs-export-import',
+		'ufaqsw-get-help',
 	);
 
 	$new_submenu = array();
