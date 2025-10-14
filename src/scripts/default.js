@@ -2,7 +2,7 @@ jQuery(function($) {
 	'use strict';
 
 	const toggleItem = (element) => {
-		if (ufaqsw_object_default.behaviour == 'accordion') {			
+		if (ufaqsw_object_default.behaviour == 'accordion') {
 			closeall(element);
 		}
 
@@ -48,6 +48,7 @@ jQuery(function($) {
 		jQuery(".ufaqsw_toggle_default .ufaqsw-toggle-title-area-default").each(function() {
 			if (jQuery(this).hasClass('ufaqsw_active') && this !== exceptElement[0]) {
 				hideItem(jQuery(this));
+				jQuery(this).find('i').toggle();
 			}
 		});
 	};
