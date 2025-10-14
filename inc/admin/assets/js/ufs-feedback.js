@@ -12,9 +12,9 @@ jQuery(document).ready(function($) {
 	});
 
 	function showFeedbackModal(deactivateUrl) {
-		const modal = $(`
-			<div id="ufs-feedback-modal" class="ufs-modal">
-				<div class="ufs-modal-content">
+		const modal = $(
+			`<div id="ufs-feedback-modal" class="ufs-modal" style="position:fixed;z-index:9999;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.32);display:flex;align-items:center;justify-content:center;">
+				<div class="ufs-modal-content" style="position:relative;z-index:2;">
 					<h2>${__('Quick Feedback', 'ufaqsw')}</h2>
 					<p>${__('Please let us know why you\'re deactivating the plugin:', 'ufaqsw')}</p>
 					<p><em>${__('Your feedback helps us improve the plugin and provide better features for all users.', 'ufaqsw')}</em></p>
@@ -46,6 +46,14 @@ jQuery(document).ready(function($) {
 		`);
 
 		$('body').append(modal);
+
+		// Overlay click handler (close if click outside modal content)
+		$('#ufs-feedback-modal').on('mousedown', function(e) {
+			if ($(e.target).is('#ufs-feedback-modal')) {
+				$('#ufs-feedback-modal').remove();
+				$('#ufs-loading-overlay').remove();
+			}
+		});
 
 		// Loading overlay (hidden initially)
 		const loader = $(`
