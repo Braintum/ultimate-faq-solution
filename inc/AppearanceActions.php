@@ -47,7 +47,7 @@ class AppearanceActions {
 	public function handle_apply_appearance_to_all( $post_id ) {
 		if (
 			! isset( $_POST['ufaqsw_apply_appearance_to_all_nonce'], $_POST['ufaqsw_appearance_id'], $_POST['ufaqsw_apply_appearance_to_all'] )
-			|| ! wp_verify_nonce( $_POST['ufaqsw_apply_appearance_to_all_nonce'], 'ufaqsw_apply_appearance_to_all_' . $post_id )
+			|| ! wp_verify_nonce( $_POST['ufaqsw_apply_appearance_to_all_nonce'], 'ufaqsw_apply_appearance_to_all_' . $post_id ) // phpcs:ignore
 		) {
 			return;
 		}
@@ -212,5 +212,4 @@ class AppearanceActions {
 			}
 		}
 	}
-
 }

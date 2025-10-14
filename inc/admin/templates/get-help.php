@@ -1,82 +1,62 @@
 <?php
 /**
- * Adds documentation to the selected code.
- *
- * This method generates appropriate documentation comments for the given code selection,
- * following PHPDoc standards and best practices.
+ * Get Help page for Ultimate FAQ Solution
  *
  * @package UltimateFaqSolution
- * @return void
  */
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 ?>
-<div class="wrap">
-	<div id="poststuff">
-		<div class="ufaqsw-get-started">
-
-			<h1>🎉 Welcome to the Ultimate FAQ Solution!</h1>
-			<p>You are awesome, by the way.</p>
-
-			<h2>🚀 Getting Started</h2>
-			<p>Getting started with Ultimate FAQ Solution is super easy. Just follow these simple steps:</p>
-
-			<ol>
-				<li>
-				<strong>Create a FAQ Group:</strong><br>
-				Go to <em>New FAQ Group</em> and create one by giving it a name. Then start adding your questions and answers by filling out the fields. Use the "Add New" button to add more entries.<br>
-				The answer field uses WordPress's built-in WYSIWYG editor — so you can add text, images, links, or anything else you need.
-				</li>
-
-				<li>
-				<strong>Insert Your FAQ Group on a Page:</strong><br>
-				After creating your FAQ Group and adding all your content, it’s time to add it to a page. Each FAQ Group has its own shortcode, which you can find on the <em>Manage FAQ Groups</em> page.
-				</li>
-
-				<li>
-				<strong>Display the FAQ:</strong><br>
-				Copy the shortcode and paste it anywhere on your site — in a page, post, or widget area. That’s it!
-				</li>
-			</ol>
-
-			<hr>
-
-			<h2>💬 Enhance UX with the FAQ Assistant</h2>
-			<p>
-				Want to make FAQs even easier to access? Turn on the <strong>FAQ Assistant</strong> feature from the plugin settings.  
-				It adds a floating help icon to every page on your site, opening an interactive assistant window where users can browse FAQ Groups and find answers quickly.
-			</p>
-
-			<p>
-				To enable it, go to <a href="<?php echo esc_url( admin_url( 'edit.php?post_type=ufaqsw&page=ufaqsw_chatbot_settings' ) ); ?>"><strong>FAQ Assistant Settings</strong></a> from the plugin menu and toggle the <em>“Enable FAQ Assistant”</em> option.
-			</p>
-
-			<hr>
-
-			<p><strong>Any troubles?</strong><br>
-			We’re here to help! You can:</p>
-
-			<ul>
-				<li>✉️ Email us at <a href="mailto:braintum@gmail.com">braintum@gmail.com</a></li>
-				<li>🧾 Open a support ticket at <a href="https://www.braintum.com/support/" target="_blank">https://www.braintum.com/support/</a></li>
-			</ul>
-
-			<blockquote style="background: #f9f9f9; border-left: 4px solid #0073aa; padding: 10px 15px;">
-				We recommend opening a support ticket through our website for the <strong>best support experience</strong> — fast, friendly, and personalized.
-			</blockquote>
-
-			<p><strong>⏱️ We typically respond within 1 business day</strong> to all support requests.</p>
-
-			<hr>
-
-			<h2>📚 Plugin Documentation</h2>
-
-			<p>Before reaching out, you may want to browse our documentation — most common questions and setup steps are covered there:</p>
-
-			<p>
-				🔗 <a href="https://www.braintum.com/docs/ultimate-faq-solution/" target="_blank"><strong>View Ultimate FAQ Solution Documentation</strong></a>
-			</p>
-
+<div class="ufs-help-wrap">
+	<div class="ufs-help-header">
+		<div class="ufs-help-logo">
+			<img src="<?php echo esc_url( UFAQSW__PLUGIN_URL . 'assets/images/logo.png' ); ?>" alt="Ultimate FAQ Solution Logo" />
+		</div>
+		<div class="ufs-header-text">
+			<h1 class="ufs-help-title"><?php esc_html_e( 'Get Help', 'ufaqsw' ); ?></h1>
+			<p class="ufs-help-subtitle"><?php esc_html_e( 'Support, documentation, and troubleshooting for Ultimate FAQ Solution.', 'ufaqsw' ); ?></p>
 		</div>
 	</div>
-		<!-- /poststuff -->
+	<div class="ufs-help-cards">
+		<div class="ufs-help-card">
+			<div class="ufs-card-icon">📚</div>
+			<h3><?php esc_html_e( 'Documentation', 'ufaqsw' ); ?></h3>
+			<p><?php esc_html_e( 'Read the full plugin documentation and feature guides.', 'ufaqsw' ); ?></p>
+			<a class="ufs-btn" href="https://www.braintum.com/docs/ultimate-faq-solution/" target="_blank">View Docs</a>
+		</div>
+		<div class="ufs-help-card">
+			<div class="ufs-card-icon">💬</div>
+			<h3><?php esc_html_e( 'Get Support', 'ufaqsw' ); ?></h3>
+			<p><?php esc_html_e( 'Contact our team for help or to report a bug.', 'ufaqsw' ); ?></p>
+			<a class="ufs-btn" target="_blank" href="https://www.braintum.com/support/">Contact Us</a>
+		</div>
+		<div class="ufs-help-card">
+			<div class="ufs-card-icon">
+				<!-- GitHub SVG icon -->
+				<svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+					<path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.021c0 4.428 2.865 8.184 6.839 9.504.5.092.682-.217.682-.483 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.004.07 1.532 1.032 1.532 1.032.892 1.53 2.341 1.088 2.91.832.091-.647.35-1.088.636-1.339-2.221-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.025A9.564 9.564 0 0 1 12 6.844c.85.004 1.705.115 2.504.337 1.909-1.295 2.748-1.025 2.748-1.025.546 1.378.202 2.397.1 2.65.64.7 1.028 1.595 1.028 2.688 0 3.847-2.337 4.695-4.566 4.944.359.309.678.919.678 1.853 0 1.337-.012 2.419-.012 2.749 0 .268.18.579.688.481C19.138 20.2 22 16.447 22 12.021 22 6.484 17.523 2 12 2z" fill="#181717"/>
+				</svg>
+			</div>
+			<h3><?php esc_html_e( 'GitHub', 'ufaqsw' ); ?></h3>
+			<p><?php esc_html_e( 'View the source code, report issues, or contribute on GitHub.', 'ufaqsw' ); ?></p>
+			<a class="ufs-btn" target="_blank" href="https://github.com/Braintum/ultimate-faq-solution">View on GitHub</a>
+		</div>
+	</div>
+
+	<div class="ufs-section" id="support">
+		<h2>💡 <?php esc_html_e( 'Need More Help?', 'ufaqsw' ); ?></h2>
+		<div class="ufs-support">
+			<p><strong><?php esc_html_e( 'We’re here to help!', 'ufaqsw' ); ?></strong> <?php esc_html_e( 'Contact us for fast, friendly support:', 'ufaqsw' ); ?></p>
+			<ul>
+				<li>✉️ <a href="mailto:support@ultimatefaqsolution.com">support@ultimatefaqsolution.com</a></li>
+				<li>🧾 <a href="https://www.braintum.com/support/" target="_blank">Open a support ticket</a></li>
+			</ul>
+			<p><?php esc_html_e( 'We typically respond within 1 business day.', 'ufaqsw' ); ?></p>
+		</div>
+	</div>
+	<div class="ufs-help-footer">
+		<?php esc_html_e( 'Ultimate FAQ Solution by ', 'ufaqsw' ); ?> <a href="https://www.braintum.com/" target="_blank">Braintum</a>
+	</div>
 </div>
