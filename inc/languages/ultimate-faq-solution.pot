@@ -2,10 +2,10 @@
 # This file is distributed under the GPLv2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Ultimate FAQ Solution 1.7.5\n"
+"Project-Id-Version: Ultimate FAQ Solution 1.7.6\n"
 "Report-Msgid-Bugs-To: "
 "https://wordpress.org/support/plugin/ultimate-faq-solution\n"
-"POT-Creation-Date: 2025-10-11 15:59:57+00:00\n"
+"POT-Creation-Date: 2025-10-14 22:04:37+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -62,7 +62,7 @@ msgid "Appearance applied to all FAQ groups."
 msgstr ""
 
 #: inc/AppearanceActions.php:189 inc/admin/class-directory-post-type.php:389
-#: inc/admin/settings/ai-integration.php:85
+#: inc/admin/settings/ai-integration.php:107
 msgid "Title"
 msgstr ""
 
@@ -172,8 +172,8 @@ msgid "Settings"
 msgstr ""
 
 #: inc/ExportImport/Admin/views/export-page.php:74
-#: inc/admin/settings/ai-integration.php:28
-#: inc/admin/settings/ai-integration.php:34
+#: inc/admin/settings/ai-integration.php:39
+#: inc/admin/settings/ai-integration.php:45
 msgid "AI Integration"
 msgstr ""
 
@@ -231,7 +231,7 @@ msgid "Select an appearance:"
 msgstr ""
 
 #: inc/FAQGroupActions.php:109 inc/admin/class-directory-post-type.php:75
-#: inc/admin/class-directory-post-type.php:417
+#: inc/admin/class-directory-post-type.php:419
 msgid "Edit Appearance"
 msgstr ""
 
@@ -269,6 +269,14 @@ msgstr ""
 #: inc/Shortcodes.php:166 inc/Shortcodes.php:249 inc/Shortcodes.php:267
 #. translators: %s is the name of the template that was not found.
 msgid "%s Template Not Found"
+msgstr ""
+
+#: inc/admin/RegisterAdminPages.php:139
+msgid "Settings saved successfully."
+msgstr ""
+
+#: inc/admin/RegisterAdminPages.php:144
+msgid "Settings saved successfully. Permalinks have been refreshed."
 msgstr ""
 
 #: inc/admin/chatbot.php:22
@@ -723,7 +731,9 @@ msgid "Group Description"
 msgstr ""
 
 #: inc/admin/class-directory-post-type.php:302
-msgid "Note: This section is visible only in the FAQ Assistant window."
+msgid ""
+"Note: This section is visible only in the FAQ Assistant window and FAQ "
+"Group detail page if enabled."
 msgstr ""
 
 #: inc/admin/class-directory-post-type.php:310
@@ -780,11 +790,11 @@ msgstr ""
 msgid "Shortcode"
 msgstr ""
 
-#: inc/admin/class-directory-post-type.php:536
+#: inc/admin/class-directory-post-type.php:538
 msgid "Duplicate this item"
 msgstr ""
 
-#: inc/admin/class-directory-post-type.php:536
+#: inc/admin/class-directory-post-type.php:538
 msgid "Duplicate"
 msgstr ""
 
@@ -808,74 +818,82 @@ msgstr ""
 msgid "Loading..."
 msgstr ""
 
-#: inc/admin/settings/ai-integration.php:22
+#: inc/admin/settings/ai-integration.php:33
 msgid "AI Integration Settings"
 msgstr ""
 
-#: inc/admin/settings/ai-integration.php:37
+#: inc/admin/settings/ai-integration.php:48
 msgid ""
 "<i>Enable this option to activate the AI-powered FAQ generation on your "
 "website.</i>"
 msgstr ""
 
-#: inc/admin/settings/ai-integration.php:42
+#: inc/admin/settings/ai-integration.php:53
 msgid "ChatGPT API Key"
 msgstr ""
 
-#: inc/admin/settings/ai-integration.php:45
+#: inc/admin/settings/ai-integration.php:56
 msgid ""
 "<i>Enter your OpenAI ChatGPT API key to enable AI-powered FAQ "
 "generation.</i> <a href=\"https://platform.openai.com/account/api-keys\" "
 "target=\"_blank\">Get your API key</a>"
 msgstr ""
 
-#: inc/admin/settings/ai-integration.php:55
+#: inc/admin/settings/ai-integration.php:66
 msgid "ChatGPT Model"
 msgstr ""
 
-#: inc/admin/settings/ai-integration.php:60
+#: inc/admin/settings/ai-integration.php:71
 msgid "GPT-3.5 Turbo"
 msgstr ""
 
-#: inc/admin/settings/ai-integration.php:61
+#: inc/admin/settings/ai-integration.php:72
 msgid "GPT-4"
 msgstr ""
 
-#: inc/admin/settings/ai-integration.php:62
+#: inc/admin/settings/ai-integration.php:73
 msgid "GPT-4o"
 msgstr ""
 
-#: inc/admin/settings/ai-integration.php:64
+#: inc/admin/settings/ai-integration.php:75
 msgid "<i>Select the ChatGPT model to use for AI-powered FAQ generation.</i>"
 msgstr ""
 
-#: inc/admin/settings/ai-integration.php:72
+#: inc/admin/settings/ai-integration.php:81
+msgid "Language"
+msgstr ""
+
+#: inc/admin/settings/ai-integration.php:86
+msgid "<i>Select the language to use for AI-powered FAQ generation.</i>"
+msgstr ""
+
+#: inc/admin/settings/ai-integration.php:94
 msgid "AI Commands"
 msgstr ""
 
-#: inc/admin/settings/ai-integration.php:73
+#: inc/admin/settings/ai-integration.php:95
 msgid ""
 "Add custom AI commands for the FAQ Generation. These commands will be "
 "available as a dropdown in the TinyMCE editor for the answer field."
 msgstr ""
 
-#: inc/admin/settings/ai-integration.php:75
+#: inc/admin/settings/ai-integration.php:97
 msgid "Command {#}"
 msgstr ""
 
-#: inc/admin/settings/ai-integration.php:76
+#: inc/admin/settings/ai-integration.php:98
 msgid "Add Command"
 msgstr ""
 
-#: inc/admin/settings/ai-integration.php:77
+#: inc/admin/settings/ai-integration.php:99
 msgid "Remove Command"
 msgstr ""
 
-#: inc/admin/settings/ai-integration.php:94
+#: inc/admin/settings/ai-integration.php:116
 msgid "Commands"
 msgstr ""
 
-#: inc/admin/settings/ai-integration.php:122
+#: inc/admin/settings/ai-integration.php:144
 msgid ""
 "Configure AI integration to automatically generate and enhance FAQ answers "
 "using OpenAI's ChatGPT. Enable AI-powered features, set your API key, "
@@ -884,51 +902,95 @@ msgid ""
 "efficiency of your FAQ content."
 msgstr ""
 
-#: inc/admin/settings/ai-integration.php:126
+#: inc/admin/settings/ai-integration.php:148
 msgid "Read the AI Integration Documentation"
 msgstr ""
 
-#: inc/admin/settings/ai-integration.php:151
+#: inc/admin/settings/ai-integration.php:173
 msgid "Refine the text"
 msgstr ""
 
-#: inc/admin/settings/ai-integration.php:152
+#: inc/admin/settings/ai-integration.php:174
 msgid "Refine and improve the following text."
 msgstr ""
 
-#: inc/admin/settings/ai-integration.php:155
+#: inc/admin/settings/ai-integration.php:177
 msgid "Make it longer"
 msgstr ""
 
-#: inc/admin/settings/ai-integration.php:156
+#: inc/admin/settings/ai-integration.php:178
 msgid "Make the following text longer and more detailed."
 msgstr ""
 
-#: inc/admin/settings/ai-integration.php:159
+#: inc/admin/settings/ai-integration.php:181
 msgid "Make it shorter"
 msgstr ""
 
-#: inc/admin/settings/ai-integration.php:160
+#: inc/admin/settings/ai-integration.php:182
 msgid "Make the following text more concise."
 msgstr ""
 
-#: inc/admin/settings/ai-integration.php:163
+#: inc/admin/settings/ai-integration.php:185
 msgid "Execute as command"
 msgstr ""
 
-#: inc/admin/settings/ai-integration.php:164
+#: inc/admin/settings/ai-integration.php:186
 msgid "Execute this text as prompt."
 msgstr ""
 
-#: inc/admin/settings/settings.php:117
-msgid "Settings saved successfully."
+#: inc/admin/templates/get-help.php:18
+msgid "Get Help"
 msgstr ""
 
-#: inc/admin/settings/settings.php:122
-msgid "Settings saved successfully. Permalinks have been refreshed."
+#: inc/admin/templates/get-help.php:19
+msgid "Support, documentation, and troubleshooting for Ultimate FAQ Solution."
 msgstr ""
 
-#: inc/admin/settings/ui.php:206
+#: inc/admin/templates/get-help.php:25
+msgid "Documentation"
+msgstr ""
+
+#: inc/admin/templates/get-help.php:26
+msgid "Read the full plugin documentation and feature guides."
+msgstr ""
+
+#: inc/admin/templates/get-help.php:31
+msgid "Get Support"
+msgstr ""
+
+#: inc/admin/templates/get-help.php:32
+msgid "Contact our team for help or to report a bug."
+msgstr ""
+
+#: inc/admin/templates/get-help.php:42
+msgid "GitHub"
+msgstr ""
+
+#: inc/admin/templates/get-help.php:43
+msgid "View the source code, report issues, or contribute on GitHub."
+msgstr ""
+
+#: inc/admin/templates/get-help.php:49
+msgid "Need More Help?"
+msgstr ""
+
+#: inc/admin/templates/get-help.php:51
+msgid "We’re here to help!"
+msgstr ""
+
+#: inc/admin/templates/get-help.php:51
+msgid "Contact us for fast, friendly support:"
+msgstr ""
+
+#: inc/admin/templates/get-help.php:56
+msgid "We typically respond within 1 business day."
+msgstr ""
+
+#: inc/admin/templates/get-help.php:60
+msgid "Ultimate FAQ Solution by "
+msgstr ""
+
+#: inc/admin/templates/settings.php:199
 msgid ""
 "You need the WooCommerce plugin installed and activated to use these "
 "integration settings."
@@ -938,8 +1000,122 @@ msgstr ""
 msgid "Missing OpenAI API key."
 msgstr ""
 
-#: inc/ai-writing-assistant/includes/API/ChatGPT.php:118
+#: inc/ai-writing-assistant/includes/API/ChatGPT.php:113
+msgid "Request to OpenAI API failed: "
+msgstr ""
+
+#: inc/ai-writing-assistant/includes/API/ChatGPT.php:119
+msgid "OpenAI API error: "
+msgstr ""
+
+#: inc/ai-writing-assistant/includes/API/ChatGPT.php:122
 msgid "No response."
+msgstr ""
+
+#: inc/ai-writing-assistant/includes/Admin/AiGenerator.php:44
+msgid "Created with AI"
+msgstr ""
+
+#: inc/ai-writing-assistant/includes/Admin/AiGenerator.php:72
+msgid "AI FAQ Group Generator - Ultimate FAQ Solution"
+msgstr ""
+
+#: inc/ai-writing-assistant/includes/Admin/AiGenerator.php:72
+msgid "Create with AI"
+msgstr ""
+
+#: inc/ai-writing-assistant/includes/Admin/AiGenerator.php:126
+msgid "Create FAQ Group with AI"
+msgstr ""
+
+#: inc/ai-writing-assistant/includes/Admin/AiGenerator.php:129
+msgid "FAQ Group Title:"
+msgstr ""
+
+#: inc/ai-writing-assistant/includes/Admin/AiGenerator.php:130
+msgid "e.g. Shipping & Delivery"
+msgstr ""
+
+#: inc/ai-writing-assistant/includes/Admin/AiGenerator.php:131
+msgid ""
+"Give your FAQ group a short, descriptive title. For example, \"Shipping & "
+"Delivery\", \"Product Returns\", or \"Account Setup\"."
+msgstr ""
+
+#: inc/ai-writing-assistant/includes/Admin/AiGenerator.php:135
+msgid "Context (page link or text):"
+msgstr ""
+
+#: inc/ai-writing-assistant/includes/Admin/AiGenerator.php:136
+msgid "Paste a page link or short description..."
+msgstr ""
+
+#: inc/ai-writing-assistant/includes/Admin/AiGenerator.php:138
+msgid ""
+"Provide the content or context that the AI will use to generate relevant "
+"FAQs."
+msgstr ""
+
+#: inc/ai-writing-assistant/includes/Admin/AiGenerator.php:139
+msgid "You can paste a page URL, a paragraph of text, or product/service details."
+msgstr ""
+
+#: inc/ai-writing-assistant/includes/Admin/AiGenerator.php:144
+msgid "Number of FAQ items:"
+msgstr ""
+
+#: inc/ai-writing-assistant/includes/Admin/AiGenerator.php:146
+msgid "Select how many FAQs you want the AI to generate for this group (1-20)."
+msgstr ""
+
+#: inc/ai-writing-assistant/includes/Admin/AiGenerator.php:150
+msgid "Tone / Style:"
+msgstr ""
+
+#: inc/ai-writing-assistant/includes/Admin/AiGenerator.php:152
+msgid "Neutral / Informative"
+msgstr ""
+
+#: inc/ai-writing-assistant/includes/Admin/AiGenerator.php:153
+msgid "Friendly & Conversational"
+msgstr ""
+
+#: inc/ai-writing-assistant/includes/Admin/AiGenerator.php:154
+msgid "Professional & Formal"
+msgstr ""
+
+#: inc/ai-writing-assistant/includes/Admin/AiGenerator.php:155
+msgid "Technical & Detailed"
+msgstr ""
+
+#: inc/ai-writing-assistant/includes/Admin/AiGenerator.php:156
+msgid "Persuasive / Marketing Style"
+msgstr ""
+
+#: inc/ai-writing-assistant/includes/Admin/AiGenerator.php:158
+msgid "Choose the style in which answers should be written."
+msgstr ""
+
+#: inc/ai-writing-assistant/includes/Admin/AiGenerator.php:162
+msgid "Generate FAQ Group"
+msgstr ""
+
+#: inc/ai-writing-assistant/includes/Admin/AiGenerator.php:186
+msgid "AI Integration Not Enabled"
+msgstr ""
+
+#: inc/ai-writing-assistant/includes/Admin/AiGenerator.php:188
+msgid ""
+"To use the AI FAQ Generator, please enable AI Integration in your plugin "
+"settings."
+msgstr ""
+
+#: inc/ai-writing-assistant/includes/Admin/AiGenerator.php:194
+msgid "Enable AI Integration"
+msgstr ""
+
+#: inc/ai-writing-assistant/includes/Admin/AiGenerator.php:196
+msgid "Close"
 msgstr ""
 
 #: inc/ai-writing-assistant/includes/Admin/Ajax.php:36
@@ -984,42 +1160,42 @@ msgid ""
 "a page or post."
 msgstr ""
 
-#: inc/functions/actions_and_filters.php:353
-#: inc/functions/actions_and_filters.php:362
+#: inc/functions/actions_and_filters.php:356
+#: inc/functions/actions_and_filters.php:365
 msgid "FAQ Group published."
 msgstr ""
 
-#: inc/functions/actions_and_filters.php:354
+#: inc/functions/actions_and_filters.php:357
 msgid "Custom field updated."
 msgstr ""
 
-#: inc/functions/actions_and_filters.php:355
+#: inc/functions/actions_and_filters.php:358
 msgid "Custom field deleted."
 msgstr ""
 
-#: inc/functions/actions_and_filters.php:356
+#: inc/functions/actions_and_filters.php:359
 msgid "FAQ Group updated."
 msgstr ""
 
-#: inc/functions/actions_and_filters.php:359
+#: inc/functions/actions_and_filters.php:362
 #. translators: %s: Date and time of the revision
 msgid "FAQ Group restored to revision from %s."
 msgstr ""
 
-#: inc/functions/actions_and_filters.php:363
+#: inc/functions/actions_and_filters.php:366
 msgid "FAQ Group saved."
 msgstr ""
 
-#: inc/functions/actions_and_filters.php:364
+#: inc/functions/actions_and_filters.php:367
 msgid "FAQ Group submitted."
 msgstr ""
 
-#: inc/functions/actions_and_filters.php:367
+#: inc/functions/actions_and_filters.php:370
 #. translators: %s: Date and time the FAQ Group is scheduled for
 msgid "FAQ Group scheduled for: <strong>%s</strong>."
 msgstr ""
 
-#: inc/functions/actions_and_filters.php:370
+#: inc/functions/actions_and_filters.php:373
 msgid "FAQ Group draft updated."
 msgstr ""
 
@@ -1755,7 +1931,7 @@ msgid "Ultimate FAQ Solution"
 msgstr ""
 
 #. Plugin URI of the plugin/theme
-msgid "https://www.braintum.com/ultimate-faq-solution/"
+msgid "https://www.ultimatefaqsolution.com/"
 msgstr ""
 
 #. Description of the plugin/theme

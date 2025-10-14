@@ -11,6 +11,7 @@ return array(
     'Mahedi\\UltimateFaqSolution\\Assets' => $baseDir . '/inc/Assets.php',
     'Mahedi\\UltimateFaqSolution\\Chatbot' => $baseDir . '/inc/Chatbot.php',
     'Mahedi\\UltimateFaqSolution\\Custom_Resources' => $baseDir . '/inc/Custom_Resources.php',
+    'Mahedi\\UltimateFaqSolution\\DeactivationFeedback' => $baseDir . '/inc/DeactivationFeedback.php',
     'Mahedi\\UltimateFaqSolution\\ExportImport\\Admin\\AdminPage' => $baseDir . '/inc/ExportImport/Admin/AdminPage.php',
     'Mahedi\\UltimateFaqSolution\\ExportImport\\Base\\BaseExporter' => $baseDir . '/inc/ExportImport/Base/BaseExporter.php',
     'Mahedi\\UltimateFaqSolution\\ExportImport\\Base\\BaseImporter' => $baseDir . '/inc/ExportImport/Base/BaseImporter.php',

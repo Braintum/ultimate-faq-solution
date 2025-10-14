@@ -1,21 +1,19 @@
 === Ultimate FAQ Solution ===
 Contributors: braintum
-Donate link: https://www.solrengine.com/  
-Tags: faq-directory, accordion, knowledgebase, product-faq, ai  
+Donate link: https://www.braintum.com/  
+Tags: faq, knowledgebase, accordion, ai, woocommerce
 Requires at least: 5.1  
 Tested up to: 6.8.3  
-Stable tag: 1.7.5
+Stable tag: 1.7.6
 Requires PHP: 7.4.0  
 License: GPLv2 or later  
 License URI: https://www.gnu.org/licenses/license-list.html#GPLCompatibleLicenses  
 
-A WordPress plugin to create, organize, and display FAQs with responsive layouts, styles, and AI-powered answer suggestions.
+A WordPress plugin to create, organize, and display FAQs with AI-powered answer suggestions, one-click FAQ group generation, WooCommerce integration, and a floating chat assistant.
 
 == Description ==
 
-= 🚀 What is Ultimate FAQ Solution? =
-
-Ultimate FAQ Solution is a powerful and flexible WordPress plugin for creating, organizing, and displaying FAQs with ease. Designed for both standard WordPress sites and WooCommerce stores, it offers responsive layouts, accordion and toggle display modes, and a searchable FAQ directory.
+Ultimate FAQ Solution is a powerful, flexible WordPress plugin for creating, organizing, and displaying FAQs—now with advanced AI features. Instantly generate entire FAQ groups with one click using the "Create with AI" tool, or draft individual answers with AI-powered suggestions. Designed for both standard WordPress sites and WooCommerce stores, it offers responsive layouts, accordion and toggle display modes, and a searchable FAQ directory. The interactive FAQ Assistant adds a floating chat icon to your site, giving users instant, conversational access to your knowledge base.
 
 With Ultimate FAQ Solution, you can:
 - Create and manage FAQ groups using the familiar WordPress editor.
@@ -29,6 +27,24 @@ With Ultimate FAQ Solution, you can:
 
 Whether you need a simple FAQ section or a full-featured knowledge base, Ultimate FAQ Solution streamlines the process and helps you deliver fast, accurate answers to your visitors.
 
+= 🧠 "Create with AI" Feature =
+
+The new "Create with AI" feature allows you to automatically generate entire FAQ groups using advanced AI assistance. Instead of manually writing each question and answer, you can now leverage AI to quickly draft a set of relevant FAQs for your topic, product, or service—all in just a few clicks.
+
+**How it works:**
+- When creating a new FAQ group, simply click the "Create with AI" button.
+- Enter a FAQ Group Title and context of what you want FAQs about.
+- The AI will instantly generate a list of suggested questions and answers tailored to your input.
+- You can edit, and customize the generated FAQs and saving them to your site.
+
+**Benefits:**
+- Save time and effort when building new FAQ sections.
+- Get high-quality, relevant questions and answers based on your topic.
+- Easily expand your knowledge base or help center with minimal manual work.
+- Maintain full control—edit or remove any AI-generated content before publishing.
+
+This feature is perfect for quickly launching new FAQ groups, onboarding new products, or providing instant support content for your users. The "Create with AI" tool is designed to streamline your workflow and help you deliver accurate, helpful information to your audience faster than ever.
+
 = 🤖 AI-Powered FAQ Answer Suggestions =
 
 Starting from version 1.6.4, Ultimate FAQ Solution includes an AI-powered feature that can instantly generate suggested answers for your FAQs. When creating or editing a FAQ, simply click the "AI Assistant" button to receive a relevant answer draft—saving you time and helping you craft accurate, helpful responses. You can review, edit, and customize the AI-generated content before publishing.
@@ -40,6 +56,7 @@ This feature is designed to streamline your workflow, especially when building l
 🔗 [Support & Feature Requests](https://www.braintum.com/contact-us/) | [Live Demo](https://www.braintum.com/ultimate-faq-solution/) | [GitHub](https://github.com/Braintum/ultimate-faq-solution)
 
 = ✅ Key Features Overview =
+* 🧠 **Create with AI:** Instantly generate entire FAQ groups with one click using advanced AI assistance.
 * 💬 **FAQ Assistant:** Add an interactive, floating help icon with chat-style FAQ access for instant answers.
 * 🤖 **AI-Powered Answer Suggestions:** Instantly generate FAQ answers using AI to save time and improve accuracy.
 * ♿ **Accessibility-Ready Templates:** Ensure your FAQs are usable by everyone, including assistive technology users.
@@ -163,6 +180,15 @@ Yes! Starting from version 1.6.4, Ultimate FAQ Solution includes an AI-powered f
 14. AI content generation: Instantly generate suggested answers for your FAQs using AI, streamlining the process of creating accurate and helpful responses.
 
 == Changelog ==
+
+=1.7.6=
+* New: 🧠 "Create with AI" Feature: Introduced the "Create with AI" option in FAQ Group creation, allowing automatic generation of FAQs using AI assistance.
+* Enhanced: 🎨 Get Help Page Revamp: Redesigned the Get Help page for a cleaner and more user-friendly admin experience.
+* Enhanced: ⚙️ Settings Page Update: Improved layout and usability of the plugin settings page.
+* Enhanced: 💬 Thickbox Popup Update: Enhanced "Create with AI" thickbox modal for smoother user interaction.
+* Fixed: 🧩 Default Template Accordion Fix: Resolved an issue with the default FAQ accordion behavior.
+* Improved: 🔄 Refactored Codebase: Streamlined several core functions for better performance and maintainability.
+* Updated: 🌐 Translations Updated: Improved and added missing translations across the plugin.
 
 = 1.7.5 =
 * New: Enhanced native export/import functionality for seamless FAQ data migration and backup.

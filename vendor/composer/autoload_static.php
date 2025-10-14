@@ -31,6 +31,7 @@ class ComposerStaticInit35bfc3cd1c7f61ceaf40d8bf9eb1470a
         'Mahedi\\UltimateFaqSolution\\Assets' => __DIR__ . '/../..' . '/inc/Assets.php',
         'Mahedi\\UltimateFaqSolution\\Chatbot' => __DIR__ . '/../..' . '/inc/Chatbot.php',
         'Mahedi\\UltimateFaqSolution\\Custom_Resources' => __DIR__ . '/../..' . '/inc/Custom_Resources.php',
+        'Mahedi\\UltimateFaqSolution\\DeactivationFeedback' => __DIR__ . '/../..' . '/inc/DeactivationFeedback.php',
         'Mahedi\\UltimateFaqSolution\\ExportImport\\Admin\\AdminPage' => __DIR__ . '/../..' . '/inc/ExportImport/Admin/AdminPage.php',
         'Mahedi\\UltimateFaqSolution\\ExportImport\\Base\\BaseExporter' => __DIR__ . '/../..' . '/inc/ExportImport/Base/BaseExporter.php',
         'Mahedi\\UltimateFaqSolution\\ExportImport\\Base\\BaseImporter' => __DIR__ . '/../..' . '/inc/ExportImport/Base/BaseImporter.php',

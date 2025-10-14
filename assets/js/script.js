@@ -63,7 +63,6 @@ jQuery(window).on('load', function() {
 	'use strict';
 
 	const toggleItem = (element) => {
-		console.log('asdfasdf');
 		if (ufaqsw_object_default.behaviour == 'accordion') {
 			closeall(element);
 		}
