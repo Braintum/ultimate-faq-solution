@@ -282,6 +282,8 @@ rm -f trunk/.phpcs.xml.dist
 rm -f trunk/webpack.config.js
 rm -f trunk/inc/functions/AppearanceActions.php
 rm -f trunk/inc/functions/FAQGroupActions.php
+rm -f trunk/inc/admin/settings/settings.php
+rm -f trunk/inc/admin/settings/ui.php
 
 
 echo

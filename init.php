@@ -54,13 +54,14 @@ require_once UFAQSW__PLUGIN_DIR . 'inc/admin/class-directory-post-type.php';
 // Load admin-specific files only in the admin area.
 if ( is_admin() ) {
 	include_once UFAQSW__PLUGIN_DIR . 'inc/admin/class-faq-group-sorting.php';
-	include_once UFAQSW__PLUGIN_DIR . 'inc/admin/settings/settings.php';
+	include_once UFAQSW__PLUGIN_DIR . 'inc/admin/RegisterAdminPages.php';
 	include_once UFAQSW__PLUGIN_DIR . 'inc/admin/chatbot.php';
 	include_once UFAQSW__PLUGIN_DIR . 'inc/admin/icons/class.icons.php';
 	include_once UFAQSW__PLUGIN_DIR . 'inc/admin/installation.php';
 	include_once UFAQSW__PLUGIN_DIR . 'inc/ai-writing-assistant/init.php';
 	include_once UFAQSW__PLUGIN_DIR . 'inc/ExportImport/bootstrap.php';
 
+	Mahedi\UltimateFaqSolution\Admin\RegisterAdminPages::get_instance();
 	Mahedi\UltimateFaqSolution\ExportImport\bootstrap();
 }
 
