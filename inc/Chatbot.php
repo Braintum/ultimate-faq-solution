@@ -44,6 +44,8 @@ class Chatbot {
 	 */
 	public function is_assistant_enabled() {
 
+		global $ufaqsw_preview_data;
+
 		$enable_chatbot = cmb2_get_option( 'ufaqsw_chatbot_settings', 'enable_chatbot' );
 		if ( ! $enable_chatbot ) {
 			return false;
@@ -55,6 +57,10 @@ class Chatbot {
 			if ( ! is_array( $specific_pages ) || empty( $specific_pages ) || ! in_array( get_the_ID(), $specific_pages ) ) {
 				return false;
 			}
+		}
+
+		if ( isset( $ufaqsw_preview_data ) && ! empty( $ufaqsw_preview_data ) ) {
+			return false;
 		}
 
 		return $enable_chatbot;

@@ -24,6 +24,11 @@ class Rest {
 	 */
 	public function __construct() {
 		add_action( 'rest_api_init', array( $this, 'rest_api_init' ) );
+		add_action( 'init', array( $this, 'add_rewrite_rules' ) );
+		add_action( 'template_redirect', array( $this, 'handle_faq_preview' ) );
+
+		// Flush rewrite rules on plugin activation.
+		register_activation_hook( UFAQSW__PLUGIN_FILE, array( $this, 'flush_rewrite_rules' ) );
 	}
 
 	/**
@@ -65,5 +70,72 @@ class Rest {
 				'permission_callback' => '__return_true', // Make sure the route is accessible publicly.
 			)
 		);
+	}
+
+	/**
+	 * Add rewrite rules for FAQ preview.
+	 */
+	public function add_rewrite_rules() {
+		add_rewrite_rule(
+			'^ufaqsw-preview/?$',
+			'index.php?ufaqsw_preview=1',
+			'top'
+		);
+		add_rewrite_tag( '%ufaqsw_preview%', '([^&]+)' );
+	}
+
+	/**
+	 * Handle FAQ preview template loading.
+	 */
+	public function handle_faq_preview() {
+		if ( ! get_query_var( 'ufaqsw_preview' ) ) {
+			return;
+		}
+
+		// Check if user can edit posts for security.
+		if ( ! current_user_can( 'edit_posts' ) ) {
+			wp_die( esc_html__( 'Access denied.', 'ufaqsw' ) );
+		}
+
+		// Get parameters from query string.
+		$group          = sanitize_text_field( wp_unslash( $_GET['group'] ?? '' ) );
+		$exclude        = sanitize_text_field( wp_unslash( $_GET['exclude'] ?? '' ) );
+		$behaviour      = sanitize_text_field( wp_unslash( $_GET['behaviour'] ?? '' ) );
+		$elements_order = sanitize_text_field( wp_unslash( $_GET['elements_order'] ?? '' ) );
+		$hide_title     = sanitize_text_field( wp_unslash( $_GET['hideTitle'] ?? '0' ) );
+
+		// Store in global for template access.
+		global $ufaqsw_preview_data;
+		$ufaqsw_preview_data = array(
+			'group'          => $group,
+			'exclude'        => $exclude,
+			'behaviour'      => $behaviour,
+			'elements_order' => $elements_order,
+			'hide_title'     => $hide_title,
+		);
+
+		// Load the preview template.
+		$this->load_preview_template();
+		exit;
+	}
+
+	/**
+	 * Load the FAQ preview template.
+	 */
+	private function load_preview_template() {
+		// Prevent any other output.
+		if ( ob_get_level() ) {
+			ob_end_clean();
+		}
+
+		include UFAQSW__PLUGIN_DIR . 'inc/templates/faq-preview.php';
+	}
+
+	/**
+	 * Flush rewrite rules.
+	 */
+	public function flush_rewrite_rules() {
+		$this->add_rewrite_rules();
+		flush_rewrite_rules();
 	}
 }

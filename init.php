@@ -39,6 +39,7 @@ define( 'UFAQSW_BASE', plugin_basename( __FILE__ ) );
 define( 'UFAQSW__PLUGIN_DIR', __DIR__ . '/' );
 define( 'UFAQSW__PLUGIN_URL', plugins_url( '/', __FILE__ ) );
 define( 'UFAQSW_ASSETS_URL', UFAQSW__PLUGIN_URL . 'assets/' );
+define( 'UFAQSW__PLUGIN_FILE', __FILE__ );
 
 // Autoload dependencies only when needed.
 if ( file_exists( UFAQSW__PLUGIN_DIR . 'vendor/autoload.php' ) ) {
@@ -76,9 +77,6 @@ add_action(
 		// Structured data support for FAQs.
 		new Mahedi\UltimateFaqSolution\SEO();
 
-		// REST API.
-		new Mahedi\UltimateFaqSolution\Rest();
-
 		new Mahedi\UltimateFaqSolution\Chatbot();
 
 		// REST API.
@@ -96,6 +94,9 @@ add_action(
 		new Mahedi\UltimateFaqSolution\DeactivationFeedback();
 	}
 );
+
+// REST API.
+new Mahedi\UltimateFaqSolution\Rest();
 
 // Load utility files only when necessary.
 require_once UFAQSW__PLUGIN_DIR . 'inc/functions/actions_and_filters.php';
