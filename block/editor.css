@@ -1,0 +1,149 @@
+/* FAQ Block Editor Styles */
+
+.ufaqsw-block-wrapper {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.ufaqsw-block-controls {
+    background-color: #f7f7f7;
+    border-bottom: 1px solid #ddd;
+    padding: 12px;
+}
+
+.ufaqsw-shortcode-display {
+    margin-bottom: 0;
+}
+
+.ufaqsw-shortcode-display label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 4px;
+    font-size: 12px;
+    color: #555;
+}
+
+.ufaqsw-shortcode-display code {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    padding: 8px;
+    display: block;
+    font-size: 12px;
+    color: #333;
+    word-break: break-all;
+}
+
+.ufaqsw-content-preview {
+    padding: 20px;
+    background-color: #fff;
+    min-height: 100px;
+}
+
+.ufaqsw-loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    background-color: #fff;
+    gap: 10px;
+}
+
+.ufaqsw-loading span {
+    font-size: 14px;
+    color: #555;
+}
+
+.ufaqsw-editor-notice,
+.ufaqsw-editor-error {
+    padding: 16px;
+    border-radius: 4px;
+    font-style: italic;
+    text-align: center;
+}
+
+.ufaqsw-editor-notice {
+    background-color: #f0f6fc;
+    border: 1px solid #c6d9ed;
+    color: #0969da;
+}
+
+.ufaqsw-editor-error {
+    background-color: #fdf2f2;
+    border: 1px solid #f5c6cb;
+    color: #721c24;
+}
+
+/* Ensure FAQ content displays properly in the editor */
+.ufaqsw-editor-preview .ufaqsw_faq_content {
+    max-width: 100%;
+}
+
+.ufaqsw-editor-preview .ufaqsw_faq_item {
+    margin-bottom: 15px;
+}
+
+.ufaqsw-editor-preview .ufaqsw_faq_question {
+    cursor: pointer;
+    padding: 10px;
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+    margin-bottom: 5px;
+}
+
+.ufaqsw-editor-preview .ufaqsw_faq_answer {
+    padding: 15px;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+    border-top: none;
+    border-radius: 0 0 4px 4px;
+}
+
+/* Iframe preview styles */
+.ufaqsw-iframe-container {
+    position: relative;
+    border-radius: 0 0 4px 4px;
+    background-color: #fff;
+}
+
+.ufaqsw-content-preview-iframe {
+    width: 100%;
+    border: none;
+    border-radius: 0 0 4px 4px;
+    background-color: #fff;
+    min-height: 300px;
+    transition: height 0.3s ease;
+    display: block;
+}
+
+.ufaqsw-iframe-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: transparent;
+    cursor: pointer;
+    z-index: 1;
+}
+
+/* Handle different FAQ templates in editor */
+.ufaqsw-editor-preview .ufaqsw_search_area {
+    margin-bottom: 20px;
+}
+
+.ufaqsw-editor-preview .ufaqsw_search_input {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.ufaqsw-editor-preview .ufaqsw_search_input:focus {
+    outline: none;
+    border-color: #007cba;
+    box-shadow: 0 0 0 1px #007cba;
+}

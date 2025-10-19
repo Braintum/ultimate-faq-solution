@@ -1,7 +1,7 @@
 import { registerBlockType } from '@wordpress/blocks';
 import { useSelect } from '@wordpress/data';
 import { useEffect, useState } from '@wordpress/element';
-import { PanelBody, SelectControl, CheckboxControl } from '@wordpress/components';
+import { PanelBody, SelectControl, CheckboxControl, Spinner } from '@wordpress/components';
 import { InspectorControls } from '@wordpress/block-editor';
 import { __, _x } from '@wordpress/i18n';
 import apiFetch from '@wordpress/api-fetch';
@@ -49,12 +49,37 @@ registerBlockType('ultimate-faq-solution/block', {
     edit({ attributes, setAttributes, isSelected, context }) {
 		
 		const [faqGroups, setFaqGroups] = useState([]);
+		const [faqContent, setFaqContent] = useState('');
+		const [isLoading, setIsLoading] = useState(false);
 
 		useEffect(() => {
 			apiFetch({ path: '/wp/v2/ufaqsw?per_page=100' }).then((posts) => {
 				setFaqGroups(posts);
 			});
 		}, []);
+
+		// Generate iframe URL when attributes change
+		useEffect(() => {
+			if (attributes.group) {
+				setIsLoading(true);
+				
+				// Create iframe URL with parameters
+				const params = new URLSearchParams({
+					group: attributes.group,
+					exclude: attributes.exclude.join(','),
+					behaviour: attributes.behaviour || '',
+					elements_order: attributes.elements_order || '',
+					hideTitle: attributes.hideTitle ? '1' : '0'
+				});
+
+				const iframeUrl = `/ufaqsw-preview/?${params.toString()}`;
+				setFaqContent(iframeUrl);
+				setIsLoading(false);
+			} else {
+				setFaqContent('');
+				setIsLoading(false);
+			}
+		}, [attributes.group, attributes.exclude, attributes.behaviour, attributes.elements_order, attributes.hideTitle]);
 
 		const behaviours = useSelect((select) => {
 			return [
@@ -191,24 +216,71 @@ registerBlockType('ultimate-faq-solution/block', {
 					</PanelBody>
 					
 				</InspectorControls>
-				<div className="components-placeholder is-large">
-					<div class="components-placeholder__label">
-						<span className="faq-block-icon dashicons dashicons-editor-help" role="img" aria-label="FAQ Icon"></span> FAQ Block
+				
+				{!attributes.group ? (
+					<div className="components-placeholder is-large">
+						<div className="components-placeholder__label">
+							<span className="faq-block-icon dashicons dashicons-editor-help" role="img" aria-label="FAQ Icon"></span> FAQ Block
+						</div>
+						<div className="components-placeholder__instructions">
+							Configure the block from right panel - FAQ Settings
+						</div>
+						<div className="components-placeholder__fieldset">
+							<label>Generated Shortcode</label>
+							<input
+								className="components-text-control__input"
+								type="text"
+								disabled
+								value={shortcode()}
+							/>
+						</div>
 					</div>
-					<div className="components-placeholder__instructions">
-						Configure the block from right panel - Faq Settings
+				) : (
+					<div className="ufaqsw-block-wrapper">
+						{isSelected && (
+							<div className="ufaqsw-block-controls">
+								<div className="ufaqsw-shortcode-display">
+									<label>{__('Generated Shortcode:', 'ufaqsw')}</label>
+									<code>{shortcode()}</code>
+								</div>
+							</div>
+						)}
+						{isLoading ? (
+							<div className="ufaqsw-loading">
+								<Spinner />
+								<span>{__('Loading FAQ content...', 'ufaqsw')}</span>
+							</div>
+						) : (
+							<div className="ufaqsw-iframe-container">
+								<iframe
+									src={faqContent}
+									className="ufaqsw-content-preview-iframe"
+									title={__('FAQ Preview', 'ufaqsw')}
+									frameBorder="0"
+									width="100%"
+									height="400"
+									onLoad={() => {
+										// Auto-adjust iframe height based on content
+										const iframe = document.querySelector('.ufaqsw-content-preview-iframe');
+										if (iframe) {
+											try {
+												const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+												const height = Math.max(iframeDoc.body.scrollHeight, 300);
+												iframe.style.height = height + 'px';
+											} catch (e) {
+												// Cross-origin restrictions, use default height
+												iframe.style.height = '400px';
+											}
+										}
+									}}
+								/>
+								{!isSelected && (
+									<div className="ufaqsw-iframe-overlay" />
+								)}
+							</div>
+						)}
 					</div>
-					<div className="components-placeholder__fieldset">
-						<label>Generated Shortcode</label>
-						<input
-							className="components-text-control__input"
-							type="text"
-							disabled
-							value={shortcode()} // Dynamically set the value using the shortcode function
-						></input>
-					</div>
-					
-				</div>
+				)}
 			</>
 		);
 	},
