@@ -19,19 +19,24 @@
   margin-top: 0;
 }
 .ufs-buttons {
-  margin-top: 15px;
-  display: flex;
-  justify-content: space-between;
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+    margin-left: 39%;
 }
 #ufs-skip{
-	border: none;
-    color: #bcbcbc;
+    border: none;
+    color: #e4e4e4;
     background: none;
+    outline-color: #fff;
+    padding: 0px;
+    line-height: 0px;
+    font-size: 11px;
 }
 
 #ufs-skip:hover{
 	text-decoration: underline;
-	cursor: pointer;
+	cursor: default;
 }
 
 /* Loading Overlay */

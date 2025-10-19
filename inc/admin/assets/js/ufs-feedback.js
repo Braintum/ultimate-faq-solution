@@ -37,7 +37,7 @@ jQuery(document).ready(function($) {
 						<textarea name="details" placeholder="${__('Please share more details...', 'ufaqsw')}" style="display:none;margin-top:8px;width:100%;"></textarea>
 
 						<div class="ufs-buttons">
-							<button type="button" class="button button-primary" id="ufs-submit">${__('Submit and Deactivate', 'ufaqsw')}</button>
+							<button type="button" class="button button-primary" id="ufs-submit">${__('Deactivate', 'ufaqsw')}</button>
 							<button type="button" class="button" id="ufs-skip">${__('Skip and Deactivate', 'ufaqsw')}</button>
 						</div>
 					</form>
@@ -86,7 +86,7 @@ jQuery(document).ready(function($) {
 			e.preventDefault();
 			const reason = $('input[name="reason"]:checked').val();
 			if (!reason) {
-				alert(__('Please select a reason.', 'ufaqsw'));
+				alert(__('Please select a reason. Your feedback helps us improve the plugin.', 'ufaqsw'));
 				return;
 			}
 
@@ -105,7 +105,7 @@ jQuery(document).ready(function($) {
 			}
 
 			if (required && !details) {
-				alert(__('Please fill in the details before submitting.', 'ufaqsw'));
+				alert(__('Please tell us a bit more before before deactivating.', 'ufaqsw'));
 				return;
 			}
 
