@@ -2,10 +2,10 @@
 # This file is distributed under the GPLv2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Ultimate FAQ Solution 1.7.7\n"
+"Project-Id-Version: Ultimate FAQ Solution 1.7.8\n"
 "Report-Msgid-Bugs-To: "
 "https://wordpress.org/support/plugin/ultimate-faq-solution\n"
-"POT-Creation-Date: 2025-10-14 22:21:33+00:00\n"
+"POT-Creation-Date: 2025-10-19 16:26:12+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -25,7 +25,7 @@ msgstr ""
 "X-Textdomain-Support: yes\n"
 "X-Generator: grunt-wp-i18n 1.0.3\n"
 
-#: block/block.php:88
+#: block/block.php:88 inc/templates/faq-preview.php:26
 msgid "No FAQ group selected."
 msgstr ""
 
@@ -74,19 +74,19 @@ msgstr ""
 msgid "Date"
 msgstr ""
 
-#: inc/Chatbot.php:103
+#: inc/Chatbot.php:109
 msgid "Back"
 msgstr ""
 
-#: inc/Chatbot.php:104 inc/admin/chatbot.php:173
+#: inc/Chatbot.php:110 inc/admin/chatbot.php:173
 msgid "Close the window"
 msgstr ""
 
-#: inc/Chatbot.php:106 inc/admin/chatbot.php:193
+#: inc/Chatbot.php:112 inc/admin/chatbot.php:193
 msgid "[count] Frequently Asked Questions"
 msgstr ""
 
-#: inc/Chatbot.php:144
+#: inc/Chatbot.php:150
 msgid "No FAQs found."
 msgstr ""
 
@@ -264,6 +264,10 @@ msgstr ""
 
 #: inc/Product_Tab.php:198
 msgid "Please select a FAQ Group from dropdown."
+msgstr ""
+
+#: inc/Rest.php:97
+msgid "Access denied."
 msgstr ""
 
 #: inc/Shortcodes.php:166 inc/Shortcodes.php:249 inc/Shortcodes.php:267
@@ -1209,6 +1213,10 @@ msgstr ""
 
 #: inc/templates/all/template.php:49
 msgid "No Result Fount!"
+msgstr ""
+
+#: inc/templates/faq-preview.php:65
+msgid "FAQ Preview"
 msgstr ""
 
 #: vendor/cmb2/cmb2/example-functions.php:115
