@@ -74,7 +74,7 @@ registerBlockType('ultimate-faq-solution/block', {
 
 				const iframeUrl = `/ufaqsw-preview/?${params.toString()}`;
 				setFaqContent(iframeUrl);
-				setIsLoading(false);
+				// Don't set loading to false here - let the iframe onLoad handle it
 			} else {
 				setFaqContent('');
 				setIsLoading(false);
@@ -223,16 +223,7 @@ registerBlockType('ultimate-faq-solution/block', {
 							<span className="faq-block-icon dashicons dashicons-editor-help" role="img" aria-label="FAQ Icon"></span> FAQ Block
 						</div>
 						<div className="components-placeholder__instructions">
-							Configure the block from right panel - FAQ Settings
-						</div>
-						<div className="components-placeholder__fieldset">
-							<label>Generated Shortcode</label>
-							<input
-								className="components-text-control__input"
-								type="text"
-								disabled
-								value={shortcode()}
-							/>
+							{__('Configure the block from right panel - FAQ Settings', 'ufaqsw')}
 						</div>
 					</div>
 				) : (
@@ -240,26 +231,29 @@ registerBlockType('ultimate-faq-solution/block', {
 						{isSelected && (
 							<div className="ufaqsw-block-controls">
 								<div className="ufaqsw-shortcode-display">
-									<label>{__('Generated Shortcode:', 'ufaqsw')}</label>
-									<code>{shortcode()}</code>
+									<label>{__('Configure the block from right panel - FAQ Settings', 'ufaqsw')}</label>
 								</div>
 							</div>
 						)}
-						{isLoading ? (
-							<div className="ufaqsw-loading">
-								<Spinner />
-								<span>{__('Loading FAQ content...', 'ufaqsw')}</span>
-							</div>
-						) : (
-							<div className="ufaqsw-iframe-container">
+						<div className="ufaqsw-iframe-container">
+							{isLoading && (
+								<div className="ufaqsw-loading">
+									<Spinner />
+									<span>{__('Loading FAQ content...', 'ufaqsw')}</span>
+								</div>
+							)}
+							{faqContent && (
 								<iframe
 									src={faqContent}
-									className="ufaqsw-content-preview-iframe"
+									className={`ufaqsw-content-preview-iframe ${isLoading ? 'loading' : ''}`}
 									title={__('FAQ Preview', 'ufaqsw')}
 									frameBorder="0"
 									width="100%"
 									height="400"
 									onLoad={() => {
+										// Set loading to false when iframe loads
+										setIsLoading(false);
+										
 										// Auto-adjust iframe height based on content
 										const iframe = document.querySelector('.ufaqsw-content-preview-iframe');
 										if (iframe) {
@@ -274,11 +268,11 @@ registerBlockType('ultimate-faq-solution/block', {
 										}
 									}}
 								/>
-								{!isSelected && (
-									<div className="ufaqsw-iframe-overlay" />
-								)}
-							</div>
-						)}
+							)}
+							{!isSelected && !isLoading && (
+								<div className="ufaqsw-iframe-overlay" />
+							)}
+						</div>
 					</div>
 				)}
 			</>
