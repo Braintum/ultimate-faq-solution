@@ -185,9 +185,9 @@ class Shortcodes {
 			shortcode_atts(
 				array(
 					'exclude'        => '', // Coma seperated number string: 88, 86.
-					'title_hide'     => 'no',
+					'title_hide'     => null,
 					'elements_order' => 'asc',
-					'behaviour'      => 'toggle',
+					'behaviour'      => 'default',
 				),
 				$atts
 			)
@@ -201,6 +201,8 @@ class Shortcodes {
 			'orderby'        => 'menu_order',
 			'order'          => 'ASC',
 		);
+
+		$original_title_hide = $title_hide;
 
 		// default template.
 		$template  = 'default';
@@ -226,8 +228,20 @@ class Shortcodes {
 					$faqs = array_values( array_reverse( $faqs, true ) );
 				}
 
-				$designs              = apply_filters( 'ufaqsw_simplify_configuration_variables', ufaqsw_get_appearance_id( get_the_ID() ) );
-				$designs['behaviour'] = $behaviour;
+				if ( null === $title_hide ) {
+
+					$hide_title = get_post_meta( ufaqsw_get_appearance_id( get_the_ID() ), 'ufaqsw_hide_title', true );
+
+					if ( '' !== $hide_title ) {
+						$title_hide = 'yes';
+					}
+				}
+
+				$designs = apply_filters( 'ufaqsw_simplify_configuration_variables', ufaqsw_get_appearance_id( get_the_ID() ) );
+
+				if ( in_array( $behaviour, array( 'toggle', 'accordion' ) ) ) { // phpcs:ignore
+					$designs['behaviour'] = $behaviour;
+				}
 
 				$template = apply_filters( 'ufaqsw_template_filter', $designs['template'] );
 
@@ -253,6 +267,7 @@ class Shortcodes {
 
 				$all_content .= "<div class='ufaqsw_default_all_single_faq' id='ufaqsw_single_faq_" . esc_attr( get_the_ID() ) . "'>" . $content . '</div>';
 
+				$title_hide = $original_title_hide;
 			}
 		}
 		wp_reset_postdata(); // reseting wp query.
