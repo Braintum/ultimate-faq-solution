@@ -11,3 +11,9 @@
 	background-color: transparent;
 	z-index: 9999;
 }
+.ufaqsw_floating-chat-button:hover,
+.ufaqsw_floating-chat-button:active,
+.ufaqsw_floating-chat-button:focus {
+	background: transparent;
+    box-shadow: none;
+}
