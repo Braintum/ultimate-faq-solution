@@ -199,6 +199,13 @@ class Chatbot {
 			return;
 		}
 
+		wp_enqueue_style(
+			'chatbot-floating-button',
+			UFAQSW_ASSETS_URL . 'css/floatingbutton.css',
+			array(),
+			filemtime( UFAQSW__PLUGIN_DIR . 'assets/css/floatingbutton.css' )
+		);
+
 		echo '<chatbot-component></chatbot-component>';
 	}
 }

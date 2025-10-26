@@ -1,31 +1,27 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 
 const isProd = process.env.NODE_ENV === 'production';
 
 module.exports = {
-  // ✅ Multiple entry points
+  // Multiple entry points
   entry: {
-    main: './src/index.js', // existing build
+    main: './src/index.js', // faq assistant.
     admin: './src/admin.js', // visual builder
   },
 
-  output: (pathData) => {
-    // ✅ Dynamically choose output based on entry
-    const name = pathData.chunk.name;
-    if (name === 'admin') {
-      return {
-        path: path.resolve(__dirname, 'inc/admin/assets/js'),
-        filename: '[name].js',
-        clean: true,
-      };
-    }
-    // default output (for main)
-    return {
-      path: path.resolve(__dirname, 'assets/dist'),
-      filename: 'bundle.js',
-      clean: true,
-    };
+  output: {
+    path: path.resolve(__dirname, 'assets/dist'),
+    filename: (pathData) => {
+      // Dynamically choose output filename based on entry
+      const name = pathData.chunk.name;
+      if (name === 'admin') {
+        return '[name].js';
+      }
+      return 'bundle.js';
+    },
+    clean: true,
   },
 
   module: {
@@ -52,7 +48,7 @@ module.exports = {
           },
           {
             use: [
-              isProd ? MiniCssExtractPlugin.loader : 'style-loader',
+              MiniCssExtractPlugin.loader,
               'css-loader',
               'postcss-loader', // Tailwind + Autoprefixer
             ],
@@ -67,25 +63,28 @@ module.exports = {
   },
 
   plugins: [
-    // ✅ Extract CSS only in production builds
+    // Extract CSS in both development and production
     new MiniCssExtractPlugin({
       // The CSS output directory structure
       filename: (pathData) => {
         const name = pathData.chunk.name;
         if (name === 'admin') {
-          return '../../css/[name].css'; // ./inc/admin/assets/css/admin.css
+          return '../css/[name].css';
         }
-        return '../../css/[name].css'; // ./assets/css/main.css (if you want)
+        return '../css/floatingbutton.css';
       },
     }),
   ],
 
-  mode: isProd ? 'production' : 'development',
-  devtool: isProd ? false : 'source-map',
+  mode: 'production',
+  devtool: false,
 
   optimization: {
-    splitChunks: {
-      chunks: 'all',
-    },
+    splitChunks: false, // Disable code splitting to avoid filename conflicts
+    minimizer: [
+      '...',  // Keep the default JS minimizer (Terser)
+      new CssMinimizerPlugin(),
+    ],
+    minimize: true,
   },
 };

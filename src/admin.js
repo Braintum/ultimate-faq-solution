@@ -1,4 +1,4 @@
-import './admin.css';
+import './appearance/admin.css';
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import AppearanceBuilder from './appearance/Builder.jsx';
