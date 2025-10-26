@@ -1,8 +1,10 @@
 import React, { useEffect, useMemo, useState } from "react";
+import { toBase64, DEFAULT_SCHEMA, buildInitialState, resetToDefaults } from './helpers';
+import { SettingsGroup, ActionButtons } from './components';
 
 /**
- * Appearance Visual Builder (single-file React component)
- * ------------------------------------------------------
+ * Appearance Visual Builder
+ * -------------------------
  * Export: default AppearanceBuilder
  *
  * Features included:
@@ -27,141 +29,6 @@ import React, { useEffect, useMemo, useState } from "react";
  * - For security, the preview iframe should be same-origin or allow a controlled postMessage origin.
  */
 
-// ----------------------------- Helpers -----------------------------
-function toBase64(obj) {
-  try {
-    return btoa(unescape(encodeURIComponent(JSON.stringify(obj))));
-  } catch (e) {
-    return "";
-  }
-}
-
-function fromBase64(b64) {
-  try {
-    return JSON.parse(decodeURIComponent(escape(atob(b64))));
-  } catch (e) {
-    return null;
-  }
-}
-
-// default settings schema: groups -> fields
-const DEFAULT_SCHEMA = {
-  general: {
-    label: "General",
-    fields: {
-      fontSize: {
-        type: "range",
-        label: "Font size (px)",
-        min: 12,
-        max: 36,
-        step: 1,
-        default: 16,
-      },
-      fontFamily: {
-        type: "select",
-        label: "Font family",
-        options: ["inherit", "Inter, system-ui, sans-serif", "Georgia, serif"],
-        default: "inherit",
-      },
-    },
-  },
-  question: {
-    label: "Question",
-    fields: {
-      questionTextColor: { type: "color", label: "Text color", default: "#111827" },
-      questionBgColor: { type: "color", label: "Background color", default: "#ffffff" },
-    },
-  },
-  answer: {
-    label: "Answer",
-    fields: {
-      answerTextColor: { type: "color", label: "Text color", default: "#374151" },
-      answerBgColor: { type: "color", label: "Background color", default: "#ffffff" },
-      answerPadding: { type: "range", label: "Padding (px)", min: 0, max: 40, step: 1, default: 12 },
-    },
-  },
-};
-
-// ----------------------------- Field components -----------------------------
-
-const Label = ({ children }) => (
-  <label className="block text-sm font-medium text-gray-700 mb-1">{children}</label>
-);
-
-function ColorInput({ value, onChange }) {
-  return (
-    <input
-      type="color"
-      value={value}
-      onChange={(e) => onChange(e.target.value)}
-      className="w-12 h-8 p-0 border-0"
-    />
-  );
-}
-
-function RangeInput({ value, onChange, min = 0, max = 100, step = 1 }) {
-  return (
-    <div>
-      <input
-        type="range"
-        min={min}
-        max={max}
-        step={step}
-        value={value}
-        onChange={(e) => onChange(parseInt(e.target.value, 10))}
-        className="w-full"
-      />
-      <div className="text-xs mt-1">{value}px</div>
-    </div>
-  );
-}
-
-function SelectInput({ value, onChange, options = [] }) {
-  return (
-    <select value={value} onChange={(e) => onChange(e.target.value)} className="w-full p-1">
-      {options.map((opt) => (
-        <option key={opt} value={opt}>
-          {opt}
-        </option>
-      ))}
-    </select>
-  );
-}
-
-function TextInput({ value, onChange }) {
-  return (
-    <input
-      type="text"
-      value={value}
-      onChange={(e) => onChange(e.target.value)}
-      className="w-full p-1"
-    />
-  );
-}
-
-// Custom renderer for a field based on type
-function FieldRenderer({ fieldKey, config, value, onChange }) {
-  switch (config.type) {
-    case "color":
-      return <ColorInput value={value} onChange={onChange} />;
-    case "range":
-      return (
-        <RangeInput
-          value={value}
-          onChange={onChange}
-          min={config.min}
-          max={config.max}
-          step={config.step}
-        />
-      );
-    case "select":
-      return <SelectInput value={value} onChange={onChange} options={config.options} />;
-    case "text":
-    default:
-      return <TextInput value={value} onChange={onChange} />;
-  }
-}
-
 // ----------------------------- Main Builder -----------------------------
 export default function AppearanceBuilder({
   previewBaseUrl = "/?preview=faq",
@@ -172,15 +39,7 @@ export default function AppearanceBuilder({
 }) {
   // Build initial state by walking schema and taking defaults or initialValues
   const initialState = useMemo(() => {
-    const s = {};
-    Object.keys(schema).forEach((groupKey) => {
-      const group = schema[groupKey];
-      Object.keys(group.fields).forEach((fieldKey) => {
-        const cfg = group.fields[fieldKey];
-        s[fieldKey] = initialValues[fieldKey] ?? cfg.default ?? null;
-      });
-    });
-    return s;
+    return buildInitialState(schema, initialValues);
   }, [schema, initialValues]);
 
   const [values, setValues] = useState(initialState);
@@ -213,21 +72,15 @@ export default function AppearanceBuilder({
   }
 
   // Reset to defaults
-  function resetDefaults() {
-    const s = {};
-    Object.keys(schema).forEach((groupKey) => {
-      const group = schema[groupKey];
-      Object.keys(group.fields).forEach((fieldKey) => {
-        const cfg = group.fields[fieldKey];
-        s[fieldKey] = cfg.default ?? null;
-      });
-    });
-    setValues(s);
+  function handleReset() {
+    setValues(resetToDefaults(schema));
   }
 
-  // Export settings (example: for saving via WP rest / AJAX)
-  function exportSettings() {
-    return values;
+  // Save settings (example: for saving via WP rest / AJAX)
+  function handleSave() {
+    console.log("Export (save) settings:", values);
+    // TODO: Implement actual save functionality
+    // Example: saveSettings(values);
   }
 
   // ----------------------------- UI -----------------------------
@@ -244,44 +97,17 @@ export default function AppearanceBuilder({
           {Object.keys(schema).map((groupKey) => {
             const group = schema[groupKey];
             return (
-              <div key={groupKey} className="border rounded p-3">
-                <div className="font-medium mb-2">{group.label}</div>
-                <div className="space-y-3">
-                  {Object.keys(group.fields).map((fieldKey) => {
-                    const cfg = group.fields[fieldKey];
-                    return (
-                      <div key={fieldKey} className="">
-                        <Label>{cfg.label}</Label>
-                        <FieldRenderer
-                          fieldKey={fieldKey}
-                          config={cfg}
-                          value={values[fieldKey]}
-                          onChange={(val) => setField(fieldKey, val)}
-                        />
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
+              <SettingsGroup
+                key={groupKey}
+                groupKey={groupKey}
+                group={group}
+                values={values}
+                setField={setField}
+              />
             );
           })}
 
-          <div className="flex gap-2">
-            <button
-              type="button"
-              onClick={resetDefaults}
-              className="px-3 py-1 rounded border text-sm"
-            >
-              Reset
-            </button>
-            <button
-              type="button"
-              onClick={() => console.log("Export (save) settings:", exportSettings())}
-              className="px-3 py-1 rounded bg-blue-600 text-white text-sm"
-            >
-              Save (example)
-            </button>
-          </div>
+          <ActionButtons onReset={handleReset} onSave={handleSave} />
 
           <div className="text-xs text-gray-500 mt-2">
             Tip: you can extend the <code>schema</code> prop to add more settings fields or custom
@@ -312,52 +138,3 @@ export default function AppearanceBuilder({
     </div>
   );
 }
-
-// ----------------------------- Preview-side snippet (example) -----------------------------
-// The preview frame (the URL used as previewBaseUrl) should include a small script to
-// read the `appearance` query param and/or to listen for postMessage updates.
-// Example (to be included inside the HTML that renders FAQ items inside iframe):
-/*
-<script>
-  function applyAppearance(settings) {
-    // map settings to CSS variables for easy styling
-    if (!settings) return;
-    const root = document.documentElement;
-    if (settings.fontSize) root.style.setProperty('--faq-font-size', settings.fontSize + 'px');
-    if (settings.fontFamily) root.style.setProperty('--faq-font-family', settings.fontFamily);
-    if (settings.questionTextColor) root.style.setProperty('--faq-question-color', settings.questionTextColor);
-    if (settings.questionBgColor) root.style.setProperty('--faq-question-bg', settings.questionBgColor);
-    if (settings.answerTextColor) root.style.setProperty('--faq-answer-color', settings.answerTextColor);
-    if (settings.answerBgColor) root.style.setProperty('--faq-answer-bg', settings.answerBgColor);
-    if (settings.answerPadding !== undefined) root.style.setProperty('--faq-answer-padding', settings.answerPadding + 'px');
-  }
-
-  // read query param
-  const urlParams = new URLSearchParams(window.location.search);
-  const b64 = urlParams.get('appearance');
-  if (b64) {
-    const parsed = (function(){ try { return JSON.parse(decodeURIComponent(escape(atob(b64)))); } catch(e){ return null; } })();
-    applyAppearance(parsed);
-  }
-
-  window.addEventListener('message', (ev) => {
-    if (!ev.data || ev.data.type !== 'appearance:update') return;
-    applyAppearance(ev.data.payload);
-  }, false);
-</script>
-
-<style>
-  :root{
-    --faq-font-size: 16px;
-    --faq-font-family: inherit;
-    --faq-question-color: #111827;
-    --faq-question-bg: #fff;
-    --faq-answer-color: #374151;
-    --faq-answer-bg: #fff;
-    --faq-answer-padding: 12px;
-  }
-  .faq-root { font-size: var(--faq-font-size); font-family: var(--faq-font-family); }
-  .faq-question { color: var(--faq-question-color); background: var(--faq-question-bg); }
-  .faq-answer { color: var(--faq-answer-color); background: var(--faq-answer-bg); padding: var(--faq-answer-padding); }
-</style>
-*/

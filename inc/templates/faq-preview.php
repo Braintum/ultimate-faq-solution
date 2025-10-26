@@ -15,11 +15,17 @@ if ( ! defined( 'ABSPATH' ) ) {
 global $ufaqsw_preview_data;
 
 // Get FAQ preview data.
-$group          = $ufaqsw_preview_data['group'] ?? '';
+$group          = $ufaqsw_preview_data['group'] ?? 758;
 $exclude        = $ufaqsw_preview_data['exclude'] ?? '';
 $behaviour      = $ufaqsw_preview_data['behaviour'] ?? '';
 $elements_order = $ufaqsw_preview_data['elements_order'] ?? '';
 $hide_title     = $ufaqsw_preview_data['hide_title'] ?? '0';
+
+if ( isset( $_GET['appearance'] ) ) {
+	$appearance_data = sanitize_text_field( wp_unslash( $_GET['appearance'] ) );
+	$data = json_decode( base64_decode( $appearance_data ), true );
+	$group = 758;
+}
 
 // Build shortcode.
 if ( empty( $group ) ) {

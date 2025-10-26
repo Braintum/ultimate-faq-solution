@@ -33,6 +33,67 @@ class AppearanceActions {
 		add_action( 'add_meta_boxes', array( $this, 'add_linked_faqs_metabox' ) );
 		add_action( 'admin_post_ufaqsw_detach_group', array( $this, 'handle_detach_group' ) );
 		add_action( 'save_post_ufaqsw_appearance', array( $this, 'handle_apply_appearance_to_all' ) );
+
+		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_scripts' ) );
+		add_action( 'edit_form_after_title', array( $this, 'builder_root' ) );
+	}
+
+	/**
+	 * Renders the appearance builder root element.
+	 *
+	 * This method outputs the root div element for the appearance builder
+	 * on the appearance post type edit screen.
+	 *
+	 * @return void
+	 */
+	public function builder_root() {
+		$screen = get_current_screen();
+		if ( ! $screen ) {
+			return;
+		}
+		if ( 'ufaqsw_appearance' !== $screen->post_type ) {
+			return;
+		}
+
+		echo '<div id="ufaq-appearance-builder-root"></div>';
+	}
+
+	/**
+	 * Enqueue admin scripts and styles for the appearance editor.
+	 *
+	 * @param string $hook The current admin page hook.
+	 * @return void
+	 */
+	public function enqueue_admin_scripts( $hook ) {
+		// Only load on edit/add screen for 'ufaqsw_appearance' CPT.
+		$screen = get_current_screen();
+		if ( ! $screen ) {
+			return;
+		}
+		if ( 'ufaqsw_appearance' !== $screen->post_type ) {
+			return;
+		}
+
+		// Adjust path if plugin folder differs.
+		$dist_url = UFAQSW__PLUGIN_URL . 'assets/';
+
+		wp_enqueue_style( 'ufaq-admin-css', $dist_url . 'css/admin.css', array(), '1.0' );
+		wp_enqueue_script( 'ufaq-admin-js', $dist_url . 'dist/admin.js', array( 'wp-element' ), '1.0', true );
+
+		// Pass initial values (fetch from meta or provide defaults).
+		$appearance_meta = get_post_meta( get_the_ID(), 'ufaq_appearance_settings', true );
+		if ( ! $appearance_meta ) {
+			$appearance_meta = array();
+		}
+
+		wp_localize_script(
+			'ufaq-admin-js',
+			'ufaqAppearanceData',
+			array(
+				'initialValues'   => $appearance_meta,
+				'previewBaseUrl'  => add_query_arg( 'preview', 'ufaq', home_url( '/ufaqsw-preview/' ) ),
+			)
+		);
 	}
 
 	/**
