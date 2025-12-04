@@ -73,6 +73,9 @@ class AppearanceActions {
 		if ( 'ufaqsw_appearance' !== $screen->post_type ) {
 			return;
 		}
+		if ( ! in_array( $screen->base, array( 'post', 'post-new' ), true ) ) {
+			return;
+		}
 
 		// Adjust path if plugin folder differs.
 		$dist_url = UFAQSW__PLUGIN_URL . 'assets/';
@@ -86,6 +89,18 @@ class AppearanceActions {
 			$appearance_meta = array();
 		}
 
+		$data  = file( UFAQSW__PLUGIN_DIR . 'assets/data/fa-data.txt' ); // file in to an array.
+		$icons = array();
+		foreach ( $data as $key => $val ) {
+			$val   = explode( '=>', $val );
+			$title = $val[0];
+			$class = explode( ',', $val[1] );
+			foreach ( $class as $v => $k ) {
+				if ( strlen( $k ) > 2 ) {
+					$icons[ $title ][] = trim( $k );
+				}
+			}
+		}
 		// Define available FontAwesome icons.
 		$fontawesome_icons = array(
 			array(
@@ -93,97 +108,19 @@ class AppearanceActions {
 				'label' => 'None',
 				'icon'  => '',
 			),
-			array(
-				'value' => 'fa-plus',
-				'label' => 'Plus',
-				'icon'  => 'fa-plus',
-			),
-			array(
-				'value' => 'fa-minus',
-				'label' => 'Minus',
-				'icon'  => 'fa-minus',
-			),
-			array(
-				'value' => 'fa-chevron-down',
-				'label' => 'Chevron Down',
-				'icon'  => 'fa-chevron-down',
-			),
-			array(
-				'value' => 'fa-chevron-up',
-				'label' => 'Chevron Up',
-				'icon'  => 'fa-chevron-up',
-			),
-			array(
-				'value' => 'fa-chevron-right',
-				'label' => 'Chevron Right',
-				'icon'  => 'fa-chevron-right',
-			),
-			array(
-				'value' => 'fa-angle-down',
-				'label' => 'Angle Down',
-				'icon'  => 'fa-angle-down',
-			),
-			array(
-				'value' => 'fa-angle-up',
-				'label' => 'Angle Up',
-				'icon'  => 'fa-angle-up',
-			),
-			array(
-				'value' => 'fa-angle-right',
-				'label' => 'Angle Right',
-				'icon'  => 'fa-angle-right',
-			),
-			array(
-				'value' => 'fa-caret-down',
-				'label' => 'Caret Down',
-				'icon'  => 'fa-caret-down',
-			),
-			array(
-				'value' => 'fa-caret-up',
-				'label' => 'Caret Up',
-				'icon'  => 'fa-caret-up',
-			),
-			array(
-				'value' => 'fa-caret-right',
-				'label' => 'Caret Right',
-				'icon'  => 'fa-caret-right',
-			),
-			array(
-				'value' => 'fa-arrow-down',
-				'label' => 'Arrow Down',
-				'icon'  => 'fa-arrow-down',
-			),
-			array(
-				'value' => 'fa-arrow-up',
-				'label' => 'Arrow Up',
-				'icon'  => 'fa-arrow-up',
-			),
-			array(
-				'value' => 'fa-arrow-right',
-				'label' => 'Arrow Right',
-				'icon'  => 'fa-arrow-right',
-			),
-			array(
-				'value' => 'fa-circle-plus',
-				'label' => 'Circle Plus',
-				'icon'  => 'fa-circle-plus',
-			),
-			array(
-				'value' => 'fa-circle-minus',
-				'label' => 'Circle Minus',
-				'icon'  => 'fa-circle-minus',
-			),
-			array(
-				'value' => 'fa-square-plus',
-				'label' => 'Square Plus',
-				'icon'  => 'fa-square-plus',
-			),
-			array(
-				'value' => 'fa-square-minus',
-				'label' => 'Square Minus',
-				'icon'  => 'fa-square-minus',
-			),
 		);
+
+		foreach ( $icons as $icon_category => $icon_items ) {
+
+			foreach ( $icon_items as $icon ) {
+				$icon_name = str_replace( 'fa-', '', $icon );
+				$fontawesome_icons[] = array(
+					'value' => $icon,
+					'label' => ucwords( str_replace( '-', ' ', $icon_name ) ),
+					'icon'  => $icon,
+				);
+			}
+		}
 
 		wp_localize_script(
 			'ufaq-admin-js',

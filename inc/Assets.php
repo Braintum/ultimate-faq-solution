@@ -77,7 +77,6 @@ class Assets {
 		wp_enqueue_style( 'ufaqsw_backend_admin_style' );
 		wp_register_script( 'ufaqsw-admin-js', UFAQSW__PLUGIN_URL . 'assets/js/admin.js', array( 'jquery' ), UFAQSW_VERSION, true );
 		wp_enqueue_script( 'ufaqsw-admin-js' );
-		wp_enqueue_script( 'ufaqsw-quicksearch-js', UFAQSW__PLUGIN_URL . 'assets/js/jquery.quicksearch.js', array( 'jquery' ), UFAQSW_VERSION, true );
 		wp_enqueue_script( 'ufaqsw-cmb2-conditional', UFAQSW_ASSETS_URL . 'js/cmb2-conditional-logic.js', array( 'jquery' ), '1.0.0', true );
 	}
 }
