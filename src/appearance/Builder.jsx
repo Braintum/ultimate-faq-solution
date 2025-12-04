@@ -72,6 +72,59 @@ export default function AppearanceBuilder({
     setIframeLoaded(false);
   }, [iframeSrc]);
 
+  // Intercept WordPress publish/update button to save settings first
+  useEffect(() => {
+    const handleFormSubmit = async (e) => {
+      const publishButton = e.target.querySelector('#publish');
+      if (!publishButton || !publishButton.contains(e.submitter)) {
+        return;
+      }
+
+      e.preventDefault();
+      e.stopPropagation();
+
+      // Save appearance settings first
+      setIsSaving(true);
+      try {
+        const data = window.ufaqAppearanceData || {};
+        const postId = data.postId || new URLSearchParams(window.location.search).get('post');
+        
+        const response = await fetch(data.saveEndpoint || '/wp-json/ufaqsw/v1/appearance/save', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'X-WP-Nonce': data.nonce || '',
+          },
+          body: JSON.stringify({
+            post_id: postId,
+            settings: values,
+          }),
+        });
+
+        if (!response.ok) {
+          throw new Error('Failed to save settings');
+        }
+
+        // After successful save, submit the form
+        const form = e.target;
+        form.removeEventListener('submit', handleFormSubmit);
+        form.submit();
+      } catch (error) {
+        console.error('Error saving settings:', error);
+        setNotification({ type: 'error', message: 'Failed to save settings. Please try again.' });
+        setTimeout(() => setNotification(null), 5000);
+      } finally {
+        setIsSaving(false);
+      }
+    };
+
+    const form = document.querySelector('#post');
+    if (form) {
+      form.addEventListener('submit', handleFormSubmit);
+      return () => form.removeEventListener('submit', handleFormSubmit);
+    }
+  }, [values]);
+
   // Post message updates for immediate responses once iframe has loaded
   useEffect(() => {
     if (!iframeLoaded) return;
