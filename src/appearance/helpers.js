@@ -30,28 +30,9 @@ export function fromBase64(b64) {
 
 /**
  * FontAwesome icons list for icon selector
+ * Loaded from backend via wp_localize_script
  */
-export const FONTAWESOME_ICONS = [
-  { value: "", label: "None", icon: "" },
-  { value: "fa-plus", label: "Plus", icon: "fa-plus" },
-  { value: "fa-minus", label: "Minus", icon: "fa-minus" },
-  { value: "fa-chevron-down", label: "Chevron Down", icon: "fa-chevron-down" },
-  { value: "fa-chevron-up", label: "Chevron Up", icon: "fa-chevron-up" },
-  { value: "fa-chevron-right", label: "Chevron Right", icon: "fa-chevron-right" },
-  { value: "fa-angle-down", label: "Angle Down", icon: "fa-angle-down" },
-  { value: "fa-angle-up", label: "Angle Up", icon: "fa-angle-up" },
-  { value: "fa-angle-right", label: "Angle Right", icon: "fa-angle-right" },
-  { value: "fa-caret-down", label: "Caret Down", icon: "fa-caret-down" },
-  { value: "fa-caret-up", label: "Caret Up", icon: "fa-caret-up" },
-  { value: "fa-caret-right", label: "Caret Right", icon: "fa-caret-right" },
-  { value: "fa-arrow-down", label: "Arrow Down", icon: "fa-arrow-down" },
-  { value: "fa-arrow-up", label: "Arrow Up", icon: "fa-arrow-up" },
-  { value: "fa-arrow-right", label: "Arrow Right", icon: "fa-arrow-right" },
-  { value: "fa-circle-plus", label: "Circle Plus", icon: "fa-circle-plus" },
-  { value: "fa-circle-minus", label: "Circle Minus", icon: "fa-circle-minus" },
-  { value: "fa-square-plus", label: "Square Plus", icon: "fa-square-plus" },
-  { value: "fa-square-minus", label: "Square Minus", icon: "fa-square-minus" },
-];
+export const FONTAWESOME_ICONS = window.ufaqAppearanceData?.icons || [];
 
 /**
  * Default settings schema: groups -> fields
