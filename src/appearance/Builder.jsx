@@ -87,24 +87,50 @@ export default function AppearanceBuilder({
     setValues(resetToDefaults(schema));
   }
 
-  // Save settings (example: for saving via WP rest / AJAX)
-  function handleSave() {
-    console.log("Export (save) settings:", values);
-    // TODO: Implement actual save functionality
-    // Example: saveSettings(values);
+  // Save settings to database via WordPress REST API
+  async function handleSave() {
+    try {
+      const data = window.ufaqAppearanceData || {};
+      const postId = data.postId || new URLSearchParams(window.location.search).get('post');
+      
+      const response = await fetch(data.saveEndpoint || '/wp-json/ufaqsw/v1/appearance/save', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-WP-Nonce': data.nonce || '',
+        },
+        body: JSON.stringify({
+          post_id: postId,
+          settings: values,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to save settings');
+      }
+
+      const result = await response.json();
+      console.log('Settings saved successfully:', result);
+      
+      // Show success message (you can use a toast notification library)
+      alert('Settings saved successfully!');
+    } catch (error) {
+      console.error('Error saving settings:', error);
+      alert('Failed to save settings. Please try again.');
+    }
   }
 
   // ----------------------------- UI -----------------------------
   return (
     <div className="flex gap-4 p-4">
       {/* Left: Settings panel */}
-      <div className="w-96 bg-white border rounded p-4 shadow-sm sticky top-4">
-        <div className="flex items-center justify-between mb-4">
+      <div className="w-96 bg-white border rounded shadow-sm flex flex-col h-[1000px]">
+        <div className="flex items-center justify-between p-4 border-b flex-shrink-0">
           <h3 className="text-lg font-semibold">Appearance Builder</h3>
           <div className="text-xs text-gray-500">Live preview</div>
         </div>
 
-        <div className="space-y-4">
+        <div className="flex-1 overflow-y-auto p-4 space-y-4">
           {Object.keys(schema).map((groupKey) => {
             const group = schema[groupKey];
             return (
@@ -118,12 +144,15 @@ export default function AppearanceBuilder({
             );
           })}
 
-          <ActionButtons onReset={handleReset} onSave={handleSave} />
-
           <div className="text-xs text-gray-500 mt-2">
             Tip: you can extend the <code>schema</code> prop to add more settings fields or custom
             field types. The builder will render them automatically.
           </div>
+        </div>
+
+        {/* Fixed action buttons at bottom */}
+        <div className="p-4 border-t flex-shrink-0 bg-white">
+          <ActionButtons onReset={handleReset} onSave={handleSave} />
         </div>
       </div>
 
@@ -140,11 +169,9 @@ export default function AppearanceBuilder({
             src={iframeSrc}
             ref={iframeRef}
             onLoad={() => setIframeLoaded(true)}
-            className="w-full h-[600px]"
+            className="w-full h-[100%]"
           />
         </div>
-
-        <div className="text-xs text-gray-500 mt-1">Iframe src: <code className="break-all">{iframeSrc}</code></div>
       </div>
     </div>
   );
