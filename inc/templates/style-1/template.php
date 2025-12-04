@@ -11,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 extract( $designs ); // phpcs:ignore
 
-$is_show_all = 'accordion' !== $behaviour && 1 === $showall;
+$is_show_all = 'accordion' !== $behaviour && $showall;
 
 ?>
 <div class="ufaqsw_content_style1 ufaqsw_element_group_src">

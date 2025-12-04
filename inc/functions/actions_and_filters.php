@@ -63,7 +63,6 @@ function ufaqsw_simplify_configuration_variables( $id ) {
 
 	global $ufaqsw_appearance_data;
 	if ( ! empty( $ufaqsw_appearance_data ) ) {
-		print_r( $ufaqsw_appearance_data ); //phpcs:ignore
 		return $ufaqsw_appearance_data;
 	}
 
@@ -95,13 +94,12 @@ function ufaqsw_simplify_configuration_variables( $id ) {
 	$formated_data['question_font_size']        = ( isset( $question_font_size[0] ) ? $question_font_size[0] : '' );
 	$formated_data['answer_font_size']          = ( isset( $answer_font_size[0] ) ? $answer_font_size[0] : '' );
 	$formated_data['template']                  = ( isset( $template[0] ) ? $template[0] : 'default' );
-	$formated_data['showall']                   = ( isset( $showall[0] ) && 'on' === $showall[0] ? 1 : 0 );
-	$formated_data['hidetitle']                 = ( isset( $hidetitle[0] ) && 'on' === $hidetitle[0] ? 1 : 0 );
+	$formated_data['showall']                   = ( isset( $showall[0] ) && ( 'on' === $showall[0] || $showall[0] ) ? 1 : 0 );
+	$formated_data['hidetitle']                 = ( isset( $hidetitle[0] ) && ( 'on' === $hidetitle[0] || $hidetitle[0] ) ? 1 : 0 );
 	$formated_data['normal_icon']               = ( isset( $normal_icon[0] ) ? $normal_icon[0] : '' );
 	$formated_data['active_icon']               = ( isset( $active_icon[0] ) ? $active_icon[0] : '' );
 	$formated_data['behaviour']                 = ( isset( $behaviour[0] ) ? $behaviour[0] : 'toggle' );
-	$formated_data['question_bold']             = ( isset( $question_bold[0] ) && 'on' === $question_bold[0] ? 1 : 0 );
-
+	$formated_data['question_bold']             = ( isset( $question_bold[0] ) && ( 'on' === $question_bold[0] || $question_bold[0] ) ? 1 : 0 );
 	return $formated_data;
 }
 add_filter( 'ufaqsw_simplify_configuration_variables', 'ufaqsw_simplify_configuration_variables' );

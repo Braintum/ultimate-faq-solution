@@ -81,7 +81,7 @@ class AppearanceActions {
 		wp_enqueue_script( 'ufaq-admin-js', $dist_url . 'dist/admin.js', array( 'wp-element' ), '1.0', true );
 
 		// Pass initial values (fetch from meta or provide defaults).
-		$appearance_meta = get_post_meta( get_the_ID(), 'ufaq_appearance_settings', true );
+		$appearance_meta = ufaqsw_simplify_configuration_variables( get_the_ID() );
 		if ( ! $appearance_meta ) {
 			$appearance_meta = array();
 		}
@@ -92,6 +92,9 @@ class AppearanceActions {
 			array(
 				'initialValues'   => $appearance_meta,
 				'previewBaseUrl'  => add_query_arg( 'preview', 'ufaq', home_url( '/ufaqsw-preview/' ) ),
+				'postId'          => get_the_ID(),
+				'saveEndpoint'    => rest_url( 'ufaqsw/v1/appearance/save' ),
+				'nonce'           => wp_create_nonce( 'wp_rest' ),
 			)
 		);
 	}
