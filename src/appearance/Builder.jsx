@@ -45,6 +45,8 @@ export default function AppearanceBuilder({
   const [values, setValues] = useState(initialState);
   const [debouncedValues, setDebouncedValues] = useState(initialState);
   const [iframeLoaded, setIframeLoaded] = useState(false);
+  const [isSaving, setIsSaving] = useState(false);
+  const [notification, setNotification] = useState(null);
   const iframeRef = React.useRef(null);
 
   // Debounce values changes - only update after 1 second of no changes
@@ -89,6 +91,9 @@ export default function AppearanceBuilder({
 
   // Save settings to database via WordPress REST API
   async function handleSave() {
+    setIsSaving(true);
+    setNotification(null);
+
     try {
       const data = window.ufaqAppearanceData || {};
       const postId = data.postId || new URLSearchParams(window.location.search).get('post');
@@ -112,17 +117,27 @@ export default function AppearanceBuilder({
       const result = await response.json();
       console.log('Settings saved successfully:', result);
       
-      // Show success message (you can use a toast notification library)
-      alert('Settings saved successfully!');
+      // Show success notification
+      setNotification({ type: 'success', message: 'Settings saved successfully!' });
+      
+      // Auto-hide notification after 3 seconds
+      setTimeout(() => setNotification(null), 3000);
     } catch (error) {
       console.error('Error saving settings:', error);
-      alert('Failed to save settings. Please try again.');
+      
+      // Show error notification
+      setNotification({ type: 'error', message: 'Failed to save settings. Please try again.' });
+      
+      // Auto-hide notification after 5 seconds
+      setTimeout(() => setNotification(null), 5000);
+    } finally {
+      setIsSaving(false);
     }
   }
 
   // ----------------------------- UI -----------------------------
   return (
-    <div className="flex gap-4 p-4">
+    <div className="flex gap-4 py-4">
       {/* Left: Settings panel */}
       <div className="w-96 bg-white border rounded shadow-sm flex flex-col h-[1000px]">
         <div className="flex items-center justify-between p-4 border-b flex-shrink-0">
@@ -152,7 +167,7 @@ export default function AppearanceBuilder({
 
         {/* Fixed action buttons at bottom */}
         <div className="p-4 border-t flex-shrink-0 bg-white">
-          <ActionButtons onReset={handleReset} onSave={handleSave} />
+          <ActionButtons onReset={handleReset} onSave={handleSave} isSaving={isSaving} />
         </div>
       </div>
 
@@ -160,7 +175,7 @@ export default function AppearanceBuilder({
       <div className="flex-1 flex flex-col gap-2">
         <div className="flex items-center justify-between">
           <div className="text-sm text-gray-600">Preview</div>
-          <div className="text-xs text-gray-500">Using both query param + postMessage</div>
+          <div className="text-xs text-gray-500"></div>
         </div>
 
         <div className="flex-1 border rounded overflow-hidden">
@@ -173,6 +188,37 @@ export default function AppearanceBuilder({
           />
         </div>
       </div>
+
+      {/* Notification Toast */}
+      {notification && (
+        <div className="fixed bottom-4 left-4 z-50 animate-slide-in">
+          <div className={`
+            px-4 py-3 rounded-lg shadow-lg flex items-center gap-3 min-w-[300px]
+            ${notification.type === 'success' ? 'bg-green-50 border border-green-200' : 'bg-red-50 border border-red-200'}
+          `}>
+            {notification.type === 'success' ? (
+              <svg className="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+            ) : (
+              <svg className="w-5 h-5 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path>
+              </svg>
+            )}
+            <span className={`text-sm font-medium ${notification.type === 'success' ? 'text-green-800' : 'text-red-800'}`}>
+              {notification.message}
+            </span>
+            <button
+              onClick={() => setNotification(null)}
+              className="ml-auto text-gray-400 hover:text-gray-600"
+            >
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

@@ -89,6 +89,16 @@ export const DEFAULT_SCHEMA = {
         label: "Border Color",
         default: "",
       },
+      normal_icon: {
+        type: "icon",
+        label: "Normal Icon",
+        default: "fa-plus",
+      },
+      active_icon: {
+        type: "icon",
+        label: "Active Icon",
+        default: "fa-minus",
+      },
     },
   },
   group: {
@@ -144,22 +154,7 @@ export const DEFAULT_SCHEMA = {
         default: '',
       },
     },
-  },
-  icon: {
-    label: "Icon",
-    fields: {
-      normal_icon: {
-        type: "icon",
-        label: "Normal Icon",
-        default: "fa-plus",
-      },
-      active_icon: {
-        type: "icon",
-        label: "Active Icon",
-        default: "fa-minus",
-      },
-    },
-  },
+  }
 };
 
 /**
