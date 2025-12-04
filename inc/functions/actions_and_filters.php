@@ -61,6 +61,11 @@ add_filter( 'ufaqsw_simplify_variables', 'ufaqsw_simplify_variables' );
  */
 function ufaqsw_simplify_configuration_variables( $id ) {
 
+	global $ufaqsw_appearance_data;
+	if ( ! empty( $ufaqsw_appearance_data ) ) {
+		return $ufaqsw_appearance_data;
+	}
+
 	$title_color               = get_post_meta( $id, 'ufaqsw_title_color', false );
 	$title_font_size           = get_post_meta( $id, 'ufaqsw_title_font_size', false );
 	$question_color            = get_post_meta( $id, 'ufaqsw_question_color', false );
@@ -95,6 +100,7 @@ function ufaqsw_simplify_configuration_variables( $id ) {
 	$formated_data['active_icon']               = ( isset( $active_icon[0] ) ? $active_icon[0] : '' );
 	$formated_data['behaviour']                 = ( isset( $behaviour[0] ) ? $behaviour[0] : 'toggle' );
 	$formated_data['question_bold']             = ( isset( $question_bold[0] ) && 'on' === $question_bold[0] ? 1 : 0 );
+
 	return $formated_data;
 }
 add_filter( 'ufaqsw_simplify_configuration_variables', 'ufaqsw_simplify_configuration_variables' );

@@ -43,16 +43,27 @@ export default function AppearanceBuilder({
   }, [schema, initialValues]);
 
   const [values, setValues] = useState(initialState);
+  const [debouncedValues, setDebouncedValues] = useState(initialState);
   const [iframeLoaded, setIframeLoaded] = useState(false);
   const iframeRef = React.useRef(null);
 
+  // Debounce values changes - only update after 1 second of no changes
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      setDebouncedValues(values);
+    }, 1000); // 1 second delay
+
+    return () => clearTimeout(timeoutId);
+  }, [values]);
+
   // Assemble the iframe src with a base64 encoded appearance param
+  // Using debouncedValues instead of values to prevent too many reloads
   const iframeSrc = useMemo(() => {
-    const encoded = toBase64(values);
+    const encoded = toBase64(debouncedValues);
     // append appearance param without breaking existing querystring
     const sep = previewBaseUrl.includes("?") ? "&" : "?";
     return `${previewBaseUrl}${sep}appearance=${encoded}`;
-  }, [previewBaseUrl, values]);
+  }, [previewBaseUrl, debouncedValues]);
 
   // Post message updates for immediate responses once iframe has loaded
   useEffect(() => {

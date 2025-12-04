@@ -98,6 +98,58 @@ export function ToggleInput({ value, onChange }) {
 }
 
 /**
+ * Radio input component with card-style UI (horizontal layout)
+ */
+export function RadioInput({ value, onChange, options = [] }) {
+  return (
+    <div className="flex gap-2">
+      {options.map((option) => {
+        const optionValue = typeof option === 'object' ? option.value : option;
+        const optionLabel = typeof option === 'object' ? option.label : option;
+        const isSelected = value === optionValue;
+        
+        return (
+          <label 
+            key={optionValue} 
+            className={`
+              flex-1 flex items-center justify-center cursor-pointer p-2 rounded-lg border-2 transition-all
+              ${isSelected 
+                ? 'border-blue-500 bg-blue-50 shadow-sm' 
+                : 'border-gray-200 bg-white hover:border-gray-300 hover:bg-gray-50'
+              }
+            `}
+          >
+            <div className="relative flex items-center justify-center w-4 h-4 mr-2">
+              <input
+                type="radio"
+                name={`radio-${Math.random()}`}
+                value={optionValue}
+                checked={isSelected}
+                onChange={(e) => onChange(e.target.value)}
+                className="sr-only"
+              />
+              <div className={`
+                w-4 h-4 rounded-full border-2 transition-all
+                ${isSelected ? 'border-blue-500' : 'border-gray-300'}
+              `}>
+                {isSelected && (
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="w-2 h-2 rounded-full bg-blue-500"></div>
+                  </div>
+                )}
+              </div>
+            </div>
+            <span className={`text-sm font-medium whitespace-nowrap ${isSelected ? 'text-blue-700' : 'text-gray-700'}`}>
+              {optionLabel}
+            </span>
+          </label>
+        );
+      })}
+    </div>
+  );
+}
+
+/**
  * Custom field renderer based on field type
  */
 export function FieldRenderer({ fieldKey, config, value, onChange }) {
@@ -116,6 +168,8 @@ export function FieldRenderer({ fieldKey, config, value, onChange }) {
       );
     case "select":
       return <SelectInput value={value} onChange={onChange} options={config.options} />;
+    case "radio":
+      return <RadioInput value={value} onChange={onChange} options={config.options} />;
     case "toggle":
       return <ToggleInput value={value} onChange={onChange} />;
     case "text":

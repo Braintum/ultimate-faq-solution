@@ -13,6 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 global $ufaqsw_preview_data;
+global $ufaqsw_appearance_data;
 
 // Get FAQ preview data.
 $group          = $ufaqsw_preview_data['group'] ?? 758;
@@ -25,6 +26,7 @@ if ( isset( $_GET['appearance'] ) ) {
 	$appearance_data = sanitize_text_field( wp_unslash( $_GET['appearance'] ) );
 	$data = json_decode( base64_decode( $appearance_data ), true );
 	$group = 758;
+	$ufaqsw_appearance_data = $data;
 }
 
 // Build shortcode.

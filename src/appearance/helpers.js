@@ -35,6 +35,16 @@ export const DEFAULT_SCHEMA = {
   general: {
     label: "General",
     fields: {
+      template: {
+        type: "radio",
+        label: "Template Style",
+        options: [
+          { value: "default", label: "Default" },
+          { value: "style-1", label: "Style 1" },
+          { value: "style-2", label: "Style 2" },
+        ],
+        default: "default",
+      },
       fontSize: {
         type: "range",
         label: "Font size (px)",
