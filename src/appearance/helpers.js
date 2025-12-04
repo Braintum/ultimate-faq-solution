@@ -29,6 +29,31 @@ export function fromBase64(b64) {
 }
 
 /**
+ * FontAwesome icons list for icon selector
+ */
+export const FONTAWESOME_ICONS = [
+  { value: "", label: "None", icon: "" },
+  { value: "fa-plus", label: "Plus", icon: "fa-plus" },
+  { value: "fa-minus", label: "Minus", icon: "fa-minus" },
+  { value: "fa-chevron-down", label: "Chevron Down", icon: "fa-chevron-down" },
+  { value: "fa-chevron-up", label: "Chevron Up", icon: "fa-chevron-up" },
+  { value: "fa-chevron-right", label: "Chevron Right", icon: "fa-chevron-right" },
+  { value: "fa-angle-down", label: "Angle Down", icon: "fa-angle-down" },
+  { value: "fa-angle-up", label: "Angle Up", icon: "fa-angle-up" },
+  { value: "fa-angle-right", label: "Angle Right", icon: "fa-angle-right" },
+  { value: "fa-caret-down", label: "Caret Down", icon: "fa-caret-down" },
+  { value: "fa-caret-up", label: "Caret Up", icon: "fa-caret-up" },
+  { value: "fa-caret-right", label: "Caret Right", icon: "fa-caret-right" },
+  { value: "fa-arrow-down", label: "Arrow Down", icon: "fa-arrow-down" },
+  { value: "fa-arrow-up", label: "Arrow Up", icon: "fa-arrow-up" },
+  { value: "fa-arrow-right", label: "Arrow Right", icon: "fa-arrow-right" },
+  { value: "fa-circle-plus", label: "Circle Plus", icon: "fa-circle-plus" },
+  { value: "fa-circle-minus", label: "Circle Minus", icon: "fa-circle-minus" },
+  { value: "fa-square-plus", label: "Square Plus", icon: "fa-square-plus" },
+  { value: "fa-square-minus", label: "Square Minus", icon: "fa-square-minus" },
+];
+
+/**
  * Default settings schema: groups -> fields
  */
 export const DEFAULT_SCHEMA = {
@@ -45,35 +70,94 @@ export const DEFAULT_SCHEMA = {
         ],
         default: "default",
       },
-      fontSize: {
-        type: "range",
-        label: "Font size (px)",
-        min: 12,
-        max: 36,
-        step: 1,
-        default: 16,
-      },
-      fontFamily: {
+      behaviour: {
         type: "select",
-        label: "Font family",
-        options: ["inherit", "Inter, system-ui, sans-serif", "Georgia, serif"],
-        default: "inherit",
+        label: "Behaviour",
+        options: [
+          { value: "accordion", label: "Accordion" },
+          { value: "toggle", label: "Toggle" },
+        ],
+        default: "accordion",
+      },
+      showall: {
+        type: "toggle",
+        label: "Show All Answers Opened",
+        default: false,
+      },
+      border_color: {
+        type: "color",
+        label: "Border Color",
+        default: "",
+      },
+    },
+  },
+  group: {
+    label: "Group",
+    fields: {
+      hidetitle: {
+        type: "toggle",
+        label: "Hide Title",
+        default: false,
+      },
+      title_color: { type: "color", label: "Title Color", default: "" },
+      title_font_size: {
+        type: "range",
+        label: "Title Font Size",
+        min: 12,
+        max: 100,
+        step: 1,
+        default: '',
       },
     },
   },
   question: {
     label: "Question",
     fields: {
-      questionTextColor: { type: "color", label: "Text color", default: "#111827" },
-      questionBgColor: { type: "color", label: "Background color", default: "#ffffff" },
+      question_color: { type: "color", label: "Text color", default: "" },
+      question_background_color: { type: "color", label: "Background color", default: "" },
+      question_font_size: {
+        type: "range",
+        label: "Font Size",
+        min: 12,
+        max: 36,
+        step: 1,
+        default: '',
+      },
+      question_bold: {
+        type: "toggle",
+        label: "Display Question in Bold",
+        default: false,
+      },
     },
   },
   answer: {
     label: "Answer",
     fields: {
-      answerTextColor: { type: "color", label: "Text color", default: "#374151" },
-      answerBgColor: { type: "color", label: "Background color", default: "#ffffff" },
-      answerPadding: { type: "range", label: "Padding (px)", min: 0, max: 40, step: 1, default: 12 },
+      answer_color: { type: "color", label: "Text color", default: "" },
+      answer_background_color: { type: "color", label: "Background color", default: "" },
+      answer_font_size: {
+        type: "range",
+        label: "Font Size",
+        min: 12,
+        max: 36,
+        step: 1,
+        default: '',
+      },
+    },
+  },
+  icon: {
+    label: "Icon",
+    fields: {
+      normal_icon: {
+        type: "icon",
+        label: "Normal Icon",
+        default: "fa-plus",
+      },
+      active_icon: {
+        type: "icon",
+        label: "Active Icon",
+        default: "fa-minus",
+      },
     },
   },
 };

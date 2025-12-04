@@ -63,6 +63,7 @@ function ufaqsw_simplify_configuration_variables( $id ) {
 
 	global $ufaqsw_appearance_data;
 	if ( ! empty( $ufaqsw_appearance_data ) ) {
+		print_r( $ufaqsw_appearance_data ); //phpcs:ignore
 		return $ufaqsw_appearance_data;
 	}
 

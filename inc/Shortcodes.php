@@ -120,15 +120,6 @@ class Shortcodes {
 				$faqs = get_post_meta( get_the_ID(), 'ufaqsw_faq_item01' );
 				$faqs = isset( $faqs[0] ) ? $faqs[0] : $faqs;
 
-				if ( null === $title_hide ) {
-
-					$hide_title = get_post_meta( ufaqsw_get_appearance_id( get_the_ID() ), 'ufaqsw_hide_title', true );
-
-					if ( '' !== $hide_title ) {
-						$title_hide = 'yes';
-					}
-				}
-
 				if ( ! empty( $exclude_items ) ) {
 					$exclude_items = array_map( 'trim', explode( ',', $exclude_items ) );
 					$faqs = array_filter(
@@ -147,6 +138,11 @@ class Shortcodes {
 				}
 
 				$designs = apply_filters( 'ufaqsw_simplify_configuration_variables', ufaqsw_get_appearance_id( get_the_ID() ) );
+				if ( null === $title_hide ) {
+					if ( isset( $designs['hidetitle'] ) && 1 === (int) $designs['hidetitle'] ) {
+						$title_hide = 'yes';
+					}
+				}
 
 				$template = apply_filters( 'ufaqsw_template_filter', $designs['template'] );
 

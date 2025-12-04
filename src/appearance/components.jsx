@@ -1,4 +1,5 @@
 import React from 'react';
+import { FONTAWESOME_ICONS } from './helpers';
 
 /**
  * Reusable form components for the Appearance Builder
@@ -12,35 +13,81 @@ export const Label = ({ children }) => (
 );
 
 /**
- * Color input component
+ * Color input component with color preview, hex display, and clear button
  */
 export function ColorInput({ value, onChange }) {
+  const hasColor = value && value !== "";
+  const colorValue = hasColor ? value : "#000000";
+  
   return (
-    <input
-      type="color"
-      value={value}
-      onChange={(e) => onChange(e.target.value)}
-      className="w-12 h-8 p-0 border-0"
-    />
+    <div className="flex items-center gap-2">
+      <div className="relative">
+        <input
+          type="color"
+          value={colorValue}
+          onChange={(e) => onChange(e.target.value)}
+          className="w-12 h-8 p-0 border border-gray-300 rounded cursor-pointer"
+        />
+        {!hasColor && (
+          <div className="absolute inset-0 flex items-center justify-center pointer-events-none bg-white bg-opacity-50">
+            <div className="w-8 h-0.5 bg-red-500 rotate-45"></div>
+          </div>
+        )}
+      </div>
+      <input
+        type="text"
+        value={hasColor ? value : ""}
+        onChange={(e) => onChange(e.target.value)}
+        className="flex-1 px-2 py-1 text-xs font-mono border border-gray-300 rounded"
+        placeholder="No color"
+      />
+      {hasColor && (
+        <button
+          type="button"
+          onClick={() => onChange("")}
+          className="px-2 py-1 text-xs text-red-600 hover:bg-red-50 border border-red-200 rounded"
+          title="Clear color"
+        >
+          ✕
+        </button>
+      )}
+    </div>
   );
 }
 
 /**
- * Range input component with live value display
+ * Range input component with live value display and clear button
  */
 export function RangeInput({ value, onChange, min = 0, max = 100, step = 1 }) {
+  const hasValue = value !== '' && value !== null && value !== undefined;
+  const displayValue = hasValue ? value : min;
+  
   return (
     <div>
-      <input
-        type="range"
-        min={min}
-        max={max}
-        step={step}
-        value={value}
-        onChange={(e) => onChange(parseInt(e.target.value, 10))}
-        className="w-full"
-      />
-      <div className="text-xs mt-1">{value}px</div>
+      <div className="flex items-center gap-2">
+        <input
+          type="range"
+          min={min}
+          max={max}
+          step={step}
+          value={displayValue}
+          onChange={(e) => onChange(parseInt(e.target.value, 10))}
+          className="flex-1"
+        />
+        {hasValue && (
+          <button
+            type="button"
+            onClick={() => onChange('')}
+            className="px-2 py-0.5 text-xs text-red-600 hover:bg-red-50 border border-red-200 rounded"
+            title="Clear value"
+          >
+            ✕
+          </button>
+        )}
+      </div>
+      <div className="text-xs mt-1 text-gray-600">
+        {hasValue ? `${value}px` : 'Not set'}
+      </div>
     </div>
   );
 }
@@ -52,8 +99,8 @@ export function SelectInput({ value, onChange, options = [] }) {
   return (
     <select value={value} onChange={(e) => onChange(e.target.value)} className="w-full p-1">
       {options.map((opt) => (
-        <option key={opt} value={opt}>
-          {opt}
+        <option key={opt.value} value={opt.value}>
+          {opt.label}
         </option>
       ))}
     </select>
@@ -150,6 +197,63 @@ export function RadioInput({ value, onChange, options = [] }) {
 }
 
 /**
+ * Icon selector component with FontAwesome icons
+ */
+export function IconInput({ value, onChange }) {
+  const [isOpen, setIsOpen] = React.useState(false);
+  const selectedIcon = FONTAWESOME_ICONS.find(icon => icon.value === value) || FONTAWESOME_ICONS[0];
+  
+  return (
+    <div className="relative">
+      <button
+        type="button"
+        onClick={() => setIsOpen(!isOpen)}
+        className="w-full flex items-center justify-between p-2 border border-gray-300 rounded hover:bg-gray-50"
+      >
+        <div className="flex items-center gap-2">
+          {selectedIcon.icon && (
+            <i className={`fa ${selectedIcon.icon} text-gray-700`}></i>
+          )}
+          <span className="text-sm">{selectedIcon.label}</span>
+        </div>
+        <i className="fa fa-chevron-down text-xs text-gray-500"></i>
+      </button>
+      
+      {isOpen && (
+        <>
+          <div 
+            className="fixed inset-0 z-10" 
+            onClick={() => setIsOpen(false)}
+          ></div>
+          <div className="absolute z-20 mt-1 w-full bg-white border border-gray-300 rounded shadow-lg max-h-64 overflow-y-auto">
+            {FONTAWESOME_ICONS.map((icon) => (
+              <button
+                key={icon.value}
+                type="button"
+                onClick={() => {
+                  onChange(icon.value);
+                  setIsOpen(false);
+                }}
+                className={`w-full flex items-center gap-3 p-2 hover:bg-blue-50 text-left ${
+                  value === icon.value ? 'bg-blue-100' : ''
+                }`}
+              >
+                {icon.icon ? (
+                  <i className={`fa ${icon.icon} w-5 text-gray-700`}></i>
+                ) : (
+                  <span className="w-5 text-xs text-gray-400">-</span>
+                )}
+                <span className="text-sm">{icon.label}</span>
+              </button>
+            ))}
+          </div>
+        </>
+      )}
+    </div>
+  );
+}
+
+/**
  * Custom field renderer based on field type
  */
 export function FieldRenderer({ fieldKey, config, value, onChange }) {
@@ -170,6 +274,8 @@ export function FieldRenderer({ fieldKey, config, value, onChange }) {
       return <SelectInput value={value} onChange={onChange} options={config.options} />;
     case "radio":
       return <RadioInput value={value} onChange={onChange} options={config.options} />;
+    case "icon":
+      return <IconInput value={value} onChange={onChange} />;
     case "toggle":
       return <ToggleInput value={value} onChange={onChange} />;
     case "text":
