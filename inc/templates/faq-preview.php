@@ -43,7 +43,7 @@ if ( isset( $_GET['appearance'] ) ) {
 
 // Build shortcode.
 if ( empty( $group ) ) {
-	$content = '<div class="ufaqsw-editor-notice">' . esc_html__( 'No FAQ group.', 'ufaqsw' ) . '</div>';
+	$content = '<div class="ufaqsw-editor-notice">' . esc_html__( 'No FAQ group to preview. Please create one.', 'ufaqsw' ) . '</div>';
 } else {
 	$shortcode_atts = array();
 
@@ -120,7 +120,8 @@ if ( empty( $group ) ) {
 <body <?php body_class( 'ufaqsw-preview' ); ?>>
 	<?php
 	// Output the FAQ content.
-	echo do_shortcode( $shortcode )
+	echo do_shortcode( $shortcode );
+	echo isset( $content ) && ! empty( $content ) ? $content : '';
 	?>
 	<?php wp_footer(); ?>
 </body>
