@@ -37,7 +37,7 @@ function ufaqsw_create_default_appearance() {
 	}
 
 	// Add default meta values.
-	update_post_meta( $appearance_id, 'ufaqsw_template', 'default' );
+	update_post_meta( $appearance_id, 'ufaqsw_template', 'style-2' );
 	update_post_meta( $appearance_id, 'ufaqsw_faq_behaviour', 'toggle' );
 
 	// Save the ID in options so it can be referenced later.

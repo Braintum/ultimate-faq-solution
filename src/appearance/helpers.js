@@ -64,6 +64,7 @@ export const DEFAULT_SCHEMA = {
         type: "toggle",
         label: "Show All Answers Opened",
         default: false,
+        condition: { field: "behaviour", value: "toggle" }
       },
       border_color: {
         type: "color",
@@ -90,7 +91,12 @@ export const DEFAULT_SCHEMA = {
         label: "Hide Title",
         default: false,
       },
-      title_color: { type: "color", label: "Title Color", default: "" },
+      title_color: { 
+        type: "color", 
+        label: "Title Color", 
+        default: "",
+        condition: { field: "hidetitle", value: false }
+      },
       title_font_size: {
         type: "range",
         label: "Title Font Size",
@@ -98,6 +104,7 @@ export const DEFAULT_SCHEMA = {
         max: 100,
         step: 1,
         default: '',
+        condition: { field: "hidetitle", value: false }
       },
     },
   },
@@ -139,6 +146,49 @@ export const DEFAULT_SCHEMA = {
 };
 
 /**
+ * Check if a field should be visible based on its condition
+ * @param {Object} fieldConfig - Field configuration object
+ * @param {Object} values - Current form values
+ * @returns {boolean} True if field should be visible
+ */
+export function isFieldVisible(fieldConfig, values) {
+  // If no condition defined, field is always visible
+  if (!fieldConfig.condition) {
+    return true;
+  }
+
+  const { field, value } = fieldConfig.condition;
+  
+  // Get the current value of the field being checked
+  const currentValue = values[field];
+  
+  // Normalize boolean values (handle 0/1 from database)
+  const normalizedCurrent = normalizeBooleanValue(currentValue);
+  const normalizedExpected = normalizeBooleanValue(value);
+  
+  // Compare normalized values
+  return normalizedCurrent === normalizedExpected;
+}
+
+/**
+ * Normalize boolean-like values
+ * Converts 0/1/"0"/"1"/true/false to proper booleans
+ * @param {*} value - Value to normalize
+ * @returns {boolean|*} Normalized boolean or original value if not boolean-like
+ */
+function normalizeBooleanValue(value) {
+  // Handle numeric 0 and 1
+  if (value === 0 || value === "0") return false;
+  if (value === 1 || value === "1") return true;
+  
+  // Handle boolean true/false
+  if (value === true || value === false) return value;
+  
+  // Return original value for non-boolean types
+  return value;
+}
+
+/**
  * Build initial state from schema and initial values
  * @param {Object} schema - Settings schema
  * @param {Object} initialValues - Initial values to use
@@ -150,7 +200,12 @@ export function buildInitialState(schema, initialValues = {}) {
     const group = schema[groupKey];
     Object.keys(group.fields).forEach((fieldKey) => {
       const cfg = group.fields[fieldKey];
-      state[fieldKey] = initialValues[fieldKey] ?? cfg.default ?? null;
+      // Ensure we always use the default if initialValues doesn't have the field
+      if (fieldKey in initialValues) {
+        state[fieldKey] = initialValues[fieldKey];
+      } else {
+        state[fieldKey] = cfg.default !== undefined ? cfg.default : null;
+      }
     });
   });
   return state;

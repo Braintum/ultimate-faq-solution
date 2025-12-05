@@ -1,5 +1,5 @@
 import React from 'react';
-import { FONTAWESOME_ICONS } from './helpers';
+import { FONTAWESOME_ICONS, isFieldVisible } from './helpers';
 
 /**
  * Reusable form components for the Appearance Builder
@@ -291,9 +291,18 @@ export function SettingsGroup({ groupKey, group, values, setField }) {
   return (
     <div key={groupKey} className="border rounded p-3">
       <div className="font-medium mb-2">{group.label}</div>
+      <hr className="my-4 border-gray-300" /> 
       <div className="space-y-3">
         {Object.keys(group.fields).map((fieldKey) => {
           const cfg = group.fields[fieldKey];
+          
+          // Check if field should be visible based on its condition
+          const visible = isFieldVisible(cfg, values);
+          
+          if (!visible) {
+            return null;
+          }
+          
           return (
             <div key={fieldKey} className="">
               <Label>{cfg.label}</Label>

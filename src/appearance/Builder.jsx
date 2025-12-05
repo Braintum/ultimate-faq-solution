@@ -200,7 +200,7 @@ export default function AppearanceBuilder({
       <div className="w-96 bg-white border rounded shadow-sm flex flex-col h-[1000px]">
         <div className="flex items-center justify-between p-4 border-b flex-shrink-0">
           <h3 className="text-lg font-semibold">Appearance Builder</h3>
-          <div className="text-xs text-gray-500">Live preview</div>
+          <div className="text-xs text-gray-500"></div>
         </div>
 
         <div className="flex-1 overflow-y-auto p-4 space-y-4">
@@ -216,11 +216,6 @@ export default function AppearanceBuilder({
               />
             );
           })}
-
-          <div className="text-xs text-gray-500 mt-2">
-            Tip: you can extend the <code>schema</code> prop to add more settings fields or custom
-            field types. The builder will render them automatically.
-          </div>
         </div>
 
         {/* Fixed action buttons at bottom */}
@@ -232,7 +227,7 @@ export default function AppearanceBuilder({
       {/* Right: Preview */}
       <div className="flex-1 flex flex-col gap-2">
         <div className="flex items-center justify-between">
-          <div className="text-sm text-gray-600">Preview</div>
+          <div className="text-sm text-gray-600">Live Preview</div>
           <div className="text-xs text-gray-500"></div>
         </div>
 

@@ -105,7 +105,7 @@ class AppearanceActions {
 		$fontawesome_icons = array(
 			array(
 				'value' => '',
-				'label' => 'None',
+				'label' => 'Default',
 				'icon'  => '',
 			),
 		);
