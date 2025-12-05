@@ -181,6 +181,13 @@ Yes! Starting from version 1.6.4, Ultimate FAQ Solution includes an AI-powered f
 
 == Changelog ==
 
+=1.8.0=
+* New: 🎨 Visual Builder for creating and customizing FAQ layouts with live preview.
+* Enhanced: 🛠️ Improved FAQ group management with visual editing capabilities.
+* Enhanced: 🎯 Streamlined workflow for FAQ creation and styling through the Visual Builder interface.
+* Fixed: 🐛 Minor compatibility issues with latest WordPress block editor.
+* Improved: ⚡ Performance optimizations for faster FAQ rendering and Visual Builder operations.
+
 =1.7.9=
 * Fixed: Minor issue resolved for directory shortcode functionality.
 
