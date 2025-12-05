@@ -16,7 +16,7 @@ global $ufaqsw_preview_data;
 global $ufaqsw_appearance_data;
 
 // Get FAQ preview data.
-$group          = $ufaqsw_preview_data['group'] ?? 758;
+$group          = $ufaqsw_preview_data['group'];
 $exclude        = $ufaqsw_preview_data['exclude'] ?? '';
 $behaviour      = $ufaqsw_preview_data['behaviour'] ?? '';
 $elements_order = $ufaqsw_preview_data['elements_order'] ?? '';
@@ -25,13 +25,25 @@ $hide_title     = $ufaqsw_preview_data['hide_title'] ?? '0';
 if ( isset( $_GET['appearance'] ) ) {
 	$appearance_data = sanitize_text_field( wp_unslash( $_GET['appearance'] ) );
 	$data = json_decode( base64_decode( $appearance_data ), true );
-	$group = 758;
 	$ufaqsw_appearance_data = $data;
+
+	if ( empty( $group ) ) {
+		$faq_groups = get_posts(
+			array(
+				'post_type'      => 'ufaqsw',
+				'posts_per_page' => 1,
+				'fields'          => 'ids',
+			)
+		);
+		if ( ! empty( $faq_groups ) ) {
+			$group = $faq_groups[0];
+		}
+	}
 }
 
 // Build shortcode.
 if ( empty( $group ) ) {
-	$content = '<div class="ufaqsw-editor-notice">' . esc_html__( 'No FAQ group selected.', 'ufaqsw' ) . '</div>';
+	$content = '<div class="ufaqsw-editor-notice">' . esc_html__( 'No FAQ group.', 'ufaqsw' ) . '</div>';
 } else {
 	$shortcode_atts = array();
 
