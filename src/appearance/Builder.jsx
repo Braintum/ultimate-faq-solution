@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { toBase64, DEFAULT_SCHEMA, buildInitialState, resetToDefaults } from './helpers';
-import { SettingsGroup, ActionButtons } from './components';
+import { SettingsPanel, PreviewPanel } from './components';
 import { __ } from '@wordpress/i18n';
 
 /**
@@ -49,11 +49,6 @@ export default function AppearanceBuilder({
   const [isSaving, setIsSaving] = useState(false);
   const [notification, setNotification] = useState(null);
   const iframeRef = React.useRef(null);
-
-  
-  useEffect(() => {
-    setNotification({ type: 'success', message: __('Settings saved successfully!', 'ufaqsw') });
-  }, []);
 
   // Debounce values changes - only update after 1 second of no changes
   useEffect(() => {
@@ -202,95 +197,55 @@ export default function AppearanceBuilder({
   // ----------------------------- UI -----------------------------
   return (
     <div className="flex gap-4 py-4">
-      {/* Left: Settings panel */}
-      <div className="w-96 bg-white border rounded shadow-sm flex flex-col h-[1000px]">
-        <div className="flex items-center justify-between p-4 border-b flex-shrink-0">
-          <h3 className="text-lg font-semibold">{__('Appearance Builder', 'ufaqsw')}</h3>
-          <div className="text-xs text-gray-500"></div>
-        </div>
+        {/* Left: Settings panel */}
+        <SettingsPanel 
+            schema={schema} 
+            values={values} 
+            setField={setField} 
+            onReset={handleReset} 
+            onSave={handleSave} 
+            isSaving={isSaving} 
+        />
 
-        <div className="flex-1 overflow-y-auto p-4 space-y-4">
-          {Object.keys(schema).map((groupKey) => {
-            const group = schema[groupKey];
-            return (
-              <SettingsGroup
-                key={groupKey}
-                groupKey={groupKey}
-                group={group}
-                values={values}
-                setField={setField}
-              />
-            );
-          })}
-        </div>
+        {/* Right: Preview */}
+        <PreviewPanel
+            iframeLoaded={iframeLoaded}
+            iframeSrc={iframeSrc}
+            iframeTitle={iframeTitle}
+            iframeRef={iframeRef}
+            setIframeLoaded={setIframeLoaded}
+        />
 
-        {/* Fixed action buttons at bottom */}
-        <div className="p-4 border-t flex-shrink-0 bg-white">
-          <ActionButtons onReset={handleReset} onSave={handleSave} isSaving={isSaving} />
-        </div>
-      </div>
-
-      {/* Right: Preview */}
-      <div className="flex-1 flex flex-col gap-2">
-        <div className="flex items-center justify-between">
-          <div className="text-sm text-gray-600">{__('Live Preview', 'ufaqsw')}</div>
-          <div className="text-xs text-gray-500"></div>
-        </div>
-
-        <div className="flex-1 border rounded overflow-hidden relative">
-          {/* Loading overlay for iframe */}
-          {!iframeLoaded && (
-            <div className="absolute inset-0 bg-gray-50 flex items-center justify-center z-10">
-              <div className="text-center">
-                <svg className="animate-spin h-12 w-12 text-blue-600 mx-auto mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                </svg>
-                <p className="text-gray-600 text-sm">{__('Loading preview...', 'ufaqsw')}</p>
-              </div>
+        {/* Notification Toast */}
+        {notification && (
+            <div className="fixed bottom-4 left-4 z-[9999] animate-slide-in">
+                <div className={`
+                px-4 py-3 rounded-lg shadow-lg flex items-center gap-3 min-w-[300px]
+                ${notification.type === 'success' ? 'bg-green-50 border border-green-200' : 'bg-red-50 border border-red-200'}
+                `}>
+                {notification.type === 'success' ? (
+                    <svg className="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                ) : (
+                    <svg className="w-5 h-5 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                )}
+                <span className={`text-sm font-medium ${notification.type === 'success' ? 'text-green-800' : 'text-red-800'}`}>
+                    {notification.message}
+                </span>
+                <button
+                    onClick={() => setNotification(null)}
+                    className="ml-auto text-gray-400 hover:text-gray-600"
+                >
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+                </div>
             </div>
-          )}
-          
-          <iframe
-            title={iframeTitle}
-            src={iframeSrc}
-            ref={iframeRef}
-            onLoad={() => setIframeLoaded(true)}
-            className="w-full h-[100%]"
-          />
-        </div>
-      </div>
-
-      {/* Notification Toast */}
-      {notification && (
-        <div className="fixed bottom-4 left-4 z-[9999] animate-slide-in">
-          <div className={`
-            px-4 py-3 rounded-lg shadow-lg flex items-center gap-3 min-w-[300px]
-            ${notification.type === 'success' ? 'bg-green-50 border border-green-200' : 'bg-red-50 border border-red-200'}
-          `}>
-            {notification.type === 'success' ? (
-              <svg className="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
-              </svg>
-            ) : (
-              <svg className="w-5 h-5 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path>
-              </svg>
-            )}
-            <span className={`text-sm font-medium ${notification.type === 'success' ? 'text-green-800' : 'text-red-800'}`}>
-              {notification.message}
-            </span>
-            <button
-              onClick={() => setNotification(null)}
-              className="ml-auto text-gray-400 hover:text-gray-600"
-            >
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path>
-              </svg>
-            </button>
-          </div>
-        </div>
-      )}
+        )}
     </div>
   );
 }
