@@ -3,8 +3,8 @@ Contributors: braintum
 Donate link: https://www.braintum.com/  
 Tags: faq, knowledgebase, accordion, ai, woocommerce
 Requires at least: 5.1  
-Tested up to: 6.9
-Stable tag: 1.8.0
+Tested up to: 6.9.1
+Stable tag: 1.8.1
 Requires PHP: 7.4.0  
 License: GPLv2 or later  
 License URI: https://www.gnu.org/licenses/license-list.html#GPLCompatibleLicenses  
@@ -180,6 +180,11 @@ Yes! Starting from version 1.6.4, Ultimate FAQ Solution includes an AI-powered f
 14. AI content generation: Instantly generate suggested answers for your FAQs using AI, streamlining the process of creating accurate and helpful responses.
 
 == Changelog ==
+
+=1.8.1=
+* Improved: 🔄 Code refactored for better performance and maintainability.
+* Enhanced: 🎨 Appearance builder updated with improved functionality.
+* Fixed: 🐛 POT generation issue resolved.
 
 =1.8.0=
 * New: 🎨 Visual Builder for creating and customizing FAQ layouts with live preview.
