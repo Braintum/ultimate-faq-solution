@@ -4,6 +4,7 @@
 
 import React from 'react';
 import { FONTAWESOME_ICONS, isFieldVisible } from '../helpers';
+import { __ } from '@wordpress/i18n';
 
 /**
  * Label component
@@ -39,14 +40,14 @@ export function ColorInput({ value, onChange }) {
         value={hasColor ? value : ""}
         onChange={(e) => onChange(e.target.value)}
         className="flex-1 px-2 py-1 text-xs font-mono border border-gray-300 rounded"
-        placeholder="No color"
+        placeholder={__('No color', 'ufaqsw')}
       />
       {hasColor && (
         <button
           type="button"
           onClick={() => onChange("")}
           className="px-2 py-1 text-xs text-red-600 hover:bg-red-50 border border-red-200 rounded"
-          title="Clear color"
+          title={__('Clear color', 'ufaqsw')}
         >
           ✕
         </button>
@@ -79,14 +80,14 @@ export function RangeInput({ value, onChange, min = 0, max = 100, step = 1 }) {
             type="button"
             onClick={() => onChange('')}
             className="px-2 py-0.5 text-xs text-red-600 hover:bg-red-50 border border-red-200 rounded"
-            title="Clear value"
+            title={__('Clear value', 'ufaqsw')}
           >
             ✕
           </button>
         )}
       </div>
       <div className="text-xs mt-1 text-gray-600">
-        {hasValue ? `${value}px` : 'Not set'}
+        {hasValue ? `${value}px` : __('Not set', 'ufaqsw')}
       </div>
     </div>
   );
@@ -330,3 +331,6 @@ export { SettingsPanel } from './SettingsPanel';
 
 // Re-export PreviewPanel
 export { PreviewPanel } from './PreviewPanel';
+
+// Re-export NotificationToast
+export { NotificationToast } from './NotificationToast';
