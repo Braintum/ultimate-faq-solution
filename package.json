@@ -40,6 +40,7 @@
     "css-minimizer-webpack-plugin": "^7.0.0"
   },
   "dependencies": {
+    "@wordpress/i18n": "^4.49.1",
     "react": "^19.1.0",
     "react-dom": "^19.1.0"
   },

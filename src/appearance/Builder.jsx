@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { toBase64, DEFAULT_SCHEMA, buildInitialState, resetToDefaults } from './helpers';
 import { SettingsGroup, ActionButtons } from './components';
+import { __ } from '@wordpress/i18n';
 
 /**
  * Appearance Visual Builder
@@ -48,6 +49,11 @@ export default function AppearanceBuilder({
   const [isSaving, setIsSaving] = useState(false);
   const [notification, setNotification] = useState(null);
   const iframeRef = React.useRef(null);
+
+  
+  useEffect(() => {
+    setNotification({ type: 'success', message: __('Settings saved successfully!', 'ufaqsw') });
+  }, []);
 
   // Debounce values changes - only update after 1 second of no changes
   useEffect(() => {
@@ -102,7 +108,7 @@ export default function AppearanceBuilder({
         });
 
         if (!response.ok) {
-          throw new Error('Failed to save settings');
+          throw new Error(__('Failed to save settings', 'ufaqsw'));
         }
 
         // After successful save, submit the form
@@ -111,7 +117,7 @@ export default function AppearanceBuilder({
         form.submit();
       } catch (error) {
         console.error('Error saving settings:', error);
-        setNotification({ type: 'error', message: 'Failed to save settings. Please try again.' });
+        setNotification({ type: 'error', message: __('Failed to save settings. Please try again.', 'ufaqsw') });
         setTimeout(() => setNotification(null), 5000);
       } finally {
         setIsSaving(false);
@@ -169,14 +175,14 @@ export default function AppearanceBuilder({
       });
 
       if (!response.ok) {
-        throw new Error('Failed to save settings');
+        throw new Error(__('Failed to save settings', 'ufaqsw'));
       }
 
       const result = await response.json();
       console.log('Settings saved successfully:', result);
       
       // Show success notification
-      setNotification({ type: 'success', message: 'Settings saved successfully!' });
+      setNotification({ type: 'success', message: __('Settings saved successfully!', 'ufaqsw') });
       
       // Auto-hide notification after 3 seconds
       setTimeout(() => setNotification(null), 3000);
@@ -184,7 +190,7 @@ export default function AppearanceBuilder({
       console.error('Error saving settings:', error);
       
       // Show error notification
-      setNotification({ type: 'error', message: 'Failed to save settings. Please try again.' });
+      setNotification({ type: 'error', message: __('Failed to save settings. Please try again.', 'ufaqsw') });
       
       // Auto-hide notification after 5 seconds
       setTimeout(() => setNotification(null), 5000);
@@ -199,7 +205,7 @@ export default function AppearanceBuilder({
       {/* Left: Settings panel */}
       <div className="w-96 bg-white border rounded shadow-sm flex flex-col h-[1000px]">
         <div className="flex items-center justify-between p-4 border-b flex-shrink-0">
-          <h3 className="text-lg font-semibold">Appearance Builder</h3>
+          <h3 className="text-lg font-semibold">{__('Appearance Builder', 'ufaqsw')}</h3>
           <div className="text-xs text-gray-500"></div>
         </div>
 
@@ -227,7 +233,7 @@ export default function AppearanceBuilder({
       {/* Right: Preview */}
       <div className="flex-1 flex flex-col gap-2">
         <div className="flex items-center justify-between">
-          <div className="text-sm text-gray-600">Live Preview</div>
+          <div className="text-sm text-gray-600">{__('Live Preview', 'ufaqsw')}</div>
           <div className="text-xs text-gray-500"></div>
         </div>
 
@@ -240,7 +246,7 @@ export default function AppearanceBuilder({
                   <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                   <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                 </svg>
-                <p className="text-gray-600 text-sm">Loading preview...</p>
+                <p className="text-gray-600 text-sm">{__('Loading preview...', 'ufaqsw')}</p>
               </div>
             </div>
           )}
@@ -257,7 +263,7 @@ export default function AppearanceBuilder({
 
       {/* Notification Toast */}
       {notification && (
-        <div className="fixed bottom-4 left-4 z-50 animate-slide-in">
+        <div className="fixed bottom-4 left-4 z-[9999] animate-slide-in">
           <div className={`
             px-4 py-3 rounded-lg shadow-lg flex items-center gap-3 min-w-[300px]
             ${notification.type === 'success' ? 'bg-green-50 border border-green-200' : 'bg-red-50 border border-red-200'}
