@@ -140,6 +140,8 @@ module.exports = function( grunt ) {
                     '!.editorconfig',
                     '!babel.config.js',
                     '!composer.phar',
+					'!postcss.config.js',
+					'!tailwind.config.js',
                 ],
                 dest: 'build/'
             }
