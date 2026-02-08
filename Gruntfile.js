@@ -72,32 +72,13 @@ module.exports = function( grunt ) {
 			}
 		},
 
-		addtextdomain: {
-			options: {
-				textdomain: 'ufaqsw',
-			},
-			update_all_domains: {
-				options: {
-					updateDomains: true
-				},
-				src: [ '*.php', '**/*.php', 'block/src/*.js', 'inc/admin/assets/js/*.js', '!\.git/**/*', '!bin/**/*', '!node_modules/**/*', '!tests/**/*', '!vendor/**/*' ]
-			}
-		},
-
-		makepot: {
-			target: {
-				options: {
-					domainPath: '/inc/languages',
-					exclude: [ '\.git/*', 'bin/*', 'node_modules/*', 'tests/*' ],
-					mainFile: 'init.php',
-					potFilename: 'ultimate-faq-solution.pot',
-					potHeaders: {
-						poedit: true,
-						'x-poedit-keywordslist': true
-					},
-					type: 'wp-plugin',
-					updateTimestamp: true
-				}
+		shell: {
+			makepot: {
+				command: [
+					'php ../../../wp-cli.phar i18n make-pot .',
+					'inc/languages/ultimate-faq-solution.pot',
+					'--exclude=node_modules,vendor,tests,assets,block/node_modules',
+				].join(' ')
 			}
 		},
 
@@ -198,11 +179,12 @@ module.exports = function( grunt ) {
     grunt.loadNpmTasks( 'grunt-contrib-copy' );
 	grunt.loadNpmTasks( 'grunt-run' );
 	grunt.loadNpmTasks( 'grunt-contrib-cssmin' );
-	grunt.loadNpmTasks( 'grunt-wp-i18n' );
+	grunt.loadNpmTasks( 'grunt-shell' );
+
 
 	grunt.registerTask( 'cssjs', ['concat', 'concat_css', 'autoprefixer', 'uglify', 'cssmin'] );
 	grunt.registerTask( 'default', [ 'cssjs' ] );
-	grunt.registerTask( 'i18n', ['addtextdomain', 'makepot'] );
+	grunt.registerTask( 'i18n', [ 'shell:makepot' ] );
 
 	grunt.registerTask( 'release', [
 		'default',

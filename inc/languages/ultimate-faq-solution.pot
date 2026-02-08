@@ -1,297 +1,63 @@
-# Copyright (C) 2025 braintum
+# Copyright (C) 2026 braintum
 # This file is distributed under the GPLv2 or later.
 msgid ""
 msgstr ""
 "Project-Id-Version: Ultimate FAQ Solution 1.8.0\n"
-"Report-Msgid-Bugs-To: "
-"https://wordpress.org/support/plugin/ultimate-faq-solution\n"
-"POT-Creation-Date: 2025-12-05 13:11:31+00:00\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2025-MO-DA HO:MI+ZONE\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/ultimate-faq-solution\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: en\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Poedit-Country: United States\n"
-"X-Poedit-SourceCharset: UTF-8\n"
-"X-Poedit-KeywordsList: "
-"__;_e;_x:1,2c;_ex:1,2c;_n:1,2;_nx:1,2,4c;_n_noop:1,2;_nx_noop:1,2,3c;esc_"
-"attr__;esc_html__;esc_attr_e;esc_html_e;esc_attr_x:1,2c;esc_html_x:1,2c;\n"
-"X-Poedit-Basepath: ../\n"
-"X-Poedit-SearchPath-0: .\n"
-"X-Poedit-Bookmarks: \n"
-"X-Textdomain-Support: yes\n"
-"X-Generator: grunt-wp-i18n 1.0.4\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-02-08T14:53:26+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: ufaqsw\n"
+
+#. Plugin Name of the plugin
+#: init.php
+msgid "Ultimate FAQ Solution"
+msgstr ""
+
+#. Plugin URI of the plugin
+#: init.php
+msgid "https://www.ultimatefaqsolution.com/"
+msgstr ""
+
+#. Description of the plugin
+#: init.php
+msgid "A WordPress plugin to create, organize, and display FAQs with responsive layouts and styles."
+msgstr ""
+
+#. Author of the plugin
+#: init.php
+msgid "braintum"
+msgstr ""
+
+#. Author URI of the plugin
+#: init.php
+msgid "https://www.braintum.com"
+msgstr ""
 
 #: block/block.php:88
 msgid "No FAQ group selected."
-msgstr ""
-
-#: inc/AppearanceActions.php:187
-msgid "Invalid request."
-msgstr ""
-
-#: inc/AppearanceActions.php:187 inc/AppearanceActions.php:197
-msgid "Error"
-msgstr ""
-
-#: inc/AppearanceActions.php:197
-msgid "Failed to detach the group."
-msgstr ""
-
-#: inc/AppearanceActions.php:211
-msgid "Linked FAQ Groups"
-msgstr ""
-
-#: inc/AppearanceActions.php:242
-msgid "Detach"
-msgstr ""
-
-#: inc/AppearanceActions.php:245 inc/AppearanceActions.php:312
-msgid "No connected FAQ groups"
-msgstr ""
-
-#: inc/AppearanceActions.php:252
-msgid "Apply to all FAQ groups"
-msgstr ""
-
-#: inc/AppearanceActions.php:257
-msgid "Appearance applied to all FAQ groups."
-msgstr ""
-
-#: inc/AppearanceActions.php:290 inc/admin/class-directory-post-type.php:205
-#: inc/admin/settings/ai-integration.php:107
-msgid "Title"
-msgstr ""
-
-#: inc/AppearanceActions.php:291
-msgid "Connected FAQ Groups"
-msgstr ""
-
-#: inc/AppearanceActions.php:292 inc/admin/class-directory-post-type.php:209
-msgid "Date"
-msgstr ""
-
-#: inc/Chatbot.php:109
-msgid "Back"
-msgstr ""
-
-#: inc/Chatbot.php:110 inc/admin/chatbot.php:173
-msgid "Close the window"
-msgstr ""
-
-#: inc/Chatbot.php:112 inc/admin/chatbot.php:193
-msgid "[count] Frequently Asked Questions"
-msgstr ""
-
-#: inc/Chatbot.php:150
-msgid "No FAQs found."
-msgstr ""
-
-#: inc/ExportImport/Admin/AdminPage.php:54
-#: inc/ExportImport/Admin/AdminPage.php:55
-msgid "Export/Import"
-msgstr ""
-
-#: inc/ExportImport/Admin/AdminPage.php:88
-#: inc/ExportImport/Admin/AdminPage.php:138
-msgid "Invalid file type. Only JSON files are allowed."
-msgstr ""
-
-#: inc/ExportImport/Admin/AdminPage.php:135
-msgid "Please select a file to import."
-msgstr ""
-
-#: inc/ExportImport/Admin/AdminPage.php:156
-#. translators: %1$s is the import result key (like 'faqs', 'categories'), %2$s
-#. is the number/count value.
-msgid "%1$s: %2$s"
-msgstr ""
-
-#: inc/ExportImport/Admin/views/export-page.php:19
-msgid "Export / Import page."
-msgstr ""
-
-#: inc/ExportImport/Admin/views/export-page.php:22
-msgid ""
-"Use this tool to export and import your FAQ data between different sites "
-"using the Ultimate FAQ Solution plugin."
-msgstr ""
-
-#: inc/ExportImport/Admin/views/export-page.php:31
-msgid ""
-"You can choose to export or import only specific data types — such as FAQ "
-"Groups, Appearances, FAQ Assistant, AI Integration, or Plugin Settings. The "
-"exported file will be generated in JSON format, which can easily be "
-"imported on another site running the same plugin."
-msgstr ""
-
-#: inc/ExportImport/Admin/views/export-page.php:39
-#: inc/functions/actions_and_filters.php:258
-msgid "Note:"
-msgstr ""
-
-#: inc/ExportImport/Admin/views/export-page.php:41
-msgid ""
-"Uploaded media such as images, videos, or other attachments linked to your "
-"FAQs will not be included in the export file. Only text-based FAQ data, "
-"configuration, and appearance settings will be exported. You'll need to "
-"manually upload media files on the destination site if they're used inside "
-"your FAQ content."
-msgstr ""
-
-#: inc/ExportImport/Admin/views/export-page.php:48
-msgid "Export"
-msgstr ""
-
-#: inc/ExportImport/Admin/views/export-page.php:50
-msgid ""
-"Select the specific data types you want to export. You can choose one or "
-"multiple options based on your needs:"
-msgstr ""
-
-#: inc/ExportImport/Admin/views/export-page.php:54
-#: inc/admin/class-directory-post-type.php:23
-msgid "FAQ Groups"
-msgstr ""
-
-#: inc/ExportImport/Admin/views/export-page.php:59
-#: inc/admin/class-directory-post-type.php:68
-#: inc/admin/class-directory-post-type.php:70
-msgid "Appearances"
-msgstr ""
-
-#: inc/ExportImport/Admin/views/export-page.php:64 inc/admin/chatbot.php:29
-msgid "FAQ Assistant"
-msgstr ""
-
-#: inc/ExportImport/Admin/views/export-page.php:69
-msgid "Settings"
-msgstr ""
-
-#: inc/ExportImport/Admin/views/export-page.php:74
-#: inc/admin/settings/ai-integration.php:39
-#: inc/admin/settings/ai-integration.php:45
-msgid "AI Integration"
-msgstr ""
-
-#: inc/ExportImport/Admin/views/export-page.php:78
-msgid "Export Selected"
-msgstr ""
-
-#: inc/ExportImport/Admin/views/export-page.php:83
-msgid "Import"
-msgstr ""
-
-#: inc/ExportImport/Admin/views/export-page.php:84
-msgid ""
-"Upload a JSON file previously exported by this plugin. Import will create "
-"new FAQ items and update settings."
-msgstr ""
-
-#: inc/ExportImport/Admin/views/export-page.php:89
-msgid "Upload and Import"
-msgstr ""
-
-#: inc/ExportImport/Helpers/FileHelper.php:27
-msgid "Headers already sent, cannot download file."
-msgstr ""
-
-#: inc/ExportImport/Managers/ImportManager.php:52
-#. translators: %d: number of imported items
-msgid "%d item(s) imported successfully"
-msgstr ""
-
-#: inc/ExportImport/Managers/ImportManager.php:56
-msgid "no importer registered for this type"
-msgstr ""
-
-#: inc/FAQGroupActions.php:46
-msgid "FAQ Appearance"
-msgstr ""
-
-#: inc/FAQGroupActions.php:55
-msgid "FAQ Shortcode"
-msgstr ""
-
-#: inc/FAQGroupActions.php:91
-msgid ""
-"Select an appearance for this FAQ group. This will determine how the FAQs "
-"are displayed on the front end."
-msgstr ""
-
-#: inc/FAQGroupActions.php:92
-msgid "Learn more about Appearance Settings"
-msgstr ""
-
-#: inc/FAQGroupActions.php:95
-msgid "Select an appearance:"
-msgstr ""
-
-#: inc/FAQGroupActions.php:109 inc/admin/class-directory-post-type.php:75
-#: inc/admin/class-directory-post-type.php:235
-msgid "Edit Appearance"
-msgstr ""
-
-#: inc/FAQGroupActions.php:130
-msgid "Use the shortcode below to display this FAQ group in a page or post:"
-msgstr ""
-
-#: inc/FAQGroupActions.php:132
-msgid "Copy and paste this into any post, page, or widget."
-msgstr ""
-
-#: inc/Product_Tab.php:75 inc/Product_Tab.php:80 inc/Product_Tab.php:89
-#: inc/Product_Tab.php:109 inc/admin/class-directory-post-type.php:149
-msgid "FAQs"
-msgstr ""
-
-#: inc/Product_Tab.php:137
-msgid "FAQ"
-msgstr ""
-
-#: inc/Product_Tab.php:184
-msgid "Enable FAQ Tab"
-msgstr ""
-
-#: inc/Product_Tab.php:185
-msgid ""
-"Enable this option to display a FAQ tab for this product on the product "
-"page."
-msgstr ""
-
-#: inc/Product_Tab.php:198
-msgid "Please select a FAQ Group from dropdown."
-msgstr ""
-
-#: inc/Rest.php:259
-msgid "Access denied."
-msgstr ""
-
-#: inc/Shortcodes.php:162 inc/Shortcodes.php:259 inc/Shortcodes.php:278
-#. translators: %s is the name of the template that was not found.
-msgid "%s Template Not Found"
-msgstr ""
-
-#: inc/admin/RegisterAdminPages.php:139
-msgid "Settings saved successfully."
-msgstr ""
-
-#: inc/admin/RegisterAdminPages.php:144
-msgid "Settings saved successfully. Permalinks have been refreshed."
 msgstr ""
 
 #: inc/admin/chatbot.php:22
 msgid "FAQ Assistant Settings"
 msgstr ""
 
+#: inc/admin/chatbot.php:29
+#: inc/ExportImport/Admin/views/export-page.php:64
+msgid "FAQ Assistant"
+msgstr ""
+
 #: inc/admin/chatbot.php:33
 msgid "General"
 msgstr ""
 
-#: inc/admin/chatbot.php:44 inc/admin/class-directory-post-type.php:69
+#: inc/admin/chatbot.php:44
+#: inc/admin/class-directory-post-type.php:69
 #: inc/admin/class-directory-post-type.php:71
 #: inc/admin/class-directory-post-type.php:207
 msgid "Appearance"
@@ -306,10 +72,7 @@ msgid "Enable FAQ Assistant"
 msgstr ""
 
 #: inc/admin/chatbot.php:78
-msgid ""
-"<i>Display a floating help icon on every page of your site. When clicked, "
-"it opens the interactive FAQ Assistant, allowing visitors to browse and "
-"search your FAQs in a chat-style window.</i>"
+msgid "<i>Display a floating help icon on every page of your site. When clicked, it opens the interactive FAQ Assistant, allowing visitors to browse and search your FAQs in a chat-style window.</i>"
 msgstr ""
 
 #: inc/admin/chatbot.php:84
@@ -317,11 +80,7 @@ msgid "Floating Button Icon"
 msgstr ""
 
 #: inc/admin/chatbot.php:87
-msgid ""
-"<i>Upload a custom icon for the floating FAQ Assistant button. The image "
-"should be 80 × 80 pixels. Any image format is allowed, but a transparent "
-"background (e.g., PNG, SVG) is recommended for the best visual appearance. "
-"If no icon is uploaded, a default icon will be used instead.</i>"
+msgid "<i>Upload a custom icon for the floating FAQ Assistant button. The image should be 80 × 80 pixels. Any image format is allowed, but a transparent background (e.g., PNG, SVG) is recommended for the best visual appearance. If no icon is uploaded, a default icon will be used instead.</i>"
 msgstr ""
 
 #: inc/admin/chatbot.php:92
@@ -341,9 +100,7 @@ msgid "Header Background Color"
 msgstr ""
 
 #: inc/admin/chatbot.php:114
-msgid ""
-"<i>Choose the background color of the FAQ Assistant header for better "
-"branding and visibility.</i>"
+msgid "<i>Choose the background color of the FAQ Assistant header for better branding and visibility.</i>"
 msgstr ""
 
 #: inc/admin/chatbot.php:120
@@ -351,9 +108,7 @@ msgid "Header Text Color"
 msgstr ""
 
 #: inc/admin/chatbot.php:124
-msgid ""
-"<i>Select the color of the text in the FAQ Assistant header to ensure "
-"readability against the background.</i>"
+msgid "<i>Select the color of the text in the FAQ Assistant header to ensure readability against the background.</i>"
 msgstr ""
 
 #: inc/admin/chatbot.php:130
@@ -361,10 +116,7 @@ msgid "Loading Animation Color"
 msgstr ""
 
 #: inc/admin/chatbot.php:134
-msgid ""
-"<i>Choose the color for the loading animation (animated dots) shown while "
-"the FAQ Assistant is fetching content. Adjust for better visibility and "
-"branding.</i>"
+msgid "<i>Choose the color for the loading animation (animated dots) shown while the FAQ Assistant is fetching content. Adjust for better visibility and branding.</i>"
 msgstr ""
 
 #: inc/admin/chatbot.php:140
@@ -376,9 +128,7 @@ msgid "Welcome to our Help Center!"
 msgstr ""
 
 #: inc/admin/chatbot.php:144
-msgid ""
-"<i>Enter the main title displayed at the top of the FAQ Assistant window to "
-"welcome or guide users.</i>"
+msgid "<i>Enter the main title displayed at the top of the FAQ Assistant window to welcome or guide users.</i>"
 msgstr ""
 
 #: inc/admin/chatbot.php:150
@@ -390,9 +140,7 @@ msgid "Explore common questions and answers."
 msgstr ""
 
 #: inc/admin/chatbot.php:154
-msgid ""
-"<i>Add a brief message shown below the headline to explain how visitors can "
-"use the assistant.</i>"
+msgid "<i>Add a brief message shown below the headline to explain how visitors can use the assistant.</i>"
 msgstr ""
 
 #: inc/admin/chatbot.php:160
@@ -404,21 +152,20 @@ msgid "Go back to the previous view"
 msgstr ""
 
 #: inc/admin/chatbot.php:164
-msgid ""
-"<i>This text appears as a tooltip when hovering over the back button in the "
-"FAQ Assistant window. Use it to guide users on its function (e.g., “Go back "
-"to the previous view”).</i>"
+msgid "<i>This text appears as a tooltip when hovering over the back button in the FAQ Assistant window. Use it to guide users on its function (e.g., “Go back to the previous view”).</i>"
 msgstr ""
 
 #: inc/admin/chatbot.php:170
 msgid "Close Button Title"
 msgstr ""
 
+#: inc/admin/chatbot.php:173
+#: inc/Chatbot.php:110
+msgid "Close the window"
+msgstr ""
+
 #: inc/admin/chatbot.php:174
-msgid ""
-"<i>This text appears as a tooltip when hovering over the close button in "
-"the FAQ Assistant window. Use it to let users know that clicking will close "
-"the assistant window.</i>"
+msgid "<i>This text appears as a tooltip when hovering over the close button in the FAQ Assistant window. Use it to let users know that clicking will close the assistant window.</i>"
 msgstr ""
 
 #: inc/admin/chatbot.php:180
@@ -426,20 +173,20 @@ msgid "Preloader Text"
 msgstr ""
 
 #: inc/admin/chatbot.php:184
-msgid ""
-"<i>Text displayed while the FAQ content is loading (e.g., “Loading…”) to "
-"inform users.</i>"
+msgid "<i>Text displayed while the FAQ content is loading (e.g., “Loading…”) to inform users.</i>"
 msgstr ""
 
 #: inc/admin/chatbot.php:190
 msgid "FAQ Count Text"
 msgstr ""
 
+#: inc/admin/chatbot.php:193
+#: inc/Chatbot.php:112
+msgid "[count] Frequently Asked Questions"
+msgstr ""
+
 #: inc/admin/chatbot.php:194
-msgid ""
-"<i>Enter the text to show the total number of FAQs available (e.g., "
-"“[count] Questions and Answers”). Use <code>[count]</code> as a placeholder "
-"for the number.</i>"
+msgid "<i>Enter the text to show the total number of FAQs available (e.g., “[count] Questions and Answers”). Use <code>[count]</code> as a placeholder for the number.</i>"
 msgstr ""
 
 #: inc/admin/chatbot.php:200
@@ -447,16 +194,11 @@ msgid "Body Text"
 msgstr ""
 
 #: inc/admin/chatbot.php:201
-msgid ""
-"<i>Enter the text displayed above the list of FAQ categories in the "
-"assistant window. Use this to guide visitors on how to navigate and use the "
-"categories effectively.</i>"
+msgid "<i>Enter the text displayed above the list of FAQ categories in the assistant window. Use this to guide visitors on how to navigate and use the categories effectively.</i>"
 msgstr ""
 
 #: inc/admin/chatbot.php:202
-msgid ""
-"Browse our FAQ categories below to quickly find answers grouped by topic. "
-"Click a category to see related questions and solutions."
+msgid "Browse our FAQ categories below to quickly find answers grouped by topic. Click a category to see related questions and solutions."
 msgstr ""
 
 #: inc/admin/chatbot.php:213
@@ -464,18 +206,11 @@ msgid "Bottom Text"
 msgstr ""
 
 #: inc/admin/chatbot.php:214
-msgid ""
-"<i>Enter the text that will appear at the bottom of the FAQ Assistant "
-"window, below the FAQ categories and answers. This is a good place for "
-"additional instructions, a call-to-action, or any helpful message you want "
-"users to see after browsing the FAQs. Button text will be added at the "
-"bottom in each screen.</i>"
+msgid "<i>Enter the text that will appear at the bottom of the FAQ Assistant window, below the FAQ categories and answers. This is a good place for additional instructions, a call-to-action, or any helpful message you want users to see after browsing the FAQs. Button text will be added at the bottom in each screen.</i>"
 msgstr ""
 
 #: inc/admin/chatbot.php:250
-msgid ""
-"<i>By default all FAQ groups will be displayed, but you can uncheck any "
-"groups to not show on the FAQ Assistant window.</i>"
+msgid "<i>By default all FAQ groups will be displayed, but you can uncheck any groups to not show on the FAQ Assistant window.</i>"
 msgstr ""
 
 #: inc/admin/chatbot.php:256
@@ -491,9 +226,7 @@ msgid "Specific Pages"
 msgstr ""
 
 #: inc/admin/chatbot.php:264
-msgid ""
-"Choose whether to display the FAQ Assistant on all pages or only on "
-"selected pages."
+msgid "Choose whether to display the FAQ Assistant on all pages or only on selected pages."
 msgstr ""
 
 #: inc/admin/chatbot.php:270
@@ -501,22 +234,20 @@ msgid "Select Pages"
 msgstr ""
 
 #: inc/admin/chatbot.php:278
-msgid ""
-"Select the pages where the FAQ Assistant should appear. Only applies if "
-"\"Specific Pages\" is selected above."
+msgid "Select the pages where the FAQ Assistant should appear. Only applies if \"Specific Pages\" is selected above."
 msgstr ""
 
 #: inc/admin/chatbot.php:301
-msgid ""
-"The FAQ Assistant adds an interactive, floating help icon to your website, "
-"giving visitors quick access to your FAQs in a sleek, chat-style interface. "
-"Use the settings below to enable the assistant and customize its behavior. "
-"Improve user experience by making answers more accessible—right when and "
-"where your visitors need them."
+msgid "The FAQ Assistant adds an interactive, floating help icon to your website, giving visitors quick access to your FAQs in a sleek, chat-style interface. Use the settings below to enable the assistant and customize its behavior. Improve user experience by making answers more accessible—right when and where your visitors need them."
 msgstr ""
 
 #: inc/admin/chatbot.php:306
 msgid "Read the FAQ Assistant Documentation."
+msgstr ""
+
+#: inc/admin/class-directory-post-type.php:23
+#: inc/ExportImport/Admin/views/export-page.php:54
+msgid "FAQ Groups"
 msgstr ""
 
 #: inc/admin/class-directory-post-type.php:24
@@ -564,6 +295,12 @@ msgstr ""
 msgid "This post type holds all FAQs for your site."
 msgstr ""
 
+#: inc/admin/class-directory-post-type.php:68
+#: inc/admin/class-directory-post-type.php:70
+#: inc/ExportImport/Admin/views/export-page.php:59
+msgid "Appearances"
+msgstr ""
+
 #: inc/admin/class-directory-post-type.php:72
 msgid "Add New"
 msgstr ""
@@ -574,6 +311,12 @@ msgstr ""
 
 #: inc/admin/class-directory-post-type.php:74
 msgid "New Appearance"
+msgstr ""
+
+#: inc/admin/class-directory-post-type.php:75
+#: inc/admin/class-directory-post-type.php:235
+#: inc/FAQGroupActions.php:109
+msgid "Edit Appearance"
 msgstr ""
 
 #: inc/admin/class-directory-post-type.php:76
@@ -601,9 +344,7 @@ msgid "Group Description"
 msgstr ""
 
 #: inc/admin/class-directory-post-type.php:118
-msgid ""
-"Note: This section is visible only in the FAQ Assistant window and FAQ "
-"Group detail page if enabled."
+msgid "Note: This section is visible only in the FAQ Assistant window and FAQ Group detail page if enabled."
 msgstr ""
 
 #: inc/admin/class-directory-post-type.php:126
@@ -611,9 +352,15 @@ msgid "Short Description"
 msgstr ""
 
 #: inc/admin/class-directory-post-type.php:127
-msgid ""
-"Write a short description about the FAQ group. This will only be displayed "
-"in the FAQ assistant window at this moment."
+msgid "Write a short description about the FAQ group. This will only be displayed in the FAQ assistant window at this moment."
+msgstr ""
+
+#: inc/admin/class-directory-post-type.php:149
+#: inc/Product_Tab.php:75
+#: inc/Product_Tab.php:80
+#: inc/Product_Tab.php:89
+#: inc/Product_Tab.php:109
+msgid "FAQs"
 msgstr ""
 
 #: inc/admin/class-directory-post-type.php:158
@@ -652,12 +399,23 @@ msgstr ""
 msgid "Write Your Answer"
 msgstr ""
 
+#: inc/admin/class-directory-post-type.php:205
+#: inc/admin/settings/ai-integration.php:107
+#: inc/AppearanceActions.php:290
+msgid "Title"
+msgstr ""
+
 #: inc/admin/class-directory-post-type.php:206
 msgid "Number of FAQs"
 msgstr ""
 
 #: inc/admin/class-directory-post-type.php:208
 msgid "Shortcode"
+msgstr ""
+
+#: inc/admin/class-directory-post-type.php:209
+#: inc/AppearanceActions.php:292
+msgid "Date"
 msgstr ""
 
 #: inc/admin/class-directory-post-type.php:354
@@ -680,14 +438,26 @@ msgstr ""
 msgid "Invalid data"
 msgstr ""
 
+#: inc/admin/RegisterAdminPages.php:139
+msgid "Settings saved successfully."
+msgstr ""
+
+#: inc/admin/RegisterAdminPages.php:144
+msgid "Settings saved successfully. Permalinks have been refreshed."
+msgstr ""
+
 #: inc/admin/settings/ai-integration.php:33
 msgid "AI Integration Settings"
 msgstr ""
 
+#: inc/admin/settings/ai-integration.php:39
+#: inc/admin/settings/ai-integration.php:45
+#: inc/ExportImport/Admin/views/export-page.php:74
+msgid "AI Integration"
+msgstr ""
+
 #: inc/admin/settings/ai-integration.php:48
-msgid ""
-"<i>Enable this option to activate the AI-powered FAQ generation on your "
-"website.</i>"
+msgid "<i>Enable this option to activate the AI-powered FAQ generation on your website.</i>"
 msgstr ""
 
 #: inc/admin/settings/ai-integration.php:53
@@ -695,10 +465,7 @@ msgid "ChatGPT API Key"
 msgstr ""
 
 #: inc/admin/settings/ai-integration.php:56
-msgid ""
-"<i>Enter your OpenAI ChatGPT API key to enable AI-powered FAQ "
-"generation.</i> <a href=\"https://platform.openai.com/account/api-keys\" "
-"target=\"_blank\">Get your API key</a>"
+msgid "<i>Enter your OpenAI ChatGPT API key to enable AI-powered FAQ generation.</i> <a href=\"https://platform.openai.com/account/api-keys\" target=\"_blank\">Get your API key</a>"
 msgstr ""
 
 #: inc/admin/settings/ai-integration.php:66
@@ -734,9 +501,7 @@ msgid "AI Commands"
 msgstr ""
 
 #: inc/admin/settings/ai-integration.php:95
-msgid ""
-"Add custom AI commands for the FAQ Generation. These commands will be "
-"available as a dropdown in the TinyMCE editor for the answer field."
+msgid "Add custom AI commands for the FAQ Generation. These commands will be available as a dropdown in the TinyMCE editor for the answer field."
 msgstr ""
 
 #: inc/admin/settings/ai-integration.php:97
@@ -756,12 +521,7 @@ msgid "Commands"
 msgstr ""
 
 #: inc/admin/settings/ai-integration.php:144
-msgid ""
-"Configure AI integration to automatically generate and enhance FAQ answers "
-"using OpenAI's ChatGPT. Enable AI-powered features, set your API key, "
-"choose a model, and define custom commands to streamline FAQ creation and "
-"editing. These settings let you leverage AI to improve the quality and "
-"efficiency of your FAQ content."
+msgid "Configure AI integration to automatically generate and enhance FAQ answers using OpenAI's ChatGPT. Enable AI-powered features, set your API key, choose a model, and define custom commands to streamline FAQ creation and editing. These settings let you leverage AI to improve the quality and efficiency of your FAQ content."
 msgstr ""
 
 #: inc/admin/settings/ai-integration.php:148
@@ -853,25 +613,7 @@ msgid "Ultimate FAQ Solution by "
 msgstr ""
 
 #: inc/admin/templates/settings.php:199
-msgid ""
-"You need the WooCommerce plugin installed and activated to use these "
-"integration settings."
-msgstr ""
-
-#: inc/ai-writing-assistant/includes/API/ChatGPT.php:77
-msgid "Missing OpenAI API key."
-msgstr ""
-
-#: inc/ai-writing-assistant/includes/API/ChatGPT.php:113
-msgid "Request to OpenAI API failed: "
-msgstr ""
-
-#: inc/ai-writing-assistant/includes/API/ChatGPT.php:119
-msgid "OpenAI API error: "
-msgstr ""
-
-#: inc/ai-writing-assistant/includes/API/ChatGPT.php:122
-msgid "No response."
+msgid "You need the WooCommerce plugin installed and activated to use these integration settings."
 msgstr ""
 
 #: inc/ai-writing-assistant/includes/Admin/AiGenerator.php:44
@@ -899,9 +641,7 @@ msgid "e.g. Shipping & Delivery"
 msgstr ""
 
 #: inc/ai-writing-assistant/includes/Admin/AiGenerator.php:131
-msgid ""
-"Give your FAQ group a short, descriptive title. For example, \"Shipping & "
-"Delivery\", \"Product Returns\", or \"Account Setup\"."
+msgid "Give your FAQ group a short, descriptive title. For example, \"Shipping & Delivery\", \"Product Returns\", or \"Account Setup\"."
 msgstr ""
 
 #: inc/ai-writing-assistant/includes/Admin/AiGenerator.php:135
@@ -913,9 +653,7 @@ msgid "Paste a page link or short description..."
 msgstr ""
 
 #: inc/ai-writing-assistant/includes/Admin/AiGenerator.php:138
-msgid ""
-"Provide the content or context that the AI will use to generate relevant "
-"FAQs."
+msgid "Provide the content or context that the AI will use to generate relevant FAQs."
 msgstr ""
 
 #: inc/ai-writing-assistant/includes/Admin/AiGenerator.php:139
@@ -967,9 +705,7 @@ msgid "AI Integration Not Enabled"
 msgstr ""
 
 #: inc/ai-writing-assistant/includes/Admin/AiGenerator.php:188
-msgid ""
-"To use the AI FAQ Generator, please enable AI Integration in your plugin "
-"settings."
+msgid "To use the AI FAQ Generator, please enable AI Integration in your plugin settings."
 msgstr ""
 
 #: inc/ai-writing-assistant/includes/Admin/AiGenerator.php:194
@@ -996,6 +732,179 @@ msgstr ""
 msgid "Undo last AI text modification"
 msgstr ""
 
+#: inc/ai-writing-assistant/includes/API/ChatGPT.php:77
+msgid "Missing OpenAI API key."
+msgstr ""
+
+#: inc/ai-writing-assistant/includes/API/ChatGPT.php:113
+msgid "Request to OpenAI API failed: "
+msgstr ""
+
+#: inc/ai-writing-assistant/includes/API/ChatGPT.php:119
+msgid "OpenAI API error: "
+msgstr ""
+
+#: inc/ai-writing-assistant/includes/API/ChatGPT.php:122
+msgid "No response."
+msgstr ""
+
+#: inc/AppearanceActions.php:187
+msgid "Invalid request."
+msgstr ""
+
+#: inc/AppearanceActions.php:187
+#: inc/AppearanceActions.php:197
+msgid "Error"
+msgstr ""
+
+#: inc/AppearanceActions.php:197
+msgid "Failed to detach the group."
+msgstr ""
+
+#: inc/AppearanceActions.php:211
+msgid "Linked FAQ Groups"
+msgstr ""
+
+#: inc/AppearanceActions.php:242
+msgid "Detach"
+msgstr ""
+
+#: inc/AppearanceActions.php:245
+#: inc/AppearanceActions.php:312
+msgid "No connected FAQ groups"
+msgstr ""
+
+#: inc/AppearanceActions.php:252
+msgid "Apply to all FAQ groups"
+msgstr ""
+
+#: inc/AppearanceActions.php:257
+msgid "Appearance applied to all FAQ groups."
+msgstr ""
+
+#: inc/AppearanceActions.php:291
+msgid "Connected FAQ Groups"
+msgstr ""
+
+#: inc/Chatbot.php:109
+msgid "Back"
+msgstr ""
+
+#: inc/Chatbot.php:150
+msgid "No FAQs found."
+msgstr ""
+
+#: inc/ExportImport/Admin/AdminPage.php:54
+#: inc/ExportImport/Admin/AdminPage.php:55
+msgid "Export/Import"
+msgstr ""
+
+#: inc/ExportImport/Admin/AdminPage.php:88
+#: inc/ExportImport/Admin/AdminPage.php:138
+msgid "Invalid file type. Only JSON files are allowed."
+msgstr ""
+
+#: inc/ExportImport/Admin/AdminPage.php:135
+msgid "Please select a file to import."
+msgstr ""
+
+#. translators: %1$s is the import result key (like 'faqs', 'categories'), %2$s is the number/count value.
+#: inc/ExportImport/Admin/AdminPage.php:156
+#, php-format
+msgid "%1$s: %2$s"
+msgstr ""
+
+#: inc/ExportImport/Admin/views/export-page.php:19
+msgid "Export / Import page."
+msgstr ""
+
+#: inc/ExportImport/Admin/views/export-page.php:22
+msgid "Use this tool to export and import your FAQ data between different sites using the Ultimate FAQ Solution plugin."
+msgstr ""
+
+#: inc/ExportImport/Admin/views/export-page.php:31
+msgid "You can choose to export or import only specific data types — such as FAQ Groups, Appearances, FAQ Assistant, AI Integration, or Plugin Settings. The exported file will be generated in JSON format, which can easily be imported on another site running the same plugin."
+msgstr ""
+
+#: inc/ExportImport/Admin/views/export-page.php:39
+#: inc/functions/actions_and_filters.php:258
+msgid "Note:"
+msgstr ""
+
+#: inc/ExportImport/Admin/views/export-page.php:41
+msgid "Uploaded media such as images, videos, or other attachments linked to your FAQs will not be included in the export file. Only text-based FAQ data, configuration, and appearance settings will be exported. You'll need to manually upload media files on the destination site if they're used inside your FAQ content."
+msgstr ""
+
+#: inc/ExportImport/Admin/views/export-page.php:48
+msgid "Export"
+msgstr ""
+
+#: inc/ExportImport/Admin/views/export-page.php:50
+msgid "Select the specific data types you want to export. You can choose one or multiple options based on your needs:"
+msgstr ""
+
+#: inc/ExportImport/Admin/views/export-page.php:69
+msgid "Settings"
+msgstr ""
+
+#: inc/ExportImport/Admin/views/export-page.php:78
+msgid "Export Selected"
+msgstr ""
+
+#: inc/ExportImport/Admin/views/export-page.php:83
+msgid "Import"
+msgstr ""
+
+#: inc/ExportImport/Admin/views/export-page.php:84
+msgid "Upload a JSON file previously exported by this plugin. Import will create new FAQ items and update settings."
+msgstr ""
+
+#: inc/ExportImport/Admin/views/export-page.php:89
+msgid "Upload and Import"
+msgstr ""
+
+#: inc/ExportImport/Helpers/FileHelper.php:27
+msgid "Headers already sent, cannot download file."
+msgstr ""
+
+#. translators: %d: number of imported items
+#: inc/ExportImport/Managers/ImportManager.php:52
+#, php-format
+msgid "%d item(s) imported successfully"
+msgstr ""
+
+#: inc/ExportImport/Managers/ImportManager.php:56
+msgid "no importer registered for this type"
+msgstr ""
+
+#: inc/FAQGroupActions.php:46
+msgid "FAQ Appearance"
+msgstr ""
+
+#: inc/FAQGroupActions.php:55
+msgid "FAQ Shortcode"
+msgstr ""
+
+#: inc/FAQGroupActions.php:91
+msgid "Select an appearance for this FAQ group. This will determine how the FAQs are displayed on the front end."
+msgstr ""
+
+#: inc/FAQGroupActions.php:92
+msgid "Learn more about Appearance Settings"
+msgstr ""
+
+#: inc/FAQGroupActions.php:95
+msgid "Select an appearance:"
+msgstr ""
+
+#: inc/FAQGroupActions.php:130
+msgid "Use the shortcode below to display this FAQ group in a page or post:"
+msgstr ""
+
+#: inc/FAQGroupActions.php:132
+msgid "Copy and paste this into any post, page, or widget."
+msgstr ""
+
 #: inc/functions/actions_and_filters.php:220
 msgid "Invalid nonce verification."
 msgstr ""
@@ -1005,21 +914,15 @@ msgid "Preview FAQ Group"
 msgstr ""
 
 #: inc/functions/actions_and_filters.php:254
-msgid ""
-"Click the button to preview the FAQ on the front end. Make sure to "
-"save/update the FAQ group first."
+msgid "Click the button to preview the FAQ on the front end. Make sure to save/update the FAQ group first."
 msgstr ""
 
 #: inc/functions/actions_and_filters.php:258
-msgid ""
-"Creating an FAQ Group does not mean it will automatically appear on your "
-"website. "
+msgid "Creating an FAQ Group does not mean it will automatically appear on your website. "
 msgstr ""
 
 #: inc/functions/actions_and_filters.php:259
-msgid ""
-"You need to display the group using the shortcode or the Gutenberg block on "
-"a page or post."
+msgid "You need to display the group using the shortcode or the Gutenberg block on a page or post."
 msgstr ""
 
 #: inc/functions/actions_and_filters.php:361
@@ -1039,8 +942,9 @@ msgstr ""
 msgid "FAQ Group updated."
 msgstr ""
 
-#: inc/functions/actions_and_filters.php:367
 #. translators: %s: Date and time of the revision
+#: inc/functions/actions_and_filters.php:367
+#, php-format
 msgid "FAQ Group restored to revision from %s."
 msgstr ""
 
@@ -1052,8 +956,9 @@ msgstr ""
 msgid "FAQ Group submitted."
 msgstr ""
 
-#: inc/functions/actions_and_filters.php:375
 #. translators: %s: Date and time the FAQ Group is scheduled for
+#: inc/functions/actions_and_filters.php:375
+#, php-format
 msgid "FAQ Group scheduled for: <strong>%s</strong>."
 msgstr ""
 
@@ -1061,7 +966,36 @@ msgstr ""
 msgid "FAQ Group draft updated."
 msgstr ""
 
-#: inc/templates/all/template.php:14 inc/templates/all/template.php:20
+#: inc/Product_Tab.php:137
+msgid "FAQ"
+msgstr ""
+
+#: inc/Product_Tab.php:184
+msgid "Enable FAQ Tab"
+msgstr ""
+
+#: inc/Product_Tab.php:185
+msgid "Enable this option to display a FAQ tab for this product on the product page."
+msgstr ""
+
+#: inc/Product_Tab.php:198
+msgid "Please select a FAQ Group from dropdown."
+msgstr ""
+
+#: inc/Rest.php:259
+msgid "Access denied."
+msgstr ""
+
+#. translators: %s is the name of the template that was not found.
+#: inc/Shortcodes.php:162
+#: inc/Shortcodes.php:259
+#: inc/Shortcodes.php:278
+#, php-format
+msgid "%s Template Not Found"
+msgstr ""
+
+#: inc/templates/all/template.php:14
+#: inc/templates/all/template.php:20
 msgid "Search FAQs"
 msgstr ""
 
@@ -1070,6 +1004,8 @@ msgid "Live Search.."
 msgstr ""
 
 #: inc/templates/all/template.php:27
+#: block/build/index.js:1
+#: block/src/index.js:169
 msgid "Loading..."
 msgstr ""
 
@@ -1082,758 +1018,137 @@ msgid "No FAQ group to preview. Please create one."
 msgstr ""
 
 #: inc/templates/faq-preview.php:85
+#: block/build/index.js:1
+#: block/src/index.js:249
 msgid "FAQ Preview"
 msgstr ""
 
-#: vendor/cmb2/cmb2/example-functions.php:115
-msgid "Test Metabox"
+#: block/build/index.js:1
+#: block/src/index.js:87
+msgid "Choose a behaviour"
 msgstr ""
 
-#: vendor/cmb2/cmb2/example-functions.php:148
-#: vendor/cmb2/cmb2/example-functions.php:492
-msgid "Test Text"
+#: block/build/index.js:1
+#: block/src/index.js:91
+msgid "Accordion"
 msgstr ""
 
-#: vendor/cmb2/cmb2/example-functions.php:149
-#: vendor/cmb2/cmb2/example-functions.php:162
-#: vendor/cmb2/cmb2/example-functions.php:175
-#: vendor/cmb2/cmb2/example-functions.php:182
-#: vendor/cmb2/cmb2/example-functions.php:195
-#: vendor/cmb2/cmb2/example-functions.php:203
-#: vendor/cmb2/cmb2/example-functions.php:212
-#: vendor/cmb2/cmb2/example-functions.php:220
-#: vendor/cmb2/cmb2/example-functions.php:235
-#: vendor/cmb2/cmb2/example-functions.php:243
-#: vendor/cmb2/cmb2/example-functions.php:251
-#: vendor/cmb2/cmb2/example-functions.php:268
-#: vendor/cmb2/cmb2/example-functions.php:277
-#: vendor/cmb2/cmb2/example-functions.php:293
-#: vendor/cmb2/cmb2/example-functions.php:300
-#: vendor/cmb2/cmb2/example-functions.php:307
-#: vendor/cmb2/cmb2/example-functions.php:332
-#: vendor/cmb2/cmb2/example-functions.php:345
-#: vendor/cmb2/cmb2/example-functions.php:358
-#: vendor/cmb2/cmb2/example-functions.php:370
-#: vendor/cmb2/cmb2/example-functions.php:384
-#: vendor/cmb2/cmb2/example-functions.php:392
-#: vendor/cmb2/cmb2/example-functions.php:401
-#: vendor/cmb2/cmb2/example-functions.php:408
-#: vendor/cmb2/cmb2/example-functions.php:422
-#: vendor/cmb2/cmb2/example-functions.php:493
-#: vendor/cmb2/cmb2/example-functions.php:583
-#: vendor/cmb2/cmb2/example-functions.php:591
-#: vendor/cmb2/cmb2/example-functions.php:598
-#: vendor/cmb2/cmb2/example-functions.php:605
-#: vendor/cmb2/cmb2/example-functions.php:612
-#: vendor/cmb2/cmb2/example-functions.php:619
-#: vendor/cmb2/cmb2/example-functions.php:626
-#: vendor/cmb2/cmb2/example-functions.php:652
-#: vendor/cmb2/cmb2/example-functions.php:660
-#: vendor/cmb2/cmb2/example-functions.php:667
-#: vendor/cmb2/cmb2/example-functions.php:717
-msgid "field description (optional)"
+#: block/build/index.js:1
+#: block/src/index.js:95
+msgid "Toggle"
 msgstr ""
 
-#: vendor/cmb2/cmb2/example-functions.php:161
-msgid "Test Text Small"
+#: block/build/index.js:1
+#: block/src/index.js:105
+msgid "Choose an order"
 msgstr ""
 
-#: vendor/cmb2/cmb2/example-functions.php:174
-msgid "Test Text Medium"
+#: block/build/index.js:1
+#: block/src/index.js:109
+msgid "ASC"
 msgstr ""
 
-#: vendor/cmb2/cmb2/example-functions.php:181
-msgid "Read-only Disabled Field"
+#: block/build/index.js:1
+#: block/src/index.js:113
+msgid "DESC"
 msgstr ""
 
-#: vendor/cmb2/cmb2/example-functions.php:185
-msgid "Hey there, I'm a read-only field"
+#: block/build/index.js:1
+#: block/src/index.js:156
+msgid "FAQ Settings"
 msgstr ""
 
-#: vendor/cmb2/cmb2/example-functions.php:194
-msgid "Custom Rendered Field"
+#: block/build/index.js:1
+#: block/src/index.js:158
+msgid "Select FAQ Group"
 msgstr ""
 
-#: vendor/cmb2/cmb2/example-functions.php:202
-msgid "Website URL"
+#: block/build/index.js:1
+#: block/src/index.js:159
+msgid "Choose a group to display FAQs from."
 msgstr ""
 
-#: vendor/cmb2/cmb2/example-functions.php:211
-msgid "Test Text Email"
+#: block/build/index.js:1
+#: block/src/index.js:163
+msgid "Select a FAQ group"
 msgstr ""
 
-#: vendor/cmb2/cmb2/example-functions.php:219
-msgid "Test Time"
+#: block/build/index.js:1
+#: block/src/index.js:163
+msgid "All"
 msgstr ""
 
-#: vendor/cmb2/cmb2/example-functions.php:227
-#: vendor/cmb2/cmb2/example-functions.php:228
-msgid "Time zone"
+#: block/build/index.js:1
+#: block/src/index.js:175
+msgid "Hide group title"
 msgstr ""
 
-#: vendor/cmb2/cmb2/example-functions.php:234
-msgid "Test Date Picker"
+#: block/build/index.js:1
+#: block/src/index.js:176
+msgid "Check to hide the group title. This will override the faq group setting."
 msgstr ""
 
-#: vendor/cmb2/cmb2/example-functions.php:242
-msgid "Test Date Picker (UNIX timestamp)"
+#: block/build/index.js:1
+#: block/src/index.js:226
+#: block/src/index.js:234
+msgid "Configure the block from right panel - FAQ Settings"
 msgstr ""
 
-#: vendor/cmb2/cmb2/example-functions.php:250
-msgid "Test Date/Time Picker Combo (UNIX timestamp)"
+#: block/build/index.js:1
+#: block/src/index.js:242
+msgid "Loading FAQ content..."
 msgstr ""
 
-#: vendor/cmb2/cmb2/example-functions.php:267
-msgid "Test Money"
+#: src/appearance/Builder.jsx:106
+#: src/appearance/Builder.jsx:172
+msgid "Failed to save settings"
 msgstr ""
 
-#: vendor/cmb2/cmb2/example-functions.php:276
-msgid "Test Color Picker"
+#: src/appearance/Builder.jsx:114
+#: src/appearance/Builder.jsx:185
+msgid "Failed to save settings. Please try again."
 msgstr ""
 
-#: vendor/cmb2/cmb2/example-functions.php:292
-msgid "Test Text Area"
+#: src/appearance/Builder.jsx:178
+msgid "Settings saved successfully!"
 msgstr ""
 
-#: vendor/cmb2/cmb2/example-functions.php:299
-msgid "Test Text Area Small"
+#: src/appearance/components/ActionButtons.jsx:12
+msgid "Reset"
 msgstr ""
 
-#: vendor/cmb2/cmb2/example-functions.php:306
-msgid "Test Text Area for Code"
+#: src/appearance/components/ActionButtons.jsx:26
+msgid "Saving..."
 msgstr ""
 
-#: vendor/cmb2/cmb2/example-functions.php:324
-msgid "Test Title Weeeee"
-msgstr ""
-
-#: vendor/cmb2/cmb2/example-functions.php:325
-msgid "This is a title description"
-msgstr ""
-
-#: vendor/cmb2/cmb2/example-functions.php:331
-msgid "Test Select"
-msgstr ""
-
-#: vendor/cmb2/cmb2/example-functions.php:337
-#: vendor/cmb2/cmb2/example-functions.php:350
-#: vendor/cmb2/cmb2/example-functions.php:362
-msgid "Option One"
-msgstr ""
-
-#: vendor/cmb2/cmb2/example-functions.php:338
-#: vendor/cmb2/cmb2/example-functions.php:351
-#: vendor/cmb2/cmb2/example-functions.php:363
-msgid "Option Two"
-msgstr ""
-
-#: vendor/cmb2/cmb2/example-functions.php:339
-#: vendor/cmb2/cmb2/example-functions.php:352
-#: vendor/cmb2/cmb2/example-functions.php:364
-msgid "Option Three"
-msgstr ""
-
-#: vendor/cmb2/cmb2/example-functions.php:344
-msgid "Test Radio inline"
-msgstr ""
-
-#: vendor/cmb2/cmb2/example-functions.php:357
-msgid "Test Radio"
-msgstr ""
-
-#: vendor/cmb2/cmb2/example-functions.php:369
-msgid "Test Taxonomy Radio"
-msgstr ""
-
-#: vendor/cmb2/cmb2/example-functions.php:383
-msgid "Test Taxonomy Select"
-msgstr ""
-
-#: vendor/cmb2/cmb2/example-functions.php:391
-msgid "Test Taxonomy Multi Checkbox"
-msgstr ""
-
-#: vendor/cmb2/cmb2/example-functions.php:400
-msgid "Test Checkbox"
-msgstr ""
-
-#: vendor/cmb2/cmb2/example-functions.php:407
-msgid "Test Multi Checkbox"
-msgstr ""
-
-#: vendor/cmb2/cmb2/example-functions.php:413
-msgid "Check One"
-msgstr ""
-
-#: vendor/cmb2/cmb2/example-functions.php:414
-msgid "Check Two"
-msgstr ""
-
-#: vendor/cmb2/cmb2/example-functions.php:415
-msgid "Check Three"
-msgstr ""
-
-#: vendor/cmb2/cmb2/example-functions.php:421
-msgid "Test wysiwyg"
-msgstr ""
-
-#: vendor/cmb2/cmb2/example-functions.php:431
-msgid "Test Image"
-msgstr ""
-
-#: vendor/cmb2/cmb2/example-functions.php:432
-msgid "Upload an image or enter a URL."
-msgstr ""
-
-#: vendor/cmb2/cmb2/example-functions.php:438
-msgid "Multiple Files"
-msgstr ""
-
-#: vendor/cmb2/cmb2/example-functions.php:439
-msgid "Upload or add multiple images/attachments."
-msgstr ""
-
-#: vendor/cmb2/cmb2/example-functions.php:446
-msgid "oEmbed"
-msgstr ""
-
-#: vendor/cmb2/cmb2/example-functions.php:449
-#. translators: %s: link to codex.wordpress.org/Embeds
-msgid "Enter a youtube, twitter, or instagram URL. Supports services listed at %s."
-msgstr ""
-
-#: vendor/cmb2/cmb2/example-functions.php:481
-msgid "About Page Metabox"
-msgstr ""
-
-#: vendor/cmb2/cmb2/example-functions.php:511
-msgid "Repeating Field Group"
-msgstr ""
-
-#: vendor/cmb2/cmb2/example-functions.php:519
-msgid "Generates reusable form entries"
-msgstr ""
-
-#: vendor/cmb2/cmb2/example-functions.php:521
-msgid "Entry {#}"
-msgstr ""
-
-#: vendor/cmb2/cmb2/example-functions.php:522
-msgid "Add Another Entry"
-msgstr ""
-
-#: vendor/cmb2/cmb2/example-functions.php:523
-msgid "Remove Entry"
-msgstr ""
-
-#: vendor/cmb2/cmb2/example-functions.php:537
-msgid "Entry Title"
-msgstr ""
-
-#: vendor/cmb2/cmb2/example-functions.php:544
-msgid "Description"
-msgstr ""
-
-#: vendor/cmb2/cmb2/example-functions.php:545
-msgid "Write a short description for this entry"
-msgstr ""
-
-#: vendor/cmb2/cmb2/example-functions.php:551
-msgid "Entry Image"
-msgstr ""
-
-#: vendor/cmb2/cmb2/example-functions.php:557
-msgid "Image Caption"
-msgstr ""
-
-#: vendor/cmb2/cmb2/example-functions.php:575
-msgid "User Profile Metabox"
-msgstr ""
-
-#: vendor/cmb2/cmb2/example-functions.php:582
-#: vendor/cmb2/cmb2/example-functions.php:651
-msgid "Extra Info"
-msgstr ""
-
-#: vendor/cmb2/cmb2/example-functions.php:590
-msgid "Avatar"
-msgstr ""
-
-#: vendor/cmb2/cmb2/example-functions.php:597
-msgid "Facebook URL"
-msgstr ""
-
-#: vendor/cmb2/cmb2/example-functions.php:604
-msgid "Twitter URL"
-msgstr ""
-
-#: vendor/cmb2/cmb2/example-functions.php:611
-msgid "Google+ URL"
-msgstr ""
-
-#: vendor/cmb2/cmb2/example-functions.php:618
-msgid "Linkedin URL"
-msgstr ""
-
-#: vendor/cmb2/cmb2/example-functions.php:625
-msgid "User Field"
-msgstr ""
-
-#: vendor/cmb2/cmb2/example-functions.php:644
-msgid "Category Metabox"
-msgstr ""
-
-#: vendor/cmb2/cmb2/example-functions.php:659
-msgid "Term Image"
-msgstr ""
-
-#: vendor/cmb2/cmb2/example-functions.php:666
-msgid "Arbitrary Term Field"
-msgstr ""
-
-#: vendor/cmb2/cmb2/example-functions.php:685
-msgid "Theme Options"
-msgstr ""
-
-#: vendor/cmb2/cmb2/example-functions.php:716
-msgid "Site Background Color"
-msgstr ""
-
-#: vendor/cmb2/cmb2/example-functions.php:753
-msgid "%s &mdash; Updated!"
-msgstr ""
-
-#: vendor/cmb2/cmb2/example-functions.php:785
-msgid "REST Test Box"
-msgstr ""
-
-#: vendor/cmb2/cmb2/example-functions.php:794
-msgid "REST Test Text"
-msgstr ""
-
-#: vendor/cmb2/cmb2/example-functions.php:795
-msgid "Will show in the REST API for this box and for pages."
-msgstr ""
-
-#: vendor/cmb2/cmb2/example-functions.php:801
-msgid "REST Editable Test Text"
-msgstr ""
-
-#: vendor/cmb2/cmb2/example-functions.php:802
-msgid "Will show in REST API \"editable\" contexts only (`POST` requests)."
-msgstr ""
-
-#: vendor/cmb2/cmb2/includes/CMB2.php:207
-msgid "Metabox configuration is required to have an ID parameter."
-msgstr ""
-
-#: vendor/cmb2/cmb2/includes/CMB2.php:626
-msgid "Click to toggle"
-msgstr ""
-
-#: vendor/cmb2/cmb2/includes/CMB2_Ajax.php:75
-msgid "Please Try Again"
-msgstr ""
-
-#: vendor/cmb2/cmb2/includes/CMB2_Ajax.php:181
-msgid "Remove Embed"
-msgstr ""
-
-#: vendor/cmb2/cmb2/includes/CMB2_Ajax.php:189
-#: vendor/cmb2/cmb2/includes/helper-functions.php:107
-#. translators: 1: results for. 2: link to codex.wordpress.org/Embeds
-msgid "No oEmbed Results Found for %1$s. View more info at %2$s."
-msgstr ""
-
-#: vendor/cmb2/cmb2/includes/CMB2_Base.php:423
-msgid ""
-"The \"%1$s\" field parameter has been deprecated in favor of the \"%2$s\" "
-"parameter."
-msgstr ""
-
-#: vendor/cmb2/cmb2/includes/CMB2_Base.php:427
-msgid ""
-"Using the \"%1$s\" field parameter as a callback has been deprecated in "
-"favor of the \"%2$s\" parameter."
-msgstr ""
-
-#: vendor/cmb2/cmb2/includes/CMB2_Base.php:457
-msgid ""
-"%1$s was called with a parameter that is <strong>deprecated</strong> since "
-"version %2$s! %3$s"
-msgstr ""
-
-#: vendor/cmb2/cmb2/includes/CMB2_Base.php:459
-msgid ""
-"%1$s was called with a parameter that is <strong>deprecated</strong> since "
-"version %2$s with no alternative available."
-msgstr ""
-
-#: vendor/cmb2/cmb2/includes/CMB2_Base.php:492
-#: vendor/cmb2/cmb2/includes/CMB2_Hookup_Base.php:102
-#: vendor/cmb2/cmb2/includes/CMB2_Options.php:247
-#: vendor/cmb2/cmb2/includes/CMB2_Options_Hookup.php:369
-#: vendor/cmb2/cmb2/includes/types/CMB2_Type_Base.php:173
-msgid "Invalid %1$s property: %2$s"
-msgstr ""
-
-#: vendor/cmb2/cmb2/includes/CMB2_Base.php:510
-#: vendor/cmb2/cmb2/includes/types/CMB2_Type_Base.php:157
-msgid "Invalid %1$s method: %2$s"
-msgstr ""
-
-#: vendor/cmb2/cmb2/includes/CMB2_Field.php:1443
-msgid "Add Group"
-msgstr ""
-
-#: vendor/cmb2/cmb2/includes/CMB2_Field.php:1444
-msgid "Remove Group"
-msgstr ""
-
-#: vendor/cmb2/cmb2/includes/CMB2_Field.php:1476
-#: vendor/cmb2/cmb2/includes/CMB2_Field.php:1480
-msgid "None"
-msgstr ""
-
-#: vendor/cmb2/cmb2/includes/CMB2_Field.php:1594
-msgid "Sorry, this field does not have a cmb_id specified."
-msgstr ""
-
-#: vendor/cmb2/cmb2/includes/CMB2_Field_Display.php:454
-#: vendor/cmb2/cmb2/includes/CMB2_JS.php:242
-#: vendor/cmb2/cmb2/includes/types/CMB2_Type_File_Base.php:90
-msgid "File:"
-msgstr ""
-
-#: vendor/cmb2/cmb2/includes/CMB2_Hookup.php:191
-msgid ""
-"Term Metadata is a WordPress 4.4+ feature. Please upgrade your WordPress "
-"install."
-msgstr ""
-
-#: vendor/cmb2/cmb2/includes/CMB2_Hookup.php:195
-msgid "Term metaboxes configuration requires a \"taxonomies\" parameter."
-msgstr ""
-
-#: vendor/cmb2/cmb2/includes/CMB2_Hookup.php:579
-#. translators: %s: name of CMB2 box (panel)
-msgid "Toggle panel: %s"
-msgstr ""
-
-#: vendor/cmb2/cmb2/includes/CMB2_Hookup_Base.php:44
-msgid "%1$s should be implemented by the extended class."
-msgstr ""
-
-#: vendor/cmb2/cmb2/includes/CMB2_JS.php:177
-#: vendor/cmb2/cmb2/includes/CMB2_JS.php:222
-msgid "Clear"
-msgstr ""
-
-#: vendor/cmb2/cmb2/includes/CMB2_JS.php:178
-msgid "Default"
-msgstr ""
-
-#: vendor/cmb2/cmb2/includes/CMB2_JS.php:179
-msgid "Select Color"
-msgstr ""
-
-#: vendor/cmb2/cmb2/includes/CMB2_JS.php:180
-msgid "Current Color"
-msgstr ""
-
-#: vendor/cmb2/cmb2/includes/CMB2_JS.php:213
-msgid "Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday"
-msgstr ""
-
-#: vendor/cmb2/cmb2/includes/CMB2_JS.php:214
-msgid "Su, Mo, Tu, We, Th, Fr, Sa"
-msgstr ""
-
-#: vendor/cmb2/cmb2/includes/CMB2_JS.php:215
-msgid "Sun, Mon, Tue, Wed, Thu, Fri, Sat"
-msgstr ""
-
-#: vendor/cmb2/cmb2/includes/CMB2_JS.php:216
-msgid ""
-"January, February, March, April, May, June, July, August, September, "
-"October, November, December"
-msgstr ""
-
-#: vendor/cmb2/cmb2/includes/CMB2_JS.php:217
-msgid "Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec"
-msgstr ""
-
-#: vendor/cmb2/cmb2/includes/CMB2_JS.php:218
-msgid "Next"
-msgstr ""
-
-#: vendor/cmb2/cmb2/includes/CMB2_JS.php:219
-msgid "Prev"
-msgstr ""
-
-#: vendor/cmb2/cmb2/includes/CMB2_JS.php:220
-msgid "Today"
-msgstr ""
-
-#: vendor/cmb2/cmb2/includes/CMB2_JS.php:221
-#: vendor/cmb2/cmb2/includes/CMB2_JS.php:231
-msgid "Done"
-msgstr ""
-
-#: vendor/cmb2/cmb2/includes/CMB2_JS.php:225
-msgid "Choose Time"
-msgstr ""
-
-#: vendor/cmb2/cmb2/includes/CMB2_JS.php:226
-msgid "Time"
-msgstr ""
-
-#: vendor/cmb2/cmb2/includes/CMB2_JS.php:227
-msgid "Hour"
-msgstr ""
-
-#: vendor/cmb2/cmb2/includes/CMB2_JS.php:228
-msgid "Minute"
-msgstr ""
-
-#: vendor/cmb2/cmb2/includes/CMB2_JS.php:229
-msgid "Second"
-msgstr ""
-
-#: vendor/cmb2/cmb2/includes/CMB2_JS.php:230
-msgid "Now"
-msgstr ""
-
-#: vendor/cmb2/cmb2/includes/CMB2_JS.php:238
-msgid "Use this file"
-msgstr ""
-
-#: vendor/cmb2/cmb2/includes/CMB2_JS.php:239
-msgid "Use these files"
-msgstr ""
-
-#: vendor/cmb2/cmb2/includes/CMB2_JS.php:240
-#: vendor/cmb2/cmb2/includes/types/CMB2_Type_File_Base.php:75
-msgid "Remove Image"
-msgstr ""
-
-#: vendor/cmb2/cmb2/includes/CMB2_JS.php:241
-#: vendor/cmb2/cmb2/includes/CMB2_Types.php:408
-#: vendor/cmb2/cmb2/includes/types/CMB2_Type_File_Base.php:95
-msgid "Remove"
-msgstr ""
-
-#: vendor/cmb2/cmb2/includes/CMB2_JS.php:243
-#: vendor/cmb2/cmb2/includes/types/CMB2_Type_File_Base.php:93
-msgid "Download"
-msgstr ""
-
-#: vendor/cmb2/cmb2/includes/CMB2_JS.php:244
-msgid "Select / Deselect All"
-msgstr ""
-
-#: vendor/cmb2/cmb2/includes/CMB2_Options_Hookup.php:139
-msgid "Nothing to update."
-msgstr ""
-
-#: vendor/cmb2/cmb2/includes/CMB2_Options_Hookup.php:143
-msgid "Settings updated."
-msgstr ""
-
-#: vendor/cmb2/cmb2/includes/CMB2_Types.php:226
-msgid "Custom CMB2 field type classes must extend CMB2_Type_Base."
-msgstr ""
-
-#: vendor/cmb2/cmb2/includes/CMB2_Types.php:344
-msgid "Add Row"
-msgstr ""
-
-#: vendor/cmb2/cmb2/includes/CMB2_Types.php:408
-msgid "Remove Row"
-msgstr ""
-
-#: vendor/cmb2/cmb2/includes/helper-functions.php:308
+#: src/appearance/components/ActionButtons.jsx:26
 msgid "Save"
 msgstr ""
 
-#: vendor/cmb2/cmb2/includes/rest-api/CMB2_REST_Controller.php:257
-msgid "This box does not have read permissions."
+#: src/appearance/components/index.jsx:43
+msgid "No color"
 msgstr ""
 
-#: vendor/cmb2/cmb2/includes/rest-api/CMB2_REST_Controller.php:277
-msgid "This box does not have write permissions."
+#: src/appearance/components/index.jsx:50
+msgid "Clear color"
 msgstr ""
 
-#: vendor/cmb2/cmb2/includes/rest-api/CMB2_REST_Controller.php:300
-msgid ""
-"No box found by that id. A box needs to be registered with the "
-"\"show_in_rest\" parameter configured."
+#: src/appearance/components/index.jsx:83
+msgid "Clear value"
 msgstr ""
 
-#: vendor/cmb2/cmb2/includes/rest-api/CMB2_REST_Controller.php:378
-msgid "A human-readable description of the object."
+#: src/appearance/components/index.jsx:90
+msgid "Not set"
 msgstr ""
 
-#: vendor/cmb2/cmb2/includes/rest-api/CMB2_REST_Controller.php:385
-msgid "The id for the object."
+#: src/appearance/components/PreviewPanel.jsx:13
+msgid "Live Preview"
 msgstr ""
 
-#: vendor/cmb2/cmb2/includes/rest-api/CMB2_REST_Controller.php:392
-msgid "The title for the object."
+#: src/appearance/components/PreviewPanel.jsx:26
+msgid "Loading preview..."
 msgstr ""
 
-#: vendor/cmb2/cmb2/includes/rest-api/CMB2_REST_Controller_Boxes.php:51
-msgid "Includes the registered fields for the box in the response."
-msgstr ""
-
-#: vendor/cmb2/cmb2/includes/rest-api/CMB2_REST_Controller_Boxes.php:72
-msgid ""
-"Includes the fully rendered attributes, 'form_open', 'form_close', as well "
-"as the enqueued 'js_dependencies' script handles, and 'css_dependencies' "
-"stylesheet handles."
-msgstr ""
-
-#: vendor/cmb2/cmb2/includes/rest-api/CMB2_REST_Controller_Boxes.php:122
-msgid "No boxes found."
-msgstr ""
-
-#: vendor/cmb2/cmb2/includes/rest-api/CMB2_REST_Controller_Fields.php:27
-msgid "Includes the box object which the fields are registered to in the response."
-msgstr ""
-
-#: vendor/cmb2/cmb2/includes/rest-api/CMB2_REST_Controller_Fields.php:30
-msgid ""
-"When the '_rendered' argument is passed, the renderable field attributes "
-"will be returned fully rendered. By default, the names of the callback "
-"handers for the renderable attributes will be returned."
-msgstr ""
-
-#: vendor/cmb2/cmb2/includes/rest-api/CMB2_REST_Controller_Fields.php:33
-#: vendor/cmb2/cmb2/includes/rest-api/CMB2_REST_Controller_Fields.php:36
-msgid ""
-"To view or modify the field's value, the 'object_id' and 'object_type' "
-"arguments are required."
-msgstr ""
-
-#: vendor/cmb2/cmb2/includes/rest-api/CMB2_REST_Controller_Fields.php:236
-msgid "CMB2 Field value cannot be updated without the value parameter specified."
-msgstr ""
-
-#: vendor/cmb2/cmb2/includes/rest-api/CMB2_REST_Controller_Fields.php:297
-msgid ""
-"CMB2 Field value cannot be modified without the object_id and object_type "
-"parameters specified."
-msgstr ""
-
-#: vendor/cmb2/cmb2/includes/rest-api/CMB2_REST_Controller_Fields.php:312
-#: vendor/cmb2/cmb2/includes/rest-api/CMB2_REST_Controller_Fields.php:341
-msgid "No field found by that id."
-msgstr ""
-
-#: vendor/cmb2/cmb2/includes/rest-api/CMB2_REST_Controller_Fields.php:415
-msgid "Value Error for %s"
-msgstr ""
-
-#: vendor/cmb2/cmb2/includes/shim/WP_REST_Controller.php:25
-#. translators: %s: register_routes()
-msgid "Method '%s' must be overridden."
-msgstr ""
-
-#: vendor/cmb2/cmb2/includes/shim/WP_REST_Controller.php:35
-#: vendor/cmb2/cmb2/includes/shim/WP_REST_Controller.php:47
-#: vendor/cmb2/cmb2/includes/shim/WP_REST_Controller.php:59
-#: vendor/cmb2/cmb2/includes/shim/WP_REST_Controller.php:71
-#: vendor/cmb2/cmb2/includes/shim/WP_REST_Controller.php:83
-#: vendor/cmb2/cmb2/includes/shim/WP_REST_Controller.php:95
-#: vendor/cmb2/cmb2/includes/shim/WP_REST_Controller.php:107
-#: vendor/cmb2/cmb2/includes/shim/WP_REST_Controller.php:119
-#: vendor/cmb2/cmb2/includes/shim/WP_REST_Controller.php:131
-#: vendor/cmb2/cmb2/includes/shim/WP_REST_Controller.php:143
-#: vendor/cmb2/cmb2/includes/shim/WP_REST_Controller.php:155
-#: vendor/cmb2/cmb2/includes/shim/WP_REST_Controller.php:168
-msgid "Method '%s' not implemented. Must be overridden in subclass."
-msgstr ""
-
-#: vendor/cmb2/cmb2/includes/shim/WP_REST_Controller.php:273
-msgid "Current page of the collection."
-msgstr ""
-
-#: vendor/cmb2/cmb2/includes/shim/WP_REST_Controller.php:281
-msgid "Maximum number of items to be returned in result set."
-msgstr ""
-
-#: vendor/cmb2/cmb2/includes/shim/WP_REST_Controller.php:290
-msgid "Limit results to those matching a string."
-msgstr ""
-
-#: vendor/cmb2/cmb2/includes/shim/WP_REST_Controller.php:308
-msgid ""
-"Scope under which the request is made; determines fields present in "
-"response."
-msgstr ""
-
-#: vendor/cmb2/cmb2/includes/types/CMB2_Type_Counter_Base.php:50
-msgid "Words left"
-msgstr ""
-
-#: vendor/cmb2/cmb2/includes/types/CMB2_Type_Counter_Base.php:51
-msgid "Words"
-msgstr ""
-
-#: vendor/cmb2/cmb2/includes/types/CMB2_Type_Counter_Base.php:56
-msgid "Characters left"
-msgstr ""
-
-#: vendor/cmb2/cmb2/includes/types/CMB2_Type_Counter_Base.php:57
-msgid "Characters"
-msgstr ""
-
-#: vendor/cmb2/cmb2/includes/types/CMB2_Type_Counter_Base.php:62
-msgid "Your text may be truncated."
-msgstr ""
-
-#: vendor/cmb2/cmb2/includes/types/CMB2_Type_File.php:76
-msgid "Add or Upload File"
-msgstr ""
-
-#: vendor/cmb2/cmb2/includes/types/CMB2_Type_File_List.php:41
-msgid "Add or Upload Files"
-msgstr ""
-
-#: vendor/cmb2/cmb2/includes/types/CMB2_Type_Taxonomy_Base.php:115
-msgid "No terms"
-msgstr ""
-
-#. Plugin Name of the plugin/theme
-msgid "Ultimate FAQ Solution"
-msgstr ""
-
-#. Plugin URI of the plugin/theme
-msgid "https://www.ultimatefaqsolution.com/"
-msgstr ""
-
-#. Description of the plugin/theme
-msgid ""
-"A WordPress plugin to create, organize, and display FAQs with responsive "
-"layouts and styles."
-msgstr ""
-
-#. Author of the plugin/theme
-msgid "braintum"
-msgstr ""
-
-#. Author URI of the plugin/theme
-msgid "https://www.braintum.com"
-msgstr ""
-
-#: vendor/cmb2/cmb2/includes/CMB2_JS.php:212
-msgctxt "Valid formatDate string for jquery-ui datepicker"
-msgid "mm/dd/yy"
-msgstr ""
-
-#: vendor/cmb2/cmb2/includes/CMB2_JS.php:232
-msgctxt ""
-"Valid formatting string, as per "
-"http://trentrichardson.com/examples/timepicker/"
-msgid "hh:mm TT"
+#: src/appearance/components/SettingsPanel.jsx:21
+msgid "Appearance Builder"
 msgstr ""
