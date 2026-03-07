@@ -22,6 +22,8 @@ $behaviour      = $ufaqsw_preview_data['behaviour'] ?? '';
 $elements_order = $ufaqsw_preview_data['elements_order'] ?? '';
 $hide_title     = $ufaqsw_preview_data['hide_title'] ?? '0';
 
+$shortcode = '';
+
 if ( isset( $_GET['appearance'] ) ) {
 	$appearance_data = sanitize_text_field( wp_unslash( $_GET['appearance'] ) );
 	$data = json_decode( base64_decode( $appearance_data ), true );
