@@ -2,14 +2,14 @@
 # This file is distributed under the GPLv2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Ultimate FAQ Solution 1.8.2\n"
+"Project-Id-Version: Ultimate FAQ Solution 1.8.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/ultimate-faq-solution\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-03-07T21:18:33+00:00\n"
+"POT-Creation-Date: 2026-05-24T10:42:27+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: ufaqsw\n"
@@ -39,7 +39,7 @@ msgstr ""
 msgid "https://www.braintum.com"
 msgstr ""
 
-#: block/block.php:88
+#: block/block.php:89
 msgid "No FAQ group selected."
 msgstr ""
 
@@ -1005,7 +1005,7 @@ msgstr ""
 
 #: inc/templates/all/template.php:27
 #: block/build/index.js:1
-#: block/src/index.js:169
+#: block/src/index.js:175
 msgid "Loading..."
 msgstr ""
 
@@ -1019,83 +1019,83 @@ msgstr ""
 
 #: inc/templates/faq-preview.php:87
 #: block/build/index.js:1
-#: block/src/index.js:249
+#: block/src/index.js:258
 msgid "FAQ Preview"
 msgstr ""
 
 #: block/build/index.js:1
-#: block/src/index.js:87
+#: block/src/index.js:91
 msgid "Choose a behaviour"
 msgstr ""
 
 #: block/build/index.js:1
-#: block/src/index.js:91
+#: block/src/index.js:95
 msgid "Accordion"
 msgstr ""
 
 #: block/build/index.js:1
-#: block/src/index.js:95
+#: block/src/index.js:99
 msgid "Toggle"
 msgstr ""
 
 #: block/build/index.js:1
-#: block/src/index.js:105
+#: block/src/index.js:106
 msgid "Choose an order"
 msgstr ""
 
 #: block/build/index.js:1
-#: block/src/index.js:109
+#: block/src/index.js:110
 msgid "ASC"
 msgstr ""
 
 #: block/build/index.js:1
-#: block/src/index.js:113
+#: block/src/index.js:114
 msgid "DESC"
 msgstr ""
 
 #: block/build/index.js:1
-#: block/src/index.js:156
+#: block/src/index.js:161
 msgid "FAQ Settings"
 msgstr ""
 
 #: block/build/index.js:1
-#: block/src/index.js:158
+#: block/src/index.js:163
 msgid "Select FAQ Group"
 msgstr ""
 
 #: block/build/index.js:1
-#: block/src/index.js:159
+#: block/src/index.js:164
 msgid "Choose a group to display FAQs from."
 msgstr ""
 
 #: block/build/index.js:1
-#: block/src/index.js:163
+#: block/src/index.js:169
 msgid "Select a FAQ group"
 msgstr ""
 
 #: block/build/index.js:1
-#: block/src/index.js:163
+#: block/src/index.js:169
 msgid "All"
 msgstr ""
 
 #: block/build/index.js:1
-#: block/src/index.js:175
+#: block/src/index.js:181
 msgid "Hide group title"
 msgstr ""
 
 #: block/build/index.js:1
-#: block/src/index.js:176
+#: block/src/index.js:182
 msgid "Check to hide the group title. This will override the faq group setting."
 msgstr ""
 
 #: block/build/index.js:1
-#: block/src/index.js:226
-#: block/src/index.js:234
+#: block/src/index.js:235
+#: block/src/index.js:243
 msgid "Configure the block from right panel - FAQ Settings"
 msgstr ""
 
 #: block/build/index.js:1
-#: block/src/index.js:242
+#: block/src/index.js:251
 msgid "Loading FAQ content..."
 msgstr ""
 
