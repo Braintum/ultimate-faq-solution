@@ -51,7 +51,7 @@ class SEO {
 				'name'           => esc_html( wp_strip_all_tags( $faq['ufaqsw_faq_question'] ) ),
 				'acceptedAnswer' => array(
 					'@type' => 'Answer',
-					'text'  => esc_html( wp_strip_all_tags( $faq['ufaqsw_faq_answer'] ) ),
+					'text'  => esc_html( wp_strip_all_tags( do_shortcode( $faq['ufaqsw_faq_answer'] ) ) ),
 				),
 			);
 		}
