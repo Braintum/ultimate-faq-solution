@@ -1,12 +1,13 @@
 import { registerBlockType } from '@wordpress/blocks';
-import { useSelect } from '@wordpress/data';
+import { useDispatch } from '@wordpress/data';
 import { useEffect, useState } from '@wordpress/element';
 import { PanelBody, SelectControl, CheckboxControl, Spinner } from '@wordpress/components';
-import { InspectorControls } from '@wordpress/block-editor';
-import { __, _x } from '@wordpress/i18n';
+import { InspectorControls, useBlockProps } from '@wordpress/block-editor';
+import { __ } from '@wordpress/i18n';
 import apiFetch from '@wordpress/api-fetch';
 
 registerBlockType('ultimate-faq-solution/block', {
+	apiVersion: 3,
     title: 'FAQ',
     icon: 'editor-help',
     category: 'widgets',
@@ -21,11 +22,11 @@ registerBlockType('ultimate-faq-solution/block', {
         },
 		behaviour: {
             type: 'string',
-            default: [],
+			default: '',
         },
 		elements_order: {
             type: 'string',
-            default: [],
+			default: '',
         },
 		hideTitle: {
             type: 'boolean',
@@ -46,11 +47,15 @@ registerBlockType('ultimate-faq-solution/block', {
 	 *
 	 * @returns {JSX.Element} The edit interface for the block.
 	 */
-    edit({ attributes, setAttributes, isSelected, context }) {
+    edit({ attributes, setAttributes, isSelected, context, clientId }) {
 		
 		const [faqGroups, setFaqGroups] = useState([]);
 		const [faqContent, setFaqContent] = useState('');
 		const [isLoading, setIsLoading] = useState(false);
+		const { selectBlock } = useDispatch('core/block-editor');
+		const blockProps = useBlockProps();
+		const behaviourValue = Array.isArray(attributes.behaviour) ? '' : (attributes.behaviour || '');
+		const orderValue = Array.isArray(attributes.elements_order) ? '' : (attributes.elements_order || '');
 
 		useEffect(() => {
 			apiFetch({ path: '/wp/v2/ufaqsw?per_page=100' }).then((posts) => {
@@ -67,8 +72,8 @@ registerBlockType('ultimate-faq-solution/block', {
 				const params = new URLSearchParams({
 					group: attributes.group,
 					exclude: attributes.exclude.join(','),
-					behaviour: attributes.behaviour || '',
-					elements_order: attributes.elements_order || '',
+					behaviour: behaviourValue,
+					elements_order: orderValue,
 					hideTitle: attributes.hideTitle ? '1' : '0'
 				});
 
@@ -81,41 +86,35 @@ registerBlockType('ultimate-faq-solution/block', {
 			}
 		}, [attributes.group, attributes.exclude, attributes.behaviour, attributes.elements_order, attributes.hideTitle]);
 
-		const behaviours = useSelect((select) => {
-			return [
-				{
-					label: __( 'Choose a behaviour', 'ufaqsw' ),
-					value: '',
-				},
-				{
-					label: __( 'Accordion', 'ufaqsw' ),
-					value: 'accordion',
-				},
-				{
-					label: __( 'Toggle', 'ufaqsw' ),
-					value: 'toggle',
-				},
+		const behaviours = [
+			{
+				label: __( 'Choose a behaviour', 'ufaqsw' ),
+				value: '',
+			},
+			{
+				label: __( 'Accordion', 'ufaqsw' ),
+				value: 'accordion',
+			},
+			{
+				label: __( 'Toggle', 'ufaqsw' ),
+				value: 'toggle',
+			},
+		];
 
-			];
-		}, []);
-
-		const orders = useSelect((select) => {
-			return [
-				{
-					label: __( 'Choose an order', 'ufaqsw' ),
-					value: '',
-				},
-				{
-					label: __( 'ASC', 'ufaqsw' ),
-					value: 'asc',
-				},
-				{
-					label: __( 'DESC', 'ufaqsw' ),
-					value: 'desc',
-				},
-
-			];
-		}, []);
+		const orders = [
+			{
+				label: __( 'Choose an order', 'ufaqsw' ),
+				value: '',
+			},
+			{
+				label: __( 'ASC', 'ufaqsw' ),
+				value: 'asc',
+			},
+			{
+				label: __( 'DESC', 'ufaqsw' ),
+				value: 'desc',
+			},
+		];
 
 		const shortcode = function() {
 
@@ -131,8 +130,8 @@ registerBlockType('ultimate-faq-solution/block', {
 				if ( attributes.exclude.length > 0 ) {
 					text += 'exclude="' + attributes.exclude.join(',') + '" ';
 				}
-				if ( attributes.behaviour.length > 0 ) {
-					text += 'behaviour="' + attributes.behaviour + '" ';
+				if ( behaviourValue.length > 0 ) {
+					text += 'behaviour="' + behaviourValue + '" ';
 				}
 
 			} else {
@@ -140,8 +139,8 @@ registerBlockType('ultimate-faq-solution/block', {
 			}
 
 			
-			if ( attributes.elements_order.length > 0 ) {
-				text += 'elements_order="' + attributes.elements_order + '" ';
+			if ( orderValue.length > 0 ) {
+				text += 'elements_order="' + orderValue + '" ';
 			}
 			if ( attributes.hideTitle ) {
 				text += 'title_hide="1" ';
@@ -149,6 +148,12 @@ registerBlockType('ultimate-faq-solution/block', {
 			text += ']';
 			return text;
 		}
+
+		const handleOverlaySelect = (event) => {
+			event.preventDefault();
+			event.stopPropagation();
+			selectBlock(clientId);
+		};
 	
 		return (
 			<>
@@ -157,13 +162,14 @@ registerBlockType('ultimate-faq-solution/block', {
 						<SelectControl
 							label={__( 'Select FAQ Group', 'ufaqsw' )}
 							help={__( 'Choose a group to display FAQs from.', 'ufaqsw' )}
+							__next40pxDefaultSize={ true }
 							value={attributes.group}
 							options={
 								faqGroups
 									? [{ label: __( 'Select a FAQ group', 'ufaqsw'), value: '' }, { label: __('All', 'ufaqsw'), value: 'all' }].concat(
 										faqGroups.map((group) => ({
 											label: group.title,
-											value: group.id
+											value: String(group.id)
 										}))
 									  )
 									: [{ label: __('Loading...', 'ufaqsw'), value: '' }]
@@ -182,7 +188,8 @@ registerBlockType('ultimate-faq-solution/block', {
 							<SelectControl
 								label="Behaviour"
 								help="Choose a behaviour for the FAQ display. This will override the faq group settings."
-								value={attributes.behaviour}
+								__next40pxDefaultSize={ true }
+								value={behaviourValue}
 								options={behaviours}
 								onChange={(value) => setAttributes({ behaviour: value })}
 							/>
@@ -190,7 +197,8 @@ registerBlockType('ultimate-faq-solution/block', {
 
 						<SelectControl
 							label="Order"
-							value={attributes.elements_order}
+							__next40pxDefaultSize={ true }
+							value={orderValue}
 							options={orders}
 							onChange={(value) => setAttributes({ elements_order: value })}
 						/>
@@ -216,65 +224,71 @@ registerBlockType('ultimate-faq-solution/block', {
 					</PanelBody>
 					
 				</InspectorControls>
-				
-				{!attributes.group ? (
-					<div className="components-placeholder is-large">
-						<div className="components-placeholder__label">
-							<span className="faq-block-icon dashicons dashicons-editor-help" role="img" aria-label="FAQ Icon"></span> FAQ Block
-						</div>
-						<div className="components-placeholder__instructions">
-							{__('Configure the block from right panel - FAQ Settings', 'ufaqsw')}
-						</div>
-					</div>
-				) : (
-					<div className="ufaqsw-block-wrapper">
-						{isSelected && (
-							<div className="ufaqsw-block-controls">
-								<div className="ufaqsw-shortcode-display">
-									<label>{__('Configure the block from right panel - FAQ Settings', 'ufaqsw')}</label>
-								</div>
+
+				<div {...blockProps}>
+					{!attributes.group ? (
+						<div className="components-placeholder is-large">
+							<div className="components-placeholder__label">
+								<span className="faq-block-icon dashicons dashicons-editor-help" role="img" aria-label="FAQ Icon"></span> FAQ Block
 							</div>
-						)}
-						<div className="ufaqsw-iframe-container">
-							{isLoading && (
-								<div className="ufaqsw-loading">
-									<Spinner />
-									<span>{__('Loading FAQ content...', 'ufaqsw')}</span>
+							<div className="components-placeholder__instructions">
+								{__('Configure the block from right panel - FAQ Settings', 'ufaqsw')}
+							</div>
+						</div>
+					) : (
+						<div className="ufaqsw-block-wrapper">
+							{isSelected && (
+								<div className="ufaqsw-block-controls">
+									<div className="ufaqsw-shortcode-display">
+										<label>{__('Configure the block from right panel - FAQ Settings', 'ufaqsw')}</label>
+									</div>
 								</div>
 							)}
-							{faqContent && (
-								<iframe
-									src={faqContent}
-									className={`ufaqsw-content-preview-iframe ${isLoading ? 'loading' : ''}`}
-									title={__('FAQ Preview', 'ufaqsw')}
-									frameBorder="0"
-									width="100%"
-									height="400"
-									onLoad={() => {
-										// Set loading to false when iframe loads
-										setIsLoading(false);
-										
-										// Auto-adjust iframe height based on content
-										const iframe = document.querySelector('.ufaqsw-content-preview-iframe');
-										if (iframe) {
-											try {
-												const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
-												const height = Math.max(iframeDoc.body.scrollHeight, 300);
-												iframe.style.height = height + 'px';
-											} catch (e) {
-												// Cross-origin restrictions, use default height
-												iframe.style.height = '400px';
+							<div className="ufaqsw-iframe-container">
+								{isLoading && (
+									<div className="ufaqsw-loading">
+										<Spinner />
+										<span>{__('Loading FAQ content...', 'ufaqsw')}</span>
+									</div>
+								)}
+								{faqContent && (
+									<iframe
+										src={faqContent}
+										className={`ufaqsw-content-preview-iframe ${isLoading ? 'loading' : ''}`}
+										title={__('FAQ Preview', 'ufaqsw')}
+										frameBorder="0"
+										width="100%"
+										height="400"
+										onLoad={() => {
+											// Set loading to false when iframe loads
+											setIsLoading(false);
+											
+											// Auto-adjust iframe height based on content
+											const iframe = document.querySelector('.ufaqsw-content-preview-iframe');
+											if (iframe) {
+												try {
+													const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+													const height = Math.max(iframeDoc.body.scrollHeight, 300);
+													iframe.style.height = height + 'px';
+												} catch (e) {
+													// Cross-origin restrictions, use default height
+													iframe.style.height = '400px';
+												}
 											}
-										}
-									}}
-								/>
-							)}
-							{!isSelected && !isLoading && (
-								<div className="ufaqsw-iframe-overlay" />
-							)}
+										}}
+									/>
+								)}
+								{!isSelected && !isLoading && (
+									<div
+										className="ufaqsw-iframe-overlay"
+										onMouseDown={handleOverlaySelect}
+										onClick={handleOverlaySelect}
+									/>
+								)}
+								</div>
 						</div>
-					</div>
-				)}
+					)}
+				</div>
 			</>
 		);
 	},

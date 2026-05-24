@@ -39,6 +39,7 @@ function ufaq_register_block_assets() {
 	register_block_type(
 		'ultimate-faq-solution/block',
 		array(
+			'api_version'     => 3,
 			'editor_script'   => 'ufaqs-block-editor',
 			'editor_style'    => 'ufaqs-block-editor-style',
 			'render_callback' => 'ufaq_render_block_callback',
