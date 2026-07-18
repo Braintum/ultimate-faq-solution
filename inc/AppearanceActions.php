@@ -122,16 +122,31 @@ class AppearanceActions {
 			}
 		}
 
+		// Build linked groups for the React "Applied to X groups" indicator.
+		$post_id        = get_the_ID();
+		$linked_ids     = $post_id ? ufaqsw_get_group_ids_by_appearance( $post_id ) : array();
+		$linked_groups  = array_map(
+			function ( $group_id ) {
+				return array(
+					'id'      => $group_id,
+					'title'   => get_the_title( $group_id ),
+					'editUrl' => get_edit_post_link( $group_id, 'raw' ),
+				);
+			},
+			$linked_ids
+		);
+
 		wp_localize_script(
 			'ufaq-admin-js',
 			'ufaqAppearanceData',
 			array(
-				'initialValues'   => $appearance_meta,
-				'previewBaseUrl'  => add_query_arg( 'preview', 'ufaq', home_url( '/ufaqsw-preview/' ) ),
-				'postId'          => get_the_ID(),
-				'saveEndpoint'    => rest_url( 'ufaqsw/v1/appearance/save' ),
-				'nonce'           => wp_create_nonce( 'wp_rest' ),
-				'icons'           => $fontawesome_icons,
+				'initialValues'  => $appearance_meta,
+				'previewBaseUrl' => add_query_arg( 'preview', 'ufaq', home_url( '/ufaqsw-preview/' ) ),
+				'postId'         => $post_id,
+				'saveEndpoint'   => rest_url( 'ufaqsw/v1/appearance/save' ),
+				'nonce'          => wp_create_nonce( 'wp_rest' ),
+				'icons'          => $fontawesome_icons,
+				'linkedGroups'   => array_values( $linked_groups ),
 			)
 		);
 	}
@@ -201,8 +216,6 @@ class AppearanceActions {
 	/**
 	 * Adds a metabox to the 'ufaqsw_appearance' post type for linking FAQs.
 	 *
-	 * This method registers a metabox that allows users to link FAQs to a specific appearance.
-	 *
 	 * @return void
 	 */
 	public function add_linked_faqs_metabox() {
@@ -215,46 +228,68 @@ class AppearanceActions {
 			'low'
 		);
 	}
+
 	/**
-	 * Renders the content of the 'Linked FAQs' metabox.
-	 *
-	 * This method outputs the HTML for the metabox that allows users to link FAQs to the appearance.
+	 * Renders the redesigned "Linked FAQ Groups" meta box.
 	 *
 	 * @param \WP_Post $post The current post object.
 	 * @return void
 	 */
 	public function render_linked_faqs_metabox( $post ) {
 		$faq_groups = ufaqsw_get_group_ids_by_appearance( get_the_ID( $post ) );
+		$count      = count( $faq_groups );
+
+		// Applied-to summary line.
+		echo '<p class="ufaqsw-linked-groups-header">';
+		if ( $count > 0 ) {
+			echo esc_html(
+				sprintf(
+					/* translators: %d: number of FAQ groups using this appearance */
+					_n( 'Applied to %d FAQ Group', 'Applied to %d FAQ Groups', $count, 'ufaqsw' ),
+					$count
+				)
+			);
+		} else {
+			echo esc_html__( 'Not applied to any FAQ Group yet.', 'ufaqsw' );
+		}
+		echo '</p>';
 
 		if ( ! empty( $faq_groups ) ) {
 			foreach ( $faq_groups as $group ) {
+				$detach_url = add_query_arg(
+					array(
+						'action'     => 'ufaqsw_detach_group',
+						'appearance' => $post->ID,
+						'group'      => $group,
+						'_wpnonce'   => wp_create_nonce( 'ufaqsw_detach_group_' . $post->ID . '_' . $group ),
+					),
+					admin_url( 'admin-post.php' )
+				);
+
+				echo '<div class="ufaqsw-linked-group-item">';
 				echo '<a href="' . esc_url( get_edit_post_link( $group ) ) . '">' . esc_html( get_the_title( $group ) ) . '</a>';
-				echo ' <a href="' . esc_url(
-					add_query_arg(
-						array(
-							'action'      => 'ufaqsw_detach_group',
-							'appearance'  => $post->ID,
-							'group'       => $group,
-							'_wpnonce'    => wp_create_nonce( 'ufaqsw_detach_group_' . $post->ID . '_' . $group ),
-						),
-						admin_url( 'admin-post.php' )
-					)
-				) . '" style="color:red;" onclick="return confirm(\'Are you sure you want to detach this group?\');">' . esc_html__( 'Detach', 'ufaqsw' ) . '</a><br>';
+				echo '<a href="' . esc_url( $detach_url ) . '" class="ufaqsw-detach-link" onclick="return confirm(\'' . esc_js( __( 'Remove this group from the appearance?', 'ufaqsw' ) ) . '\');">' . esc_html__( 'Detach', 'ufaqsw' ) . '</a>';
+				echo '</div>';
 			}
 		} else {
-			echo esc_html__( 'No connected FAQ groups', 'ufaqsw' );
+			echo '<p class="ufaqsw-no-groups-msg">';
+			echo esc_html__( 'Go to a FAQ Group and select this appearance from the sidebar to link it here.', 'ufaqsw' );
+			echo '</p>';
 		}
 
-		echo '<hr>';
+		echo '<hr style="margin:12px 0;">';
+
+		// Apply to all.
 		echo '<form method="post" action="">';
 		wp_nonce_field( 'ufaqsw_apply_appearance_to_all_' . $post->ID, 'ufaqsw_apply_appearance_to_all_nonce' );
 		echo '<input type="hidden" name="ufaqsw_appearance_id" value="' . esc_attr( $post->ID ) . '">';
-		echo '<button type="submit" name="ufaqsw_apply_appearance_to_all" class="button button-secondary" style="width:100%;" onclick="return confirm(\'Are you sure? This action may override the existing appearance of FAQ group.\');">' . esc_html__( 'Apply to all FAQ groups', 'ufaqsw' ) . '</button>';
+		echo '<button type="submit" name="ufaqsw_apply_appearance_to_all" class="button button-secondary" style="width:100%;" onclick="return confirm(\'' . esc_js( __( 'Apply this appearance to ALL FAQ Groups? This will override any individual group settings.', 'ufaqsw' ) ) . '\');">';
+		echo esc_html__( 'Apply to all FAQ Groups', 'ufaqsw' );
+		echo '</button>';
 		echo '</form>';
 
-		// Show success message if redirected after applying appearance.
-		if ( isset( $_GET['ufaqsw_applied_all'] ) && '1' === $_GET['ufaqsw_applied_all'] ) {
-			echo '<div id="message" class="notice notice-success is-dismissible updated"><p>' . esc_html__( 'Appearance applied to all FAQ groups.', 'ufaqsw' ) . '</p></div>';
+		if ( isset( $_GET['ufaqsw_applied_all'] ) && '1' === $_GET['ufaqsw_applied_all'] ) { // phpcs:ignore
+			echo '<div class="notice notice-success is-dismissible" style="margin:8px 0 0;"><p>' . esc_html__( 'Appearance applied to all FAQ Groups.', 'ufaqsw' ) . '</p></div>';
 		}
 	}
 
@@ -286,10 +321,11 @@ class AppearanceActions {
 	public function columns_head( $defaults ) {
 		$new_columns = array();
 
-		$new_columns['cb']                = '<input type="checkbox" />';
-		$new_columns['title']             = __( 'Title', 'ufaqsw' );
-		$new_columns['ufaqsw_faq_groups'] = __( 'Connected FAQ Groups', 'ufaqsw' );
-		$new_columns['date']              = __( 'Date', 'ufaqsw' );
+		$new_columns['cb']                    = '<input type="checkbox" />';
+		$new_columns['title']                 = __( 'Title', 'ufaqsw' );
+		$new_columns['ufaqsw_template_chip']  = __( 'Template', 'ufaqsw' );
+		$new_columns['ufaqsw_faq_groups']     = __( 'Connected FAQ Groups', 'ufaqsw' );
+		$new_columns['date']                  = __( 'Date', 'ufaqsw' );
 
 		return $new_columns;
 	}
@@ -301,15 +337,42 @@ class AppearanceActions {
 	 * @param int    $post_ID     The ID of the current post.
 	 */
 	public function columns_content( $column_name, $post_ID ) {
+		if ( 'ufaqsw_template_chip' === $column_name ) {
+			$template = get_post_meta( $post_ID, 'ufaqsw_template', true );
+			if ( ! $template ) {
+				$template = 'default';
+			}
+
+			$labels = array(
+				'default' => __( 'Default', 'ufaqsw' ),
+				'style-1' => __( 'Style 1', 'ufaqsw' ),
+				'style-2' => __( 'Style 2', 'ufaqsw' ),
+			);
+			$css_class_map = array(
+				'default' => 'chip-default',
+				'style-1' => 'chip-style-1',
+				'style-2' => 'chip-style-2',
+			);
+			$label     = $labels[ $template ] ?? $template;
+			$css_class = $css_class_map[ $template ] ?? 'chip-default';
+
+			echo '<span class="ufaqsw-template-chip ' . esc_attr( $css_class ) . '">' . esc_html( $label ) . '</span>';
+		}
+
 		if ( 'ufaqsw_faq_groups' === $column_name ) {
 			$faq_groups = ufaqsw_get_group_ids_by_appearance( $post_ID );
+			$count      = count( $faq_groups );
 
-			if ( ! empty( $faq_groups ) ) {
-				foreach ( $faq_groups as $group ) {
+			if ( $count > 0 ) {
+				$names = array_map( 'get_the_title', array_slice( $faq_groups, 0, 3 ) );
+				foreach ( array_slice( $faq_groups, 0, 3 ) as $group ) {
 					echo '<a href="' . esc_url( get_edit_post_link( $group ) ) . '">' . esc_html( get_the_title( $group ) ) . '</a><br>';
 				}
+				if ( $count > 3 ) {
+					echo '<span class="ufaqsw-groups-count">+' . esc_html( $count - 3 ) . ' ' . esc_html__( 'more', 'ufaqsw' ) . '</span>';
+				}
 			} else {
-				echo esc_html__( 'No connected FAQ groups', 'ufaqsw' );
+				echo '<span style="color:#72777c;font-size:12px;">' . esc_html__( 'None', 'ufaqsw' ) . '</span>';
 			}
 		}
 	}

@@ -192,6 +192,41 @@ function ufaqsw_register_repeatable_group_field_metabox() {
 }
 
 /**
+ * Returns a cached map of FAQ group IDs to the number of published pages/posts that embed them.
+ *
+ * Runs a single SQL query across post content and caches the result for one hour.
+ * The cache is invalidated whenever any non-plugin post is saved (see actions_and_filters.php).
+ *
+ * @return array Keys are FAQ group IDs (int), values are embed counts (int).
+ */
+function ufaqsw_get_embed_status_map() {
+	$cached = get_transient( 'ufaqsw_embed_status_map' );
+	if ( false !== $cached ) {
+		return $cached;
+	}
+
+	global $wpdb;
+
+	$rows = $wpdb->get_col( // phpcs:ignore
+		"SELECT post_content FROM {$wpdb->posts}
+		 WHERE post_status = 'publish'
+		 AND post_content LIKE '%[ufaqsw%'"
+	);
+
+	$map = array();
+	foreach ( $rows as $content ) {
+		preg_match_all( '/\[ufaqsw[^\]]*\bid\s*=\s*["\']?(\d+)/i', $content, $matches );
+		foreach ( ( $matches[1] ?? array() ) as $id ) {
+			$id       = (int) $id;
+			$map[ $id ] = ( $map[ $id ] ?? 0 ) + 1;
+		}
+	}
+
+	set_transient( 'ufaqsw_embed_status_map', $map, HOUR_IN_SECONDS );
+	return $map;
+}
+
+/**
  * Modifies the columns displayed in the admin list table for the 'ufaqsw' post type.
  *
  * @param array $defaults The default columns.
@@ -203,9 +238,10 @@ function ufaqsw_faq_columns_head( $defaults ) {
 
 	$new_columns['cb']                     = '<input type="checkbox" />';
 	$new_columns['title']                  = __( 'Title', 'ufaqsw' );
-	$new_columns['ufaqsw_item_count']      = __( 'Number of FAQs', 'ufaqsw' );
+	$new_columns['ufaqsw_item_count']      = __( 'FAQs', 'ufaqsw' );
 	$new_columns['ufaqsw_item_appearance'] = __( 'Appearance', 'ufaqsw' );
 	$new_columns['shortcode_col']          = __( 'Shortcode', 'ufaqsw' );
+	// $new_columns['ufaqsw_embed_status']    = __( 'Embed Status', 'ufaqsw' );
 	$new_columns['date']                   = __( 'Date', 'ufaqsw' );
 	return $new_columns;
 }
@@ -222,19 +258,36 @@ function ufaqsw_faq_columns_content( $column_name, $post_ID ) {
 		$faqs = get_post_meta( $post_ID, 'ufaqsw_faq_item01' );
 		echo count( isset( $faqs[0] ) && is_array( $faqs[0] ) ? $faqs[0] : array() );
 	}
+
 	if ( 'shortcode_col' === $column_name ) {
 		echo '<input type="text" value="[ufaqsw id=' . esc_attr( $post_ID ) . ']" class="ufaqsw_admin_faq_shorcode_copy" />';
 	}
 
 	if ( 'ufaqsw_item_appearance' === $column_name ) {
-
 		$appearance = ufaqsw_get_appearance_id( $post_ID );
-
 		if ( ! empty( $appearance ) ) {
 			$edit_link = get_edit_post_link( $appearance );
-			echo '<a href="' . esc_url( $edit_link ) . '" title="' . esc_html__( 'Edit Appearance', 'ufaqsw' ) . '" >' . esc_html( get_the_title( $appearance ) ) . '</a>';
+			echo '<a href="' . esc_url( $edit_link ) . '" title="' . esc_html__( 'Edit Appearance', 'ufaqsw' ) . '">' . esc_html( get_the_title( $appearance ) ) . '</a>';
 		}
 	}
+
+	// if ( 'ufaqsw_embed_status' === $column_name ) {
+	// 	$embed_map = ufaqsw_get_embed_status_map();
+	// 	$count     = $embed_map[ $post_ID ] ?? 0;
+
+	// 	if ( $count > 0 ) {
+	// 		echo '<span class="ufaqsw-embed-badge ufaqsw-embed-ok">';
+	// 		echo '<span class="dashicons dashicons-yes-alt"></span>';
+	// 		/* translators: %d: number of pages the FAQ group is embedded on */
+	// 		echo esc_html( sprintf( _n( 'On %d page', 'On %d pages', $count, 'ufaqsw' ), $count ) );
+	// 		echo '</span>';
+	// 	} else {
+	// 		echo '<span class="ufaqsw-embed-badge ufaqsw-embed-warn">';
+	// 		echo '<span class="dashicons dashicons-warning"></span>';
+	// 		echo esc_html__( 'Not embedded', 'ufaqsw' );
+	// 		echo '</span>';
+	// 	}
+	// }
 }
 
 add_filter( 'manage_ufaqsw_posts_columns', 'ufaqsw_faq_columns_head' );

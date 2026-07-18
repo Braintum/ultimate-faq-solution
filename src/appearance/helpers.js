@@ -39,7 +39,8 @@ export const FONTAWESOME_ICONS = window.ufaqAppearanceData?.icons || [];
  */
 export const DEFAULT_SCHEMA = {
   general: {
-    label: "General",
+    label: "Layout & Behaviour",
+    subtitle: "Controls the overall structure and interaction mode.",
     fields: {
       template: {
         type: "radio",
@@ -84,7 +85,8 @@ export const DEFAULT_SCHEMA = {
     },
   },
   group: {
-    label: "Group",
+    label: "Group Title",
+    subtitle: "Styles the section heading shown above your FAQs.",
     fields: {
       hidetitle: {
         type: "toggle",
@@ -109,7 +111,8 @@ export const DEFAULT_SCHEMA = {
     },
   },
   question: {
-    label: "Question",
+    label: "Question Row",
+    subtitle: "Styles each clickable question item.",
     fields: {
       question_color: { type: "color", label: "Text color", default: "" },
       question_background_color: { type: "color", label: "Background color", default: "" },
@@ -129,7 +132,8 @@ export const DEFAULT_SCHEMA = {
     },
   },
   answer: {
-    label: "Answer",
+    label: "Answer Panel",
+    subtitle: "Styles the content revealed when a question is clicked.",
     fields: {
       answer_color: { type: "color", label: "Text color", default: "" },
       answer_background_color: { type: "color", label: "Background color", default: "" },

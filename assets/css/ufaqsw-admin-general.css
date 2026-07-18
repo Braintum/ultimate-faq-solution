@@ -1,0 +1,631 @@
+/* ==========================================================================
+   Ultimate FAQ Solution — General Admin Styles
+   Covers: banners, empty states, Getting Started page, meta box redesigns,
+   list-table chips, and the FAQ Group post-save nudge.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. "How It Works" Dismissible Banner
+   -------------------------------------------------------------------------- */
+
+.ufaqsw-how-it-works-banner {
+	background: #eaf3fb;
+	border-left: 4px solid #2271b1;
+	border-radius: 4px;
+	margin: 10px 0 15px;
+	padding: 0;
+}
+
+.ufaqsw-banner-design {
+	background: #f3f0fb;
+	border-left-color: #6e4fa3;
+}
+
+.ufaqsw-banner-content {
+	display: flex;
+	align-items: flex-start;
+	gap: 14px;
+	padding: 14px 16px;
+}
+
+.ufaqsw-banner-icon {
+	flex-shrink: 0;
+	width: 36px;
+	height: 36px;
+	background: #2271b1;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.ufaqsw-banner-design .ufaqsw-banner-icon {
+	background: #6e4fa3;
+}
+
+.ufaqsw-banner-icon .dashicons {
+	color: #fff;
+	font-size: 18px;
+	width: 18px;
+	height: 18px;
+	margin: 0;
+}
+
+.ufaqsw-banner-text {
+	flex: 1;
+}
+
+.ufaqsw-banner-text strong {
+	display: block;
+	font-size: 13px;
+	margin-bottom: 4px;
+	color: #1d2327;
+}
+
+.ufaqsw-banner-text p {
+	margin: 0;
+	font-size: 13px;
+	color: #50575e;
+	line-height: 1.5;
+}
+
+.ufaqsw-banner-actions {
+	flex-shrink: 0;
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.ufaqsw-banner-dismiss {
+	background: none;
+	border: none;
+	cursor: pointer;
+	padding: 4px;
+	color: #72777c;
+	display: flex;
+	align-items: center;
+}
+
+.ufaqsw-banner-dismiss:hover {
+	color: #1d2327;
+}
+
+.ufaqsw-banner-dismiss .dashicons {
+	font-size: 18px;
+	width: 18px;
+	height: 18px;
+}
+
+/* --------------------------------------------------------------------------
+   2. Empty State Screens
+   -------------------------------------------------------------------------- */
+
+.ufaqsw-empty-state {
+	margin: 40px 0;
+}
+
+.ufaqsw-empty-state-inner {
+	background: #fff;
+	border: 1px solid #dcdcde;
+	border-radius: 8px;
+	padding: 48px 40px;
+	text-align: center;
+	max-width: 600px;
+}
+
+.ufaqsw-empty-state-icon {
+	width: 72px;
+	height: 72px;
+	background: #f0f6fc;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: 0 auto 20px;
+}
+
+.ufaqsw-empty-state-icon .dashicons {
+	font-size: 36px;
+	width: 36px;
+	height: 36px;
+	color: #2271b1;
+}
+
+.ufaqsw-empty-state h2 {
+	font-size: 20px;
+	font-weight: 600;
+	color: #1d2327;
+	margin: 0 0 12px;
+}
+
+.ufaqsw-empty-state p {
+	font-size: 14px;
+	color: #50575e;
+	line-height: 1.6;
+	margin: 0 0 24px;
+}
+
+.ufaqsw-empty-state-actions {
+	display: flex;
+	gap: 12px;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+
+/* --------------------------------------------------------------------------
+   3. Getting Started Page
+   -------------------------------------------------------------------------- */
+
+.ufaqsw-getting-started {
+	max-width: 1100px;
+}
+
+.ufaqsw-gs-header {
+	background: #fff;
+	border: 1px solid #dcdcde;
+	border-radius: 8px;
+	padding: 28px 32px;
+	margin-bottom: 24px;
+}
+
+.ufaqsw-gs-header h1 {
+	font-size: 22px;
+	font-weight: 700;
+	color: #1d2327;
+	margin: 0 0 8px;
+}
+
+.ufaqsw-gs-header p {
+	font-size: 14px;
+	color: #50575e;
+	margin: 0;
+}
+
+/* Steps row */
+.ufaqsw-gs-steps {
+	display: flex;
+	align-items: flex-start;
+	gap: 0;
+	margin-bottom: 32px;
+}
+
+.ufaqsw-gs-step {
+	flex: 1;
+	background: #fff;
+	border: 1px solid #dcdcde;
+	border-radius: 8px;
+	padding: 28px 24px;
+	position: relative;
+	text-align: center;
+}
+
+.ufaqsw-gs-step-number {
+	position: absolute;
+	top: -14px;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 28px;
+	height: 28px;
+	background: #2271b1;
+	color: #fff;
+	border-radius: 50%;
+	font-size: 13px;
+	font-weight: 700;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.ufaqsw-gs-step-icon {
+	width: 56px;
+	height: 56px;
+	background: #f0f6fc;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: 8px auto 16px;
+}
+
+.ufaqsw-gs-step-icon .dashicons {
+	font-size: 28px;
+	width: 28px;
+	height: 28px;
+	color: #2271b1;
+}
+
+.ufaqsw-gs-step h3 {
+	font-size: 16px;
+	font-weight: 600;
+	color: #1d2327;
+	margin: 0 0 10px;
+}
+
+.ufaqsw-gs-step p {
+	font-size: 13px;
+	color: #50575e;
+	line-height: 1.6;
+	margin: 0 0 16px;
+}
+
+.ufaqsw-gs-step .button {
+	display: inline-block;
+	margin-bottom: 14px;
+}
+
+.ufaqsw-gs-step-hint {
+	background: #f6f7f7;
+	border-radius: 4px;
+	padding: 8px 10px;
+	font-size: 12px;
+	color: #50575e;
+	line-height: 1.5;
+	text-align: left;
+	display: flex;
+	align-items: flex-start;
+	gap: 6px;
+}
+
+.ufaqsw-gs-step-hint .dashicons {
+	color: #f0c330;
+	font-size: 16px;
+	width: 16px;
+	height: 16px;
+	flex-shrink: 0;
+	margin-top: 1px;
+}
+
+/* Arrow between steps */
+.ufaqsw-gs-arrow {
+	padding: 0 8px;
+	padding-top: 68px;
+	color: #aaa;
+	flex-shrink: 0;
+}
+
+.ufaqsw-gs-arrow .dashicons {
+	font-size: 24px;
+	width: 24px;
+	height: 24px;
+}
+
+/* Explainer section */
+.ufaqsw-gs-explainer {
+	background: #fff;
+	border: 1px solid #dcdcde;
+	border-radius: 8px;
+	padding: 28px 32px;
+}
+
+.ufaqsw-gs-explainer h2 {
+	font-size: 18px;
+	font-weight: 600;
+	color: #1d2327;
+	margin: 0 0 20px;
+	padding-bottom: 16px;
+	border-bottom: 1px solid #f0f0f1;
+}
+
+.ufaqsw-gs-explainer-grid {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 20px;
+}
+
+.ufaqsw-gs-explainer-card {
+	border: 1px solid #dcdcde;
+	border-radius: 6px;
+	padding: 20px;
+}
+
+.ufaqsw-card-data {
+	border-top: 3px solid #2271b1;
+}
+
+.ufaqsw-card-design {
+	border-top: 3px solid #6e4fa3;
+}
+
+.ufaqsw-gs-explainer-card-header {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	margin-bottom: 12px;
+}
+
+.ufaqsw-gs-explainer-card-header .dashicons {
+	font-size: 20px;
+	width: 20px;
+	height: 20px;
+	color: #2271b1;
+}
+
+.ufaqsw-card-design .ufaqsw-gs-explainer-card-header .dashicons {
+	color: #6e4fa3;
+}
+
+.ufaqsw-gs-explainer-card h3 {
+	font-size: 15px;
+	font-weight: 600;
+	color: #1d2327;
+	margin: 0;
+}
+
+.ufaqsw-gs-explainer-card p {
+	font-size: 13px;
+	color: #50575e;
+	line-height: 1.6;
+	margin: 0 0 12px;
+}
+
+.ufaqsw-gs-explainer-card ul {
+	margin: 0 0 16px 20px;
+	padding: 0;
+}
+
+.ufaqsw-gs-explainer-card ul li {
+	font-size: 13px;
+	color: #50575e;
+	margin-bottom: 4px;
+	list-style: disc;
+}
+
+/* --------------------------------------------------------------------------
+   4. FAQ Group list table — Embed Status column badge
+   -------------------------------------------------------------------------- */
+
+.ufaqsw-embed-badge {
+	display: inline-flex;
+	align-items: center;
+	gap: 5px;
+	font-size: 12px;
+	border-radius: 12px;
+	padding: 3px 8px;
+	font-weight: 500;
+	white-space: nowrap;
+}
+
+.ufaqsw-embed-badge.ufaqsw-embed-ok {
+	background: #edfaef;
+	color: #1a7431;
+	border: 1px solid #a7d7b0;
+}
+
+.ufaqsw-embed-badge.ufaqsw-embed-warn {
+	background: #fffbee;
+	color: #8a6900;
+	border: 1px solid #f0d879;
+}
+
+.ufaqsw-embed-badge .dashicons {
+	font-size: 14px;
+	width: 14px;
+	height: 14px;
+}
+
+/* --------------------------------------------------------------------------
+   5. Appearances list table — Template chip
+   -------------------------------------------------------------------------- */
+
+.ufaqsw-template-chip {
+	display: inline-flex;
+	align-items: center;
+	gap: 4px;
+	font-size: 11px;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.04em;
+	border-radius: 10px;
+	padding: 2px 8px;
+	border: 1px solid;
+}
+
+.ufaqsw-template-chip.chip-default {
+	background: #f0f6fc;
+	color: #2271b1;
+	border-color: #a8c6e5;
+}
+
+.ufaqsw-template-chip.chip-style-1 {
+	background: #f3f0fb;
+	color: #6e4fa3;
+	border-color: #c3b0e5;
+}
+
+.ufaqsw-template-chip.chip-style-2 {
+	background: #edfaef;
+	color: #1a7431;
+	border-color: #a7d7b0;
+}
+
+.ufaqsw-groups-count {
+	display: inline-block;
+	background: #f0f0f1;
+	color: #50575e;
+	font-size: 11px;
+	border-radius: 10px;
+	padding: 2px 7px;
+	margin-left: 6px;
+	font-weight: 500;
+}
+
+/* --------------------------------------------------------------------------
+   6. FAQ Group edit — Appearance meta box redesign
+   -------------------------------------------------------------------------- */
+
+.ufaqsw-appearance-meta-box {
+	font-size: 13px;
+}
+
+.ufaqsw-appearance-preview {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	padding: 10px;
+	background: #f6f7f7;
+	border: 1px solid #dcdcde;
+	border-radius: 4px;
+	margin-bottom: 12px;
+}
+
+.ufaqsw-appearance-swatch {
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
+	flex-shrink: 0;
+}
+
+.ufaqsw-swatch-bar {
+	width: 32px;
+	height: 6px;
+	border-radius: 2px;
+	background: #ddd;
+}
+
+.ufaqsw-appearance-preview-info {
+	flex: 1;
+	min-width: 0;
+}
+
+.ufaqsw-appearance-preview-name {
+	font-weight: 600;
+	color: #1d2327;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.ufaqsw-appearance-preview-template {
+	font-size: 11px;
+	color: #72777c;
+	margin-top: 2px;
+}
+
+.ufaqsw-appearance-no-link {
+	background: #fffbee;
+	border: 1px solid #f0d879;
+	border-radius: 4px;
+	padding: 8px 10px;
+	margin-bottom: 12px;
+	font-size: 12px;
+	color: #8a6900;
+	display: flex;
+	align-items: flex-start;
+	gap: 6px;
+}
+
+.ufaqsw-appearance-no-link .dashicons {
+	flex-shrink: 0;
+	font-size: 16px;
+	width: 16px;
+	height: 16px;
+	margin-top: 1px;
+}
+
+.ufaqsw-appearance-meta-box label {
+	display: block;
+	margin-bottom: 4px;
+	font-weight: 500;
+}
+
+.ufaqsw-appearance-meta-box select {
+	width: 100%;
+	margin-bottom: 8px;
+}
+
+.ufaqsw-appearance-meta-links {
+	display: flex;
+	gap: 12px;
+	flex-wrap: wrap;
+	margin-top: 6px;
+}
+
+.ufaqsw-appearance-meta-links a {
+	font-size: 12px;
+}
+
+/* --------------------------------------------------------------------------
+   7. FAQ Group post-save nudge notice
+   -------------------------------------------------------------------------- */
+
+.ufaqsw-postsave-nudge {
+	margin: 5px 0 20px;
+	padding: 12px 16px;
+	background: #edfaef;
+	border-left: 4px solid #1a7431;
+	border-radius: 4px;
+	font-size: 13px;
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	flex-wrap: wrap;
+}
+
+.ufaqsw-postsave-nudge .dashicons {
+	color: #1a7431;
+	font-size: 20px;
+	width: 20px;
+	height: 20px;
+	flex-shrink: 0;
+}
+
+.ufaqsw-postsave-nudge strong {
+	color: #1d2327;
+}
+
+.ufaqsw-postsave-nudge .ufaqsw-nudge-actions {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	margin-left: auto;
+	flex-shrink: 0;
+}
+
+/* --------------------------------------------------------------------------
+   8. Appearance edit — "Applied to X groups" meta box
+   -------------------------------------------------------------------------- */
+
+.ufaqsw-linked-groups-header {
+	font-size: 12px;
+	color: #50575e;
+	margin-bottom: 10px;
+	padding-bottom: 8px;
+	border-bottom: 1px solid #f0f0f1;
+}
+
+.ufaqsw-linked-group-item {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 5px 0;
+	border-bottom: 1px solid #f6f7f7;
+	font-size: 12px;
+}
+
+.ufaqsw-linked-group-item:last-child {
+	border-bottom: none;
+}
+
+.ufaqsw-linked-group-item a {
+	color: #1d2327;
+	text-decoration: none;
+}
+
+.ufaqsw-linked-group-item a:hover {
+	color: #2271b1;
+}
+
+.ufaqsw-detach-link {
+	color: #b32d2e !important;
+	font-size: 11px;
+}
+
+.ufaqsw-no-groups-msg {
+	font-size: 12px;
+	color: #8a6900;
+	background: #fffbee;
+	border: 1px solid #f0d879;
+	border-radius: 4px;
+	padding: 8px 10px;
+	margin-bottom: 10px;
+}

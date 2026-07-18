@@ -5,6 +5,7 @@
 import React from 'react';
 import { FONTAWESOME_ICONS, isFieldVisible } from '../helpers';
 import { __ } from '@wordpress/i18n';
+import { TemplateCards } from './TemplateCards';
 
 /**
  * Label component
@@ -255,7 +256,9 @@ export function IconInput({ value, onChange }) {
 }
 
 /**
- * Custom field renderer based on field type
+ * Custom field renderer based on field type.
+ * The "template" radio field gets the visual TemplateCards component;
+ * all other radio fields use the standard card-style RadioInput.
  */
 export function FieldRenderer({ fieldKey, config, value, onChange }) {
   switch (config.type) {
@@ -274,6 +277,10 @@ export function FieldRenderer({ fieldKey, config, value, onChange }) {
     case "select":
       return <SelectInput value={value} onChange={onChange} options={config.options} />;
     case "radio":
+      // Use visual template cards for the template selector; plain radio for everything else.
+      // if (fieldKey === "template") {
+      //   return <TemplateCards value={value} onChange={onChange} options={config.options} />;
+      // }
       return <RadioInput value={value} onChange={onChange} options={config.options} />;
     case "icon":
       return <IconInput value={value} onChange={onChange} />;
@@ -286,26 +293,25 @@ export function FieldRenderer({ fieldKey, config, value, onChange }) {
 }
 
 /**
- * Settings group component
+ * Settings group component — shows label, optional subtitle, and fields.
  */
 export function SettingsGroup({ groupKey, group, values, setField }) {
   return (
     <div key={groupKey} className="border rounded p-3">
-      <div className="font-medium mb-2">{group.label}</div>
-      <hr className="my-4 border-gray-300" /> 
+      <div className="font-semibold text-sm text-gray-800">{group.label}</div>
+      {group.subtitle && (
+        <div className="text-xs text-gray-500 mt-0.5 mb-1">{group.subtitle}</div>
+      )}
+      <hr className="my-3 border-gray-200" />
       <div className="space-y-3">
         {Object.keys(group.fields).map((fieldKey) => {
           const cfg = group.fields[fieldKey];
-          
-          // Check if field should be visible based on its condition
+
           const visible = isFieldVisible(cfg, values);
-          
-          if (!visible) {
-            return null;
-          }
-          
+          if (!visible) return null;
+
           return (
-            <div key={fieldKey} className="">
+            <div key={fieldKey}>
               <Label>{cfg.label}</Label>
               <FieldRenderer
                 fieldKey={fieldKey}
@@ -325,6 +331,9 @@ export function SettingsGroup({ groupKey, group, values, setField }) {
  * Export Action buttons component
  */
 export { ActionButtons } from './ActionButtons';
+
+// Re-export TemplateCards
+export { TemplateCards } from './TemplateCards';
 
 // Re-export SettingsPanel
 export { SettingsPanel } from './SettingsPanel';

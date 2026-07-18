@@ -278,11 +278,13 @@ function ufaqsw_reorder_submenu() {
 	$desired_order = array(
 		'edit.php?post_type=ufaqsw',
 		'post-new.php?post_type=ufaqsw',
+		'ufaqsw-getting-started',
 		'edit.php?post_type=ufaqsw_appearance',
 		'ufaqsw_chatbot_settings',
 		'ufaqsw_ai_integration_settings',
 		'ufaqsw-settings',
 		'ufs-export-import',
+		'ufaqsw-getting-started',
 		'ufaqsw-get-help',
 	);
 
@@ -339,6 +341,21 @@ function ufaqsw_appearance_set_submenu_file( $submenu_file ) {
 
 	return $submenu_file;
 }
+
+/**
+ * Invalidate the embed-status transient whenever a non-plugin post is saved
+ * (the shortcode might have been added to or removed from any page/post).
+ *
+ * @param int     $post_id The saved post ID.
+ * @param WP_Post $post    The saved post object.
+ */
+function ufaqsw_invalidate_embed_status_cache( $post_id, $post ) {
+	if ( in_array( $post->post_type, array( 'ufaqsw', 'ufaqsw_appearance', 'revision', 'auto-draft' ), true ) ) {
+		return;
+	}
+	delete_transient( 'ufaqsw_embed_status_map' );
+}
+add_action( 'save_post', 'ufaqsw_invalidate_embed_status_cache', 10, 2 );
 
 add_filter( 'post_updated_messages', 'ufaqsw_faq_group_updated_messages' );
 

@@ -52,6 +52,9 @@ require_once UFAQSW__PLUGIN_DIR . 'inc/functions/general.php';
 // Load cpt.
 require_once UFAQSW__PLUGIN_DIR . 'inc/admin/class-directory-post-type.php';
 
+// Load Getting Started.
+include_once UFAQSW__PLUGIN_DIR . 'inc/admin/GettingStarted.php';
+
 // Load admin-specific files only in the admin area.
 if ( is_admin() ) {
 	include_once UFAQSW__PLUGIN_DIR . 'inc/admin/class-faq-group-sorting.php';
@@ -86,6 +89,9 @@ add_action(
 
 		// FAQ group actions for custom post type.
 		new Mahedi\UltimateFaqSolution\FAQGroupActions();
+
+		// Onboarding: Getting Started page, banners, empty states.
+		new Mahedi\UltimateFaqSolution\GettingStarted();
 
 		load_plugin_textdomain( 'ufaqsw', false, dirname( plugin_basename( __FILE__ ) ) . '/inc/languages' );
 

@@ -41,6 +41,9 @@ class UFAQSW_Installation {
 		}
 
 		ufaqsw_create_default_appearance();
+
+		// Trigger redirect to Getting Started page on first activation.
+		set_transient( 'ufaqsw_activation_redirect', true, 30 );
 	}
 
 	/**
