@@ -630,3 +630,94 @@
 	padding: 8px 10px;
 	margin-bottom: 10px;
 }
+
+/* --------------------------------------------------------------------------
+   9. FAQ Assistant promo banner
+   -------------------------------------------------------------------------- */
+
+.ufaqsw-banner-assistant {
+	background: #f0f7ff;
+	border-left-color: #1a185e;
+}
+
+.ufaqsw-banner-assistant .ufaqsw-banner-icon {
+	background: #1a185e;
+}
+
+/* --------------------------------------------------------------------------
+   10. Getting Started — FAQ Assistant spotlight section
+   -------------------------------------------------------------------------- */
+
+.ufaqsw-gs-assistant-spotlight {
+	margin-top: 24px;
+	border-top: 3px solid #1a185e;
+}
+
+.ufaqsw-gs-assistant-spotlight-inner {
+	display: flex;
+	align-items: flex-start;
+	gap: 24px;
+}
+
+.ufaqsw-gs-assistant-spotlight-icon {
+	flex-shrink: 0;
+	width: 64px;
+	height: 64px;
+	background: #eef0fb;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.ufaqsw-gs-assistant-spotlight-icon .dashicons {
+	font-size: 32px;
+	width: 32px;
+	height: 32px;
+	color: #1a185e;
+}
+
+.ufaqsw-gs-assistant-spotlight-body {
+	flex: 1;
+}
+
+.ufaqsw-gs-assistant-spotlight-body h2 {
+	font-size: 18px;
+	font-weight: 600;
+	color: #1a185e;
+	margin: 0 0 8px;
+	padding: 0;
+	border: none;
+}
+
+.ufaqsw-gs-assistant-spotlight-body > p {
+	font-size: 13px;
+	color: #50575e;
+	line-height: 1.6;
+	margin: 0 0 16px;
+}
+
+.ufaqsw-gs-assistant-features {
+	margin: 0 0 20px 0;
+	padding: 0;
+	list-style: none;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 8px 20px;
+}
+
+.ufaqsw-gs-assistant-features li {
+	font-size: 13px;
+	color: #50575e;
+	display: flex;
+	align-items: center;
+	gap: 6px;
+}
+
+.ufaqsw-gs-assistant-features .dashicons {
+	font-size: 16px;
+	width: 16px;
+	height: 16px;
+	color: #1a185e;
+	flex-shrink: 0;
+}

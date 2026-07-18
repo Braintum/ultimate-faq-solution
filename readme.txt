@@ -57,7 +57,7 @@ This feature is designed to streamline your workflow, especially when building l
 
 = ✅ Key Features Overview =
 * 🧠 **Create with AI:** Instantly generate entire FAQ groups with one click using advanced AI assistance.
-* 💬 **FAQ Assistant:** Add an interactive, floating help icon with chat-style FAQ access for instant answers.
+* 💬 **FAQ Assistant:** Floating chatbot with live search, "Ask a Question" form, helpful/not-helpful ratings, breadcrumb navigation, slide transitions, and a full Feedback Analytics dashboard — all configurable from the admin.
 * 🤖 **AI-Powered Answer Suggestions:** Instantly generate FAQ answers using AI to save time and improve accuracy.
 * ♿ **Accessibility-Ready Templates:** Ensure your FAQs are usable by everyone, including assistive technology users.
 * 🧩 **Gutenberg Block Support:** Easily insert in the WordPress block editor.
@@ -79,12 +79,25 @@ This feature is designed to streamline your workflow, especially when building l
 * 👁️ **FAQ Preview Option:** Preview your FAQ groups before publishing.
 
 
-🤝 **FAQ Assistant**  
-The FAQ Assistant adds an interactive, floating help icon to your website, giving visitors quick access to your FAQs in a sleek, chat-style interface. Use the settings below to enable the assistant and customize its behavior. Improve user experience by making answers more accessible—right when and where your visitors need them.
+💬 **FAQ Assistant — Floating Chatbot**
+The FAQ Assistant is a floating chat button that appears on the pages you choose, giving visitors instant, conversational access to your entire knowledge base — without navigating away or opening a new tab. Enable it in one click from **FAQ Groups → FAQ Assistant Settings**.
 
-With the FAQ Assistant, your users can search for answers, browse FAQ groups, and interact with your knowledge base in real time—without leaving the page they’re on. The assistant is fully customizable: you can adjust its appearance, welcome message, and even the footer text to match your site’s branding and tone. It’s designed to be mobile-friendly and accessibility-ready, ensuring all visitors can benefit from instant support.
+**What visitors can do:**
+- **Search instantly** — a live search bar filters all FAQ groups as they type, with matched text highlighted in results.
+- **Browse by group** — a clean card-based home screen lists all your FAQ groups; tapping one shows the questions inside.
+- **Read answers** — answers display in a full-detail view with breadcrumb navigation so visitors always know where they are.
+- **Ask a question** — a built-in "Ask a Question" form lets visitors submit their own question from any screen. Submissions are emailed directly to your inbox (including the page URL) and are rate-limited to prevent spam.
+- **Rate helpfulness** — a thumbs-up / thumbs-down widget at the bottom of every answer lets visitors flag what’s working and what isn’t.
+- **Browse related questions** — after reading an answer, visitors can jump directly to other questions in the same group.
 
-Whether you run a WooCommerce store, a membership site, or a blog, the FAQ Assistant helps reduce support requests and empowers your users to find answers independently. Enable it today to provide a modern, conversational FAQ experience that keeps your audience engaged and informed.
+**For site owners:**
+- **Feedback Analytics dashboard** — view every FAQ’s helpful / not-helpful vote counts with a colour-coded score in a dedicated admin page (visible only when feedback is enabled).
+- **Fully customisable** — colors, labels, placeholder text, welcome message, button icons, pulse ring, notification badge, and more are all configurable without touching any code.
+- **Mobile-first** — on screens ≤ 768 px the assistant occupies the full viewport for a native app-like experience; on desktop it appears as a sleek 390 × 680 px window.
+- **Accessible** — `role="dialog"`, `aria-modal`, keyboard `Enter` support on all items, `Escape` to close, and `focus-visible` outlines throughout.
+- **Shadow DOM isolated** — styles are fully encapsulated so the assistant never conflicts with your theme’s CSS.
+
+Enable the FAQ Assistant today to reduce support requests, increase self-service rates, and give every visitor a modern, conversational help experience.
 
 🔄 **Native Export/Import System**  
 Ultimate FAQ Solution features a powerful, custom-built export/import system that goes beyond WordPress's default import/export functionality. Our native solution is specifically designed for FAQ data, ensuring perfect compatibility and a seamless migration experience.
@@ -156,8 +169,8 @@ Yes, you can choose between accordion or toggle behavior, reorder elements, full
 = Are shortcodes customizable? =  
 Yes, you can pass parameters like `behavior=toggle`, or `element_order="DESC"` to control the output.
 
-= What is the FAQ Assistant feature? =  
-The FAQ Assistant adds an interactive, floating help icon to your website, giving visitors quick access to your FAQs in a sleek, chat-style interface. It improves user experience by making answers more accessible—right when and where your visitors need them.
+= What is the FAQ Assistant feature? =
+The FAQ Assistant is a floating chatbot that appears on the pages you choose. Visitors can search your FAQs in real time, browse by group, read answers, submit their own questions via a built-in form, and rate whether an answer was helpful — all without leaving the page. Enable it from **FAQ Groups → FAQ Assistant Settings** and configure colors, labels, and behaviour to match your brand.
 
 = Does the plugin use AI to generate FAQ answers? =  
 Yes! Starting from version 1.6.4, Ultimate FAQ Solution includes an AI-powered feature that can suggest answers for your FAQs. This helps you quickly generate accurate responses and save time when creating new FAQs. You can review and edit the AI-generated answers before publishing them.
@@ -225,6 +238,9 @@ Yes! Starting from version 1.6.4, Ultimate FAQ Solution includes an AI-powered f
 * Enhanced: ♿ **Accessibility improvements** — the assistant container has `role="dialog"` and `aria-modal="true"`. All clickable list items now have `tabIndex` and keyboard `Enter` support. Pressing Escape closes the window.
 * Enhanced: 🎨 **Primary colour propagated automatically** — the Header Background Color setting is injected as a CSS custom property (`--chatbot-primary`) into the Shadow DOM so accent colours (borders, button fills, hover states, form focus rings) all stay in sync without extra settings.
 * Enhanced: 🔙 **Smart back navigation from "Ask a Question"** — pressing Back or Cancel from the Ask form returns to whichever screen opened it (home, list, or answer) rather than always going to the home screen.
+* New: 📢 **FAQ Assistant promo banner** — a dismissible spotlight banner now appears on the FAQ Groups list screen whenever the FAQ Assistant has not yet been enabled, with a direct "Enable FAQ Assistant" button so users discover the feature immediately.
+* New: ✨ **FAQ Assistant spotlight on Getting Started page** — the Getting Started guide now includes a dedicated FAQ Assistant section with a feature overview (live search, ask-a-question, ratings, customisation) and a "Set Up FAQ Assistant" call-to-action.
+* New: 🔗 **Plugin row meta link** — an "FAQ Assistant" quick link is now shown in the plugin row on the WordPress Plugins page, letting admins jump straight to the assistant settings from anywhere.
 
 
 =1.8.3=
@@ -433,6 +449,9 @@ Yes! Starting from version 1.6.4, Ultimate FAQ Solution includes an AI-powered f
 = 1.0.0 =  
 * 🎉 Initial release.
 
-== Upgrade Notice ==  
-= 1.5.7 =  
+== Upgrade Notice ==
+= 1.8.5 =
+Improves discoverability of the FAQ Assistant: new promo banner on the FAQ Groups screen, FAQ Assistant spotlight on the Getting Started page, and a quick link in the Plugins list.
+
+= 1.5.7 =
 FAQ Assistant added — floating help icon with chat-style FAQ access. Recommended update to improve visitor experience.

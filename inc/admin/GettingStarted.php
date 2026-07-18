@@ -33,6 +33,7 @@ class GettingStarted {
 		add_action( 'admin_notices', array( $this, 'render_banners' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_styles' ) );
 		add_action( 'admin_footer', array( $this, 'render_empty_states' ) );
+		add_filter( 'plugin_row_meta', array( $this, 'add_plugin_row_meta' ), 10, 2 );
 	}
 
 	/**
@@ -134,6 +135,7 @@ class GettingStarted {
 
 		if ( 'edit-ufaqsw' === $screen->id ) {
 			$this->render_faq_groups_banner( $user_id );
+			$this->render_faq_assistant_banner( $user_id );
 		}
 
 		if ( 'edit-ufaqsw_appearance' === $screen->id ) {
@@ -197,6 +199,43 @@ class GettingStarted {
 						<?php esc_html_e( 'View Guide', 'ufaqsw' ); ?>
 					</a>
 					<button type="button" class="ufaqsw-banner-dismiss" data-banner="appearances" aria-label="<?php esc_attr_e( 'Dismiss this notice', 'ufaqsw' ); ?>">
+						<span class="dashicons dashicons-no-alt"></span>
+					</button>
+				</div>
+			</div>
+		</div>
+		<?php
+	}
+
+	/**
+	 * FAQ Assistant spotlight banner — shown on the FAQ Groups screen when the
+	 * assistant has not been enabled yet. Dismissed per-user.
+	 *
+	 * @param int $user_id Current user ID.
+	 */
+	private function render_faq_assistant_banner( $user_id ) {
+		if ( get_user_meta( $user_id, 'ufaqsw_banner_dismissed_faq_assistant', true ) ) {
+			return;
+		}
+		if ( cmb2_get_option( 'ufaqsw_chatbot_settings', 'enable_chatbot' ) ) {
+			return; // Already enabled — no need to promote it.
+		}
+		$settings_url = admin_url( 'edit.php?post_type=ufaqsw&page=ufaqsw_settings_page' );
+		?>
+		<div class="ufaqsw-how-it-works-banner ufaqsw-banner-assistant">
+			<div class="ufaqsw-banner-content">
+				<div class="ufaqsw-banner-icon">
+					<span class="dashicons dashicons-format-chat"></span>
+				</div>
+				<div class="ufaqsw-banner-text">
+					<strong><?php esc_html_e( '✨ New: FAQ Assistant — a floating chatbot for your visitors', 'ufaqsw' ); ?></strong>
+					<p><?php esc_html_e( 'Let visitors search and browse your FAQs without leaving the page. The FAQ Assistant adds a floating chat button to any page — no coding needed. It supports live search, "Ask a Question" submissions, and helpful/not-helpful ratings.', 'ufaqsw' ); ?></p>
+				</div>
+				<div class="ufaqsw-banner-actions">
+					<a href="<?php echo esc_url( $settings_url ); ?>" class="button button-primary">
+						<?php esc_html_e( 'Enable FAQ Assistant', 'ufaqsw' ); ?>
+					</a>
+					<button type="button" class="ufaqsw-banner-dismiss" data-banner="faq_assistant" aria-label="<?php esc_attr_e( 'Dismiss this notice', 'ufaqsw' ); ?>">
 						<span class="dashicons dashicons-no-alt"></span>
 					</button>
 				</div>
@@ -418,7 +457,48 @@ class GettingStarted {
 				</div>
 			</div><!-- /.ufaqsw-gs-explainer -->
 
+			<!-- FAQ Assistant spotlight -->
+			<div class="ufaqsw-gs-explainer ufaqsw-gs-assistant-spotlight">
+				<div class="ufaqsw-gs-assistant-spotlight-inner">
+					<div class="ufaqsw-gs-assistant-spotlight-icon">
+						<span class="dashicons dashicons-format-chat"></span>
+					</div>
+					<div class="ufaqsw-gs-assistant-spotlight-body">
+						<h2><?php esc_html_e( '✨ FAQ Assistant — floating chatbot', 'ufaqsw' ); ?></h2>
+						<p><?php esc_html_e( 'The FAQ Assistant is a floating chat button that lets visitors search and browse your FAQs right on the page — without navigating away. Enable it once and it appears automatically on the pages you choose.', 'ufaqsw' ); ?></p>
+						<ul class="ufaqsw-gs-assistant-features">
+							<li><span class="dashicons dashicons-search"></span> <?php esc_html_e( 'Live search across all your FAQ groups', 'ufaqsw' ); ?></li>
+							<li><span class="dashicons dashicons-email-alt"></span> <?php esc_html_e( '"Ask a Question" form — submissions land in your inbox', 'ufaqsw' ); ?></li>
+							<li><span class="dashicons dashicons-thumbs-up"></span> <?php esc_html_e( '"Was this helpful?" ratings with an analytics dashboard', 'ufaqsw' ); ?></li>
+							<li><span class="dashicons dashicons-admin-customizer"></span> <?php esc_html_e( 'Fully customisable colors, labels, and behaviour', 'ufaqsw' ); ?></li>
+						</ul>
+						<a href="<?php echo esc_url( admin_url( 'edit.php?post_type=ufaqsw&page=ufaqsw_settings_page' ) ); ?>" class="button button-primary">
+							<?php esc_html_e( 'Set Up FAQ Assistant', 'ufaqsw' ); ?>
+						</a>
+					</div>
+				</div>
+			</div><!-- /.ufaqsw-gs-assistant-spotlight -->
+
 		</div><!-- /.ufaqsw-getting-started -->
 		<?php
+	}
+
+	/**
+	 * Add a "FAQ Assistant" quick link in the plugin row on the Plugins page.
+	 *
+	 * @param string[] $links Existing meta links.
+	 * @param string   $file  Plugin basename.
+	 * @return string[]
+	 */
+	public function add_plugin_row_meta( $links, $file ) {
+		if ( $file !== UFAQSW_BASE ) {
+			return $links;
+		}
+		$links[] = sprintf(
+			'<a href="%s">%s</a>',
+			esc_url( admin_url( 'edit.php?post_type=ufaqsw&page=ufaqsw_settings_page' ) ),
+			esc_html__( 'FAQ Assistant', 'ufaqsw' )
+		);
+		return $links;
 	}
 }
