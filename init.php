@@ -60,6 +60,7 @@ if ( is_admin() ) {
 	include_once UFAQSW__PLUGIN_DIR . 'inc/admin/class-faq-group-sorting.php';
 	include_once UFAQSW__PLUGIN_DIR . 'inc/admin/RegisterAdminPages.php';
 	include_once UFAQSW__PLUGIN_DIR . 'inc/admin/chatbot.php';
+	include_once UFAQSW__PLUGIN_DIR . 'inc/admin/chatbot-feedback.php';
 	include_once UFAQSW__PLUGIN_DIR . 'inc/admin/installation.php';
 	include_once UFAQSW__PLUGIN_DIR . 'inc/ai-writing-assistant/init.php';
 	include_once UFAQSW__PLUGIN_DIR . 'inc/ExportImport/bootstrap.php';

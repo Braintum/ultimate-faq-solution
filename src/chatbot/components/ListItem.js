@@ -1,29 +1,32 @@
-import React from "react";
+import React from 'react';
 
-/**
- * Renders a list item component for the chatbot FAQ list.
- *
- * @param {Object} props - The component props.
- * @param {Object} props.item - The item object containing FAQ data.
- * @param {number} props.index - The index of the item in the list.
- * @param {Function} props.onClick - Callback function to handle click events on the item.
- * @param {string} props.content - The title or content to display for the item.
- * @param {string} [props.faqs_count_text] - Template string for displaying the FAQ count, with "[count]" as a placeholder.
- * @returns {JSX.Element} The rendered list item component.
- */
+const ChevronRight = () => (
+	<svg className="list-item-chevron" width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+		<polyline points="7 5 13 10 7 15" />
+	</svg>
+);
+
 export const ListItem = ({ item, index, onClick, content, faqs_count_text }) => {
 	const faqsCountText = faqs_count_text && item.items
-		? faqs_count_text.replace("[count]", item.items.length)
+		? faqs_count_text.replace('[count]', item.items.length)
 		: undefined;
 
 	return (
-		<div key={index} className="list-item" onClick={() => onClick(item)}>
-			<div className="title">{content}</div>
-			{item.items && (
-				<div className="description">
-					{faqsCountText}
-				</div>
-			)}
+		<div
+			key={index}
+			className="list-item"
+			onClick={() => onClick(item)}
+			role="button"
+			tabIndex={0}
+			onKeyDown={(e) => e.key === 'Enter' && onClick(item)}
+		>
+			<div className="list-item-body">
+				<div className="title">{content}</div>
+				{faqsCountText && (
+					<div className="description">{faqsCountText}</div>
+				)}
+			</div>
+			<ChevronRight />
 		</div>
 	);
-}
+};

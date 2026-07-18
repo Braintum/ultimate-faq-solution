@@ -1,52 +1,42 @@
 import React, { useState, useEffect } from 'react';
-import "../styles/floatingButton.css"; // Import your CSS file for styling
+import '../styles/floatingButton.css';
 
-/**
- * FloatingButton component renders a customizable floating chat button.
- *
- * The button displays an icon and title fetched from the global `window.chatbotData` object.
- * The icon is set as the button's background image, and the title is used as the tooltip.
- * The button's opacity changes on hover for a visual effect.
- *
- * @component
- * @param {Object} props - Component props.
- * @param {function} props.onClick - Callback function to handle button click events.
- * @returns {JSX.Element} The rendered floating button component.
- */
 export const FloatingButton = ({ onClick }) => {
-
-	const [floatingButtonTitle, setFloatingButtonTitle] = useState('');
-	const [floatingButtonIcon, setFloatingButtonIcon] = useState('');
+	const [title, setTitle] = useState('');
+	const [icon, setIcon] = useState('');
+	const [pulseEnabled, setPulseEnabled] = useState(false);
+	const [badgeEnabled, setBadgeEnabled] = useState(false);
+	const [pulseColor, setPulseColor] = useState('#1a185e');
 
 	useEffect(() => {
-		// Access the global chatbotData object
 		if (window.chatbotData) {
-			setFloatingButtonTitle(window.chatbotData.floating_button_title);
-			setFloatingButtonIcon(window.chatbotData.floating_button_icon);
+			setTitle(window.chatbotData.floating_button_title || '');
+			setIcon(window.chatbotData.floating_button_icon || '');
+			setPulseEnabled(!!window.chatbotData.pulse_enabled);
+			setBadgeEnabled(!!window.chatbotData.badge_enabled);
+			setPulseColor(window.chatbotData.header_background_color || '#1a185e');
 		}
 	}, []);
 
 	return (
-		<button
-			onClick={onClick}
-			className="ufaqsw_floating-chat-button"
-			title={floatingButtonTitle}
-			style={{
-				backgroundImage: `url('${floatingButtonIcon}')`,
-				backgroundSize: 'cover',
-				backgroundRepeat: 'no-repeat',
-				backgroundPosition: 'center',
-				width: '80px',
-				height: '80px',
-				border: 'none',
-				cursor: 'pointer',
-				opacity: 0.7, // Default opacity
-				transition: 'opacity 0.2s'
-			}}
-			onMouseEnter={e => (e.currentTarget.style.opacity = 1)}
-			onMouseLeave={e => (e.currentTarget.style.opacity = 0.7)}
-		>
-			{/* Empty content since the icon is set as background */}
-		</button>
+		<div className="ufaqsw_floating-chat-wrapper">
+			{badgeEnabled && <span className="ufaqsw_badge" aria-hidden="true" />}
+			<button
+				onClick={onClick}
+				className="ufaqsw_floating-chat-button"
+				title={title}
+				aria-label={title || 'Open FAQ Assistant'}
+				style={{
+					backgroundImage: icon ? `url('${icon}')` : undefined,
+				}}
+			/>
+			{pulseEnabled && (
+				<span
+					className="ufaqsw_pulse-ring"
+					style={{ borderColor: pulseColor }}
+					aria-hidden="true"
+				/>
+			)}
+		</div>
 	);
 };

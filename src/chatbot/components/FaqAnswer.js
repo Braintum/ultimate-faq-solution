@@ -1,23 +1,55 @@
-import React from "react";
+import React from 'react';
+import Feedback from './Feedback';
+import RelatedQuestions from './RelatedQuestions';
 
-/**
- * Renders the answer section for a given FAQ item.
- *
- * @component
- * @param {Object} props
- * @param {Object} props.faq - The FAQ item to display.
- * @param {string} props.faq.question - The question text.
- * @param {string} props.faq.answer - The answer HTML content (rendered as HTML).
- * @returns {JSX.Element} The rendered FAQ answer component.
- */
-export const FaqAnswer = ({ faq }) => {
+export const FaqAnswer = ({
+	faq,
+	group,
+	onQuestionClick,
+	feedbackConfig,
+	relatedConfig,
+	ajaxUrl,
+	nonce,
+	onAskClick,
+	askConfig,
+}) => {
 	return (
 		<div className="faq-answer">
 			<h2>{faq.question}</h2>
 			<div
 				className="faq-answer-content"
 				dangerouslySetInnerHTML={{ __html: faq.answer }}
-			></div>
+			/>
+
+			{askConfig && askConfig.enabled && (
+				<button className="ask-question-footer-btn" type="button" onClick={onAskClick}>
+					<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+						<circle cx="12" cy="12" r="10" />
+						<line x1="12" y1="8" x2="12" y2="12" />
+						<line x1="12" y1="16" x2="12.01" y2="16" />
+					</svg>
+					{askConfig.button_label || 'Ask a Question'}
+				</button>
+			)}
+
+			{feedbackConfig && feedbackConfig.enabled && (
+				<Feedback
+					faq={faq}
+					config={feedbackConfig}
+					ajaxUrl={ajaxUrl}
+					nonce={nonce}
+				/>
+			)}
+
+			{relatedConfig && relatedConfig.enabled && group && (
+				<RelatedQuestions
+					currentFaq={faq}
+					group={group}
+					count={relatedConfig.count}
+					title={relatedConfig.title}
+					onQuestionClick={onQuestionClick}
+				/>
+			)}
 		</div>
 	);
-}
+};
