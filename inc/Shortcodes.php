@@ -92,10 +92,11 @@ class Shortcodes {
 		extract( // phpcs:ignore
 			shortcode_atts(
 				array(
-					'id'             => 1,
-					'title_hide'     => null,
-					'elements_order' => 'asc',
-					'exclude_items' => '',
+					'id'              => 1,
+					'title_hide'      => null,
+					'elements_order'  => 'asc',
+					'exclude_items'   => '',
+					'show_expand_all' => 'no',
 				),
 				$atts
 			)
@@ -181,10 +182,11 @@ class Shortcodes {
 		extract( // phpcs:ignore
 			shortcode_atts(
 				array(
-					'exclude'        => '', // Coma seperated number string: 88, 86.
-					'title_hide'     => null,
-					'elements_order' => 'asc',
-					'behaviour'      => 'default',
+					'exclude'         => '', // Coma seperated number string: 88, 86.
+					'title_hide'      => null,
+					'elements_order'  => 'asc',
+					'behaviour'       => 'default',
+					'show_expand_all' => 'no',
 				),
 				$atts
 			)

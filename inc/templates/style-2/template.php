@@ -1,11 +1,8 @@
 <?php
 /**
  * Template Name: Style 2 FAQ Template
- * Description: Default template by Aussie Team for displaying FAQs in style 2.
  *
  * @package UltimateFAQSolution
- * Author: Aussie Team
- * Version: 1.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -19,30 +16,24 @@ $is_show_all = 'accordion' !== $behaviour && $showall;
 
 <div class="ufaqsw_container_style2 ufaqsw_faq_section_style2 ufaqsw_element_group_src">
 
-	<?php
-	// Main Title
-	// Check if title is enabled.
-	if ( 'yes' !== $title_hide ) :
-		?>
+	<?php if ( 'yes' !== $title_hide ) : ?>
 		<h2 class="ufaqsw_faq_title ufaqsw_faq_title_<?php echo esc_html( get_the_ID() ); ?>"><?php echo esc_html( get_the_title() ); ?></h2>
+	<?php endif; ?>
+
+	<?php if ( isset( $show_expand_all ) && 'yes' === $show_expand_all && 'accordion' !== $behaviour ) : ?>
+	<div class="ufaqsw-toggle-all-wrap">
+		<button type="button" class="ufaqsw-toggle-all-btn" data-all-expanded="<?php echo $is_show_all ? 'true' : 'false'; ?>" aria-label="<?php esc_attr_e( 'Toggle all FAQ answers', 'ufaqsw' ); ?>">
+			<span class="ufaqsw-toggle-all-label-expand" <?php echo $is_show_all ? 'style="display:none"' : ''; ?>><?php esc_html_e( 'Expand All', 'ufaqsw' ); ?></span>
+			<span class="ufaqsw-toggle-all-label-collapse" <?php echo $is_show_all ? '' : 'style="display:none"'; ?>><?php esc_html_e( 'Collapse All', 'ufaqsw' ); ?></span>
+		</button>
+	</div>
 	<?php endif; ?>
 
 	<?php
 	$c = 1;
 	foreach ( $faqs as $faq ) :
-		/*
-		* This is where the looping begans
-		* Now it is for simplifing for data variables
-		*/
 		$faq = apply_filters( 'ufaqsw_simplify_variables', $faq );
 		extract( $faq ); // phpcs:ignore
-
-		/*
-		* All data variables are extracted. Available variables are
-		* $question - Which contains the Question.
-		* $answer - Which contains the Answer.
-		*/
-
 		?>
 	<div class="ufaqsw_faq_style2 ufaqsw_toggle_default_<?php echo esc_html( get_the_ID() ); ?> ufaqsw_element_src">
 		<div class="ufaqsw_box_style2 ufaqsw-title-name-default_<?php echo esc_html( get_the_ID() ); ?> ufaqsw-toggle-title-area-default_<?php echo esc_html( get_the_ID() ); ?>"
@@ -50,13 +41,13 @@ $is_show_all = 'accordion' !== $behaviour && $showall;
 			tabindex="0"
 			aria-expanded="<?php echo $is_show_all ? 'true' : 'false'; ?>"
 			aria-controls="ufaqsw_faq_answer_<?php echo esc_html( $c ); ?>_<?php echo esc_html( get_the_ID() ); ?>"
-			aria-label="<?php echo esc_html( $question ); ?>"
+			aria-label="<?php echo esc_attr( wp_strip_all_tags( $question ) ); ?>"
 		>
-				<span>
-					<i class="fa <?php echo esc_attr( isset( $designs['normal_icon'] ) && '' !== $designs['normal_icon'] ? $designs['normal_icon'] : 'fa fa-plus' ); ?>"  <?php echo true !== $is_show_all ? 'style="display:inline"' : 'style="display:none"'; ?> ></i>
-					<i class="fa <?php echo esc_attr( isset( $designs['active_icon'] ) && '' !== $designs['active_icon'] ? $designs['active_icon'] : 'fa fa-minus' ); ?>" id="ufaqsw_other_style2" <?php echo true === $is_show_all ? 'style="display:inline"' : 'style="display:none"'; ?> ></i>
-				</span>
-				&nbsp;&nbsp;<span class="ufaqsw_faq_question_src"><?php echo wp_kses_post( $question ); ?></span>
+			<span aria-hidden="true">
+				<i class="fa <?php echo esc_attr( isset( $designs['normal_icon'] ) && '' !== $designs['normal_icon'] ? $designs['normal_icon'] : 'fa-plus' ); ?> ufaqsw-icon-normal" <?php echo true !== $is_show_all ? 'style="display:inline"' : 'style="display:none"'; ?>></i>
+				<i class="fa <?php echo esc_attr( isset( $designs['active_icon'] ) && '' !== $designs['active_icon'] ? $designs['active_icon'] : 'fa-minus' ); ?> ufaqsw-icon-active" <?php echo true === $is_show_all ? 'style="display:inline"' : 'style="display:none"'; ?>></i>
+			</span>
+			&nbsp;&nbsp;<span class="ufaqsw_faq_question_src"><?php echo wp_kses_post( $question ); ?></span>
 		</div>
 		<section class="ufaqsw_draw_style2 ufaqsw-toggle-inner-default_<?php echo esc_html( get_the_ID() ); ?> ufaqsw_faq_answer_src"
 			id="ufaqsw_faq_answer_<?php echo esc_html( $c ); ?>_<?php echo esc_html( get_the_ID() ); ?>"
@@ -70,7 +61,6 @@ $is_show_all = 'accordion' !== $behaviour && $showall;
 		<?php
 		$c++;
 	endforeach;
-
 	?>
 
 </div>

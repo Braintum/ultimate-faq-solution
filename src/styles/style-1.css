@@ -44,7 +44,19 @@
   display: block;
 }
 
-.ufaqsw_title_area_style1{position:relative; background: #f5f5f5;}
+.ufaqsw_title_area_style1 {
+  position: relative;
+  background: #f5f5f5;
+  transition: background-color 0.2s ease;
+}
+
+.ufaqsw_title_area_style1:hover {
+  background-color: #e8e8e8;
+}
+
+.ufaqsw_title_area_style1.ufaqsw_active_s1 {
+  background-color: #e4e4e4;
+}
 
 .ufaqsw_title_area_style1:focus {
   outline: none;

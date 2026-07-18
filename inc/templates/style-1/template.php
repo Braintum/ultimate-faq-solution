@@ -24,6 +24,15 @@ $is_show_all = 'accordion' !== $behaviour && $showall;
 		<h2 class="ufaqsw_faq_title ufaqsw_faq_title_<?php echo esc_html( get_the_ID() ); ?>"><?php echo esc_html( get_the_title() ); ?></h2>
 	<?php endif; ?>
 
+	<?php if ( isset( $show_expand_all ) && 'yes' === $show_expand_all && 'accordion' !== $behaviour ) : ?>
+	<div class="ufaqsw-toggle-all-wrap">
+		<button type="button" class="ufaqsw-toggle-all-btn" data-all-expanded="<?php echo $is_show_all ? 'true' : 'false'; ?>" aria-label="<?php esc_attr_e( 'Toggle all FAQ answers', 'ufaqsw' ); ?>">
+			<span class="ufaqsw-toggle-all-label-expand" <?php echo $is_show_all ? 'style="display:none"' : ''; ?>><?php esc_html_e( 'Expand All', 'ufaqsw' ); ?></span>
+			<span class="ufaqsw-toggle-all-label-collapse" <?php echo $is_show_all ? '' : 'style="display:none"'; ?>><?php esc_html_e( 'Collapse All', 'ufaqsw' ); ?></span>
+		</button>
+	</div>
+	<?php endif; ?>
+
 	<?php
 		$c = 1;
 	foreach ( $faqs as $faq ) :

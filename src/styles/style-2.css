@@ -2,19 +2,21 @@
 .ufaqsw_faq_style2{
 	padding-bottom: 10px;
 }
-.ufaqsw_box_style2{
-	background: rgba(246, 246, 246, 1);
-    color: #666666;
-    padding-top: 8px;
-    padding-bottom: 8px;
-    padding-left: 20px;
-    padding-right: 20px;
-    text-transform: none;
-    cursor: pointer;
-    border: 1px solid #d9d9d9;
-    line-height:normal;
-	width:100%;
-	box-sizing: border-box;
+.ufaqsw_box_style2 {
+  background: rgba(246, 246, 246, 1);
+  color: #666666;
+  padding: 8px 20px;
+  text-transform: none;
+  cursor: pointer;
+  border: 1px solid #d9d9d9;
+  line-height: normal;
+  width: 100%;
+  box-sizing: border-box;
+  transition: background-color 0.2s ease;
+}
+
+.ufaqsw_box_style2:hover {
+  background-color: #e8e8e8;
 }
 
 .ufaqsw_box_style2:focus {
@@ -47,9 +49,7 @@
   display: block;
 }
 
-#ufaqsw_other_style2{
-	display: none;
-}
+/* .ufaqsw-icon-active initial hidden state is handled globally in default.css */
 .ufaqsw_faq_title {
     margin-bottom: 20px;
 }

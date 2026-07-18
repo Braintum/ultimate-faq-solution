@@ -1,14 +1,25 @@
 .ufaqsw_container_default {
   width: 100%;
+  border-bottom: 1px solid #dddddd;
 }
-/* Styles for Accordion */
+
+/* Question row */
 .ufaqsw_toggle_default .ufaqsw-toggle-title-area-default {
   position: relative;
   display: block;
   border-top: 1px solid #dddddd;
-  margin: 0px;
+  margin: 0;
   line-height: normal;
   cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.ufaqsw_toggle_default .ufaqsw-toggle-title-area-default:hover {
+  background-color: #f8f8f8;
+}
+
+.ufaqsw_toggle_default .ufaqsw-toggle-title-area-default.ufaqsw_active {
+  background-color: #f5f5f5;
 }
 
 .ufaqsw_toggle_default .ufaqsw-toggle-title-area-default:focus {
@@ -16,35 +27,78 @@
 }
 
 .ufaqsw_toggle_default .ufaqsw-toggle-title-area-default:focus-visible {
-  outline: 1px solid #0073aa; /* WordPress blue */
+  outline: 2px solid #0073aa;
+  outline-offset: -2px;
 }
 
+/* Title name row — flexbox so icon stays right-aligned */
+.ufaqsw_toggle_default .ufaqsw-toggle-title-area-default .ufaqsw-title-name-default {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 12px;
+}
+
+.ufaqsw-default-title {
+  flex: 1;
+  min-width: 0;
+}
+
+.ufaqsw-default-icon {
+  flex-shrink: 0;
+  margin-left: 12px;
+  font-size: 14px;
+}
+
+/* Active icon hidden by default. Uses .ufaqsw_toggle_default context for higher specificity
+   than Font Awesome's .fa { display: inline-block }, so the rule wins regardless of load order. */
+.ufaqsw_toggle_default .ufaqsw-icon-active {
+  display: none;
+}
+
+/* Answer panel */
 .ufaqsw_toggle_default .ufaqsw-toggle-inner-default {
-  padding: 5px 20px;
+  padding: 8px 20px 16px;
 }
 
 .ufaqsw_toggle_default .ufaqsw-toggle-inner-default * {
   max-width: 100%;
 }
 
-.ufaqsw_toggle_default .ufaqsw-toggle-inner-default img, .ufaqsw_toggle_default .ufaqsw-toggle-inner-default iframe {
+.ufaqsw_toggle_default .ufaqsw-toggle-inner-default img,
+.ufaqsw_toggle_default .ufaqsw-toggle-inner-default iframe {
   margin: 0 auto;
   display: block;
 }
 
-.ufaqsw_toggle_default .ufaqsw-toggle-title-area-default .ufaqsw-title-name-default {
-	display: block;
-  padding: 15px 10px;
-}
-.ufaqsw_toggle_default .ufaqsw-toggle-title-area-default a i {
-  font-size: 22px;
-  margin-right: 5px;
+/* Group title */
+.ufaqsw_faq_title {
+  margin-bottom: 20px;
 }
 
-#ufaqsw_other_style{display:none;}
-.ufaqsw-default-icon {
-    float: right;
+/* Expand / Collapse All button */
+.ufaqsw-toggle-all-wrap {
+  text-align: right;
+  margin-bottom: 8px;
 }
-.ufaqsw_faq_title {
-    margin-bottom: 20px;
+
+.ufaqsw-toggle-all-btn {
+  background: none;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 13px;
+  padding: 5px 12px;
+  color: #444;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.ufaqsw-toggle-all-btn:hover {
+  background-color: #f0f0f0;
+  border-color: #888;
+}
+
+.ufaqsw-toggle-all-btn:focus-visible {
+  outline: 2px solid #0073aa;
+  outline-offset: 2px;
 }

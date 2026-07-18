@@ -107,15 +107,27 @@
 }
 .ufaqsw_container_default {
   width: 100%;
+  border-bottom: 1px solid #dddddd;
 }
-/* Styles for Accordion */
+
+/* Question row */
 .ufaqsw_toggle_default .ufaqsw-toggle-title-area-default {
   position: relative;
   display: block;
   border-top: 1px solid #dddddd;
-  margin: 0px;
+  margin: 0;
   line-height: normal;
   cursor: pointer;
+  -webkit-transition: background-color 0.2s ease;
+          transition: background-color 0.2s ease;
+}
+
+.ufaqsw_toggle_default .ufaqsw-toggle-title-area-default:hover {
+  background-color: #f8f8f8;
+}
+
+.ufaqsw_toggle_default .ufaqsw-toggle-title-area-default.ufaqsw_active {
+  background-color: #f5f5f5;
 }
 
 .ufaqsw_toggle_default .ufaqsw-toggle-title-area-default:focus {
@@ -123,37 +135,90 @@
 }
 
 .ufaqsw_toggle_default .ufaqsw-toggle-title-area-default:focus-visible {
-  outline: 1px solid #0073aa; /* WordPress blue */
+  outline: 2px solid #0073aa;
+  outline-offset: -2px;
 }
 
+/* Title name row — flexbox so icon stays right-aligned */
+.ufaqsw_toggle_default .ufaqsw-toggle-title-area-default .ufaqsw-title-name-default {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 15px 12px;
+}
+
+.ufaqsw-default-title {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  min-width: 0;
+}
+
+.ufaqsw-default-icon {
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  margin-left: 12px;
+  font-size: 14px;
+}
+
+/* Active icon hidden by default. Uses .ufaqsw_toggle_default context for higher specificity
+   than Font Awesome's .fa { display: inline-block }, so the rule wins regardless of load order. */
+.ufaqsw_toggle_default .ufaqsw-icon-active {
+  display: none;
+}
+
+/* Answer panel */
 .ufaqsw_toggle_default .ufaqsw-toggle-inner-default {
-  padding: 5px 20px;
+  padding: 8px 20px 16px;
 }
 
 .ufaqsw_toggle_default .ufaqsw-toggle-inner-default * {
   max-width: 100%;
 }
 
-.ufaqsw_toggle_default .ufaqsw-toggle-inner-default img, .ufaqsw_toggle_default .ufaqsw-toggle-inner-default iframe {
+.ufaqsw_toggle_default .ufaqsw-toggle-inner-default img,
+.ufaqsw_toggle_default .ufaqsw-toggle-inner-default iframe {
   margin: 0 auto;
   display: block;
 }
 
-.ufaqsw_toggle_default .ufaqsw-toggle-title-area-default .ufaqsw-title-name-default {
-	display: block;
-  padding: 15px 10px;
-}
-.ufaqsw_toggle_default .ufaqsw-toggle-title-area-default a i {
-  font-size: 22px;
-  margin-right: 5px;
+/* Group title */
+.ufaqsw_faq_title {
+  margin-bottom: 20px;
 }
 
-#ufaqsw_other_style{display:none;}
-.ufaqsw-default-icon {
-    float: right;
+/* Expand / Collapse All button */
+.ufaqsw-toggle-all-wrap {
+  text-align: right;
+  margin-bottom: 8px;
 }
-.ufaqsw_faq_title {
-    margin-bottom: 20px;
+
+.ufaqsw-toggle-all-btn {
+  background: none;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 13px;
+  padding: 5px 12px;
+  color: #444;
+  -webkit-transition: background-color 0.2s ease, border-color 0.2s ease;
+          transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.ufaqsw-toggle-all-btn:hover {
+  background-color: #f0f0f0;
+  border-color: #888;
+}
+
+.ufaqsw-toggle-all-btn:focus-visible {
+  outline: 2px solid #0073aa;
+  outline-offset: 2px;
 }
 .ufaqsw_content_style1 {
   width: 100%;
@@ -199,7 +264,20 @@
   display: block;
 }
 
-.ufaqsw_title_area_style1{position:relative; background: #f5f5f5;}
+.ufaqsw_title_area_style1 {
+  position: relative;
+  background: #f5f5f5;
+  -webkit-transition: background-color 0.2s ease;
+          transition: background-color 0.2s ease;
+}
+
+.ufaqsw_title_area_style1:hover {
+  background-color: #e8e8e8;
+}
+
+.ufaqsw_title_area_style1.ufaqsw_active_s1 {
+  background-color: #e4e4e4;
+}
 
 .ufaqsw_title_area_style1:focus {
   outline: none;
@@ -247,19 +325,22 @@
 .ufaqsw_faq_style2{
 	padding-bottom: 10px;
 }
-.ufaqsw_box_style2{
-	background: rgba(246, 246, 246, 1);
-    color: #666666;
-    padding-top: 8px;
-    padding-bottom: 8px;
-    padding-left: 20px;
-    padding-right: 20px;
-    text-transform: none;
-    cursor: pointer;
-    border: 1px solid #d9d9d9;
-    line-height:normal;
-	width:100%;
-	box-sizing: border-box;
+.ufaqsw_box_style2 {
+  background: rgba(246, 246, 246, 1);
+  color: #666666;
+  padding: 8px 20px;
+  text-transform: none;
+  cursor: pointer;
+  border: 1px solid #d9d9d9;
+  line-height: normal;
+  width: 100%;
+  box-sizing: border-box;
+  -webkit-transition: background-color 0.2s ease;
+          transition: background-color 0.2s ease;
+}
+
+.ufaqsw_box_style2:hover {
+  background-color: #e8e8e8;
 }
 
 .ufaqsw_box_style2:focus {
@@ -292,9 +373,7 @@
   display: block;
 }
 
-#ufaqsw_other_style2{
-	display: none;
-}
+/* .ufaqsw-icon-active initial hidden state is handled globally in default.css */
 .ufaqsw_faq_title {
     margin-bottom: 20px;
 }
