@@ -182,6 +182,23 @@ Yes! Starting from version 1.6.4, Ultimate FAQ Solution includes an AI-powered f
 == Changelog ==
 
 = 1.8.4 =
+* New: ➕ **Expand / Collapse All button** — add `show_expand_all="yes"` to any `[ufaqsw]` or `[ufaqsw-all]` shortcode to display a button that expands or collapses every FAQ item at once. Works with the Default, Style-1, and Style-2 templates. Not shown in accordion mode.
+* Fixed: 🐛 **Global custom CSS being silently discarded** for Style-1 and Style-2 templates — a premature `$custom_css = ''` reset inside the CSS generator was overwriting any global custom CSS added via plugin settings.
+* Fixed: 🐛 **CSS `>` child selectors stripped from inline styles** — `esc_html()` was applied to custom style strings, which HTML-encoded `>` and broke CSS rules like `div > p`. Replaced with `wp_strip_all_tags()`.
+* Fixed: 🐛 **`exclude_items` parameter broken for `[ufaqsw]` shortcode** — passing an empty string to `explode()` was generating an invalid `post__not_in` query. Now correctly passes an empty array when no items are excluded.
+* Fixed: 🐛 **Style-1 toggle / accordion behavior inverted** — clicking a question would open it when it should close and vice versa. Root cause: the `<label>` element toggled the underlying checkbox before the click event bubbled, causing the JS handler to read the already-flipped state. Fixed by listening to the `change` event on the checkbox instead of `click` on the label.
+* Fixed: 🐛 **Style-2 "Show all answers" closing immediately on page load** — PHP already renders all answers visible when showall is enabled, but the JS was triggering a click on each item which closed them all again. Removed the redundant JS trigger; initial open state is now handled purely by PHP inline styles.
+* Fixed: 🐛 **Default template icons not displaying correctly** — the active icon (minus) was always hidden, and both icons were briefly visible on load, due to a CSS specificity conflict with Font Awesome's `.fa { display: inline-block }` rule. Fixed by scoping the hide rule to `.ufaqsw_toggle_default .ufaqsw-icon-active` for higher specificity.
+* Fixed: 🐛 **Icon color not respecting Appearance Builder color setting** — a hardcoded `color: #666` on the icon wrapper was blocking the color inherited from the question row style. Rule removed so icons correctly inherit the configured question color.
+* Fixed: 🐛 **Accordion `closeall()` closing items across different FAQ groups** — the function was using a global selector that matched all groups on the page instead of scoping to the current group's container.
+* Fixed: 🐛 **Style-1 `checked` state read incorrectly** — `.attr('checked')` returns the initial HTML attribute value, not the live state. Replaced with `.prop('checked')` throughout.
+* Fixed: 🐛 **Duplicate `answer_font_size` CSS rule** emitted twice in the generated inline styles.
+* Fixed: 🐛 **Hardcoded pink background** (`#eac8d3`) on Style-1 question rows replaced with a neutral `#f5f5f5`.
+* Fixed: 🐛 **Typo in search results message** — "No Result Fount!" corrected to "No Result Found!".
+* Enhanced: 🎨 **Default template redesigned** — flexbox layout keeps the question text and icon aligned on one row regardless of text length; question text is left-aligned and icon is right-aligned.
+* Enhanced: 🎨 **Hover and active states** added to all three templates with smooth CSS transitions, giving clear visual feedback on interaction.
+* Enhanced: ♿ **Keyboard navigation** — all templates now respond to `Enter` and `Space` keys on question rows, with `focus-visible` outlines for keyboard-only users.
+* Enhanced: ♿ **ARIA attributes** — `aria-expanded` and `aria-hidden` kept in sync with open/close state across all templates and the new expand/collapse all button.
 * New: 🚀 **Getting Started page** — a visual 3-step onboarding guide (Add Content → Choose Design → Display) accessible from the admin menu. New installs are redirected here automatically on first activation.
 * New: 💡 **"How it works" banners** on both the FAQ Groups and FAQ Appearances list tables — dismissible per-user notices that explain the purpose of each section so users understand the data/design split at a glance.
 * New: 🖼️ **Empty state screens** for FAQ Groups and FAQ Appearances — when no posts exist, the default WordPress table is replaced with a friendly illustration, explanation, and direct action button.
