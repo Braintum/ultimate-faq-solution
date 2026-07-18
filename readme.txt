@@ -181,6 +181,19 @@ Yes! Starting from version 1.6.4, Ultimate FAQ Solution includes an AI-powered f
 
 == Changelog ==
 
+= 1.8.4 =
+* New: 🚀 **Getting Started page** — a visual 3-step onboarding guide (Add Content → Choose Design → Display) accessible from the admin menu. New installs are redirected here automatically on first activation.
+* New: 💡 **"How it works" banners** on both the FAQ Groups and FAQ Appearances list tables — dismissible per-user notices that explain the purpose of each section so users understand the data/design split at a glance.
+* New: 🖼️ **Empty state screens** for FAQ Groups and FAQ Appearances — when no posts exist, the default WordPress table is replaced with a friendly illustration, explanation, and direct action button.
+* New: 📊 **Embed Status column** on the FAQ Groups list table — a green badge shows how many published pages embed each group; an amber badge warns when a group has never been embedded, preventing silent "why don't my FAQs show up?" support requests.
+* New: 🎨 **Template chip column** on the FAQ Appearances list table — shows which of the three templates (Default / Style 1 / Style 2) each appearance uses, along with how many groups use it.
+* Enhanced: 🛠️ **Redesigned FAQ Appearance meta box** on the FAQ Group edit screen — now displays a colour swatch preview of the selected appearance, shows an info notice when falling back to the default, and exposes "Edit appearance" and "Create new appearance" quick links.
+* Enhanced: ✅ **Post-save nudge** on the FAQ Group edit screen — after publishing or updating, a notice tells users whether the group is already embedded on any pages and (if not) offers a one-click copy of the shortcode with a link to create a new page.
+* Enhanced: 🔗 **Redesigned Linked FAQ Groups meta box** on the Appearance edit screen — leads with an "Applied to N FAQ Groups" count, lists linked groups with per-item Detach links, and shows a contextual tip when no groups are linked.
+* Enhanced: 🖼️ **Visual template preview cards** in the Appearance Builder — the three plain radio buttons for "Template Style" are replaced with interactive cards that include a CSS-rendered miniature mockup of each template layout so users can understand their choice before selecting.
+* Enhanced: 📝 **Settings panel section labels** in the Appearance Builder — groups are renamed from generic labels (General, Group, Question, Answer) to purposeful ones (Layout & Behaviour, Group Title, Question Row, Answer Panel), each with a subtitle explaining what the section controls.
+* Enhanced: 💬 **Context-aware save notifications** in the Appearance Builder — the success message after saving now reflects the number of linked groups and reminds users to link the appearance if none are connected yet.
+
 =1.8.3=
 * fix(seo): FAQ schema output issue when adding shortcode in answer
 * Enhanced: Block changes to support latest iframe editor

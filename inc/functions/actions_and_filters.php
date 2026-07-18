@@ -278,7 +278,6 @@ function ufaqsw_reorder_submenu() {
 	$desired_order = array(
 		'edit.php?post_type=ufaqsw',
 		'post-new.php?post_type=ufaqsw',
-		'ufaqsw-getting-started',
 		'edit.php?post_type=ufaqsw_appearance',
 		'ufaqsw_chatbot_settings',
 		'ufaqsw_ai_integration_settings',
