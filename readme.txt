@@ -181,7 +181,7 @@ Yes! Starting from version 1.6.4, Ultimate FAQ Solution includes an AI-powered f
 
 == Changelog ==
 
-= 1.8.4 =
+=1.8.4=
 * New: ➕ **Expand / Collapse All button** — add `show_expand_all="yes"` to any `[ufaqsw]` or `[ufaqsw-all]` shortcode to display a button that expands or collapses every FAQ item at once. Works with the Default, Style-1, and Style-2 templates. Not shown in accordion mode.
 * Fixed: 🐛 **Global custom CSS being silently discarded** for Style-1 and Style-2 templates — a premature `$custom_css = ''` reset inside the CSS generator was overwriting any global custom CSS added via plugin settings.
 * Fixed: 🐛 **CSS `>` child selectors stripped from inline styles** — `esc_html()` was applied to custom style strings, which HTML-encoded `>` and broke CSS rules like `div > p`. Replaced with `wp_strip_all_tags()`.
@@ -210,6 +210,22 @@ Yes! Starting from version 1.6.4, Ultimate FAQ Solution includes an AI-powered f
 * Enhanced: 🖼️ **Visual template preview cards** in the Appearance Builder — the three plain radio buttons for "Template Style" are replaced with interactive cards that include a CSS-rendered miniature mockup of each template layout so users can understand their choice before selecting.
 * Enhanced: 📝 **Settings panel section labels** in the Appearance Builder — groups are renamed from generic labels (General, Group, Question, Answer) to purposeful ones (Layout & Behaviour, Group Title, Question Row, Answer Panel), each with a subtitle explaining what the section controls.
 * Enhanced: 💬 **Context-aware save notifications** in the Appearance Builder — the success message after saving now reflects the number of linked groups and reminds users to link the appearance if none are connected yet.
+* New: 🔍 **Live search in FAQ Assistant** — a real-time search bar now appears at the top of the assistant's home screen. As the user types, results are filtered instantly across all FAQ groups with matched text highlighted. Optionally searches inside answer body content (configurable). Fully customisable placeholder and no-results message.
+* New: 💬 **"Ask a Question" form** — visitors can submit a question directly from the FAQ Assistant via a built-in contact form (Name, Email, Question fields). The form appears on the groups screen, the question list screen, and the answer screen so it is always within reach. Submitted questions are emailed to the configured address (falls back to the site admin email) and include the page URL where the question was submitted.
+* New: 👍 **"Was this helpful?" feedback widget** — a thumbs-up / thumbs-down rating appears at the bottom of every FAQ answer. Votes are stored server-side and a thank-you message is shown after voting. Can be enabled or disabled independently of other features.
+* New: 📊 **Feedback Analytics admin page** — a dedicated admin page under FAQ Groups shows every FAQ question with its helpful / not-helpful vote counts, total votes, and a colour-coded score (green ≥ 70 %, yellow ≥ 40 %, red < 40 %). Includes summary cards and a per-question Reset button. The page is only visible when the feedback feature is enabled.
+* New: 🔗 **Related Questions** — the bottom of each answer can now show a configurable number of other questions from the same group, letting users continue browsing without going back.
+* New: ✨ **Pulse ring animation** on the floating button — draws attention on page load (plays 3 times then stops). Can be enabled or disabled in Appearance settings.
+* New: 🔴 **Notification badge** on the floating button — an optional small red dot to nudge visitors to open the assistant.
+* Enhanced: 🎨 **Full FAQ Assistant redesign** — list items are now styled as rounded cards with a chevron icon, subtle hover effects, and a left-border accent on hover. Overall visual language is more modern and consistent.
+* Enhanced: ↔️ **Slide transitions between views** — navigating forward (home → group → answer) slides content in from the right; pressing Back slides it in from the left.
+* Enhanced: 🧭 **Breadcrumb navigation in header** — the header now shows a clickable breadcrumb trail (e.g. Home › Group Name) so users always know where they are and can jump back without using the Back button.
+* Enhanced: ⏳ **Skeleton loading cards** replace the animated dot preloader — a shimmer animation fills the card placeholders while FAQ data is loading, giving a more polished initial impression.
+* Enhanced: 📱 **True fullscreen on mobile** — on screens 768 px wide and below the assistant now occupies the full viewport (100 vw × 100 vh, no border-radius) for a native app-like experience.
+* Enhanced: ♿ **Accessibility improvements** — the assistant container has `role="dialog"` and `aria-modal="true"`. All clickable list items now have `tabIndex` and keyboard `Enter` support. Pressing Escape closes the window.
+* Enhanced: 🎨 **Primary colour propagated automatically** — the Header Background Color setting is injected as a CSS custom property (`--chatbot-primary`) into the Shadow DOM so accent colours (borders, button fills, hover states, form focus rings) all stay in sync without extra settings.
+* Enhanced: 🔙 **Smart back navigation from "Ask a Question"** — pressing Back or Cancel from the Ask form returns to whichever screen opened it (home, list, or answer) rather than always going to the home screen.
+
 
 =1.8.3=
 * fix(seo): FAQ schema output issue when adding shortcode in answer
