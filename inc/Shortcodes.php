@@ -156,7 +156,7 @@ class Shortcodes {
 				) )->render_js()->get_css();
 
 				if ( file_exists( Template::locate( $template ) ) ) {
-					echo '<style type="text/css">' . esc_html( $custom_style ) . '</style>';
+					echo '<style type="text/css">' . wp_strip_all_tags( $custom_style ) . '</style>';
 					include Template::locate( $template );
 				} else {
 					// translators: %s is the name of the template that was not found.
@@ -194,7 +194,7 @@ class Shortcodes {
 		$faq_args = array(
 			'post_type'      => 'ufaqsw',
 			'posts_per_page' => -1,
-			'post__not_in'   => explode( ', ', $exclude ),
+			'post__not_in'   => ! empty( $exclude ) ? array_map( 'intval', explode( ',', $exclude ) ) : array(),
 			'orderby'        => 'menu_order',
 			'order'          => 'ASC',
 		);
@@ -272,7 +272,7 @@ class Shortcodes {
 		ob_start();
 		$template = 'all'; // Template for All with search box.
 		if ( file_exists( Template::locate( $template ) ) ) {
-			echo '<style type="text/css">' . esc_html( $custom_styles ) . '</style>';
+			echo '<style type="text/css">' . wp_strip_all_tags( $custom_styles ) . '</style>';
 			include Template::locate( $template );
 		} else {
 			// translators: %s is the name of the template that was not found.

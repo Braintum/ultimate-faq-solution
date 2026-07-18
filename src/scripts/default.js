@@ -8,7 +8,7 @@ jQuery(function($) {
 
 		if (element.hasClass('ufaqsw_active')) {
 			hideItem(element);
-		} else {	
+		} else {
 			showItem(element);
 		}
 		element.find('i').toggle();
@@ -45,10 +45,21 @@ jQuery(function($) {
 	});
 
 	const closeall = function(exceptElement) {
-		jQuery(".ufaqsw_toggle_default .ufaqsw-toggle-title-area-default").each(function() {
+		// Scope to the same group container to avoid closing items in other groups on the page.
+		const container = exceptElement.closest('.ufaqsw_container_default');
+		container.find('.ufaqsw_toggle_default .ufaqsw-toggle-title-area-default').each(function() {
 			if (jQuery(this).hasClass('ufaqsw_active') && this !== exceptElement[0]) {
 				hideItem(jQuery(this));
-				jQuery(this).find('i').toggle();
+				jQuery(this).find('i').each(function() {
+					// Reset icons: ensure normal icon is visible, active icon is hidden.
+					if (jQuery(this).attr('id') === 'ufaqsw_other_style') {
+						jQuery(this).hide();
+					} else {
+						jQuery(this).show();
+					}
+				});
+				jQuery(this).attr('aria-expanded', 'false');
+				jQuery(this).closest('.ufaqsw_toggle_default').find('.ufaqsw-toggle-inner-default').attr('aria-hidden', 'true');
 			}
 		});
 	};

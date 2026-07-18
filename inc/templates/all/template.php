@@ -46,7 +46,7 @@
 	</div>
 	<div class='ufaqsw_search_no_result'>
 		<p>
-			<?php echo ( '' !== get_option( 'ufaqsw_search_result_not_found' ) ? esc_html( get_option( 'ufaqsw_search_result_not_found' ) ) : esc_html__( 'No Result Fount!', 'ufaqsw' ) ); ?>
+			<?php echo ( '' !== get_option( 'ufaqsw_search_result_not_found' ) ? esc_html( get_option( 'ufaqsw_search_result_not_found' ) ) : esc_html__( 'No Result Found!', 'ufaqsw' ) ); ?>
 		</p>
 	</div>
 </div>

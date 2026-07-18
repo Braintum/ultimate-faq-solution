@@ -128,11 +128,7 @@ class Custom_Resources {
 			}
 
 			if ( 'style-1' === $this->template ) {
-				/*
-				* Need commenting later on
-				*/
 				extract( $this->configuration ); // phpcs:ignore
-				$custom_css = '';
 				// Title color - from backend.
 				if ( isset( $title_color ) && '' !== $title_color ) {
 					$custom_css .= ".ufaqsw_faq_title_{$this->id}{ color: {$title_color} !important;}";
@@ -162,9 +158,6 @@ class Custom_Resources {
 
 				if ( isset( $answer_color ) && '' !== $answer_color ) {
 					$custom_css .= ".ufaqsw-toggle-inner-default_{$this->id} *{ color: {$answer_color} !important;}";
-				}
-				if ( isset( $answer_font_size ) && '' !== $answer_font_size ) {
-					$custom_css .= ".ufaqsw-toggle-inner-default_{$this->id} *{ font-size: {$answer_font_size} !important;}";
 				}
 				if ( isset( $answer_font_size ) && '' !== $answer_font_size ) {
 					$answer_font_size = ( strpos( $answer_font_size, 'px' ) === false ) ? $answer_font_size . 'px' : $answer_font_size;
@@ -173,11 +166,7 @@ class Custom_Resources {
 			}
 
 			if ( 'style-2' === $this->template ) {
-				/*
-				* Need commenting later on
-				*/
 				extract( $this->configuration ); // phpcs:ignore
-				$custom_css = '';
 				// Title color - from backend.
 				if ( isset( $title_color ) && '' !== $title_color ) {
 					$custom_css .= ".ufaqsw_faq_title_{$this->id}{ color: {$title_color} !important;}";
@@ -208,9 +197,6 @@ class Custom_Resources {
 
 				if ( isset( $answer_color ) && '' !== $answer_color ) {
 					$custom_css .= ".ufaqsw-toggle-inner-default_{$this->id} *{ color: {$answer_color} !important;}";
-				}
-				if ( isset( $answer_font_size ) && '' !== $answer_font_size ) {
-					$custom_css .= ".ufaqsw-toggle-inner-default_{$this->id} *{ font-size: {$answer_font_size} !important;}";
 				}
 				if ( isset( $answer_font_size ) && '' !== $answer_font_size ) {
 					$answer_font_size = ( strpos( $answer_font_size, 'px' ) === false ) ? $answer_font_size . 'px' : $answer_font_size;
