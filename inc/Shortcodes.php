@@ -258,6 +258,10 @@ class Shortcodes {
 					self::$css_handler
 				) )->render_js()->get_css();
 
+				if ( 'universal' === $template ) {
+					wp_enqueue_style( 'ufaqsw_universal_css' );
+				}
+
 				$custom_styles .= $custom_style;
 
 				ob_start();
