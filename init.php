@@ -62,6 +62,7 @@ if ( is_admin() ) {
 	include_once UFAQSW__PLUGIN_DIR . 'inc/admin/chatbot.php';
 	include_once UFAQSW__PLUGIN_DIR . 'inc/admin/chatbot-feedback.php';
 	include_once UFAQSW__PLUGIN_DIR . 'inc/admin/installation.php';
+	include_once UFAQSW__PLUGIN_DIR . 'inc/admin/class-design-library.php';
 	include_once UFAQSW__PLUGIN_DIR . 'inc/ai-writing-assistant/init.php';
 	include_once UFAQSW__PLUGIN_DIR . 'inc/ExportImport/bootstrap.php';
 
@@ -95,6 +96,11 @@ add_action(
 		new Mahedi\UltimateFaqSolution\GettingStarted();
 
 		load_plugin_textdomain( 'ufaqsw', false, dirname( plugin_basename( __FILE__ ) ) . '/inc/languages' );
+
+		// Design Library (admin only).
+		if ( is_admin() ) {
+			new Mahedi\UltimateFaqSolution\DesignLibrary();
+		}
 
 		// Deactivation feedback.
 		new Mahedi\UltimateFaqSolution\DeactivationFeedback();

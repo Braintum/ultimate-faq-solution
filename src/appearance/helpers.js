@@ -46,18 +46,31 @@ export const DEFAULT_SCHEMA = {
         type: "radio",
         label: "Template Style",
         options: [
-          { value: "default", label: "Default" },
-          { value: "style-1", label: "Style 1" },
-          { value: "style-2", label: "Style 2" },
+          { value: "default",   label: "Default" },
+          { value: "style-1",   label: "Style 1" },
+          { value: "style-2",   label: "Style 2" },
+          { value: "universal", label: "Custom Builder" },
         ],
         default: "default",
+      },
+      layout: {
+        type: "radio",
+        label: "Layout Variant",
+        options: [
+          { value: "classic", label: "Classic" },
+          { value: "card",    label: "Card" },
+          { value: "minimal", label: "Minimal" },
+          { value: "boxed",   label: "Boxed" },
+        ],
+        default: "classic",
+        condition: { field: "template", value: "universal" },
       },
       behaviour: {
         type: "select",
         label: "Behaviour",
         options: [
           { value: "accordion", label: "Accordion" },
-          { value: "toggle", label: "Toggle" },
+          { value: "toggle",    label: "Toggle" },
         ],
         default: "accordion",
       },
@@ -65,7 +78,18 @@ export const DEFAULT_SCHEMA = {
         type: "toggle",
         label: "Show All Answers Opened",
         default: false,
-        condition: { field: "behaviour", value: "toggle" }
+        condition: { field: "behaviour", value: "toggle" },
+      },
+      animation: {
+        type: "select",
+        label: "Open / Close Animation",
+        options: [
+          { value: "none",  label: "None" },
+          { value: "slide", label: "Slide" },
+          { value: "fade",  label: "Fade" },
+        ],
+        default: "none",
+        condition: { field: "template", value: "universal" },
       },
       border_color: {
         type: "color",
@@ -93,11 +117,11 @@ export const DEFAULT_SCHEMA = {
         label: "Hide Title",
         default: false,
       },
-      title_color: { 
-        type: "color", 
-        label: "Title Color", 
+      title_color: {
+        type: "color",
+        label: "Title Color",
         default: "",
-        condition: { field: "hidetitle", value: false }
+        condition: { field: "hidetitle", value: false },
       },
       title_font_size: {
         type: "range",
@@ -106,7 +130,7 @@ export const DEFAULT_SCHEMA = {
         max: 100,
         step: 1,
         default: '',
-        condition: { field: "hidetitle", value: false }
+        condition: { field: "hidetitle", value: false },
       },
     },
   },
@@ -114,8 +138,8 @@ export const DEFAULT_SCHEMA = {
     label: "Question Row",
     subtitle: "Styles each clickable question item.",
     fields: {
-      question_color: { type: "color", label: "Text color", default: "" },
-      question_background_color: { type: "color", label: "Background color", default: "" },
+      question_color:            { type: "color",  label: "Text Color",       default: "" },
+      question_background_color: { type: "color",  label: "Background Color", default: "" },
       question_font_size: {
         type: "range",
         label: "Font Size",
@@ -135,8 +159,8 @@ export const DEFAULT_SCHEMA = {
     label: "Answer Panel",
     subtitle: "Styles the content revealed when a question is clicked.",
     fields: {
-      answer_color: { type: "color", label: "Text color", default: "" },
-      answer_background_color: { type: "color", label: "Background color", default: "" },
+      answer_color:            { type: "color", label: "Text Color",       default: "" },
+      answer_background_color: { type: "color", label: "Background Color", default: "" },
       answer_font_size: {
         type: "range",
         label: "Font Size",
@@ -146,7 +170,115 @@ export const DEFAULT_SCHEMA = {
         default: '',
       },
     },
-  }
+  },
+  spacing: {
+    label: "Spacing",
+    subtitle: "Padding and gap controls.",
+    condition: { field: "template", value: "universal" },
+    fields: {
+      item_padding: {
+        type: "range",
+        label: "Item Padding",
+        min: 4,
+        max: 48,
+        step: 1,
+        default: '',
+      },
+      item_gap: {
+        type: "range",
+        label: "Gap Between Items",
+        min: 0,
+        max: 32,
+        step: 1,
+        default: '',
+      },
+    },
+  },
+  borders: {
+    label: "Borders",
+    subtitle: "Border radius, width, and style.",
+    condition: { field: "template", value: "universal" },
+    fields: {
+      border_radius: {
+        type: "range",
+        label: "Border Radius",
+        min: 0,
+        max: 32,
+        step: 1,
+        default: '',
+      },
+      border_width: {
+        type: "range",
+        label: "Border Width",
+        min: 0,
+        max: 8,
+        step: 1,
+        default: '',
+      },
+      border_style: {
+        type: "select",
+        label: "Border Style",
+        options: [
+          { value: "solid",  label: "Solid" },
+          { value: "dashed", label: "Dashed" },
+          { value: "dotted", label: "Dotted" },
+        ],
+        default: "solid",
+      },
+    },
+  },
+  typography: {
+    label: "Typography",
+    subtitle: "Font weight, line height, and icon size.",
+    condition: { field: "template", value: "universal" },
+    fields: {
+      question_font_weight: {
+        type: "select",
+        label: "Question Font Weight",
+        options: [
+          { value: "",    label: "Default" },
+          { value: "400", label: "Normal (400)" },
+          { value: "500", label: "Medium (500)" },
+          { value: "600", label: "Semi-Bold (600)" },
+          { value: "700", label: "Bold (700)" },
+        ],
+        default: "",
+      },
+      answer_line_height: {
+        type: "select",
+        label: "Answer Line Height",
+        options: [
+          { value: "",    label: "Default" },
+          { value: "1.4", label: "Tight (1.4)" },
+          { value: "1.6", label: "Normal (1.6)" },
+          { value: "1.8", label: "Relaxed (1.8)" },
+          { value: "2.0", label: "Loose (2.0)" },
+        ],
+        default: "",
+      },
+      icon_size: {
+        type: "range",
+        label: "Icon Size",
+        min: 8,
+        max: 30,
+        step: 1,
+        default: '',
+      },
+    },
+  },
+  custom_css: {
+    label: "Custom CSS",
+    subtitle: "Additional CSS applied directly to this FAQ group.",
+    condition: { field: "template", value: "universal" },
+    fields: {
+      custom_css: {
+        type: "textarea",
+        label: "Custom CSS",
+        placeholder: "/* e.g. .ufaqsw-faq { font-family: Georgia, serif; } */",
+        default: "",
+      },
+    },
+  },
 };
 
 /**

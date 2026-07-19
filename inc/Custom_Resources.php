@@ -83,6 +83,11 @@ class Custom_Resources {
 
 		$custom_css = ( get_option( 'ufaqsw_setting_custom_style' ) !== '' ? get_option( 'ufaqsw_setting_custom_style' ) : '' );
 
+		// Universal template uses inline CSS variables; no class-specific CSS needed.
+		if ( 'universal' === $this->template ) {
+			return $custom_css;
+		}
+
 		if ( ! empty( $this->configuration ) ) {
 
 			if ( 'default' === $this->template ) {
@@ -221,9 +226,11 @@ class Custom_Resources {
 	 * @return $this
 	 */
 	public function render_js() {
-		/*
-		* Script for default Template
-		*/
+		// Universal template handles its own toggle JS inline; skip localization.
+		if ( 'universal' === $this->template ) {
+			return $this;
+		}
+
 		extract( $this->configuration ); // phpcs:ignore
 
 		wp_localize_script(

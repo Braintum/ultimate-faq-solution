@@ -1,0 +1,28 @@
+{
+  "id": "midnight",
+  "name": "Midnight",
+  "description": "Deep dark boxed layout — striking on dark-themed sites.",
+  "category": "dark",
+  "settings": {
+    "template": "universal",
+    "layout": "boxed",
+    "behaviour": "accordion",
+    "animation": "fade",
+    "border_color": "#1e293b",
+    "border_radius": "10",
+    "border_width": "1",
+    "border_style": "solid",
+    "question_color": "#e2e8f0",
+    "question_background_color": "#0f172a",
+    "question_font_size": "15",
+    "question_font_weight": "500",
+    "answer_color": "#94a3b8",
+    "answer_background_color": "#0c111d",
+    "answer_font_size": "14",
+    "answer_line_height": "1.8",
+    "item_padding": "20",
+    "item_gap": "0",
+    "normal_icon": "fa-caret-right",
+    "active_icon": "fa-caret-down"
+  }
+}

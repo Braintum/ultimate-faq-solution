@@ -1,0 +1,28 @@
+{
+  "id": "purple-modern",
+  "name": "Purple Modern",
+  "description": "Contemporary purple accent, minimal line-separated layout.",
+  "category": "colorful",
+  "settings": {
+    "template": "universal",
+    "layout": "minimal",
+    "behaviour": "accordion",
+    "animation": "fade",
+    "border_color": "#e9d5ff",
+    "border_radius": "0",
+    "border_width": "1",
+    "border_style": "solid",
+    "question_color": "#4c1d95",
+    "question_background_color": "transparent",
+    "question_font_size": "15",
+    "question_font_weight": "600",
+    "answer_color": "#374151",
+    "answer_background_color": "transparent",
+    "answer_font_size": "14",
+    "answer_line_height": "1.8",
+    "item_padding": "16",
+    "item_gap": "0",
+    "normal_icon": "fa-chevron-right",
+    "active_icon": "fa-chevron-down"
+  }
+}

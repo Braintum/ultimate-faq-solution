@@ -124,6 +124,22 @@ export function TextInput({ value, onChange }) {
 }
 
 /**
+ * Textarea input component for multi-line text (e.g. custom CSS)
+ */
+export function TextareaInput({ value, onChange, placeholder = '' }) {
+  return (
+    <textarea
+      value={value ?? ''}
+      onChange={(e) => onChange(e.target.value)}
+      placeholder={placeholder}
+      rows={6}
+      className="w-full p-2 text-xs font-mono border border-gray-300 rounded resize-y"
+      spellCheck={false}
+    />
+  );
+}
+
+/**
  * Toggle/Switch component
  */
 export function ToggleInput({ value, onChange }) {
@@ -147,38 +163,41 @@ export function ToggleInput({ value, onChange }) {
 }
 
 /**
- * Radio input component with card-style UI (horizontal layout)
+ * Radio input component with card-style UI.
+ * Uses a 2-column grid for 3+ options to prevent horizontal overflow.
  */
 export function RadioInput({ value, onChange, options = [] }) {
+  const useGrid = options.length > 2;
+
   return (
-    <div className="flex gap-2">
+    <div className={useGrid ? 'grid grid-cols-2 gap-2' : 'flex gap-2'}>
       {options.map((option) => {
         const optionValue = typeof option === 'object' ? option.value : option;
         const optionLabel = typeof option === 'object' ? option.label : option;
         const isSelected = value === optionValue;
-        
+
         return (
-          <label 
-            key={optionValue} 
+          <label
+            key={optionValue}
             className={`
-              flex-1 flex items-center justify-center cursor-pointer p-2 rounded-lg border-2 transition-all
-              ${isSelected 
-                ? 'border-blue-500 bg-blue-50 shadow-sm' 
+              flex items-center cursor-pointer p-2 rounded-lg border-2 transition-all min-w-0
+              ${isSelected
+                ? 'border-blue-500 bg-blue-50 shadow-sm'
                 : 'border-gray-200 bg-white hover:border-gray-300 hover:bg-gray-50'
               }
             `}
           >
-            <div className="relative flex items-center justify-center w-4 h-4 mr-2">
+            <div className="relative flex items-center justify-center w-4 h-4 mr-2 flex-shrink-0">
               <input
                 type="radio"
-                name={`radio-${Math.random()}`}
+                name={`radio-${optionValue}`}
                 value={optionValue}
                 checked={isSelected}
                 onChange={(e) => onChange(e.target.value)}
                 className="sr-only"
               />
               <div className={`
-                w-4 h-4 rounded-full border-2 transition-all
+                w-4 h-4 rounded-full border-2 transition-all flex-shrink-0
                 ${isSelected ? 'border-blue-500' : 'border-gray-300'}
               `}>
                 {isSelected && (
@@ -188,7 +207,7 @@ export function RadioInput({ value, onChange, options = [] }) {
                 )}
               </div>
             </div>
-            <span className={`text-sm font-medium whitespace-nowrap ${isSelected ? 'text-blue-700' : 'text-gray-700'}`}>
+            <span className={`text-sm font-medium truncate ${isSelected ? 'text-blue-700' : 'text-gray-700'}`}>
               {optionLabel}
             </span>
           </label>
@@ -277,15 +296,13 @@ export function FieldRenderer({ fieldKey, config, value, onChange }) {
     case "select":
       return <SelectInput value={value} onChange={onChange} options={config.options} />;
     case "radio":
-      // Use visual template cards for the template selector; plain radio for everything else.
-      // if (fieldKey === "template") {
-      //   return <TemplateCards value={value} onChange={onChange} options={config.options} />;
-      // }
       return <RadioInput value={value} onChange={onChange} options={config.options} />;
     case "icon":
       return <IconInput value={value} onChange={onChange} />;
     case "toggle":
       return <ToggleInput value={value} onChange={onChange} />;
+    case "textarea":
+      return <TextareaInput value={value} onChange={onChange} placeholder={config.placeholder} />;
     case "text":
     default:
       return <TextInput value={value} onChange={onChange} />;

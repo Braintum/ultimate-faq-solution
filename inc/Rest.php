@@ -84,6 +84,19 @@ class Rest {
 				},
 			)
 		);
+
+		// Design import endpoint.
+		register_rest_route(
+			'ufaqsw/v1',
+			'/designs/import',
+			array(
+				'methods'             => 'POST',
+				'callback'            => array( $this, 'import_design_preset' ),
+				'permission_callback' => function () {
+					return current_user_can( 'manage_options' );
+				},
+			)
+		);
 	}
 
 	/**
@@ -100,93 +113,112 @@ class Rest {
 			return new \WP_Error( 'no_post_id', 'Post ID is required', array( 'status' => 400 ) );
 		}
 
-		// Verify user has permission to edit this post.
 		if ( ! current_user_can( 'edit_post', $post_id ) ) {
 			return new \WP_Error( 'unauthorized', 'You do not have permission to edit this post', array( 'status' => 403 ) );
 		}
 
-		// Sanitize settings.
-		$sanitized_settings = $this->sanitize_appearance_settings( $settings );
+		$sanitized = $this->sanitize_appearance_settings( $settings );
 
-		// Save to post meta.
+		// Phase 4: save canonical JSON blob.
+		update_post_meta( $post_id, 'ufaqsw_design_settings', wp_json_encode( $sanitized ) );
 
-		if ( isset( $sanitized_settings['title_color'] ) && ! empty( $sanitized_settings['title_color'] ) ) {
-			update_post_meta( $post_id, 'ufaqsw_title_color', $sanitized_settings['title_color'] );
-		}
-
-		if ( isset( $sanitized_settings['title_font_size'] ) && ! empty( $sanitized_settings['title_font_size'] ) ) {
-			update_post_meta( $post_id, 'ufaqsw_title_font_size', $sanitized_settings['title_font_size'] );
-		}
-
-		if ( isset( $sanitized_settings['question_color'] ) && ! empty( $sanitized_settings['question_color'] ) ) {
-			update_post_meta( $post_id, 'ufaqsw_question_color', $sanitized_settings['question_color'] );
-		}
-
-		if ( isset( $sanitized_settings['answer_color'] ) && ! empty( $sanitized_settings['answer_color'] ) ) {
-			update_post_meta( $post_id, 'ufaqsw_answer_color', $sanitized_settings['answer_color'] );
-		}
-
-		if ( isset( $sanitized_settings['question_background_color'] ) && ! empty( $sanitized_settings['question_background_color'] ) ) {
-			update_post_meta( $post_id, 'ufaqsw_question_background_color', $sanitized_settings['question_background_color'] );
-		}
-
-		if ( isset( $sanitized_settings['answer_background_color'] ) && ! empty( $sanitized_settings['answer_background_color'] ) ) {
-			update_post_meta( $post_id, 'ufaqsw_answer_background_color', $sanitized_settings['answer_background_color'] );
-		}
-
-		if ( isset( $sanitized_settings['border_color'] ) && ! empty( $sanitized_settings['border_color'] ) ) {
-			update_post_meta( $post_id, 'ufaqsw_border_color', $sanitized_settings['border_color'] );
-		}
-
-		if ( isset( $sanitized_settings['question_font_size'] ) && ! empty( $sanitized_settings['question_font_size'] ) ) {
-			update_post_meta( $post_id, 'ufaqsw_question_font_size', $sanitized_settings['question_font_size'] );
-		}
-
-		if ( isset( $sanitized_settings['answer_font_size'] ) && ! empty( $sanitized_settings['answer_font_size'] ) ) {
-			update_post_meta( $post_id, 'ufaqsw_answer_font_size', $sanitized_settings['answer_font_size'] );
-		}
-
-		if ( isset( $sanitized_settings['template'] ) && ! empty( $sanitized_settings['template'] ) ) {
-			update_post_meta( $post_id, 'ufaqsw_template', $sanitized_settings['template'] );
-		}
-
-		if ( isset( $sanitized_settings['showall'] ) && $sanitized_settings['showall'] ) {
-			update_post_meta( $post_id, 'ufaqsw_answer_showall', 1 );
-		} else {
-			delete_post_meta( $post_id, 'ufaqsw_answer_showall' );
-		}
-
-		if ( isset( $sanitized_settings['hidetitle'] ) && $sanitized_settings['hidetitle'] ) {
-			update_post_meta( $post_id, 'ufaqsw_hide_title', 1 );
-		} else {
-			delete_post_meta( $post_id, 'ufaqsw_hide_title' );
-		}
-
-		if ( isset( $sanitized_settings['normal_icon'] ) && ! empty( $sanitized_settings['normal_icon'] ) ) {
-			update_post_meta( $post_id, 'ufaqsw_normal_icon', $sanitized_settings['normal_icon'] );
-		}
-
-		if ( isset( $sanitized_settings['active_icon'] ) && ! empty( $sanitized_settings['active_icon'] ) ) {
-			update_post_meta( $post_id, 'ufaqsw_active_icon', $sanitized_settings['active_icon'] );
-		}
-
-		if ( isset( $sanitized_settings['behaviour'] ) && ! empty( $sanitized_settings['behaviour'] ) ) {
-			update_post_meta( $post_id, 'ufaqsw_behaviour', $sanitized_settings['behaviour'] );
-		}
-
-		if ( isset( $sanitized_settings['question_bold'] ) && $sanitized_settings['question_bold'] ) {
-			update_post_meta( $post_id, 'ufaqsw_question_bold', 1 );
-		} else {
-			delete_post_meta( $post_id, 'ufaqsw_question_bold' );
-		}
+		// Also persist individual meta keys for backward compatibility with legacy templates.
+		$this->save_individual_meta( $post_id, $sanitized );
 
 		return rest_ensure_response(
 			array(
 				'success'  => true,
 				'message'  => 'Settings saved successfully',
-				'settings' => $sanitized_settings,
+				'settings' => $sanitized,
 			)
 		);
+	}
+
+	/**
+	 * Import a bundled design preset and create a new ufaqsw_appearance post.
+	 *
+	 * @param \WP_REST_Request $request The REST request object.
+	 * @return \WP_REST_Response|\WP_Error
+	 */
+	public function import_design_preset( $request ) {
+		$preset_id = sanitize_text_field( $request->get_param( 'preset_id' ) );
+
+		if ( ! preg_match( '/^[a-z0-9-]+$/', $preset_id ) ) {
+			return new \WP_Error( 'invalid_preset', 'Invalid preset ID', array( 'status' => 400 ) );
+		}
+
+		$file = UFAQSW__PLUGIN_DIR . 'inc/design-presets/' . $preset_id . '.json';
+		if ( ! file_exists( $file ) ) {
+			return new \WP_Error( 'not_found', 'Preset not found', array( 'status' => 404 ) );
+		}
+
+		$data = json_decode( file_get_contents( $file ), true ); // phpcs:ignore
+		if ( ! $data || ! isset( $data['settings'] ) ) {
+			return new \WP_Error( 'invalid_json', 'Invalid preset file', array( 'status' => 500 ) );
+		}
+
+		$post_id = wp_insert_post(
+			array(
+				'post_type'   => 'ufaqsw_appearance',
+				'post_title'  => sanitize_text_field( $data['name'] ?? $preset_id ),
+				'post_status' => 'publish',
+			)
+		);
+
+		if ( is_wp_error( $post_id ) ) {
+			return $post_id;
+		}
+
+		$sanitized = $this->sanitize_appearance_settings( $data['settings'] );
+		update_post_meta( $post_id, 'ufaqsw_design_settings', wp_json_encode( $sanitized ) );
+		$this->save_individual_meta( $post_id, $sanitized );
+
+		return rest_ensure_response(
+			array(
+				'success'  => true,
+				'post_id'  => $post_id,
+				'edit_url' => get_edit_post_link( $post_id, 'raw' ),
+			)
+		);
+	}
+
+	/**
+	 * Save individual post meta keys for backward compat with legacy templates.
+	 *
+	 * @param int   $post_id   Appearance post ID.
+	 * @param array $settings  Sanitized settings array.
+	 */
+	public function save_individual_meta( $post_id, $settings ) {
+		$simple_map = array(
+			'template'                  => 'ufaqsw_template',
+			'behaviour'                 => 'ufaqsw_faq_behaviour',
+			'title_color'               => 'ufaqsw_title_color',
+			'title_font_size'           => 'ufaqsw_title_font_size',
+			'question_color'            => 'ufaqsw_question_color',
+			'question_background_color' => 'ufaqsw_question_background_color',
+			'answer_color'              => 'ufaqsw_answer_color',
+			'answer_background_color'   => 'ufaqsw_answer_background_color',
+			'border_color'              => 'ufaqsw_border_color',
+			'question_font_size'        => 'ufaqsw_question_font_size',
+			'answer_font_size'          => 'ufaqsw_answer_font_size',
+			'normal_icon'               => 'ufaqsw_normal_icon',
+			'active_icon'               => 'ufaqsw_active_icon',
+		);
+
+		foreach ( $simple_map as $key => $meta_key ) {
+			if ( isset( $settings[ $key ] ) && '' !== $settings[ $key ] ) {
+				update_post_meta( $post_id, $meta_key, $settings[ $key ] );
+			}
+		}
+
+		// Boolean fields.
+		foreach ( array( 'showall' => 'ufaqsw_answer_showall', 'hidetitle' => 'ufaqsw_hide_title', 'question_bold' => 'ufaqsw_question_bold' ) as $key => $meta_key ) {
+			if ( ! empty( $settings[ $key ] ) ) {
+				update_post_meta( $post_id, $meta_key, 1 );
+			} else {
+				delete_post_meta( $post_id, $meta_key );
+			}
+		}
 	}
 
 	/**
@@ -195,15 +227,14 @@ class Rest {
 	 * @param array $settings The settings array to sanitize.
 	 * @return array Sanitized settings.
 	 */
-	private function sanitize_appearance_settings( $settings ) {
+	public function sanitize_appearance_settings( $settings ) {
 		if ( ! is_array( $settings ) ) {
 			return array();
 		}
 
 		$sanitized = array();
 
-		// Sanitize each field based on its type.
-		$text_fields = array( 'template', 'behaviour', 'normal_icon', 'active_icon' );
+		$text_fields = array( 'template', 'layout', 'behaviour', 'animation', 'normal_icon', 'active_icon', 'border_style', 'question_font_weight', 'answer_line_height' );
 		foreach ( $text_fields as $field ) {
 			if ( isset( $settings[ $field ] ) ) {
 				$sanitized[ $field ] = sanitize_text_field( $settings[ $field ] );
@@ -213,11 +244,11 @@ class Rest {
 		$color_fields = array( 'border_color', 'title_color', 'question_color', 'question_background_color', 'answer_color', 'answer_background_color' );
 		foreach ( $color_fields as $field ) {
 			if ( isset( $settings[ $field ] ) ) {
-				$sanitized[ $field ] = sanitize_hex_color( $settings[ $field ] );
+				$sanitized[ $field ] = sanitize_hex_color( $settings[ $field ] ) ?? '';
 			}
 		}
 
-		$number_fields = array( 'title_font_size', 'question_font_size', 'answer_font_size' );
+		$number_fields = array( 'title_font_size', 'question_font_size', 'answer_font_size', 'border_radius', 'border_width', 'item_padding', 'item_gap', 'icon_size' );
 		foreach ( $number_fields as $field ) {
 			if ( isset( $settings[ $field ] ) ) {
 				$sanitized[ $field ] = is_numeric( $settings[ $field ] ) ? intval( $settings[ $field ] ) : '';
@@ -229,6 +260,10 @@ class Rest {
 			if ( isset( $settings[ $field ] ) ) {
 				$sanitized[ $field ] = (bool) $settings[ $field ];
 			}
+		}
+
+		if ( isset( $settings['custom_css'] ) ) {
+			$sanitized['custom_css'] = wp_strip_all_tags( $settings['custom_css'] );
 		}
 
 		return $sanitized;

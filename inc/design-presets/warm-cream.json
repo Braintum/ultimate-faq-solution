@@ -1,0 +1,28 @@
+{
+  "id": "warm-cream",
+  "name": "Warm Cream",
+  "description": "Cozy beige card design, great for lifestyle or food blogs.",
+  "category": "minimal",
+  "settings": {
+    "template": "universal",
+    "layout": "card",
+    "behaviour": "accordion",
+    "animation": "slide",
+    "border_color": "#e7d7c1",
+    "border_radius": "10",
+    "border_width": "1",
+    "border_style": "solid",
+    "question_color": "#5c4033",
+    "question_background_color": "#fdf6ee",
+    "question_font_size": "15",
+    "question_font_weight": "600",
+    "answer_color": "#6b5744",
+    "answer_background_color": "#fffbf7",
+    "answer_font_size": "14",
+    "answer_line_height": "1.8",
+    "item_padding": "18",
+    "item_gap": "10",
+    "normal_icon": "fa-plus",
+    "active_icon": "fa-minus"
+  }
+}

@@ -156,8 +156,14 @@ class Shortcodes {
 					self::$css_handler
 				) )->render_js()->get_css();
 
+				if ( 'universal' === $template ) {
+					wp_enqueue_style( 'ufaqsw_universal_css' );
+				}
+
 				if ( file_exists( Template::locate( $template ) ) ) {
-					echo '<style type="text/css">' . wp_strip_all_tags( $custom_style ) . '</style>';
+					if ( ! empty( $custom_style ) ) {
+						echo '<style type="text/css">' . wp_strip_all_tags( $custom_style ) . '</style>';
+					}
 					include Template::locate( $template );
 				} else {
 					// translators: %s is the name of the template that was not found.

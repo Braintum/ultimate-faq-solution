@@ -1,0 +1,28 @@
+{
+  "id": "boxed-slate",
+  "name": "Boxed Slate",
+  "description": "Structured boxed layout with a modern slate color palette.",
+  "category": "professional",
+  "settings": {
+    "template": "universal",
+    "layout": "boxed",
+    "behaviour": "accordion",
+    "animation": "slide",
+    "border_color": "#cbd5e1",
+    "border_radius": "10",
+    "border_width": "1",
+    "border_style": "solid",
+    "question_color": "#0f172a",
+    "question_background_color": "#f8fafc",
+    "question_font_size": "15",
+    "question_font_weight": "500",
+    "answer_color": "#475569",
+    "answer_background_color": "#ffffff",
+    "answer_font_size": "14",
+    "answer_line_height": "1.6",
+    "item_padding": "18",
+    "item_gap": "0",
+    "normal_icon": "fa-plus",
+    "active_icon": "fa-minus"
+  }
+}

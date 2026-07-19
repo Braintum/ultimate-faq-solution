@@ -113,6 +113,67 @@ function ufaqsw_detach_group_from_appearance( $appearance_id, $group_id ) {
 }
 
 /**
+ * Build an inline CSS custom-property string for the universal template.
+ *
+ * @param array $designs Appearance settings array.
+ * @return string Semicolon-separated CSS variable declarations, safe for style="…".
+ */
+function ufaqsw_build_css_vars( array $designs ): string {
+	$vars = array();
+
+	$color_map = array(
+		'question_color'            => '--ufaqsw-q-color',
+		'question_background_color' => '--ufaqsw-q-bg',
+		'answer_color'              => '--ufaqsw-a-color',
+		'answer_background_color'   => '--ufaqsw-a-bg',
+		'border_color'              => '--ufaqsw-border-color',
+		'title_color'               => '--ufaqsw-title-color',
+	);
+
+	$px_map = array(
+		'question_font_size' => '--ufaqsw-q-font-size',
+		'answer_font_size'   => '--ufaqsw-a-font-size',
+		'title_font_size'    => '--ufaqsw-title-font-size',
+		'border_radius'      => '--ufaqsw-border-radius',
+		'border_width'       => '--ufaqsw-border-width',
+		'item_padding'       => '--ufaqsw-item-padding',
+		'item_gap'           => '--ufaqsw-item-gap',
+		'icon_size'          => '--ufaqsw-icon-size',
+	);
+
+	$text_map = array(
+		'question_font_weight' => '--ufaqsw-q-font-weight',
+		'answer_line_height'   => '--ufaqsw-a-line-height',
+		'border_style'         => '--ufaqsw-border-style',
+	);
+
+	foreach ( $color_map as $key => $var ) {
+		if ( ! empty( $designs[ $key ] ) ) {
+			$vars[] = $var . ':' . sanitize_hex_color( $designs[ $key ] );
+		}
+	}
+
+	foreach ( $px_map as $key => $var ) {
+		if ( isset( $designs[ $key ] ) && '' !== $designs[ $key ] && null !== $designs[ $key ] ) {
+			$val    = $designs[ $key ];
+			$vars[] = $var . ':' . ( is_numeric( $val ) ? intval( $val ) . 'px' : sanitize_text_field( $val ) );
+		}
+	}
+
+	foreach ( $text_map as $key => $var ) {
+		if ( ! empty( $designs[ $key ] ) ) {
+			$vars[] = $var . ':' . sanitize_text_field( $designs[ $key ] );
+		}
+	}
+
+	if ( ! empty( $designs['question_bold'] ) ) {
+		$vars[] = '--ufaqsw-q-font-weight:bold';
+	}
+
+	return implode( ';', $vars );
+}
+
+/**
  * Checks if WooCommerce is active and enabled in the plugin settings.
  *
  * This function verifies if the WooCommerce plugin is active and if the option to enable

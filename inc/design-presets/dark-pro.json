@@ -1,0 +1,28 @@
+{
+  "id": "dark-pro",
+  "name": "Dark Pro",
+  "description": "Dark-mode card design for a professional look.",
+  "category": "dark",
+  "settings": {
+    "template": "universal",
+    "layout": "card",
+    "behaviour": "accordion",
+    "animation": "slide",
+    "border_color": "#334155",
+    "border_radius": "8",
+    "border_width": "1",
+    "border_style": "solid",
+    "question_color": "#f1f5f9",
+    "question_background_color": "#1e293b",
+    "question_font_size": "15",
+    "question_font_weight": "500",
+    "answer_color": "#cbd5e1",
+    "answer_background_color": "#0f172a",
+    "answer_font_size": "14",
+    "answer_line_height": "1.8",
+    "item_padding": "18",
+    "item_gap": "10",
+    "normal_icon": "fa-chevron-down",
+    "active_icon": "fa-chevron-up"
+  }
+}

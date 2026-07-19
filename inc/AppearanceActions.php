@@ -344,14 +344,16 @@ class AppearanceActions {
 			}
 
 			$labels = array(
-				'default' => __( 'Default', 'ufaqsw' ),
-				'style-1' => __( 'Style 1', 'ufaqsw' ),
-				'style-2' => __( 'Style 2', 'ufaqsw' ),
+				'default'   => __( 'Default', 'ufaqsw' ),
+				'style-1'   => __( 'Style 1', 'ufaqsw' ),
+				'style-2'   => __( 'Style 2', 'ufaqsw' ),
+				'universal' => __( 'Universal', 'ufaqsw' ),
 			);
 			$css_class_map = array(
-				'default' => 'chip-default',
-				'style-1' => 'chip-style-1',
-				'style-2' => 'chip-style-2',
+				'default'   => 'chip-default',
+				'style-1'   => 'chip-style-1',
+				'style-2'   => 'chip-style-2',
+				'universal' => 'chip-universal',
 			);
 			$label     = $labels[ $template ] ?? $template;
 			$css_class = $css_class_map[ $template ] ?? 'chip-default';

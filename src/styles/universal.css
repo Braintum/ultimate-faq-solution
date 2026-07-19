@@ -1,0 +1,232 @@
+/**
+ * Universal FAQ Template – CSS custom-property driven.
+ * All visual values are set as inline CSS variables on the .ufaqsw-faq container.
+ * Layout variants are selected via the data-layout attribute.
+ */
+
+/* ─── Default variable values ─────────────────────── */
+.ufaqsw-faq {
+	--ufaqsw-q-color: #1a1a1a;
+	--ufaqsw-q-bg: #f8f9fa;
+	--ufaqsw-q-font-size: 15px;
+	--ufaqsw-q-font-weight: 500;
+	--ufaqsw-a-color: #444444;
+	--ufaqsw-a-bg: #ffffff;
+	--ufaqsw-a-font-size: 14px;
+	--ufaqsw-a-line-height: 1.6;
+	--ufaqsw-border-color: #e2e8f0;
+	--ufaqsw-border-width: 1px;
+	--ufaqsw-border-style: solid;
+	--ufaqsw-title-color: #111827;
+	--ufaqsw-title-font-size: 22px;
+	--ufaqsw-border-radius: 4px;
+	--ufaqsw-item-padding: 16px;
+	--ufaqsw-item-gap: 8px;
+	--ufaqsw-icon-size: 13px;
+	--ufaqsw-shadow: none;
+	border: none;
+}
+
+/* ─── Group title ─────────────────────────────────── */
+.ufaqsw-faq .ufaqsw-faq__title {
+	color: var(--ufaqsw-title-color);
+	font-size: var(--ufaqsw-title-font-size);
+	margin: 0 0 16px;
+	line-height: 1.3;
+}
+
+/* ─── FAQ item wrapper ────────────────────────────── */
+.ufaqsw-faq .ufaqsw-faq__item {
+	margin-bottom: var(--ufaqsw-item-gap);
+	border-radius: var(--ufaqsw-border-radius);
+	overflow: hidden;
+	box-shadow: var(--ufaqsw-shadow);
+}
+
+/* ─── Question row ────────────────────────────────── */
+.ufaqsw-faq .ufaqsw-faq__question {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 12px;
+	padding: var(--ufaqsw-item-padding);
+	background: var(--ufaqsw-q-bg);
+	color: var(--ufaqsw-q-color);
+	font-size: var(--ufaqsw-q-font-size);
+	font-weight: var(--ufaqsw-q-font-weight);
+	border: var(--ufaqsw-border-width) var(--ufaqsw-border-style) var(--ufaqsw-border-color);
+	border-radius: var(--ufaqsw-border-radius);
+	cursor: pointer;
+	user-select: none;
+	transition: background 0.15s ease;
+}
+
+.ufaqsw-faq .ufaqsw-faq__question:hover {
+	filter: brightness(0.97);
+}
+
+.ufaqsw-faq .ufaqsw-faq__question[aria-expanded="true"] {
+	border-bottom-left-radius: 0;
+	border-bottom-right-radius: 0;
+	border-bottom-color: transparent;
+}
+
+.ufaqsw-faq .ufaqsw-faq__question-text {
+	flex: 1;
+}
+
+/* ─── Toggle icons ────────────────────────────────── */
+.ufaqsw-faq .ufaqsw-faq__icon {
+	flex-shrink: 0;
+	font-size: var(--ufaqsw-icon-size);
+	line-height: 1;
+}
+
+.ufaqsw-faq .ufaqsw-faq__question .ufaqsw-icon-active {
+	display: none;
+}
+
+.ufaqsw-faq .ufaqsw-faq__question[aria-expanded="true"] .ufaqsw-icon-normal {
+	display: none;
+}
+
+.ufaqsw-faq .ufaqsw-faq__question[aria-expanded="true"] .ufaqsw-icon-active {
+	display: inline;
+}
+
+/* ─── Answer panel ────────────────────────────────── */
+.ufaqsw-faq .ufaqsw-faq__answer {
+	background: var(--ufaqsw-a-bg);
+	color: var(--ufaqsw-a-color);
+	font-size: var(--ufaqsw-a-font-size);
+	line-height: var(--ufaqsw-a-line-height);
+	border: var(--ufaqsw-border-width) var(--ufaqsw-border-style) var(--ufaqsw-border-color);
+	border-top: none;
+	border-bottom-left-radius: var(--ufaqsw-border-radius);
+	border-bottom-right-radius: var(--ufaqsw-border-radius);
+}
+
+.ufaqsw-faq .ufaqsw-faq__answer-inner {
+	padding: var(--ufaqsw-item-padding);
+}
+
+/* Slide animation */
+.ufaqsw-faq[data-animation="slide"] .ufaqsw-faq__answer {
+	overflow: hidden;
+	max-height: 0;
+	transition: max-height 0.3s ease;
+	display: block !important;
+	border-top: none;
+}
+
+.ufaqsw-faq[data-animation="slide"] .ufaqsw-faq__answer.ufaqsw-open {
+	max-height: 2000px;
+}
+
+/* Fade animation */
+.ufaqsw-faq[data-animation="fade"] .ufaqsw-faq__answer {
+	transition: opacity 0.25s ease;
+	opacity: 0;
+	display: block !important;
+	border-top: none;
+}
+
+.ufaqsw-faq[data-animation="fade"] .ufaqsw-faq__answer.ufaqsw-open {
+	opacity: 1;
+}
+
+/* ─── Layout: classic (default) ───────────────────── */
+/* no overrides needed; base styles are the classic layout */
+
+/* ─── Layout: card ────────────────────────────────── */
+.ufaqsw-faq[data-layout="card"] .ufaqsw-faq__item {
+	border: var(--ufaqsw-border-width) var(--ufaqsw-border-style) var(--ufaqsw-border-color);
+	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+	overflow: hidden;
+}
+
+.ufaqsw-faq[data-layout="card"] .ufaqsw-faq__question {
+	border: none;
+	border-radius: 0;
+}
+
+.ufaqsw-faq[data-layout="card"] .ufaqsw-faq__question[aria-expanded="true"] {
+	border-radius: 0;
+}
+
+.ufaqsw-faq[data-layout="card"] .ufaqsw-faq__answer {
+	border: none;
+	border-top: var(--ufaqsw-border-width) var(--ufaqsw-border-style) var(--ufaqsw-border-color);
+	border-radius: 0;
+}
+
+/* ─── Layout: minimal ─────────────────────────────── */
+.ufaqsw-faq[data-layout="minimal"] .ufaqsw-faq__item {
+	border-bottom: var(--ufaqsw-border-width) var(--ufaqsw-border-style) var(--ufaqsw-border-color);
+	margin-bottom: 0;
+	border-radius: 0;
+}
+
+.ufaqsw-faq[data-layout="minimal"] .ufaqsw-faq__question {
+	background: transparent;
+	border: none;
+	padding-left: 0;
+	padding-right: 0;
+	border-radius: 0;
+}
+
+.ufaqsw-faq[data-layout="minimal"] .ufaqsw-faq__question[aria-expanded="true"] {
+	border-radius: 0;
+	border-bottom-color: transparent;
+}
+
+.ufaqsw-faq[data-layout="minimal"] .ufaqsw-faq__answer {
+	border: none;
+	background: transparent;
+	border-radius: 0;
+}
+
+.ufaqsw-faq[data-layout="minimal"] .ufaqsw-faq__answer-inner {
+	padding-left: 0;
+	padding-right: 0;
+}
+
+/* ─── Layout: boxed ───────────────────────────────── */
+.ufaqsw-faq[data-layout="boxed"] {
+	border: var(--ufaqsw-border-width) var(--ufaqsw-border-style) var(--ufaqsw-border-color);
+	border-radius: var(--ufaqsw-border-radius);
+	overflow: hidden;
+}
+
+.ufaqsw-faq[data-layout="boxed"] .ufaqsw-faq__title {
+	padding: var(--ufaqsw-item-padding);
+	border-bottom: var(--ufaqsw-border-width) var(--ufaqsw-border-style) var(--ufaqsw-border-color);
+	margin-bottom: 0;
+}
+
+.ufaqsw-faq[data-layout="boxed"] .ufaqsw-faq__item {
+	border-radius: 0;
+	margin-bottom: 0;
+	border-bottom: var(--ufaqsw-border-width) var(--ufaqsw-border-style) var(--ufaqsw-border-color);
+	box-shadow: none;
+}
+
+.ufaqsw-faq[data-layout="boxed"] .ufaqsw-faq__item:last-child {
+	border-bottom: none;
+}
+
+.ufaqsw-faq[data-layout="boxed"] .ufaqsw-faq__question {
+	border: none;
+	border-radius: 0;
+}
+
+.ufaqsw-faq[data-layout="boxed"] .ufaqsw-faq__question[aria-expanded="true"] {
+	border-radius: 0;
+	border-bottom-color: transparent;
+}
+
+.ufaqsw-faq[data-layout="boxed"] .ufaqsw-faq__answer {
+	border: none;
+	border-top: var(--ufaqsw-border-width) var(--ufaqsw-border-style) var(--ufaqsw-border-color);
+	border-radius: 0;
+}

@@ -1,0 +1,26 @@
+{
+  "id": "clean-white",
+  "name": "Clean White",
+  "description": "Crisp, minimal accordion on a white background.",
+  "category": "minimal",
+  "settings": {
+    "template": "universal",
+    "layout": "classic",
+    "behaviour": "accordion",
+    "animation": "slide",
+    "border_color": "#e2e8f0",
+    "border_radius": "6",
+    "border_width": "1",
+    "border_style": "solid",
+    "question_color": "#1e293b",
+    "question_background_color": "#f8fafc",
+    "question_font_size": "15",
+    "answer_color": "#475569",
+    "answer_background_color": "#ffffff",
+    "answer_font_size": "14",
+    "item_padding": "16",
+    "item_gap": "6",
+    "normal_icon": "fa-plus",
+    "active_icon": "fa-minus"
+  }
+}

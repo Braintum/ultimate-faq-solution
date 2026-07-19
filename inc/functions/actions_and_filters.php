@@ -66,6 +66,22 @@ function ufaqsw_simplify_configuration_variables( $id ) {
 		return $ufaqsw_appearance_data;
 	}
 
+	// Phase 4: check JSON blob first (set by the appearance builder for new appearances).
+	$json = get_post_meta( $id, 'ufaqsw_design_settings', true );
+	if ( ! empty( $json ) ) {
+		$decoded = json_decode( $json, true );
+		if ( is_array( $decoded ) ) {
+			// Normalise boolean-like values that may have been saved as 0/1.
+			foreach ( array( 'showall', 'hidetitle', 'question_bold' ) as $bool_key ) {
+				if ( isset( $decoded[ $bool_key ] ) ) {
+					$decoded[ $bool_key ] = (bool) $decoded[ $bool_key ] ? 1 : 0;
+				}
+			}
+			return $decoded;
+		}
+	}
+
+	// Legacy path: individual post meta keys.
 	$title_color               = get_post_meta( $id, 'ufaqsw_title_color', false );
 	$title_font_size           = get_post_meta( $id, 'ufaqsw_title_font_size', false );
 	$question_color            = get_post_meta( $id, 'ufaqsw_question_color', false );
@@ -100,6 +116,20 @@ function ufaqsw_simplify_configuration_variables( $id ) {
 	$formated_data['active_icon']               = ( isset( $active_icon[0] ) ? $active_icon[0] : '' );
 	$formated_data['behaviour']                 = ( isset( $behaviour[0] ) ? $behaviour[0] : 'toggle' );
 	$formated_data['question_bold']             = ( isset( $question_bold[0] ) && ( 'on' === $question_bold[0] || $question_bold[0] ) ? 1 : 0 );
+
+	// New fields (Phase 3) – not stored individually in legacy appearances; default to empty.
+	$formated_data['layout']               = '';
+	$formated_data['animation']            = 'none';
+	$formated_data['border_radius']        = '';
+	$formated_data['border_width']         = '';
+	$formated_data['border_style']         = 'solid';
+	$formated_data['item_padding']         = '';
+	$formated_data['item_gap']             = '';
+	$formated_data['question_font_weight'] = '';
+	$formated_data['answer_line_height']   = '';
+	$formated_data['icon_size']            = '';
+	$formated_data['custom_css']           = '';
+
 	return $formated_data;
 }
 add_filter( 'ufaqsw_simplify_configuration_variables', 'ufaqsw_simplify_configuration_variables' );

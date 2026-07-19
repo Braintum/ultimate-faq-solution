@@ -1,6 +1,7 @@
 import React from 'react';
 import { __, _n, sprintf } from '@wordpress/i18n';
 import { SettingsGroup, ActionButtons } from './index';
+import { isFieldVisible } from '../helpers';
 
 /**
  * Settings Panel Component
@@ -67,6 +68,9 @@ export function SettingsPanel({
             <div className="flex-1 overflow-y-auto p-4 space-y-4">
                 {Object.keys(schema).map((groupKey) => {
                     const group = schema[groupKey];
+                    if (group.condition && !isFieldVisible({ condition: group.condition }, values)) {
+                        return null;
+                    }
                     return (
                         <SettingsGroup
                             key={groupKey}

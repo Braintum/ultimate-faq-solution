@@ -1,0 +1,28 @@
+{
+  "id": "nature-green",
+  "name": "Nature Green",
+  "description": "Fresh green card style, great for wellness or eco brands.",
+  "category": "colorful",
+  "settings": {
+    "template": "universal",
+    "layout": "card",
+    "behaviour": "accordion",
+    "animation": "slide",
+    "border_color": "#bbf7d0",
+    "border_radius": "10",
+    "border_width": "1",
+    "border_style": "solid",
+    "question_color": "#14532d",
+    "question_background_color": "#f0fdf4",
+    "question_font_size": "15",
+    "question_font_weight": "600",
+    "answer_color": "#374151",
+    "answer_background_color": "#ffffff",
+    "answer_font_size": "14",
+    "answer_line_height": "1.6",
+    "item_padding": "16",
+    "item_gap": "10",
+    "normal_icon": "fa-plus-circle",
+    "active_icon": "fa-minus-circle"
+  }
+}

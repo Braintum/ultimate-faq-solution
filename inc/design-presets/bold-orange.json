@@ -1,0 +1,27 @@
+{
+  "id": "bold-orange",
+  "name": "Bold Orange",
+  "description": "Energetic orange accent on a clean white layout.",
+  "category": "colorful",
+  "settings": {
+    "template": "universal",
+    "layout": "classic",
+    "behaviour": "toggle",
+    "animation": "slide",
+    "border_color": "#fdba74",
+    "border_radius": "6",
+    "border_width": "2",
+    "border_style": "solid",
+    "question_color": "#7c2d12",
+    "question_background_color": "#fff7ed",
+    "question_font_size": "15",
+    "question_font_weight": "700",
+    "answer_color": "#44403c",
+    "answer_background_color": "#ffffff",
+    "answer_font_size": "14",
+    "item_padding": "16",
+    "item_gap": "8",
+    "normal_icon": "fa-angle-down",
+    "active_icon": "fa-angle-up"
+  }
+}

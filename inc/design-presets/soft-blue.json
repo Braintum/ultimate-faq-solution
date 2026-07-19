@@ -1,0 +1,27 @@
+{
+  "id": "soft-blue",
+  "name": "Soft Blue",
+  "description": "Calm blue tones, ideal for knowledge base or support pages.",
+  "category": "colorful",
+  "settings": {
+    "template": "universal",
+    "layout": "classic",
+    "behaviour": "accordion",
+    "animation": "slide",
+    "border_color": "#bfdbfe",
+    "border_radius": "8",
+    "border_width": "1",
+    "border_style": "solid",
+    "question_color": "#1e3a8a",
+    "question_background_color": "#eff6ff",
+    "question_font_size": "15",
+    "question_font_weight": "600",
+    "answer_color": "#374151",
+    "answer_background_color": "#f0f9ff",
+    "answer_font_size": "14",
+    "item_padding": "16",
+    "item_gap": "8",
+    "normal_icon": "fa-plus",
+    "active_icon": "fa-minus"
+  }
+}
