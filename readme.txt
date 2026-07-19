@@ -241,6 +241,17 @@ Yes! Starting from version 1.6.4, Ultimate FAQ Solution includes an AI-powered f
 * New: 📢 **FAQ Assistant promo banner** — a dismissible spotlight banner now appears on the FAQ Groups list screen whenever the FAQ Assistant has not yet been enabled, with a direct "Enable FAQ Assistant" button so users discover the feature immediately.
 * New: ✨ **FAQ Assistant spotlight on Getting Started page** — the Getting Started guide now includes a dedicated FAQ Assistant section with a feature overview (live search, ask-a-question, ratings, customisation) and a "Set Up FAQ Assistant" call-to-action.
 * New: 🔗 **Plugin row meta link** — an "FAQ Assistant" quick link is now shown in the plugin row on the WordPress Plugins page, letting admins jump straight to the assistant settings from anywhere.
+* New: 🤖 **Multi-provider AI support** — the AI Integration settings page now lets you switch between OpenAI (ChatGPT), Anthropic (Claude), Google Gemini, Mistral AI, Ollama (local), and any OpenAI-compatible endpoint without touching any code.
+* New: 🧩 **Provider abstraction layer** — a clean `AIProviderInterface` / `AbstractProvider` architecture means future providers can be added by dropping in a single class. Includes a typed exception hierarchy (`AuthException`, `RateLimitException`, `ModelNotFoundException`, `ProviderUnavailableException`) for precise error handling.
+* New: 🟣 **Anthropic (Claude) provider** — supports Claude Haiku 4.5, Claude Sonnet 4.6, Claude Opus 4.8, Claude 3.5 Haiku, and Claude 3.5 Sonnet.
+* New: 🔵 **Google Gemini provider** — supports Gemini 2.0 Flash, Gemini 1.5 Flash, and Gemini 1.5 Pro.
+* New: 🟠 **Mistral AI provider** — supports Mistral Small, Medium, Large, and Codestral via the official Mistral API.
+* New: 🏠 **Ollama (local) provider** — run any locally installed model (llama3, mistral, phi3, etc.) via a configurable Ollama endpoint with no API key required.
+* New: 🔧 **OpenAI-Compatible (Custom) provider** — connect to any OpenAI-compatible third-party API (Groq, LM Studio, vLLM, Together AI, etc.) by supplying a base URL, optional API key, and model name.
+* New: 🔄 **Automatic migration for existing users** — on update, existing `chatgpt_api_key` and `chatgpt_model` settings are silently copied to the new OpenAI provider fields so no re-configuration is needed.
+* Enhanced: ⚙️ **AI Integration settings redesigned** — the settings page now shows only the fields relevant to the selected provider. All other provider fields are hidden via CMB2 conditional logic and appear instantly when switching providers.
+* Enhanced: 🔁 **Smarter retry logic** — transient network/server errors are retried up to 2 times with exponential back-off; rate-limit errors (`429`) now fail immediately instead of wasting 3 seconds and extra quota on doomed retries.
+* Enhanced: 💬 **Improved rate-limit error messages** — instead of a bare "Rate limit exceeded", users now see actionable guidance: the provider name, a suggested wait time (30–60 s), and a note to consider upgrading their API plan.
 
 
 =1.8.3=
@@ -451,7 +462,7 @@ Yes! Starting from version 1.6.4, Ultimate FAQ Solution includes an AI-powered f
 
 == Upgrade Notice ==
 = 1.8.5 =
-Improves discoverability of the FAQ Assistant: new promo banner on the FAQ Groups screen, FAQ Assistant spotlight on the Getting Started page, and a quick link in the Plugins list.
+Adds multi-provider AI support (Anthropic Claude, Google Gemini, Mistral AI, Ollama, custom OpenAI-compatible endpoints). Existing ChatGPT settings are migrated automatically — no re-configuration needed. Fixes a CMB2 conditional-field bug where provider-specific fields were not showing/hiding correctly. Rate-limit errors now fail fast with actionable guidance instead of retrying and blocking.
 
 = 1.5.7 =
 FAQ Assistant added — floating help icon with chat-style FAQ access. Recommended update to improve visitor experience.
