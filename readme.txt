@@ -222,83 +222,23 @@ Yes! Starting from version 1.6.4, Ultimate FAQ Solution includes an AI-powered f
 
 == Changelog ==
 
-=1.8.4=
-* New: ✨ **AI Design Generator** — a new "✨ AI Generate" button in the Appearance Builder lets you describe a design in plain language and instantly receive a fully configured set of appearance settings. Uses whichever AI provider is already configured in AI Integration settings (OpenAI, Anthropic, Gemini, Mistral, Ollama, or any custom endpoint) — no separate setup required.
-* New: 🎨 **Prompt-to-design workflow** — type a free-form description (e.g. "dark mode with deep navy and purple accents, card layout") or pick from quick-tag chips (Minimal, Dark, Colorful, Professional, Card layout, Left accent). An optional checkbox lets you build on your current settings or start from scratch.
-* New: 🖼️ **Generated design preview** — before applying, a color swatch previewing the question row and answer panel is shown alongside a note that it is an approximation and the live preview will show the full result.
-* New: ➕ **Expand / Collapse All button** — add `show_expand_all="yes"` to any `[ufaqsw]` or `[ufaqsw-all]` shortcode to display a button that expands or collapses every FAQ item at once. Works with the Default, Style-1, and Style-2 templates. Not shown in accordion mode.
-* Fixed: 🐛 **Global custom CSS being silently discarded** for Style-1 and Style-2 templates — a premature `$custom_css = ''` reset inside the CSS generator was overwriting any global custom CSS added via plugin settings.
-* Fixed: 🐛 **CSS `>` child selectors stripped from inline styles** — `esc_html()` was applied to custom style strings, which HTML-encoded `>` and broke CSS rules like `div > p`. Replaced with `wp_strip_all_tags()`.
-* Fixed: 🐛 **`exclude_items` parameter broken for `[ufaqsw]` shortcode** — passing an empty string to `explode()` was generating an invalid `post__not_in` query. Now correctly passes an empty array when no items are excluded.
-* Fixed: 🐛 **Style-1 toggle / accordion behavior inverted** — clicking a question would open it when it should close and vice versa. Root cause: the `<label>` element toggled the underlying checkbox before the click event bubbled, causing the JS handler to read the already-flipped state. Fixed by listening to the `change` event on the checkbox instead of `click` on the label.
-* Fixed: 🐛 **Style-2 "Show all answers" closing immediately on page load** — PHP already renders all answers visible when showall is enabled, but the JS was triggering a click on each item which closed them all again. Removed the redundant JS trigger; initial open state is now handled purely by PHP inline styles.
-* Fixed: 🐛 **Default template icons not displaying correctly** — the active icon (minus) was always hidden, and both icons were briefly visible on load, due to a CSS specificity conflict with Font Awesome's `.fa { display: inline-block }` rule. Fixed by scoping the hide rule to `.ufaqsw_toggle_default .ufaqsw-icon-active` for higher specificity.
-* Fixed: 🐛 **Icon color not respecting Appearance Builder color setting** — a hardcoded `color: #666` on the icon wrapper was blocking the color inherited from the question row style. Rule removed so icons correctly inherit the configured question color.
-* Fixed: 🐛 **Accordion `closeall()` closing items across different FAQ groups** — the function was using a global selector that matched all groups on the page instead of scoping to the current group's container.
-* Fixed: 🐛 **Style-1 `checked` state read incorrectly** — `.attr('checked')` returns the initial HTML attribute value, not the live state. Replaced with `.prop('checked')` throughout.
-* Fixed: 🐛 **Duplicate `answer_font_size` CSS rule** emitted twice in the generated inline styles.
-* Fixed: 🐛 **Hardcoded pink background** (`#eac8d3`) on Style-1 question rows replaced with a neutral `#f5f5f5`.
-* Fixed: 🐛 **Typo in search results message** — "No Result Fount!" corrected to "No Result Found!".
-* Enhanced: 🎨 **Default template redesigned** — flexbox layout keeps the question text and icon aligned on one row regardless of text length; question text is left-aligned and icon is right-aligned.
-* Enhanced: 🎨 **Hover and active states** added to all three templates with smooth CSS transitions, giving clear visual feedback on interaction.
-* Enhanced: ♿ **Keyboard navigation** — all templates now respond to `Enter` and `Space` keys on question rows, with `focus-visible` outlines for keyboard-only users.
-* Enhanced: ♿ **ARIA attributes** — `aria-expanded` and `aria-hidden` kept in sync with open/close state across all templates and the new expand/collapse all button.
-* New: 🚀 **Getting Started page** — a visual 3-step onboarding guide (Add Content → Choose Design → Display) accessible from the admin menu. New installs are redirected here automatically on first activation.
-* New: 💡 **"How it works" banners** on both the FAQ Groups and FAQ Appearances list tables — dismissible per-user notices that explain the purpose of each section so users understand the data/design split at a glance.
-* New: 🖼️ **Empty state screens** for FAQ Groups and FAQ Appearances — when no posts exist, the default WordPress table is replaced with a friendly illustration, explanation, and direct action button.
-* New: 📊 **Embed Status column** on the FAQ Groups list table — a green badge shows how many published pages embed each group; an amber badge warns when a group has never been embedded, preventing silent "why don't my FAQs show up?" support requests.
-* New: 🎨 **Template chip column** on the FAQ Appearances list table — shows which of the three templates (Default / Style 1 / Style 2) each appearance uses, along with how many groups use it.
-* Enhanced: 🛠️ **Redesigned FAQ Appearance meta box** on the FAQ Group edit screen — now displays a colour swatch preview of the selected appearance, shows an info notice when falling back to the default, and exposes "Edit appearance" and "Create new appearance" quick links.
-* Enhanced: ✅ **Post-save nudge** on the FAQ Group edit screen — after publishing or updating, a notice tells users whether the group is already embedded on any pages and (if not) offers a one-click copy of the shortcode with a link to create a new page.
-* Enhanced: 🔗 **Redesigned Linked FAQ Groups meta box** on the Appearance edit screen — leads with an "Applied to N FAQ Groups" count, lists linked groups with per-item Detach links, and shows a contextual tip when no groups are linked.
-* Enhanced: 🖼️ **Visual template preview cards** in the Appearance Builder — the three plain radio buttons for "Template Style" are replaced with interactive cards that include a CSS-rendered miniature mockup of each template layout so users can understand their choice before selecting.
-* Enhanced: 📝 **Settings panel section labels** in the Appearance Builder — groups are renamed from generic labels (General, Group, Question, Answer) to purposeful ones (Layout & Behaviour, Group Title, Question Row, Answer Panel), each with a subtitle explaining what the section controls.
-* Enhanced: 💬 **Context-aware save notifications** in the Appearance Builder — the success message after saving now reflects the number of linked groups and reminds users to link the appearance if none are connected yet.
-* New: 🔍 **Live search in FAQ Assistant** — a real-time search bar now appears at the top of the assistant's home screen. As the user types, results are filtered instantly across all FAQ groups with matched text highlighted. Optionally searches inside answer body content (configurable). Fully customisable placeholder and no-results message.
-* New: 💬 **"Ask a Question" form** — visitors can submit a question directly from the FAQ Assistant via a built-in contact form (Name, Email, Question fields). The form appears on the groups screen, the question list screen, and the answer screen so it is always within reach. Submitted questions are emailed to the configured address (falls back to the site admin email) and include the page URL where the question was submitted.
-* New: 👍 **"Was this helpful?" feedback widget** — a thumbs-up / thumbs-down rating appears at the bottom of every FAQ answer. Votes are stored server-side and a thank-you message is shown after voting. Can be enabled or disabled independently of other features.
-* New: 📊 **Feedback Analytics admin page** — a dedicated admin page under FAQ Groups shows every FAQ question with its helpful / not-helpful vote counts, total votes, and a colour-coded score (green ≥ 70 %, yellow ≥ 40 %, red < 40 %). Includes summary cards and a per-question Reset button. The page is only visible when the feedback feature is enabled.
-* New: 🔗 **Related Questions** — the bottom of each answer can now show a configurable number of other questions from the same group, letting users continue browsing without going back.
-* New: ✨ **Pulse ring animation** on the floating button — draws attention on page load (plays 3 times then stops). Can be enabled or disabled in Appearance settings.
-* New: 🔴 **Notification badge** on the floating button — an optional small red dot to nudge visitors to open the assistant.
-* Enhanced: 🎨 **Full FAQ Assistant redesign** — list items are now styled as rounded cards with a chevron icon, subtle hover effects, and a left-border accent on hover. Overall visual language is more modern and consistent.
-* Enhanced: ↔️ **Slide transitions between views** — navigating forward (home → group → answer) slides content in from the right; pressing Back slides it in from the left.
-* Enhanced: 🧭 **Breadcrumb navigation in header** — the header now shows a clickable breadcrumb trail (e.g. Home › Group Name) so users always know where they are and can jump back without using the Back button.
-* Enhanced: ⏳ **Skeleton loading cards** replace the animated dot preloader — a shimmer animation fills the card placeholders while FAQ data is loading, giving a more polished initial impression.
-* Enhanced: 📱 **True fullscreen on mobile** — on screens 768 px wide and below the assistant now occupies the full viewport (100 vw × 100 vh, no border-radius) for a native app-like experience.
-* Enhanced: ♿ **Accessibility improvements** — the assistant container has `role="dialog"` and `aria-modal="true"`. All clickable list items now have `tabIndex` and keyboard `Enter` support. Pressing Escape closes the window.
-* Enhanced: 🎨 **Primary colour propagated automatically** — the Header Background Color setting is injected as a CSS custom property (`--chatbot-primary`) into the Shadow DOM so accent colours (borders, button fills, hover states, form focus rings) all stay in sync without extra settings.
-* Enhanced: 🔙 **Smart back navigation from "Ask a Question"** — pressing Back or Cancel from the Ask form returns to whichever screen opened it (home, list, or answer) rather than always going to the home screen.
-* New: 📢 **FAQ Assistant promo banner** — a dismissible spotlight banner now appears on the FAQ Groups list screen whenever the FAQ Assistant has not yet been enabled, with a direct "Enable FAQ Assistant" button so users discover the feature immediately.
-* New: ✨ **FAQ Assistant spotlight on Getting Started page** — the Getting Started guide now includes a dedicated FAQ Assistant section with a feature overview (live search, ask-a-question, ratings, customisation) and a "Set Up FAQ Assistant" call-to-action.
-* New: 🔗 **Plugin row meta link** — an "FAQ Assistant" quick link is now shown in the plugin row on the WordPress Plugins page, letting admins jump straight to the assistant settings from anywhere.
-* New: 🤖 **Multi-provider AI support** — the AI Integration settings page now lets you switch between OpenAI (ChatGPT), Anthropic (Claude), Google Gemini, Mistral AI, Ollama (local), and any OpenAI-compatible endpoint without touching any code.
-* New: 🧩 **Provider abstraction layer** — a clean `AIProviderInterface` / `AbstractProvider` architecture means future providers can be added by dropping in a single class. Includes a typed exception hierarchy (`AuthException`, `RateLimitException`, `ModelNotFoundException`, `ProviderUnavailableException`) for precise error handling.
-* New: 🟣 **Anthropic (Claude) provider** — supports Claude Haiku 4.5, Claude Sonnet 4.6, Claude Opus 4.8, Claude 3.5 Haiku, and Claude 3.5 Sonnet.
-* New: 🔵 **Google Gemini provider** — supports Gemini 2.0 Flash, Gemini 1.5 Flash, and Gemini 1.5 Pro.
-* New: 🟠 **Mistral AI provider** — supports Mistral Small, Medium, Large, and Codestral via the official Mistral API.
-* New: 🏠 **Ollama (local) provider** — run any locally installed model (llama3, mistral, phi3, etc.) via a configurable Ollama endpoint with no API key required.
-* New: 🔧 **OpenAI-Compatible (Custom) provider** — connect to any OpenAI-compatible third-party API (Groq, LM Studio, vLLM, Together AI, etc.) by supplying a base URL, optional API key, and model name.
-* New: 🔄 **Automatic migration for existing users** — on update, existing `chatgpt_api_key` and `chatgpt_model` settings are silently copied to the new OpenAI provider fields so no re-configuration is needed.
-* Enhanced: ⚙️ **AI Integration settings redesigned** — the settings page now shows only the fields relevant to the selected provider. All other provider fields are hidden via CMB2 conditional logic and appear instantly when switching providers.
-* Enhanced: 🔁 **Smarter retry logic** — transient network/server errors are retried up to 2 times with exponential back-off; rate-limit errors (`429`) now fail immediately instead of wasting 3 seconds and extra quota on doomed retries.
-* Enhanced: 💬 **Improved rate-limit error messages** — instead of a bare "Rate limit exceeded", users now see actionable guidance: the provider name, a suggested wait time (30–60 s), and a note to consider upgrading their API plan.
-
-* New: 🎨 **Universal Template ("Custom Builder")** — a brand-new CSS custom-properties-driven template that separates structure from styling. All design values (colors, sizes, spacing, borders) are set as inline CSS variables on the FAQ container, enabling unlimited visual variety without touching code. Select it as "Custom Builder" in the Appearance Builder.
-* New: 📐 **4 Layout Variants** — the Custom Builder template supports four structural layouts selectable from the builder: **Classic** (standard bordered accordion), **Card** (per-item shadow cards), **Minimal** (line-separator only, transparent backgrounds), and **Boxed** (entire group wrapped in a single outer frame). Layouts are applied via a `data-layout` attribute and controlled purely by CSS — no extra PHP needed.
-* New: ✨ **Open/Close Animation** — choose between None, Slide (max-height transition), or Fade (opacity transition) for the Custom Builder template answer panels. Animation type is stored per appearance and rendered via `data-animation` attribute.
-* New: 📏 **Spacing controls** — new Spacing panel in the Appearance Builder exposes Item Padding and Item Gap sliders. Applies to the Custom Builder template via CSS variables.
-* New: 🔲 **Border controls** — new Borders panel with Border Radius, Border Width (px), and Border Style (solid/dashed/dotted) sliders. Applies to the Custom Builder template via CSS variables.
-* New: 🔤 **Typography controls** — new Typography panel with Question Font Weight (dropdown), Answer Line Height (dropdown), and Icon Size slider. Applies to the Custom Builder template via CSS variables.
-* New: 💻 **Custom CSS field** — power users can add scoped custom CSS directly in the Appearance Builder. Output is sanitized and injected as a `<style>` block alongside the FAQ group.
-* New: 🗄️ **Design JSON storage** — appearance settings are now persisted as a single `ufaqsw_design_settings` JSON blob in post meta alongside the individual legacy keys. New appearances use the JSON as the canonical source; existing appearances continue to read from individual keys with zero migration required.
-* New: 📚 **Design Library** — a new admin page under **FAQ Groups → Design Library** displays 10 bundled design presets. Each preset shows a live color swatch preview, category badge, and an "Import Design" button that creates a fully configured appearance post and opens it directly in the builder.
-* New: 🎁 **10 bundled design presets** — Clean White, Dark Pro, Soft Blue, Enterprise Gray, Midnight, Nature Green, Bold Orange, Purple Modern, Warm Cream, Boxed Slate — covering minimal, colorful, dark, and professional categories across all four layout variants.
-* New: 🔌 **REST import endpoint** — `POST /wp-json/ufaqsw/v1/designs/import` accepts a `preset_id` and creates a new appearance post, for headless or programmatic use.
-* Enhanced: 🧩 **Appearance Builder groups are context-aware** — Spacing, Borders, Typography, and Custom CSS panels are hidden when a legacy template (Default, Style 1, Style 2) is active, and revealed automatically when Custom Builder is selected.
-* Enhanced: 🔲 **Radio selector grid layout** — the Template Style and Layout Variant radio fields now render in a 2-column grid so they never cause horizontal overflow in the settings panel.
-* Enhanced: 🏷️ **"Custom Builder" chip** on the FAQ Appearances list table — the template column now recognises and displays the new template type alongside the existing three.
-
+= 2.0.0 =
+* New: Added a visual Shortcode Builder with live preview and one-click copy.
+* New: Added AI Design Generator to create FAQ designs from natural language prompts.
+* New: Added Universal template with unlimited appearance customization.
+* New: Added Design Library with 29 professionally designed presets.
+* New: Added Appearance Override support for shortcodes and Gutenberg blocks.
+* New: Added Expand / Collapse All button for FAQ groups.
+* New: Added a Getting Started onboarding experience for new users.
+* New: Enhanced FAQ Assistant with Live Search, Ask a Question form, Helpful/Not Helpful voting, Feedback Analytics, Related Questions, notification badge, and pulse animation.
+* New: Added support for multiple AI providers including OpenAI, Anthropic Claude, Google Gemini, Mistral AI, Ollama, and OpenAI-compatible APIs.
+* Enhancement: Completely redesigned the Appearance Builder with visual previews and improved customization options.
+* Enhancement: Improved plugin administration with better onboarding, status indicators, empty states, and contextual help.
+* Enhancement: Redesigned the FAQ Assistant with improved navigation, animations, mobile experience, accessibility, and performance.
+* Enhancement: Improved keyboard navigation, ARIA support, responsive layouts, and loading performance.
+* Enhancement: Added REST API endpoint for importing design presets and improved internal architecture for future extensibility.
+* Fix: Fixed multiple shortcode, styling, accordion, template rendering, icon, CSS, and custom appearance issues.
+* Fix: Fixed various UI, performance, compatibility, and stability issues.
 
 =1.8.3=
 * fix(seo): FAQ schema output issue when adding shortcode in answer
