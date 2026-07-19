@@ -128,23 +128,40 @@ function ufaqsw_build_css_vars( array $designs ): string {
 		'answer_background_color'   => '--ufaqsw-a-bg',
 		'border_color'              => '--ufaqsw-border-color',
 		'title_color'               => '--ufaqsw-title-color',
+		// Universal-only active/hover state colors.
+		'active_question_color'     => '--ufaqsw-q-active-color',
+		'active_question_bg'        => '--ufaqsw-q-active-bg',
+		'icon_color'                => '--ufaqsw-icon-color',
+		'active_icon_color'         => '--ufaqsw-icon-active-color',
+		'title_bg_color'            => '--ufaqsw-title-bg',
+		'active_border_color'       => '--ufaqsw-active-border-color',
 	);
 
 	$px_map = array(
-		'question_font_size' => '--ufaqsw-q-font-size',
-		'answer_font_size'   => '--ufaqsw-a-font-size',
-		'title_font_size'    => '--ufaqsw-title-font-size',
-		'border_radius'      => '--ufaqsw-border-radius',
-		'border_width'       => '--ufaqsw-border-width',
-		'item_padding'       => '--ufaqsw-item-padding',
-		'item_gap'           => '--ufaqsw-item-gap',
-		'icon_size'          => '--ufaqsw-icon-size',
+		'question_font_size'    => '--ufaqsw-q-font-size',
+		'answer_font_size'      => '--ufaqsw-a-font-size',
+		'title_font_size'       => '--ufaqsw-title-font-size',
+		'border_radius'         => '--ufaqsw-border-radius',
+		'border_width'          => '--ufaqsw-border-width',
+		'item_padding'          => '--ufaqsw-item-padding',
+		'item_gap'              => '--ufaqsw-item-gap',
+		'icon_size'             => '--ufaqsw-icon-size',
+		// Universal-only.
+		'container_max_width'   => '--ufaqsw-max-width',
 	);
 
 	$text_map = array(
-		'question_font_weight' => '--ufaqsw-q-font-weight',
-		'answer_line_height'   => '--ufaqsw-a-line-height',
-		'border_style'         => '--ufaqsw-border-style',
+		'question_font_weight'    => '--ufaqsw-q-font-weight',
+		'answer_line_height'      => '--ufaqsw-a-line-height',
+		'border_style'            => '--ufaqsw-border-style',
+		// Universal-only.
+		'question_text_transform' => '--ufaqsw-q-text-transform',
+		'title_font_weight'       => '--ufaqsw-title-font-weight',
+	);
+
+	// Float px fields (step < 1, e.g. letter-spacing in 0.5 increments).
+	$float_px_map = array(
+		'question_letter_spacing' => '--ufaqsw-q-letter-spacing',
 	);
 
 	foreach ( $color_map as $key => $var ) {
@@ -160,10 +177,27 @@ function ufaqsw_build_css_vars( array $designs ): string {
 		}
 	}
 
+	foreach ( $float_px_map as $key => $var ) {
+		if ( isset( $designs[ $key ] ) && '' !== $designs[ $key ] && null !== $designs[ $key ] ) {
+			$val    = $designs[ $key ];
+			$vars[] = $var . ':' . ( is_numeric( $val ) ? floatval( $val ) . 'px' : sanitize_text_field( $val ) );
+		}
+	}
+
 	foreach ( $text_map as $key => $var ) {
 		if ( ! empty( $designs[ $key ] ) ) {
 			$vars[] = $var . ':' . sanitize_text_field( $designs[ $key ] );
 		}
+	}
+
+	// Shadow style maps to a preset box-shadow value.
+	$shadow_presets = array(
+		'subtle' => '0 1px 3px rgba(0,0,0,.08)',
+		'medium' => '0 2px 8px rgba(0,0,0,.12)',
+		'strong' => '0 4px 16px rgba(0,0,0,.20)',
+	);
+	if ( ! empty( $designs['shadow_style'] ) && isset( $shadow_presets[ $designs['shadow_style'] ] ) ) {
+		$vars[] = '--ufaqsw-shadow:' . $shadow_presets[ $designs['shadow_style'] ];
 	}
 
 	if ( ! empty( $designs['question_bold'] ) ) {

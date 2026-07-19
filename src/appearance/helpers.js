@@ -91,6 +91,16 @@ export const DEFAULT_SCHEMA = {
         default: "none",
         condition: { field: "template", value: "universal" },
       },
+      icon_position: {
+        type: "select",
+        label: "Icon Position",
+        options: [
+          { value: "right", label: "Right" },
+          { value: "left",  label: "Left" },
+        ],
+        default: "right",
+        condition: { field: "template", value: "universal" },
+      },
       border_color: {
         type: "color",
         label: "Border Color",
@@ -171,9 +181,21 @@ export const DEFAULT_SCHEMA = {
       },
     },
   },
+  active_states: {
+    label: "Active & Hover States",
+    subtitle: "Colors applied when items are open or hovered.",
+    condition: { field: "template", value: "universal" },
+    fields: {
+      active_question_color:    { type: "color", label: "Active Question Color",      default: "" },
+      active_question_bg:       { type: "color", label: "Active Question Background", default: "" },
+      icon_color:               { type: "color", label: "Icon Color",                 default: "" },
+      active_icon_color:        { type: "color", label: "Active Icon Color",          default: "" },
+      title_bg_color:           { type: "color", label: "Group Title Background",     default: "" },
+    },
+  },
   spacing: {
     label: "Spacing",
-    subtitle: "Padding and gap controls.",
+    subtitle: "Padding, gap, and max-width controls.",
     condition: { field: "template", value: "universal" },
     fields: {
       item_padding: {
@@ -192,11 +214,19 @@ export const DEFAULT_SCHEMA = {
         step: 1,
         default: '',
       },
+      container_max_width: {
+        type: "range",
+        label: "Max Width (px)",
+        min: 400,
+        max: 1400,
+        step: 10,
+        default: '',
+      },
     },
   },
   borders: {
     label: "Borders",
-    subtitle: "Border radius, width, and style.",
+    subtitle: "Border radius, width, style, position, and shadow.",
     condition: { field: "template", value: "universal" },
     fields: {
       border_radius: {
@@ -225,11 +255,37 @@ export const DEFAULT_SCHEMA = {
         ],
         default: "solid",
       },
+      item_border_position: {
+        type: "select",
+        label: "Border Position",
+        options: [
+          { value: "all",          label: "All Sides" },
+          { value: "bottom-only",  label: "Bottom Only" },
+          { value: "left-accent",  label: "Left Accent" },
+        ],
+        default: "all",
+      },
+      active_border_color: {
+        type: "color",
+        label: "Active Item Border Color",
+        default: "",
+      },
+      shadow_style: {
+        type: "select",
+        label: "Item Shadow",
+        options: [
+          { value: "none",   label: "None" },
+          { value: "subtle", label: "Subtle" },
+          { value: "medium", label: "Medium" },
+          { value: "strong", label: "Strong" },
+        ],
+        default: "none",
+      },
     },
   },
   typography: {
     label: "Typography",
-    subtitle: "Font weight, line height, and icon size.",
+    subtitle: "Font weight, line height, spacing, and icon size.",
     condition: { field: "template", value: "universal" },
     fields: {
       question_font_weight: {
@@ -241,6 +297,36 @@ export const DEFAULT_SCHEMA = {
           { value: "500", label: "Medium (500)" },
           { value: "600", label: "Semi-Bold (600)" },
           { value: "700", label: "Bold (700)" },
+        ],
+        default: "",
+      },
+      title_font_weight: {
+        type: "select",
+        label: "Title Font Weight",
+        options: [
+          { value: "",    label: "Default" },
+          { value: "400", label: "Normal (400)" },
+          { value: "500", label: "Medium (500)" },
+          { value: "600", label: "Semi-Bold (600)" },
+          { value: "700", label: "Bold (700)" },
+        ],
+        default: "",
+      },
+      question_letter_spacing: {
+        type: "range",
+        label: "Question Letter Spacing",
+        min: 0,
+        max: 4,
+        step: 0.5,
+        default: '',
+      },
+      question_text_transform: {
+        type: "select",
+        label: "Question Text Transform",
+        options: [
+          { value: "",            label: "None" },
+          { value: "uppercase",   label: "Uppercase" },
+          { value: "capitalize",  label: "Capitalize" },
         ],
         default: "",
       },

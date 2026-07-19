@@ -234,24 +234,57 @@ class Rest {
 
 		$sanitized = array();
 
-		$text_fields = array( 'template', 'layout', 'behaviour', 'animation', 'normal_icon', 'active_icon', 'border_style', 'question_font_weight', 'answer_line_height' );
+		$text_fields = array(
+			'template', 'layout', 'behaviour', 'animation', 'normal_icon', 'active_icon',
+			'border_style', 'question_font_weight', 'answer_line_height',
+			// Universal-only
+			'item_border_position', 'shadow_style', 'question_text_transform', 'title_font_weight',
+			'icon_position',
+		);
+		$text_allowlists = array(
+			'border_style'            => array( 'solid', 'dashed', 'dotted' ),
+			'item_border_position'    => array( 'all', 'bottom-only', 'left-accent' ),
+			'shadow_style'            => array( 'none', 'subtle', 'medium', 'strong' ),
+			'question_text_transform' => array( '', 'uppercase', 'capitalize' ),
+			'title_font_weight'       => array( '', '400', '500', '600', '700' ),
+			'question_font_weight'    => array( '', '400', '500', '600', '700' ),
+			'icon_position'           => array( 'right', 'left' ),
+		);
 		foreach ( $text_fields as $field ) {
 			if ( isset( $settings[ $field ] ) ) {
-				$sanitized[ $field ] = sanitize_text_field( $settings[ $field ] );
+				$val = sanitize_text_field( $settings[ $field ] );
+				if ( isset( $text_allowlists[ $field ] ) && ! in_array( $val, $text_allowlists[ $field ], true ) ) {
+					$val = '';
+				}
+				$sanitized[ $field ] = $val;
 			}
 		}
 
-		$color_fields = array( 'border_color', 'title_color', 'question_color', 'question_background_color', 'answer_color', 'answer_background_color' );
+		$color_fields = array(
+			'border_color', 'title_color', 'question_color', 'question_background_color',
+			'answer_color', 'answer_background_color',
+			// Universal-only
+			'active_question_color', 'active_question_bg', 'icon_color', 'active_icon_color',
+			'title_bg_color', 'active_border_color',
+		);
 		foreach ( $color_fields as $field ) {
 			if ( isset( $settings[ $field ] ) ) {
 				$sanitized[ $field ] = sanitize_hex_color( $settings[ $field ] ) ?? '';
 			}
 		}
 
-		$number_fields = array( 'title_font_size', 'question_font_size', 'answer_font_size', 'border_radius', 'border_width', 'item_padding', 'item_gap', 'icon_size' );
+		$number_fields = array( 'title_font_size', 'question_font_size', 'answer_font_size', 'border_radius', 'border_width', 'item_padding', 'item_gap', 'icon_size', 'container_max_width' );
 		foreach ( $number_fields as $field ) {
 			if ( isset( $settings[ $field ] ) ) {
 				$sanitized[ $field ] = is_numeric( $settings[ $field ] ) ? intval( $settings[ $field ] ) : '';
+			}
+		}
+
+		// Float number fields (step < 1).
+		$float_fields = array( 'question_letter_spacing' );
+		foreach ( $float_fields as $field ) {
+			if ( isset( $settings[ $field ] ) ) {
+				$sanitized[ $field ] = is_numeric( $settings[ $field ] ) ? floatval( $settings[ $field ] ) : '';
 			}
 		}
 

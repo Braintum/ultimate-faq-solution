@@ -18,9 +18,11 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 extract( $designs ); // phpcs:ignore
 
-$layout    = isset( $layout )    && ! empty( $layout )    ? $layout    : 'classic';
-$animation = isset( $animation ) && ! empty( $animation ) ? $animation : 'none';
-$is_show_all = 'accordion' !== $behaviour && $showall;
+$layout          = isset( $layout )               && ! empty( $layout )               ? $layout               : 'classic';
+$animation       = isset( $animation )            && ! empty( $animation )            ? $animation            : 'none';
+$border_position = isset( $item_border_position ) && ! empty( $item_border_position ) ? $item_border_position : 'all';
+$icon_position   = isset( $icon_position )        && ! empty( $icon_position )        ? $icon_position        : 'right';
+$is_show_all     = 'accordion' !== $behaviour && $showall;
 
 $css_vars = ufaqsw_build_css_vars( $designs );
 ?>
@@ -29,6 +31,8 @@ $css_vars = ufaqsw_build_css_vars( $designs );
 	data-layout="<?php echo esc_attr( $layout ); ?>"
 	data-behaviour="<?php echo esc_attr( isset( $behaviour ) ? $behaviour : 'accordion' ); ?>"
 	data-animation="<?php echo esc_attr( $animation ); ?>"
+	data-border="<?php echo esc_attr( $border_position ); ?>"
+	data-icon-position="<?php echo esc_attr( $icon_position ); ?>"
 	<?php if ( $css_vars ) : ?>
 	style="<?php echo esc_attr( $css_vars ); ?>"
 	<?php endif; ?>
