@@ -146,8 +146,6 @@ function ufaqsw_build_css_vars( array $designs ): string {
 		'item_padding'          => '--ufaqsw-item-padding',
 		'item_gap'              => '--ufaqsw-item-gap',
 		'icon_size'             => '--ufaqsw-icon-size',
-		// Universal-only.
-		'container_max_width'   => '--ufaqsw-max-width',
 	);
 
 	$text_map = array(

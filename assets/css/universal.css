@@ -30,12 +30,10 @@
 	--ufaqsw-icon-color: currentColor;
 	--ufaqsw-icon-active-color: currentColor;
 	--ufaqsw-shadow: none;
-	--ufaqsw-max-width: none;
 	/* Active-state vars default to the normal question values */
 	--ufaqsw-q-active-color: var(--ufaqsw-q-color);
 	--ufaqsw-q-active-bg: var(--ufaqsw-q-bg);
 	--ufaqsw-active-border-color: var(--ufaqsw-border-color);
-	max-width: var(--ufaqsw-max-width);
 	border: none;
 }
 

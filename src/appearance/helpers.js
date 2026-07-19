@@ -195,7 +195,7 @@ export const DEFAULT_SCHEMA = {
   },
   spacing: {
     label: "Spacing",
-    subtitle: "Padding, gap, and max-width controls.",
+    subtitle: "Padding and gap controls.",
     condition: { field: "template", value: "universal" },
     fields: {
       item_padding: {
@@ -212,14 +212,6 @@ export const DEFAULT_SCHEMA = {
         min: 0,
         max: 32,
         step: 1,
-        default: '',
-      },
-      container_max_width: {
-        type: "range",
-        label: "Max Width (px)",
-        min: 400,
-        max: 1400,
-        step: 10,
         default: '',
       },
     },

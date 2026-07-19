@@ -376,7 +376,7 @@ class Rest {
 			}
 		}
 
-		$number_fields = array( 'title_font_size', 'question_font_size', 'answer_font_size', 'border_radius', 'border_width', 'item_padding', 'item_gap', 'icon_size', 'container_max_width' );
+		$number_fields = array( 'title_font_size', 'question_font_size', 'answer_font_size', 'border_radius', 'border_width', 'item_padding', 'item_gap', 'icon_size' );
 		foreach ( $number_fields as $field ) {
 			if ( isset( $settings[ $field ] ) ) {
 				$sanitized[ $field ] = is_numeric( $settings[ $field ] ) ? intval( $settings[ $field ] ) : '';

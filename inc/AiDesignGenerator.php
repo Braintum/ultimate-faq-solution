@@ -46,11 +46,6 @@ class AiDesignGenerator {
 		$raw       = $provider->complete( $prompt, $system );
 		$settings  = Rest::sanitize_appearance_settings( $this->extract_json( $raw ) );
 
-		// Never constrain the container width unless the user explicitly asked for it.
-		if ( ! preg_match( '/\b(width|max.?width|container)\b/i', $prompt ) ) {
-			$settings['container_max_width'] = '';
-		}
-
 		return $settings;
 	}
 
@@ -81,7 +76,7 @@ class AiDesignGenerator {
 			. "- Boolean fields must be true or false.\n"
 			. "- Only use field names listed in the schema above. Do not invent new fields.\n"
 			. "- Include all fields relevant to the chosen template.\n"
-			. "- Leave `container_max_width` as empty string unless the user explicitly requests a specific width.\n";
+;
 	}
 
 	/**
@@ -303,7 +298,6 @@ class AiDesignGenerator {
 				'fields'    => array(
 					'item_padding'        => array( 'type' => 'range', 'label' => 'Item Padding (px)',       'min' => 4,   'max' => 48 ),
 					'item_gap'            => array( 'type' => 'range', 'label' => 'Gap Between Items (px)',  'min' => 0,   'max' => 32 ),
-					'container_max_width' => array( 'type' => 'range', 'label' => 'Max Width (px)',          'min' => 400, 'max' => 1400 ),
 				),
 			),
 			'borders'       => array(
