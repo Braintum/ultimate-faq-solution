@@ -59,6 +59,7 @@ include_once UFAQSW__PLUGIN_DIR . 'inc/admin/GettingStarted.php';
 if ( is_admin() ) {
 	include_once UFAQSW__PLUGIN_DIR . 'inc/admin/class-faq-group-sorting.php';
 	include_once UFAQSW__PLUGIN_DIR . 'inc/admin/RegisterAdminPages.php';
+	include_once UFAQSW__PLUGIN_DIR . 'inc/admin/ShortcodeBuilder.php';
 	include_once UFAQSW__PLUGIN_DIR . 'inc/admin/chatbot.php';
 	include_once UFAQSW__PLUGIN_DIR . 'inc/admin/chatbot-feedback.php';
 	include_once UFAQSW__PLUGIN_DIR . 'inc/admin/installation.php';
@@ -67,6 +68,7 @@ if ( is_admin() ) {
 	include_once UFAQSW__PLUGIN_DIR . 'inc/ExportImport/bootstrap.php';
 
 	Mahedi\UltimateFaqSolution\Admin\RegisterAdminPages::get_instance();
+	new Mahedi\UltimateFaqSolution\Admin\ShortcodeBuilder();
 	Mahedi\UltimateFaqSolution\ExportImport\bootstrap();
 }
 
