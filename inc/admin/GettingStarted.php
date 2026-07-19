@@ -385,9 +385,9 @@ class GettingStarted {
 						<span class="dashicons dashicons-admin-customizer"></span>
 					</div>
 					<h3><?php esc_html_e( 'Choose a Design', 'ufaqsw' ); ?></h3>
-					<p><?php esc_html_e( 'Pick from 3 templates and customise colors, fonts, and icons using the live Appearance builder.', 'ufaqsw' ); ?></p>
+					<p><?php esc_html_e( 'Start from a Design Library preset, generate one with AI, or build your own — then fine-tune colors, fonts, spacing, and icons in the live Appearance Builder.', 'ufaqsw' ); ?></p>
 					<a href="<?php echo esc_url( $new_appearance_url ); ?>" class="button button-secondary">
-						<?php esc_html_e( 'Customise Appearance', 'ufaqsw' ); ?>
+						<?php esc_html_e( 'Open Appearance Builder', 'ufaqsw' ); ?>
 					</a>
 					<div class="ufaqsw-gs-step-hint">
 						<span class="dashicons dashicons-lightbulb"></span>
@@ -445,9 +445,10 @@ class GettingStarted {
 						</div>
 						<p><?php esc_html_e( 'This is where you control how your FAQs look. An Appearance is a reusable design preset — create one and apply it to as many groups as you like.', 'ufaqsw' ); ?></p>
 						<ul>
-							<li><?php esc_html_e( 'Choose from 3 pre-built templates', 'ufaqsw' ); ?></li>
-							<li><?php esc_html_e( 'Customise colors, fonts, and icons live', 'ufaqsw' ); ?></li>
-							<li><?php esc_html_e( 'One Appearance, multiple FAQ Groups', 'ufaqsw' ); ?></li>
+							<li><?php esc_html_e( '✨ Generate a design instantly with the AI Design Generator', 'ufaqsw' ); ?></li>
+							<li><?php esc_html_e( '📚 Import a ready-made preset from the Design Library', 'ufaqsw' ); ?></li>
+							<li><?php esc_html_e( 'Fine-tune colors, fonts, spacing, and icons in the live builder', 'ufaqsw' ); ?></li>
+							<li><?php esc_html_e( 'One Appearance, applied to as many FAQ Groups as you like', 'ufaqsw' ); ?></li>
 						</ul>
 						<a href="<?php echo esc_url( admin_url( 'edit.php?post_type=ufaqsw_appearance' ) ); ?>" class="button button-secondary">
 							<?php esc_html_e( 'View All Appearances', 'ufaqsw' ); ?>
@@ -456,6 +457,48 @@ class GettingStarted {
 
 				</div>
 			</div><!-- /.ufaqsw-gs-explainer -->
+
+			<!-- Design Library & AI Design Generator spotlight -->
+			<div class="ufaqsw-gs-explainer ufaqsw-gs-design-spotlight">
+				<div class="ufaqsw-gs-assistant-spotlight-inner">
+					<div class="ufaqsw-gs-assistant-spotlight-icon">
+						<span class="dashicons dashicons-art"></span>
+					</div>
+					<div class="ufaqsw-gs-assistant-spotlight-body">
+						<h2><?php esc_html_e( '🎨 Design Library & AI Design Generator', 'ufaqsw' ); ?></h2>
+						<p><?php esc_html_e( 'You do not have to design your FAQ from scratch. Two powerful shortcuts are built right into the Appearance Builder to get you to a polished result in seconds.', 'ufaqsw' ); ?></p>
+
+						<div class="ufaqsw-gs-design-cols">
+
+							<div class="ufaqsw-gs-design-col">
+								<h4><?php esc_html_e( '📚 Design Library', 'ufaqsw' ); ?></h4>
+								<p><?php esc_html_e( 'Browse 20+ bundled presets — Minimal, Dark, Colorful, and Professional — each with a live color swatch preview. Click "Import Design" and a fully configured Appearance is created and opened for you immediately.', 'ufaqsw' ); ?></p>
+								<p><strong><?php esc_html_e( 'How to use it:', 'ufaqsw' ); ?></strong> <?php esc_html_e( 'Open any Appearance in the builder → click the "Design Library" button in the top-right corner → browse and import.', 'ufaqsw' ); ?></p>
+							</div>
+
+							<div class="ufaqsw-gs-design-col">
+								<h4><?php esc_html_e( '✨ AI Design Generator', 'ufaqsw' ); ?></h4>
+								<p><?php esc_html_e( 'Describe the look you want in plain language — for example: "dark mode with teal accents and a card layout" — and the AI generates a complete set of design settings for you. A color swatch preview is shown before you apply anything.', 'ufaqsw' ); ?></p>
+								<p><strong><?php esc_html_e( 'How to use it:', 'ufaqsw' ); ?></strong> <?php esc_html_e( 'Open any Appearance in the builder → click "✨ AI Generate" → type your description → Apply Design. Requires AI Integration to be enabled.', 'ufaqsw' ); ?></p>
+							</div>
+
+						</div><!-- /.ufaqsw-gs-design-cols -->
+
+						<ul class="ufaqsw-gs-assistant-features">
+							<li><span class="dashicons dashicons-yes-alt"></span> <?php esc_html_e( 'Works with any configured AI provider — OpenAI, Anthropic Claude, Google Gemini, Mistral, Ollama, or a custom endpoint', 'ufaqsw' ); ?></li>
+							<li><span class="dashicons dashicons-yes-alt"></span> <?php esc_html_e( 'Generated designs never force a container width unless you ask for one', 'ufaqsw' ); ?></li>
+							<li><span class="dashicons dashicons-yes-alt"></span> <?php esc_html_e( 'Apply, then keep tweaking — every individual setting is still fully editable after generation', 'ufaqsw' ); ?></li>
+						</ul>
+
+						<a href="<?php echo esc_url( admin_url( 'post-new.php?post_type=ufaqsw_appearance' ) ); ?>" class="button button-primary">
+							<?php esc_html_e( 'Open Appearance Builder', 'ufaqsw' ); ?>
+						</a>
+						<a href="<?php echo esc_url( admin_url( 'edit.php?post_type=ufaqsw&page=ufaqsw_ai_integration_settings' ) ); ?>" class="button button-secondary" style="margin-left:8px;">
+							<?php esc_html_e( 'Configure AI Integration', 'ufaqsw' ); ?>
+						</a>
+					</div>
+				</div>
+			</div><!-- /.ufaqsw-gs-design-spotlight -->
 
 			<!-- FAQ Assistant spotlight -->
 			<div class="ufaqsw-gs-explainer ufaqsw-gs-assistant-spotlight">

@@ -721,3 +721,67 @@
 	color: #1a185e;
 	flex-shrink: 0;
 }
+
+/* --------------------------------------------------------------------------
+   11. Getting Started — Design Library & AI Design Generator spotlight
+   -------------------------------------------------------------------------- */
+
+.ufaqsw-gs-design-spotlight {
+	margin-top: 24px;
+	border-top: 3px solid #6d28d9;
+}
+
+.ufaqsw-gs-design-spotlight .ufaqsw-gs-assistant-spotlight-icon {
+	background: #f3f0ff;
+}
+
+.ufaqsw-gs-design-spotlight .ufaqsw-gs-assistant-spotlight-icon .dashicons {
+	color: #6d28d9;
+}
+
+.ufaqsw-gs-design-spotlight .ufaqsw-gs-assistant-spotlight-body h2 {
+	color: #4c1d95;
+}
+
+.ufaqsw-gs-design-cols {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 20px;
+	margin: 16px 0 20px;
+}
+
+.ufaqsw-gs-design-col {
+	background: #f9f8ff;
+	border: 1px solid #e0d9ff;
+	border-radius: 8px;
+	padding: 16px 18px;
+}
+
+.ufaqsw-gs-design-col h4 {
+	font-size: 14px;
+	font-weight: 600;
+	color: #4c1d95;
+	margin: 0 0 8px;
+	padding: 0;
+}
+
+.ufaqsw-gs-design-col p {
+	font-size: 13px;
+	color: #50575e;
+	line-height: 1.6;
+	margin: 0 0 8px;
+}
+
+.ufaqsw-gs-design-col p:last-child {
+	margin-bottom: 0;
+}
+
+.ufaqsw-gs-design-spotlight .ufaqsw-gs-assistant-features .dashicons {
+	color: #6d28d9;
+}
+
+@media ( max-width: 782px ) {
+	.ufaqsw-gs-design-cols {
+		grid-template-columns: 1fr;
+	}
+}

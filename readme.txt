@@ -13,7 +13,7 @@ Create, organize, and display FAQs with AI-powered answers, one-click FAQ groups
 
 == Description ==
 
-Ultimate FAQ Solution is a powerful, flexible WordPress plugin for creating, organizing, and displaying FAQs—now with advanced AI features. Instantly generate entire FAQ groups with one click using the "Create with AI" tool, or draft individual answers with AI-powered suggestions. Designed for both standard WordPress sites and WooCommerce stores, it offers responsive layouts, accordion and toggle display modes, and a searchable FAQ directory. The interactive FAQ Assistant adds a floating chat icon to your site, giving users instant, conversational access to your knowledge base.
+Ultimate FAQ Solution is a powerful, flexible WordPress plugin for creating, organizing, and displaying FAQs—now with advanced AI features at every stage of the workflow. Generate entire FAQ groups with one click, draft individual answers with AI suggestions, and now design your FAQ's visual appearance by simply describing what you want in plain language.
 
 With Ultimate FAQ Solution, you can:
 - Create and manage FAQ groups using the familiar WordPress editor.
@@ -22,8 +22,9 @@ With Ultimate FAQ Solution, you can:
 - Enhance SEO with built-in FAQPage structured data (FAQ Schema) for rich Google snippets.
 - Instantly generate suggested answers for your FAQs using AI-powered answer suggestions.
 - Improve user experience with the interactive FAQ Assistant—a floating help icon with chat-style access to your FAQs.
-- Customize layouts, colors, and more to match your site branding.
-- Enjoy accessibility-ready templates, and multi-language compatibility.
+- Design beautiful FAQ appearances in seconds using the AI Design Generator or choose from the bundled Design Library presets.
+- Customize every detail—colors, fonts, spacing, borders, shadows, and more—with the visual Appearance Builder.
+- Enjoy accessibility-ready templates and multi-language compatibility.
 
 Whether you need a simple FAQ section or a full-featured knowledge base, Ultimate FAQ Solution streamlines the process and helps you deliver fast, accurate answers to your visitors.
 
@@ -51,12 +52,39 @@ Starting from version 1.6.4, Ultimate FAQ Solution includes an AI-powered featur
 
 This feature is designed to streamline your workflow, especially when building large knowledge bases or handling repetitive questions. AI-generated answers are optional and fully under your control, ensuring your content always matches your brand voice and standards.
 
+= ✨ AI Design Generator =
+
+The AI Design Generator brings the same AI-first philosophy to your FAQ's visual appearance. Instead of manually adjusting dozens of color, spacing, and typography sliders, simply describe the look you want and let AI configure the Appearance Builder for you.
+
+**How it works:**
+- Open any FAQ appearance in the Appearance Builder and click the **✨ AI Generate** button.
+- Describe your desired design in plain language — for example: *"Dark mode with deep navy background, purple accents, and card-style layout"* — or pick from quick-tag chips like Minimal, Dark, Colorful, or Professional.
+- Optionally choose to build on your current settings or start fresh.
+- The AI returns a complete set of appearance settings. A color swatch preview is shown before you commit.
+- Click **Apply Design** to populate all settings at once, then fine-tune any individual value as needed.
+
+**Works with any configured AI provider** — the AI Design Generator uses whichever provider (OpenAI, Anthropic Claude, Google Gemini, Mistral, Ollama, or a custom endpoint) is already set up in your AI Integration settings. No separate API key or configuration is needed.
+
+= 📚 Design Library =
+
+The Design Library gives you an instant head start with a curated collection of ready-made appearance presets covering a wide range of styles and use cases.
+
+**What's included:**
+- 20+ bundled presets spanning four categories: **Minimal**, **Colorful**, **Dark**, and **Professional**.
+- Each preset shows a live color swatch preview so you can see the look before importing.
+- Clicking **Import Design** creates a fully configured appearance post and opens it directly in the Appearance Builder — ready to assign to your FAQ groups in seconds.
+- The Design Library is accessible from the **✨ Design Library** button inside the Appearance Builder, keeping your design workflow in one place.
+
+Together, the AI Design Generator and Design Library mean you can go from a blank appearance to a polished, on-brand FAQ design in under a minute — with or without prior design experience.
+
 💡 Streamline your workflow, minimize support requests, and deliver a seamless user experience with customizable, mobile-friendly FAQ sections.
 
 🔗 [Support & Feature Requests](https://www.braintum.com/contact-us/) | [Live Demo](https://www.braintum.com/ultimate-faq-solution/) | [GitHub](https://github.com/Braintum/ultimate-faq-solution)
 
 = ✅ Key Features Overview =
 * 🧠 **Create with AI:** Instantly generate entire FAQ groups with one click using advanced AI assistance.
+* ✨ **AI Design Generator:** Describe your ideal FAQ appearance in plain language and let AI configure the full visual design — colors, layout, spacing, typography, and more — in seconds.
+* 📚 **Design Library:** 20+ ready-made appearance presets (Minimal, Dark, Colorful, Professional) with live swatch previews, importable in one click directly into the Appearance Builder.
 * 💬 **FAQ Assistant:** Floating chatbot with live search, "Ask a Question" form, helpful/not-helpful ratings, breadcrumb navigation, slide transitions, and a full Feedback Analytics dashboard — all configurable from the admin.
 * 🤖 **AI-Powered Answer Suggestions:** Instantly generate FAQ answers using AI to save time and improve accuracy.
 * ♿ **Accessibility-Ready Templates:** Ensure your FAQs are usable by everyone, including assistive technology users.
