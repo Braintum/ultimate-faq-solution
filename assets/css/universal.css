@@ -137,12 +137,16 @@
 .ufaqsw-faq[data-animation="slide"] .ufaqsw-faq__answer {
 	overflow: hidden;
 	max-height: 0;
-	transition: max-height 0.3s ease;
 	display: block !important;
 	border-top: none;
 	border-left-color: transparent;
 	border-right-color: transparent;
 	border-bottom-color: transparent;
+	/* Clip bg to content-box: at max-height:0 the content area is 0px tall so nothing
+	   paints — no bleed through the 1px transparent border-box. Background stays at
+	   var(--ufaqsw-a-bg) the entire animation so no white flash when opening/closing. */
+	background-clip: content-box;
+	transition: max-height 0.3s ease;
 }
 
 .ufaqsw-faq[data-animation="slide"] .ufaqsw-faq__answer.ufaqsw-open {
@@ -152,21 +156,38 @@
 	border-bottom-color: var(--ufaqsw-border-color);
 }
 
-/* Prevent answer bg bleeding through transparent borders when collapsed */
-.ufaqsw-faq[data-animation="slide"] .ufaqsw-faq__answer:not(.ufaqsw-open) {
-	background: transparent;
-}
-
-/* Fade animation */
+/* Fade animation — outer handles height only; inner handles opacity.
+   This keeps the background-color opaque during close so the page white
+   never shows through the fading element. */
 .ufaqsw-faq[data-animation="fade"] .ufaqsw-faq__answer {
-	transition: opacity 0.25s ease;
-	opacity: 0;
+	overflow: hidden;
+	max-height: 0;
 	display: block !important;
 	border-top: none;
+	border-left-color: transparent;
+	border-right-color: transparent;
+	border-bottom-color: transparent;
+	background-clip: content-box;
+	transition: max-height 0.01s 0.25s linear;
 }
 
 .ufaqsw-faq[data-animation="fade"] .ufaqsw-faq__answer.ufaqsw-open {
+	max-height: 2000px;
+	transition: max-height 0.01s linear;
+	border-left-color: var(--ufaqsw-border-color);
+	border-right-color: var(--ufaqsw-border-color);
+	border-bottom-color: var(--ufaqsw-border-color);
+}
+
+/* Inner wrapper fades; outer stays opaque so no white bleeds through */
+.ufaqsw-faq[data-animation="fade"] .ufaqsw-faq__answer .ufaqsw-faq__answer-inner {
+	opacity: 0;
+	transition: opacity 0.25s ease;
+}
+
+.ufaqsw-faq[data-animation="fade"] .ufaqsw-faq__answer.ufaqsw-open .ufaqsw-faq__answer-inner {
 	opacity: 1;
+	transition: opacity 0.25s ease 0.01s;
 }
 
 /* ─── Layout: classic (default) ───────────────────── */
@@ -194,9 +215,9 @@
 	border-radius: 0;
 }
 
-.ufaqsw-faq[data-layout="card"][data-animation="slide"] .ufaqsw-faq__answer:not(.ufaqsw-open) {
+.ufaqsw-faq[data-layout="card"][data-animation="slide"] .ufaqsw-faq__answer:not(.ufaqsw-open),
+.ufaqsw-faq[data-layout="card"][data-animation="fade"] .ufaqsw-faq__answer:not(.ufaqsw-open) {
 	border-top: none;
-	background: transparent;
 }
 
 /* ─── Layout: minimal ─────────────────────────────── */
@@ -266,9 +287,9 @@
 	border-radius: 0;
 }
 
-.ufaqsw-faq[data-layout="boxed"][data-animation="slide"] .ufaqsw-faq__answer:not(.ufaqsw-open) {
+.ufaqsw-faq[data-layout="boxed"][data-animation="slide"] .ufaqsw-faq__answer:not(.ufaqsw-open),
+.ufaqsw-faq[data-layout="boxed"][data-animation="fade"] .ufaqsw-faq__answer:not(.ufaqsw-open) {
 	border-top: none;
-	background: transparent;
 }
 
 /* ─── Border position: bottom-only ───────────────── */
