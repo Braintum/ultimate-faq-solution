@@ -7,7 +7,7 @@
 
 namespace BTRefiner\Admin;
 
-use BTRefiner\API\ChatGPT;
+use BTRefiner\API\AIProviderFactory;
 
 /**
  * Class AiGenerator
@@ -269,11 +269,8 @@ class AiGenerator {
 
 		$user_text = "Create a FAQ group with {$count} items based on group title: {$title}";
 		try {
-			$chatgpt = new ChatGPT();
-			$chatgpt->set_api_key( (string) cmb2_get_option( 'ufaqsw_ai_integration_settings', 'chatgpt_api_key' ) );
-			$chatgpt->set_model( (string) cmb2_get_option( 'ufaqsw_ai_integration_settings', 'chatgpt_model' ) );
-			$chatgpt->set_language( (string) cmb2_get_option( 'ufaqsw_ai_integration_settings', 'ai_language' ) );
-			$result = $chatgpt->refine( $user_text, $instruction );
+			$provider = AIProviderFactory::make();
+			$result   = $provider->complete( $user_text, $instruction );
 
 			$faq_data = json_decode( $result, true );
 

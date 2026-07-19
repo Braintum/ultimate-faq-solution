@@ -32,7 +32,7 @@
       // Check if value is matching
       function valueMatch(value) {
 
-        let checkCondition = condValue.includes(value) && value !== '';
+        let checkCondition = condValue === value && value !== '';
 
         // Invert if needed
         if (inverted === true) {
@@ -75,7 +75,7 @@
           // Check on change
           $(field).on('change', function (event) {
 
-            (!valueMatch(event.target.value)) ? conditionalField($(condParent), 'show') : conditionalField($(condParent), 'hide');
+            (valueMatch(event.target.value)) ? conditionalField($(condParent), 'show') : conditionalField($(condParent), 'hide');
 
           });
 
