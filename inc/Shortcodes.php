@@ -97,6 +97,7 @@ class Shortcodes {
 					'elements_order'  => 'asc',
 					'exclude_items'   => '',
 					'show_expand_all' => 'no',
+					'appearance_id'   => '',
 				),
 				$atts
 			)
@@ -139,7 +140,11 @@ class Shortcodes {
 					$faqs = array_values( array_reverse( $faqs, true ) );
 				}
 
-				$designs = apply_filters( 'ufaqsw_simplify_configuration_variables', ufaqsw_get_appearance_id( get_the_ID() ) );
+				$resolved_appearance_id = ( ! empty( $appearance_id ) && 'ufaqsw_appearance' === get_post_type( (int) $appearance_id ) )
+					? (int) $appearance_id
+					: ufaqsw_get_appearance_id( get_the_ID() );
+
+				$designs = apply_filters( 'ufaqsw_simplify_configuration_variables', $resolved_appearance_id );
 				if ( null === $title_hide ) {
 					if ( isset( $designs['hidetitle'] ) && 1 === (int) $designs['hidetitle'] ) {
 						$title_hide = 'yes';
@@ -193,6 +198,7 @@ class Shortcodes {
 					'elements_order'  => 'asc',
 					'behaviour'       => 'default',
 					'show_expand_all' => 'no',
+					'appearance_id'   => '',
 				),
 				$atts
 			)
@@ -208,6 +214,10 @@ class Shortcodes {
 		);
 
 		$original_title_hide = $title_hide;
+
+		$force_appearance_id = ( ! empty( $appearance_id ) && 'ufaqsw_appearance' === get_post_type( (int) $appearance_id ) )
+			? (int) $appearance_id
+			: null;
 
 		// default template.
 		$template  = 'default';
@@ -235,14 +245,14 @@ class Shortcodes {
 
 				if ( null === $title_hide ) {
 
-					$hide_title = get_post_meta( ufaqsw_get_appearance_id( get_the_ID() ), 'ufaqsw_hide_title', true );
+					$hide_title = get_post_meta( $force_appearance_id ?? ufaqsw_get_appearance_id( get_the_ID() ), 'ufaqsw_hide_title', true );
 
 					if ( '' !== $hide_title ) {
 						$title_hide = 'yes';
 					}
 				}
 
-				$designs = apply_filters( 'ufaqsw_simplify_configuration_variables', ufaqsw_get_appearance_id( get_the_ID() ) );
+				$designs = apply_filters( 'ufaqsw_simplify_configuration_variables', $force_appearance_id ?? ufaqsw_get_appearance_id( get_the_ID() ) );
 
 				if ( in_array( $behaviour, array( 'toggle', 'accordion' ) ) ) { // phpcs:ignore
 					$designs['behaviour'] = $behaviour;

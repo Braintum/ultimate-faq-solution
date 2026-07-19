@@ -21,6 +21,7 @@ $exclude        = $ufaqsw_preview_data['exclude'] ?? '';
 $behaviour      = $ufaqsw_preview_data['behaviour'] ?? '';
 $elements_order = $ufaqsw_preview_data['elements_order'] ?? '';
 $hide_title     = $ufaqsw_preview_data['hide_title'] ?? '0';
+$appearance_id  = $ufaqsw_preview_data['appearance_id'] ?? 0;
 
 $shortcode = '';
 
@@ -69,6 +70,10 @@ if ( empty( $group ) ) {
 
 	if ( '1' === $hide_title ) {
 		$shortcode_atts['title_hide'] = 'yes';
+	}
+
+	if ( ! empty( $appearance_id ) ) {
+		$shortcode_atts['appearance_id'] = $appearance_id;
 	}
 
 	// Build shortcode string.

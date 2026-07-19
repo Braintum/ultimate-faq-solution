@@ -30,7 +30,11 @@ registerBlockType('ultimate-faq-solution/block', {
         },
 		hideTitle: {
             type: 'boolean',
-            default: false,  // default to false
+            default: false,
+        },
+		appearanceId: {
+            type: 'string',
+            default: '',
         }
     },
 	/**
@@ -50,6 +54,7 @@ registerBlockType('ultimate-faq-solution/block', {
     edit({ attributes, setAttributes, isSelected, context, clientId }) {
 		
 		const [faqGroups, setFaqGroups] = useState([]);
+		const [appearances, setAppearances] = useState([]);
 		const [faqContent, setFaqContent] = useState('');
 		const [isLoading, setIsLoading] = useState(false);
 		const { selectBlock } = useDispatch('core/block-editor');
@@ -60,6 +65,9 @@ registerBlockType('ultimate-faq-solution/block', {
 		useEffect(() => {
 			apiFetch({ path: '/wp/v2/ufaqsw?per_page=100' }).then((posts) => {
 				setFaqGroups(posts);
+			});
+			apiFetch({ path: '/ufaqsw/v1/appearances' }).then((items) => {
+				setAppearances(items);
 			});
 		}, []);
 
@@ -74,7 +82,8 @@ registerBlockType('ultimate-faq-solution/block', {
 					exclude: attributes.exclude.join(','),
 					behaviour: behaviourValue,
 					elements_order: orderValue,
-					hideTitle: attributes.hideTitle ? '1' : '0'
+					hideTitle: attributes.hideTitle ? '1' : '0',
+					appearanceId: attributes.appearanceId || '',
 				});
 
 				const iframeUrl = `/ufaqsw-preview/?${params.toString()}`;
@@ -84,7 +93,7 @@ registerBlockType('ultimate-faq-solution/block', {
 				setFaqContent('');
 				setIsLoading(false);
 			}
-		}, [attributes.group, attributes.exclude, attributes.behaviour, attributes.elements_order, attributes.hideTitle]);
+		}, [attributes.group, attributes.exclude, attributes.behaviour, attributes.elements_order, attributes.hideTitle, attributes.appearanceId]);
 
 		const behaviours = [
 			{
@@ -222,7 +231,21 @@ registerBlockType('ultimate-faq-solution/block', {
 							</PanelBody>
 						)}
 					</PanelBody>
-					
+
+					<PanelBody title={__( 'Appearance', 'ufaqsw' )}>
+						<SelectControl
+							label={__( 'Override Appearance', 'ufaqsw' )}
+							help={__( 'Select an appearance preset to use for this block, overriding the FAQ group\'s linked appearance.', 'ufaqsw' )}
+							__next40pxDefaultSize={ true }
+							value={attributes.appearanceId}
+							options={[
+								{ label: __( 'Use group default', 'ufaqsw' ), value: '' },
+								...appearances.map( ( a ) => ( { label: a.title, value: String( a.id ) } ) ),
+							]}
+							onChange={( value ) => setAttributes( { appearanceId: value } )}
+						/>
+					</PanelBody>
+
 				</InspectorControls>
 
 				<div {...blockProps}>

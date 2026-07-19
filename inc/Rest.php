@@ -98,6 +98,19 @@ class Rest {
 			)
 		);
 
+		// List all appearance presets for the block editor dropdown.
+		register_rest_route(
+			'ufaqsw/v1',
+			'/appearances',
+			array(
+				'methods'             => 'GET',
+				'callback'            => array( $this, 'get_appearances' ),
+				'permission_callback' => function () {
+					return current_user_can( 'edit_posts' );
+				},
+			)
+		);
+
 		// AI design generation endpoint.
 		register_rest_route(
 			'ufaqsw/v1',
@@ -110,6 +123,35 @@ class Rest {
 				},
 			)
 		);
+	}
+
+	/**
+	 * Return all appearance presets as a lightweight id/title list.
+	 *
+	 * @return \WP_REST_Response
+	 */
+	public function get_appearances() {
+		$posts = get_posts(
+			array(
+				'post_type'      => 'ufaqsw_appearance',
+				'posts_per_page' => -1,
+				'post_status'    => 'publish',
+				'orderby'        => 'title',
+				'order'          => 'ASC',
+			)
+		);
+
+		$items = array_map(
+			function ( $post ) {
+				return array(
+					'id'    => $post->ID,
+					'title' => $post->post_title,
+				);
+			},
+			$posts
+		);
+
+		return new \WP_REST_Response( $items );
 	}
 
 	/**
@@ -394,6 +436,7 @@ class Rest {
 		$behaviour      = sanitize_text_field( wp_unslash( $_GET['behaviour'] ?? '' ) );
 		$elements_order = sanitize_text_field( wp_unslash( $_GET['elements_order'] ?? '' ) );
 		$hide_title     = sanitize_text_field( wp_unslash( $_GET['hideTitle'] ?? '0' ) );
+		$appearance_id  = absint( $_GET['appearanceId'] ?? 0 );
 
 		// Store in global for template access.
 		global $ufaqsw_preview_data;
@@ -403,6 +446,7 @@ class Rest {
 			'behaviour'      => $behaviour,
 			'elements_order' => $elements_order,
 			'hide_title'     => $hide_title,
+			'appearance_id'  => $appearance_id,
 		);
 
 		// Load the preview template.

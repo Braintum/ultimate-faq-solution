@@ -64,6 +64,10 @@ function ufaq_register_block_assets() {
 					'type'    => 'boolean',
 					'default' => false,
 				),
+				'appearanceId'   => array(
+					'type'    => 'string',
+					'default' => '',
+				),
 			),
 		)
 	);
@@ -84,6 +88,7 @@ function ufaq_render_block_callback( $attributes ) {
 	$behaviour      = $attributes['behaviour'] ?? '';
 	$elements_order = $attributes['elements_order'] ?? '';
 	$hide_title     = $attributes['hideTitle'] ?? false;
+	$appearance_id  = $attributes['appearanceId'] ?? '';
 
 	if ( empty( $group ) ) {
 		return __( 'No FAQ group selected.', 'ufaqsw' );
@@ -109,6 +114,10 @@ function ufaq_render_block_callback( $attributes ) {
 
 	if ( $hide_title ) {
 		$shortcode .= ' title_hide="yes"';
+	}
+
+	if ( ! empty( $appearance_id ) ) {
+		$shortcode .= ' appearance_id="' . esc_attr( $appearance_id ) . '"';
 	}
 
 	$shortcode .= ']';
