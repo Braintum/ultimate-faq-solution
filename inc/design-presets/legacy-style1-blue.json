@@ -1,0 +1,24 @@
+{
+  "id": "legacy-style1-blue",
+  "name": "Style 1 \u2014 Blue",
+  "description": "Style 1 template with a professional sapphire-blue accent.",
+  "category": "legacy",
+  "settings": {
+    "template": "style-1",
+    "behaviour": "accordion",
+    "showall": false,
+    "border_color": "#bfdbfe",
+    "normal_icon": "fa-chevron-right",
+    "active_icon": "fa-chevron-down",
+    "hidetitle": false,
+    "title_color": "#1e40af",
+    "title_font_size": "18",
+    "question_color": "#1e3a5f",
+    "question_background_color": "#eff6ff",
+    "question_font_size": "15",
+    "question_bold": false,
+    "answer_color": "#1e40af",
+    "answer_background_color": "#f0f9ff",
+    "answer_font_size": "14"
+  }
+}

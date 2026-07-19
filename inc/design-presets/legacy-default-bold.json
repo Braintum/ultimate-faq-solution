@@ -1,0 +1,24 @@
+{
+  "id": "legacy-default-bold",
+  "name": "Default \u2014 Bold",
+  "description": "Default template with high contrast and bold question text.",
+  "category": "legacy",
+  "settings": {
+    "template": "default",
+    "behaviour": "accordion",
+    "showall": false,
+    "border_color": "#1e293b",
+    "normal_icon": "fa-chevron-down",
+    "active_icon": "fa-chevron-up",
+    "hidetitle": false,
+    "title_color": "#0f172a",
+    "title_font_size": "20",
+    "question_color": "#0f172a",
+    "question_background_color": "#f1f5f9",
+    "question_font_size": "16",
+    "question_bold": true,
+    "answer_color": "#334155",
+    "answer_background_color": "#ffffff",
+    "answer_font_size": "14"
+  }
+}

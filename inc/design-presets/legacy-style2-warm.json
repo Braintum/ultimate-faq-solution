@@ -1,0 +1,24 @@
+{
+  "id": "legacy-style2-warm",
+  "name": "Style 2 \u2014 Warm",
+  "description": "Style 2 template with warm amber and golden tones.",
+  "category": "legacy",
+  "settings": {
+    "template": "style-2",
+    "behaviour": "accordion",
+    "showall": false,
+    "border_color": "#fcd34d",
+    "normal_icon": "fa-plus",
+    "active_icon": "fa-minus",
+    "hidetitle": false,
+    "title_color": "#92400e",
+    "title_font_size": "18",
+    "question_color": "#78350f",
+    "question_background_color": "#fffbeb",
+    "question_font_size": "15",
+    "question_bold": false,
+    "answer_color": "#92400e",
+    "answer_background_color": "#fffde7",
+    "answer_font_size": "14"
+  }
+}

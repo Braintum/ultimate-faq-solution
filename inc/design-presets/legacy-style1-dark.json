@@ -1,0 +1,24 @@
+{
+  "id": "legacy-style1-dark",
+  "name": "Style 1 \u2014 Dark",
+  "description": "Style 1 template in a deep charcoal dark theme.",
+  "category": "legacy",
+  "settings": {
+    "template": "style-1",
+    "behaviour": "accordion",
+    "showall": false,
+    "border_color": "#374151",
+    "normal_icon": "fa-chevron-down",
+    "active_icon": "fa-chevron-up",
+    "hidetitle": false,
+    "title_color": "#f9fafb",
+    "title_font_size": "18",
+    "question_color": "#e5e7eb",
+    "question_background_color": "#1f2937",
+    "question_font_size": "15",
+    "question_bold": false,
+    "answer_color": "#9ca3af",
+    "answer_background_color": "#111827",
+    "answer_font_size": "14"
+  }
+}

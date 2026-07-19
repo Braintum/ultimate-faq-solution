@@ -1,0 +1,24 @@
+{
+  "id": "legacy-default-toggle",
+  "name": "Default \u2014 Toggle",
+  "description": "Default template in toggle mode \u2014 multiple items can stay open.",
+  "category": "legacy",
+  "settings": {
+    "template": "default",
+    "behaviour": "toggle",
+    "showall": false,
+    "border_color": "#cbd5e1",
+    "normal_icon": "fa-angle-down",
+    "active_icon": "fa-angle-up",
+    "hidetitle": false,
+    "title_color": "#1e293b",
+    "title_font_size": "18",
+    "question_color": "#334155",
+    "question_background_color": "#f8fafc",
+    "question_font_size": "15",
+    "question_bold": false,
+    "answer_color": "#475569",
+    "answer_background_color": "#f1f5f9",
+    "answer_font_size": "14"
+  }
+}

@@ -7,6 +7,7 @@ const CATEGORY_LABELS = {
     colorful:     'Colorful',
     dark:         'Dark',
     professional: 'Professional',
+    legacy:       'Legacy Templates',
 };
 
 function categoryLabel( cat ) {

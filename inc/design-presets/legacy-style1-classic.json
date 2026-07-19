@@ -1,0 +1,24 @@
+{
+  "id": "legacy-style1-classic",
+  "name": "Style 1 \u2014 Classic",
+  "description": "Style 1 template with a clean neutral finish.",
+  "category": "legacy",
+  "settings": {
+    "template": "style-1",
+    "behaviour": "accordion",
+    "showall": false,
+    "border_color": "#e5e7eb",
+    "normal_icon": "fa-plus",
+    "active_icon": "fa-minus",
+    "hidetitle": false,
+    "title_color": "#111827",
+    "title_font_size": "18",
+    "question_color": "#111827",
+    "question_background_color": "#f9fafb",
+    "question_font_size": "15",
+    "question_bold": false,
+    "answer_color": "#374151",
+    "answer_background_color": "#ffffff",
+    "answer_font_size": "14"
+  }
+}

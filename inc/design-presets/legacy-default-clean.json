@@ -1,0 +1,24 @@
+{
+  "id": "legacy-default-clean",
+  "name": "Default \u2014 Clean",
+  "description": "Default template with a crisp, light minimal style.",
+  "category": "legacy",
+  "settings": {
+    "template": "default",
+    "behaviour": "accordion",
+    "showall": false,
+    "border_color": "#e2e8f0",
+    "normal_icon": "fa-plus",
+    "active_icon": "fa-minus",
+    "hidetitle": false,
+    "title_color": "#1e293b",
+    "title_font_size": "18",
+    "question_color": "#1e293b",
+    "question_background_color": "#f8fafc",
+    "question_font_size": "15",
+    "question_bold": false,
+    "answer_color": "#475569",
+    "answer_background_color": "#ffffff",
+    "answer_font_size": "14"
+  }
+}

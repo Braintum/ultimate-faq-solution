@@ -1,0 +1,24 @@
+{
+  "id": "legacy-style2-night",
+  "name": "Style 2 \u2014 Night",
+  "description": "Style 2 template in a deep night-sky blue with toggle mode.",
+  "category": "legacy",
+  "settings": {
+    "template": "style-2",
+    "behaviour": "toggle",
+    "showall": false,
+    "border_color": "#1e3a5f",
+    "normal_icon": "fa-plus",
+    "active_icon": "fa-minus",
+    "hidetitle": false,
+    "title_color": "#bfdbfe",
+    "title_font_size": "18",
+    "question_color": "#dbeafe",
+    "question_background_color": "#0c1a2e",
+    "question_font_size": "15",
+    "question_bold": false,
+    "answer_color": "#93c5fd",
+    "answer_background_color": "#0a1628",
+    "answer_font_size": "14"
+  }
+}
