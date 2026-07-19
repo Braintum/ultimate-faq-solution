@@ -21,6 +21,7 @@ export function SettingsPanel({
     isSaving,
     linkedGroups = [],
     lastSaveGroupCount = null,
+    onOpenDesignLibrary,
 }) {
     const groupCount = linkedGroups.length;
 
@@ -30,6 +31,13 @@ export function SettingsPanel({
             {/* Header */}
             <div className="flex items-center justify-between p-4 border-b flex-shrink-0">
                 <h3 className="text-lg font-semibold">{__('Appearance Builder', 'ufaqsw')}</h3>
+                <button
+                    type="button"
+                    onClick={onOpenDesignLibrary}
+                    className="text-xs text-blue-600 hover:text-blue-700 font-medium border border-blue-200 hover:border-blue-400 rounded px-2.5 py-1 transition-colors cursor-pointer"
+                >
+                    {__('Design Library', 'ufaqsw')}
+                </button>
             </div>
 
             {/* "Applied to X groups" indicator */}

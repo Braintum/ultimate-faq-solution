@@ -360,3 +360,6 @@ export { PreviewPanel } from './PreviewPanel';
 
 // Re-export NotificationToast
 export { NotificationToast } from './NotificationToast';
+
+// Re-export DesignLibraryModal
+export { DesignLibraryModal } from './DesignLibraryModal';

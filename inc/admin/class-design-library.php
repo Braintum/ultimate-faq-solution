@@ -16,49 +16,29 @@ class DesignLibrary {
 	 * Constructor.
 	 */
 	public function __construct() {
-		add_action( 'admin_menu', array( $this, 'add_submenu' ) );
 		add_action( 'admin_post_ufaqsw_import_design', array( $this, 'handle_import' ) );
-		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
+		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_builder_data' ) );
 	}
 
 	/**
-	 * Register submenu under the FAQ Groups list.
-	 */
-	public function add_submenu() {
-		add_submenu_page(
-			'edit.php?post_type=ufaqsw',
-			__( 'Design Library', 'ufaqsw' ),
-			__( 'Design Library', 'ufaqsw' ),
-			'manage_options',
-			'ufaqsw-design-library',
-			array( $this, 'render_page' )
-		);
-	}
-
-	/**
-	 * Enqueue styles for the library page.
+	 * Inject preset data into the appearance builder JS context.
 	 *
 	 * @param string $hook Current admin screen hook.
 	 */
-	public function enqueue_scripts( $hook ) {
-		if ( 'ufaqsw_page_ufaqsw-design-library' !== $hook ) {
+	public function enqueue_builder_data( $hook ) {
+		$screen = get_current_screen();
+		if ( ! $screen || 'ufaqsw_appearance' !== $screen->post_type ) {
 			return;
 		}
-		wp_enqueue_style( 'ufaqsw-design-library', UFAQSW__PLUGIN_URL . 'assets/css/design-library.css', array(), UFAQSW_VERSION );
-	}
+		if ( ! in_array( $screen->base, array( 'post', 'post-new' ), true ) ) {
+			return;
+		}
 
-	/**
-	 * Render the Design Library admin page.
-	 */
-	public function render_page() {
-		$presets         = $this->get_presets();
-		$active_category = isset( $_GET['category'] ) ? sanitize_text_field( wp_unslash( $_GET['category'] ) ) : 'all'; // phpcs:ignore
-		$categories      = $this->get_categories( $presets );
-
-		$imported = isset( $_GET['imported'] ) ? intval( $_GET['imported'] ) : 0; // phpcs:ignore
-		$edit_url = $imported ? get_edit_post_link( $imported, 'raw' ) : '';
-
-		include UFAQSW__PLUGIN_DIR . 'inc/admin/templates/design-library.php';
+		wp_add_inline_script(
+			'ufaq-admin-js',
+			'window.ufaqDesignLibraryData = ' . wp_json_encode( array( 'presets' => $this->get_presets() ) ) . ';',
+			'before'
+		);
 	}
 
 	/**

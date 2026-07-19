@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { toBase64, DEFAULT_SCHEMA, buildInitialState, resetToDefaults } from './helpers';
-import { SettingsPanel, PreviewPanel, NotificationToast } from './components';
+import { SettingsPanel, PreviewPanel, NotificationToast, DesignLibraryModal } from './components';
 import { __ } from '@wordpress/i18n';
 
 // ----------------------------- Main Builder -----------------------------
@@ -23,6 +23,7 @@ export default function AppearanceBuilder({
     const [notification, setNotification] = useState(null);
     // null = never saved in this session; number = group count at last save
     const [lastSaveGroupCount, setLastSaveGroupCount] = useState(null);
+    const [showDesignLibrary, setShowDesignLibrary] = useState(false);
     const iframeRef = React.useRef(null);
 
     // Debounce values changes
@@ -96,6 +97,15 @@ export default function AppearanceBuilder({
         setValues((prev) => ({ ...prev, [key]: val }));
     }
 
+    function handleApplyPreset(name, settings) {
+        setValues((prev) => ({ ...prev, ...settings }));
+        const titleInput = document.getElementById('title');
+        if (titleInput && name) {
+            titleInput.value = name;
+            titleInput.dispatchEvent(new Event('input', { bubbles: true }));
+        }
+    }
+
     function handleReset() {
         setValues(resetToDefaults(schema));
     }
@@ -142,6 +152,7 @@ export default function AppearanceBuilder({
                 isSaving={isSaving}
                 linkedGroups={linkedGroups}
                 lastSaveGroupCount={lastSaveGroupCount}
+                onOpenDesignLibrary={() => setShowDesignLibrary(true)}
             />
 
             <PreviewPanel
@@ -155,6 +166,12 @@ export default function AppearanceBuilder({
             {notification && (
                 <NotificationToast notification={notification} setNotification={setNotification} />
             )}
+
+            <DesignLibraryModal
+                isOpen={showDesignLibrary}
+                onClose={() => setShowDesignLibrary(false)}
+                onApply={handleApplyPreset}
+            />
         </div>
     );
 }
