@@ -49,7 +49,7 @@ export const DEFAULT_SCHEMA = {
           { value: "default",   label: "Default" },
           { value: "style-1",   label: "Style 1" },
           { value: "style-2",   label: "Style 2" },
-          { value: "universal", label: "Custom Builder" },
+          { value: "universal", label: "Universal" },
         ],
         default: "default",
       },
