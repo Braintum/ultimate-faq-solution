@@ -253,6 +253,21 @@ Yes! Starting from version 1.6.4, Ultimate FAQ Solution includes an AI-powered f
 * Enhanced: 🔁 **Smarter retry logic** — transient network/server errors are retried up to 2 times with exponential back-off; rate-limit errors (`429`) now fail immediately instead of wasting 3 seconds and extra quota on doomed retries.
 * Enhanced: 💬 **Improved rate-limit error messages** — instead of a bare "Rate limit exceeded", users now see actionable guidance: the provider name, a suggested wait time (30–60 s), and a note to consider upgrading their API plan.
 
+* New: 🎨 **Universal Template ("Custom Builder")** — a brand-new CSS custom-properties-driven template that separates structure from styling. All design values (colors, sizes, spacing, borders) are set as inline CSS variables on the FAQ container, enabling unlimited visual variety without touching code. Select it as "Custom Builder" in the Appearance Builder.
+* New: 📐 **4 Layout Variants** — the Custom Builder template supports four structural layouts selectable from the builder: **Classic** (standard bordered accordion), **Card** (per-item shadow cards), **Minimal** (line-separator only, transparent backgrounds), and **Boxed** (entire group wrapped in a single outer frame). Layouts are applied via a `data-layout` attribute and controlled purely by CSS — no extra PHP needed.
+* New: ✨ **Open/Close Animation** — choose between None, Slide (max-height transition), or Fade (opacity transition) for the Custom Builder template answer panels. Animation type is stored per appearance and rendered via `data-animation` attribute.
+* New: 📏 **Spacing controls** — new Spacing panel in the Appearance Builder exposes Item Padding and Item Gap sliders. Applies to the Custom Builder template via CSS variables.
+* New: 🔲 **Border controls** — new Borders panel with Border Radius, Border Width (px), and Border Style (solid/dashed/dotted) sliders. Applies to the Custom Builder template via CSS variables.
+* New: 🔤 **Typography controls** — new Typography panel with Question Font Weight (dropdown), Answer Line Height (dropdown), and Icon Size slider. Applies to the Custom Builder template via CSS variables.
+* New: 💻 **Custom CSS field** — power users can add scoped custom CSS directly in the Appearance Builder. Output is sanitized and injected as a `<style>` block alongside the FAQ group.
+* New: 🗄️ **Design JSON storage** — appearance settings are now persisted as a single `ufaqsw_design_settings` JSON blob in post meta alongside the individual legacy keys. New appearances use the JSON as the canonical source; existing appearances continue to read from individual keys with zero migration required.
+* New: 📚 **Design Library** — a new admin page under **FAQ Groups → Design Library** displays 10 bundled design presets. Each preset shows a live color swatch preview, category badge, and an "Import Design" button that creates a fully configured appearance post and opens it directly in the builder.
+* New: 🎁 **10 bundled design presets** — Clean White, Dark Pro, Soft Blue, Enterprise Gray, Midnight, Nature Green, Bold Orange, Purple Modern, Warm Cream, Boxed Slate — covering minimal, colorful, dark, and professional categories across all four layout variants.
+* New: 🔌 **REST import endpoint** — `POST /wp-json/ufaqsw/v1/designs/import` accepts a `preset_id` and creates a new appearance post, for headless or programmatic use.
+* Enhanced: 🧩 **Appearance Builder groups are context-aware** — Spacing, Borders, Typography, and Custom CSS panels are hidden when a legacy template (Default, Style 1, Style 2) is active, and revealed automatically when Custom Builder is selected.
+* Enhanced: 🔲 **Radio selector grid layout** — the Template Style and Layout Variant radio fields now render in a 2-column grid so they never cause horizontal overflow in the settings panel.
+* Enhanced: 🏷️ **"Custom Builder" chip** on the FAQ Appearances list table — the template column now recognises and displays the new template type alongside the existing three.
+
 
 =1.8.3=
 * fix(seo): FAQ schema output issue when adding shortcode in answer
