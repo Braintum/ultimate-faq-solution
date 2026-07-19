@@ -97,6 +97,19 @@ class Rest {
 				},
 			)
 		);
+
+		// AI design generation endpoint.
+		register_rest_route(
+			'ufaqsw/v1',
+			'/ai/generate-design',
+			array(
+				'methods'             => 'POST',
+				'callback'            => array( $this, 'generate_ai_design' ),
+				'permission_callback' => function () {
+					return current_user_can( 'edit_posts' );
+				},
+			)
+		);
 	}
 
 	/**
@@ -117,7 +130,7 @@ class Rest {
 			return new \WP_Error( 'unauthorized', 'You do not have permission to edit this post', array( 'status' => 403 ) );
 		}
 
-		$sanitized = $this->sanitize_appearance_settings( $settings );
+		$sanitized = self::sanitize_appearance_settings( $settings );
 
 		// Phase 4: save canonical JSON blob.
 		update_post_meta( $post_id, 'ufaqsw_design_settings', wp_json_encode( $sanitized ) );
@@ -132,6 +145,52 @@ class Rest {
 				'settings' => $sanitized,
 			)
 		);
+	}
+
+	/**
+	 * Generate appearance settings from a natural-language prompt via the configured AI provider.
+	 *
+	 * @param \WP_REST_Request $request The REST request object.
+	 * @return \WP_REST_Response|\WP_Error
+	 */
+	public function generate_ai_design( $request ) {
+		$prompt           = sanitize_textarea_field( $request->get_param( 'prompt' ) ?? '' );
+		$current_settings = (array) ( $request->get_param( 'current_settings' ) ?? array() );
+
+		if ( '' === trim( $prompt ) ) {
+			return new \WP_Error( 'no_prompt', __( 'Prompt is required.', 'ufaqsw' ), array( 'status' => 400 ) );
+		}
+
+		// Rate limiting: 10 requests per hour per user.
+		$user_id   = get_current_user_id();
+		$cache_key = 'ufaqsw_ai_design_rl_' . $user_id;
+		$count     = (int) get_transient( $cache_key );
+
+		if ( $count >= 10 ) {
+			return new \WP_Error(
+				'rate_limited',
+				__( 'Limit of 10 AI design generations per hour reached. Please try again later.', 'ufaqsw' ),
+				array( 'status' => 429 )
+			);
+		}
+
+		try {
+			$generator = new AiDesignGenerator();
+			$settings  = $generator->generate( $prompt, $current_settings );
+
+			set_transient( $cache_key, $count + 1, HOUR_IN_SECONDS );
+
+			return rest_ensure_response(
+				array(
+					'success'  => true,
+					'settings' => $settings,
+				)
+			);
+		} catch ( \BTRefiner\Exceptions\AIProviderException $e ) {
+			return new \WP_Error( 'ai_provider_error', $e->getMessage(), array( 'status' => 502 ) );
+		} catch ( \RuntimeException $e ) {
+			return new \WP_Error( 'generation_error', $e->getMessage(), array( 'status' => 500 ) );
+		}
 	}
 
 	/**
@@ -169,7 +228,7 @@ class Rest {
 			return $post_id;
 		}
 
-		$sanitized = $this->sanitize_appearance_settings( $data['settings'] );
+		$sanitized = self::sanitize_appearance_settings( $data['settings'] );
 		update_post_meta( $post_id, 'ufaqsw_design_settings', wp_json_encode( $sanitized ) );
 		$this->save_individual_meta( $post_id, $sanitized );
 
@@ -224,10 +283,12 @@ class Rest {
 	/**
 	 * Sanitize appearance settings.
 	 *
+	 * Static so it can be called from AiDesignGenerator without re-instantiating Rest.
+	 *
 	 * @param array $settings The settings array to sanitize.
 	 * @return array Sanitized settings.
 	 */
-	public function sanitize_appearance_settings( $settings ) {
+	public static function sanitize_appearance_settings( $settings ) {
 		if ( ! is_array( $settings ) ) {
 			return array();
 		}

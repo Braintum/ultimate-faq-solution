@@ -122,6 +122,8 @@ class AppearanceActions {
 			}
 		}
 
+		$ai_settings = get_option( 'ufaqsw_ai_integration_settings', array() );
+
 		// Build linked groups for the React "Applied to X groups" indicator.
 		$post_id        = get_the_ID();
 		$linked_ids     = $post_id ? ufaqsw_get_group_ids_by_appearance( $post_id ) : array();
@@ -145,8 +147,10 @@ class AppearanceActions {
 				'postId'         => $post_id,
 				'saveEndpoint'   => rest_url( 'ufaqsw/v1/appearance/save' ),
 				'nonce'          => wp_create_nonce( 'wp_rest' ),
-				'icons'          => $fontawesome_icons,
-				'linkedGroups'   => array_values( $linked_groups ),
+				'icons'              => $fontawesome_icons,
+				'linkedGroups'       => array_values( $linked_groups ),
+				'aiGenerateEndpoint' => rest_url( 'ufaqsw/v1/ai/generate-design' ),
+				'aiEnabled'          => ! empty( $ai_settings['enable_ai_integration'] ),
 			)
 		);
 	}

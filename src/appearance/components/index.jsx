@@ -363,3 +363,6 @@ export { NotificationToast } from './NotificationToast';
 
 // Re-export DesignLibraryModal
 export { DesignLibraryModal } from './DesignLibraryModal';
+
+// Re-export AiDesignModal
+export { AiDesignModal } from './AiDesignModal';

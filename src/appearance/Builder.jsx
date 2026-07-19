@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { toBase64, DEFAULT_SCHEMA, buildInitialState, resetToDefaults } from './helpers';
-import { SettingsPanel, PreviewPanel, NotificationToast, DesignLibraryModal } from './components';
+import { SettingsPanel, PreviewPanel, NotificationToast, DesignLibraryModal, AiDesignModal } from './components';
 import { __ } from '@wordpress/i18n';
 
 // ----------------------------- Main Builder -----------------------------
@@ -24,6 +24,7 @@ export default function AppearanceBuilder({
     // null = never saved in this session; number = group count at last save
     const [lastSaveGroupCount, setLastSaveGroupCount] = useState(null);
     const [showDesignLibrary, setShowDesignLibrary] = useState(false);
+    const [showAiDesign, setShowAiDesign] = useState(false);
     const iframeRef = React.useRef(null);
 
     // Debounce values changes
@@ -153,6 +154,7 @@ export default function AppearanceBuilder({
                 linkedGroups={linkedGroups}
                 lastSaveGroupCount={lastSaveGroupCount}
                 onOpenDesignLibrary={() => setShowDesignLibrary(true)}
+                onOpenAiDesign={() => setShowAiDesign(true)}
             />
 
             <PreviewPanel
@@ -171,6 +173,13 @@ export default function AppearanceBuilder({
                 isOpen={showDesignLibrary}
                 onClose={() => setShowDesignLibrary(false)}
                 onApply={handleApplyPreset}
+            />
+
+            <AiDesignModal
+                isOpen={showAiDesign}
+                onClose={() => setShowAiDesign(false)}
+                onApply={handleApplyPreset}
+                currentValues={values}
             />
         </div>
     );

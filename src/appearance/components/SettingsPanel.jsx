@@ -22,6 +22,7 @@ export function SettingsPanel({
     linkedGroups = [],
     lastSaveGroupCount = null,
     onOpenDesignLibrary,
+    onOpenAiDesign,
 }) {
     const groupCount = linkedGroups.length;
 
@@ -29,15 +30,24 @@ export function SettingsPanel({
         <div className="w-96 bg-white border rounded shadow-sm flex flex-col h-[1000px]">
 
             {/* Header */}
-            <div className="flex items-center justify-between p-4 border-b flex-shrink-0">
-                <h3 className="text-lg font-semibold">{__('Appearance Builder', 'ufaqsw')}</h3>
-                <button
-                    type="button"
-                    onClick={onOpenDesignLibrary}
-                    className="text-xs text-blue-600 hover:text-blue-700 font-medium border border-blue-200 hover:border-blue-400 rounded px-2.5 py-1 transition-colors cursor-pointer"
-                >
-                    {__('Design Library', 'ufaqsw')}
-                </button>
+            <div className="p-4 border-b flex-shrink-0">
+                <h3 className="text-base font-semibold mb-2">{__('Appearance Builder', 'ufaqsw')}</h3>
+                <div className="flex gap-1.5">
+                    <button
+                        type="button"
+                        onClick={onOpenAiDesign}
+                        className="flex-1 text-xs text-purple-600 hover:text-purple-700 font-medium border border-purple-200 hover:border-purple-400 rounded px-2 py-1 transition-colors cursor-pointer whitespace-nowrap"
+                    >
+                        ✨ {__('AI Generate', 'ufaqsw')}
+                    </button>
+                    <button
+                        type="button"
+                        onClick={onOpenDesignLibrary}
+                        className="flex-1 text-xs text-blue-600 hover:text-blue-700 font-medium border border-blue-200 hover:border-blue-400 rounded px-2 py-1 transition-colors cursor-pointer whitespace-nowrap"
+                    >
+                        {__('Design Library', 'ufaqsw')}
+                    </button>
+                </div>
             </div>
 
             {/* "Applied to X groups" indicator */}

@@ -195,6 +195,9 @@ Yes! Starting from version 1.6.4, Ultimate FAQ Solution includes an AI-powered f
 == Changelog ==
 
 =1.8.4=
+* New: ✨ **AI Design Generator** — a new "✨ AI Generate" button in the Appearance Builder lets you describe a design in plain language and instantly receive a fully configured set of appearance settings. Uses whichever AI provider is already configured in AI Integration settings (OpenAI, Anthropic, Gemini, Mistral, Ollama, or any custom endpoint) — no separate setup required.
+* New: 🎨 **Prompt-to-design workflow** — type a free-form description (e.g. "dark mode with deep navy and purple accents, card layout") or pick from quick-tag chips (Minimal, Dark, Colorful, Professional, Card layout, Left accent). An optional checkbox lets you build on your current settings or start from scratch.
+* New: 🖼️ **Generated design preview** — before applying, a color swatch previewing the question row and answer panel is shown alongside a note that it is an approximation and the live preview will show the full result.
 * New: ➕ **Expand / Collapse All button** — add `show_expand_all="yes"` to any `[ufaqsw]` or `[ufaqsw-all]` shortcode to display a button that expands or collapses every FAQ item at once. Works with the Default, Style-1, and Style-2 templates. Not shown in accordion mode.
 * Fixed: 🐛 **Global custom CSS being silently discarded** for Style-1 and Style-2 templates — a premature `$custom_css = ''` reset inside the CSS generator was overwriting any global custom CSS added via plugin settings.
 * Fixed: 🐛 **CSS `>` child selectors stripped from inline styles** — `esc_html()` was applied to custom style strings, which HTML-encoded `>` and broke CSS rules like `div > p`. Replaced with `wp_strip_all_tags()`.
