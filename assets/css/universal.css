@@ -117,10 +117,16 @@
 	transition: max-height 0.3s ease;
 	display: block !important;
 	border-top: none;
+	border-left-color: transparent;
+	border-right-color: transparent;
+	border-bottom-color: transparent;
 }
 
 .ufaqsw-faq[data-animation="slide"] .ufaqsw-faq__answer.ufaqsw-open {
 	max-height: 2000px;
+	border-left-color: var(--ufaqsw-border-color);
+	border-right-color: var(--ufaqsw-border-color);
+	border-bottom-color: var(--ufaqsw-border-color);
 }
 
 /* Fade animation */
@@ -160,18 +166,21 @@
 	border-radius: 0;
 }
 
+.ufaqsw-faq[data-layout="card"][data-animation="slide"] .ufaqsw-faq__answer:not(.ufaqsw-open) {
+	border-top: none;
+	background: transparent;
+}
+
 /* ─── Layout: minimal ─────────────────────────────── */
 .ufaqsw-faq[data-layout="minimal"] .ufaqsw-faq__item {
 	border-bottom: var(--ufaqsw-border-width) var(--ufaqsw-border-style) var(--ufaqsw-border-color);
-	margin-bottom: 0;
+	margin-bottom: var(--ufaqsw-item-gap);
 	border-radius: 0;
 }
 
 .ufaqsw-faq[data-layout="minimal"] .ufaqsw-faq__question {
-	background: transparent;
+	background: var(--ufaqsw-q-bg);
 	border: none;
-	padding-left: 0;
-	padding-right: 0;
 	border-radius: 0;
 }
 
@@ -182,13 +191,8 @@
 
 .ufaqsw-faq[data-layout="minimal"] .ufaqsw-faq__answer {
 	border: none;
-	background: transparent;
+	background: var(--ufaqsw-a-bg);
 	border-radius: 0;
-}
-
-.ufaqsw-faq[data-layout="minimal"] .ufaqsw-faq__answer-inner {
-	padding-left: 0;
-	padding-right: 0;
 }
 
 /* ─── Layout: boxed ───────────────────────────────── */
@@ -206,13 +210,14 @@
 
 .ufaqsw-faq[data-layout="boxed"] .ufaqsw-faq__item {
 	border-radius: 0;
-	margin-bottom: 0;
+	margin-bottom: var(--ufaqsw-item-gap);
 	border-bottom: var(--ufaqsw-border-width) var(--ufaqsw-border-style) var(--ufaqsw-border-color);
 	box-shadow: none;
 }
 
 .ufaqsw-faq[data-layout="boxed"] .ufaqsw-faq__item:last-child {
 	border-bottom: none;
+	margin-bottom: 0;
 }
 
 .ufaqsw-faq[data-layout="boxed"] .ufaqsw-faq__question {
@@ -229,4 +234,9 @@
 	border: none;
 	border-top: var(--ufaqsw-border-width) var(--ufaqsw-border-style) var(--ufaqsw-border-color);
 	border-radius: 0;
+}
+
+.ufaqsw-faq[data-layout="boxed"][data-animation="slide"] .ufaqsw-faq__answer:not(.ufaqsw-open) {
+	border-top: none;
+	background: transparent;
 }
