@@ -74,14 +74,6 @@ class RegisterAdminPages {
 			array( $this, 'settings_page_callback_func' )
 		);
 
-		add_submenu_page(
-			'edit.php?post_type=ufaqsw',
-			'Get Help - Ultimate FAQ Solution',
-			'Get Help',
-			'manage_options',
-			'ufaqsw-get-help',
-			array( $this, 'get_help_page_callback_func' )
-		);
 	}
 
 	/**
@@ -116,17 +108,6 @@ class RegisterAdminPages {
 	public function settings_page_callback_func() {
 		if ( file_exists( UFAQSW__PLUGIN_DIR . 'inc/admin/templates/settings.php' ) ) {
 			include_once UFAQSW__PLUGIN_DIR . 'inc/admin/templates/settings.php';
-		}
-	}
-
-	/**
-	 * Callback function to display the help page.
-	 *
-	 * This function includes the help template file if it exists.
-	 */
-	public function get_help_page_callback_func() {
-		if ( file_exists( UFAQSW__PLUGIN_DIR . 'inc/admin/templates/get-help.php' ) ) {
-			include_once UFAQSW__PLUGIN_DIR . 'inc/admin/templates/get-help.php';
 		}
 	}
 
