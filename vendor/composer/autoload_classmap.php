@@ -7,6 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
+    'Mahedi\\UltimateFaqSolution\\AiDesignGenerator' => $baseDir . '/inc/AiDesignGenerator.php',
     'Mahedi\\UltimateFaqSolution\\AppearanceActions' => $baseDir . '/inc/AppearanceActions.php',
     'Mahedi\\UltimateFaqSolution\\Assets' => $baseDir . '/inc/Assets.php',
     'Mahedi\\UltimateFaqSolution\\Chatbot' => $baseDir . '/inc/Chatbot.php',

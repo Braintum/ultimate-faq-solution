@@ -278,6 +278,7 @@ rm -f trunk/deploy.sh
 rm -f trunk/package-lock.json
 rm -f trunk/phpcs.xml.dist
 rm -f trunk/tmp
+rm -f trunk/.claude
 rm -f trunk/.phpcs.xml.dist
 rm -f trunk/webpack.config.js
 rm -f trunk/postcss.config.js

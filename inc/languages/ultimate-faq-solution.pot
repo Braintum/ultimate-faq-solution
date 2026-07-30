@@ -2,14 +2,14 @@
 # This file is distributed under the GPLv2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Ultimate FAQ Solution 1.8.3\n"
+"Project-Id-Version: Ultimate FAQ Solution 2.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/ultimate-faq-solution\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-05-24T10:42:27+00:00\n"
+"POT-Creation-Date: 2026-07-30T18:44:10+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: ufaqsw\n"
@@ -36,221 +36,609 @@ msgstr ""
 
 #. Author URI of the plugin
 #: init.php
-msgid "https://www.braintum.com"
+msgid "https://www.mahedi.de"
 msgstr ""
 
-#: block/block.php:89
+#: block/block.php:94
 msgid "No FAQ group selected."
 msgstr ""
 
-#: inc/admin/chatbot.php:22
+#: inc/admin/chatbot-feedback.php:25
+#: inc/admin/chatbot-feedback.php:26
+msgid "Feedback Analytics"
+msgstr ""
+
+#: inc/admin/chatbot-feedback.php:99
+msgid "Feedback reset successfully."
+msgstr ""
+
+#: inc/admin/chatbot-feedback.php:114
+msgid "FAQ Feedback Analytics"
+msgstr ""
+
+#: inc/admin/chatbot-feedback.php:115
+msgid "Vote counts collected by the \"Was this helpful?\" widget in the FAQ Assistant."
+msgstr ""
+
+#: inc/admin/chatbot-feedback.php:122
+msgid "Total Votes"
+msgstr ""
+
+#: inc/admin/chatbot-feedback.php:127
+msgid "Helpful"
+msgstr ""
+
+#: inc/admin/chatbot-feedback.php:132
+msgid "Not Helpful"
+msgstr ""
+
+#: inc/admin/chatbot-feedback.php:137
+msgid "FAQs with Votes"
+msgstr ""
+
+#: inc/admin/chatbot-feedback.php:157
+msgid "No FAQ groups found."
+msgstr ""
+
+#: inc/admin/chatbot-feedback.php:165
+msgid "Group"
+msgstr ""
+
+#: inc/admin/chatbot-feedback.php:166
+#: inc/admin/class-directory-post-type.php:173
+msgid "Question"
+msgstr ""
+
+#: inc/admin/chatbot-feedback.php:168
+msgid "Helpful votes"
+msgstr ""
+
+#: inc/admin/chatbot-feedback.php:171
+msgid "Not helpful votes"
+msgstr ""
+
+#: inc/admin/chatbot-feedback.php:173
+msgid "Total"
+msgstr ""
+
+#: inc/admin/chatbot-feedback.php:174
+msgid "Score"
+msgstr ""
+
+#: inc/admin/chatbot-feedback.php:175
+#: inc/admin/chatbot-feedback.php:212
+#: src/appearance/components/ActionButtons.jsx:12
+msgid "Reset"
+msgstr ""
+
+#: inc/admin/chatbot-feedback.php:208
+msgid "Reset votes for this question?"
+msgstr ""
+
+#: inc/admin/chatbot-feedback.php:225
+msgid "Score = percentage of \"helpful\" votes out of total votes. Green ≥ 70 %, yellow ≥ 40 %, red < 40 %."
+msgstr ""
+
+#: inc/admin/chatbot.php:19
 msgid "FAQ Assistant Settings"
 msgstr ""
 
-#: inc/admin/chatbot.php:29
+#: inc/admin/chatbot.php:26
+#: inc/admin/GettingStarted.php:596
 #: inc/ExportImport/Admin/views/export-page.php:64
 msgid "FAQ Assistant"
 msgstr ""
 
-#: inc/admin/chatbot.php:33
+#: inc/admin/chatbot.php:30
 msgid "General"
 msgstr ""
 
-#: inc/admin/chatbot.php:44
+#: inc/admin/chatbot.php:41
 #: inc/admin/class-directory-post-type.php:69
 #: inc/admin/class-directory-post-type.php:71
-#: inc/admin/class-directory-post-type.php:207
+#: inc/admin/class-directory-post-type.php:242
+#: inc/admin/templates/shortcode-builder.php:404
+#: block/build/index.js:1
+#: block/src/index.js:235
 msgid "Appearance"
 msgstr ""
 
-#: inc/admin/chatbot.php:55
+#: inc/admin/chatbot.php:54
 msgid "UI Labels & Messages"
 msgstr ""
 
-#: inc/admin/chatbot.php:75
+#: inc/admin/chatbot.php:70
+msgid "Search"
+msgstr ""
+
+#: inc/admin/chatbot.php:81
+#: inc/admin/chatbot.php:431
+#: inc/Chatbot.php:139
+msgid "Ask a Question"
+msgstr ""
+
+#: inc/admin/chatbot.php:103
+msgid "Feedback & Ratings"
+msgstr ""
+
+#: inc/admin/chatbot.php:126
+#: inc/admin/GettingStarted.php:236
 msgid "Enable FAQ Assistant"
 msgstr ""
 
-#: inc/admin/chatbot.php:78
-msgid "<i>Display a floating help icon on every page of your site. When clicked, it opens the interactive FAQ Assistant, allowing visitors to browse and search your FAQs in a chat-style window.</i>"
+#: inc/admin/chatbot.php:129
+msgid "<i>Display a floating help icon on every page of your site. When clicked, it opens the interactive FAQ Assistant, allowing visitors to browse your FAQs in a chat-style window.</i>"
 msgstr ""
 
-#: inc/admin/chatbot.php:84
-msgid "Floating Button Icon"
-msgstr ""
-
-#: inc/admin/chatbot.php:87
-msgid "<i>Upload a custom icon for the floating FAQ Assistant button. The image should be 80 × 80 pixels. Any image format is allowed, but a transparent background (e.g., PNG, SVG) is recommended for the best visual appearance. If no icon is uploaded, a default icon will be used instead.</i>"
-msgstr ""
-
-#: inc/admin/chatbot.php:92
-msgid "Add Icon"
-msgstr ""
-
-#: inc/admin/chatbot.php:101
-msgid "Floating Button Title"
-msgstr ""
-
-#: inc/admin/chatbot.php:104
-msgid "<i>The text will display when you hover over the floating button.</i>"
-msgstr ""
-
-#: inc/admin/chatbot.php:110
-msgid "Header Background Color"
-msgstr ""
-
-#: inc/admin/chatbot.php:114
-msgid "<i>Choose the background color of the FAQ Assistant header for better branding and visibility.</i>"
-msgstr ""
-
-#: inc/admin/chatbot.php:120
-msgid "Header Text Color"
-msgstr ""
-
-#: inc/admin/chatbot.php:124
-msgid "<i>Select the color of the text in the FAQ Assistant header to ensure readability against the background.</i>"
-msgstr ""
-
-#: inc/admin/chatbot.php:130
-msgid "Loading Animation Color"
-msgstr ""
-
-#: inc/admin/chatbot.php:134
-msgid "<i>Choose the color for the loading animation (animated dots) shown while the FAQ Assistant is fetching content. Adjust for better visibility and branding.</i>"
-msgstr ""
-
-#: inc/admin/chatbot.php:140
-msgid "Window Headline"
-msgstr ""
-
-#: inc/admin/chatbot.php:143
-msgid "Welcome to our Help Center!"
-msgstr ""
-
-#: inc/admin/chatbot.php:144
-msgid "<i>Enter the main title displayed at the top of the FAQ Assistant window to welcome or guide users.</i>"
-msgstr ""
-
-#: inc/admin/chatbot.php:150
-msgid "Window Intro Text"
-msgstr ""
-
-#: inc/admin/chatbot.php:153
-msgid "Explore common questions and answers."
-msgstr ""
-
-#: inc/admin/chatbot.php:154
-msgid "<i>Add a brief message shown below the headline to explain how visitors can use the assistant.</i>"
-msgstr ""
-
-#: inc/admin/chatbot.php:160
-msgid "Back Button Title"
-msgstr ""
-
-#: inc/admin/chatbot.php:163
-msgid "Go back to the previous view"
-msgstr ""
-
-#: inc/admin/chatbot.php:164
-msgid "<i>This text appears as a tooltip when hovering over the back button in the FAQ Assistant window. Use it to guide users on its function (e.g., “Go back to the previous view”).</i>"
-msgstr ""
-
-#: inc/admin/chatbot.php:170
-msgid "Close Button Title"
-msgstr ""
-
-#: inc/admin/chatbot.php:173
-#: inc/Chatbot.php:110
-msgid "Close the window"
-msgstr ""
-
-#: inc/admin/chatbot.php:174
-msgid "<i>This text appears as a tooltip when hovering over the close button in the FAQ Assistant window. Use it to let users know that clicking will close the assistant window.</i>"
-msgstr ""
-
-#: inc/admin/chatbot.php:180
-msgid "Preloader Text"
-msgstr ""
-
-#: inc/admin/chatbot.php:184
-msgid "<i>Text displayed while the FAQ content is loading (e.g., “Loading…”) to inform users.</i>"
-msgstr ""
-
-#: inc/admin/chatbot.php:190
-msgid "FAQ Count Text"
-msgstr ""
-
-#: inc/admin/chatbot.php:193
-#: inc/Chatbot.php:112
-msgid "[count] Frequently Asked Questions"
-msgstr ""
-
-#: inc/admin/chatbot.php:194
-msgid "<i>Enter the text to show the total number of FAQs available (e.g., “[count] Questions and Answers”). Use <code>[count]</code> as a placeholder for the number.</i>"
-msgstr ""
-
-#: inc/admin/chatbot.php:200
-msgid "Body Text"
-msgstr ""
-
-#: inc/admin/chatbot.php:201
-msgid "<i>Enter the text displayed above the list of FAQ categories in the assistant window. Use this to guide visitors on how to navigate and use the categories effectively.</i>"
-msgstr ""
-
-#: inc/admin/chatbot.php:202
-msgid "Browse our FAQ categories below to quickly find answers grouped by topic. Click a category to see related questions and solutions."
-msgstr ""
-
-#: inc/admin/chatbot.php:213
-msgid "Bottom Text"
-msgstr ""
-
-#: inc/admin/chatbot.php:214
-msgid "<i>Enter the text that will appear at the bottom of the FAQ Assistant window, below the FAQ categories and answers. This is a good place for additional instructions, a call-to-action, or any helpful message you want users to see after browsing the FAQs. Button text will be added at the bottom in each screen.</i>"
-msgstr ""
-
-#: inc/admin/chatbot.php:250
-msgid "<i>By default all FAQ groups will be displayed, but you can uncheck any groups to not show on the FAQ Assistant window.</i>"
-msgstr ""
-
-#: inc/admin/chatbot.php:256
+#: inc/admin/chatbot.php:135
 msgid "Display FAQ Assistant On"
 msgstr ""
 
-#: inc/admin/chatbot.php:261
+#: inc/admin/chatbot.php:140
 msgid "All Pages (default)"
 msgstr ""
 
-#: inc/admin/chatbot.php:262
+#: inc/admin/chatbot.php:141
 msgid "Specific Pages"
 msgstr ""
 
-#: inc/admin/chatbot.php:264
+#: inc/admin/chatbot.php:143
 msgid "Choose whether to display the FAQ Assistant on all pages or only on selected pages."
 msgstr ""
 
-#: inc/admin/chatbot.php:270
+#: inc/admin/chatbot.php:149
 msgid "Select Pages"
 msgstr ""
 
-#: inc/admin/chatbot.php:278
+#: inc/admin/chatbot.php:157
 msgid "Select the pages where the FAQ Assistant should appear. Only applies if \"Specific Pages\" is selected above."
 msgstr ""
 
-#: inc/admin/chatbot.php:301
-msgid "The FAQ Assistant adds an interactive, floating help icon to your website, giving visitors quick access to your FAQs in a sleek, chat-style interface. Use the settings below to enable the assistant and customize its behavior. Improve user experience by making answers more accessible—right when and where your visitors need them."
-msgstr ""
-
-#: inc/admin/chatbot.php:306
-msgid "Read the FAQ Assistant Documentation."
-msgstr ""
-
+#: inc/admin/chatbot.php:180
 #: inc/admin/class-directory-post-type.php:23
 #: inc/ExportImport/Admin/views/export-page.php:54
 msgid "FAQ Groups"
 msgstr ""
 
+#: inc/admin/chatbot.php:186
+msgid "<i>By default all FAQ groups will be displayed. Uncheck any groups to exclude them from the FAQ Assistant.</i>"
+msgstr ""
+
+#: inc/admin/chatbot.php:196
+msgid "Floating Button Icon"
+msgstr ""
+
+#: inc/admin/chatbot.php:199
+msgid "<i>Upload a custom icon for the floating FAQ Assistant button. Recommended size: 80×80 pixels. A transparent background (PNG, SVG) looks best. If no icon is uploaded, a default icon will be used.</i>"
+msgstr ""
+
+#: inc/admin/chatbot.php:204
+msgid "Add Icon"
+msgstr ""
+
+#: inc/admin/chatbot.php:212
+msgid "Enable Pulse Ring Animation"
+msgstr ""
+
+#: inc/admin/chatbot.php:215
+msgid "<i>Show a subtle pulse animation around the floating button when the page loads (plays 3 times then stops). Helps draw attention to the assistant.</i>"
+msgstr ""
+
+#: inc/admin/chatbot.php:221
+msgid "Enable Notification Badge"
+msgstr ""
+
+#: inc/admin/chatbot.php:224
+msgid "<i>Display a small red dot badge on the floating button to indicate there is something new or to nudge visitors to open the assistant.</i>"
+msgstr ""
+
+#: inc/admin/chatbot.php:230
+msgid "Header Background Color"
+msgstr ""
+
+#: inc/admin/chatbot.php:234
+msgid "<i>Choose the background color of the FAQ Assistant header. This color is also used as the primary accent throughout the interface (borders, buttons, hover states).</i>"
+msgstr ""
+
+#: inc/admin/chatbot.php:240
+msgid "Header Text Color"
+msgstr ""
+
+#: inc/admin/chatbot.php:244
+msgid "<i>Select the color of the text and icons in the FAQ Assistant header.</i>"
+msgstr ""
+
+#: inc/admin/chatbot.php:250
+msgid "Loading Animation Color"
+msgstr ""
+
+#: inc/admin/chatbot.php:254
+msgid "<i>Choose the color for the animated dots shown while the FAQ Assistant is loading content.</i>"
+msgstr ""
+
+#: inc/admin/chatbot.php:264
+msgid "Floating Button Title"
+msgstr ""
+
+#: inc/admin/chatbot.php:267
+msgid "<i>The tooltip text displayed when hovering over the floating button.</i>"
+msgstr ""
+
+#: inc/admin/chatbot.php:273
+msgid "Window Headline"
+msgstr ""
+
+#: inc/admin/chatbot.php:276
+#: inc/Chatbot.php:121
+msgid "Welcome to our Help Center!"
+msgstr ""
+
+#: inc/admin/chatbot.php:277
+msgid "<i>The main title displayed at the top of the FAQ Assistant window.</i>"
+msgstr ""
+
+#: inc/admin/chatbot.php:283
+msgid "Window Intro Text"
+msgstr ""
+
+#: inc/admin/chatbot.php:286
+#: inc/Chatbot.php:122
+msgid "Explore common questions and answers."
+msgstr ""
+
+#: inc/admin/chatbot.php:287
+msgid "<i>A brief subtitle shown below the headline on the home screen of the assistant.</i>"
+msgstr ""
+
+#: inc/admin/chatbot.php:293
+msgid "Back Button Tooltip"
+msgstr ""
+
+#: inc/admin/chatbot.php:296
+msgid "Go back to the previous view"
+msgstr ""
+
+#: inc/admin/chatbot.php:297
+msgid "<i>Tooltip text for the back navigation button.</i>"
+msgstr ""
+
+#: inc/admin/chatbot.php:303
+msgid "Close Button Tooltip"
+msgstr ""
+
+#: inc/admin/chatbot.php:306
+#: inc/Chatbot.php:124
+msgid "Close the window"
+msgstr ""
+
+#: inc/admin/chatbot.php:307
+msgid "<i>Tooltip text for the close button.</i>"
+msgstr ""
+
+#: inc/admin/chatbot.php:313
+msgid "Preloader Text"
+msgstr ""
+
+#: inc/admin/chatbot.php:317
+msgid "<i>Optional text shown below the loading animation (e.g., \"Loading…\").</i>"
+msgstr ""
+
+#: inc/admin/chatbot.php:323
+msgid "FAQ Count Text"
+msgstr ""
+
+#: inc/admin/chatbot.php:326
+#: inc/Chatbot.php:126
+msgid "[count] Frequently Asked Questions"
+msgstr ""
+
+#: inc/admin/chatbot.php:327
+msgid "<i>Text template showing the number of FAQs per group. Use <code>[count]</code> as the number placeholder.</i>"
+msgstr ""
+
+#: inc/admin/chatbot.php:333
+msgid "Body Text"
+msgstr ""
+
+#: inc/admin/chatbot.php:334
+msgid "<i>Text displayed above the list of FAQ categories on the home screen of the assistant.</i>"
+msgstr ""
+
+#: inc/admin/chatbot.php:335
+msgid "Browse our FAQ categories below to quickly find answers grouped by topic."
+msgstr ""
+
+#: inc/admin/chatbot.php:344
+msgid "Bottom Text"
+msgstr ""
+
+#: inc/admin/chatbot.php:345
+msgid "<i>Content shown at the very bottom of the FAQ Assistant window on every screen (except the Ask a Question form). Good for a call-to-action or support link.</i>"
+msgstr ""
+
+#: inc/admin/chatbot.php:358
+msgid "Enable Search"
+msgstr ""
+
+#: inc/admin/chatbot.php:361
+msgid "<i>Display a live search bar at the top of the FAQ Assistant. Users can type to instantly filter questions across all groups.</i>"
+msgstr ""
+
+#: inc/admin/chatbot.php:367
+msgid "Search Placeholder"
+msgstr ""
+
+#: inc/admin/chatbot.php:370
+#: inc/Chatbot.php:132
+msgid "Search FAQs…"
+msgstr ""
+
+#: inc/admin/chatbot.php:371
+msgid "<i>Placeholder text shown inside the search input when it is empty.</i>"
+msgstr ""
+
+#: inc/admin/chatbot.php:377
+msgid "Search in Answer Content"
+msgstr ""
+
+#: inc/admin/chatbot.php:380
+msgid "<i>When enabled, search also looks inside the answer body (not just the question title). May show more results but could be less precise.</i>"
+msgstr ""
+
+#: inc/admin/chatbot.php:386
+msgid "No Results Text"
+msgstr ""
+
+#: inc/admin/chatbot.php:389
+#: inc/Chatbot.php:134
+msgid "No results found for \"[query]\"."
+msgstr ""
+
+#: inc/admin/chatbot.php:390
+msgid "<i>Message shown when the search returns no results. Use <code>[query]</code> as a placeholder for the user's search term.</i>"
+msgstr ""
+
+#: inc/admin/chatbot.php:400
+msgid "Enable \"Ask a Question\""
+msgstr ""
+
+#: inc/admin/chatbot.php:403
+msgid "<i>Show an \"Ask a Question\" button in the FAQ Assistant that opens a contact form. Submitted questions are emailed to the address below.</i>"
+msgstr ""
+
+#: inc/admin/chatbot.php:409
+msgid "Notification Email"
+msgstr ""
+
+#: inc/admin/chatbot.php:412
+msgid "<i>Email address to receive question submissions. Leave blank to use the site admin email.</i>"
+msgstr ""
+
+#: inc/admin/chatbot.php:418
+msgid "Form Title"
+msgstr ""
+
+#: inc/admin/chatbot.php:421
+#: inc/Chatbot.php:138
+msgid "Ask Us a Question"
+msgstr ""
+
+#: inc/admin/chatbot.php:422
+msgid "<i>The heading displayed at the top of the Ask a Question screen.</i>"
+msgstr ""
+
+#: inc/admin/chatbot.php:428
+msgid "Button Label"
+msgstr ""
+
+#: inc/admin/chatbot.php:432
+msgid "<i>Label for the button that opens the Ask a Question form (shown at the bottom of the FAQ list and on the \"no results\" screen).</i>"
+msgstr ""
+
+#: inc/admin/chatbot.php:438
+msgid "Name Field Label"
+msgstr ""
+
+#: inc/admin/chatbot.php:441
+#: inc/Chatbot.php:140
+msgid "Your Name"
+msgstr ""
+
+#: inc/admin/chatbot.php:447
+msgid "Email Field Label"
+msgstr ""
+
+#: inc/admin/chatbot.php:450
+#: inc/Chatbot.php:141
+msgid "Your Email"
+msgstr ""
+
+#: inc/admin/chatbot.php:456
+msgid "Question Field Label"
+msgstr ""
+
+#: inc/admin/chatbot.php:459
+#: inc/Chatbot.php:142
+msgid "Your Question"
+msgstr ""
+
+#: inc/admin/chatbot.php:465
+msgid "Submit Button Label"
+msgstr ""
+
+#: inc/admin/chatbot.php:468
+#: inc/Chatbot.php:143
+msgid "Send Question"
+msgstr ""
+
+#: inc/admin/chatbot.php:474
+msgid "Cancel Button Label"
+msgstr ""
+
+#: inc/admin/chatbot.php:477
+#: inc/Chatbot.php:144
+msgid "Cancel"
+msgstr ""
+
+#: inc/admin/chatbot.php:483
+msgid "Enable GDPR Consent Checkbox"
+msgstr ""
+
+#: inc/admin/chatbot.php:486
+msgid "<i>Require users to check a consent checkbox before submitting the form. Useful for GDPR compliance.</i>"
+msgstr ""
+
+#: inc/admin/chatbot.php:492
+msgid "GDPR Consent Text"
+msgstr ""
+
+#: inc/admin/chatbot.php:495
+msgid "I agree to the privacy policy and consent to being contacted about my question."
+msgstr ""
+
+#: inc/admin/chatbot.php:496
+msgid "<i>Label text next to the consent checkbox. You may include HTML links (e.g., to your privacy policy page).</i>"
+msgstr ""
+
+#: inc/admin/chatbot.php:502
+msgid "GDPR Validation Error"
+msgstr ""
+
+#: inc/admin/chatbot.php:505
+#: inc/Chatbot.php:147
+msgid "Please accept the privacy policy to continue."
+msgstr ""
+
+#: inc/admin/chatbot.php:506
+msgid "<i>Error message shown if the user tries to submit without checking the consent box.</i>"
+msgstr ""
+
+#: inc/admin/chatbot.php:512
+msgid "Success Screen Title"
+msgstr ""
+
+#: inc/admin/chatbot.php:515
+#: inc/Chatbot.php:148
+msgid "Question Received!"
+msgstr ""
+
+#: inc/admin/chatbot.php:521
+msgid "Success Screen Message"
+msgstr ""
+
+#: inc/admin/chatbot.php:524
+msgid "Thank you! We'll review your question and get back to you as soon as possible."
+msgstr ""
+
+#: inc/admin/chatbot.php:530
+msgid "\"Back to FAQs\" Button Label"
+msgstr ""
+
+#: inc/admin/chatbot.php:533
+#: inc/Chatbot.php:150
+msgid "Back to FAQs"
+msgstr ""
+
+#: inc/admin/chatbot.php:543
+msgid "Enable \"Was this helpful?\" Feedback"
+msgstr ""
+
+#: inc/admin/chatbot.php:546
+msgid "<i>Show a thumbs up / thumbs down rating at the bottom of each FAQ answer. Results are stored and visible in the FAQ analytics (see below).</i>"
+msgstr ""
+
+#: inc/admin/chatbot.php:552
+msgid "Feedback Label"
+msgstr ""
+
+#: inc/admin/chatbot.php:555
+#: inc/Chatbot.php:154
+msgid "Was this helpful?"
+msgstr ""
+
+#: inc/admin/chatbot.php:561
+msgid "\"Helpful\" Button Label"
+msgstr ""
+
+#: inc/admin/chatbot.php:564
+#: inc/Chatbot.php:155
+msgid "Yes, helpful"
+msgstr ""
+
+#: inc/admin/chatbot.php:570
+msgid "\"Not Helpful\" Button Label"
+msgstr ""
+
+#: inc/admin/chatbot.php:573
+#: inc/Chatbot.php:156
+msgid "Not helpful"
+msgstr ""
+
+#: inc/admin/chatbot.php:579
+msgid "Thank You Message"
+msgstr ""
+
+#: inc/admin/chatbot.php:582
+#: inc/Chatbot.php:157
+msgid "Thank you for your feedback!"
+msgstr ""
+
+#: inc/admin/chatbot.php:588
+msgid "Enable Related Questions"
+msgstr ""
+
+#: inc/admin/chatbot.php:591
+msgid "<i>Show a \"Related Questions\" section at the bottom of each answer, listing other questions from the same FAQ group.</i>"
+msgstr ""
+
+#: inc/admin/chatbot.php:597
+msgid "Related Questions Section Title"
+msgstr ""
+
+#: inc/admin/chatbot.php:600
+#: inc/Chatbot.php:159
+msgid "Related Questions"
+msgstr ""
+
+#: inc/admin/chatbot.php:606
+msgid "Number of Related Questions"
+msgstr ""
+
+#: inc/admin/chatbot.php:610
+msgid "<i>How many related questions to show (max). Default: 3.</i>"
+msgstr ""
+
+#: inc/admin/chatbot.php:630
+msgid "The FAQ Assistant adds an interactive, floating help icon to your website, giving visitors quick access to your FAQs in a sleek, chat-style interface. Use the settings below to enable the assistant and customize its behavior."
+msgstr ""
+
+#: inc/admin/chatbot.php:634
+msgid "Read the FAQ Assistant Documentation."
+msgstr ""
+
+#: inc/admin/class-design-library.php:49
+msgid "Unauthorized."
+msgstr ""
+
+#: inc/admin/class-design-library.php:56
+#: inc/AppearanceActions.php:206
+msgid "Invalid request."
+msgstr ""
+
+#: inc/admin/class-design-library.php:85
+msgid "Invalid preset ID."
+msgstr ""
+
+#: inc/admin/class-design-library.php:90
+msgid "Preset file not found."
+msgstr ""
+
+#: inc/admin/class-design-library.php:95
+msgid "Invalid preset data."
+msgstr ""
+
 #: inc/admin/class-directory-post-type.php:24
+#: inc/admin/templates/shortcode-builder.php:295
 msgid "FAQ Group"
 msgstr ""
 
@@ -268,6 +656,7 @@ msgid "Edit FAQ Group"
 msgstr ""
 
 #: inc/admin/class-directory-post-type.php:29
+#: inc/admin/templates/shortcode-builder.php:298
 msgid "All FAQ Groups"
 msgstr ""
 
@@ -314,8 +703,7 @@ msgid "New Appearance"
 msgstr ""
 
 #: inc/admin/class-directory-post-type.php:75
-#: inc/admin/class-directory-post-type.php:235
-#: inc/FAQGroupActions.php:109
+#: inc/admin/class-directory-post-type.php:270
 msgid "Edit Appearance"
 msgstr ""
 
@@ -356,6 +744,7 @@ msgid "Write a short description about the FAQ group. This will only be displaye
 msgstr ""
 
 #: inc/admin/class-directory-post-type.php:149
+#: inc/admin/class-directory-post-type.php:241
 #: inc/Product_Tab.php:75
 #: inc/Product_Tab.php:80
 #: inc/Product_Tab.php:89
@@ -383,10 +772,6 @@ msgstr ""
 msgid "Are you sure you want to remove the FAQ entry?"
 msgstr ""
 
-#: inc/admin/class-directory-post-type.php:173
-msgid "Question"
-msgstr ""
-
 #: inc/admin/class-directory-post-type.php:175
 msgid "Write Your Question"
 msgstr ""
@@ -399,30 +784,27 @@ msgstr ""
 msgid "Write Your Answer"
 msgstr ""
 
-#: inc/admin/class-directory-post-type.php:205
-#: inc/admin/settings/ai-integration.php:107
-#: inc/AppearanceActions.php:290
+#: inc/admin/class-directory-post-type.php:240
+#: inc/admin/settings/ai-integration.php:318
+#: inc/AppearanceActions.php:329
 msgid "Title"
 msgstr ""
 
-#: inc/admin/class-directory-post-type.php:206
-msgid "Number of FAQs"
-msgstr ""
-
-#: inc/admin/class-directory-post-type.php:208
+#: inc/admin/class-directory-post-type.php:243
+#: inc/admin/templates/shortcode-builder.php:477
 msgid "Shortcode"
 msgstr ""
 
-#: inc/admin/class-directory-post-type.php:209
-#: inc/AppearanceActions.php:292
+#: inc/admin/class-directory-post-type.php:245
+#: inc/AppearanceActions.php:332
 msgid "Date"
 msgstr ""
 
-#: inc/admin/class-directory-post-type.php:354
+#: inc/admin/class-directory-post-type.php:407
 msgid "Duplicate this item"
 msgstr ""
 
-#: inc/admin/class-directory-post-type.php:354
+#: inc/admin/class-directory-post-type.php:407
 msgid "Duplicate"
 msgstr ""
 
@@ -438,182 +820,787 @@ msgstr ""
 msgid "Invalid data"
 msgstr ""
 
-#: inc/admin/RegisterAdminPages.php:139
+#: inc/admin/GettingStarted.php:45
+msgid "Getting Started — Ultimate FAQ Solution"
+msgstr ""
+
+#: inc/admin/GettingStarted.php:46
+msgid "Getting Started"
+msgstr ""
+
+#: inc/admin/GettingStarted.php:162
+msgid "What is a FAQ Group?"
+msgstr ""
+
+#: inc/admin/GettingStarted.php:163
+msgid "A FAQ Group holds your Q&A content. Create a group, add questions and answers, then embed it on any page using the shortcode from the table or the Gutenberg block. Pair each group with an Appearance to control how it looks."
+msgstr ""
+
+#: inc/admin/GettingStarted.php:167
+#: inc/admin/GettingStarted.php:199
+msgid "View Guide"
+msgstr ""
+
+#: inc/admin/GettingStarted.php:169
+#: inc/admin/GettingStarted.php:201
+#: inc/admin/GettingStarted.php:238
+msgid "Dismiss this notice"
+msgstr ""
+
+#: inc/admin/GettingStarted.php:194
+msgid "What is an Appearance?"
+msgstr ""
+
+#: inc/admin/GettingStarted.php:195
+msgid "An Appearance is a reusable design preset — choose a template, set colors, fonts, and icons. One Appearance can be shared across multiple FAQ Groups. Any changes here update everywhere it is applied."
+msgstr ""
+
+#: inc/admin/GettingStarted.php:231
+msgid "✨ New: FAQ Assistant — a floating chatbot for your visitors"
+msgstr ""
+
+#: inc/admin/GettingStarted.php:232
+msgid "Let visitors search and browse your FAQs without leaving the page. The FAQ Assistant adds a floating chat button to any page — no coding needed. It supports live search, \"Ask a Question\" submissions, and helpful/not-helpful ratings."
+msgstr ""
+
+#: inc/admin/GettingStarted.php:290
+msgid "No FAQ Groups yet"
+msgstr ""
+
+#: inc/admin/GettingStarted.php:291
+msgid "A FAQ Group is a set of questions and answers. Create your first group, add your content, and embed it on any page with a shortcode or Gutenberg block."
+msgstr ""
+
+#: inc/admin/GettingStarted.php:294
+msgid "Add Your First FAQ Group"
+msgstr ""
+
+#: inc/admin/GettingStarted.php:297
+#: inc/admin/GettingStarted.php:332
+msgid "View Getting Started Guide"
+msgstr ""
+
+#: inc/admin/GettingStarted.php:325
+msgid "No Appearances yet"
+msgstr ""
+
+#: inc/admin/GettingStarted.php:326
+msgid "An Appearance controls how your FAQs look — pick a template and customise colors, fonts, and icons. Create one and apply it to any FAQ Group."
+msgstr ""
+
+#: inc/admin/GettingStarted.php:329
+msgid "Create Your First Appearance"
+msgstr ""
+
+#: inc/admin/GettingStarted.php:355
+msgid "Getting Started with Ultimate FAQ Solution"
+msgstr ""
+
+#: inc/admin/GettingStarted.php:356
+msgid "Three steps to get your FAQs live on your site."
+msgstr ""
+
+#: inc/admin/GettingStarted.php:367
+msgid "Add Your Content"
+msgstr ""
+
+#: inc/admin/GettingStarted.php:368
+msgid "Create a FAQ Group and add your questions and answers. You can have multiple groups for different topics or page sections."
+msgstr ""
+
+#: inc/admin/GettingStarted.php:370
+msgid "Create FAQ Group"
+msgstr ""
+
+#: inc/admin/GettingStarted.php:374
+msgid "Each group gets its own shortcode so you can embed them independently."
+msgstr ""
+
+#: inc/admin/GettingStarted.php:387
+msgid "Choose a Design"
+msgstr ""
+
+#: inc/admin/GettingStarted.php:388
+msgid "Start from a Design Library preset, generate one with AI, or build your own — then fine-tune colors, fonts, spacing, and icons in the live Appearance Builder."
+msgstr ""
+
+#: inc/admin/GettingStarted.php:390
+#: inc/admin/GettingStarted.php:494
+msgid "Open Appearance Builder"
+msgstr ""
+
+#: inc/admin/GettingStarted.php:394
+msgid "One Appearance can be shared across multiple FAQ Groups."
+msgstr ""
+
+#: inc/admin/GettingStarted.php:407
+msgid "Display on Your Site"
+msgstr ""
+
+#: inc/admin/GettingStarted.php:408
+msgid "Copy the shortcode from your FAQ Group and paste it into any page or post — or use the Gutenberg block."
+msgstr ""
+
+#: inc/admin/GettingStarted.php:410
+msgid "View Documentation"
+msgstr ""
+
+#: inc/admin/GettingStarted.php:414
+msgid "The shortcode looks like: [ufaqsw id=\"123\"]"
+msgstr ""
+
+#: inc/admin/GettingStarted.php:422
+msgid "Understanding the Two Sections"
+msgstr ""
+
+#: inc/admin/GettingStarted.php:428
+msgid "FAQ Groups — Content"
+msgstr ""
+
+#: inc/admin/GettingStarted.php:430
+msgid "This is where you manage your Q&A content. Think of each group as a folder of related FAQs. Create one per topic, product, or page section."
+msgstr ""
+
+#: inc/admin/GettingStarted.php:432
+msgid "Add, edit, and drag-to-reorder Q&A pairs"
+msgstr ""
+
+#: inc/admin/GettingStarted.php:433
+msgid "Each group has a unique shortcode for embedding"
+msgstr ""
+
+#: inc/admin/GettingStarted.php:434
+msgid "Link each group to an Appearance for styling"
+msgstr ""
+
+#: inc/admin/GettingStarted.php:437
+msgid "View All FAQ Groups"
+msgstr ""
+
+#: inc/admin/GettingStarted.php:444
+msgid "FAQ Appearances — Design"
+msgstr ""
+
+#: inc/admin/GettingStarted.php:446
+msgid "This is where you control how your FAQs look. An Appearance is a reusable design preset — create one and apply it to as many groups as you like."
+msgstr ""
+
+#: inc/admin/GettingStarted.php:448
+msgid "✨ Generate a design instantly with the AI Design Generator"
+msgstr ""
+
+#: inc/admin/GettingStarted.php:449
+msgid "📚 Import a ready-made preset from the Design Library"
+msgstr ""
+
+#: inc/admin/GettingStarted.php:450
+msgid "Fine-tune colors, fonts, spacing, and icons in the live builder"
+msgstr ""
+
+#: inc/admin/GettingStarted.php:451
+msgid "One Appearance, applied to as many FAQ Groups as you like"
+msgstr ""
+
+#: inc/admin/GettingStarted.php:454
+msgid "View All Appearances"
+msgstr ""
+
+#: inc/admin/GettingStarted.php:468
+msgid "🎨 Design Library & AI Design Generator"
+msgstr ""
+
+#: inc/admin/GettingStarted.php:469
+msgid "You do not have to design your FAQ from scratch. Two powerful shortcuts are built right into the Appearance Builder to get you to a polished result in seconds."
+msgstr ""
+
+#: inc/admin/GettingStarted.php:474
+msgid "📚 Design Library"
+msgstr ""
+
+#: inc/admin/GettingStarted.php:475
+msgid "Browse 20+ bundled presets — Minimal, Dark, Colorful, and Professional — each with a live color swatch preview. Click \"Import Design\" and a fully configured Appearance is created and opened for you immediately."
+msgstr ""
+
+#: inc/admin/GettingStarted.php:476
+#: inc/admin/GettingStarted.php:482
+msgid "How to use it:"
+msgstr ""
+
+#: inc/admin/GettingStarted.php:476
+msgid "Open any Appearance in the builder → click the \"Design Library\" button in the top-right corner → browse and import."
+msgstr ""
+
+#: inc/admin/GettingStarted.php:480
+msgid "✨ AI Design Generator"
+msgstr ""
+
+#: inc/admin/GettingStarted.php:481
+msgid "Describe the look you want in plain language — for example: \"dark mode with teal accents and a card layout\" — and the AI generates a complete set of design settings for you. A color swatch preview is shown before you apply anything."
+msgstr ""
+
+#: inc/admin/GettingStarted.php:482
+msgid "Open any Appearance in the builder → click \"✨ AI Generate\" → type your description → Apply Design. Requires AI Integration to be enabled."
+msgstr ""
+
+#: inc/admin/GettingStarted.php:488
+msgid "Works with any configured AI provider — OpenAI, Anthropic Claude, Google Gemini, Mistral, Ollama, or a custom endpoint"
+msgstr ""
+
+#: inc/admin/GettingStarted.php:489
+msgid "Generated designs never force a container width unless you ask for one"
+msgstr ""
+
+#: inc/admin/GettingStarted.php:490
+msgid "Apply, then keep tweaking — every individual setting is still fully editable after generation"
+msgstr ""
+
+#: inc/admin/GettingStarted.php:497
+msgid "Configure AI Integration"
+msgstr ""
+
+#: inc/admin/GettingStarted.php:510
+msgid "✨ FAQ Assistant — floating chatbot"
+msgstr ""
+
+#: inc/admin/GettingStarted.php:511
+msgid "The FAQ Assistant is a floating chat button that lets visitors search and browse your FAQs right on the page — without navigating away. Enable it once and it appears automatically on the pages you choose."
+msgstr ""
+
+#: inc/admin/GettingStarted.php:513
+msgid "Live search across all your FAQ groups"
+msgstr ""
+
+#: inc/admin/GettingStarted.php:514
+msgid "\"Ask a Question\" form — submissions land in your inbox"
+msgstr ""
+
+#: inc/admin/GettingStarted.php:515
+msgid "\"Was this helpful?\" ratings with an analytics dashboard"
+msgstr ""
+
+#: inc/admin/GettingStarted.php:516
+msgid "Fully customisable colors, labels, and behaviour"
+msgstr ""
+
+#: inc/admin/GettingStarted.php:519
+msgid "Set Up FAQ Assistant"
+msgstr ""
+
+#: inc/admin/GettingStarted.php:527
+msgid "Help &amp; Support"
+msgstr ""
+
+#: inc/admin/GettingStarted.php:533
+msgid "Documentation"
+msgstr ""
+
+#: inc/admin/GettingStarted.php:534
+msgid "Read the full plugin documentation and feature guides."
+msgstr ""
+
+#: inc/admin/GettingStarted.php:536
+msgid "View Docs"
+msgstr ""
+
+#: inc/admin/GettingStarted.php:542
+msgid "Get Support"
+msgstr ""
+
+#: inc/admin/GettingStarted.php:543
+msgid "Contact our team for help or to report a bug."
+msgstr ""
+
+#: inc/admin/GettingStarted.php:545
+msgid "Contact Us"
+msgstr ""
+
+#: inc/admin/GettingStarted.php:555
+msgid "GitHub"
+msgstr ""
+
+#: inc/admin/GettingStarted.php:556
+msgid "View the source code, report issues, or contribute on GitHub."
+msgstr ""
+
+#: inc/admin/GettingStarted.php:558
+msgid "View on GitHub"
+msgstr ""
+
+#: inc/admin/GettingStarted.php:566
+msgid "We're here to help!"
+msgstr ""
+
+#: inc/admin/GettingStarted.php:567
+msgid "Contact us for fast, friendly support:"
+msgstr ""
+
+#: inc/admin/GettingStarted.php:571
+msgid "Open a support ticket"
+msgstr ""
+
+#: inc/admin/GettingStarted.php:573
+msgid "We typically respond within 1 business day."
+msgstr ""
+
+#: inc/admin/RegisterAdminPages.php:120
 msgid "Settings saved successfully."
 msgstr ""
 
-#: inc/admin/RegisterAdminPages.php:144
+#: inc/admin/RegisterAdminPages.php:125
 msgid "Settings saved successfully. Permalinks have been refreshed."
 msgstr ""
 
-#: inc/admin/settings/ai-integration.php:33
+#: inc/admin/settings/ai-integration.php:30
 msgid "AI Integration Settings"
 msgstr ""
 
-#: inc/admin/settings/ai-integration.php:39
-#: inc/admin/settings/ai-integration.php:45
+#: inc/admin/settings/ai-integration.php:35
 #: inc/ExportImport/Admin/views/export-page.php:74
 msgid "AI Integration"
 msgstr ""
 
-#: inc/admin/settings/ai-integration.php:48
-msgid "<i>Enable this option to activate the AI-powered FAQ generation on your website.</i>"
+#: inc/admin/settings/ai-integration.php:43
+#: inc/ai-writing-assistant/includes/Admin/AiGenerator.php:194
+msgid "Enable AI Integration"
 msgstr ""
 
-#: inc/admin/settings/ai-integration.php:53
-msgid "ChatGPT API Key"
+#: inc/admin/settings/ai-integration.php:46
+msgid "<i>Enable AI-powered FAQ generation and text refinement.</i>"
 msgstr ""
 
-#: inc/admin/settings/ai-integration.php:56
-msgid "<i>Enter your OpenAI ChatGPT API key to enable AI-powered FAQ generation.</i> <a href=\"https://platform.openai.com/account/api-keys\" target=\"_blank\">Get your API key</a>"
+#: inc/admin/settings/ai-integration.php:54
+msgid "AI Provider"
+msgstr ""
+
+#: inc/admin/settings/ai-integration.php:59
+msgid "OpenAI (ChatGPT)"
+msgstr ""
+
+#: inc/admin/settings/ai-integration.php:60
+msgid "Anthropic (Claude)"
+msgstr ""
+
+#: inc/admin/settings/ai-integration.php:61
+msgid "Google Gemini"
+msgstr ""
+
+#: inc/admin/settings/ai-integration.php:62
+msgid "Mistral AI"
+msgstr ""
+
+#: inc/admin/settings/ai-integration.php:63
+msgid "Ollama (Local)"
+msgstr ""
+
+#: inc/admin/settings/ai-integration.php:64
+msgid "OpenAI-Compatible (Custom)"
 msgstr ""
 
 #: inc/admin/settings/ai-integration.php:66
-msgid "ChatGPT Model"
+msgid "<i>Select which AI service to use. Configure the corresponding API key below.</i>"
 msgstr ""
 
-#: inc/admin/settings/ai-integration.php:71
-msgid "GPT-3.5 Turbo"
+#: inc/admin/settings/ai-integration.php:74
+msgid "OpenAI API Key"
 msgstr ""
 
-#: inc/admin/settings/ai-integration.php:72
-msgid "GPT-4"
+#: inc/admin/settings/ai-integration.php:77
+msgid "<i>Your OpenAI API key.</i> <a href=\"https://platform.openai.com/account/api-keys\" target=\"_blank\">Get API key</a>"
 msgstr ""
 
-#: inc/admin/settings/ai-integration.php:73
-msgid "GPT-4o"
+#: inc/admin/settings/ai-integration.php:89
+msgid "OpenAI Model"
 msgstr ""
 
-#: inc/admin/settings/ai-integration.php:75
-msgid "<i>Select the ChatGPT model to use for AI-powered FAQ generation.</i>"
+#: inc/admin/settings/ai-integration.php:111
+msgid "Anthropic API Key"
 msgstr ""
 
-#: inc/admin/settings/ai-integration.php:81
-msgid "Language"
+#: inc/admin/settings/ai-integration.php:114
+msgid "<i>Your Anthropic API key.</i> <a href=\"https://console.anthropic.com/settings/keys\" target=\"_blank\">Get API key</a>"
 msgstr ""
 
-#: inc/admin/settings/ai-integration.php:86
-msgid "<i>Select the language to use for AI-powered FAQ generation.</i>"
-msgstr ""
-
-#: inc/admin/settings/ai-integration.php:94
-msgid "AI Commands"
-msgstr ""
-
-#: inc/admin/settings/ai-integration.php:95
-msgid "Add custom AI commands for the FAQ Generation. These commands will be available as a dropdown in the TinyMCE editor for the answer field."
-msgstr ""
-
-#: inc/admin/settings/ai-integration.php:97
-msgid "Command {#}"
-msgstr ""
-
-#: inc/admin/settings/ai-integration.php:98
-msgid "Add Command"
-msgstr ""
-
-#: inc/admin/settings/ai-integration.php:99
-msgid "Remove Command"
-msgstr ""
-
-#: inc/admin/settings/ai-integration.php:116
-msgid "Commands"
-msgstr ""
-
-#: inc/admin/settings/ai-integration.php:144
-msgid "Configure AI integration to automatically generate and enhance FAQ answers using OpenAI's ChatGPT. Enable AI-powered features, set your API key, choose a model, and define custom commands to streamline FAQ creation and editing. These settings let you leverage AI to improve the quality and efficiency of your FAQ content."
+#: inc/admin/settings/ai-integration.php:126
+msgid "Claude Model"
 msgstr ""
 
 #: inc/admin/settings/ai-integration.php:148
-msgid "Read the AI Integration Documentation"
+msgid "Google Gemini API Key"
 msgstr ""
 
-#: inc/admin/settings/ai-integration.php:173
-msgid "Refine the text"
+#: inc/admin/settings/ai-integration.php:151
+msgid "<i>Your Google AI Studio API key.</i> <a href=\"https://aistudio.google.com/app/apikey\" target=\"_blank\">Get API key</a>"
 msgstr ""
 
-#: inc/admin/settings/ai-integration.php:174
-msgid "Refine and improve the following text."
+#: inc/admin/settings/ai-integration.php:163
+msgid "Gemini Model"
 msgstr ""
 
-#: inc/admin/settings/ai-integration.php:177
-msgid "Make it longer"
-msgstr ""
-
-#: inc/admin/settings/ai-integration.php:178
-msgid "Make the following text longer and more detailed."
-msgstr ""
-
-#: inc/admin/settings/ai-integration.php:181
-msgid "Make it shorter"
-msgstr ""
-
-#: inc/admin/settings/ai-integration.php:182
-msgid "Make the following text more concise."
-msgstr ""
-
-#: inc/admin/settings/ai-integration.php:185
-msgid "Execute as command"
+#: inc/admin/settings/ai-integration.php:183
+msgid "Mistral API Key"
 msgstr ""
 
 #: inc/admin/settings/ai-integration.php:186
+msgid "<i>Your Mistral AI API key.</i> <a href=\"https://console.mistral.ai/api-keys/\" target=\"_blank\">Get API key</a>"
+msgstr ""
+
+#: inc/admin/settings/ai-integration.php:198
+msgid "Mistral Model"
+msgstr ""
+
+#: inc/admin/settings/ai-integration.php:219
+msgid "Ollama Endpoint"
+msgstr ""
+
+#: inc/admin/settings/ai-integration.php:223
+msgid "<i>Base URL of your local Ollama instance.</i>"
+msgstr ""
+
+#: inc/admin/settings/ai-integration.php:233
+msgid "Ollama Model"
+msgstr ""
+
+#: inc/admin/settings/ai-integration.php:237
+msgid "<i>Name of the locally installed Ollama model, e.g. <code>llama3</code>, <code>mistral</code>, <code>phi3</code>.</i>"
+msgstr ""
+
+#: inc/admin/settings/ai-integration.php:249
+msgid "Custom API Endpoint"
+msgstr ""
+
+#: inc/admin/settings/ai-integration.php:252
+msgid "<i>Base URL of an OpenAI-compatible API (e.g. <code>https://api.groq.com/openai/v1</code>). The <code>/chat/completions</code> path is appended automatically.</i>"
+msgstr ""
+
+#: inc/admin/settings/ai-integration.php:262
+msgid "Custom API Key"
+msgstr ""
+
+#: inc/admin/settings/ai-integration.php:265
+msgid "<i>API key for the custom endpoint (leave blank if not required).</i>"
+msgstr ""
+
+#: inc/admin/settings/ai-integration.php:277
+msgid "Custom Model Name"
+msgstr ""
+
+#: inc/admin/settings/ai-integration.php:280
+msgid "<i>Model identifier to send in the request, e.g. <code>llama-3.3-70b-versatile</code>.</i>"
+msgstr ""
+
+#: inc/admin/settings/ai-integration.php:292
+msgid "Language"
+msgstr ""
+
+#: inc/admin/settings/ai-integration.php:297
+msgid "<i>Language for AI-generated content.</i>"
+msgstr ""
+
+#: inc/admin/settings/ai-integration.php:305
+msgid "AI Commands"
+msgstr ""
+
+#: inc/admin/settings/ai-integration.php:306
+msgid "Custom commands available in the TinyMCE AI Assistant dropdown."
+msgstr ""
+
+#: inc/admin/settings/ai-integration.php:308
+msgid "Command {#}"
+msgstr ""
+
+#: inc/admin/settings/ai-integration.php:309
+msgid "Add Command"
+msgstr ""
+
+#: inc/admin/settings/ai-integration.php:310
+msgid "Remove Command"
+msgstr ""
+
+#: inc/admin/settings/ai-integration.php:327
+msgid "Commands"
+msgstr ""
+
+#: inc/admin/settings/ai-integration.php:345
+msgid "Connect any major AI service to power FAQ generation and text refinement. Select your provider, enter your API key, and pick a model."
+msgstr ""
+
+#: inc/admin/settings/ai-integration.php:347
+msgid "Read the AI Integration Documentation"
+msgstr ""
+
+#: inc/admin/settings/ai-integration.php:396
+msgid "Refine the text"
+msgstr ""
+
+#: inc/admin/settings/ai-integration.php:397
+msgid "Refine and improve the following text."
+msgstr ""
+
+#: inc/admin/settings/ai-integration.php:400
+msgid "Make it longer"
+msgstr ""
+
+#: inc/admin/settings/ai-integration.php:401
+msgid "Make the following text longer and more detailed."
+msgstr ""
+
+#: inc/admin/settings/ai-integration.php:404
+msgid "Make it shorter"
+msgstr ""
+
+#: inc/admin/settings/ai-integration.php:405
+msgid "Make the following text more concise."
+msgstr ""
+
+#: inc/admin/settings/ai-integration.php:408
+msgid "Execute as command"
+msgstr ""
+
+#: inc/admin/settings/ai-integration.php:409
 msgid "Execute this text as prompt."
 msgstr ""
 
-#: inc/admin/templates/get-help.php:18
-msgid "Get Help"
+#: inc/admin/ShortcodeBuilder.php:32
+msgid "Shortcode Builder – Ultimate FAQ Solution"
 msgstr ""
 
-#: inc/admin/templates/get-help.php:19
-msgid "Support, documentation, and troubleshooting for Ultimate FAQ Solution."
+#: inc/admin/ShortcodeBuilder.php:33
+#: inc/admin/templates/shortcode-builder.php:262
+msgid "Shortcode Builder"
 msgstr ""
 
-#: inc/admin/templates/get-help.php:25
-msgid "Documentation"
+#: inc/admin/templates/design-library.php:15
+msgid "Minimal"
 msgstr ""
 
-#: inc/admin/templates/get-help.php:26
-msgid "Read the full plugin documentation and feature guides."
+#: inc/admin/templates/design-library.php:16
+msgid "Colorful"
 msgstr ""
 
-#: inc/admin/templates/get-help.php:31
-msgid "Get Support"
+#: inc/admin/templates/design-library.php:17
+msgid "Dark"
 msgstr ""
 
-#: inc/admin/templates/get-help.php:32
-msgid "Contact our team for help or to report a bug."
+#: inc/admin/templates/design-library.php:18
+msgid "Professional"
 msgstr ""
 
-#: inc/admin/templates/get-help.php:42
-msgid "GitHub"
+#: inc/admin/templates/design-library.php:23
+#: src/appearance/components/DesignLibraryModal.jsx:179
+#: src/appearance/components/SettingsPanel.jsx:48
+msgid "Design Library"
 msgstr ""
 
-#: inc/admin/templates/get-help.php:43
-msgid "View the source code, report issues, or contribute on GitHub."
+#: inc/admin/templates/design-library.php:25
+msgid "Import a pre-built design into your Appearance Library. After import you can open it in the visual builder and customise every detail."
 msgstr ""
 
-#: inc/admin/templates/get-help.php:49
-msgid "Need More Help?"
+#: inc/admin/templates/design-library.php:31
+msgid "Design imported successfully."
 msgstr ""
 
-#: inc/admin/templates/get-help.php:51
-msgid "We’re here to help!"
+#: inc/admin/templates/design-library.php:32
+msgid "Open in Builder →"
 msgstr ""
 
-#: inc/admin/templates/get-help.php:51
-msgid "Contact us for fast, friendly support:"
+#: inc/admin/templates/design-library.php:41
+#: block/build/index.js:1
+#: block/src/index.js:178
+#: src/appearance/components/DesignLibraryModal.jsx:233
+msgid "All"
 msgstr ""
 
-#: inc/admin/templates/get-help.php:56
-msgid "We typically respond within 1 business day."
+#: inc/admin/templates/design-library.php:63
+#: src/appearance/components/DesignLibraryModal.jsx:242
+msgid "No designs found in this category."
 msgstr ""
 
-#: inc/admin/templates/get-help.php:60
-msgid "Ultimate FAQ Solution by "
+#: inc/admin/templates/design-library.php:73
+#: src/appearance/components/AiDesignModal.jsx:30
+#: src/appearance/components/DesignLibraryModal.jsx:45
+msgid "Question row"
+msgstr ""
+
+#: inc/admin/templates/design-library.php:78
+#: src/appearance/components/DesignLibraryModal.jsx:55
+msgid "Answer panel preview text."
+msgstr ""
+
+#: inc/admin/templates/design-library.php:102
+msgid "Import Design"
 msgstr ""
 
 #: inc/admin/templates/settings.php:199
 msgid "You need the WooCommerce plugin installed and activated to use these integration settings."
+msgstr ""
+
+#: inc/admin/templates/shortcode-builder.php:264
+msgid "Configure your FAQ shortcode visually and paste it into any page, post, or widget."
+msgstr ""
+
+#. translators: %s: link to create a new FAQ group
+#: inc/admin/templates/shortcode-builder.php:273
+#, php-format
+msgid "No FAQ groups found. <a href=\"%s\">Create your first FAQ group</a> to get started."
+msgstr ""
+
+#: inc/admin/templates/shortcode-builder.php:291
+#: block/build/index.js:1
+#: block/src/index.js:172
+msgid "Select FAQ Group"
+msgstr ""
+
+#: inc/admin/templates/shortcode-builder.php:297
+msgid "— Choose a group —"
+msgstr ""
+
+#: inc/admin/templates/shortcode-builder.php:305
+msgid "Displays a single group or all groups at once."
+msgstr ""
+
+#: inc/admin/templates/shortcode-builder.php:313
+msgid "Display Options"
+msgstr ""
+
+#: inc/admin/templates/shortcode-builder.php:317
+msgid "Item Order"
+msgstr ""
+
+#: inc/admin/templates/shortcode-builder.php:319
+msgid "Ascending (default)"
+msgstr ""
+
+#: inc/admin/templates/shortcode-builder.php:320
+msgid "Descending"
+msgstr ""
+
+#: inc/admin/templates/shortcode-builder.php:327
+#: block/build/index.js:1
+#: block/src/index.js:190
+msgid "Hide group title"
+msgstr ""
+
+#: inc/admin/templates/shortcode-builder.php:328
+msgid "Overrides the per-group title visibility setting."
+msgstr ""
+
+#: inc/admin/templates/shortcode-builder.php:335
+msgid "Show Expand All button"
+msgstr ""
+
+#: inc/admin/templates/shortcode-builder.php:336
+msgid "Adds an Expand All / Collapse All toggle above the FAQ items."
+msgstr ""
+
+#: inc/admin/templates/shortcode-builder.php:345
+msgid "All Groups Options"
+msgstr ""
+
+#: inc/admin/templates/shortcode-builder.php:349
+msgid "Behaviour Override"
+msgstr ""
+
+#: inc/admin/templates/shortcode-builder.php:351
+msgid "Use group settings (default)"
+msgstr ""
+
+#: inc/admin/templates/shortcode-builder.php:352
+#: block/build/index.js:1
+#: block/src/index.js:104
+msgid "Accordion"
+msgstr ""
+
+#: inc/admin/templates/shortcode-builder.php:353
+#: block/build/index.js:1
+#: block/src/index.js:108
+msgid "Toggle"
+msgstr ""
+
+#: inc/admin/templates/shortcode-builder.php:355
+msgid "Forces the same open/close behaviour on every group."
+msgstr ""
+
+#: inc/admin/templates/shortcode-builder.php:360
+msgid "Exclude Groups"
+msgstr ""
+
+#: inc/admin/templates/shortcode-builder.php:376
+msgid "Checked groups will be hidden from the output."
+msgstr ""
+
+#: inc/admin/templates/shortcode-builder.php:385
+msgid "Single Group Options"
+msgstr ""
+
+#: inc/admin/templates/shortcode-builder.php:389
+msgid "Exclude FAQ Items"
+msgstr ""
+
+#: inc/admin/templates/shortcode-builder.php:396
+msgid "Comma-separated item numbers to hide (1-based position within the group)."
+msgstr ""
+
+#: inc/admin/templates/shortcode-builder.php:409
+#: block/build/index.js:1
+#: block/src/index.js:237
+msgid "Override Appearance"
+msgstr ""
+
+#: inc/admin/templates/shortcode-builder.php:411
+#: block/build/index.js:1
+#: block/src/index.js:242
+msgid "Use group default"
+msgstr ""
+
+#: inc/admin/templates/shortcode-builder.php:418
+msgid "Select an appearance preset to use for this embed, overriding the group's linked appearance."
+msgstr ""
+
+#. translators: %s: link to create a new appearance
+#: inc/admin/templates/shortcode-builder.php:426
+#, php-format
+msgid "No appearance presets found. <a href=\"%s\" target=\"_blank\">Create an appearance</a> to enable this option."
+msgstr ""
+
+#: inc/admin/templates/shortcode-builder.php:445
+msgid "Generated Shortcode"
+msgstr ""
+
+#: inc/admin/templates/shortcode-builder.php:450
+#: inc/admin/templates/shortcode-builder.php:608
+msgid "Select a FAQ group to generate a shortcode…"
+msgstr ""
+
+#: inc/admin/templates/shortcode-builder.php:461
+#: inc/admin/templates/shortcode-builder.php:614
+#: inc/admin/templates/shortcode-builder.php:659
+msgid "Copy Shortcode"
+msgstr ""
+
+#: inc/admin/templates/shortcode-builder.php:466
+msgid "Where to use it"
+msgstr ""
+
+#: inc/admin/templates/shortcode-builder.php:468
+msgid "Paste into any Classic Editor post or page."
+msgstr ""
+
+#. translators: %s: shortcode block name
+#: inc/admin/templates/shortcode-builder.php:474
+#, php-format
+msgid "In the Block Editor, add a <strong>%s</strong> block and paste the shortcode."
+msgstr ""
+
+#: inc/admin/templates/shortcode-builder.php:481
+msgid "Add to a Text widget in Appearance → Widgets."
+msgstr ""
+
+#: inc/admin/templates/shortcode-builder.php:486
+msgid "Use directly in PHP with <code>echo do_shortcode(…);</code>"
+msgstr ""
+
+#: inc/admin/templates/shortcode-builder.php:656
+msgid "Copied!"
 msgstr ""
 
 #: inc/ai-writing-assistant/includes/Admin/AiGenerator.php:44
@@ -708,11 +1695,8 @@ msgstr ""
 msgid "To use the AI FAQ Generator, please enable AI Integration in your plugin settings."
 msgstr ""
 
-#: inc/ai-writing-assistant/includes/Admin/AiGenerator.php:194
-msgid "Enable AI Integration"
-msgstr ""
-
 #: inc/ai-writing-assistant/includes/Admin/AiGenerator.php:196
+#: src/appearance/components/DesignLibraryModal.jsx:188
 msgid "Close"
 msgstr ""
 
@@ -732,6 +1716,38 @@ msgstr ""
 msgid "Undo last AI text modification"
 msgstr ""
 
+#: inc/ai-writing-assistant/includes/API/AnthropicProvider.php:42
+msgid "Missing Anthropic API key. Check your AI Integration settings."
+msgstr ""
+
+#: inc/ai-writing-assistant/includes/API/AnthropicProvider.php:77
+msgid "Request to Anthropic failed: "
+msgstr ""
+
+#: inc/ai-writing-assistant/includes/API/AnthropicProvider.php:85
+msgid "Invalid Anthropic API key."
+msgstr ""
+
+#: inc/ai-writing-assistant/includes/API/AnthropicProvider.php:88
+msgid "Anthropic rate limit reached. Please wait 30–60 seconds and try again. If this happens often, consider upgrading your API plan."
+msgstr ""
+
+#: inc/ai-writing-assistant/includes/API/AnthropicProvider.php:92
+#, php-format
+msgid "Model \"%s\" not found on Anthropic."
+msgstr ""
+
+#: inc/ai-writing-assistant/includes/API/AnthropicProvider.php:97
+msgid "Anthropic API error: "
+msgstr ""
+
+#: inc/ai-writing-assistant/includes/API/AnthropicProvider.php:101
+#: inc/ai-writing-assistant/includes/API/ChatGPT.php:122
+#: inc/ai-writing-assistant/includes/API/GeminiProvider.php:96
+#: inc/ai-writing-assistant/includes/API/OpenAICompatibleProvider.php:84
+msgid "No response."
+msgstr ""
+
 #: inc/ai-writing-assistant/includes/API/ChatGPT.php:77
 msgid "Missing OpenAI API key."
 msgstr ""
@@ -744,54 +1760,178 @@ msgstr ""
 msgid "OpenAI API error: "
 msgstr ""
 
-#: inc/ai-writing-assistant/includes/API/ChatGPT.php:122
-msgid "No response."
+#: inc/ai-writing-assistant/includes/API/GeminiProvider.php:38
+msgid "Missing Google Gemini API key. Check your AI Integration settings."
 msgstr ""
 
-#: inc/AppearanceActions.php:187
-msgid "Invalid request."
+#: inc/ai-writing-assistant/includes/API/GeminiProvider.php:69
+msgid "Request to Gemini failed: "
 msgstr ""
 
-#: inc/AppearanceActions.php:187
-#: inc/AppearanceActions.php:197
+#: inc/ai-writing-assistant/includes/API/GeminiProvider.php:77
+msgid "Invalid Gemini API key or request."
+msgstr ""
+
+#: inc/ai-writing-assistant/includes/API/GeminiProvider.php:80
+msgid "Gemini API key is invalid or lacks permissions."
+msgstr ""
+
+#: inc/ai-writing-assistant/includes/API/GeminiProvider.php:83
+msgid "Gemini rate limit reached. Please wait 30–60 seconds and try again. If this happens often, consider upgrading your API plan."
+msgstr ""
+
+#: inc/ai-writing-assistant/includes/API/GeminiProvider.php:87
+#, php-format
+msgid "Gemini model \"%s\" not found."
+msgstr ""
+
+#: inc/ai-writing-assistant/includes/API/GeminiProvider.php:92
+msgid "Gemini API error: "
+msgstr ""
+
+#: inc/ai-writing-assistant/includes/API/OpenAICompatibleProvider.php:60
+msgid "Request failed: "
+msgstr ""
+
+#: inc/ai-writing-assistant/includes/API/OpenAICompatibleProvider.php:68
+msgid "Invalid or missing API key. Check your AI Integration settings."
+msgstr ""
+
+#: inc/ai-writing-assistant/includes/API/OpenAICompatibleProvider.php:71
+msgid "Your AI provider rate limit was reached. Please wait 30–60 seconds and try again. If this happens often, consider upgrading your API plan."
+msgstr ""
+
+#: inc/ai-writing-assistant/includes/API/OpenAICompatibleProvider.php:75
+#, php-format
+msgid "Model \"%s\" not found on this provider."
+msgstr ""
+
+#: inc/ai-writing-assistant/includes/API/OpenAICompatibleProvider.php:80
+msgid "API error: "
+msgstr ""
+
+#: inc/AiDesignGenerator.php:40
+msgid "AI Integration is not enabled. Please enable it in AI Integration settings."
+msgstr ""
+
+#: inc/AiDesignGenerator.php:163
+msgid "AI did not return a valid JSON object. Please try again."
+msgstr ""
+
+#: inc/AiDesignGenerator.php:171
+msgid "AI returned malformed JSON. Please try again."
+msgstr ""
+
+#: inc/AppearanceActions.php:206
+#: inc/AppearanceActions.php:216
 msgid "Error"
 msgstr ""
 
-#: inc/AppearanceActions.php:197
+#: inc/AppearanceActions.php:216
 msgid "Failed to detach the group."
 msgstr ""
 
-#: inc/AppearanceActions.php:211
+#: inc/AppearanceActions.php:228
 msgid "Linked FAQ Groups"
 msgstr ""
 
-#: inc/AppearanceActions.php:242
+#. translators: %d: number of FAQ groups using this appearance
+#: inc/AppearanceActions.php:252
+#: src/appearance/components/SettingsPanel.jsx:63
+#, php-format,js-format
+msgid "Applied to %d FAQ Group"
+msgid_plural "Applied to %d FAQ Groups"
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/AppearanceActions.php:257
+#: src/appearance/components/SettingsPanel.jsx:75
+msgid "Not applied to any FAQ Group yet."
+msgstr ""
+
+#: inc/AppearanceActions.php:275
+msgid "Remove this group from the appearance?"
+msgstr ""
+
+#: inc/AppearanceActions.php:275
 msgid "Detach"
 msgstr ""
 
-#: inc/AppearanceActions.php:245
-#: inc/AppearanceActions.php:312
-msgid "No connected FAQ groups"
+#: inc/AppearanceActions.php:280
+msgid "Go to a FAQ Group and select this appearance from the sidebar to link it here."
 msgstr ""
 
-#: inc/AppearanceActions.php:252
-msgid "Apply to all FAQ groups"
-msgstr ""
-
-#: inc/AppearanceActions.php:257
-msgid "Appearance applied to all FAQ groups."
+#: inc/AppearanceActions.php:290
+msgid "Apply this appearance to ALL FAQ Groups? This will override any individual group settings."
 msgstr ""
 
 #: inc/AppearanceActions.php:291
+msgid "Apply to all FAQ Groups"
+msgstr ""
+
+#: inc/AppearanceActions.php:296
+msgid "Appearance applied to all FAQ Groups."
+msgstr ""
+
+#: inc/AppearanceActions.php:330
+msgid "Template"
+msgstr ""
+
+#: inc/AppearanceActions.php:331
 msgid "Connected FAQ Groups"
 msgstr ""
 
-#: inc/Chatbot.php:109
-msgid "Back"
+#: inc/AppearanceActions.php:351
+msgid "Default"
 msgstr ""
 
-#: inc/Chatbot.php:150
+#: inc/AppearanceActions.php:352
+msgid "Style 1"
+msgstr ""
+
+#: inc/AppearanceActions.php:353
+msgid "Style 2"
+msgstr ""
+
+#: inc/AppearanceActions.php:354
+msgid "Universal"
+msgstr ""
+
+#: inc/AppearanceActions.php:378
+msgid "more"
+msgstr ""
+
+#: inc/AppearanceActions.php:381
+msgid "None"
+msgstr ""
+
+#: inc/Chatbot.php:123
+msgid "Go back"
+msgstr ""
+
+#: inc/Chatbot.php:146
+msgid "I agree to the privacy policy."
+msgstr ""
+
+#: inc/Chatbot.php:149
+msgid "Thank you! We'll get back to you as soon as possible."
+msgstr ""
+
+#: inc/Chatbot.php:195
 msgid "No FAQs found."
+msgstr ""
+
+#: inc/Chatbot.php:250
+msgid "Please fill in all required fields with valid data."
+msgstr ""
+
+#: inc/Chatbot.php:258
+msgid "You have already submitted a question recently. Please wait a while before trying again."
+msgstr ""
+
+#: inc/Chatbot.php:264
+#, php-format
+msgid "New FAQ Question from %s"
 msgstr ""
 
 #: inc/ExportImport/Admin/AdminPage.php:54
@@ -827,7 +1967,7 @@ msgid "You can choose to export or import only specific data types — such as F
 msgstr ""
 
 #: inc/ExportImport/Admin/views/export-page.php:39
-#: inc/functions/actions_and_filters.php:258
+#: inc/functions/actions_and_filters.php:288
 msgid "Note:"
 msgstr ""
 
@@ -877,92 +2017,134 @@ msgstr ""
 msgid "no importer registered for this type"
 msgstr ""
 
-#: inc/FAQGroupActions.php:46
+#: inc/FAQGroupActions.php:41
 msgid "FAQ Appearance"
 msgstr ""
 
-#: inc/FAQGroupActions.php:55
+#: inc/FAQGroupActions.php:50
 msgid "FAQ Shortcode"
 msgstr ""
 
-#: inc/FAQGroupActions.php:91
-msgid "Select an appearance for this FAQ group. This will determine how the FAQs are displayed on the front end."
+#: inc/FAQGroupActions.php:96
+msgid "Default template"
 msgstr ""
 
-#: inc/FAQGroupActions.php:92
-msgid "Learn more about Appearance Settings"
+#: inc/FAQGroupActions.php:97
+msgid "Style 1 template"
 msgstr ""
 
-#: inc/FAQGroupActions.php:95
-msgid "Select an appearance:"
+#: inc/FAQGroupActions.php:98
+msgid "Style 2 template"
 msgstr ""
 
-#: inc/FAQGroupActions.php:130
-msgid "Use the shortcode below to display this FAQ group in a page or post:"
+#: inc/FAQGroupActions.php:119
+msgid "Using the default appearance. Select a specific one below to customise this group independently."
 msgstr ""
 
-#: inc/FAQGroupActions.php:132
-msgid "Copy and paste this into any post, page, or widget."
+#: inc/FAQGroupActions.php:124
+msgid "Select appearance:"
 msgstr ""
 
-#: inc/functions/actions_and_filters.php:220
+#: inc/FAQGroupActions.php:129
+msgid "— Use default appearance —"
+msgstr ""
+
+#: inc/FAQGroupActions.php:141
+msgid "Edit appearance"
+msgstr ""
+
+#: inc/FAQGroupActions.php:143
+msgid "Create new appearance"
+msgstr ""
+
+#: inc/FAQGroupActions.php:160
+msgid "Paste this shortcode into any page or post to display this FAQ group:"
+msgstr ""
+
+#: inc/FAQGroupActions.php:162
+msgid "Or use the Gutenberg block — search for \"Ultimate FAQ\"."
+msgstr ""
+
+#: inc/FAQGroupActions.php:225
+#: inc/FAQGroupActions.php:238
+#: inc/functions/actions_and_filters.php:417
+msgid "FAQ Group saved."
+msgstr ""
+
+#. translators: %d: number of pages this FAQ group is embedded on
+#: inc/FAQGroupActions.php:230
+#, php-format
+msgid "Displayed on %d page."
+msgid_plural "Displayed on %d pages."
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/FAQGroupActions.php:239
+msgid "It is not embedded anywhere yet — add it to a page to make it visible."
+msgstr ""
+
+#: inc/FAQGroupActions.php:248
+msgid "Click to copy shortcode"
+msgstr ""
+
+#: inc/FAQGroupActions.php:251
+msgid "Add to a page"
+msgstr ""
+
+#: inc/functions/actions_and_filters.php:250
 msgid "Invalid nonce verification."
 msgstr ""
 
-#: inc/functions/actions_and_filters.php:253
+#: inc/functions/actions_and_filters.php:283
 msgid "Preview FAQ Group"
 msgstr ""
 
-#: inc/functions/actions_and_filters.php:254
+#: inc/functions/actions_and_filters.php:284
 msgid "Click the button to preview the FAQ on the front end. Make sure to save/update the FAQ group first."
 msgstr ""
 
-#: inc/functions/actions_and_filters.php:258
+#: inc/functions/actions_and_filters.php:288
 msgid "Creating an FAQ Group does not mean it will automatically appear on your website. "
 msgstr ""
 
-#: inc/functions/actions_and_filters.php:259
+#: inc/functions/actions_and_filters.php:289
 msgid "You need to display the group using the shortcode or the Gutenberg block on a page or post."
 msgstr ""
 
-#: inc/functions/actions_and_filters.php:361
-#: inc/functions/actions_and_filters.php:370
+#: inc/functions/actions_and_filters.php:407
+#: inc/functions/actions_and_filters.php:416
 msgid "FAQ Group published."
 msgstr ""
 
-#: inc/functions/actions_and_filters.php:362
+#: inc/functions/actions_and_filters.php:408
 msgid "Custom field updated."
 msgstr ""
 
-#: inc/functions/actions_and_filters.php:363
+#: inc/functions/actions_and_filters.php:409
 msgid "Custom field deleted."
 msgstr ""
 
-#: inc/functions/actions_and_filters.php:364
+#: inc/functions/actions_and_filters.php:410
 msgid "FAQ Group updated."
 msgstr ""
 
 #. translators: %s: Date and time of the revision
-#: inc/functions/actions_and_filters.php:367
+#: inc/functions/actions_and_filters.php:413
 #, php-format
 msgid "FAQ Group restored to revision from %s."
 msgstr ""
 
-#: inc/functions/actions_and_filters.php:371
-msgid "FAQ Group saved."
-msgstr ""
-
-#: inc/functions/actions_and_filters.php:372
+#: inc/functions/actions_and_filters.php:418
 msgid "FAQ Group submitted."
 msgstr ""
 
 #. translators: %s: Date and time the FAQ Group is scheduled for
-#: inc/functions/actions_and_filters.php:375
+#: inc/functions/actions_and_filters.php:421
 #, php-format
 msgid "FAQ Group scheduled for: <strong>%s</strong>."
 msgstr ""
 
-#: inc/functions/actions_and_filters.php:378
+#: inc/functions/actions_and_filters.php:424
 msgid "FAQ Group draft updated."
 msgstr ""
 
@@ -982,14 +2164,22 @@ msgstr ""
 msgid "Please select a FAQ Group from dropdown."
 msgstr ""
 
-#: inc/Rest.php:259
+#: inc/Rest.php:203
+msgid "Prompt is required."
+msgstr ""
+
+#: inc/Rest.php:214
+msgid "Limit of 10 AI design generations per hour reached. Please try again later."
+msgstr ""
+
+#: inc/Rest.php:430
 msgid "Access denied."
 msgstr ""
 
 #. translators: %s is the name of the template that was not found.
-#: inc/Shortcodes.php:162
-#: inc/Shortcodes.php:259
-#: inc/Shortcodes.php:278
+#: inc/Shortcodes.php:175
+#: inc/Shortcodes.php:282
+#: inc/Shortcodes.php:301
 #, php-format
 msgid "%s Template Not Found"
 msgstr ""
@@ -1005,116 +2195,109 @@ msgstr ""
 
 #: inc/templates/all/template.php:27
 #: block/build/index.js:1
-#: block/src/index.js:175
+#: block/src/index.js:184
 msgid "Loading..."
 msgstr ""
 
 #: inc/templates/all/template.php:49
-msgid "No Result Fount!"
+msgid "No Result Found!"
 msgstr ""
 
-#: inc/templates/faq-preview.php:48
+#: inc/templates/default/template.php:28
+#: inc/templates/style-1/template.php:29
+#: inc/templates/style-2/template.php:25
+msgid "Toggle all FAQ answers"
+msgstr ""
+
+#: inc/templates/default/template.php:29
+#: inc/templates/style-1/template.php:30
+#: inc/templates/style-2/template.php:26
+msgid "Expand All"
+msgstr ""
+
+#: inc/templates/default/template.php:30
+#: inc/templates/style-1/template.php:31
+#: inc/templates/style-2/template.php:27
+msgid "Collapse All"
+msgstr ""
+
+#: inc/templates/faq-preview.php:49
 msgid "No FAQ group to preview. Please create one."
 msgstr ""
 
-#: inc/templates/faq-preview.php:87
+#: inc/templates/faq-preview.php:92
 #: block/build/index.js:1
-#: block/src/index.js:258
+#: block/src/index.js:281
 msgid "FAQ Preview"
 msgstr ""
 
 #: block/build/index.js:1
-#: block/src/index.js:91
+#: block/src/index.js:100
 msgid "Choose a behaviour"
 msgstr ""
 
 #: block/build/index.js:1
-#: block/src/index.js:95
-msgid "Accordion"
-msgstr ""
-
-#: block/build/index.js:1
-#: block/src/index.js:99
-msgid "Toggle"
-msgstr ""
-
-#: block/build/index.js:1
-#: block/src/index.js:106
+#: block/src/index.js:115
 msgid "Choose an order"
 msgstr ""
 
 #: block/build/index.js:1
-#: block/src/index.js:110
+#: block/src/index.js:119
 msgid "ASC"
 msgstr ""
 
 #: block/build/index.js:1
-#: block/src/index.js:114
+#: block/src/index.js:123
 msgid "DESC"
 msgstr ""
 
 #: block/build/index.js:1
-#: block/src/index.js:161
+#: block/src/index.js:170
 msgid "FAQ Settings"
 msgstr ""
 
 #: block/build/index.js:1
-#: block/src/index.js:163
-msgid "Select FAQ Group"
-msgstr ""
-
-#: block/build/index.js:1
-#: block/src/index.js:164
+#: block/src/index.js:173
 msgid "Choose a group to display FAQs from."
 msgstr ""
 
 #: block/build/index.js:1
-#: block/src/index.js:169
+#: block/src/index.js:178
 msgid "Select a FAQ group"
 msgstr ""
 
 #: block/build/index.js:1
-#: block/src/index.js:169
-msgid "All"
-msgstr ""
-
-#: block/build/index.js:1
-#: block/src/index.js:181
-msgid "Hide group title"
-msgstr ""
-
-#: block/build/index.js:1
-#: block/src/index.js:182
+#: block/src/index.js:191
 msgid "Check to hide the group title. This will override the faq group setting."
 msgstr ""
 
 #: block/build/index.js:1
-#: block/src/index.js:235
-#: block/src/index.js:243
+#: block/src/index.js:238
+msgid "Select an appearance preset to use for this block, overriding the FAQ group's linked appearance."
+msgstr ""
+
+#: block/build/index.js:1
+#: block/src/index.js:258
+#: block/src/index.js:266
 msgid "Configure the block from right panel - FAQ Settings"
 msgstr ""
 
 #: block/build/index.js:1
-#: block/src/index.js:251
+#: block/src/index.js:274
 msgid "Loading FAQ content..."
 msgstr ""
 
-#: src/appearance/Builder.jsx:106
-#: src/appearance/Builder.jsx:172
-msgid "Failed to save settings"
-msgstr ""
-
-#: src/appearance/Builder.jsx:114
-#: src/appearance/Builder.jsx:185
+#: src/appearance/Builder.jsx:73
+#: src/appearance/Builder.jsx:138
 msgid "Failed to save settings. Please try again."
 msgstr ""
 
-#: src/appearance/Builder.jsx:178
-msgid "Settings saved successfully!"
+#: src/appearance/Builder.jsx:132
+msgid "Settings saved! Changes are now live on all linked FAQ Groups."
 msgstr ""
 
-#: src/appearance/components/ActionButtons.jsx:12
-msgid "Reset"
+#: src/appearance/Builder.jsx:133
+msgid "Settings saved! Apply this appearance to a FAQ Group to see it live."
 msgstr ""
 
 #: src/appearance/components/ActionButtons.jsx:26
@@ -1125,19 +2308,89 @@ msgstr ""
 msgid "Save"
 msgstr ""
 
-#: src/appearance/components/index.jsx:43
+#: src/appearance/components/AiDesignModal.jsx:38
+msgid "Answer content area"
+msgstr ""
+
+#: src/appearance/components/AiDesignModal.jsx:74
+#: src/appearance/components/AiDesignModal.jsx:77
+msgid "Generation failed."
+msgstr ""
+
+#: src/appearance/components/AiDesignModal.jsx:82
+msgid "Something went wrong. Please try again."
+msgstr ""
+
+#: src/appearance/components/AiDesignModal.jsx:127
+msgid "AI Design Generator"
+msgstr ""
+
+#: src/appearance/components/AiDesignModal.jsx:146
+msgid "AI Integration is not enabled."
+msgstr ""
+
+#: src/appearance/components/AiDesignModal.jsx:152
+msgid "Enable it in AI Integration Settings →"
+msgstr ""
+
+#: src/appearance/components/AiDesignModal.jsx:163
+msgid "Generating your design…"
+msgstr ""
+
+#: src/appearance/components/AiDesignModal.jsx:170
+msgid "Preview"
+msgstr ""
+
+#: src/appearance/components/AiDesignModal.jsx:175
+msgid "Color approximation only — apply the design to see it rendered in the live preview."
+msgstr ""
+
+#: src/appearance/components/AiDesignModal.jsx:187
+#: src/appearance/components/DesignLibraryModal.jsx:99
+msgid "Apply Design"
+msgstr ""
+
+#: src/appearance/components/AiDesignModal.jsx:198
+msgid "Edit & Regenerate"
+msgstr ""
+
+#: src/appearance/components/AiDesignModal.jsx:206
+msgid "Describe your ideal FAQ design:"
+msgstr ""
+
+#: src/appearance/components/AiDesignModal.jsx:212
+msgid "e.g. \"Dark mode with deep navy background, subtle card shadows, and purple accents for a SaaS product\""
+msgstr ""
+
+#: src/appearance/components/AiDesignModal.jsx:223
+msgid "Quick tags"
+msgstr ""
+
+#: src/appearance/components/AiDesignModal.jsx:249
+msgid "Build on current settings (uncheck to start from scratch)"
+msgstr ""
+
+#: src/appearance/components/AiDesignModal.jsx:277
+msgid "Generate Design"
+msgstr ""
+
+#: src/appearance/components/DesignLibraryModal.jsx:182
+msgid "Apply a pre-built design as your starting point — every detail stays customisable."
+msgstr ""
+
+#: src/appearance/components/index.jsx:44
 msgid "No color"
 msgstr ""
 
-#: src/appearance/components/index.jsx:50
+#: src/appearance/components/index.jsx:51
 msgid "Clear color"
 msgstr ""
 
-#: src/appearance/components/index.jsx:83
+#: src/appearance/components/index.jsx:84
 msgid "Clear value"
 msgstr ""
 
-#: src/appearance/components/index.jsx:90
+#: src/appearance/components/index.jsx:91
 msgid "Not set"
 msgstr ""
 
@@ -1149,6 +2402,41 @@ msgstr ""
 msgid "Loading preview..."
 msgstr ""
 
-#: src/appearance/components/SettingsPanel.jsx:21
+#: src/appearance/components/SettingsPanel.jsx:34
 msgid "Appearance Builder"
+msgstr ""
+
+#: src/appearance/components/SettingsPanel.jsx:41
+msgid "AI Generate"
+msgstr ""
+
+#: src/appearance/components/SettingsPanel.jsx:67
+msgid "changes update all of them"
+msgstr ""
+
+#: src/appearance/components/SettingsPanel.jsx:110
+#, js-format
+msgid "Saved — live on %d page"
+msgid_plural "Saved — live on %d pages"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/appearance/components/SettingsPanel.jsx:116
+msgid "Saved — no FAQ Groups are using this appearance yet."
+msgstr ""
+
+#: src/appearance/components/SettingsPanel.jsx:120
+msgid "Changes are reflected in the preview on the right."
+msgstr ""
+
+#: src/appearance/components/TemplateCards.jsx:121
+msgid "Classic bordered accordion with icon buttons"
+msgstr ""
+
+#: src/appearance/components/TemplateCards.jsx:122
+msgid "Minimal flat accordion with underline dividers"
+msgstr ""
+
+#: src/appearance/components/TemplateCards.jsx:123
+msgid "Card layout with a bold colored group header"
 msgstr ""

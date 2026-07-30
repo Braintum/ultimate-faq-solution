@@ -27,6 +27,7 @@ class ComposerStaticInit35bfc3cd1c7f61ceaf40d8bf9eb1470a
 
     public static $classMap = array (
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
+        'Mahedi\\UltimateFaqSolution\\AiDesignGenerator' => __DIR__ . '/../..' . '/inc/AiDesignGenerator.php',
         'Mahedi\\UltimateFaqSolution\\AppearanceActions' => __DIR__ . '/../..' . '/inc/AppearanceActions.php',
         'Mahedi\\UltimateFaqSolution\\Assets' => __DIR__ . '/../..' . '/inc/Assets.php',
         'Mahedi\\UltimateFaqSolution\\Chatbot' => __DIR__ . '/../..' . '/inc/Chatbot.php',
