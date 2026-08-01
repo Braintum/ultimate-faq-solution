@@ -4,7 +4,7 @@ Donate link: https://www.braintum.com/
 Tags: faq, knowledgebase, accordion, ai, woocommerce
 Requires at least: 5.1  
 Tested up to: 7.0.2
-Stable tag: 2.0
+Stable tag: 2.1
 Requires PHP: 7.4.0  
 License: GPLv2 or later  
 License URI: https://www.gnu.org/licenses/license-list.html#GPLCompatibleLicenses  
@@ -221,6 +221,11 @@ Yes! Starting from version 1.6.4, Ultimate FAQ Solution includes an AI-powered f
 14. AI content generation: Instantly generate suggested answers for your FAQs using AI, streamlining the process of creating accurate and helpful responses.
 
 == Changelog ==
+
+= 2.1 =
+* New: Added "Was this helpful?" feedback widget to regular FAQs displayed via shortcode or block. Enable from the plugin Settings page; votes appear in the existing FAQ Feedback Analytics dashboard alongside FAQ Assistant votes.
+* Fix: Fixed FAQ Assistant not appearing when set to "Specific Pages" — replaced `get_the_ID()` with `get_queried_object_id()` for reliable page detection outside The Loop, and fixed strict type mismatch when comparing page IDs stored by CMB2.
+* Fix: Background color issue fixed when slide animation is enabled.
 
 = 2.0 =
 * New: Added a visual Shortcode Builder with live preview and one-click copy.
