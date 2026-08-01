@@ -1,6 +1,6 @@
 {
   "name": "ultimate-faq-solution",
-  "version": "2.1",
+  "version": "2.1.1",
   "main": "Gruntfile.js",
   "author": "Md. Mahedi Hasan",
   "scripts": {
