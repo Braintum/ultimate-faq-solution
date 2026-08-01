@@ -53,7 +53,7 @@ class Chatbot {
 		$display_on = cmb2_get_option( 'ufaqsw_chatbot_settings', 'display_on' );
 		if ( 'all' !== $display_on ) {
 			$specific_pages = cmb2_get_option( 'ufaqsw_chatbot_settings', 'display_on_pages' );
-			if ( ! is_array( $specific_pages ) || empty( $specific_pages ) || ! in_array( get_the_ID(), $specific_pages, true ) ) {
+			if ( ! is_array( $specific_pages ) || empty( $specific_pages ) || ! in_array( (int) get_queried_object_id(), array_map( 'intval', $specific_pages ), true ) ) {
 				return false;
 			}
 		}
