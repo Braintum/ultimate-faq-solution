@@ -633,3 +633,7 @@
 .ufaqsw-faq[data-layout="boxed"][data-animation="slide"] .ufaqsw-faq__answer:not(.ufaqsw-open) {
 	border-top: none;
 }
+
+.ufaqsw-faq[data-layout="boxed"][data-animation="fade"] .ufaqsw-faq__item, .ufaqsw-faq[data-layout="minimal"][data-animation="fade"] .ufaqsw-faq__item, .ufaqsw-faq[data-layout="card"][data-animation="fade"] .ufaqsw-faq__item, .ufaqsw-faq[data-layout="classic"][data-animation="fade"] .ufaqsw-faq__item {
+	background: var(--ufaqsw-a-bg);
+}
