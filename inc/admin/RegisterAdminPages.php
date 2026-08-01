@@ -98,6 +98,12 @@ class RegisterAdminPages {
 
 		register_setting( 'ufaqsw-plugin-settings-group', 'ufaqsw_detail_page_slug' );
 		register_setting( 'ufaqsw-plugin-settings-group', 'ufaqsw_enable_group_detail_page' );
+
+		register_setting( 'ufaqsw-plugin-settings-group', 'ufaqsw_faq_feedback_enabled' );
+		register_setting( 'ufaqsw-plugin-settings-group', 'ufaqsw_faq_feedback_label' );
+		register_setting( 'ufaqsw-plugin-settings-group', 'ufaqsw_faq_feedback_helpful_text' );
+		register_setting( 'ufaqsw-plugin-settings-group', 'ufaqsw_faq_feedback_not_helpful_text' );
+		register_setting( 'ufaqsw-plugin-settings-group', 'ufaqsw_faq_feedback_thanks_text' );
 	}
 
 	/**

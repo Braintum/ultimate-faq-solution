@@ -1,0 +1,26 @@
+/* Per-FAQ feedback widget */
+.ufaqsw-item-feedback {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 8px;
+	margin-top: 12px;
+	padding-top: 12px;
+	border-top: 1px solid rgba(0, 0, 0, .08);
+	font-size: .875em;
+}
+.ufaqsw-item-feedback__btn {
+	cursor: pointer;
+	padding: 4px 12px;
+	border: 1px solid currentColor;
+	border-radius: 4px;
+	background: transparent;
+	font-size: inherit;
+	line-height: 1.4;
+}
+.ufaqsw-item-feedback__btn:hover {
+	opacity: .7;
+}
+.ufaqsw-item-feedback__thanks {
+	font-style: italic;
+}

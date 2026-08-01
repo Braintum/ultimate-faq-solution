@@ -228,6 +228,51 @@ $allowed_html = ufaqsw_wses_allowed_menu_html();
 
 			</table>
 
+			<h3><?php echo esc_html( 'FAQ Feedback' ); ?></h3>
+			<p><?php echo esc_html( 'Show a "Was this helpful?" widget at the bottom of each FAQ answer displayed via shortcode or block. Votes are recorded in the FAQ Feedback Analytics page.' ); ?></p>
+
+			<table class="form-table ufaqsw_settings_table">
+
+				<tr valign="top">
+					<th scope="row"><?php echo esc_html( 'Enable FAQ Feedback' ); ?></th>
+					<td>
+						<label>
+							<input type="checkbox" name="ufaqsw_faq_feedback_enabled" value="on" <?php echo ( esc_attr( get_option( 'ufaqsw_faq_feedback_enabled' ) ) === 'on' ? 'checked="checked"' : '' ); ?> />
+							<?php echo esc_html( 'Enable "Was this helpful?" on FAQ answers' ); ?>
+						</label>
+					</td>
+				</tr>
+
+				<tr valign="top">
+					<th scope="row"><?php echo esc_html( 'Feedback Label' ); ?></th>
+					<td>
+						<input type="text" name="ufaqsw_faq_feedback_label" size="60" value="<?php echo esc_attr( get_option( 'ufaqsw_faq_feedback_label' ) ?: __( 'Was this helpful?', 'ufaqsw' ) ); ?>" />
+					</td>
+				</tr>
+
+				<tr valign="top">
+					<th scope="row"><?php echo esc_html( '"Helpful" Button Label' ); ?></th>
+					<td>
+						<input type="text" name="ufaqsw_faq_feedback_helpful_text" size="60" value="<?php echo esc_attr( get_option( 'ufaqsw_faq_feedback_helpful_text' ) ?: __( 'Yes, helpful', 'ufaqsw' ) ); ?>" />
+					</td>
+				</tr>
+
+				<tr valign="top">
+					<th scope="row"><?php echo esc_html( '"Not Helpful" Button Label' ); ?></th>
+					<td>
+						<input type="text" name="ufaqsw_faq_feedback_not_helpful_text" size="60" value="<?php echo esc_attr( get_option( 'ufaqsw_faq_feedback_not_helpful_text' ) ?: __( 'Not helpful', 'ufaqsw' ) ); ?>" />
+					</td>
+				</tr>
+
+				<tr valign="top">
+					<th scope="row"><?php echo esc_html( 'Thank You Message' ); ?></th>
+					<td>
+						<input type="text" name="ufaqsw_faq_feedback_thanks_text" size="60" value="<?php echo esc_attr( get_option( 'ufaqsw_faq_feedback_thanks_text' ) ?: __( 'Thank you for your feedback!', 'ufaqsw' ) ); ?>" />
+					</td>
+				</tr>
+
+			</table>
+
 			<h3><?php echo esc_html( 'Custom Css' ); ?></h3>
 			<p><?php echo esc_html( 'Add your own CSS to customize the appearance of the FAQs on the frontend.' ); ?></p>
 

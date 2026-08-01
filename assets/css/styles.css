@@ -220,6 +220,37 @@
   outline: 2px solid #0073aa;
   outline-offset: 2px;
 }
+/* Per-FAQ feedback widget */
+.ufaqsw-item-feedback {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-wrap: wrap;
+	    flex-wrap: wrap;
+	-webkit-box-align: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+	gap: 8px;
+	margin-top: 12px;
+	padding-top: 12px;
+	border-top: 1px solid rgba(0, 0, 0, .08);
+	font-size: .875em;
+}
+.ufaqsw-item-feedback__btn {
+	cursor: pointer;
+	padding: 4px 12px;
+	border: 1px solid currentColor;
+	border-radius: 4px;
+	background: transparent;
+	font-size: inherit;
+	line-height: 1.4;
+}
+.ufaqsw-item-feedback__btn:hover {
+	opacity: .7;
+}
+.ufaqsw-item-feedback__thanks {
+	font-style: italic;
+}
 .ufaqsw_content_style1 {
   width: 100%;
 

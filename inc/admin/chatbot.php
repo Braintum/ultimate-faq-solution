@@ -615,6 +615,7 @@ function ufaqsw_register_settings_page() {
 			),
 		)
 	);
+
 }
 
 add_action( 'cmb2_admin_init', 'ufaqsw_register_settings_page' );

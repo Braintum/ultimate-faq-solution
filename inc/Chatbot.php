@@ -21,7 +21,7 @@ class Chatbot {
 		add_action( 'wp_footer',          array( $this, 'bot_integration' ) );
 
 		// Public AJAX actions (logged-in and guest users).
-		foreach ( array( 'ufaqsw_get_faqs', 'ufaqsw_submit_question', 'ufaqsw_faq_feedback' ) as $action ) {
+		foreach ( array( 'ufaqsw_get_faqs', 'ufaqsw_submit_question', 'ufaqsw_faq_feedback', 'ufaqsw_faq_item_feedback' ) as $action ) {
 			add_action( 'wp_ajax_' . $action,        array( $this, 'dispatch_' . $action ) );
 			add_action( 'wp_ajax_nopriv_' . $action, array( $this, 'dispatch_' . $action ) );
 		}
@@ -31,9 +31,10 @@ class Chatbot {
 	// AJAX dispatcher shims (keeps action names tidy)
 	// -------------------------------------------------------------------------
 
-	public function dispatch_ufaqsw_get_faqs()        { $this->handle_get_faqs(); }
-	public function dispatch_ufaqsw_submit_question()  { $this->handle_submit_question(); }
-	public function dispatch_ufaqsw_faq_feedback()     { $this->handle_faq_feedback(); }
+	public function dispatch_ufaqsw_get_faqs()          { $this->handle_get_faqs(); }
+	public function dispatch_ufaqsw_submit_question()   { $this->handle_submit_question(); }
+	public function dispatch_ufaqsw_faq_feedback()      { $this->handle_faq_feedback(); }
+	public function dispatch_ufaqsw_faq_item_feedback() { $this->handle_faq_item_feedback(); }
 
 	// -------------------------------------------------------------------------
 	// Assistant visibility check
@@ -288,14 +289,34 @@ class Chatbot {
 			return;
 		}
 
-		// Store feedback counts in a dedicated wp_option, keyed by question hash.
-		$option_key = 'ufaqsw_feedback_' . md5( $question );
-		$feedback   = get_option( $option_key, array( 'helpful' => 0, 'not_helpful' => 0 ) );
-		$feedback[ $vote ] = intval( $feedback[ $vote ] ) + 1;
-		update_option( $option_key, $feedback, false ); // autoload = false.
+		$this->record_feedback( $question, $vote );
 
 		wp_send_json_success();
 		wp_die();
+	}
+
+	public function handle_faq_item_feedback() {
+		check_ajax_referer( 'ufaqsw_faq_item_feedback_nonce', 'nonce' );
+
+		$question = sanitize_text_field( wp_unslash( $_POST['question'] ?? '' ) );
+		$vote     = sanitize_key( wp_unslash( $_POST['vote']            ?? '' ) );
+
+		if ( ! $question || ! in_array( $vote, array( 'helpful', 'not_helpful' ), true ) ) {
+			wp_send_json_error();
+			return;
+		}
+
+		$this->record_feedback( $question, $vote );
+
+		wp_send_json_success();
+		wp_die();
+	}
+
+	private function record_feedback( string $question, string $vote ): void {
+		$key      = 'ufaqsw_feedback_' . md5( $question );
+		$feedback = get_option( $key, array( 'helpful' => 0, 'not_helpful' => 0 ) );
+		$feedback[ $vote ] = intval( $feedback[ $vote ] ) + 1;
+		update_option( $key, $feedback, false ); // autoload = false.
 	}
 
 	// -------------------------------------------------------------------------

@@ -226,7 +226,27 @@ class Custom_Resources {
 	 * @return $this
 	 */
 	public function render_js() {
-		// Universal template handles its own toggle JS inline; skip localization.
+		// Localize feedback config for all templates (runs before the universal early-return).
+		if ( get_option( 'ufaqsw_faq_feedback_enabled' ) === 'on' ) {
+			$opt = function ( $key, $default = '' ) {
+				$val = get_option( $key );
+				return ( $val !== false && $val !== '' ) ? $val : $default;
+			};
+			wp_localize_script(
+				$this->js_handler,
+				'ufaqswFaqFeedback',
+				array(
+					'ajaxUrl'        => admin_url( 'admin-ajax.php' ),
+					'nonce'          => wp_create_nonce( 'ufaqsw_faq_item_feedback_nonce' ),
+					'label'          => $opt( 'ufaqsw_faq_feedback_label',           __( 'Was this helpful?', 'ufaqsw' ) ),
+					'helpfulText'    => $opt( 'ufaqsw_faq_feedback_helpful_text',    __( 'Yes, helpful', 'ufaqsw' ) ),
+					'notHelpfulText' => $opt( 'ufaqsw_faq_feedback_not_helpful_text', __( 'Not helpful', 'ufaqsw' ) ),
+					'thanksText'     => $opt( 'ufaqsw_faq_feedback_thanks_text',     __( 'Thank you for your feedback!', 'ufaqsw' ) ),
+				)
+			);
+		}
+
+		// Universal template handles its own toggle JS inline; skip toggle localization.
 		if ( 'universal' === $this->template ) {
 			return $this;
 		}
