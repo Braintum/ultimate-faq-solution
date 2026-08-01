@@ -563,7 +563,6 @@
 
 .ufaqsw-faq[data-layout="card"][data-animation="slide"] .ufaqsw-faq__answer:not(.ufaqsw-open) {
 	border-top: none;
-	background: transparent;
 }
 
 /* ─── Layout: minimal ─────────────────────────────── */
@@ -633,5 +632,4 @@
 
 .ufaqsw-faq[data-layout="boxed"][data-animation="slide"] .ufaqsw-faq__answer:not(.ufaqsw-open) {
 	border-top: none;
-	background: transparent;
 }
