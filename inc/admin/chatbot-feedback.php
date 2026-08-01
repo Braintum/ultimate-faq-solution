@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Register the "Feedback Analytics" submenu page under the FAQ Groups post type.
  */
 function ufaqsw_register_feedback_analytics_page() {
-	if ( ! cmb2_get_option( 'ufaqsw_chatbot_settings', 'feedback_enabled' ) || get_option( 'ufaqsw_faq_feedback_enabled' ) !== 'on' ) {
+	if ( ! cmb2_get_option( 'ufaqsw_chatbot_settings', 'feedback_enabled' ) && get_option( 'ufaqsw_faq_feedback_enabled' ) !== 'on' ) {
 		return;
 	}
 
